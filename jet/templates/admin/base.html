@@ -1,0 +1,145 @@
+{% load i18n admin_static jet_tags %}
+
+
+{% block html %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}
+{% get_current_theme as THEME %}
+<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta name="copyright" content="geex-arts.com">
+
+    <link href="{% static "jet/vendor/select2/css/select2.min.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/vendor/jquery-ui/jquery-ui.min.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/vendor/jquery-ui-timepicker/jquery.ui.timepicker.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/css/icons/style.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}" rel="stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}" rel="stylesheet" />
+
+    {% block extrastyle %}{% endblock %}
+    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
+    {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+
+    <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
+    <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
+    <script type="text/javascript" charset="utf-8">
+        var DATE_FORMAT = "{% get_date_format %}";
+        var TIME_FORMAT = "{% get_time_format %}";
+        var DATETIME_FORMAT = "{% get_datetime_format %}";
+    </script>
+
+    {% block extrahead %}{% endblock %}
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+
+    <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
+    <script src="{% static "jet/vendor/jquery/jquery-1.11.3.min.js" %}"></script>
+    <script src="{% static "jet/vendor/jquery-ui/jquery-ui.min.js" %}"></script>
+    <script src="{% static "jet/vendor/jquery-ui-timepicker/jquery.ui.timepicker.js" %}"></script>
+    {% with "jet/vendor/jquery-ui/i18n/datepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
+        <script src="{% static url %}"></script>
+    {% endwith %}
+    {% with "jet/vendor/jquery-ui-timepicker/i18n/jquery.ui.timepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
+        <script src="{% static url %}"></script>
+    {% endwith %}
+    <script src="{% static "jet/vendor/select2/js/select2.full.min.js" %}"></script>
+    {% with "jet/vendor/select2/js/i18n/"|add:LANGUAGE_CODE|add:".js" as url %}
+        <script src="{% static url %}"></script>
+    {% endwith %}
+    <script type="text/javascript" charset="utf-8">
+        var jet = jet || {};
+        jet.jQuery = jQuery.noConflict(true);
+    </script>
+
+    <script src="{% static "jet/js/main.min.js" %}"></script>
+    <script src="{% static "jet/js/select2.jet.min.js" %}"></script>
+</head>
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+    {% block body %}
+        {% if not is_popup %}
+            <div id="container" class="container">
+        {% endif %}
+
+            <div class="content">
+                {% if not is_popup %}
+                    {% block header %}
+                        <div id="header" class="top">
+{#                            <div id="branding">#}
+{#                                {% block branding %}{% endblock %}#}
+{#                            </div>#}
+                            <div class="top-right">
+                                {% block top-right %}{% endblock %}
+                                {% block usertools %}
+                                    {% if user.is_active and user.is_staff %}
+                                        <ul class="top-user-tools" id="user-tools">
+                                            <li class="top-user-tools-welcome-msg">
+                                                <span class="top-user-tools-welcome-msg-arrow icon-arrow-down"></span>
+                                                {% block welcome-msg %}
+                                                    {% firstof user.get_short_name user.get_username %}
+                                                {% endblock %}
+                                            </li>
+
+                                            {% block userlinks %}
+                                                {% if user.has_usable_password %}
+                                                    <li class="top-user-tools-user-link">
+                                                        <span class="top-user-tools-user-link-icon icon-key"></span> <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a>
+                                                    </li>
+                                                {% endif %}
+                                                <li class="top-user-tools-user-link">
+                                                    <span class="top-user-tools-user-link-icon icon-exit"></span> <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+                                                </li>
+                                            {% endblock %}
+                                        </ul>
+                                    {% endif %}
+                                {% endblock %}
+                            </div>
+                            <div class="top-breadcrumbs">
+                                {% format_breadcrumbs %}
+                                    {% block breadcrumbs %}
+                                        <div class="breadcrumbs">
+                                            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+                                            {% if title %} &rsaquo; {{ title }}{% endif %}
+                                        </div>
+                                    {% endblock %}
+                                {% endformat_breadcrumbs %}
+                            </div>
+                            {% block nav-global %}{% endblock %}
+                        </div>
+                    {% endblock %}
+                {% endif %}
+
+
+                {% block messages %}
+                    {% if messages %}
+                        <ul class="messagelist">
+                            {% for message in messages %}
+                                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endblock messages %}
+
+                <div id="content" class="cf {% block coltype %}colM{% endblock %}">
+                    {% block pretitle %}{% endblock %}
+                    {% if is_popup %}
+                        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+                    {% endif %}
+                    <div class="context-sidebar">
+                        {% block sidebar %}{% endblock %}
+                    </div>
+                    {% block content %}
+                    {% block object-tools %}{% endblock %}
+                    {{ content }}
+                    {% endblock %}
+                </div>
+
+                {% block footer %}<div id="footer"></div>{% endblock %}
+            </div>
+
+        {% if not is_popup %}
+                {% include "admin/sidebar.html" %}
+            </div>
+        {% endif %}
+    {% endblock %}
+</body>
+</html>{% endblock %}

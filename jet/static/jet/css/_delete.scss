@@ -1,0 +1,68 @@
+@import "globals";
+
+.delete {
+  &-summary {
+    background: $warning-color;
+    color: $warning-text-color;
+    border-radius: 4px;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    h2 {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 0 0 10px 0;
+    }
+
+    ul {
+      @extend .clear-list;
+    }
+
+    &-buttons {
+      float: right;
+    }
+  }
+
+  &-objects {
+    background: $content-background-color;
+    border-radius: 4px;
+    box-shadow: 0 2px 0 0 $content-border2-color;
+
+    &-list {
+      @extend .clear-list;
+
+      &-item {
+        border-bottom: 1px solid $content-border-color;
+        font-size: 13px;
+
+        &:last-child {
+          border-bottom: 0;
+        }
+
+        &-row {
+          padding: 8px;
+
+          &-collapse {
+            float: right;
+
+            span {
+              vertical-align: middle;
+              font-weight: bold;
+              font-size: 16px;
+            }
+          }
+        }
+
+        &-collapsable {
+          background-color: $content-contrast3-background-color;
+          padding: 20px 20px 20px 0;
+          display: none;
+
+          &-list {
+            list-style-type: disc;
+          }
+        }
+      }
+    }
+  }
+}

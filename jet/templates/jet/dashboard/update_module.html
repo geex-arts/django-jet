@@ -1,0 +1,138 @@
+{% extends "admin/base_site.html" %}
+{% load i18n jet_tags static %}
+
+{% block extrahead %}
+    <script type="text/javascript" src="{% static "admin/js/jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
+    <script type="text/javascript" src="{% static "admin/js/inlines.js" %}"></script>
+{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            {% if app %}
+                &rsaquo; <a href="{{ app.app_url }}">{% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
+            {% endif %}
+            &rsaquo; {{ object.title|capfirst }}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block content %}
+    <form action="" method="POST">
+        <div class="changeform">
+            {% csrf_token %}
+
+            {{ form.media }}
+            {{ settings_form.media }}
+            {{ children_formset.media }}
+
+            <ul class="changeform-tabs">
+                <li class="changeform-tabs-item selected{% if form.errors or settings_form.errors %} errors{% endif %}">
+                    <a href="#" class="changeform-tabs-item-link" data-module-id="module_0">
+                        {% trans "General" %}
+                    </a>
+                </li>
+                {% if children_formset %}
+                    {% formset_has_errors children_formset as errors %}
+
+                    <li class="changeform-tabs-item{% if errors %} errors{% endif %}">
+                        <a href="#" class="changeform-tabs-item-link" data-module-id="module_1">
+                            {{ child_name_plural }}
+                        </a>
+                    </li>
+                {% endif %}
+            </ul>
+
+            <div class="module selected" id="module_0">
+                {{ form.non_field_errors }}
+                {{ settings_form.non_field_errors }}
+
+                {% if form.errors or settings_form.errors %}
+                    <fieldset class="module aligned">
+                        <p class="errornote">
+                            {% trans "Please correct the errors below." %}
+                        </p>
+                    </fieldset>
+                {% endif %}
+
+                {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+
+                {% if settings_form %}
+                    {% include "jet/dashboard/update_module_fieldset.html" with form=settings_form %}
+                {% endif %}
+            </div>
+
+            {% if children_formset %}
+                <div class="module" id="module_1">
+                    <div class="inline-group">
+                        {{ children_formset.management_form }}
+                        {{ children_formset.non_form_errors }}
+
+                        <div class="stacked-inline side cf">
+                            <div class="stacked-inline-side">
+                            <div class="stacked-inline-side-top"></div>
+                                <ul class="stacked-inline-list">
+                                    {% for form in children_formset %}
+                                        <li class="stacked-inline-list-item{% if forloop.first %} selected{% endif %}{% if form.errors %} errors{% endif %}">
+                                            <a href="#" class="stacked-inline-list-item-link" data-inline-related-id="{{ children_formset.prefix }}-{{ forloop.counter0 }}">
+                                                {% if not form.initial %}
+                                                    <span class="icon-new"></span>
+                                                {% endif %}
+                                                <b>{{ child_name }}:</b>&nbsp;
+                                                <span class="inline_label">
+                                                    #{{ forloop.counter }}
+                                                </span>
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                    <li class="stacked-inline-list-item empty">
+                                        <a href="#" class="stacked-inline-list-item-link" data-inline-related-id="{{ children_formset.prefix }}-empty">
+                                            <span class="icon-new"></span>
+                                            <b>{{ child_name }}:</b>&nbsp;
+                                            <span class="inline_label">
+                                                #{{ children_formset|length }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                                <div class="stacked-inline-side-bottom"></div>
+                            </div>
+                            <div class="stacked-inline-content">
+                                {% for form in children_formset %}
+                                    <div class="stacked {% if forloop.first %}selected {% endif %}inline-related {% if forloop.last %} last-related{% endif %}" id="{{ children_formset.prefix }}-{{ forloop.counter0 }}">
+                                        {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+                                        {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+                                    </div>
+                                {% endfor %}
+                                {% with form=children_formset.empty_form %}
+                                    <div class="stacked inline-related empty-form last-related" id="{{ children_formset.prefix }}-empty">
+                                        {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
+                                        {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+                                    </div>
+                                {% endwith %}
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    <script type="text/javascript">
+                    (function($) {
+                      $("#module_1 .inline-related").stackedFormset({
+                        prefix: '{{ children_formset.prefix }}',
+                        adminStaticPrefix: '{% static "admin/" %}',
+                        deleteText: "{% trans "Remove" %}",
+                        addText: "<span class=\"icon-add\"></span> {% blocktrans with verbose_name=child_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}"
+                      });
+                    })(django.jQuery);
+                    </script>
+
+            {% endif %}
+
+            <div class="submit-row">
+                <input type="submit" value="{% trans 'Save' %}" class="default" name="_save" />
+            </div>
+       </div>
+    </form>
+{% endblock %}

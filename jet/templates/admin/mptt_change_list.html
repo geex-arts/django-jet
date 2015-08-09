@@ -1,0 +1,16 @@
+{% extends "admin/change_list.html" %}
+{% load admin_list i18n mptt_admin %}
+
+{% block result_list %}
+    {% mptt_result_list cl %}
+
+    {% if cl.result_count %}
+        <div class="changelist-footer background-form">
+            {% if action_form and cl.show_admin_actions and actions_on_top or actions_on_bottom %}{% admin_actions %}{% endif %}
+
+            <div class="fr">
+              {% block pagination %}{% pagination cl %}{% endblock %}
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

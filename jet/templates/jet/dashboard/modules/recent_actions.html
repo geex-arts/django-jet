@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<ul>
+    {% if not module.children %}
+        <li>
+            {% trans 'None available' %}
+        </li>
+    {% else %}
+        {% for entry in module.children %}
+            <li class="nowrap">
+                <span class="float-right">
+                    <span class="icon-user tooltip" title="{{ entry.user }}"></span>
+                    <span class="icon-clock tooltip" title="{{ entry.action_time }}"></span>
+                </span>
+
+                {% if entry.is_addition %}
+                    <span class="icon-add3"></span>
+                {% endif %}
+                {% if entry.is_change %}
+                    <span class="icon-edit"></span>
+                {% endif %}
+                {% if entry.is_deletion %}
+                    <span class="icon-cross"></span>
+                {% endif %}
+
+                {% if entry.content_type %}
+                    <span class="mini quiet">{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
+                {% else %}
+                    <span class="mini quiet">{% trans 'Unknown content' %}</span>
+                {% endif %}
+
+                {% if entry.is_deletion or not entry.get_admin_url %}
+                    {{ entry.object_repr }}
+                {% else %}
+                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>

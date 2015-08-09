@@ -1,0 +1,5 @@
+include README.rst
+include LICENSE
+recursive-include jet/locale *
+recursive-include jet/static *
+recursive-include jet/templates *

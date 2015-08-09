@@ -1,0 +1,100 @@
+@import "globals";
+
+.top {
+  padding: 20px;
+
+  &-breadcrumbs {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: $top-height;
+
+    a, a:visited, a:hover {
+      color: $top-link-color;
+      text-decoration: none;
+      word-spacing: normal;
+    }
+
+    a:hover {
+      color: $top-hover-link-color;
+    }
+
+    &-separator {
+      color: $top-text-color;
+      margin: 0 6px 0 6px;
+      font-weight: bold !important;
+      font-size: 15px;
+      vertical-align: middle;
+    }
+  }
+
+  &-right {
+    float: right;
+    position: relative;
+    padding-right: 175px + 10px;
+  }
+
+  &-user-tools {
+    @extend .clear-list;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid $top-border-color;
+    border-radius: 4px;
+    font-size: 12px;
+    text-align: left;
+    width: 175px;
+    z-index: 1;
+
+    &-welcome-msg {
+      font-weight: bold;
+      line-height: $top-height - 2px;
+      padding: 0 10px 0 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      &-arrow {
+        float: right;
+        color: $top-icon-color;
+        font-size: 24px;
+        line-height: $top-height - 2px !important;
+      }
+    }
+
+    &-user-link {
+      display: none;
+      padding: 8px 14px;
+
+      a, a:visited, a:hover {
+        color: $top-dropdown-link-color;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: $top-dropdown-hover-link-color;
+        text-decoration: underline;
+      }
+
+      &-icon {
+        font-size: 15px;
+        vertical-align: middle;
+      }
+    }
+
+    &.opened {
+      background-color: $top-dropdown-background-color;
+      border-color: transparent;
+      color: $top-dropdown-text-color;
+    }
+
+    &.opened &-welcome-msg {
+      border-bottom: 1px solid $top-dropdown-border-color;
+      margin-bottom: 6px;
+    }
+
+    &.opened &-user-link {
+      display: block;
+    }
+  }
+}

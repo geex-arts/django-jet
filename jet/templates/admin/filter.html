@@ -1,0 +1,12 @@
+{% load i18n %}
+
+<select class="changelist-filter-select">
+    {% for choice in choices %}
+        {% if forloop.first %}
+            <option data-url="{{ choice.query_string|iriencode }}">{% blocktrans with filter_title=title %}{{ filter_title }}{% endblocktrans %}</option>
+            <option disabled>---</option>
+        {% else %}
+            <option{% if choice.selected %} selected{% endif %} data-url="{{ choice.query_string|iriencode }}">{{ choice.display }}</option>
+        {% endif %}
+    {% endfor %}
+</select>

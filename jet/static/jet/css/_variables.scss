@@ -1,0 +1,202 @@
+$black-color: #000;
+$white-color: #fff;
+$border-color: #f4f4f4; //border
+
+//fill
+$blue-color-1: #2b3647; //dark-dark
+$blue-color-2: #354052; //dark
+$blue-color-3: #59677e; //contrast2
+$blue-color-5: #76849a; //top dropdown border
+$blue-color-9: #ecf2f6; //background, top dropdown text
+$blue-color-10: #f6fafc; //contrast
+
+//text
+$blue-color-4: #6f7e95; //text
+$blue-color-7: #c0cad8; //light side
+$blue-color-8: #d0dbe6; //dim color, secondary button
+$blue-color-11: #c0d4e8; //top color
+
+$contrast-color: #47bac1;
+$contrast-dim-color: transparentize($contrast-color, 0.25);
+$contrast2-color: #639af5;
+
+$success-color-1: #8ecb8e;
+$success-color-2: #c9eaca;
+
+$info-color-1: #bebe92;
+$info-color-2: #e8e8bd;
+
+$selected-color-1: #e5e2a5;
+$selected-color-2: #fffcc0;
+
+$warning-color-1: #dba4a4;
+$warning-color-2: #f0dada;
+$warning-color-3: #c14747;
+
+/*
+ * General
+ */
+
+$background-color: $blue-color-9 !default;
+$text-color: $blue-color-4 !default;
+$dim-text-color: $blue-color-8 !default;
+$error-text-color: $warning-color-3 !default;
+
+$link-color: $contrast-color !default;
+$hover-link-color: $contrast2-color !default;
+
+$font: Arial, sans-serif !default;
+$font-size: 14px !default;
+
+/*
+ * Sidebar
+ */
+
+$sidebar-width: 250px !default;
+
+$sidebar-background-color: $blue-color-2 !default;
+$sidebar-border-color: $blue-color-1 !default;
+$sidebar-contrast-color: $contrast-color !default;
+$sidebar-contrast2-color: $contrast2-color !default;
+
+$sidebar-text-color: $blue-color-4 !default;
+$sidebar-icon-color: $blue-color-4 !default;
+$sidebar-link-color: $blue-color-7 !default;
+$sidebar-hover-link-color: $white-color !default;
+$sidebar-hover-background-color: $blue-color-1 !default;
+
+$sidebar-popup-search-input-background-color: $blue-color-8 !default;
+$sidebar-popup-search-input-text-color: $blue-color-4 !default;
+$sidebar-popup-search-input-placeholder-color: $blue-color-8 !default;
+
+$sidebar-popup-background-color: $blue-color-9 !default;
+$sidebar-popup-text-color: $blue-color-4 !default;
+$sidebar-popup-overlay-color: $black-color !default;
+
+$sidebar-popup-link-text-color: $blue-color-4 !default;
+$sidebar-popup-hover-link-color: $white-color !default;
+$sidebar-popup-hover-link-background-color: $contrast2-color !default;
+
+/*
+ * Top
+ */
+
+$top-height: 32px !default;
+
+$top-text-color: $blue-color-11 !default;
+$top-link-color: $blue-color-11 !default;
+$top-hover-link-color: $contrast2-color !default;
+$top-border-color: $blue-color-11 !default;
+$top-icon-color: $contrast-color !default;
+$top-dropdown-background-color: $blue-color-4 !default;
+$top-dropdown-border-color: $blue-color-5 !default;
+$top-dropdown-text-color: $blue-color-9 !default;
+$top-dropdown-link-color: $blue-color-9 !default;
+$top-dropdown-hover-link-color: $blue-color-9 !default;
+
+/*
+ * Content
+ */
+
+$content-background-color: $white-color !default;
+$content-contrast-background-color: $blue-color-10 !default; //inline list bg
+$content-contrast2-background-color: $blue-color-3 !default; //table header
+$content-contrast3-background-color: $blue-color-8 !default; //delete collapsable
+$content-selected-background-color: $selected-color-2 !default;
+$content-contrast2-text-color: $white-color !default;
+$content-border-color: $border-color !default; //row bottom
+$content-border2-color: $blue-color-8 !default; //table bottom
+$content-selected-border-color: $selected-color-1 !default;
+
+$tab-selected-border-color: $contrast2-color !default;
+$tab-error-border-color: $warning-color-3 !default;
+
+/*
+ * Buttons
+ */
+
+$button-background-color: $blue-color-8 !default;
+$button-hover-background-color: $contrast2-color !default;
+$button-active-background-color: $blue-color-4 !default;
+$button-text-color: $blue-color-4 !default;
+$button-hover-text-color: $white-color !default;
+$button-active-text-color: $white-color !default;
+
+$primary-button-background-color: $contrast-color !default;
+$primary-button-text-color: $white-color !default;
+
+$danger-button-background-color: $warning-color-3 !default;
+$danger-button-text-color: $white-color !default;
+
+$background-button-background-color: $white-color !default;
+$background-button-text-color: $blue-color-4 !default;
+
+/*
+ * Inputs
+ */
+
+$input-background-color: $white-color !default;
+$input-contrast-background-color: $blue-color-8 !default;
+$input-border-color: $blue-color-9 !default;
+$input-hover-background-color: $contrast2-color !default;
+$input-icon-color: $contrast-color !default;
+$input-text-color: $blue-color-4 !default;
+$input-contrast-text-color: $blue-color-4 !default;
+$input-hover-text-color: $white-color !default;
+$input-selected-text-color: $contrast-color !default;
+$input-disabled-text-color: $blue-color-8 !default;
+$input-placeholder-color: $blue-color-8 !default;
+$input-shadow-color: $contrast-dim-color !default;
+
+$background-input-background-color: $white-color !default;
+$background-input-border-color: $white-color !default;
+$background-input-text-color: $blue-color-4 !default;
+
+/*
+ * Messages
+ */
+
+$warning-color: $warning-color-2 !default;
+$warning-text-color: $warning-color-1 !default;
+$info-color: $info-color-2 !default;
+$info-text-color: $info-color-1 !default;
+$success-color: $success-color-2 !default;
+$success-text-color: $success-color-1 !default;
+
+/*
+ * Login
+ */
+
+$login-background-color: $blue-color-2 !default;
+$login-title-text-color: $blue-color-4 !default;
+$login-title-contrast-text-color: $white-color !default;
+$login-header-background-color: $blue-color-3 !default;
+$login-header-text-color: $white-color !default;
+$login-content-background-color: $white-color !default;
+
+/*
+ * jQuery UI
+ */
+
+$jquery-ui-buttonpane-background: $blue-color-9 !default;
+
+$jquery-ui-state-default-background-color: $white-color !default;
+$jquery-ui-state-default-border-color: $blue-color-9 !default;
+$jquery-ui-state-default-text-color: $blue-color-4 !default;
+
+$jquery-ui-state-hover-background-color: $contrast2-color !default;
+$jquery-ui-state-hover-border-color: $contrast2-color !default;
+$jquery-ui-state-hover-text-color: $white-color !default;
+
+$jquery-ui-state-active-background-color: $contrast-color !default;
+$jquery-ui-state-active-border-color: $contrast-color !default;
+$jquery-ui-state-active-text-color: $white-color !default;
+
+$jquery-ui-state-highlight-background-color: $white-color !default;
+$jquery-ui-state-highlight-border-color: $contrast2-color !default;
+$jquery-ui-state-highlight-text-color: $contrast2-color !default;
+
+$jquery-ui-overlay-color: $black-color !default;
+
+$jquery-ui-tooltip-background-color: $black-color !default;
+$jquery-ui-tooltip-text-color: $white-color !default;

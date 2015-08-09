@@ -1,0 +1,29 @@
+@import "globals";
+
+.messagelist {
+  @extend .clear-list;
+
+  @mixin message-item {
+    margin: 0 20px 10px 20px;
+    border-radius: 6px;
+    padding: 10px
+  }
+
+  .warning, .error {
+    @include message-item;
+    background: $warning-color;
+    color: $warning-text-color;
+  }
+
+  .info, .debug {
+    @include message-item;
+    background: $info-color;
+    color: $info-text-color;
+  }
+
+  .success {
+    @include message-item;
+    background: $success-color;
+    color: $success-text-color;
+  }
+}

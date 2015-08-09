@@ -1,0 +1,8 @@
+*.pyc
+*.DS_Store
+
+/.idea
+/application/local_settings.py
+/conf/
+/media/
+/static_content/

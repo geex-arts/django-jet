@@ -1,0 +1,164 @@
+@import "globals";
+
+.base_input {
+  border: 0;
+  border-radius: 4px;
+  font-size: 13px;
+  height: 32px;
+  white-space: nowrap;
+  outline: 0;
+  box-sizing: border-box;
+  margin: 0;
+  @include transition(background 0.3s, box-shadow 0.3s, border 0.3s);
+}
+
+.input {
+  @extend .base_input;
+  @include placeholder {
+    color: $input-placeholder-color;
+  }
+  background-color: $input-background-color;
+  color: $input-text-color;
+  border: 1px solid $input-border-color;
+  padding: 0 12px;
+
+  &:focus {
+    box-shadow: 0 0 4px 0 $input-shadow-color;
+    border-color: $input-background-color;
+  }
+}
+
+.background-form .input {
+  @extend .input;
+  background-color: $background-input-background-color;
+  color: $background-input-text-color;
+  border-color: $background-input-border-color;
+}
+
+.button {
+  &, &:visited, &:hover {
+    @extend .base_input;
+    font-weight: bold;
+    font-size: 12px;
+    text-align: center;
+    background-color: $primary-button-background-color;
+    color: $primary-button-text-color;
+    padding: 0 20px;
+    display: inline-block;
+  }
+
+  &.button-secondary {
+    background-color: $button-background-color;
+    color: $button-text-color;
+  }
+
+  &.button-red {
+    background-color: $danger-button-background-color;
+    color: $danger-button-text-color;
+  }
+
+  &.button-background {
+    background-color: $background-button-background-color;
+    color: $background-button-text-color;
+  }
+
+  &:hover {
+    background-color: $button-hover-background-color;
+    color: $button-hover-text-color;
+    font-weight: bold;
+  }
+
+  &:active {
+    background-color: $button-active-background-color;
+    color: $button-active-text-color;
+  }
+}
+
+a.button {
+  line-height: 32px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"] {
+  @extend .input;
+}
+
+textarea {
+  @extend .input;
+  height: auto;
+  line-height: normal;
+  padding: 12px;
+  white-space: normal;
+}
+
+.button, input[type="submit"], input[type="button"] {
+  @extend .button;
+}
+
+input[type=checkbox] {
+  display: none;
+
+  + label:before {
+    @include font-icon;
+
+    color: $input-icon-color;
+    font-size: 12px;
+    content: $icon-checkbox-outline;
+    letter-spacing: 5px;
+
+    .action-checkbox-column & {
+      color: $content-contrast2-text-color;
+    }
+  }
+
+  &:checked + label:before {
+    content: $icon-checkbox;
+  }
+}
+
+.form-row {
+  .vDateField, .vTimeField {
+    border-radius: 4px 0 0 4px !important;
+
+    &-link {
+      vertical-align: top;
+      display: inline-block;
+
+      span {
+        width: 32px;
+        height: 32px;
+        line-height: 32px !important;
+        background-color: $button-background-color;
+        color: $button-text-color;
+        display: inline-block;
+        vertical-align: middle;
+        text-align: center;
+        border-radius: 0 4px 4px 0;
+      }
+
+      &:hover span {
+        background-color: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
+    }
+  }
+
+  .vDateField-link + .vTimeField {
+    margin-left: 10px;
+  }
+
+  label.required {
+    font-weight: bold;
+
+    &:after {
+      content: '*';
+    }
+  }
+
+  select {
+    min-width: 200px;
+  }
+}
+
+.empty-form {
+  display: none;
+}

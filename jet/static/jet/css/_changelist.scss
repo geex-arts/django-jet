@@ -1,0 +1,63 @@
+@import "globals";
+
+#changelist {
+  .changelist-filter {
+    margin-bottom: 20px;
+    line-height: 40px;
+
+    * {
+      vertical-align: top;
+    }
+
+    &-submit-block {
+      white-space: nowrap;
+    }
+  }
+
+  .results {
+    overflow-x: auto;
+  }
+
+  table {
+    @extend .table;
+    width: 100%;
+  }
+
+  .changelist-footer {
+    margin-top: 20px;
+    background: $background-color;
+
+    &.fixed {
+      position: fixed;
+      left: 250px + 20px;
+      right: 20px;
+      bottom: 0;
+      margin: 0;
+      padding: 20px 0;
+      border-top: 2px solid $content-border2-color;
+    }
+
+    &.popup {
+      left: 20px;
+    }
+
+    .actions {
+      float: left;
+
+      &-label {
+        margin-left: 10px;
+      }
+
+      span {
+        .all, .action-counter, .clear, .question {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+table#change-history {
+  @extend .table;
+  width: 100%;
+}

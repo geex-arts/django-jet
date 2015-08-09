@@ -1,0 +1,264 @@
+@import "globals";
+
+.sidebar {
+  background-color: $sidebar-background-color;
+
+  &-menu {
+    @extend .clear-list;
+    margin-bottom: 32px !important;
+
+    &-wrapper {
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    &-item {
+      padding: 20px 24px;
+      border-bottom: 1px solid $sidebar-border-color;
+
+      &:last-child {
+        border-bottom: 0;
+      }
+
+      &.no-horizontal-padding {
+        padding-left: 0;
+        padding-right: 0;
+      }
+
+      &-icon {
+        font-size: 18px;
+        vertical-align: middle;
+        margin-right: 6px;
+        color: $sidebar-icon-color;
+      }
+
+      &-link {
+        &, &:visited, &:hover {
+          color: $sidebar-link-color;
+          font-weight: bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          @include transition-all(0.3s);
+        }
+
+        &:hover {
+          color: $sidebar-hover-link-color;
+        }
+      }
+
+      &-title {
+        color: $sidebar-text-color;
+        text-transform: uppercase;
+        font-size: 11px;
+        font-weight: bold;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding: 0 24px;
+
+        &-icon {
+          float: right;
+          font-size: 14px;
+          font-weight: bold !important;
+          margin-right: 14px;
+
+          &, &:visited, &:hover {
+            color: $sidebar-contrast-color;
+            @include transition-all(0.3s);
+          }
+
+          &:hover {
+            color: $sidebar-contrast2-color;
+          }
+        }
+      }
+
+      &-action {
+        &, &:visited, &:hover {
+          display: block;
+          color: $sidebar-contrast-color;
+          font-size: 11px;
+          text-align: center;
+          margin-top: 10px;
+          padding: 8px 0;
+          text-transform: uppercase;
+          @include transition-all(0.3s);
+        }
+
+        &:hover {
+          color: $sidebar-contrast2-color;
+          background-color: $sidebar-hover-background-color;
+        }
+      }
+
+      &-list {
+        @extend .clear-list;
+
+        &:not(:empty) {
+          margin-top: 10px !important;
+        }
+
+        &-item {
+          &.empty {
+            display: none;
+          }
+
+          &-link {
+            &, &:visited, &:hover {
+              display: block;
+              color: $sidebar-link-color;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              padding: 8px 12px 8px 24px;
+              vertical-align: middle;
+              position: relative;
+              @include transition-all(0.3s);
+            }
+
+            &:hover, &.hovered {
+              color: $sidebar-hover-link-color;
+              background-color: $sidebar-hover-background-color;
+            }
+
+            &-remove {
+              &, &:visited, &:hover {
+                position: relative;
+                float: right;
+                display: none;
+                color: $sidebar-contrast-color;
+                @include transition-all(0.3s);
+              }
+
+              &:hover {
+                color: $sidebar-contrast2-color;
+              }
+            }
+
+            &-pin, &-unpin {
+              &, &:visited, &:hover {
+                position: absolute;
+                display: none;
+                left: 4px;
+                font-size: 14px;
+                color: $sidebar-contrast-color;
+                @include transition-all(0.3s);
+              }
+
+              &:hover {
+                color: $sidebar-contrast2-color;
+              }
+            }
+
+            &:hover &-remove {
+              display: inline-block;
+            }
+          }
+
+          &:not(.pinned):hover &-link-pin {
+            display: inline-block;
+          }
+
+          &.pinned:hover &-link-unpin {
+            display: inline-block;
+          }
+
+          &-arrow {
+            float: right;
+            color: $sidebar-contrast2-color;
+            font-size: 16px;
+            font-weight: bold !important;
+            margin-left: 4px;
+          }
+        }
+      }
+    }
+  }
+
+  &-popup {
+    position: absolute;
+    top: 0;
+    left: $sidebar-width;
+    bottom: 0;
+    width: $sidebar-width;
+    color: $sidebar-popup-text-color;
+    background-color: $sidebar-popup-background-color;
+    z-index: 3;
+    overflow-y: auto;
+
+    &-container {
+      display: none;
+    }
+
+    &-item {
+      display: none;
+    }
+
+    &-background {
+      position: absolute;
+      top: 0;
+      left: $sidebar-width;
+      bottom: 0;
+      right: 0;
+      background-color: $sidebar-popup-overlay-color;
+      opacity: 0.5;
+      z-index: 2;
+    }
+
+    &-title {
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-search {
+      @extend .base_input;
+      @include placeholder {
+        color: $sidebar-popup-search-input-placeholder-color;
+      }
+      background-color: $sidebar-popup-search-input-background-color;
+      color: $sidebar-popup-search-input-text-color;
+      border-radius: 0 !important;
+      width: 100%;
+      height: 32px;
+      padding: 0 !important;
+      text-indent: 20px;
+      margin-bottom: 12px !important;
+    }
+
+    &-list {
+      @extend .clear-list;
+
+      &-item {
+        a, a:visited, a:hover {
+          color: $sidebar-popup-link-text-color;
+          padding: 8px 20px;
+          display: block;
+        }
+
+        &.selected a {
+          background-color: $sidebar-popup-hover-link-background-color;
+          color: $sidebar-popup-hover-link-color;
+        }
+      }
+    }
+  }
+
+  &-copyright {
+    background-color: $sidebar-border-color;
+    height: 32px;
+    line-height: 32px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+  }
+}

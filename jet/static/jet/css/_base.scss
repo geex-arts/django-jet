@@ -1,0 +1,67 @@
+@import "globals";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  color: $text-color;
+  font-family: $font;
+  font-size: $font-size;
+
+  &.non-scrollable {
+    overflow: hidden;
+  }
+}
+
+a, a:visited, a:hover {
+  color: $link-color;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $hover-link-color;
+}
+
+.container {
+  padding-left: $sidebar-width;
+  height: 100%;
+  position: relative;
+}
+
+.sidebar {
+  position: fixed;
+  width: $sidebar-width;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+}
+
+.content {
+  width: 100%;
+  min-height: 100%;
+  z-index: 1;
+  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.25);
+  position: relative;
+}
+
+#content {
+  padding: 20px;
+}
+
+@import "table";
+@import "buttongroup";
+@import "sidebar";
+@import "top";
+@import "forms";
+@import "messages";
+@import "changelist";
+@import "changeform";
+@import "delete";
+@import "login";
+@import "content";
+@import "dashboard";

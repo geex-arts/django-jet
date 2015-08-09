@@ -1,0 +1,18 @@
+{% if show %}
+    <div class="button-group">
+        <span class="button-group-buttons">
+            {% spaceless %}
+                {% if back %}
+                    <a href="{{ back.link }}">&lsaquo; {{ back.title }}</a>
+                {% endif %}
+                {% for choice in choices %}
+                    {% if choice.link %}
+                        <a href="{{ choice.link }}">{{ choice.title }}</a>
+                    {% else %}
+                        <span>{{ choice.title }}</span>
+                    {% endif %}
+                {% endfor %}
+            {% endspaceless %}
+        </span>
+    </div>
+{% endif %}

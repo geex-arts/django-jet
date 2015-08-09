@@ -1,0 +1,47 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static jet_tags %}
+
+{% block html %}
+    {% get_dashboard 'app_index' as dashboard %}
+    {{ block.super }}
+{% endblock %}
+
+{% block extrastyle %}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+
+    {% for css in dashboard.media.css %}
+        <link href="{% static css %}" rel="stylesheet" />
+    {% endfor %}
+{% endblock %}
+
+{% block extrahead %}
+    {% for js in dashboard.media.js %}
+        <script src="{% static js %}"></script>
+    {% endfor %}
+{% endblock %}
+
+{% block coltype %}colMS{% endblock %}
+
+{% block bodyclass %}{{ block.super }} app-{{ app_label }} dashboard{% endblock %}
+
+{% if not is_popup %}
+    {% block breadcrumbs %}
+        <div class="breadcrumbs">
+            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+            &rsaquo;
+            {% for app in app_list %}
+                {% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}
+            {% endfor %}
+        </div>
+    {% endblock %}
+{% endif %}
+
+{% block sidebar %}{% endblock %}
+
+{% block top-right %}
+    {{ dashboard.render_tools }}
+{% endblock %}
+
+{% block content %}
+    {{ dashboard.render }}
+{% endblock %}
