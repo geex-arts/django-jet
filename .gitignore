@@ -1,8 +1,4 @@
 *.pyc
 *.DS_Store
-
+*.egg*
 /.idea
-/application/local_settings.py
-/conf/
-/media/
-/static_content/
