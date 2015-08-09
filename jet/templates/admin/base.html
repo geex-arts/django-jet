@@ -36,16 +36,18 @@
     <script src="{% static "jet/vendor/jquery/jquery-1.11.3.min.js" %}"></script>
     <script src="{% static "jet/vendor/jquery-ui/jquery-ui.min.js" %}"></script>
     <script src="{% static "jet/vendor/jquery-ui-timepicker/jquery.ui.timepicker.js" %}"></script>
-    {% with "jet/vendor/jquery-ui/i18n/datepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
-        <script src="{% static url %}"></script>
-    {% endwith %}
-    {% with "jet/vendor/jquery-ui-timepicker/i18n/jquery.ui.timepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
-        <script src="{% static url %}"></script>
-    {% endwith %}
     <script src="{% static "jet/vendor/select2/js/select2.full.min.js" %}"></script>
-    {% with "jet/vendor/select2/js/i18n/"|add:LANGUAGE_CODE|add:".js" as url %}
-        <script src="{% static url %}"></script>
-    {% endwith %}
+    {% if LANGUAGE_CODE|slice:":2" != 'en' %}
+        {% with "jet/vendor/jquery-ui/i18n/datepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
+            <script src="{% static url %}"></script>
+        {% endwith %}
+        {% with "jet/vendor/jquery-ui-timepicker/i18n/jquery.ui.timepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
+            <script src="{% static url %}"></script>
+        {% endwith %}
+        {% with "jet/vendor/select2/js/i18n/"|add:LANGUAGE_CODE|add:".js" as url %}
+            <script src="{% static url %}"></script>
+        {% endwith %}
+    {% endif %}
     <script type="text/javascript" charset="utf-8">
         var jet = jet || {};
         jet.jQuery = jQuery.noConflict(true);
