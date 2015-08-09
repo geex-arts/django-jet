@@ -20,3 +20,17 @@ Support
 ====
 support@jet.geex-arts.com
 
+Screenshots
+====
+
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/screenshots/screen1.png
+    :alt: Screenshot #1
+    :align: center
+    
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/screenshots/screen2.png
+    :alt: Screenshot #1
+    :align: center
+    
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/screenshots/screen3.png
+    :alt: Screenshot #1
+    :align: center
