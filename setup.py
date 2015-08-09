@@ -1,5 +1,5 @@
 import os
-from distutils.core import setup, find_packages 
+from setuptools import setup, find_packages 
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
