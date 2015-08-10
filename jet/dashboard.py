@@ -91,7 +91,7 @@ class Dashboard(object):
     def render(self):
         context = self.context
         context.update({
-            'columns': xrange(self.columns),
+            'columns': range(self.columns),
             'modules': self.modules,
             'app_label': self.app_label,
         })
