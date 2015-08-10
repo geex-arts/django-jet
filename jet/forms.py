@@ -10,6 +10,7 @@ except ImportError:
 import operator
 from jet.models import Bookmark, PinnedApplication, UserDashboardModule
 from jet.utils import get_current_dashboard, get_model_instance_label
+from functools import reduce
 
 
 class AddBookmarkForm(forms.ModelForm):
@@ -235,10 +236,10 @@ class ModelLookupForm(forms.Form):
         page = self.cleaned_data['page'] or 1
         offset = (page - 1) * limit
 
-        items = map(
+        items = list(map(
             lambda instance: {'id': instance.pk, 'text': get_model_instance_label(instance)},
             qs.all()[offset:offset + limit]
-        )
+        ))
         total = qs.count()
 
         return items, total

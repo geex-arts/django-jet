@@ -5,7 +5,8 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.utils.encoding import force_unicode, smart_text
+from django.utils.encoding import force_text
+from django.utils.encoding import smart_text
 from django.utils.functional import Promise
 from jet import settings
 
@@ -74,7 +75,7 @@ def get_current_dashboard(location):
 class LazyEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Promise):
-            return force_unicode(obj)
+            return force_text(obj)
         return obj
 
 

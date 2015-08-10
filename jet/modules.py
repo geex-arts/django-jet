@@ -129,7 +129,7 @@ class LinkList(DashboardModule):
     child_name_plural = _('Links')
 
     def __init__(self, title=None, children=list(), **kwargs):
-        children = map(self.parse_link, children)
+        children = list(map(self.parse_link, children))
         kwargs.update({'children': children})
         super(LinkList, self).__init__(title, **kwargs)
 
@@ -184,8 +184,9 @@ class AppList(DashboardModule):
                 lambda model: self.exclude is None or model['object_name'] not in self.exclude and app['app_label'] + '.*' not in self.exclude,
                 app['models']
             )
+            app['models'] = list(app['models'])
 
-            if self.hide_empty and len(app['models']) == 0:
+            if self.hide_empty and len(list(app['models'])) == 0:
                 app_to_remove.append(app)
 
         for app in app_to_remove:
@@ -224,6 +225,7 @@ class ModelList(DashboardModule):
                 lambda model: self.exclude is None or model['object_name'] not in self.exclude and app['app_label'] + '.*' not in self.exclude,
                 app['models']
             )
+            app['models'] = list(app['models'])
 
             models.extend(app['models'])
 
