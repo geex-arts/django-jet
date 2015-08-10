@@ -1,9 +1,11 @@
 from importlib import import_module
 from django.db import models
 from django.utils import timezone
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 
+@python_2_unicode_compatible
 class Bookmark(models.Model):
     url = models.URLField(verbose_name=_('URL'))
     title = models.CharField(verbose_name=_('title'), max_length=255)
@@ -15,10 +17,11 @@ class Bookmark(models.Model):
         verbose_name_plural = _('bookmarks')
         ordering = ('date_add',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
 
+@python_2_unicode_compatible
 class PinnedApplication(models.Model):
     app_label = models.CharField(verbose_name=_('application name'), max_length=255)
     user = models.PositiveIntegerField(verbose_name=_('user'))
@@ -29,10 +32,11 @@ class PinnedApplication(models.Model):
         verbose_name_plural = _('pinned applications')
         ordering = ('date_add',)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.app_label
 
 
+@python_2_unicode_compatible
 class UserDashboardModule(models.Model):
     title = models.CharField(verbose_name=_('Title'), max_length=255)
     module = models.CharField(verbose_name=_('module'), max_length=255)
@@ -49,7 +53,7 @@ class UserDashboardModule(models.Model):
         verbose_name_plural = _('user dashboard modules')
         ordering = ('column', 'order')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.module
 
     def load_module(self):
