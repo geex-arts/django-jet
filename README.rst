@@ -29,6 +29,43 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public L
 See online version of this license here:
 https://creativecommons.org/licenses/by-nc-sa/4.0/
 
+Installation
+============
+
+* Download and install latest version of Django JET:
+
+    .. code:: python
+    
+        pip install django-jet
+        # or
+        easy_install django-jet
+
+* Add 'jet' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'django.contrib.admin'):
+
+    .. code:: python
+    
+        INSTALLED_APPS = (
+            ...
+            'jet',
+            'django.contrib.admin',
+        )
+
+* Add URL-pattern to the urlpatterns of your Django project urls.py file (they are needed for related–lookups and autocompletes):
+
+    .. code:: python
+    
+        urlpatterns = patterns(
+            '',
+            url(r'^jet/', include('jet.urls')), # Django JET URLS
+            url(r'^admin/', include(admin.site.urls)),
+            ...
+        )
+
+* Apply migrations:
+
+    .. code:: python
+    
+        python manage.py migrate jet
 
 Documentation
 =============
