@@ -17,6 +17,21 @@ Free for non-commercial use. If you would like to use it in commercial project, 
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
+Screenshots
+===========
+
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
+    :alt: Screenshot #1
+    :align: center
+    
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
+    :alt: Screenshot #1
+    :align: center
+    
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
+    :alt: Screenshot #1
+    :align: center
+
 Beta
 ====
 Current version is still in beta phase. Use it at your own risk (though may be already enough workable).
@@ -70,18 +85,3 @@ Installation
 Documentation
 =============
 Incoming
-
-Screenshots
-===========
-
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
-    :alt: Screenshot #1
-    :align: center
-    
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
-    :alt: Screenshot #1
-    :align: center
-    
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
-    :alt: Screenshot #1
-    :align: center
