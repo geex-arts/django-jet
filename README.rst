@@ -81,6 +81,8 @@ Installation
     .. code:: python
     
         python manage.py migrate jet
+        
+* Clear your browser cache
 
 Documentation
 =============
