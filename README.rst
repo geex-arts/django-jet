@@ -82,6 +82,12 @@ Installation
     
         python manage.py migrate jet
         
+* Collect static if you are in production environment:
+
+    .. code:: python
+    
+            python manage.py collectstatic
+        
 * Clear your browser cache
 
 Documentation
