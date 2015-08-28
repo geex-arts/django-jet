@@ -59,9 +59,6 @@
                 {% if not is_popup %}
                     {% block header %}
                         <div id="header" class="top">
-{#                            <div id="branding">#}
-{#                                {% block branding %}{% endblock %}#}
-{#                            </div>#}
                             <div class="top-right">
                                 {% block top-right %}{% endblock %}
                                 {% block usertools %}
@@ -134,6 +131,9 @@
         {% if not is_popup %}
             <div class="sidebar">
                 <div class="sidebar-menu-wrapper">
+                    <div id="branding">
+                        {% block branding %}{% endblock %}
+                    </div>
                     <ul class="sidebar-menu">
                         {% if user.is_active and user.is_staff %}
                             <li class="sidebar-menu-item">
