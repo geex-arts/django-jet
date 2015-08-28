@@ -63,10 +63,10 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
             return formset_factory(self.module.child_form, can_delete=True, extra=1)(**self.get_children_formset_kwargs())
 
     def clean_children_data(self, children):
-        children = filter(
+        children = list(filter(
             lambda item: isinstance(item, dict) and item and item.get('DELETE') is not True,
             children
-        )
+        ))
         for item in children:
             item.pop('DELETE')
         return children
