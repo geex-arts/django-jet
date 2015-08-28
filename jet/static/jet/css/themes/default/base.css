@@ -4269,6 +4269,9 @@ table#change-history {
       background: #fff;
       height: 100%;
       padding: 30px; }
+    .login-container-submit-row {
+      text-align: center;
+      margin-top: 20px; }
 
 .login-form .form-row {
   padding: 6px 0; }
