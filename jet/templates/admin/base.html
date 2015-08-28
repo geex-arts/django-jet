@@ -1,13 +1,11 @@
 {% load i18n admin_static jet_tags %}
-
-
+{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}{% get_current_theme as THEME %}{% get_current_language as LANGUAGE_CODE %}
 {% block html %}<!DOCTYPE html>
-{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}
-{% get_current_theme as THEME %}
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
     <title>{% block title %}{% endblock %}</title>
     <meta name="copyright" content="geex-arts.com">
+    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 
     <link href="{% static "jet/vendor/select2/css/select2.min.css" %}" rel="stylesheet" />
     <link href="{% static "jet/vendor/jquery-ui/jquery-ui.min.css" %}" rel="stylesheet" />
@@ -16,10 +14,9 @@
     <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}" rel="stylesheet" />
     <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}" rel="stylesheet" />
     <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}" rel="stylesheet" />
-
-    {% block extrastyle %}{% endblock %}
     <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
     {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+    {% block extrastyle %}{% endblock %}
 
     <script type="text/javascript">window.__admin_media_prefix__ = "{% filter escapejs %}{% static "admin/" %}{% endfilter %}";</script>
     <script type="text/javascript">window.__admin_utc_offset__ = "{% filter escapejs %}{% now "Z" %}{% endfilter %}";</script>
@@ -28,10 +25,6 @@
         var TIME_FORMAT = "{% get_time_format %}";
         var DATETIME_FORMAT = "{% get_datetime_format %}";
     </script>
-
-    {% block extrahead %}{% endblock %}
-    {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
-
     <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
     <script src="{% static "jet/vendor/jquery/jquery-1.11.3.min.js" %}"></script>
     <script src="{% static "jet/vendor/jquery-ui/jquery-ui.min.js" %}"></script>
@@ -52,9 +45,9 @@
         var jet = jet || {};
         jet.jQuery = jQuery.noConflict(true);
     </script>
-
     <script src="{% static "jet/js/main.min.js" %}"></script>
     <script src="{% static "jet/js/select2.jet.min.js" %}"></script>
+    {% block extrahead %}{% endblock %}
 </head>
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
     {% block body %}
