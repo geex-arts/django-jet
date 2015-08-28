@@ -13,7 +13,7 @@ Free for non-commercial use. If you would like to use it in commercial project, 
     :align: center
     
 * Home page: incoming
-* Demo: incoming
+* **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
