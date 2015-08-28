@@ -95,7 +95,6 @@
                                     {% endblock %}
                                 {% endformat_breadcrumbs %}
                             </div>
-                            {% block nav-global %}{% endblock %}
                         </div>
                     {% endblock %}
                 {% endif %}
@@ -219,13 +218,13 @@
                                     </li>
                                 </ul>
                             </li>
-
                             {% url 'django-admindocs-docroot' as docsroot %}
                             {% if docsroot %}
                                 <li class="sidebar-menu-item">
                                     <span class="sidebar-menu-item-icon icon-book"></span> <a href="{{ docsroot }}" class="sidebar-menu-item-link">{% trans 'Documentation' %}</a>
                                 </li>
                             {% endif %}
+                            {% block nav-global %}{% endblock %}
                         {% endif %}
                     </ul>
                 </div>
