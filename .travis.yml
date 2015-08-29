@@ -15,6 +15,7 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
+  - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install importlib; fi
   - pip install -q Django==$DJANGO --use-mirrors
   - pip install . --use-mirrors
 script:
