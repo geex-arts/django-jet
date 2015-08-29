@@ -146,7 +146,7 @@ def get_menu(context):
                 app['current'] = True
                 current_found = True
 
-        if app['app_label'] in pinned:
+        if app.get('app_label', app.get('name')) in pinned:
             pinned_apps.append(app)
         else:
             apps.append(app)
