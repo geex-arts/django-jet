@@ -1,3 +1,4 @@
+import json
 from django.test import TestCase
 from jet.tests.models import TestModel
 from jet.utils import JsonResponse, get_model_instance_label
@@ -6,7 +7,9 @@ from jet.utils import JsonResponse, get_model_instance_label
 class UtilsTestCase(TestCase):
     def test_json_response(self):
         response = JsonResponse({'str': 'string', 'int': 1})
-        self.assertEqual(response.content, '{"int": 1, "str": "string"}')
+        response_dict = json.loads(response.content)
+        expected_dict = {"int": 1, "str": "string"}
+        self.assertEqual(response_dict, expected_dict)
         self.assertEqual(response.get('Content-Type'), 'application/json')
 
     def test_get_model_instance_label(self):
