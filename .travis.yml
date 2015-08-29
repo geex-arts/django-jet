@@ -18,8 +18,12 @@ install:
   - if [[ $TRAVIS_PYTHON_VERSION == 2.6 ]]; then pip install importlib; fi
   - pip install -q Django==$DJANGO --use-mirrors
   - pip install . --use-mirrors
+  - pip install coveralls
 script:
-  - python manage.py test jet
+  - coverage run manage.py test jet
+after_success:
+  coverage report
+  coveralls
 matrix:
   exclude:
     - python: 2.6
