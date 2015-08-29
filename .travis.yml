@@ -22,8 +22,8 @@ install:
 script:
   - coverage run manage.py test jet
 after_success:
-  coverage report
-  coveralls
+  - coverage report
+  - coveralls
 matrix:
   exclude:
     - python: 2.6
