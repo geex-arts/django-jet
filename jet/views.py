@@ -105,14 +105,14 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
                 settings = settings_form.cleaned_data
                 data['settings'] = self.module.dump_settings(settings)
             else:
-                return self.form_invalid(self.get_form())
+                return self.form_invalid(self.get_form(self.get_form_class()))
 
         if children_formset:
             if children_formset.is_valid():
                 self.module.children = self.clean_children_data(children_formset.cleaned_data)
                 data['children'] = self.module.dump_children()
             else:
-                return self.form_invalid(self.get_form())
+                return self.form_invalid(self.get_form(self.get_form_class()))
 
         request.POST = data
 
