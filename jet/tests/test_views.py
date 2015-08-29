@@ -150,7 +150,7 @@ class ViewsTestCase(TestCase):
         module_1.delete()
 
     def test_add_user_dashboard_module_view(self):
-        response = self.admin.post(reverse('jet:add_user_dashboard_module_view'), {
+        response = self.admin.post(reverse('jet:add_user_dashboard_module'), {
             'app_label': '',
             'type': 'available_children',
             'module': 0
