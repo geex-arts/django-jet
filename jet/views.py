@@ -1,12 +1,11 @@
 from django.contrib import messages
-from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse
 from django.forms.formsets import formset_factory
 from django.views.decorators.http import require_POST, require_GET
 from jet.forms import AddBookmarkForm, RemoveBookmarkForm, ToggleApplicationPinForm, UpdateDashboardModulesForm, \
     AddUserDashboardModuleForm, UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ModelLookupForm
 from jet.models import Bookmark, UserDashboardModule
-from jet.utils import JsonResponse, get_app_list
+from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin
 from django.views.generic import UpdateView
 from django.utils.translation import ugettext_lazy as _
 

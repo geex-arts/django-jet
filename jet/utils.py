@@ -9,6 +9,7 @@ from django.utils.encoding import force_text
 from django.utils.encoding import smart_text
 from django.utils.functional import Promise
 from jet import settings
+from django.contrib import messages
 
 
 class JsonResponse(HttpResponse):
@@ -83,3 +84,20 @@ def get_model_instance_label(instance):
     if getattr(instance, "related_label", None):
         return instance.related_label()
     return smart_text(instance)
+
+
+class SuccessMessageMixin(object):
+    """
+    Adds a success message on successful form submission.
+    """
+    success_message = ''
+
+    def form_valid(self, form):
+        response = super(SuccessMessageMixin, self).form_valid(form)
+        success_message = self.get_success_message(form.cleaned_data)
+        if success_message:
+            messages.success(self.request, success_message)
+        return response
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % cleaned_data
