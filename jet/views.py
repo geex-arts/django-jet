@@ -192,6 +192,7 @@ def add_user_dashboard_module_view(request):
 
     if form.is_valid():
         module = form.save()
+        result['id'] = module.pk
         messages.success(request, _('Widget has been successfully added'))
 
         if module.app_label:
