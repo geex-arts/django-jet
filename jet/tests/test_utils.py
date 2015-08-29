@@ -7,7 +7,7 @@ from jet.utils import JsonResponse, get_model_instance_label
 class UtilsTestCase(TestCase):
     def test_json_response(self):
         response = JsonResponse({'str': 'string', 'int': 1})
-        response_dict = json.loads(response.content)
+        response_dict = json.loads(response.content.decode())
         expected_dict = {"int": 1, "str": "string"}
         self.assertEqual(response_dict, expected_dict)
         self.assertEqual(response.get('Content-Type'), 'application/json')
