@@ -126,8 +126,8 @@ class Dashboard(object):
                 unique_css[css] = True
 
         class Media:
-            css = unique_css.keys()
-            js = unique_js.keys()
+            css = list(unique_css.keys())
+            js = list(unique_js.keys())
 
         return Media
 
