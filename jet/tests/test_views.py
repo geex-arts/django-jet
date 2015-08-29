@@ -32,8 +32,8 @@ class ViewsTestCase(TestCase):
             settings='{"layout": "inline"}',
             children='[]'
         )
-        response = self.admin.get(reverse('jet:update_module', kwargs={'pk': module.pk}))
 
+        response = self.admin.get(reverse('jet:update_module', kwargs={'pk': module.pk}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['module'] is not None)
         self.assertTrue(isinstance(response.context['module'], LinkList))
@@ -57,6 +57,7 @@ class ViewsTestCase(TestCase):
         }
 
         self.admin.post(reverse('jet:update_module', kwargs={'pk': module.pk}), post)
+        self.assertEqual(response.status_code, 200)
         module = UserDashboardModule.objects.get(pk=module.pk)
         settings = json.loads(module.settings)
         self.assertEqual(module.title, new_title)
