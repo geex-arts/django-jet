@@ -69,7 +69,7 @@ class ViewsTestCase(TestCase):
         title = 'Title'
         response = self.admin.post(reverse('jet:add_bookmark'), {'url': url, 'title': title})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertNotEqual(response['id'], None)
         bookmark = Bookmark.objects.get(pk=response['id'])
@@ -82,7 +82,7 @@ class ViewsTestCase(TestCase):
         title = 'Title'
         response = self.client.post(reverse('jet:add_bookmark'), {'url': url, 'title': title})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertTrue(response['error'])
 
     def test_remove_bookmark_view(self):
@@ -91,7 +91,7 @@ class ViewsTestCase(TestCase):
         bookmark = Bookmark.objects.create(url=url, title=title, user=self.admin_user.pk)
         response = self.admin.post(reverse('jet:remove_bookmark'), {'id': bookmark.id})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertFalse(Bookmark.objects.filter(pk=bookmark.pk).exists())
 
@@ -100,13 +100,13 @@ class ViewsTestCase(TestCase):
 
         response = self.admin.post(reverse('jet:toggle_application_pin'), {'app_label': app_label})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertTrue(response['pinned'])
 
         response = self.admin.post(reverse('jet:toggle_application_pin'), {'app_label': app_label})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertFalse(response['pinned'])
 
@@ -137,7 +137,7 @@ class ViewsTestCase(TestCase):
         })
 
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
 
         module_0 = UserDashboardModule.objects.get(pk=module_0.pk)
@@ -157,7 +157,7 @@ class ViewsTestCase(TestCase):
         })
 
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertNotEqual(response['id'], None)
         module = UserDashboardModule.objects.get(pk=response['id'])
@@ -176,7 +176,7 @@ class ViewsTestCase(TestCase):
             'id': module.pk, 'collapsed': True
         })
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertTrue(response['collapsed'])
 
@@ -185,7 +185,7 @@ class ViewsTestCase(TestCase):
             'id': module.pk, 'collapsed': False
         })
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertFalse(response['collapsed'])
 
@@ -202,7 +202,7 @@ class ViewsTestCase(TestCase):
         )
         response = self.admin.post(reverse('jet:remove_dashboard_module'), {'id': module.pk})
         self.assertEqual(response.status_code, 200)
-        response = json.loads(response.content.decode())
+        response = json.loads(response.content)
         self.assertFalse(response['error'])
         self.assertFalse(UserDashboardModule.objects.filter(pk=module.pk).exists())
 
