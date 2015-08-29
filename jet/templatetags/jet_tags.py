@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from django import template
 from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 from django.core.urlresolvers import reverse
@@ -44,7 +45,7 @@ class FormatBreadcrumbsNode(template.Node):
 
         regex = re.compile('<[^!(a>)]([^>]|\n)*[^!(/a)]>', re.IGNORECASE)
         clean = re.sub(regex, '', output)
-        clean = clean.replace(u'\u203A', '&rsaquo;')
+        clean = clean.replace('\u203A', '&rsaquo;')
         items = clean.split('&rsaquo;')
 
         items = map(lambda i: i.strip(), items)
