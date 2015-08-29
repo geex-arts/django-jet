@@ -74,7 +74,7 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
         app_list = get_app_list({'request': self.request})
 
         for app in app_list:
-            if app['app_label'] == self.object.app_label:
+            if app.get('app_label', app.get('name')) == self.object.app_label:
                 return app
 
     def get_context_data(self, **kwargs):
