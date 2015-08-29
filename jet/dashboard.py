@@ -5,6 +5,7 @@ from jet import modules
 from jet.models import UserDashboardModule
 from django.core.context_processors import csrf
 from django.utils.translation import ugettext_lazy as _
+from jet.ordered_dict import OrderedDict
 from jet.utils import get_admin_site_name
 
 
@@ -111,8 +112,8 @@ class Dashboard(object):
         return render_to_string('jet/dashboard/dashboard_tools.html', context)
 
     def media(self):
-        unique_css = {}
-        unique_js = {}
+        unique_css = OrderedDict()
+        unique_js = OrderedDict()
 
         for js in getattr(self.Media, 'js', ()):
             unique_js[js] = True
@@ -126,8 +127,8 @@ class Dashboard(object):
                 unique_css[css] = True
 
         class Media:
-            css = list(unique_css.keys())
-            js = list(unique_js.keys())
+            css = unique_css.keys()
+            js = unique_js.keys()
 
         return Media
 
