@@ -1,16 +1,12 @@
-from distutils.version import StrictVersion
 from django import template
-import django
 from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
-from django.utils.encoding import smart_text
 from django.utils.formats import get_format
 from django.template import loader, Context
 from jet import settings
 from jet.models import Bookmark, PinnedApplication
-from django.utils.translation import ugettext_lazy as _
 import re
 from jet.utils import get_app_list, get_model_instance_label, get_current_dashboard
 
