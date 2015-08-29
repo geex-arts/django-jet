@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from django import template
-from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
@@ -210,9 +209,13 @@ def select2_lookups(field):
 @register.simple_tag(takes_context=True)
 def jet_add_preserved_filters(context, url, popup=False, to_field=None):
     try:
-        return add_preserved_filters(context, url, popup, to_field)
-    except TypeError:
-        return add_preserved_filters(context, url, popup)  # old django
+        from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
+        try:
+            return add_preserved_filters(context, url, popup, to_field)
+        except TypeError:
+            return add_preserved_filters(context, url, popup)  # old django
+    except ImportError:
+        return url
 
 
 @register.assignment_tag(takes_context=True)
