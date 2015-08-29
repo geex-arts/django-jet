@@ -20,7 +20,7 @@ install:
   - pip install . --use-mirrors
   - pip install coveralls
 script:
-  - coverage run manage.py test jet
+  - coverage run --source=jet --omit=*/migrations/*,*/south_migrations/*,*/tests/* manage.py test jet
 after_success:
   - coverage report
   - coveralls
