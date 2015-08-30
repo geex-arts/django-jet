@@ -64,6 +64,16 @@ Installation
             'jet',
             'django.contrib.admin',
         )
+        
+* Make sure 'django.core.context_processors.request' context processor is enabled in settings.py:
+
+    .. code:: python
+            
+        from django.conf import global_settings
+        
+        TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+            'django.core.context_processors.request',
+        )
 
 * Add URL-pattern to the urlpatterns of your Django project urls.py file (they are needed for related–lookups and autocompletes):
 
