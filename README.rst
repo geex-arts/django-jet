@@ -7,8 +7,9 @@ Django JET
 Free for non-commercial use. If you would like to use it in commercial project, please email at support@jet.geex-arts.com
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/logo.png
-    :width: 250px
-    :height: 250px
+    :width: 500px
+    :height: 500px
+    :scale: 50%
     :alt: Screenshot #1
     :align: center
     
@@ -20,17 +21,20 @@ Free for non-commercial use. If you would like to use it in commercial project, 
 Screenshots
 ===========
 
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1_720.png
     :alt: Screenshot #1
     :align: center
+    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2_720.png
     :alt: Screenshot #1
     :align: center
+    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
+.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3_720.png
     :alt: Screenshot #1
     :align: center
+    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
 
 Beta
 ====
