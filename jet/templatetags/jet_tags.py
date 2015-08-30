@@ -1,16 +1,12 @@
-from distutils.version import StrictVersion
+from __future__ import unicode_literals
 from django import template
-import django
-from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
-from django.utils.encoding import smart_text
 from django.utils.formats import get_format
 from django.template import loader, Context
 from jet import settings
 from jet.models import Bookmark, PinnedApplication
-from django.utils.translation import ugettext_lazy as _
 import re
 from jet.utils import get_app_list, get_model_instance_label, get_current_dashboard
 
@@ -48,7 +44,7 @@ class FormatBreadcrumbsNode(template.Node):
 
         regex = re.compile('<[^!(a>)]([^>]|\n)*[^!(/a)]>', re.IGNORECASE)
         clean = re.sub(regex, '', output)
-        clean = clean.replace(u'\u203A', '&rsaquo;')
+        clean = clean.replace('\u203A', '&rsaquo;')
         items = clean.split('&rsaquo;')
 
         items = map(lambda i: i.strip(), items)
@@ -150,7 +146,7 @@ def get_menu(context):
                 app['current'] = True
                 current_found = True
 
-        if app['app_label'] in pinned:
+        if app.get('app_label', app.get('name')) in pinned:
             pinned_apps.append(app)
         else:
             apps.append(app)
@@ -213,9 +209,13 @@ def select2_lookups(field):
 @register.simple_tag(takes_context=True)
 def jet_add_preserved_filters(context, url, popup=False, to_field=None):
     try:
-        return add_preserved_filters(context, url, popup, to_field)
-    except TypeError:
-        return add_preserved_filters(context, url, popup)  # old django
+        from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
+        try:
+            return add_preserved_filters(context, url, popup, to_field)
+        except TypeError:
+            return add_preserved_filters(context, url, popup)  # old django
+    except ImportError:
+        return url
 
 
 @register.assignment_tag(takes_context=True)

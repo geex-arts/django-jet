@@ -22,6 +22,14 @@ class AddBookmarkForm(forms.ModelForm):
         model = Bookmark
         fields = ['url', 'title']
 
+    def clean(self):
+        data = super(AddBookmarkForm, self).clean()
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
+        if not self.request.user.has_perm('jet.change_bookmark'):
+            raise ValidationError('error')
+        return data
+
     def save(self, commit=True):
         self.instance.user = self.request.user.pk
         return super(AddBookmarkForm, self).save(commit)
@@ -37,12 +45,12 @@ class RemoveBookmarkForm(forms.ModelForm):
         fields = []
 
     def clean(self):
-        cleaned_data = super(RemoveBookmarkForm, self).clean()
-
+        data = super(RemoveBookmarkForm, self).clean()
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
         if self.instance.user != self.request.user.pk:
             raise ValidationError('error')
-
-        return cleaned_data
+        return data
 
     def save(self, commit=True):
         if commit:

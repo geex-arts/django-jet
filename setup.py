@@ -12,7 +12,7 @@ setup(
     long_description=read('README.rst'),
     author='Denis Kildishev',
     author_email='support@jet.geex-arts.com',
-    url='https://github.com/geex-arts/jet',
+    url='https://github.com/geex-arts/django-jet',
     packages=find_packages(),
     license='Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License',
     classifiers=[

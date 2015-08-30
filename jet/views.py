@@ -1,12 +1,11 @@
 from django.contrib import messages
-from django.contrib.messages.views import SuccessMessageMixin
 from django.core.urlresolvers import reverse
 from django.forms.formsets import formset_factory
 from django.views.decorators.http import require_POST, require_GET
 from jet.forms import AddBookmarkForm, RemoveBookmarkForm, ToggleApplicationPinForm, UpdateDashboardModulesForm, \
     AddUserDashboardModuleForm, UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ModelLookupForm
 from jet.models import Bookmark, UserDashboardModule
-from jet.utils import JsonResponse, get_app_list
+from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin
 from django.views.generic import UpdateView
 from django.utils.translation import ugettext_lazy as _
 
@@ -75,7 +74,7 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
         app_list = get_app_list({'request': self.request})
 
         for app in app_list:
-            if app['app_label'] == self.object.app_label:
+            if app.get('app_label', app.get('name')) == self.object.app_label:
                 return app
 
     def get_context_data(self, **kwargs):
@@ -105,14 +104,14 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
                 settings = settings_form.cleaned_data
                 data['settings'] = self.module.dump_settings(settings)
             else:
-                return self.form_invalid(self.get_form())
+                return self.form_invalid(self.get_form(self.get_form_class()))
 
         if children_formset:
             if children_formset.is_valid():
                 self.module.children = self.clean_children_data(children_formset.cleaned_data)
                 data['children'] = self.module.dump_children()
             else:
-                return self.form_invalid(self.get_form())
+                return self.form_invalid(self.get_form(self.get_form_class()))
 
         request.POST = data
 
@@ -192,6 +191,7 @@ def add_user_dashboard_module_view(request):
 
     if form.is_valid():
         module = form.save()
+        result['id'] = module.pk
         messages.success(request, _('Widget has been successfully added'))
 
         if module.app_label:

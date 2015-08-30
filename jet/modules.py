@@ -177,11 +177,11 @@ class AppList(DashboardModule):
 
         for app in app_list:
             app['models'] = filter(
-                lambda model: self.models is None or model['object_name'] in self.models or app['app_label'] + '.*' in self.models,
+                lambda model: self.models is None or model['object_name'] in self.models or app.get('app_label', app.get('name')) + '.*' in self.models,
                 app['models']
             )
             app['models'] = filter(
-                lambda model: self.exclude is None or model['object_name'] not in self.exclude and app['app_label'] + '.*' not in self.exclude,
+                lambda model: self.exclude is None or model['object_name'] not in self.exclude and app.get('app_label', app.get('name')) + '.*' not in self.exclude,
                 app['models']
             )
             app['models'] = list(app['models'])
@@ -218,11 +218,11 @@ class ModelList(DashboardModule):
 
         for app in app_list:
             app['models'] = filter(
-                lambda model: self.models is None or model['object_name'] in self.models or app['app_label'] + '.*' in self.models,
+                lambda model: self.models is None or model['object_name'] in self.models or app.get('app_label', app.get('name')) + '.*' in self.models,
                 app['models']
             )
             app['models'] = filter(
-                lambda model: self.exclude is None or model['object_name'] not in self.exclude and app['app_label'] + '.*' not in self.exclude,
+                lambda model: self.exclude is None or model['object_name'] not in self.exclude and app.get('app_label', app.get('name')) + '.*' not in self.exclude,
                 app['models']
             )
             app['models'] = list(app['models'])
