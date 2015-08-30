@@ -2,7 +2,7 @@
 Django JET
 ==========
 
-.. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=0.0.6
+.. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
 
 **Modern template for Django admin interface with improved functionality**
 
