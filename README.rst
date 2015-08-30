@@ -2,6 +2,8 @@
 Django JET
 ==========
 
+.. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=0.0.6
+
 **Modern template for Django admin interface with improved functionality**
 
 Free for non-commercial use. If you would like to use it in commercial project, please email at support@jet.geex-arts.com
