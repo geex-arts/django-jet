@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.0.6
+-----
+
+* [Feature] Added initial unit tests
+* [Fixes] Compatibility fixes
+
+
 0.0.5
 -----
 
