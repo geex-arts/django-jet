@@ -86,11 +86,13 @@ Installation
             ...
         )
 
-* Apply migrations:
+* Create database tables:
 
     .. code:: python
     
         python manage.py migrate jet
+        # or 
+        python manage.py syncdb
         
 * Collect static if you are in production environment:
 
