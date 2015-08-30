@@ -18,6 +18,7 @@ Free for non-commercial use. If you would like to use it in commercial project, 
     
 * Home page: incoming
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
+* Documentation: http://jet.readthedocs.org/
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
@@ -109,6 +110,3 @@ Installation
         
 * Clear your browser cache
 
-Documentation
-=============
-Incoming
