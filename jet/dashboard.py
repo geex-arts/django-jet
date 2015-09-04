@@ -245,3 +245,17 @@ class DefaultAppIndexDashboard(AppIndexDashboard):
             order=0
         ))
 
+
+class DashboardUrls(object):
+    _urls = []
+
+    def get_urls(self):
+        return self._urls
+
+    def register_url(self, url):
+        self._urls.append(url)
+
+    def register_urls(self, urls):
+        self._urls.extend(urls)
+
+urls = DashboardUrls()

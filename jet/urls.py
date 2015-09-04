@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, url
 from django.views.i18n import javascript_catalog
+from jet import dashboard
 from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, \
     update_dashboard_modules_view, add_user_dashboard_module_view, update_dashboard_module_collapse_view, \
     remove_dashboard_module_view, UpdateDashboardModuleView, load_dashboard_module_view, model_lookup_view
@@ -63,3 +64,5 @@ urlpatterns = patterns(
         name='jsi18n'
     ),
 )
+
+urlpatterns += dashboard.urls.get_urls()
