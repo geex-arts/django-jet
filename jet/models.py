@@ -66,5 +66,4 @@ class UserDashboardModule(models.Model):
         except AttributeError:
             return None
 
-        return module
 
