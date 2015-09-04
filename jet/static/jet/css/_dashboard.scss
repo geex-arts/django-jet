@@ -148,12 +148,11 @@
 
       ul.inline {
         @extend .clear-list;
-        display: inline;
+        display: inline-block;
 
         li {
-          display: inline;
+          display: inline-block;
           margin-left: 10px;
-          line-height: 30px;
 
           &:first-child {
             margin-left: 0;
