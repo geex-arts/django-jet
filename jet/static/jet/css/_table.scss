@@ -116,9 +116,12 @@
         border-bottom: 0;
       }
 
+      & th {
+        text-align: left;
+      }
+
       & th, & td {
         padding: 8px;
-        text-align: left;
         font-size: 13px;
 
         &.action-checkbox {
