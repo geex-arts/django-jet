@@ -91,6 +91,15 @@
       box-shadow: 0 2px 0 0 $content-border2-color;
       overflow: hidden;
 
+      &.contrast {
+        background: $content-contrast2-background-color;
+        color: $content-contrast2-text-color;
+
+        .loading-indicator {
+          color: $content-contrast2-text-color;
+        }
+      }
+
       ul:not(.inline) {
         @extend .clear-list;
 

@@ -29,6 +29,7 @@ class DashboardModule(object):
     column = None
     order = None
     ajax_load = False
+    contrast = False
 
     class Media:
         css = ()
