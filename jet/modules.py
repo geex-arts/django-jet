@@ -30,6 +30,7 @@ class DashboardModule(object):
     order = None
     ajax_load = False
     contrast = False
+    style = False
 
     class Media:
         css = ()

@@ -25,7 +25,7 @@
         </span>
     </div>
 
-    <div class="dashboard-item-content{% if module.contrast %} contrast{% endif %}">
+    <div class="dashboard-item-content{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
         {% if module.ajax_load %}
             <div class="loading-indicator-wrapper">
                 <span class="icon-refresh loading-indicator"></span>
