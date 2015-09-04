@@ -84,8 +84,9 @@ class Dashboard(object):
 
         for module_model in module_models:
             module_cls = module_model.load_module()
-            module = module_cls(model=module_model, context=self.context)
-            loaded_modules.append(module)
+            if module_cls is not None:
+                module = module_cls(model=module_model, context=self.context)
+                loaded_modules.append(module)
 
         self.modules = loaded_modules
 
