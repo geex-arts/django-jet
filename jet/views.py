@@ -30,7 +30,8 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
 
     def get_settings_form_kwargs(self):
         kwargs = {
-            'initial': self.module.settings
+            'initial': self.module.settings,
+            'module': self.module
         }
 
         if self.request.method in ('POST', 'PUT'):
