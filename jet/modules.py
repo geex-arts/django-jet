@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
-from jet.utils import get_app_list, LazyEncoder
+from jet.utils import get_app_list, DateTimeEncoder
 import datetime
 
 
@@ -67,13 +67,13 @@ class DashboardModule(object):
     def dump_settings(self, settings=None):
         settings = settings or self.settings_dict()
         if settings:
-            return json.dumps(settings, cls=LazyEncoder)
+            return json.dumps(settings, cls=DateTimeEncoder)
         else:
             return ''
 
     def dump_children(self):
         if self.store_children():
-            return json.dumps(self.children, cls=LazyEncoder)
+            return json.dumps(self.children, cls=DateTimeEncoder)
         else:
             return ''
 
