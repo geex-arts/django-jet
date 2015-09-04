@@ -57,9 +57,14 @@ class UserDashboardModule(models.Model):
         return self.module
 
     def load_module(self):
-        package, module_name = self.module.rsplit('.', 1)
-        package = import_module(package)
-        module = getattr(package, module_name)
+        try:
+            package, module_name = self.module.rsplit('.', 1)
+            package = import_module(package)
+            module = getattr(package, module_name)
+
+            return module
+        except AttributeError:
+            return None
 
         return module
 
