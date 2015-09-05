@@ -141,7 +141,7 @@ class YandexMetrikaPeriodVisitorsSettingsForm(YandexMetrikaSettingsForm):
     ))
 
 
-class YandexMetrika(DashboardModule):
+class YandexMetrikaBase(DashboardModule):
     settings_form = YandexMetrikaSettingsForm
     ajax_load = True
     contrast = True
@@ -157,7 +157,7 @@ class YandexMetrika(DashboardModule):
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
-        super(YandexMetrika, self).__init__(title, **kwargs)
+        super(YandexMetrikaBase, self).__init__(title, **kwargs)
 
     def settings_dict(self):
         return {
@@ -202,22 +202,23 @@ class YandexMetrika(DashboardModule):
             date = formats.date_format(date, 'DATE_FORMAT')
         return date
 
-
-class YandexMetrikaVisitorsTotals(YandexMetrika):
-    title = _('Yandex Metrika visitors totals')
-    template = 'jet/dashboard/modules/yandex_metrika_visitors_totals.html'
-
-    def init_with_context(self, context):
+    def counter_attached(self):
         if self.access_token is None:
             self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            return False
         elif self.counter is None:
             self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            return False
         else:
+            return True
+
+    def api_stat_traffic_summary(self, group=None):
+        if self.counter_attached():
             date1 = datetime.datetime.utcnow() - datetime.timedelta(days=self.period)
             date2 = datetime.datetime.utcnow()
 
             client = YandexMetrikaClient(self.access_token)
-            result, exception = client.api_stat_traffic_summary(self.counter, date1, date2)
+            result, exception = client.api_stat_traffic_summary(self.counter, date1, date2, group)
 
             if exception is not None:
                 error = _('API request failed.')
@@ -225,15 +226,26 @@ class YandexMetrikaVisitorsTotals(YandexMetrika):
                     error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet:update_module', kwargs={'pk': self.model.pk})
                 self.error = mark_safe(error)
             else:
-                try:
-                    self.children.append({'title': _('visitors'), 'value': result['totals']['visitors']})
-                    self.children.append({'title': _('visits'), 'value': result['totals']['visits']})
-                    self.children.append({'title': _('views'), 'value': result['totals']['page_views']})
-                except KeyError:
-                    self.error = _('Bad server response')
+                return result
 
 
-class YandexMetrikaVisitorsChart(YandexMetrika):
+class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
+    title = _('Yandex Metrika visitors totals')
+    template = 'jet/dashboard/modules/yandex_metrika_visitors_totals.html'
+
+    def init_with_context(self, context):
+        result = self.api_stat_traffic_summary()
+
+        if result is not None:
+            try:
+                self.children.append({'title': _('visitors'), 'value': result['totals']['visitors']})
+                self.children.append({'title': _('visits'), 'value': result['totals']['visits']})
+                self.children.append({'title': _('views'), 'value': result['totals']['page_views']})
+            except KeyError:
+                self.error = _('Bad server response')
+
+
+class YandexMetrikaVisitorsChart(YandexMetrikaBase):
     title = _('Yandex Metrika visitors chart')
     template = 'jet/dashboard/modules/yandex_metrika_visitors_chart.html'
     style = 'overflow-x: auto;'
@@ -253,33 +265,19 @@ class YandexMetrikaVisitorsChart(YandexMetrika):
         self.group = settings.get('group')
 
     def init_with_context(self, context):
-        if self.access_token is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
-        elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
-        else:
-            date1 = datetime.datetime.utcnow() - datetime.timedelta(days=self.period)
-            date2 = datetime.datetime.utcnow()
+        result = self.api_stat_traffic_summary(self.group)
 
-            client = YandexMetrikaClient(self.access_token)
-            result, exception = client.api_stat_traffic_summary(self.counter, date1, date2, self.group)
-
-            if exception is not None:
-                error = _('API request failed.')
-                if isinstance(exception, HTTPError) and exception.code == 403:
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet:update_module', kwargs={'pk': self.model.pk})
-                self.error = mark_safe(error)
-            else:
-                try:
-                    for data in result['data']:
-                        date = datetime.datetime.strptime(data['date'], '%Y%m%d')
-                        key = self.show if self.show is not None else 'visitors'
-                        self.children.append((date, data[key]))
-                except KeyError:
-                    self.error = _('Bad server response')
+        if result is not None:
+            try:
+                for data in result['data']:
+                    date = datetime.datetime.strptime(data['date'], '%Y%m%d')
+                    key = self.show if self.show is not None else 'visitors'
+                    self.children.append((date, data[key]))
+            except KeyError:
+                self.error = _('Bad server response')
 
 
-class YandexMetrikaPeriodVisitors(YandexMetrika):
+class YandexMetrikaPeriodVisitors(YandexMetrikaBase):
     title = _('Yandex Metrika period visitors')
     template = 'jet/dashboard/modules/yandex_metrika_period_visitors.html'
     group = None
@@ -296,27 +294,13 @@ class YandexMetrikaPeriodVisitors(YandexMetrika):
         self.group = settings.get('group')
 
     def init_with_context(self, context):
-        if self.access_token is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
-        elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
-        else:
-            date1 = datetime.datetime.utcnow() - datetime.timedelta(days=self.period)
-            date2 = datetime.datetime.utcnow()
+        result = self.api_stat_traffic_summary(self.group)
 
-            client = YandexMetrikaClient(self.access_token)
-            result, exception = client.api_stat_traffic_summary(self.counter, date1, date2, self.group)
-
-            if exception is not None:
-                error = _('API request failed.')
-                if isinstance(exception, HTTPError) and exception.code == 403:
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet:update_module', kwargs={'pk': self.model.pk})
-                self.error = mark_safe(error)
-            else:
-                try:
-                    for data in reversed(result['data']):
-                        date = datetime.datetime.strptime(data['date'], '%Y%m%d')
-                        date = self.format_grouped_date(date, self.group)
-                        self.children.append((date, data))
-                except KeyError:
-                    self.error = _('Bad server response')
+        if result is not None:
+            try:
+                for data in reversed(result['data']):
+                    date = datetime.datetime.strptime(data['date'], '%Y%m%d')
+                    date = self.format_grouped_date(date, self.group)
+                    self.children.append((date, data))
+            except KeyError:
+                self.error = _('Bad server response')
