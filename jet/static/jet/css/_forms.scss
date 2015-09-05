@@ -97,6 +97,10 @@ textarea {
 input[type=checkbox] {
   display: none;
 
+  &#action-toggle {
+    display: none !important;
+  }
+
   + label:before {
     @include font-icon;
 

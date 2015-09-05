@@ -37,7 +37,7 @@
             var uniqueCheckboxIdPrefix = 'unique_checkbox_id_';
 
             var addLabelToCheckbox = function($checkbox) {
-                var checkboxId = uniqueCheckboxIdPrefix + uniqueCheckboxIdCounter++;
+                var checkboxId = $checkbox.attr('id') ? $checkbox.attr('id') : uniqueCheckboxIdPrefix + uniqueCheckboxIdCounter++;
                 var $label = $('<label>').attr('for', checkboxId);
 
                 $checkbox.hide().attr('id', checkboxId);
