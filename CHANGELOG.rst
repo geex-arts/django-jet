@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.0.7
+-----
+* [Feature] Added ability to use custom checkboxes without labels styled
+* [Fix] Fixed toggle all checkbox
+
+
 0.0.6
 -----
 
