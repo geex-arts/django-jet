@@ -132,7 +132,7 @@ class YandexMetrikaChartSettingsForm(YandexMetrikaSettingsForm):
     ))
 
 
-class YandexMetrikaListSettingsForm(YandexMetrikaSettingsForm):
+class YandexMetrikaPeriodVisitorsSettingsForm(YandexMetrikaSettingsForm):
     group = forms.ChoiceField(label=_('Group'), choices=(
         ('day', _('By day')),
         ('week', _('By week')),
@@ -283,7 +283,7 @@ class YandexMetrikaPeriodVisitors(YandexMetrika):
     template = 'jet/dashboard/modules/yandex_metrika_period_visitors.html'
     group = None
     contrast = False
-    settings_form = YandexMetrikaListSettingsForm
+    settings_form = YandexMetrikaPeriodVisitorsSettingsForm
 
     def settings_dict(self):
         settings = super(YandexMetrikaPeriodVisitors, self).settings_dict()
