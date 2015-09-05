@@ -2313,6 +2313,8 @@ textarea {
 
 input[type=checkbox] {
   display: none; }
+  input[type=checkbox]#action-toggle {
+    display: none !important; }
   input[type=checkbox] + label:before {
     font-family: 'jet-icons';
     speak: none;
