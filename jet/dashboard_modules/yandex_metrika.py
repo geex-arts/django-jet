@@ -1,3 +1,4 @@
+# encoding: utf-8
 import datetime
 import json
 from urllib.error import HTTPError, URLError
@@ -191,7 +192,7 @@ class YandexMetrika(DashboardModule):
 
     def format_grouped_date(self, date, group):
         if group == 'week':
-            date = '%s — %s' % (
+            date = u'%s — %s' % (
                 (date - datetime.timedelta(days=7)).strftime('%d.%m'),
                 date.strftime('%d.%m')
             )
