@@ -9,6 +9,8 @@ from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_text
 from jet import settings
 from django.contrib import messages
+from django.utils.encoding import force_text
+from django.utils.functional import Promise
 
 
 class JsonResponse(HttpResponse):
@@ -72,10 +74,12 @@ def get_current_dashboard(location):
     return index_dashboard_cls
 
 
-class DateTimeEncoder(json.JSONEncoder):
+class LazyDateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
             return obj.isoformat()
+        elif isinstance(obj, Promise):
+            return force_text(obj)
         return json.JSONEncoder.default(self, obj)
 
 
