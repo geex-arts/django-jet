@@ -159,9 +159,6 @@ class YandexMetrikaBase(DashboardModule):
     counter = None
     error = None
 
-    class Media:
-        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/modules/yandex_metrika.js')
-
     def settings_dict(self):
         return {
             'period': self.period,
@@ -259,6 +256,9 @@ class YandexMetrikaVisitorsChart(YandexMetrikaBase):
     show = None
     group = None
     settings_form = YandexMetrikaChartSettingsForm
+
+    class Media:
+        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/dashboard_modules/yandex_metrika.js')
 
     def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
         kwargs.update({'period': period, 'show': show, 'group': group})

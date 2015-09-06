@@ -207,9 +207,6 @@ class GoogleAnalyticsBase(DashboardModule):
     error = None
     storage = None
 
-    class Media:
-        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/modules/google_analytics.js')
-
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
         super(GoogleAnalyticsBase, self).__init__(title, **kwargs)
@@ -324,6 +321,9 @@ class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
     show = None
     group = None
     settings_form = GoogleAnalyticsChartSettingsForm
+
+    class Media:
+        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/dashboard_modules/google_analytics.js')
 
     def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
         kwargs.update({'period': period, 'show': show, 'group': group})
