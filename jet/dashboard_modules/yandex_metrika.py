@@ -1,17 +1,24 @@
 # encoding: utf-8
 import datetime
 import json
-from urllib.error import HTTPError, URLError
 from django import forms
 from django.core.urlresolvers import reverse
 from django.forms import Widget
-import urllib
 from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from jet.modules import DashboardModule
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+
+try:
+    from urllib import request
+    from urllib.parse import urlencode
+    from urllib.error import URLError, HTTPError
+except ImportError:
+    import urllib2 as request
+    from urllib2 import URLError, HTTPError
+    from urllib import urlencode
 
 JET_MODULE_YANDEX_METRIKA_CLIENT_ID = getattr(settings, 'JET_MODULE_YANDEX_METRIKA_CLIENT_ID', '')
 JET_MODULE_YANDEX_METRIKA_CLIENT_SECRET = getattr(settings, 'JET_MODULE_YANDEX_METRIKA_CLIENT_SECRET', '')
@@ -30,15 +37,15 @@ class YandexMetrikaClient:
         url = '%s%s' % (base_url, url)
 
         if data is not None:
-            data = urllib.parse.urlencode(data).encode()
+            data = urlencode(data).encode()
 
         if headers is None:
             headers = {}
 
-        req = urllib.request.Request(url, data, headers)
+        req = request.Request(url, data, headers)
 
         try:
-            f = urllib.request.urlopen(req)
+            f = request.urlopen(req)
             result = f.read().decode()
             result = json.loads(result)
         except URLError as e:
