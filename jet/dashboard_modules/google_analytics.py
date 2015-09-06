@@ -303,7 +303,7 @@ class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
-        super(YandexMetrikaVisitorsTotals, self).__init__(title, **kwargs)
+        super(GoogleAnalyticsVisitorsTotals, self).__init__(title, **kwargs)
 
     def init_with_context(self, context):
         result = self.api_ga()
