@@ -4,7 +4,6 @@ import os
 from django import forms
 from django.core.urlresolvers import reverse
 from django.forms import Widget
-from django.forms.utils import flatatt
 from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
@@ -14,10 +13,16 @@ from jet.modules import DashboardModule
 from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, AccessTokenRefreshError
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+
 try:
     from django.utils.encoding import force_unicode
 except ImportError:
     from django.utils.encoding import force_text as force_unicode
+
+try:
+    from django.forms.utils import flatatt
+except ImportError:
+    from django.forms.util import flatatt
 
 JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = getattr(
     settings,
