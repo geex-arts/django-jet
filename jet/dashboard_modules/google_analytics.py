@@ -53,7 +53,6 @@ class ModuleCredentialStorage(Storage):
             return None
 
     def put(self, credentials):
-        print('put')
         self.module.update_settings({'credential': credentials.to_json()})
 
     def delete(self):
