@@ -4595,6 +4595,9 @@ table#change-history {
 .content {
   background-color: #ecf2f6; }
 
+.dashboard #content {
+  width: 700px; }
+
 .small, .module .form-row .help, .module .form-row .errorlist, .changeform .tabular.inline-related .module .errorlist, .login-form .form-row .errorlist {
   font-size: 12px; }
 
@@ -4647,10 +4650,10 @@ ul.object-tools {
       margin-top: 0;
       line-height: normal; }
 
-.context-sidebar {
+.content-sidebar {
   float: right;
-  margin-left: 20px;
-  max-width: 33%; }
+  width: 18em;
+  margin: 0 20px; }
 
 .dashboard .module table td a {
   display: inline !important; }

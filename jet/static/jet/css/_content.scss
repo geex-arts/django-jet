@@ -4,6 +4,10 @@
   background-color: $background-color;
 }
 
+.dashboard #content {
+  width: 700px;
+}
+
 .small {
   font-size: 12px;
 }
@@ -72,10 +76,10 @@ ul.object-tools {
   }
 }
 
-.context-sidebar {
+.content-sidebar {
   float: right;
-  margin-left: 20px;
-  max-width: 33%;
+  width: 18em;
+  margin: 0 20px;
 }
 
 .dashboard .module table td a {
