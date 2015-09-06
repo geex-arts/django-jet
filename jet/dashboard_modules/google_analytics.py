@@ -1,5 +1,6 @@
 # encoding: utf-8
 import datetime
+import json
 from django import forms
 from django.core.urlresolvers import reverse
 from django.forms import Widget
@@ -9,7 +10,7 @@ from django.utils.safestring import mark_safe
 from googleapiclient.discovery import build
 import httplib2
 from jet.modules import DashboardModule
-from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, AccessTokenRefreshError
+from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, AccessTokenRefreshError, Storage
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 
@@ -30,19 +31,50 @@ JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = getattr(
 )
 
 
+class ModuleCredentialStorage(Storage):
+    def __init__(self, module):
+        self.module = module
+
+    def locked_get(self):
+        pass
+
+    def locked_put(self, credentials):
+        pass
+
+    def locked_delete(self):
+        pass
+
+    def get(self):
+        try:
+            settings = json.loads(self.module.settings)
+            credential = settings['credential']
+            return OAuth2Credentials.from_json(credential)
+        except (ValueError, KeyError):
+            return None
+
+    def put(self, credentials):
+        print('put')
+        self.module.update_settings({'credential': credentials.to_json()})
+
+    def delete(self):
+        self.module.pop_settings(('credential',))
+
+
 class GoogleAnalyticsClient:
     credential = None
     analytics_service = None
 
-    def __init__(self, credential=None, redirect_uri=None):
+    def __init__(self, storage=None, redirect_uri=None):
         self.FLOW = flow_from_clientsecrets(
             JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE,
             scope='https://www.googleapis.com/auth/analytics.readonly',
             redirect_uri=redirect_uri
         )
 
-        if credential is not None:
-            self.set_credential(OAuth2Credentials.from_json(credential))
+        if storage is not None:
+            credential = storage.get()
+            credential.set_store(storage)
+            self.set_credential(credential)
 
     def get_oauth_authorize_url(self, state=''):
         self.FLOW.params['state'] = state
@@ -174,6 +206,7 @@ class GoogleAnalyticsBase(DashboardModule):
     credential = None
     counter = None
     error = None
+    storage = None
 
     class Media:
         js = ('jet/vendor/chart.js/Chart.min.js', 'jet/modules/google_analytics.js')
@@ -195,6 +228,7 @@ class GoogleAnalyticsBase(DashboardModule):
         except TypeError:
             self.period = 0
         self.credential = settings.get('credential')
+        self.storage = ModuleCredentialStorage(self.model)
         self.counter = settings.get('counter')
 
     def init_with_context(self, context):
@@ -202,7 +236,7 @@ class GoogleAnalyticsBase(DashboardModule):
 
     def counters(self):
         try:
-            client = GoogleAnalyticsClient(self.credential)
+            client = GoogleAnalyticsClient(self.storage)
             profiles, exception = client.api_profiles()
             return profiles
         except Exception:
@@ -250,7 +284,7 @@ class GoogleAnalyticsBase(DashboardModule):
             date2 = datetime.datetime.utcnow()
 
             try:
-                client = GoogleAnalyticsClient(self.credential)
+                client = GoogleAnalyticsClient(self.storage)
                 result, exception = client.api_ga(self.counter, date1, date2, group)
 
                 if exception is not None:

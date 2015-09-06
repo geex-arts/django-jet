@@ -3,7 +3,7 @@ from django.conf.urls import url
 from django.contrib import messages
 from django.shortcuts import redirect
 from httplib2 import ServerNotFoundError
-from jet.dashboard_modules.google_analytics import GoogleAnalyticsClient
+from jet.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
 from jet.models import UserDashboardModule
 from jet import dashboard
 from django.http import HttpResponse
@@ -20,7 +20,7 @@ def google_analytics_grant_view(request, pk):
 def google_analytics_revoke_view(request, pk):
     try:
         module = UserDashboardModule.objects.get(pk=pk)
-        module.pop_settings(('credential',))
+        ModuleCredentialStorage(module).delete()
         return redirect(reverse('jet:update_module', kwargs={'pk': module.pk}))
     except UserDashboardModule.DoesNotExist:
         return HttpResponse(_('Module not found'))
@@ -37,7 +37,7 @@ def google_analytics_callback_view(request):
         client = GoogleAnalyticsClient(redirect_uri=redirect_uri)
         client.set_credential_from_request(request)
 
-        module.update_settings({'credential': client.credential.to_json()})
+        ModuleCredentialStorage(module).put(client.credential)
     except (FlowExchangeError, ValueError, ServerNotFoundError):
         messages.error(request, _('API request failed.'))
     except KeyError:
