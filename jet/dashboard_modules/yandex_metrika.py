@@ -162,10 +162,6 @@ class YandexMetrikaBase(DashboardModule):
     class Media:
         js = ('jet/vendor/chart.js/Chart.min.js', 'jet/modules/yandex_metrika.js')
 
-    def __init__(self, title=None, period=None, **kwargs):
-        kwargs.update({'period': period})
-        super(YandexMetrikaBase, self).__init__(title, **kwargs)
-
     def settings_dict(self):
         return {
             'period': self.period,
@@ -240,6 +236,10 @@ class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
     title = _('Yandex Metrika visitors totals')
     template = 'jet/dashboard/modules/yandex_metrika_visitors_totals.html'
 
+    def __init__(self, title=None, period=None, **kwargs):
+        kwargs.update({'period': period})
+        super(YandexMetrikaVisitorsTotals, self).__init__(title, **kwargs)
+
     def init_with_context(self, context):
         result = self.api_stat_traffic_summary()
 
@@ -259,6 +259,10 @@ class YandexMetrikaVisitorsChart(YandexMetrikaBase):
     show = None
     group = None
     settings_form = YandexMetrikaChartSettingsForm
+
+    def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
+        kwargs.update({'period': period, 'show': show, 'group': group})
+        super(YandexMetrikaVisitorsChart, self).__init__(title, **kwargs)
 
     def settings_dict(self):
         settings = super(YandexMetrikaVisitorsChart, self).settings_dict()
@@ -290,6 +294,10 @@ class YandexMetrikaPeriodVisitors(YandexMetrikaBase):
     group = None
     contrast = False
     settings_form = YandexMetrikaPeriodVisitorsSettingsForm
+
+    def __init__(self, title=None, period=None, group=None, **kwargs):
+        kwargs.update({'period': period, 'group': group})
+        super(YandexMetrikaPeriodVisitors, self).__init__(title, **kwargs)
 
     def settings_dict(self):
         settings = super(YandexMetrikaPeriodVisitors, self).settings_dict()

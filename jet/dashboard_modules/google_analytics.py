@@ -301,6 +301,10 @@ class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
     title = _('Google Analytics visitors totals')
     template = 'jet/dashboard/modules/google_analytics_visitors_totals.html'
 
+    def __init__(self, title=None, period=None, **kwargs):
+        kwargs.update({'period': period})
+        super(YandexMetrikaVisitorsTotals, self).__init__(title, **kwargs)
+
     def init_with_context(self, context):
         result = self.api_ga()
 
@@ -320,6 +324,10 @@ class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
     show = None
     group = None
     settings_form = GoogleAnalyticsChartSettingsForm
+
+    def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
+        kwargs.update({'period': period, 'show': show, 'group': group})
+        super(GoogleAnalyticsVisitorsChart, self).__init__(title, **kwargs)
 
     def settings_dict(self):
         settings = super(GoogleAnalyticsVisitorsChart, self).settings_dict()
@@ -357,6 +365,10 @@ class GoogleAnalyticsPeriodVisitors(GoogleAnalyticsBase):
     group = None
     contrast = False
     settings_form = GoogleAnalyticsPeriodVisitorsSettingsForm
+
+    def __init__(self, title=None, period=None, group=None, **kwargs):
+        kwargs.update({'period': period, 'group': group})
+        super(GoogleAnalyticsPeriodVisitors, self).__init__(title, **kwargs)
 
     def settings_dict(self):
         settings = super(GoogleAnalyticsPeriodVisitors, self).settings_dict()
