@@ -1,6 +1,5 @@
 # encoding: utf-8
 import datetime
-import os
 from django import forms
 from django.core.urlresolvers import reverse
 from django.forms import Widget
