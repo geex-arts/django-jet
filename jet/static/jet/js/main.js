@@ -817,7 +817,14 @@
                             return;
                         }
 
+                        var oldHeight = $content.height();
                         $content.html(result.html);
+                        var newHeight = $content.height();
+
+                        $content.height(oldHeight);
+                        $content.animate({
+                            height: newHeight
+                        }, 250);
                     },
                     error: function() {
                         $content.empty();

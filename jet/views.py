@@ -42,7 +42,10 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
 
     def get_settings_form(self):
         if self.module.settings_form:
-            return self.module.settings_form(**self.get_settings_form_kwargs())
+            form = self.module.settings_form(**self.get_settings_form_kwargs())
+            if hasattr(form, 'set_module'):
+                form.set_module(self.module)
+            return form
 
     def get_children_formset_kwargs(self):
         kwargs = {

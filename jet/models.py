@@ -1,8 +1,10 @@
 from importlib import import_module
+import json
 from django.db import models
 from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+from jet.utils import LazyDateTimeEncoder
 
 
 @python_2_unicode_compatible
@@ -66,5 +68,22 @@ class UserDashboardModule(models.Model):
         except AttributeError:
             return None
 
-        return module
+    def pop_settings(self, pop_settings):
+        settings = json.loads(self.settings)
+
+        for setting in pop_settings:
+            if setting in settings:
+                settings.pop(setting)
+
+        self.settings = json.dumps(settings, cls=LazyDateTimeEncoder)
+        self.save()
+
+    def update_settings(self, update_settings):
+        settings = json.loads(self.settings)
+
+        settings.update(update_settings)
+
+        self.settings = json.dumps(settings, cls=LazyDateTimeEncoder)
+        self.save()
+
 

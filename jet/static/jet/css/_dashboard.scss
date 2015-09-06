@@ -17,6 +17,7 @@
 
     &-wrapper {
       float: left;
+      min-width: 200px;
     }
 
     &.first {
@@ -91,6 +92,15 @@
       box-shadow: 0 2px 0 0 $content-border2-color;
       overflow: hidden;
 
+      &.contrast {
+        background: $content-contrast2-background-color;
+        color: $content-contrast2-text-color;
+
+        .loading-indicator {
+          color: $content-contrast2-text-color;
+        }
+      }
+
       ul:not(.inline) {
         @extend .clear-list;
 
@@ -139,12 +149,11 @@
 
       ul.inline {
         @extend .clear-list;
-        display: inline;
+        display: inline-block;
 
         li {
-          display: inline;
+          display: inline-block;
           margin-left: 10px;
-          line-height: 30px;
 
           &:first-child {
             margin-left: 0;
@@ -152,6 +161,16 @@
 
           .nowrap {
             white-space: nowrap;
+          }
+        }
+
+        &.bordered li {
+          border-left: 1px solid $content-border2-color;
+          margin-left: 0;
+          padding: 0 10px;
+
+          &:first-child {
+            border-left: 0;
           }
         }
       }
@@ -162,6 +181,51 @@
 
       .center {
         text-align: center;
+      }
+
+      .big {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .highlight {
+        color: $link-color;
+      }
+
+      .dim {
+        color: $dim-text-color;
+      }
+
+      canvas {
+        .chart {
+          &-fillColor {
+            color: transparentize($hover-link-color, 0.75);
+          }
+
+          &-strokeColor {
+            color: $hover-link-color;
+          }
+
+          &-pointColor {
+            color: $content-contrast2-text-color
+          }
+
+          &-pointHighlightFill {
+            color: $hover-link-color;
+          }
+
+          &-scaleGridLineColor {
+            color: transparentize($black-color, 0.9);
+          }
+
+          &-scaleLineColor {
+            color: transparentize($black-color, 0.9);
+          }
+
+          &-scaleFontColor {
+            color: $content-contrast2-text-color
+          }
+        }
       }
     }
 

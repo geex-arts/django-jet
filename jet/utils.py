@@ -1,3 +1,4 @@
+import datetime
 from importlib import import_module
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -5,11 +6,11 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.utils.encoding import force_text
 from django.utils.encoding import smart_text
-from django.utils.functional import Promise
 from jet import settings
 from django.contrib import messages
+from django.utils.encoding import force_text
+from django.utils.functional import Promise
 
 
 class JsonResponse(HttpResponse):
@@ -73,11 +74,13 @@ def get_current_dashboard(location):
     return index_dashboard_cls
 
 
-class LazyEncoder(json.JSONEncoder):
+class LazyDateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Promise):
+        if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
+            return obj.isoformat()
+        elif isinstance(obj, Promise):
             return force_text(obj)
-        return obj
+        return json.JSONEncoder.default(self, obj)
 
 
 def get_model_instance_label(instance):
