@@ -26,6 +26,7 @@ Changelog
 * [Fix] Fixed tables forced alignment
 * [Fix] Fixed dashboard ul layout
 * [Fix] Fixed language code formatting for js
+* [Fix] Fixed 500 when adding module if no module type specified
 
 
 0.0.6
