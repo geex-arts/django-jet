@@ -222,7 +222,7 @@ msgstr "Данные о посещениях Google Analytics"
 
 #: dashboard/dashboard_modules/google_analytics.py:316
 msgid "users"
-msgstr "пользовотели"
+msgstr "пользователи"
 
 #: dashboard/dashboard_modules/google_analytics.py:317
 msgid "sessions"
