@@ -9,6 +9,11 @@
 
 {% block content %}
     <div class="dashboard-item">
+        <div class="dashboard-item-header">
+            <span class="dashboard-item-header-title">
+                {% trans "Applications" %}
+            </span>
+        </div>
         <div class="dashboard-item-content">
             {% if app_list %}
                 <ul>
