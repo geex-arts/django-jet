@@ -47,7 +47,7 @@ Current version is still in beta phase. Use it at your own risk (though may be a
 License
 =======
 Django JET is licensed under a
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
+The GNU General Public License, Version 2
 
 See online version of this license here:
 https://creativecommons.org/licenses/by-nc-sa/4.0/
