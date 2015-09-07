@@ -1,8 +1,8 @@
 from importlib import import_module
 from django.core.urlresolvers import resolve, reverse
 from django.template.loader import render_to_string
-from jet import modules
-from jet.models import UserDashboardModule
+from jet.dashboard import modules
+from jet.dashboard.models import UserDashboardModule
 from django.core.context_processors import csrf
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
@@ -84,8 +84,9 @@ class Dashboard(object):
 
         for module_model in module_models:
             module_cls = module_model.load_module()
-            module = module_cls(model=module_model, context=self.context)
-            loaded_modules.append(module)
+            if module_cls is not None:
+                module = module_cls(model=module_model, context=self.context)
+                loaded_modules.append(module)
 
         self.modules = loaded_modules
 
@@ -98,7 +99,7 @@ class Dashboard(object):
         })
         context.update(csrf(context['request']))
 
-        return render_to_string('jet/dashboard/dashboard.html', context)
+        return render_to_string('jet.dashboard/dashboard.html', context)
 
     def render_tools(self):
         context = self.context
@@ -109,7 +110,7 @@ class Dashboard(object):
         })
         context.update(csrf(context['request']))
 
-        return render_to_string('jet/dashboard/dashboard_tools.html', context)
+        return render_to_string('jet.dashboard/dashboard_tools.html', context)
 
     def media(self):
         unique_css = OrderedSet()
@@ -244,3 +245,17 @@ class DefaultAppIndexDashboard(AppIndexDashboard):
             order=0
         ))
 
+
+class DashboardUrls(object):
+    _urls = []
+
+    def get_urls(self):
+        return self._urls
+
+    def register_url(self, url):
+        self._urls.append(url)
+
+    def register_urls(self, urls):
+        self._urls.extend(urls)
+
+urls = DashboardUrls()

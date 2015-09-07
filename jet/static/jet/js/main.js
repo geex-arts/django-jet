@@ -37,7 +37,7 @@
             var uniqueCheckboxIdPrefix = 'unique_checkbox_id_';
 
             var addLabelToCheckbox = function($checkbox) {
-                var checkboxId = uniqueCheckboxIdPrefix + uniqueCheckboxIdCounter++;
+                var checkboxId = $checkbox.attr('id') ? $checkbox.attr('id') : uniqueCheckboxIdPrefix + uniqueCheckboxIdCounter++;
                 var $label = $('<label>').attr('for', checkboxId);
 
                 $checkbox.hide().attr('id', checkboxId);
@@ -46,7 +46,7 @@
 
             var addLabelToCheckboxes = function() {
                 var $containers = $('.action-checkbox, .action-checkbox-column').add('.tabular.inline-related .form-row');
-                var $checkboxes = $containers.find('input[type="checkbox"]');
+                var $checkboxes = $containers.find('input[type="checkbox"]').add('.checkbox-without-label');
 
                 $checkboxes.each(function() {
                     addLabelToCheckbox($(this));
@@ -781,21 +781,23 @@
                 var $typeInput = $form.find('[name="type"]');
                 var type = $form.find('[name="module"] option:selected').data('type');
 
-                $typeInput.val(type);
+                if (type) {
+                    $typeInput.val(type);
 
-                $.ajax({
-                    url: $form.attr('action'),
-                    method: $form.attr('method'),
-                    dataType: 'json',
-                    data: $form.serialize(),
-                    success: function (result) {
-                        if (result.error) {
-                            return;
+                    $.ajax({
+                        url: $form.attr('action'),
+                        method: $form.attr('method'),
+                        dataType: 'json',
+                        data: $form.serialize(),
+                        success: function (result) {
+                            if (result.error) {
+                                return;
+                            }
+
+                            document.location = result.success_url;
                         }
-
-                        document.location = result.success_url;
-                    }
-                });
+                    });
+                }
 
                 e.preventDefault();
             });
@@ -817,7 +819,14 @@
                             return;
                         }
 
+                        var oldHeight = $content.height();
                         $content.html(result.html);
+                        var newHeight = $content.height();
+
+                        $content.height(oldHeight);
+                        $content.animate({
+                            height: newHeight
+                        }, 250);
                     },
                     error: function() {
                         $content.empty();

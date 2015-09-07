@@ -4,12 +4,12 @@ from django.contrib.admin.models import LogEntry
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
-from jet.utils import get_app_list, LazyEncoder
+from jet.utils import get_app_list, LazyDateTimeEncoder
 import datetime
 
 
 class DashboardModule(object):
-    template = 'jet/dashboard/module.html'
+    template = 'jet.dashboard/module.html'
     enabled = True
     draggable = True
     collapsible = True
@@ -29,6 +29,8 @@ class DashboardModule(object):
     column = None
     order = None
     ajax_load = False
+    contrast = False
+    style = False
 
     class Media:
         css = ()
@@ -67,13 +69,13 @@ class DashboardModule(object):
     def dump_settings(self, settings=None):
         settings = settings or self.settings_dict()
         if settings:
-            return json.dumps(settings, cls=LazyEncoder)
+            return json.dumps(settings, cls=LazyDateTimeEncoder)
         else:
             return ''
 
     def dump_children(self):
         if self.store_children():
-            return json.dumps(self.children, cls=LazyEncoder)
+            return json.dumps(self.children, cls=LazyDateTimeEncoder)
         else:
             return ''
 
@@ -121,7 +123,7 @@ class LinkListSettingsForm(forms.Form):
 
 class LinkList(DashboardModule):
     title = _('Links')
-    template = 'jet/dashboard/modules/link_list.html'
+    template = 'jet.dashboard/modules/link_list.html'
     layout = 'stacked'
     settings_form = LinkListSettingsForm
     child_form = LinkListItemForm
@@ -156,7 +158,7 @@ class LinkList(DashboardModule):
 
 class AppList(DashboardModule):
     title = _('Applications')
-    template = 'jet/dashboard/modules/app_list.html'
+    template = 'jet.dashboard/modules/app_list.html'
     models = None
     exclude = None
     hide_empty = True
@@ -197,7 +199,7 @@ class AppList(DashboardModule):
 
 class ModelList(DashboardModule):
     title = _('Models')
-    template = 'jet/dashboard/modules/model_list.html'
+    template = 'jet.dashboard/modules/model_list.html'
     models = None
     exclude = None
     hide_empty = True
@@ -238,7 +240,7 @@ class RecentActionsSettingsForm(forms.Form):
 
 class RecentActions(DashboardModule):
     title = _('Recent Actions')
-    template = 'jet/dashboard/modules/recent_actions.html'
+    template = 'jet.dashboard/modules/recent_actions.html'
     limit = 10
     include_list = None
     exclude_list = None
@@ -310,7 +312,7 @@ class FeedSettingsForm(forms.Form):
 
 class Feed(DashboardModule):
     title = _('RSS Feed')
-    template = 'jet/dashboard/modules/feed.html'
+    template = 'jet.dashboard/modules/feed.html'
     feed_url = None
     limit = None
     settings_form = FeedSettingsForm

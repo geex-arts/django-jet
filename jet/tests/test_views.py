@@ -2,8 +2,9 @@ import json
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test import TestCase, Client
-from jet.modules import LinkList
-from jet.models import UserDashboardModule, Bookmark
+from jet.dashboard.modules import LinkList
+from jet.models import Bookmark
+from jet.dashboard.models import UserDashboardModule
 
 
 class ViewsTestCase(TestCase):
@@ -24,7 +25,7 @@ class ViewsTestCase(TestCase):
         new_layout = 'stacked'
         module = UserDashboardModule.objects.create(
             title=title,
-            module='jet.modules.LinkList',
+            module='jet.dashboard.modules.LinkList',
             app_label=None,
             user=self.admin_user.pk,
             column=0,
@@ -33,7 +34,7 @@ class ViewsTestCase(TestCase):
             children='[]'
         )
 
-        response = self.admin.get(reverse('jet:update_module', kwargs={'pk': module.pk}))
+        response = self.admin.get(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.context['module'] is not None)
         self.assertTrue(isinstance(response.context['module'], LinkList))
@@ -56,7 +57,7 @@ class ViewsTestCase(TestCase):
             '_save': 'Save'
         }
 
-        self.admin.post(reverse('jet:update_module', kwargs={'pk': module.pk}), post)
+        self.admin.post(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}), post)
         self.assertEqual(response.status_code, 200)
         module = UserDashboardModule.objects.get(pk=module.pk)
         settings = json.loads(module.settings)
@@ -115,7 +116,7 @@ class ViewsTestCase(TestCase):
         app_label = None
         module_0 = UserDashboardModule.objects.create(
             title='',
-            module='jet.modules.LinkList',
+            module='jet.dashboard.modules.LinkList',
             app_label=app_label,
             user=self.admin_user.pk,
             column=0,
@@ -123,13 +124,13 @@ class ViewsTestCase(TestCase):
         )
         module_1 = UserDashboardModule.objects.create(
             title='',
-            module='jet.modules.LinkList',
+            module='jet.dashboard.modules.LinkList',
             app_label=app_label,
             user=self.admin_user.pk,
             column=0,
             order=1
         )
-        response = self.admin.post(reverse('jet:update_dashboard_modules'), {
+        response = self.admin.post(reverse('jet-dashboard:update_dashboard_modules'), {
             'app_label': '',
             'modules': json.dumps([
                 {'id': module_0.pk, 'column': 0, 'order': 1},
@@ -151,7 +152,7 @@ class ViewsTestCase(TestCase):
         module_1.delete()
 
     def test_add_user_dashboard_module_view(self):
-        response = self.admin.post(reverse('jet:add_user_dashboard_module'), {
+        response = self.admin.post(reverse('jet-dashboard:add_user_dashboard_module'), {
             'app_label': '',
             'type': 'available_children',
             'module': 0
@@ -167,13 +168,13 @@ class ViewsTestCase(TestCase):
     def test_update_dashboard_module_collapse_view(self):
         module = UserDashboardModule.objects.create(
             title='',
-            module='jet.modules.LinkList',
+            module='jet.dashboard.modules.LinkList',
             app_label=None,
             user=self.admin_user.pk,
             column=0,
             order=0
         )
-        response = self.admin.post(reverse('jet:update_dashboard_module_collapse'), {
+        response = self.admin.post(reverse('jet-dashboard:update_dashboard_module_collapse'), {
             'id': module.pk, 'collapsed': True
         })
         self.assertEqual(response.status_code, 200)
@@ -182,7 +183,7 @@ class ViewsTestCase(TestCase):
         self.assertTrue(response['collapsed'])
 
         module = UserDashboardModule.objects.get(pk=module.pk)
-        response = self.admin.post(reverse('jet:update_dashboard_module_collapse'), {
+        response = self.admin.post(reverse('jet-dashboard:update_dashboard_module_collapse'), {
             'id': module.pk, 'collapsed': False
         })
         self.assertEqual(response.status_code, 200)
@@ -195,13 +196,13 @@ class ViewsTestCase(TestCase):
     def test_remove_dashboard_module_view(self):
         module = UserDashboardModule.objects.create(
             title='',
-            module='jet.modules.LinkList',
+            module='jet.dashboard.modules.LinkList',
             app_label=None,
             user=self.admin_user.pk,
             column=0,
             order=0
         )
-        response = self.admin.post(reverse('jet:remove_dashboard_module'), {'id': module.pk})
+        response = self.admin.post(reverse('jet-dashboard:remove_dashboard_module'), {'id': module.pk})
         self.assertEqual(response.status_code, 200)
         response = json.loads(response.content.decode())
         self.assertFalse(response['error'])

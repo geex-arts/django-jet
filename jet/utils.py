@@ -1,3 +1,4 @@
+import datetime
 from importlib import import_module
 import json
 from django.core.serializers.json import DjangoJSONEncoder
@@ -5,11 +6,11 @@ from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from django.utils.encoding import force_text
 from django.utils.encoding import smart_text
-from django.utils.functional import Promise
 from jet import settings
 from django.contrib import messages
+from django.utils.encoding import force_text
+from django.utils.functional import Promise
 
 
 class JsonResponse(HttpResponse):
@@ -58,26 +59,13 @@ def get_admin_site_name(context):
     return get_admin_site(context).name
 
 
-def get_current_dashboard(location):
-    if location == 'index':
-        path = settings.JET_INDEX_DASHBOARD
-    elif location == 'app_index':
-        path = settings.JET_APP_INDEX_DASHBOARD
-    else:
-        raise ValueError('Unknown dashboard location: %s' % location)
-
-    module, cls = path.rsplit('.', 1)
-    module = import_module(module)
-    index_dashboard_cls = getattr(module, cls)
-
-    return index_dashboard_cls
-
-
-class LazyEncoder(json.JSONEncoder):
+class LazyDateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
-        if isinstance(obj, Promise):
+        if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
+            return obj.isoformat()
+        elif isinstance(obj, Promise):
             return force_text(obj)
-        return obj
+        return json.JSONEncoder.default(self, obj)
 
 
 def get_model_instance_label(instance):

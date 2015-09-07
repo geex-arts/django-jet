@@ -58,10 +58,10 @@
                     </fieldset>
                 {% endif %}
 
-                {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+                {% include "jet.dashboard/update_module_fieldset.html" with form=form %}
 
                 {% if settings_form %}
-                    {% include "jet/dashboard/update_module_fieldset.html" with form=settings_form %}
+                    {% include "jet.dashboard/update_module_fieldset.html" with form=settings_form %}
                 {% endif %}
             </div>
 
@@ -104,13 +104,13 @@
                                 {% for form in children_formset %}
                                     <div class="stacked {% if forloop.first %}selected {% endif %}inline-related {% if forloop.last %} last-related{% endif %}" id="{{ children_formset.prefix }}-{{ forloop.counter0 }}">
                                         {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
-                                        {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+                                        {% include "jet.dashboard/update_module_fieldset.html" with form=form %}
                                     </div>
                                 {% endfor %}
                                 {% with form=children_formset.empty_form %}
                                     <div class="stacked inline-related empty-form last-related" id="{{ children_formset.prefix }}-empty">
                                         {% if form.non_field_errors %}{{ form.non_field_errors }}{% endif %}
-                                        {% include "jet/dashboard/update_module_fieldset.html" with form=form %}
+                                        {% include "jet.dashboard/update_module_fieldset.html" with form=form %}
                                     </div>
                                 {% endwith %}
                             </div>

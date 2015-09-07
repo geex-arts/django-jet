@@ -1,5 +1,5 @@
 {% extends "admin/base_site.html" %}
-{% load i18n static jet_tags %}
+{% load i18n static jet_dashboard_tags %}
 
 {% block html %}
     {% get_dashboard 'app_index' as dashboard %}
@@ -24,7 +24,7 @@
 
 {% block coltype %}colMS{% endblock %}
 
-{% block bodyclass %}{{ block.super }} app-{{ app_label }} dashboard{% endblock %}
+{% block bodyclass %}{{ block.super }} app-{{ app_label }}{% endblock %}
 
 {% if not is_popup %}
     {% block breadcrumbs %}
