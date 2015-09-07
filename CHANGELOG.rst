@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.0.8
+-----
+* Change license to GPLv2
+
+
 0.0.7
 -----
 * [Feature] Added Google Analytics visitors totals dashboard widget
