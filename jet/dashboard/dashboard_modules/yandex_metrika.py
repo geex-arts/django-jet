@@ -96,9 +96,15 @@ class AccessTokenWidget(Widget):
 
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
-            link = '<a href="%s">Revoke access</a>' % reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">%s</a>' % (
+                reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk}),
+                _('Revoke access')
+            )
         else:
-            link = '<a href="%s">Grant access</a>' % reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">%s</a>' % (
+                reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk}),
+                _('Grant access')
+            )
 
         if value is None:
             value = ''
@@ -107,7 +113,7 @@ class AccessTokenWidget(Widget):
 
 
 class YandexMetrikaSettingsForm(forms.Form):
-    access_token = forms.CharField(label=_('Token'), widget=AccessTokenWidget)
+    access_token = forms.CharField(label=_('Access'), widget=AccessTokenWidget)
     counter = forms.ChoiceField(label=_('Counter'))
     period = forms.ChoiceField(label=_('Statistics period'), choices=(
         (0, _('Today')),
@@ -124,7 +130,7 @@ class YandexMetrikaSettingsForm(forms.Form):
     def set_counter_choices(self, module):
         counters = module.counters()
         if counters is not None:
-            self.fields['counter'].choices = (('', _('-- none --')),)
+            self.fields['counter'].choices = (('', '-- %s --' % _('none')),)
             self.fields['counter'].choices.extend(map(lambda x: (x['id'], x['site']), counters))
         else:
             label = _('grant access first') if module.access_token is None else _('counters loading failed')

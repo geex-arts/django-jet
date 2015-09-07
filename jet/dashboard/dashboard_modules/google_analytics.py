@@ -138,9 +138,15 @@ class CredentialWidget(Widget):
 
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
-            link = '<a href="%s">Revoke access</a>' % reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">%s</a>' % (
+                reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
+                _('Revoke access')
+            )
         else:
-            link = '<a href="%s">Grant access</a>' % reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">%s</a>' % (
+                reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
+                _('Grant access')
+            )
 
         attrs = self.build_attrs({
             'type': 'hidden',
@@ -152,7 +158,7 @@ class CredentialWidget(Widget):
 
 
 class GoogleAnalyticsSettingsForm(forms.Form):
-    credential = forms.CharField(label=_('Credential'), widget=CredentialWidget)
+    credential = forms.CharField(label=_('Access'), widget=CredentialWidget)
     counter = forms.ChoiceField(label=_('Counter'))
     period = forms.ChoiceField(label=_('Statistics period'), choices=(
         (0, _('Today')),
@@ -169,7 +175,7 @@ class GoogleAnalyticsSettingsForm(forms.Form):
     def set_counter_choices(self, module):
         counters = module.counters()
         if counters is not None:
-            self.fields['counter'].choices = (('', _('-- none --')),)
+            self.fields['counter'].choices = (('', '-- %s --' % _('none')),)
             self.fields['counter'].choices.extend(map(lambda x: (x['id'], x['websiteUrl']), counters))
         else:
             label = _('grant access first') if module.credential is None else _('counters loading failed')
