@@ -146,7 +146,7 @@ class CredentialWidget(Widget):
             'type': 'hidden',
             'name': 'credential',
         })
-        attrs['value'] = force_unicode(value)
+        attrs['value'] = force_unicode(value) if value else ''
 
         return format_html('%s<input{} />' % link, flatatt(attrs))
 

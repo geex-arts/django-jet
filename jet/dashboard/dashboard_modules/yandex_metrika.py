@@ -99,6 +99,10 @@ class AccessTokenWidget(Widget):
             link = '<a href="%s">Revoke access</a>' % reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk})
         else:
             link = '<a href="%s">Grant access</a>' % reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk})
+
+        if value is None:
+            value = ''
+
         return format_html('%s<input type="hidden" name="access_token" value="%s">' % (link, value))
 
 
