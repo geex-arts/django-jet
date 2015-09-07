@@ -14,11 +14,12 @@ setup(
     author_email='support@jet.geex-arts.com',
     url='https://github.com/geex-arts/django-jet',
     packages=find_packages(),
-    license='Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License',
+    license='GPLv2',
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Django',
         'License :: Free for non-commercial use',
+        'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
         'Intended Audience :: Developers',
         'Intended Audience :: System Administrators',
         'Operating System :: OS Independent',
