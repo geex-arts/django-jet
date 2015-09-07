@@ -96,9 +96,9 @@ class AccessTokenWidget(Widget):
 
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
-            link = '<a href="%s">Revoke access</a>' % reverse('jet:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">Revoke access</a>' % reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk})
         else:
-            link = '<a href="%s">Grant access</a>' % reverse('jet:yandex-metrika-grant', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">Grant access</a>' % reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk})
         return format_html('%s<input type="hidden" name="access_token" value="%s">' % (link, value))
 
 
@@ -204,10 +204,10 @@ class YandexMetrikaBase(DashboardModule):
 
     def counter_attached(self):
         if self.access_token is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         else:
             return True
@@ -223,7 +223,7 @@ class YandexMetrikaBase(DashboardModule):
             if exception is not None:
                 error = _('API request failed.')
                 if isinstance(exception, HTTPError) and exception.code == 403:
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet:update_module', kwargs={'pk': self.model.pk})
+                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk})
                 self.error = mark_safe(error)
             else:
                 return result
@@ -231,7 +231,7 @@ class YandexMetrikaBase(DashboardModule):
 
 class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
     title = _('Yandex Metrika visitors totals')
-    template = 'jet/dashboard/modules/yandex_metrika_visitors_totals.html'
+    template = 'jet.dashboard/modules/yandex_metrika_visitors_totals.html'
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
@@ -251,14 +251,14 @@ class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
 
 class YandexMetrikaVisitorsChart(YandexMetrikaBase):
     title = _('Yandex Metrika visitors chart')
-    template = 'jet/dashboard/modules/yandex_metrika_visitors_chart.html'
+    template = 'jet.dashboard/modules/yandex_metrika_visitors_chart.html'
     style = 'overflow-x: auto;'
     show = None
     group = None
     settings_form = YandexMetrikaChartSettingsForm
 
     class Media:
-        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/dashboard_modules/yandex_metrika.js')
+        js = ('jet.dashboard/vendor/chart.js/Chart.min.js', 'jet.dashboard/dashboard_modules/yandex_metrika.js')
 
     def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
         kwargs.update({'period': period, 'show': show, 'group': group})
@@ -290,7 +290,7 @@ class YandexMetrikaVisitorsChart(YandexMetrikaBase):
 
 class YandexMetrikaPeriodVisitors(YandexMetrikaBase):
     title = _('Yandex Metrika period visitors')
-    template = 'jet/dashboard/modules/yandex_metrika_period_visitors.html'
+    template = 'jet.dashboard/modules/yandex_metrika_period_visitors.html'
     group = None
     contrast = False
     settings_form = YandexMetrikaPeriodVisitorsSettingsForm

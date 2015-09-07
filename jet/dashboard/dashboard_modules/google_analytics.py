@@ -138,9 +138,9 @@ class CredentialWidget(Widget):
 
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
-            link = '<a href="%s">Revoke access</a>' % reverse('jet:google-analytics-revoke', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">Revoke access</a>' % reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk})
         else:
-            link = '<a href="%s">Grant access</a>' % reverse('jet:google-analytics-grant', kwargs={'pk': self.module.model.pk})
+            link = '<a href="%s">Grant access</a>' % reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk})
 
         attrs = self.build_attrs({
             'type': 'hidden',
@@ -266,10 +266,10 @@ class GoogleAnalyticsBase(DashboardModule):
 
     def counter_attached(self):
         if self.credential is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Google account and choose Google Analytics counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">attach Google account and choose Google Analytics counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Google Analytics counter</a> to start using widget') % reverse('jet:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">select Google Analytics counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         else:
             return True
@@ -290,13 +290,13 @@ class GoogleAnalyticsBase(DashboardModule):
             except Exception as e:
                 error = _('API request failed.')
                 if isinstance(e, AccessTokenRefreshError):
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet:update_module', kwargs={'pk': self.model.pk})
+                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk})
                 self.error = mark_safe(error)
 
 
 class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
     title = _('Google Analytics visitors totals')
-    template = 'jet/dashboard/modules/google_analytics_visitors_totals.html'
+    template = 'jet.dashboard/modules/google_analytics_visitors_totals.html'
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
@@ -316,14 +316,14 @@ class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
 
 class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
     title = _('Google Analytics visitors chart')
-    template = 'jet/dashboard/modules/google_analytics_visitors_chart.html'
+    template = 'jet.dashboard/modules/google_analytics_visitors_chart.html'
     style = 'overflow-x: auto;'
     show = None
     group = None
     settings_form = GoogleAnalyticsChartSettingsForm
 
     class Media:
-        js = ('jet/vendor/chart.js/Chart.min.js', 'jet/dashboard_modules/google_analytics.js')
+        js = ('jet.dashboard/vendor/chart.js/Chart.min.js', 'jet.dashboard/dashboard_modules/google_analytics.js')
 
     def __init__(self, title=None, period=None, show=None, group=None, **kwargs):
         kwargs.update({'period': period, 'show': show, 'group': group})
@@ -361,7 +361,7 @@ class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
 
 class GoogleAnalyticsPeriodVisitors(GoogleAnalyticsBase):
     title = _('Google Analytics period visitors')
-    template = 'jet/dashboard/modules/google_analytics_period_visitors.html'
+    template = 'jet.dashboard/modules/google_analytics_period_visitors.html'
     group = None
     contrast = False
     settings_form = GoogleAnalyticsPeriodVisitorsSettingsForm

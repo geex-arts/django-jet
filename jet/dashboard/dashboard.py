@@ -1,8 +1,8 @@
 from importlib import import_module
 from django.core.urlresolvers import resolve, reverse
 from django.template.loader import render_to_string
-from jet import modules
-from jet.models import UserDashboardModule
+from jet.dashboard import modules
+from jet.dashboard.models import UserDashboardModule
 from django.core.context_processors import csrf
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
@@ -99,7 +99,7 @@ class Dashboard(object):
         })
         context.update(csrf(context['request']))
 
-        return render_to_string('jet/dashboard/dashboard.html', context)
+        return render_to_string('jet.dashboard/dashboard.html', context)
 
     def render_tools(self):
         context = self.context
@@ -110,7 +110,7 @@ class Dashboard(object):
         })
         context.update(csrf(context['request']))
 
-        return render_to_string('jet/dashboard/dashboard_tools.html', context)
+        return render_to_string('jet.dashboard/dashboard_tools.html', context)
 
     def media(self):
         unique_css = OrderedSet()

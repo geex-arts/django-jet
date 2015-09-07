@@ -4627,7 +4627,7 @@ table#change-history {
   background-color: #eff6f5; }
 
 .dashboard #content {
-  width: 700px; }
+  width: 500px; }
 
 .small, .module .form-row .help, .module .form-row .errorlist, .changeform .tabular.inline-related .module .errorlist, .login-form .form-row .errorlist {
   font-size: 12px; }

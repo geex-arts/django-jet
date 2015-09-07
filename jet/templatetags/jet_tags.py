@@ -8,7 +8,7 @@ from django.template import loader, Context
 from jet import settings
 from jet.models import Bookmark, PinnedApplication
 import re
-from jet.utils import get_app_list, get_model_instance_label, get_current_dashboard
+from jet.utils import get_app_list, get_model_instance_label
 
 register = template.Library()
 
@@ -216,13 +216,6 @@ def jet_add_preserved_filters(context, url, popup=False, to_field=None):
             return add_preserved_filters(context, url, popup)  # old django
     except ImportError:
         return url
-
-
-@register.assignment_tag(takes_context=True)
-def get_dashboard(context, location):
-    dashboard_cls = get_current_dashboard(location)
-    dashboard = dashboard_cls(context)
-    return dashboard
 
 
 @register.filter()
