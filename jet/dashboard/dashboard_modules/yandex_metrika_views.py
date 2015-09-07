@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from jet.dashboard_modules.yandex_metrika import YandexMetrikaClient
-from jet.models import UserDashboardModule
-from jet import dashboard
+from jet.dashboard.dashboard_modules.yandex_metrika import YandexMetrikaClient
+from jet.dashboard.models import UserDashboardModule
+from jet.dashboard import dashboard
 from django.utils.translation import ugettext_lazy as _
 
 

@@ -3,9 +3,9 @@ from django.conf.urls import url
 from django.contrib import messages
 from django.shortcuts import redirect
 from httplib2 import ServerNotFoundError
-from jet.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
-from jet.models import UserDashboardModule
-from jet import dashboard
+from jet.dashboard.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
+from jet.dashboard.models import UserDashboardModule
+from jet.dashboard import dashboard
 from django.http import HttpResponse
 from oauth2client.client import FlowExchangeError
 from django.utils.translation import ugettext_lazy as _

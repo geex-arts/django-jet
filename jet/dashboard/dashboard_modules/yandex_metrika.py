@@ -7,7 +7,7 @@ from django.forms import Widget
 from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
-from jet.modules import DashboardModule
+from jet.dashboard.modules import DashboardModule
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 

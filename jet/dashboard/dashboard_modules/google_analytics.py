@@ -9,7 +9,7 @@ from django.utils.html import format_html
 from django.utils.safestring import mark_safe
 from googleapiclient.discovery import build
 import httplib2
-from jet.modules import DashboardModule
+from jet.dashboard.modules import DashboardModule
 from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, AccessTokenRefreshError, Storage
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
