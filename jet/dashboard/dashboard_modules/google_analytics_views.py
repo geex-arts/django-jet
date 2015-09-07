@@ -3,16 +3,16 @@ from django.conf.urls import url
 from django.contrib import messages
 from django.shortcuts import redirect
 from httplib2 import ServerNotFoundError
-from jet.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
-from jet.models import UserDashboardModule
-from jet import dashboard
+from jet.dashboard.dashboard_modules.google_analytics import GoogleAnalyticsClient, ModuleCredentialStorage
+from jet.dashboard.models import UserDashboardModule
+from jet.dashboard import dashboard
 from django.http import HttpResponse
 from oauth2client.client import FlowExchangeError
 from django.utils.translation import ugettext_lazy as _
 
 
 def google_analytics_grant_view(request, pk):
-    redirect_uri = request.build_absolute_uri(reverse('jet:google-analytics-callback'))
+    redirect_uri = request.build_absolute_uri(reverse('jet-dashboard:google-analytics-callback'))
     client = GoogleAnalyticsClient(redirect_uri=redirect_uri)
     return redirect(client.get_oauth_authorize_url(pk))
 
@@ -21,7 +21,7 @@ def google_analytics_revoke_view(request, pk):
     try:
         module = UserDashboardModule.objects.get(pk=pk)
         ModuleCredentialStorage(module).delete()
-        return redirect(reverse('jet:update_module', kwargs={'pk': module.pk}))
+        return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
     except UserDashboardModule.DoesNotExist:
         return HttpResponse(_('Module not found'))
 
@@ -33,7 +33,7 @@ def google_analytics_callback_view(request):
         state = request.GET['state']
         module = UserDashboardModule.objects.get(pk=state)
 
-        redirect_uri = request.build_absolute_uri(reverse('jet:google-analytics-callback'))
+        redirect_uri = request.build_absolute_uri(reverse('jet-dashboard:google-analytics-callback'))
         client = GoogleAnalyticsClient(redirect_uri=redirect_uri)
         client.set_credential_from_request(request)
 
@@ -45,7 +45,7 @@ def google_analytics_callback_view(request):
     except UserDashboardModule.DoesNotExist:
         return HttpResponse(_('Module not found'))
 
-    return redirect(reverse('jet:update_module', kwargs={'pk': module.pk}))
+    return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
 
 dashboard.urls.register_urls([
     url(r'^google-analytics/grant/(?P<pk>\d+)/$', google_analytics_grant_view, name='google-analytics-grant'),

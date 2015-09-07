@@ -25,6 +25,7 @@ Changelog
 * [Fix] Fixed double shadow for tables in dashboard modules
 * [Fix] Fixed tables forced alignment
 * [Fix] Fixed dashboard ul layout
+* [Fix] Fixed language code formatting for js
 
 
 0.0.6

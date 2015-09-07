@@ -9,7 +9,7 @@ import datetime
 
 
 class DashboardModule(object):
-    template = 'jet/dashboard/module.html'
+    template = 'jet.dashboard/module.html'
     enabled = True
     draggable = True
     collapsible = True
@@ -123,7 +123,7 @@ class LinkListSettingsForm(forms.Form):
 
 class LinkList(DashboardModule):
     title = _('Links')
-    template = 'jet/dashboard/modules/link_list.html'
+    template = 'jet.dashboard/modules/link_list.html'
     layout = 'stacked'
     settings_form = LinkListSettingsForm
     child_form = LinkListItemForm
@@ -158,7 +158,7 @@ class LinkList(DashboardModule):
 
 class AppList(DashboardModule):
     title = _('Applications')
-    template = 'jet/dashboard/modules/app_list.html'
+    template = 'jet.dashboard/modules/app_list.html'
     models = None
     exclude = None
     hide_empty = True
@@ -199,7 +199,7 @@ class AppList(DashboardModule):
 
 class ModelList(DashboardModule):
     title = _('Models')
-    template = 'jet/dashboard/modules/model_list.html'
+    template = 'jet.dashboard/modules/model_list.html'
     models = None
     exclude = None
     hide_empty = True
@@ -240,7 +240,7 @@ class RecentActionsSettingsForm(forms.Form):
 
 class RecentActions(DashboardModule):
     title = _('Recent Actions')
-    template = 'jet/dashboard/modules/recent_actions.html'
+    template = 'jet.dashboard/modules/recent_actions.html'
     limit = 10
     include_list = None
     exclude_list = None
@@ -312,7 +312,7 @@ class FeedSettingsForm(forms.Form):
 
 class Feed(DashboardModule):
     title = _('RSS Feed')
-    template = 'jet/dashboard/modules/feed.html'
+    template = 'jet.dashboard/modules/feed.html'
     feed_url = None
     limit = None
     settings_form = FeedSettingsForm

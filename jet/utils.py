@@ -59,21 +59,6 @@ def get_admin_site_name(context):
     return get_admin_site(context).name
 
 
-def get_current_dashboard(location):
-    if location == 'index':
-        path = settings.JET_INDEX_DASHBOARD
-    elif location == 'app_index':
-        path = settings.JET_APP_INDEX_DASHBOARD
-    else:
-        raise ValueError('Unknown dashboard location: %s' % location)
-
-    module, cls = path.rsplit('.', 1)
-    module = import_module(module)
-    index_dashboard_cls = getattr(module, cls)
-
-    return index_dashboard_cls
-
-
 class LazyDateTimeEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):

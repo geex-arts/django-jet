@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from jet.dashboard_modules.yandex_metrika import YandexMetrikaClient
-from jet.models import UserDashboardModule
-from jet import dashboard
+from jet.dashboard.dashboard_modules.yandex_metrika import YandexMetrikaClient
+from jet.dashboard.models import UserDashboardModule
+from jet.dashboard import dashboard
 from django.utils.translation import ugettext_lazy as _
 
 
@@ -18,7 +18,7 @@ def yandex_metrika_revoke_view(request, pk):
     try:
         module = UserDashboardModule.objects.get(pk=pk)
         module.pop_settings(('access_token', 'expires_in', 'token_type', 'counter'))
-        return redirect(reverse('jet:update_module', kwargs={'pk': module.pk}))
+        return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
     except UserDashboardModule.DoesNotExist:
         return HttpResponse(_('Module not found'))
 
@@ -38,7 +38,7 @@ def yandex_metrika_callback_view(request):
         else:
             module.update_settings(result)
 
-        return redirect(reverse('jet:update_module', kwargs={'pk': module.pk}))
+        return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
     except KeyError:
         return HttpResponse(_('Bad arguments'))
     except UserDashboardModule.DoesNotExist:
