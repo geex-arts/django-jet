@@ -781,21 +781,23 @@
                 var $typeInput = $form.find('[name="type"]');
                 var type = $form.find('[name="module"] option:selected').data('type');
 
-                $typeInput.val(type);
+                if (type) {
+                    $typeInput.val(type);
 
-                $.ajax({
-                    url: $form.attr('action'),
-                    method: $form.attr('method'),
-                    dataType: 'json',
-                    data: $form.serialize(),
-                    success: function (result) {
-                        if (result.error) {
-                            return;
+                    $.ajax({
+                        url: $form.attr('action'),
+                        method: $form.attr('method'),
+                        dataType: 'json',
+                        data: $form.serialize(),
+                        success: function (result) {
+                            if (result.error) {
+                                return;
+                            }
+
+                            document.location = result.success_url;
                         }
-
-                        document.location = result.success_url;
-                    }
-                });
+                    });
+                }
 
                 e.preventDefault();
             });
