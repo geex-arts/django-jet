@@ -166,7 +166,7 @@ class ViewsTestCase(TestCase):
         self.assertNotEqual(module, None)
 
     def test_add_user_app_dashboard_module_view(self):
-        app_label = 'app_test'
+        app_label = 'auth'
         response = self.admin.post(reverse('jet-dashboard:add_user_dashboard_module'), {
             'app_label': app_label,
             'type': 'available_children',
