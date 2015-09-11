@@ -38,7 +38,7 @@ urlpatterns = patterns(
         name='load_dashboard_module'
     ),
     url(
-        r'^reset_dashboard/((?P<app_label>[^/]+)/)?$',
+        r'^reset_dashboard/$',
         reset_dashboard_view,
         name='reset_dashboard'
     ),
