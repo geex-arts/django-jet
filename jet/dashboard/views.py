@@ -215,9 +215,7 @@ def load_dashboard_module_view(request, pk):
 
 
 def reset_dashboard_view(request, app_label=None):
+    result = {'error': False}
     UserDashboardModule.objects.filter(user=request.user.pk, app_label=app_label).delete()
-    if app_label:
-        url = reverse('admin:app_list', kwargs={'app_label': app_label})
-    else:
-        url = reverse('admin:index')
-    return redirect(url)
+
+    return JsonResponse(result)
