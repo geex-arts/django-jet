@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.0.9
+-----
+* [Feature] Replace sidemenu scrollbars with Mac-like ones
+
+
 0.0.8
 -----
 * Change license to GPLv2
