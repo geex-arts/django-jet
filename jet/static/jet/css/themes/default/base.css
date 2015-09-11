@@ -729,28 +729,6 @@ a:hover {
       font-size: 13px; }
       .table tbody tr th.action-checkbox, #changelist table tbody tr th.action-checkbox, table#change-history tbody tr th.action-checkbox, .table tbody tr td.action-checkbox, #changelist table tbody tr td.action-checkbox, table#change-history tbody tr td.action-checkbox {
         text-align: center; }
-      .table tbody tr th img[src$="admin/img/icon-yes.gif"], #changelist table tbody tr th img[src$="admin/img/icon-yes.gif"], table#change-history tbody tr th img[src$="admin/img/icon-yes.gif"], .table tbody tr th img[src$="admin/img/icon-no.gif"], #changelist table tbody tr th img[src$="admin/img/icon-no.gif"], table#change-history tbody tr th img[src$="admin/img/icon-no.gif"], .table tbody tr th img[src$="admin/img/icon-unknown.gif"], #changelist table tbody tr th img[src$="admin/img/icon-unknown.gif"], table#change-history tbody tr th img[src$="admin/img/icon-unknown.gif"], .table tbody tr td img[src$="admin/img/icon-yes.gif"], #changelist table tbody tr td img[src$="admin/img/icon-yes.gif"], table#change-history tbody tr td img[src$="admin/img/icon-yes.gif"], .table tbody tr td img[src$="admin/img/icon-no.gif"], #changelist table tbody tr td img[src$="admin/img/icon-no.gif"], table#change-history tbody tr td img[src$="admin/img/icon-no.gif"], .table tbody tr td img[src$="admin/img/icon-unknown.gif"], #changelist table tbody tr td img[src$="admin/img/icon-unknown.gif"], table#change-history tbody tr td img[src$="admin/img/icon-unknown.gif"] {
-        font-family: 'jet-icons';
-        speak: none;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        line-height: 1;
-        /* Better Font Rendering =========== */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        display: inline-block;
-        content: "";
-        font-weight: bold; }
-      .table tbody tr th img[src$="admin/img/icon-yes.gif"]:before, #changelist table tbody tr th img[src$="admin/img/icon-yes.gif"]:before, table#change-history tbody tr th img[src$="admin/img/icon-yes.gif"]:before, .table tbody tr td img[src$="admin/img/icon-yes.gif"]:before, #changelist table tbody tr td img[src$="admin/img/icon-yes.gif"]:before, table#change-history tbody tr td img[src$="admin/img/icon-yes.gif"]:before {
-        content: "";
-        color: #8ecb8e; }
-      .table tbody tr th img[src$="admin/img/icon-no.gif"]:before, #changelist table tbody tr th img[src$="admin/img/icon-no.gif"]:before, table#change-history tbody tr th img[src$="admin/img/icon-no.gif"]:before, .table tbody tr td img[src$="admin/img/icon-no.gif"]:before, #changelist table tbody tr td img[src$="admin/img/icon-no.gif"]:before, table#change-history tbody tr td img[src$="admin/img/icon-no.gif"]:before {
-        content: "";
-        color: #dba4a4; }
-      .table tbody tr th img[src$="admin/img/icon-unknown.gif"]:before, #changelist table tbody tr th img[src$="admin/img/icon-unknown.gif"]:before, table#change-history tbody tr th img[src$="admin/img/icon-unknown.gif"]:before, .table tbody tr td img[src$="admin/img/icon-unknown.gif"]:before, #changelist table tbody tr td img[src$="admin/img/icon-unknown.gif"]:before, table#change-history tbody tr td img[src$="admin/img/icon-unknown.gif"]:before {
-        content: ""; }
   .table tbody tr.selected, #changelist table tbody tr.selected, table#change-history tbody tr.selected {
     border-color: #e5e2a5; }
     .table tbody tr.selected:last-child th:first-child, #changelist table tbody tr.selected:last-child th:first-child, table#change-history tbody tr.selected:last-child th:first-child, .table tbody tr.selected:last-child td:first-child, #changelist table tbody tr.selected:last-child td:first-child, table#change-history tbody tr.selected:last-child td:first-child {
@@ -1394,8 +1372,9 @@ a:hover {
   .sidebar-menu {
     margin-bottom: 32px !important; }
     .sidebar-menu-wrapper {
-      overflow-y: auto;
-      height: 100%; }
+      overflow: hidden;
+      height: 100%;
+      position: relative; }
     .sidebar-menu-item {
       padding: 20px 24px;
       border-bottom: 1px solid #2b3647; }
@@ -1458,10 +1437,17 @@ a:hover {
       .sidebar-menu-item-action:hover {
         color: #639af5;
         background-color: #2b3647; }
-      .sidebar-menu-item-list:not(:empty) {
+      .sidebar-menu-item-title + .sidebar-menu-item-list:not(:empty) {
         margin-top: 10px !important; }
       .sidebar-menu-item-list-item.empty {
         display: none; }
+      .sidebar-menu-item-list-item-icon {
+        font-size: 18px;
+        vertical-align: middle;
+        margin-right: 6px;
+        color: #6f7e95; }
+      .sidebar-menu-item-list-item.compact .sidebar-menu-item-list-item-icon {
+        font-size: 16px; }
       .sidebar-menu-item-list-item-link, .sidebar-menu-item-list-item-link:visited, .sidebar-menu-item-list-item-link:hover {
         display: block;
         color: #c0cad8;
@@ -1513,6 +1499,12 @@ a:hover {
         font-size: 16px;
         font-weight: bold !important;
         margin-left: 4px; }
+      .sidebar-menu-item-list.compact .sidebar-menu-item-list-item-link, .sidebar-menu-item-list.compact .sidebar-menu-item-list-item-link:visited, .sidebar-menu-item-list.compact .sidebar-menu-item-list-item-link:hover {
+        font-size: 11px;
+        padding: 6px 12px 6px 24px;
+        text-transform: uppercase; }
+      .sidebar-menu-item-list.compact .sidebar-menu-item-list-item-link.padding-icon {
+        padding-left: 49px; }
   .sidebar-popup {
     position: absolute;
     top: 0;
@@ -2294,6 +2286,10 @@ a:hover {
 .button.button-background, input.button-background[type="submit"], input.button-background[type="button"] {
   background-color: #fff;
   color: #6f7e95; }
+.button.button-transparent, input.button-transparent[type="submit"], input.button-transparent[type="button"] {
+  background-color: transparent;
+  color: #6f7e95;
+  padding: 0 10px; }
 .button:hover, input[type="submit"]:hover, input[type="button"]:hover {
   background-color: #639af5;
   color: #fff;
@@ -2985,7 +2981,9 @@ input[type=checkbox] {
   #changelist .changelist-filter * {
     vertical-align: top; }
   #changelist .changelist-filter-submit-block {
-    white-space: nowrap; }
+    white-space: nowrap;
+    line-height: 32px;
+    display: inline-block; }
 #changelist .results {
   overflow-x: auto; }
 #changelist table {
@@ -4684,6 +4682,32 @@ ul.object-tools {
   100% {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
+img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-unknown.gif"] {
+  font-family: 'jet-icons';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: inline-block;
+  content: "";
+  font-weight: bold; }
+
+img[src$="admin/img/icon-yes.gif"]:before {
+  content: "";
+  color: #8ecb8e; }
+
+img[src$="admin/img/icon-no.gif"]:before {
+  content: "";
+  color: #dba4a4; }
+
+img[src$="admin/img/icon-unknown.gif"]:before {
+  content: ""; }
+
 /*
  * General
  */
