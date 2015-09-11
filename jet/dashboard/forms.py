@@ -130,3 +130,31 @@ class RemoveDashboardModuleForm(forms.ModelForm):
     def save(self, commit=True):
         if commit:
             self.instance.delete()
+
+
+class ResetDashboardForm(forms.Form):
+    app_label = forms.CharField(required=False)
+
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super(ResetDashboardForm, self).__init__(*args, **kwargs)
+
+    class Meta:
+        model = UserDashboardModule
+        fields = []
+
+    def clean(self):
+        data = super(ResetDashboardForm, self).clean()
+        data['app_label'] = data['app_label'] if data['app_label'] else None
+
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
+
+        return data
+
+    def save(self, commit=True):
+        if commit:
+            UserDashboardModule.objects.filter(
+                user=self.request.user.pk,
+                app_label=self.cleaned_data['app_label']
+            ).delete()

@@ -18,6 +18,14 @@
         </select><a href="#" class="button button-secondary add-dashboard-link" title="{% trans "Add" %}"><span class="icon-add"></span></a>
         <input type="hidden" name="app_label" value="{% if app_label %}{{ app_label }}{% endif %}">
         <input type="hidden" name="type" value="">
+        <a href="#" class="button button-transparent reset-dashboard-link" title="{% trans "Reset widgets" %}"><span class="icon-reset"></span></a>
     </form>
+    <form action="{% url "jet-dashboard:reset_dashboard" %}" method="POST" id="reset-dashboard-form">
+        {% csrf_token %}
+        <input type="hidden" name="app_label" value="{% if app_label %}{{ app_label }}{% endif %}">
+    </form>
+    <div class="dialog-confirm" id="reset-dashboard-dialog" title="{% trans "Reset widgets" %}">
+        <p>{% trans "Are you sure want to reset widgets?" %}</p>
+    </div>
 </div>
 

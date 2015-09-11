@@ -1,10 +1,10 @@
 @font-face {
 	font-family: 'jet-icons';
-	src:url('fonts/jet-icons.eot?-7wlpt4');
-	src:url('fonts/jet-icons.eot?#iefix-7wlpt4') format('embedded-opentype'),
-		url('fonts/jet-icons.ttf?-7wlpt4') format('truetype'),
-		url('fonts/jet-icons.woff?-7wlpt4') format('woff'),
-		url('fonts/jet-icons.svg?-7wlpt4#jet-icons') format('svg');
+	src:url('fonts/jet-icons.eot?-lem1jo');
+	src:url('fonts/jet-icons.eot?#iefix-lem1jo') format('embedded-opentype'),
+		url('fonts/jet-icons.ttf?-lem1jo') format('truetype'),
+		url('fonts/jet-icons.woff?-lem1jo') format('woff'),
+		url('fonts/jet-icons.svg?-lem1jo#jet-icons') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -23,6 +23,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-reset:before {
+	content: "\e61e";
+}
 .icon-search:before {
 	content: "\e61d";
 }

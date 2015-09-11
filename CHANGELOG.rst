@@ -4,6 +4,7 @@ Changelog
 0.0.9
 -----
 * [Feature] Replace sidemenu scrollbars with Mac-like ones
+* [Feature] Add dashboard reset button
 * [Fix] Fixed filter submit block text alignment
 * [Fix] Made boolean field icon style global
 

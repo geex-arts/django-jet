@@ -62,6 +62,12 @@
     color: $background-button-text-color;
   }
 
+  &.button-transparent {
+    background-color: transparent;
+    color: $text-color;
+    padding: 0 10px;
+  }
+
   &:hover {
     background-color: $button-hover-background-color;
     color: $button-hover-text-color;
