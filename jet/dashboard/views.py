@@ -1,7 +1,6 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.forms.formsets import formset_factory
-from django.shortcuts import redirect
 from django.views.decorators.http import require_POST, require_GET
 from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModuleForm, \
     UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ResetDashboardForm
