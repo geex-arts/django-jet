@@ -8,6 +8,7 @@ Changelog
 * [Feature] Updated sidebar links ui
 * [Fix] Fixed filter submit block text alignment
 * [Fix] Made boolean field icon style global
+* [Fix] Fixed metrics requests timezone to be TIME_ZONE from settings
 
 
 0.0.8
