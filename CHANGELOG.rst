@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.0.9
+-----
+* [Fix] Fixed filter submit block text alignment
+
+
 0.0.8
 -----
 * Change license to GPLv2
