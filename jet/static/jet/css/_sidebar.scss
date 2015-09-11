@@ -8,8 +8,9 @@
     margin-bottom: 32px !important;
 
     &-wrapper {
-      overflow-y: auto;
+      overflow: hidden;
       height: 100%;
+      position: relative;
     }
 
     &-item {
