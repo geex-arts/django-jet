@@ -3,6 +3,7 @@ Changelog
 
 0.0.9
 -----
+* [Feature] Replace sidemenu scrollbars with Mac-like ones
 * [Fix] Fixed filter submit block text alignment
 
 

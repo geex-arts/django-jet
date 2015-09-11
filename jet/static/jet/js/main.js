@@ -864,6 +864,10 @@
             }
         };
 
+        var initScrollbars = function() {
+            $('.sidebar-menu-wrapper').perfectScrollbar();
+        };
+
         initjQueryCaseInsensitiveSelector();
         initjQuerySlideFadeToggle();
         initFilters();
@@ -878,5 +882,6 @@
         initTooltips();
         initDashboard();
         initUnsavedChangesWarning();
+        initScrollbars();
     });
 })(jet.jQuery);
