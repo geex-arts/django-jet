@@ -833,6 +833,44 @@
                     }
                 });
             });
+
+            $('.reset-dashboard-link').on('click', function(e) {
+                var buttons = {};
+                var resetDashboard = function () {
+                    var $form = $('#reset-dashboard-form');
+
+                    $.ajax({
+                        url: $form.attr('action'),
+                        method: $form.attr('method'),
+                        dataType: 'json',
+                        data: $form.serialize(),
+                        success: function (result) {
+                            if (result.error) {
+                                return;
+                            }
+
+                            location.reload();
+                        }
+                    });
+                };
+
+                buttons[django.gettext('Yes')] = function() {
+                    resetDashboard();
+                    $(this).dialog('close');
+                };
+
+                buttons[django.gettext('Cancel')] = function() {
+                    $(this).dialog('close');
+                };
+
+                $('#reset-dashboard-dialog').dialog({
+                    resizable: false,
+                    modal: true,
+                    buttons: buttons
+                });
+
+                e.preventDefault();
+            });
         };
 
         var initUnsavedChangesWarning = function() {
