@@ -83,8 +83,5 @@ Changeform + sidemenu
 License
 =======
 Django JET is licensed under a
-Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Public License
-
-See online version of this license here:
-https://creativecommons.org/licenses/by-nc-sa/4.0/
+The GNU General Public License, Version 2
 
