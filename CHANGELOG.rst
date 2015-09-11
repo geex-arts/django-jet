@@ -5,6 +5,7 @@ Changelog
 -----
 * [Feature] Replace sidemenu scrollbars with Mac-like ones
 * [Fix] Fixed filter submit block text alignment
+* [Fix] Made boolean field icon style global
 
 
 0.0.8
