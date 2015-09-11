@@ -110,10 +110,10 @@
             vertical-align: middle;
             margin-right: 6px;
             color: $sidebar-icon-color;
+          }
 
-            &.compact {
-              font-size: 16px;
-            }
+          &.compact &-icon {
+            font-size: 16px;
           }
 
           &-link {

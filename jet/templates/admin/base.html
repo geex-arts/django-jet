@@ -144,14 +144,14 @@
                                 {% if user.is_active and user.is_staff %}
                                     <li class="sidebar-menu-item-list-item">
                                         <a href="{% url 'admin:index' %}" class="sidebar-menu-item-list-item-link">
-                                            <span class="sidebar-menu-item-list-item-icon compact icon-data"></span> {% trans 'Home' %}
+                                            <span class="sidebar-menu-item-list-item-icon icon-data"></span> {% trans 'Home' %}
                                         </a>
                                     </li>
                                 {% endif %}
                                 {% if site_url %}
                                     <li class="sidebar-menu-item-list-item">
                                         <a href="{{ site_url }}" class="sidebar-menu-item-list-item-link">
-                                            <span class="sidebar-menu-item-list-item-icon compact icon-open-external"></span> {% trans 'View site' %}
+                                            <span class="sidebar-menu-item-list-item-icon icon-open-external"></span> {% trans 'View site' %}
                                         </a>
                                     </li>
                                 {% endif %}
@@ -159,7 +159,7 @@
                                 {% if docsroot %}
                                     <li class="sidebar-menu-item-list-item">
                                         <a href="{{ docsroot }}" class="sidebar-menu-item-list-item-link">
-                                            <span class="sidebar-menu-item-list-item-icon compact icon-book"></span> {% trans 'Documentation' %}
+                                            <span class="sidebar-menu-item-list-item-icon icon-book"></span> {% trans 'Documentation' %}
                                         </a>
                                     </li>
                                 {% endif %}
