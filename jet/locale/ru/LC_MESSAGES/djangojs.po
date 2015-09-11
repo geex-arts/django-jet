@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-07 13:32+0000\n"
+"POT-Creation-Date: 2015-09-11 12:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,36 +15,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: static/jet/js/main.js:266
+#: static/jet/js/main.js:266 static/jet/js/main.min.js:1
 msgid "Add"
 msgstr "Добавить"
 
 #: static/jet/js/main.js:271 static/jet/js/main.js:315
-#: static/jet/js/main.js:721
+#: static/jet/js/main.js:766 static/jet/js/main.js:862
+#: static/jet/js/main.min.js:1 static/jet/js/main.min.js:2
+#: static/jet/js/main.min.js:3
 msgid "Cancel"
 msgstr "Отмена"
 
-#: static/jet/js/main.js:310 static/jet/js/main.js:716
+#: static/jet/js/main.js:310 static/jet/js/main.js:761
+#: static/jet/js/main.min.js:1 static/jet/js/main.min.js:2
 msgid "Delete"
 msgstr "Удалить"
 
-#: static/jet/js/main.js:336
+#: static/jet/js/main.js:336 static/jet/js/main.min.js:1
 msgid "Hide applications"
 msgstr "Скрыть приложения"
 
-#: static/jet/js/main.js:338
+#: static/jet/js/main.js:338 static/jet/js/main.min.js:1
 msgid "Show hidden"
 msgstr "Показать скрытые"
 
-#: static/jet/js/main.js:792
+#: static/jet/js/main.js:857 static/jet/js/main.min.js:3
+msgid "Yes"
+msgstr "Да"
+
+#: static/jet/js/main.js:884 static/jet/js/main.min.js:3
 msgid "Warning: you have unsaved changes"
 msgstr "Внимание: у вас есть несохраненные изменения"
 
-#: static/jet/js/select2.jet.js:108
+#: static/jet/js/select2.jet.js:108 static/jet/js/select2.jet.min.js:1
 msgid "select all"
 msgstr "выбрать все"
 
-#: static/jet/js/select2.jet.js:111
+#: static/jet/js/select2.jet.js:111 static/jet/js/select2.jet.min.js:1
 msgid "deselect all"
 msgstr "убрать все"
 
