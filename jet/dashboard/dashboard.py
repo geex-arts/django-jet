@@ -31,7 +31,6 @@ class Dashboard(object):
 
     def set_context(self, context):
         self.context = context
-        self.update_app_label()
         self.init_with_context(context)
         self.load_modules()
 
@@ -44,9 +43,6 @@ class Dashboard(object):
         module = getattr(package, module_name)
 
         return module
-
-    def update_app_label(self):
-        pass
 
     def create_initial_module_models(self, user):
         module_models = []
@@ -135,10 +131,6 @@ class Dashboard(object):
 
 
 class AppIndexDashboard(Dashboard):
-    def update_app_label(self):
-        resolver = resolve(self.context['request'].path)
-        self.app_label = resolver.kwargs.get('app_label')
-
     def get_app_content_types(self):
         return self.app_label + '.*',
 
