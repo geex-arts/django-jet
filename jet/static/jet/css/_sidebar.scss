@@ -8,8 +8,9 @@
     margin-bottom: 32px !important;
 
     &-wrapper {
-      overflow-y: auto;
+      overflow: hidden;
       height: 100%;
+      position: relative;
     }
 
     &-item {
@@ -95,13 +96,24 @@
       &-list {
         @extend .clear-list;
 
-        &:not(:empty) {
+        .sidebar-menu-item-title + &:not(:empty) {
           margin-top: 10px !important;
         }
 
         &-item {
           &.empty {
             display: none;
+          }
+
+          &-icon {
+            font-size: 18px;
+            vertical-align: middle;
+            margin-right: 6px;
+            color: $sidebar-icon-color;
+          }
+
+          &.compact &-icon {
+            font-size: 16px;
           }
 
           &-link {
@@ -170,6 +182,18 @@
             font-size: 16px;
             font-weight: bold !important;
             margin-left: 4px;
+          }
+        }
+
+        &.compact &-item-link {
+          &, &:visited, &:hover {
+            font-size: 11px;
+            padding: 6px 12px 6px 24px;
+            text-transform: uppercase;
+          }
+
+          &.padding-icon {
+            padding-left: 49px;
           }
         }
       }

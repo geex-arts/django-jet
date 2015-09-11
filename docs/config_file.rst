@@ -34,8 +34,8 @@ to start using your own theme.
 JET_INDEX_DASHBOARD
 -------------------
 
-Sets which dashboard class will be used for rending admin index dashboard. Allows you to create
-your own dashboard with custom modules with pre-installed layout.
+Sets which dashboard class will be used for rendering admin index dashboard. Allows you to create
+your own dashboard with custom modules and pre-installed layout.
 
 .. code:: python
 

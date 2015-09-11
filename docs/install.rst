@@ -2,6 +2,10 @@
 Installation
 ============
 
+.. note:: After following this instruction Django JET dashboard won't be active (as it is located into
+          a separate application). If you want to make it work, you will have to enable dashboard application
+          by following :doc:`install_dashboard` steps too.
+
 * Download and install latest version of Django JET:
 
 .. code:: python
@@ -18,6 +22,7 @@ Installation
         ...
         'jet',
         'django.contrib.admin',
+        ...
     )
 
 * Make sure 'django.core.context_processors.request' context processor is enabled in settings.py:

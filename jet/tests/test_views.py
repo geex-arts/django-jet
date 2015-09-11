@@ -165,6 +165,22 @@ class ViewsTestCase(TestCase):
         module = UserDashboardModule.objects.get(pk=response['id'])
         self.assertNotEqual(module, None)
 
+    def test_add_user_app_dashboard_module_view(self):
+        app_label = 'auth'
+        response = self.admin.post(reverse('jet-dashboard:add_user_dashboard_module'), {
+            'app_label': app_label,
+            'type': 'available_children',
+            'module': 0
+        })
+
+        self.assertEqual(response.status_code, 200)
+        response = json.loads(response.content.decode())
+        self.assertFalse(response['error'])
+        self.assertNotEqual(response['id'], None)
+        module = UserDashboardModule.objects.get(pk=response['id'])
+        self.assertNotEqual(module, None)
+        self.assertEqual(module.app_label, app_label)
+
     def test_update_dashboard_module_collapse_view(self):
         module = UserDashboardModule.objects.create(
             title='',

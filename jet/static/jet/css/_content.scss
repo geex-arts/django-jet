@@ -109,3 +109,23 @@ ul.object-tools {
 @-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
 @-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-unknown.gif"] {
+  @include font-icon;
+  content: "";
+  font-weight: bold;
+}
+
+img[src$="admin/img/icon-yes.gif"]:before {
+  content: $icon-tick;
+  color: $success-text-color;
+}
+
+img[src$="admin/img/icon-no.gif"]:before {
+  content: $icon-cross;
+  color: $warning-text-color;
+}
+
+img[src$="admin/img/icon-unknown.gif"]:before {
+  content: $icon-question;
+}

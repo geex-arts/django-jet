@@ -1,10 +1,9 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.forms.formsets import formset_factory
-from django.shortcuts import redirect
 from django.views.decorators.http import require_POST, require_GET
 from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModuleForm, \
-    UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm
+    UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ResetDashboardForm
 from jet.dashboard.models import UserDashboardModule
 from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin
 from django.views.generic import UpdateView
@@ -214,10 +213,14 @@ def load_dashboard_module_view(request, pk):
     return JsonResponse(result)
 
 
-def reset_dashboard_view(request, app_label=None):
-    UserDashboardModule.objects.filter(user=request.user.pk, app_label=app_label).delete()
-    if app_label:
-        url = reverse('admin:app_list', kwargs={'app_label': app_label})
+@require_POST
+def reset_dashboard_view(request):
+    result = {'error': False}
+    form = ResetDashboardForm(request, request.POST)
+
+    if form.is_valid():
+        form.save()
     else:
-        url = reverse('admin:index')
-    return redirect(url)
+        result['error'] = True
+
+    return JsonResponse(result)
