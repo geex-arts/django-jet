@@ -96,7 +96,7 @@
       &-list {
         @extend .clear-list;
 
-        &:not(:empty) {
+        .sidebar-menu-item-title + &:not(:empty) {
           margin-top: 10px !important;
         }
 
