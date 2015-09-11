@@ -282,8 +282,8 @@ class GoogleAnalyticsBase(DashboardModule):
 
     def api_ga(self, group=None):
         if self.counter_attached():
-            date1 = datetime.datetime.utcnow() - datetime.timedelta(days=self.period)
-            date2 = datetime.datetime.utcnow()
+            date1 = datetime.datetime.now() - datetime.timedelta(days=self.period)
+            date2 = datetime.datetime.now()
 
             try:
                 client = GoogleAnalyticsClient(self.storage)

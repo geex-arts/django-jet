@@ -224,8 +224,8 @@ class YandexMetrikaBase(DashboardModule):
 
     def api_stat_traffic_summary(self, group=None):
         if self.counter_attached():
-            date1 = datetime.datetime.utcnow() - datetime.timedelta(days=self.period)
-            date2 = datetime.datetime.utcnow()
+            date1 = datetime.datetime.now() - datetime.timedelta(days=self.period)
+            date2 = datetime.datetime.now()
 
             client = YandexMetrikaClient(self.access_token)
             result, exception = client.api_stat_traffic_summary(self.counter, date1, date2, group)
