@@ -105,6 +105,17 @@
             display: none;
           }
 
+          &-icon {
+            font-size: 18px;
+            vertical-align: middle;
+            margin-right: 6px;
+            color: $sidebar-icon-color;
+
+            &.compact {
+              font-size: 16px;
+            }
+          }
+
           &-link {
             &, &:visited, &:hover {
               display: block;
@@ -171,6 +182,18 @@
             font-size: 16px;
             font-weight: bold !important;
             margin-left: 4px;
+          }
+        }
+
+        &.compact &-item-link {
+          &, &:visited, &:hover {
+            font-size: 11px;
+            padding: 6px 12px 6px 24px;
+            text-transform: uppercase;
+          }
+
+          &.padding-icon {
+            padding-left: 49px;
           }
         }
       }

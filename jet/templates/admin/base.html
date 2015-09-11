@@ -139,16 +139,34 @@
                         {% block branding %}{% endblock %}
                     </div>
                     <ul class="sidebar-menu">
-                        {% if user.is_active and user.is_staff %}
-                            <li class="sidebar-menu-item">
-                                <span class="sidebar-menu-item-icon icon-data"></span> <a href="{% url 'admin:index' %}" class="sidebar-menu-item-link">{% trans 'Home' %}</a>
-                            </li>
-                        {% endif %}
-                        {% if site_url %}
-                            <li class="sidebar-menu-item">
-                                <span class="sidebar-menu-item-icon icon-open-external"></span> <a href="{{ site_url }}" class="sidebar-menu-item-link">{% trans 'View site' %}</a>
-                            </li>
-                        {% endif %}
+                        <li class="sidebar-menu-item no-horizontal-padding">
+                            <ul class="sidebar-menu-item-list compact">
+                                {% if user.is_active and user.is_staff %}
+                                    <li class="sidebar-menu-item-list-item">
+                                        <a href="{% url 'admin:index' %}" class="sidebar-menu-item-list-item-link">
+                                            <span class="sidebar-menu-item-list-item-icon compact icon-data"></span> {% trans 'Home' %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% if site_url %}
+                                    <li class="sidebar-menu-item-list-item">
+                                        <a href="{{ site_url }}" class="sidebar-menu-item-list-item-link">
+                                            <span class="sidebar-menu-item-list-item-icon compact icon-open-external"></span> {% trans 'View site' %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% url 'django-admindocs-docroot' as docsroot %}
+                                {% if docsroot %}
+                                    <li class="sidebar-menu-item-list-item">
+                                        <a href="{{ docsroot }}" class="sidebar-menu-item-list-item-link">
+                                            <span class="sidebar-menu-item-list-item-icon compact icon-book"></span> {% trans 'Documentation' %}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {% block nav-global %}{% endblock %}
+                            </ul>
+                        </li>
+
                         {% if user.is_active and user.is_staff %}
                             {% get_menu as app_list %}
                             {% if app_list.apps or app_list.pinned_apps %}
@@ -223,13 +241,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            {% url 'django-admindocs-docroot' as docsroot %}
-                            {% if docsroot %}
-                                <li class="sidebar-menu-item">
-                                    <span class="sidebar-menu-item-icon icon-book"></span> <a href="{{ docsroot }}" class="sidebar-menu-item-link">{% trans 'Documentation' %}</a>
-                                </li>
-                            {% endif %}
-                            {% block nav-global %}{% endblock %}
                         {% endif %}
                     </ul>
                 </div>
