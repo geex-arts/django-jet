@@ -50,9 +50,6 @@ License
 Django JET is licensed under a
 The GNU General Public License, Version 2
 
-See online version of this license here:
-https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 Installation
 ============
 
