@@ -29,6 +29,12 @@ Dashboard installation
         ...
     )
 
+* **For Google Analytics widgets only** install python package:
+
+.. code::
+
+    pip install google-api-python-client
+
 * Create database tables:
 
 .. code:: python

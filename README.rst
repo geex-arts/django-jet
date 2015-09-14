@@ -50,9 +50,6 @@ License
 Django JET is licensed under a
 The GNU General Public License, Version 2
 
-See online version of this license here:
-https://creativecommons.org/licenses/by-nc-sa/4.0/
-
 Installation
 ============
 
@@ -140,6 +137,12 @@ Dashboard installation
         url(r'^admin/', include(admin.site.urls)),
         ...
     )
+
+* **For Google Analytics widgets only** install python package:
+
+.. code::
+
+    pip install google-api-python-client
 
 * Create database tables:
 
