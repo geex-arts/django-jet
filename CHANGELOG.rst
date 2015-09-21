@@ -1,6 +1,11 @@
 Changelog
 =========
 
+0.1.0
+-----
+* [Fix] Issue-9: Fixed dashboard application templates not being loaded because of bad manifest (thanks to blueicefield for the report)
+
+
 0.0.9
 -----
 * [Feature] Replace sidemenu scrollbars with Mac-like ones
