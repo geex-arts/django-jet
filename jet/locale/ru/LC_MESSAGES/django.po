@@ -595,7 +595,7 @@ msgstr ""
 
 #: templates/admin/base.html:149
 msgid "View site"
-msgstr ""
+msgstr "Открыть сайт"
 
 #: templates/admin/base.html:189 templates/admin/base.html.py:206
 msgid "Add bookmark"
@@ -690,12 +690,12 @@ msgstr ""
 #: templates/admin/delete_confirmation.html:42
 #: templates/admin/delete_selected_confirmation.html:44
 msgid "No, take me back"
-msgstr ""
+msgstr "Нет, отменить и вернуться к выбору"
 
 #: templates/admin/delete_confirmation.html:56
 #: templates/admin/delete_selected_confirmation.html:59
 msgid "Objects"
-msgstr ""
+msgstr "Объекты"
 
 #: templates/admin/delete_selected_confirmation.html:11
 msgid "Delete multiple objects"
