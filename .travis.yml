@@ -15,6 +15,7 @@ before_install:
 install:
   - pip install -q Django==$DJANGO --use-mirrors
   - pip install . --use-mirrors
+  - pip install coverage==4.0b3
   - pip install coveralls==1.0b1
 script:
   - coverage run --source=jet --omit=*/migrations/*,*/south_migrations/*,*/tests/* manage.py test jet
