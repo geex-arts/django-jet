@@ -46,7 +46,7 @@ class YandexMetrikaClient:
 
         try:
             f = request.urlopen(req)
-            result = f.read().decode()
+            result = f.read().decode('utf8')
             result = json.loads(result)
         except URLError as e:
             return None, e
