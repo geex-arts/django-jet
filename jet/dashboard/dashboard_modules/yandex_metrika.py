@@ -10,6 +10,7 @@ from django.utils.safestring import mark_safe
 from jet.dashboard.modules import DashboardModule
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
+from django.utils.encoding import force_text
 
 try:
     from urllib import request
@@ -98,12 +99,12 @@ class AccessTokenWidget(Widget):
         if value and len(value) > 0:
             link = '<a href="%s">%s</a>' % (
                 reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk}),
-                _('Revoke access')
+                force_text(_('Revoke access'))
             )
         else:
             link = '<a href="%s">%s</a>' % (
                 reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk}),
-                _('Grant access')
+                force_text(_('Grant access'))
             )
 
         if value is None:
@@ -130,10 +131,10 @@ class YandexMetrikaSettingsForm(forms.Form):
     def set_counter_choices(self, module):
         counters = module.counters()
         if counters is not None:
-            self.fields['counter'].choices = (('', '-- %s --' % _('none')),)
+            self.fields['counter'].choices = (('', '-- %s --' % force_text(_('none'))),)
             self.fields['counter'].choices.extend(map(lambda x: (x['id'], x['site']), counters))
         else:
-            label = _('grant access first') if module.access_token is None else _('counters loading failed')
+            label = force_text(_('grant access first')) if module.access_token is None else force_text(_('counters loading failed'))
             self.fields['counter'].choices = (('', '-- %s -- ' % label),)
 
 
