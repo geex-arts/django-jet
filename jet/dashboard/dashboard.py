@@ -1,5 +1,5 @@
 from importlib import import_module
-from django.core.urlresolvers import resolve, reverse
+from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from jet.dashboard import modules
 from jet.dashboard.models import UserDashboardModule
