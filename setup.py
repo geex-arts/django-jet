@@ -5,6 +5,15 @@ from setuptools import setup, find_packages
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
+def get_install_requires():
+    install_requires = []
+    try:
+        import importlib
+    except ImportError:
+        install_requires.append('importlib')
+    return install_requires
+
 setup(
     name='django-jet',
     version=__import__('jet').VERSION,
@@ -34,5 +43,6 @@ setup(
         'Topic :: Software Development :: User Interfaces',
     ],
     zip_safe=False,
-    include_package_data=True
+    include_package_data=True,
+    install_requires=get_install_requires()
 )

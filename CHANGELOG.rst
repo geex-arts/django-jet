@@ -1,6 +1,16 @@
 Changelog
 =========
 
+0.1.0
+-----
+* [Fix] Issue-9: Fixed dashboard application templates not being loaded because of bad manifest (thanks to blueicefield for the report)
+* [Fix] Added missing localization for django 1.6
+* [Fix] Added importlib requirement for python 2.6
+* [Fix] Added python 2.6 test
+* [Fix] Fixed coveralls 1.0 failing for python 3.2
+* [Improvement] Expand non dashboard sidebar width
+
+
 0.0.9
 -----
 * [Feature] Replace sidemenu scrollbars with Mac-like ones
