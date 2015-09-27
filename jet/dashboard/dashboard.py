@@ -10,8 +10,22 @@ from jet.utils import get_admin_site_name
 
 
 class Dashboard(object):
+    """
+    Base dashboard class. All custom dashboards should inherit it.
+    """
+
+    #: Number of columns in which widgets can be placed
     columns = 2
+
+    #: Dashboard Modules (widgets) that dashboard is filled with, when the user open it for the first time
+    #:
+    #: List of dashboard module **instances**
     children = None
+
+    #: Dashboard Modules (widgets) that user can add to dashboard at any time
+    # (not created when the user open dashboard for the first time)
+    #:
+    #: List of dashboard module **classes**
     available_children = None
     app_label = None
     context = None
@@ -35,6 +49,48 @@ class Dashboard(object):
         self.load_modules()
 
     def init_with_context(self, context):
+        """
+        Override this method to fill your custom **Dashboard** class with widgets.
+        You should add your widgets to ``children`` and ``available_children`` attributes.
+
+        Usage example:
+
+        .. code-block:: python
+
+            from django.utils.translation import ugettext_lazy as _
+            from jet.dashboard import modules
+            from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+            class CustomIndexDashboard(Dashboard):
+                columns = 3
+
+                def init_with_context(self, context):
+                    self.available_children.append(modules.LinkList)
+                    self.children.append(modules.LinkList(
+                        _('Support'),
+                        children=[
+                            {
+                                'title': _('Django documentation'),
+                                'url': 'http://docs.djangoproject.com/',
+                                'external': True,
+                            },
+                            {
+                                'title': _('Django "django-users" mailing list'),
+                                'url': 'http://groups.google.com/group/django-users',
+                                'external': True,
+                            },
+                            {
+                                'title': _('Django irc channel'),
+                                'url': 'irc://irc.freenode.net/django',
+                                'external': True,
+                            },
+                        ],
+                        column=0,
+                        order=0
+                    ))
+
+        """
         pass
 
     def load_module(self, module_fullname):

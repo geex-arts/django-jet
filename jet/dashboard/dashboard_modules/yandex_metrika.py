@@ -241,8 +241,16 @@ class YandexMetrikaBase(DashboardModule):
 
 
 class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
+    """
+    Yandex Metrika widget that shows total number of visitors, visits and viewers for a particular period of time.
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Yandex Metrika visitors totals')
     template = 'jet.dashboard/modules/yandex_metrika_visitors_totals.html'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
@@ -261,10 +269,23 @@ class YandexMetrikaVisitorsTotals(YandexMetrikaBase):
 
 
 class YandexMetrikaVisitorsChart(YandexMetrikaBase):
+    """
+    Yandex Metrika widget that shows visitors/visits/viewer chart for a particular period of time.
+    Data is grouped by day, week or month
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Yandex Metrika visitors chart')
     template = 'jet.dashboard/modules/yandex_metrika_visitors_chart.html'
     style = 'overflow-x: auto;'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
+
+    #: What data should be shown. Possible values: ``visitors``, ``visits``, ``page_views``
     show = None
+
+    #: Sets grouping of data. Possible values: ``day``, ``week``, ``month``
     group = None
     settings_form = YandexMetrikaChartSettingsForm
 
@@ -300,8 +321,19 @@ class YandexMetrikaVisitorsChart(YandexMetrikaBase):
 
 
 class YandexMetrikaPeriodVisitors(YandexMetrikaBase):
+    """
+    Yandex Metrika widget that shows visitors, visits and viewers for a particular period of time.
+    Data is grouped by day, week or month
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Yandex Metrika period visitors')
     template = 'jet.dashboard/modules/yandex_metrika_period_visitors.html'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
+
+    #: Sets grouping of data. Possible values: ``day``, ``week``, ``month``
     group = None
     contrast = False
     settings_form = YandexMetrikaPeriodVisitorsSettingsForm

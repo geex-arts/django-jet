@@ -9,27 +9,50 @@ import datetime
 
 
 class DashboardModule(object):
+    """
+    Base dashboard module class. All dashboard modules (widgets) should inherit it.
+    """
+
+    #: Path to widget's template. There is no need to extend such templates from any base templates.
     template = 'jet.dashboard/module.html'
     enabled = True
     draggable = True
     collapsible = True
     deletable = True
     show_title = True
+
+    #: Default widget title that will be displayed for widget in the dashboard. User can change it later
+    #: for every widget.
     title = ''
     title_url = None
     css_classes = None
+
+    #: HTML content that will be displayed before widget content.
     pre_content = None
+
+    #: HTML content that will be displayed after widget content.
     post_content = None
     children = None
+
+    #: A ``django.forms.Form`` class which may contain custom widget settings. Not required.
     settings_form = None
+
+    #: A ``django.forms.Form`` class which may contain custom widget child settings, if it has any. Not required.
     child_form = None
     child_name = None
     child_name_plural = None
     settings = None
     column = None
     order = None
+
+    #: A boolean field which specify if widget should be rendered on dashboard page load or fetched
+    #: later via AJAX.
     ajax_load = False
+
+    #: A boolean field which makes widget ui color contrast.
     contrast = False
+
+    #: Optional style attributes which will be applied to widget content container.
     style = False
 
     class Media:
@@ -122,9 +145,69 @@ class LinkListSettingsForm(forms.Form):
 
 
 class LinkList(DashboardModule):
+    """
+    List of links widget.
+
+    Usage example:
+
+    .. code-block:: python
+
+        from django.utils.translation import ugettext_lazy as _
+        from jet.dashboard import modules
+        from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+        class CustomIndexDashboard(Dashboard):
+            columns = 3
+
+            def init_with_context(self, context):
+                self.available_children.append(modules.LinkList)
+                self.children.append(modules.LinkList(
+                    _('Support'),
+                    children=[
+                        {
+                            'title': _('Django documentation'),
+                            'url': 'http://docs.djangoproject.com/',
+                            'external': True,
+                        },
+                        {
+                            'title': _('Django "django-users" mailing list'),
+                            'url': 'http://groups.google.com/group/django-users',
+                            'external': True,
+                        },
+                        {
+                            'title': _('Django irc channel'),
+                            'url': 'irc://irc.freenode.net/django',
+                            'external': True,
+                        },
+                    ],
+                    column=0,
+                    order=0
+                ))
+
+    """
+
     title = _('Links')
     template = 'jet.dashboard/modules/link_list.html'
+
+    #: Specify widget layout.
+    #: Allowed values ``stacked`` and ``inline``.
     layout = 'stacked'
+
+    #: Links are contained in ``children`` attribute which you can pass as constructor parameter
+    #: to make your own preinstalled link lists.
+    #:
+    #: ``children`` is an array of dictinaries::
+    #:
+    #:     [
+    #:          {
+    #:              'title': _('Django documentation'),
+    #:              'url': 'http://docs.djangoproject.com/',
+    #:              'external': True,
+    #:          },
+    #:          ...
+    #:     ]
+    children = []
     settings_form = LinkListSettingsForm
     child_form = LinkListItemForm
     child_name = _('Link')
@@ -157,9 +240,40 @@ class LinkList(DashboardModule):
 
 
 class AppList(DashboardModule):
+    """
+    Shows applications and containing models links. For each model "created" and "change" links are displayed.
+
+    Usage example:
+
+    .. code-block:: python
+
+        from django.utils.translation import ugettext_lazy as _
+        from jet.dashboard import modules
+        from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+        class CustomIndexDashboard(Dashboard):
+            columns = 3
+
+            def init_with_context(self, context):
+                self.children.append(modules.AppList(
+                    _('Applications'),
+                    exclude=('auth.*',),
+                    column=0,
+                    order=0
+                ))
+
+    """
+
     title = _('Applications')
     template = 'jet.dashboard/modules/app_list.html'
+
+    #: Specify models which should be displayed. ``models`` is an array of string formatted as ``app_label.model``.
+    #: Also its possible to specify all application models with * sign (e.g. ``auth.*``).
     models = None
+
+    #: Specify models which should NOT be displayed. ``exclude`` is an array of string formatted as ``app_label.model``.
+    #: Also its possible to specify all application models with * sign (e.g. ``auth.*``).
     exclude = None
     hide_empty = True
 
@@ -198,9 +312,40 @@ class AppList(DashboardModule):
 
 
 class ModelList(DashboardModule):
+    """
+    Shows models links. For each model "created" and "change" links are displayed.
+
+    Usage example:
+
+    .. code-block:: python
+
+        from django.utils.translation import ugettext_lazy as _
+        from jet.dashboard import modules
+        from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+        class CustomIndexDashboard(Dashboard):
+            columns = 3
+
+            def init_with_context(self, context):
+                self.children.append(modules.ModelList(
+                    _('Models'),
+                    exclude=('auth.*',),
+                    column=0,
+                    order=0
+                ))
+
+    """
+
     title = _('Models')
     template = 'jet.dashboard/modules/model_list.html'
+
+    #: Specify models which should be displayed. ``models`` is an array of string formatted as ``app_label.model``.
+    #: Also its possible to specify all application models with * sign (e.g. ``auth.*``).
     models = None
+
+    #: Specify models which should NOT be displayed. ``exclude`` is an array of string formatted as ``app_label.model``.
+    #: Also its possible to specify all application models with * sign (e.g. ``auth.*``).
     exclude = None
     hide_empty = True
 
@@ -239,10 +384,46 @@ class RecentActionsSettingsForm(forms.Form):
 
 
 class RecentActions(DashboardModule):
+    """
+    Display list of most recent admin actions with following information:
+    entity name, type of action, author, date
+
+    Usage example:
+
+    .. code-block:: python
+
+        from django.utils.translation import ugettext_lazy as _
+        from jet.dashboard import modules
+        from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+        class CustomIndexDashboard(Dashboard):
+            columns = 3
+
+            def init_with_context(self, context):
+                self.children.append(modules.RecentActions(
+                    _('Recent Actions'),
+                    10,
+                    column=0,
+                    order=0
+                ))
+
+    """
+
     title = _('Recent Actions')
     template = 'jet.dashboard/modules/recent_actions.html'
+
+    #: Number if entries to be shown (may be changed by each user personally).
     limit = 10
+
+    #: Specify actions of which models should be displayed. ``include_list`` is an array of string
+    #: formatted as ``app_label.model``. Also its possible to specify all application models
+    #: with * sign (e.g. ``auth.*``).
     include_list = None
+
+    #: Specify actions of which models should NOT be displayed. ``exclude_list`` is an array of string
+    #: formatted as ``app_label.model``. Also its possible to specify all application models
+    #: with * sign (e.g. ``auth.*``).
     exclude_list = None
     settings_form = RecentActionsSettingsForm
     user = None
@@ -311,9 +492,40 @@ class FeedSettingsForm(forms.Form):
 
 
 class Feed(DashboardModule):
+    """
+    Display RSS Feed entries with following information:
+    entry title, date and link to the full version
+
+    Usage example:
+
+    .. code-block:: python
+
+        from django.utils.translation import ugettext_lazy as _
+        from jet.dashboard import modules
+        from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
+
+
+        class CustomIndexDashboard(Dashboard):
+            columns = 3
+
+            def init_with_context(self, context):
+                self.children.append(modules.Feed(
+                    _('Latest Django News'),
+                    feed_url='http://www.djangoproject.com/rss/weblog/',
+                    limit=5,
+                    column=0,
+                    order=0
+                ))
+
+    """
+
     title = _('RSS Feed')
     template = 'jet.dashboard/modules/feed.html'
+
+    #: URL of the RSS feed (may be changed by each user personally).
     feed_url = None
+
+    #: Number if entries to be shown (may be changed by each user personally).
     limit = None
     settings_form = FeedSettingsForm
     ajax_load = True

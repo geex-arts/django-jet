@@ -302,8 +302,16 @@ class GoogleAnalyticsBase(DashboardModule):
 
 
 class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
+    """
+    Google Analytics widget that shows total number of users, sessions and viewers for a particular period of time.
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Google Analytics visitors totals')
     template = 'jet.dashboard/modules/google_analytics_visitors_totals.html'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
 
     def __init__(self, title=None, period=None, **kwargs):
         kwargs.update({'period': period})
@@ -322,10 +330,23 @@ class GoogleAnalyticsVisitorsTotals(GoogleAnalyticsBase):
 
 
 class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
+    """
+    Google Analytics widget that shows users/sessions/viewer chart for a particular period of time.
+    Data is grouped by day, week or month
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Google Analytics visitors chart')
     template = 'jet.dashboard/modules/google_analytics_visitors_chart.html'
     style = 'overflow-x: auto;'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
+
+    #: What data should be shown. Possible values: ``ga:users``, ``ga:sessions``, ``ga:pageviews``
     show = None
+
+    #: Sets grouping of data. Possible values: ``day``, ``week``, ``month``
     group = None
     settings_form = GoogleAnalyticsChartSettingsForm
 
@@ -367,8 +388,19 @@ class GoogleAnalyticsVisitorsChart(GoogleAnalyticsBase):
 
 
 class GoogleAnalyticsPeriodVisitors(GoogleAnalyticsBase):
+    """
+    Google Analytics widget that shows users, sessions and viewers for a particular period of time.
+    Data is grouped by day, week or month
+    Period may be following: Today, Last week, Last month, Last quarter, Last year
+    """
+
     title = _('Google Analytics period visitors')
     template = 'jet.dashboard/modules/google_analytics_period_visitors.html'
+
+    #: Which period should be displayed. Allowed values - integer of days
+    period = None
+
+    #: Sets grouping of data. Possible values: ``day``, ``week``, ``month``
     group = None
     contrast = False
     settings_form = GoogleAnalyticsPeriodVisitorsSettingsForm
