@@ -7,7 +7,7 @@ def read(fname):
 
 
 def get_install_requires():
-    install_requires = []
+    install_requires = ['Django']
     try:
         import importlib
     except ImportError:
