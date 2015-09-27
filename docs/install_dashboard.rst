@@ -2,8 +2,9 @@
 Dashboard installation
 ======================
 
-.. note:: Dashboard is located into a separate application. So after a typical JET installation it won't be active.
-          To enable dashboard application follow these steps:
+.. note::
+    Dashboard is located into a separate application. So after a typical JET installation it won't be active.
+    To enable dashboard application follow these steps:
 
 * Add 'jet.dashboard' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'jet'):
 
@@ -49,3 +50,4 @@ Dashboard installation
 
         python manage.py collectstatic
 
+Dashboard installed! Learn about making your custom dashboard here :doc:`dashboard`.
