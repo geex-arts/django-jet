@@ -14,7 +14,8 @@ Possible built-in themes are:
 * default
 * green
 
-.. note:: More themes are incoming in future.
+.. note::
+    More themes are incoming in future.
 
 To change theme use parameter:
 
@@ -48,5 +49,5 @@ Same as **JET_INDEX_DASHBOARD**, but for application pages
 
 .. code:: python
 
-    JET_APP_INDEX_DASHBOARD = g'jet.dashboard.DefaultAppIndexDashboard'
+    JET_APP_INDEX_DASHBOARD = 'jet.dashboard.DefaultAppIndexDashboard'
 
