@@ -7,8 +7,10 @@ Django JET
 
 **Modern template for Django admin interface with improved functionality**
 
-Django JET is double licensed. Free for non-commercial use under the GPLv2 license.
-If you would like to use it in commercial project, please email at support@jet.geex-arts.com
+Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
+code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
+license (in this case please email at support@jet.geex-arts.com). The commercial license
+is designed for using Django JET in commercial products and applications without the provisions of the GPLv2.
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/logo.png
     :width: 500px
