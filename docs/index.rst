@@ -40,10 +40,13 @@ Dashboard
 
    dashboard
 
-Pricing
+License
 =======
 
-Free for non-commercial use. If you would like to use it in commercial project, please email at support@jet.geex-arts.com
+Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
+code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
+license (in this case please email at support@jet.geex-arts.com). The commercial license
+is designed for using Django JET in commercial products and applications without the provisions of the GPLv2.
 
 Resources
 =========
@@ -79,9 +82,4 @@ Changeform + sidemenu
     :alt: Screenshot #3
     :align: center
     :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
-
-License
-=======
-Django JET is licensed under a
-The GNU General Public License, Version 2
 
