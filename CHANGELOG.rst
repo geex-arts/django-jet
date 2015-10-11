@@ -4,6 +4,7 @@ Changelog
 0.1.1
 -----
 * [Fix] Issue-10: Fixed ability to display multiple admin form fields on the same line (thanks to blueicefield for the report)
+* [Fix] Fixed broken auth page layout for some translations
 
 
 0.1.0
