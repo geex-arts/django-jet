@@ -5,6 +5,7 @@ Changelog
 -----
 * [Fix] Issue-10: Fixed ability to display multiple admin form fields on the same line (thanks to blueicefield for the report)
 * [Fix] Fixed broken auth page layout for some translations
+* [Fix] Issue-11: Fixed setup.py open file in case utf-8 path (thanks to edvm for the report)
 
 
 0.1.0
