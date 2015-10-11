@@ -30,6 +30,7 @@
 
     .help {
       @extend .small;
+      clear: left;
       color: $dim-text-color;
       margin: 12px 0 0 160px;
     }
@@ -74,11 +75,8 @@
     }
 
     .field-box {
-      padding-top: 6px;
-
-      &:first-child {
-        padding-top: 0;
-      }
+      margin-right: 20px;
+      float: left;
     }
 
     .file-upload {
@@ -471,4 +469,8 @@
     font-weight: normal;
     font-size: 12px;
   }
+}
+
+.related-widget-wrapper {
+  float: left;
 }

@@ -1,9 +1,14 @@
 import os
-from setuptools import setup, find_packages 
+from setuptools import setup, find_packages
 
 
 def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+    path = os.path.join(os.path.dirname(__file__), fname)
+    try:
+        file = open(path, encoding='utf-8')
+    except TypeError:
+        file = open(path)
+    return file.read()
 
 
 def get_install_requires():

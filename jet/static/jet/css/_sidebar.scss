@@ -203,31 +203,25 @@
   &-popup {
     position: absolute;
     top: 0;
-    left: $sidebar-width;
     bottom: 0;
     width: $sidebar-width;
     color: $sidebar-popup-text-color;
     background-color: $sidebar-popup-background-color;
-    z-index: 3;
     overflow-y: auto;
 
     &-container {
       display: none;
-    }
-
-    &-item {
-      display: none;
-    }
-
-    &-background {
+      background-color: transparentize($sidebar-popup-overlay-color, 0.5);
       position: absolute;
       top: 0;
       left: $sidebar-width;
       bottom: 0;
       right: 0;
-      background-color: $sidebar-popup-overlay-color;
-      opacity: 0.5;
       z-index: 2;
+    }
+
+    &-item {
+      display: none;
     }
 
     &-title {

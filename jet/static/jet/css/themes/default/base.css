@@ -1508,26 +1508,22 @@ a:hover {
   .sidebar-popup {
     position: absolute;
     top: 0;
-    left: 250px;
     bottom: 0;
     width: 250px;
     color: #6f7e95;
     background-color: #ecf2f6;
-    z-index: 3;
     overflow-y: auto; }
     .sidebar-popup-container {
-      display: none; }
-    .sidebar-popup-item {
-      display: none; }
-    .sidebar-popup-background {
+      display: none;
+      background-color: rgba(0, 0, 0, 0.5);
       position: absolute;
       top: 0;
       left: 250px;
       bottom: 0;
       right: 0;
-      background-color: #000;
-      opacity: 0.5;
       z-index: 2; }
+    .sidebar-popup-item {
+      display: none; }
     .sidebar-popup-title {
       font-size: 12px;
       font-weight: bold;
@@ -3331,6 +3327,7 @@ table#change-history {
       float: none;
       display: inline; }
     .module .form-row .help {
+      clear: left;
       color: #d0dbe6;
       margin: 12px 0 0 160px; }
     .module .form-row .checkbox-row .help {
@@ -3365,9 +3362,8 @@ table#change-history {
       .module .form-row .add-another img {
         display: none; }
     .module .form-row .field-box {
-      padding-top: 6px; }
-      .module .form-row .field-box:first-child {
-        padding-top: 0; }
+      margin-right: 20px;
+      float: left; }
     .module .form-row .file-upload {
       background: #f6fafc;
       display: inline-block;
@@ -3605,6 +3601,9 @@ table#change-history {
   .related-lookup + strong {
     font-weight: normal;
     font-size: 12px; }
+
+.related-widget-wrapper {
+  float: left; }
 
 /*
  * General
@@ -4276,7 +4275,8 @@ table#change-history {
       margin-top: 20px; }
 
 .login-form .form-row {
-  padding: 6px 0; }
+  padding: 6px 0;
+  clear: both; }
   .login-form .form-row label {
     display: block;
     padding: 6px 10px 0 0;
