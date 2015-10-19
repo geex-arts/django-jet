@@ -194,14 +194,16 @@ def select2_lookups(field):
                             for initial_object in initial_objects]
                     )
 
-                field.field.widget.widget = SelectMultiple(attrs, choices=choices)
+                field.field.widget.widget = SelectMultiple(attrs)
+                field.field.choices = choices
             elif hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
                 if initial_value:
                     initial_object = model.objects.get(pk=initial_value)
                     attrs['data-object-id'] = initial_value
                     choices.append((initial_object.pk, get_model_instance_label(initial_object)))
 
-                field.field.widget.widget = Select(attrs, choices=choices)
+                field.field.widget.widget = Select(attrs)
+                field.field.choices = choices
 
     return field
 
