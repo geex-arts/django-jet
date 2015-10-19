@@ -2660,19 +2660,19 @@ input[type=checkbox] {
   border-radius: 6px;
   padding: 10px;
   background: #f0dada;
-  color: #dba4a4; }
+  color: #d49d9d; }
 .messagelist .info, .messagelist .debug {
   margin: 0 20px 10px 20px;
   border-radius: 6px;
   padding: 10px;
   background: #e8e8bd;
-  color: #bebe92; }
+  color: #b9b97f; }
 .messagelist .success {
   margin: 0 20px 10px 20px;
   border-radius: 6px;
   padding: 10px;
-  background: #c9eaca;
-  color: #8ecb8e; }
+  background: #c4ecc5;
+  color: #82b982; }
 
 /*
  * General
@@ -3904,7 +3904,7 @@ table#change-history {
 
 .delete-summary {
   background: #f0dada;
-  color: #dba4a4;
+  color: #d49d9d;
   border-radius: 4px;
   padding: 20px;
   margin-bottom: 20px; }
@@ -4699,11 +4699,11 @@ img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$=
 
 img[src$="admin/img/icon-yes.gif"]:before {
   content: "";
-  color: #8ecb8e; }
+  color: #82b982; }
 
 img[src$="admin/img/icon-no.gif"]:before {
   content: "";
-  color: #dba4a4; }
+  color: #d49d9d; }
 
 img[src$="admin/img/icon-unknown.gif"]:before {
   content: ""; }
