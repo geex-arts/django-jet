@@ -51,7 +51,7 @@ is designed for using Django JET in commercial products and applications without
 Resources
 =========
 
-* Home page: incoming
+* Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com

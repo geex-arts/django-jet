@@ -19,7 +19,7 @@ is designed for using Django JET in commercial products and applications without
     :alt: Screenshot #1
     :align: center
     
-* Home page: incoming
+* Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
 * PyPI: https://pypi.python.org/pypi/django-jet
