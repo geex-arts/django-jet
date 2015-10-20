@@ -3,6 +3,7 @@ from django import template
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
+from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
 from django.template import loader, Context
 from jet import settings
@@ -194,7 +195,10 @@ def select2_lookups(field):
                             for initial_object in initial_objects]
                     )
 
-                field.field.widget.widget = SelectMultiple(attrs)
+                if isinstance(field.field.widget, RelatedFieldWidgetWrapper):
+                    field.field.widget.widget = SelectMultiple(attrs)
+                else:
+                    field.field.widget = SelectMultiple(attrs)
                 field.field.choices = choices
             elif hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
                 if initial_value:
@@ -202,7 +206,10 @@ def select2_lookups(field):
                     attrs['data-object-id'] = initial_value
                     choices.append((initial_object.pk, get_model_instance_label(initial_object)))
 
-                field.field.widget.widget = Select(attrs)
+                if isinstance(field.field.widget, RelatedFieldWidgetWrapper):
+                    field.field.widget.widget = Select(attrs)
+                else:
+                    field.field.widget = Select(attrs)
                 field.field.choices = choices
 
     return field
