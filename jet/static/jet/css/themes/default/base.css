@@ -2301,7 +2301,7 @@ textarea {
   height: auto;
   line-height: normal;
   padding: 12px;
-  white-space: normal; }
+  white-space: pre-wrap; }
 
 input[type=checkbox] {
   display: none; }
