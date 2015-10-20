@@ -185,7 +185,8 @@ def select2_lookups(field):
                 'data-ajax--url': reverse('jet:model_lookup')
             }
 
-            initial_value = field.form.initial.get(field.name)
+            form = field.form
+            initial_value = form.data.get(field.name) if form.data != {} else form.initial.get(field.name)
 
             if hasattr(field, 'field') and isinstance(field.field, ModelMultipleChoiceField):
                 if initial_value:
