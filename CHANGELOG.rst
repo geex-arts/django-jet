@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.1.2
+-----
+* [Fix] Issue-14: Fixed ajax fields choices being rendered in page (thanks to dnmellen for the report)
+* [Fix] Issue-15: Fixed textarea text wrapping in Firefox
+* [Feature] PR-16: Allow usage of select2_lookups filter in ModelForms outside of Admin (thansk to dnmellen for pull request)
+
+
 0.1.1
 -----
 * [Feature] Added fade animation to sidebar application popup
