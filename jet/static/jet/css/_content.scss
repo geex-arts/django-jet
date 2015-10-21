@@ -111,21 +111,18 @@ ul.object-tools {
 @keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-unknown.gif"] {
-  @include font-icon;
-  content: "";
-  font-weight: bold;
+  display: none;
+
+  + span {
+    font-weight: bold;
+    color: $success-text-color;
+  }
 }
 
-img[src$="admin/img/icon-yes.gif"]:before {
-  content: $icon-tick;
+img[src$="admin/img/icon-yes.gif"] + span {
   color: $success-text-color;
 }
 
-img[src$="admin/img/icon-no.gif"]:before {
-  content: $icon-cross;
+img[src$="admin/img/icon-no.gif"] + span {
   color: $warning-text-color;
-}
-
-img[src$="admin/img/icon-unknown.gif"]:before {
-  content: $icon-question;
 }
