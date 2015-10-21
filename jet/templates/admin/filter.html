@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<select class="changelist-filter-select">
+<select class="changelist-filter-select{% if spec.ajax_attrs %} ajax{% endif %}"{% if spec.ajax_attrs %}{{ spec.ajax_attrs }}{% endif %}>
     {% for choice in choices %}
         {% if forloop.first %}
             <option data-url="{{ choice.query_string|iriencode }}">{% blocktrans with filter_title=title %}{{ filter_title }}{% endblocktrans %}</option>

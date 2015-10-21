@@ -5,9 +5,12 @@
                 var $select = $(this);
                 var $selectedOption = $select.find('option:selected');
                 var url = $selectedOption.data('url');
+                var querysetLookup = $select.data('queryset--lookup');
 
                 if (url) {
                     document.location = $selectedOption.data('url');
+                } else if (querysetLookup) {
+                    document.location = '?' + querysetLookup + '=' + $selectedOption.val();
                 }
             });
         };
@@ -642,8 +645,15 @@
                 updateChangelistFooters();
             };
 
+            var initChangelistImages = function() {
+                $('img[src$="admin/img/icon-yes.gif"]').after($('<span class="icon-tick">'));
+                $('img[src$="admin/img/icon-no.gif"]').after($('<span class="icon-cross">'));
+                $('img[src$="admin/img/icon-unknown.gif"]').after($('<span class="icon-question">'));
+            };
+
             initChangelistHeaders();
             initChangelistFooters();
+            initChangelistImages();
         };
 
         var initTooltips = function() {

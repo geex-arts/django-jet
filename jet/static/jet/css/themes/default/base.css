@@ -2301,7 +2301,7 @@ textarea {
   height: auto;
   line-height: normal;
   padding: 12px;
-  white-space: normal; }
+  white-space: pre-wrap; }
 
 input[type=checkbox] {
   display: none; }
@@ -2660,19 +2660,19 @@ input[type=checkbox] {
   border-radius: 6px;
   padding: 10px;
   background: #f0dada;
-  color: #dba4a4; }
+  color: #d49d9d; }
 .messagelist .info, .messagelist .debug {
   margin: 0 20px 10px 20px;
   border-radius: 6px;
   padding: 10px;
   background: #e8e8bd;
-  color: #bebe92; }
+  color: #b9b97f; }
 .messagelist .success {
   margin: 0 20px 10px 20px;
   border-radius: 6px;
   padding: 10px;
-  background: #c9eaca;
-  color: #8ecb8e; }
+  background: #c4ecc5;
+  color: #82b982; }
 
 /*
  * General
@@ -3904,7 +3904,7 @@ table#change-history {
 
 .delete-summary {
   background: #f0dada;
-  color: #dba4a4;
+  color: #d49d9d;
   border-radius: 4px;
   padding: 20px;
   margin-bottom: 20px; }
@@ -4683,30 +4683,16 @@ ul.object-tools {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-unknown.gif"] {
-  font-family: 'jet-icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  content: "";
-  font-weight: bold; }
+  display: none; }
+  img[src$="admin/img/icon-yes.gif"] + span, img[src$="admin/img/icon-no.gif"] + span, img[src$="admin/img/icon-unknown.gif"] + span {
+    font-weight: bold;
+    color: #82b982; }
 
-img[src$="admin/img/icon-yes.gif"]:before {
-  content: "";
-  color: #8ecb8e; }
+img[src$="admin/img/icon-yes.gif"] + span {
+  color: #82b982; }
 
-img[src$="admin/img/icon-no.gif"]:before {
-  content: "";
-  color: #dba4a4; }
-
-img[src$="admin/img/icon-unknown.gif"]:before {
-  content: ""; }
+img[src$="admin/img/icon-no.gif"] + span {
+  color: #d49d9d; }
 
 /*
  * General

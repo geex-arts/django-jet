@@ -2332,7 +2332,7 @@ textarea {
   height: auto;
   line-height: normal;
   padding: 12px;
-  white-space: normal; }
+  white-space: pre-wrap; }
 
 input[type=checkbox] {
   display: none; }
@@ -4714,30 +4714,16 @@ ul.object-tools {
     -webkit-transform: rotate(360deg);
     transform: rotate(360deg); } }
 img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-unknown.gif"] {
-  font-family: 'jet-icons';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: inline-block;
-  content: "";
-  font-weight: bold; }
+  display: none; }
+  img[src$="admin/img/icon-yes.gif"] + span, img[src$="admin/img/icon-no.gif"] + span, img[src$="admin/img/icon-unknown.gif"] + span {
+    font-weight: bold;
+    color: #bcd386; }
 
-img[src$="admin/img/icon-yes.gif"]:before {
-  content: "";
+img[src$="admin/img/icon-yes.gif"] + span {
   color: #bcd386; }
 
-img[src$="admin/img/icon-no.gif"]:before {
-  content: "";
+img[src$="admin/img/icon-no.gif"] + span {
   color: #dba4a4; }
-
-img[src$="admin/img/icon-unknown.gif"]:before {
-  content: ""; }
 
 /*
  * General
