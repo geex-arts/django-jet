@@ -65,11 +65,10 @@
 
     <div class="{% if cl.has_filters %} filtered{% endif %}" id="changelist">
         <div class="cf">
-        <div id="changelist-filter" class="changelist-filter background-form">
-            {% block search %}{% search_form cl %}{% endblock %}
-            {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
-        </div>
-
+            <div id="changelist-filter" class="changelist-filter background-form">
+                {% block search %}{% search_form cl %}{% endblock %}
+                {% block date_hierarchy %}{% date_hierarchy cl %}{% endblock %}
+            </div>
         </div>
 
         <form id="changelist-form" action="" method="post"{% if cl.formset.is_multipart %} enctype="multipart/form-data"{% endif %} novalidate>{% csrf_token %}
