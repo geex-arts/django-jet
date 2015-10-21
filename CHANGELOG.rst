@@ -9,6 +9,7 @@ Changelog
 * [Fix] Fixed select2_lookups for posted data
 * [Feature] Issue-14: Added ajax related field filters
 * [Fix] Made booleanfield icons cross browser compatible
+* [Fix] Issue-13: Added zh-hans i18n
 
 
 0.1.1
