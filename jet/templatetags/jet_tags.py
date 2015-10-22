@@ -6,7 +6,7 @@ from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleC
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
 from django.template import loader, Context
-from jet import settings
+from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
 import re
 from jet.utils import get_app_list, get_model_instance_label
@@ -245,3 +245,8 @@ def format_current_language(language):
 @register.assignment_tag(takes_context=True)
 def get_current_theme(context):
     return settings.JET_THEME
+
+
+@register.assignment_tag
+def get_current_jet_version():
+    return VERSION
