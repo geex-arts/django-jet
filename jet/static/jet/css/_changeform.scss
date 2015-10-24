@@ -17,6 +17,11 @@
       float: left;
       width: 150px;
       word-wrap: break-word;
+
+      + p {
+        padding-top: 6px;
+        margin-left: 150px + 10px;
+      }
     }
 
     &.errors label {
