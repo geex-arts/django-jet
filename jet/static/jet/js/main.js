@@ -124,7 +124,6 @@
                     resetCurrentPopupItemListItems();
 
                     $search.val('').trigger('change').focus();
-                    $(window).scrollTop(0);
                 };
 
                 var hidePopup = function () {

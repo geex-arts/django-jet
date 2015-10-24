@@ -212,12 +212,12 @@
     &-container {
       display: none;
       background-color: transparentize($sidebar-popup-overlay-color, 0.5);
-      position: absolute;
+      position: fixed;
       top: 0;
       left: $sidebar-width;
       bottom: 0;
       right: 0;
-      z-index: 2;
+      z-index: 3;
     }
 
     &-item {
