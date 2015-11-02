@@ -15,6 +15,8 @@ $error-text-color: #c7254e;
 $link-color: #70C2A5;
 $hover-link-color: #1cacfc;
 
+$contrast-color: #2faa60;
+
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
 
 $font: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -68,7 +70,7 @@ $top-separator-color: #C6D8E4;
 $top-link-color: #C6D8E4;
 $top-hover-link-color: #1cacfc;
 $top-border-color: #dce0e6;
-$top-icon-color: #2faa60;
+$top-icon-color: $contrast-color;
 $top-dropdown-background-color: #03ad86;
 $top-dropdown-border-color: #02996e;
 $top-dropdown-text-color: #fff;
@@ -98,12 +100,12 @@ $tab-error-border-color: #c7254e;
 
 $button-background-color: #E3ECF2;
 $button-hover-background-color: #1cacfc;
-$button-active-background-color: #2faa60;
+$button-active-background-color: $contrast-color;
 $button-text-color: #7f8fa4;
 $button-hover-text-color: #fff;
 $button-active-text-color: #fff;
 
-$primary-button-background-color: #2faa60;
+$primary-button-background-color: $contrast-color;
 $primary-button-text-color: #fff;
 
 $danger-button-background-color: #c7254e;
@@ -120,14 +122,14 @@ $input-background-color: #fff;
 $input-contrast-background-color: #E3ECF2;
 $input-border-color: #EDEDED;
 $input-hover-background-color: #1cacfc;
-$input-icon-color: #2faa60;
+$input-icon-color: $contrast-color;
 $input-text-color: $text-color;
 $input-contrast-text-color: #7f8fa4;
 $input-hover-text-color: #fff;
-$input-selected-text-color: #2faa60;
+$input-selected-text-color: $contrast-color;
 $input-disabled-text-color: $dim-text-color;
 $input-placeholder-color: #999;
-$input-shadow-color: transparentize(#2faa60, 0.25);
+$input-shadow-color: transparentize($contrast-color, 0.25);
 
 $background-input-background-color: #fff;
 $background-input-border-color: #fff;
