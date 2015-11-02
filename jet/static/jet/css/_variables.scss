@@ -200,3 +200,15 @@ $jquery-ui-overlay-color: $black-color !default;
 
 $jquery-ui-tooltip-background-color: $black-color !default;
 $jquery-ui-tooltip-text-color: $white-color !default;
+
+/*
+ * Charts
+ */
+
+$chart-fillColor: transparentize($hover-link-color, 0.75) !default;
+$chart-strokeColor: $hover-link-color !default;
+$chart-pointColor: $content-contrast2-text-color !default;
+$chart-pointHighlightFill: $hover-link-color !default;
+$chart-scaleGridLineColor: transparentize($black-color, 0.9) !default;
+$chart-scaleLineColor: transparentize($black-color, 0.9) !default;
+$chart-scaleFontColor: $content-contrast2-text-color !default;
