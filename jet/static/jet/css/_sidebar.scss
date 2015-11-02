@@ -2,6 +2,7 @@
 
 .sidebar {
   background-color: $sidebar-background-color;
+  @include transition(background-color $transitions-duration);
 
   &-menu {
     @extend .clear-list;
@@ -16,6 +17,7 @@
     &-item {
       padding: 20px 24px;
       border-bottom: 1px solid $sidebar-contrast-background-color;
+      @include transition(border-bottom-color $transitions-duration);
 
       &:last-child {
         border-bottom: 0;
@@ -31,6 +33,7 @@
         vertical-align: middle;
         margin-right: 6px;
         color: $sidebar-icon-color;
+        @include transition(color $transitions-duration);
       }
 
       &-link {
@@ -40,7 +43,7 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          @include transition-all(0.3s);
+          @include transition(color $transitions-duration);
         }
 
         &:hover {
@@ -57,6 +60,7 @@
         text-overflow: ellipsis;
         white-space: nowrap;
         padding: 0 24px;
+        @include transition(color $transitions-duration);
 
         &-icon {
           float: right;
@@ -66,7 +70,7 @@
 
           &, &:visited, &:hover {
             color: $sidebar-title-action-color;
-            @include transition-all(0.3s);
+            @include transition(color $transitions-duration);
           }
 
           &:hover {
@@ -84,7 +88,7 @@
           margin-top: 10px;
           padding: 8px 0;
           text-transform: uppercase;
-          @include transition-all(0.3s);
+          @include transition(color $transitions-duration, background-color $transitions-duration);
         }
 
         &:hover {
@@ -110,6 +114,7 @@
             vertical-align: middle;
             margin-right: 6px;
             color: $sidebar-icon-color;
+            @include transition(color $transitions-duration);
           }
 
           &.compact &-icon {
@@ -126,7 +131,7 @@
               padding: 8px 12px 8px 24px;
               vertical-align: middle;
               position: relative;
-              @include transition-all(0.3s);
+              @include transition(color $transitions-duration, background-color $transitions-duration);
             }
 
             &:hover, &.hovered {
@@ -140,7 +145,7 @@
                 float: right;
                 display: none;
                 color: $sidebar-action-color;
-                @include transition-all(0.3s);
+                @include transition(color $transitions-duration);
               }
 
               &:hover {
@@ -155,7 +160,7 @@
                 left: 4px;
                 font-size: 14px;
                 color: $sidebar-action-color;
-                @include transition-all(0.3s);
+                @include transition(color $transitions-duration);
               }
 
               &:hover {
@@ -182,6 +187,7 @@
             font-size: 16px;
             font-weight: bold !important;
             margin-left: 4px;
+            @include transition(color $transitions-duration);
           }
 
           &-link:hover &-arrow {
@@ -283,5 +289,6 @@
     text-align: center;
     font-size: 11px;
     font-weight: bold;
+    @include transition(background-color $transitions-duration, color $transitions-duration);
   }
 }

@@ -35,7 +35,7 @@
     background: $background-color;
     border-radius: 4px;
     margin-bottom: 20px;
-    @include transition(background 0.3s);
+    @include transition(background $transitions-duration);
 
     &:last-child {
       margin-bottom: 0;
