@@ -244,7 +244,7 @@ def format_current_language(language):
 
 @register.assignment_tag(takes_context=True)
 def get_current_theme(context):
-    return settings.JET_THEME
+    return settings.JET_DEFAULT_THEME
 
 
 @register.assignment_tag

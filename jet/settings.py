@@ -1,4 +1,4 @@
 from django.conf import settings
 
 # Theme
-JET_THEME = getattr(settings, 'JET_THEME', 'default')
+JET_DEFAULT_THEME = getattr(settings, 'JET_DEFAULT_THEME', 'default')
