@@ -15,7 +15,7 @@
 
     &-item {
       padding: 20px 24px;
-      border-bottom: 1px solid $sidebar-border-color;
+      border-bottom: 1px solid $sidebar-contrast-background-color;
 
       &:last-child {
         border-bottom: 0;
@@ -65,12 +65,12 @@
           margin-right: 14px;
 
           &, &:visited, &:hover {
-            color: $sidebar-contrast-color;
+            color: $sidebar-title-action-color;
             @include transition-all(0.3s);
           }
 
           &:hover {
-            color: $sidebar-contrast2-color;
+            color: $sidebar-hover-title-action-item-color;
           }
         }
       }
@@ -78,7 +78,7 @@
       &-action {
         &, &:visited, &:hover {
           display: block;
-          color: $sidebar-contrast-color;
+          color: $sidebar-action-color;
           font-size: 11px;
           text-align: center;
           margin-top: 10px;
@@ -88,7 +88,7 @@
         }
 
         &:hover {
-          color: $sidebar-contrast2-color;
+          color: $sidebar-hover-action-color;
           background-color: $sidebar-hover-background-color;
         }
       }
@@ -139,12 +139,12 @@
                 position: relative;
                 float: right;
                 display: none;
-                color: $sidebar-contrast-color;
+                color: $sidebar-action-color;
                 @include transition-all(0.3s);
               }
 
               &:hover {
-                color: $sidebar-contrast2-color;
+                color: $sidebar-hover-action-color;
               }
             }
 
@@ -154,12 +154,12 @@
                 display: none;
                 left: 4px;
                 font-size: 14px;
-                color: $sidebar-contrast-color;
+                color: $sidebar-action-color;
                 @include transition-all(0.3s);
               }
 
               &:hover {
-                color: $sidebar-contrast2-color;
+                color: $sidebar-hover-action-color;
               }
             }
 
@@ -178,10 +178,14 @@
 
           &-arrow {
             float: right;
-            color: $sidebar-contrast2-color;
+            color: $sidebar-arrow-color;
             font-size: 16px;
             font-weight: bold !important;
             margin-left: 4px;
+          }
+
+          &-link:hover &-arrow {
+            color: $sidebar-hover-arrow-color;
           }
         }
 
@@ -268,7 +272,8 @@
   }
 
   &-copyright {
-    background-color: $sidebar-border-color;
+    background-color: $sidebar-contrast-background-color;
+    color: $sidebar-contrast-text-color;
     height: 32px;
     line-height: 32px;
     position: absolute;

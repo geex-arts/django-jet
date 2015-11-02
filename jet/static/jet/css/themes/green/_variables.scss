@@ -55,9 +55,17 @@ $font-size: 14px;
 $sidebar-width: 250px;
 
 $sidebar-background-color: $green-color-2;
-$sidebar-border-color: $green-color-1;
-$sidebar-contrast-color: $contrast-color;
-$sidebar-contrast2-color: $contrast2-color;
+$sidebar-contrast-background-color: $green-color-1;
+$sidebar-contrast-text-color: $green-color-4;
+
+$sidebar-arrow-color: $contrast2-color;
+$sidebar-hover-arrow-color: $contrast2-color;
+
+$sidebar-action-color: $contrast-color;
+$sidebar-hover-action-color: $contrast2-color;
+
+$sidebar-title-action-color: $contrast-color;
+$sidebar-hover-title-action-item-color: $contrast2-color;
 
 $sidebar-text-color: $green-color-4;
 $sidebar-icon-color: $green-color-4;
