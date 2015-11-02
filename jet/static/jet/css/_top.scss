@@ -8,6 +8,7 @@
     font-size: 12px;
     font-weight: bold;
     line-height: $top-height;
+    color: $top-text-color;
 
     a, a:visited, a:hover {
       color: $top-link-color;
@@ -20,7 +21,7 @@
     }
 
     &-separator {
-      color: $top-text-color;
+      color: $top-separator-color;
       margin: 0 6px 0 6px;
       font-weight: bold !important;
       font-size: 15px;
