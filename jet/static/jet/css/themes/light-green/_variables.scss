@@ -71,11 +71,15 @@ $top-link-color: #C6D8E4;
 $top-hover-link-color: #1cacfc;
 $top-border-color: #dce0e6;
 $top-icon-color: $contrast-color;
+
 $top-dropdown-background-color: #03ad86;
-$top-dropdown-border-color: #02996e;
 $top-dropdown-text-color: #fff;
-$top-dropdown-link-color: #beebdb;
+$top-dropdown-contrast-background-color: #02996e;
+$top-dropdown-contrast-text-color: #beebdb;
+$top-dropdown-border-color: #02996e;
+$top-dropdown-link-color: #fff;
 $top-dropdown-hover-link-color: #fff;
+$top-dropdown-icon-color: #beebdb;
 
 /*
  * Content

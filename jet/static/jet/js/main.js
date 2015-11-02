@@ -915,6 +915,21 @@
             $('.sidebar-menu-wrapper').perfectScrollbar();
         };
 
+        var initThemeChoosing = function() {
+            $('.choose-theme').on('click', function () {
+                var $link = $(this);
+
+                $.cookie('JET_THEME', $link.data('theme'), { expires: 365 });
+
+                $('#base-stylesheet').attr('href', $link.data('base-stylesheet'));
+                $('#select2-stylesheet').attr('href', $link.data('select2-stylesheet'));
+                $('#jquery-ui-stylesheet').attr('href', $link.data('jquery-ui-stylesheet'));
+
+                $('.choose-theme').removeClass('selected');
+                $link.addClass('selected');
+            });
+        };
+
         initjQueryCaseInsensitiveSelector();
         initjQuerySlideFadeToggle();
         initFilters();
@@ -930,5 +945,6 @@
         initDashboard();
         initUnsavedChangesWarning();
         initScrollbars();
+        initThemeChoosing();
     });
 })(jet.jQuery);

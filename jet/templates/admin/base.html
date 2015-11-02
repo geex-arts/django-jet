@@ -1,5 +1,5 @@
 {% load i18n admin_static jet_tags %}
-{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}{% get_current_theme as THEME %}{% get_current_jet_version as JET_VERSION %}
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}{% get_themes as THEMES %}{% get_current_theme as THEME %}{% get_current_jet_version as JET_VERSION %}
 {% block html %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
@@ -12,9 +12,9 @@
     <link href="{% static "jet/vendor/jquery-ui-timepicker/jquery.ui.timepicker.css" %}" rel="stylesheet" />
     <link href="{% static "jet/vendor/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet" />
     <link href="{% static "jet/css/icons/style.css" %}?v={{ JET_VERSION }}" rel="stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}?v={{ JET_VERSION }}" rel="stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="base-stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="select2-stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="jquery-ui-stylesheet" />
     <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
     {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
     {% block extrastyle %}{% endblock %}
@@ -33,6 +33,7 @@
     <script src="{% static "jet/vendor/select2/js/select2.full.min.js" %}"></script>
     <script src="{% static "jet/vendor/perfect-scrollbar/js/perfect-scrollbar.min.js" %}"></script>
     <script src="{% static "jet/vendor/perfect-scrollbar/js/perfect-scrollbar.jquery.min.js" %}"></script>
+    <script src="{% static "jet/vendor/jquery-cookie/jquery.cookie-1.4.1.min.js" %}"></script>
     {% if LANGUAGE_CODE|slice:":2" != 'en' %}
         {% with "jet/vendor/jquery-ui/i18n/datepicker-"|add:LANGUAGE_CODE|add:".js" as url %}
             <script src="{% static url %}"></script>
@@ -73,6 +74,27 @@
                                                     {% firstof user.get_short_name user.get_username %}
                                                 {% endblock %}
                                             </li>
+
+                                            {% if THEMES %}
+                                                <li class="top-user-tools-contrast-block">
+                                                    <div class="top-user-tools-contrast-block-title">{% trans "current theme" %}</div>
+                                                    <div class="top-user-tools-theme-link-container cf">
+                                                        {% for conf_theme in THEMES %}
+                                                            {% if conf_theme.theme %}
+                                                                <a href="#"
+                                                                   class="top-user-tools-theme-link choose-theme{% if conf_theme.theme == THEME %} selected{% endif %}"
+                                                                   data-theme="{{ conf_theme.theme }}"
+                                                                   data-base-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/base.css" %}?v={{ JET_VERSION }}"
+                                                                   data-select2-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/select2.theme.css" %}?v={{ JET_VERSION }}"
+                                                                   data-jquery-ui-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}"
+                                                                   {% if conf_theme.title %} title="{{ conf_theme.title }}"{% endif %}
+                                                                   style="background-color: {{ conf_theme.color|default:'white' }};"
+                                                                        ></a>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </li>
+                                            {% endif %}
 
                                             {% block userlinks %}
                                                 {% if user.has_usable_password %}
