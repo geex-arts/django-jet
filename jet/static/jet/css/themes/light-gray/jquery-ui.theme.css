@@ -1,6 +1,37 @@
 @charset "UTF-8";
 /*
- * These theme uses default variables at ../_variables.scss
+ * Customizable variables
+ * Update these variable to create theme
+ */
+/*
+ * General
+ */
+/*
+ * Sidebar
+ */
+/*
+ * Top
+ */
+/*
+ * Content
+ */
+/*
+ * Buttons
+ */
+/*
+ * Inputs
+ */
+/*
+ * Messages
+ */
+/*
+ * Login
+ */
+/*
+ * jQuery UI
+ */
+/*
+ * Charts
  */
 /*
  * Default variable values
@@ -307,7 +338,7 @@
   width: 100% !important; }
 
 .ui-widget-content {
-  border-color: #f4f4f4; }
+  border-color: #f1f2f4; }
 
 .ui-widget.ui-widget-content, .ui-timepicker-table.ui-widget-content {
   background: #fff;
@@ -319,43 +350,43 @@
 
 .ui-widget-header {
   border: 0;
-  background: #59677e;
-  color: #fff;
+  background: #E3ECF2;
+  color: #8B9AA7;
   font-weight: bold; }
   .ui-widget-header a {
-    color: #fff; }
+    color: #8B9AA7; }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
-  border: 1px solid #ecf2f6;
+  border: 1px solid #EDEDED;
   background: #fff;
   font-weight: bold;
-  color: #6f7e95;
+  color: #8B9AA7;
   border-radius: 3px; }
 
 .ui-widget-header .ui-state-default {
   background: none;
-  color: #fff;
+  color: #8B9AA7;
   border: 0; }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
-  border: 1px solid #639af5;
-  background: #639af5;
+  border: 1px solid #1cacfc;
+  background: #1cacfc;
   font-weight: bold;
   color: #fff; }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  border: 1px solid #47bac1;
-  background: #47bac1;
+  border: 1px solid #2faa60;
+  background: #2faa60;
   font-weight: bold;
   color: #fff; }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
-  border: 1px solid #639af5;
+  border: 1px solid #1cacfc;
   background: #fff;
-  color: #639af5; }
+  color: #1cacfc; }
 
 .ui-dialog-buttonpane {
-  background: #ecf2f6;
+  background: #E3ECF2;
   margin: .5em -0.2em -0.2em -0.2em; }
   .ui-dialog-buttonpane .ui-button {
     border: 0 !important;
