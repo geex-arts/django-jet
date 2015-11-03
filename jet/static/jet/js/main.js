@@ -61,13 +61,22 @@
 
         var initUserTools = function() {
             var $userTools = $('.top-user-tools');
+            var closeTimeout;
 
             $userTools.on('mouseenter', function() {
-                $(this).addClass('opened');
+                if (closeTimeout) {
+                    clearTimeout(closeTimeout);
+                }
+                $userTools.addClass('opened');
             });
 
             $userTools.on('mouseleave', function() {
-                $(this).removeClass('opened');
+                opened = false;
+
+                closeTimeout = setTimeout(function() {
+                    $userTools.removeClass('opened');
+                    closeTimeout = null;
+                }, 200);
             });
         };
 
