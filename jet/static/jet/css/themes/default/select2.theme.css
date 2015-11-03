@@ -3,6 +3,10 @@
  * These theme uses default variables at ../_variables.scss
  */
 /*
+ * Default variable values
+ * Create separate themes/theme/_variables.scss to override these variables
+ */
+/*
  * General
  */
 /*
@@ -28,6 +32,9 @@
  */
 /*
  * jQuery UI
+ */
+/*
+ * Charts
  */
 .hidden {
   display: none; }
@@ -301,31 +308,8 @@
 
 .select2-container--jet {
   /*
-   * General
-   */
-  /*
-   * Sidebar
-   */
-  /*
-   * Top
-   */
-  /*
-   * Content
-   */
-  /*
-   * Buttons
-   */
-  /*
-   * Inputs
-   */
-  /*
-   * Messages
-   */
-  /*
-   * Login
-   */
-  /*
-   * jQuery UI
+   * Default variable values
+   * Create separate themes/theme/_variables.scss to override these variables
    */
   /*
    * General
@@ -353,6 +337,43 @@
    */
   /*
    * jQuery UI
+   */
+  /*
+   * Charts
+   */
+  /*
+   * Default variable values
+   * Create separate themes/theme/_variables.scss to override these variables
+   */
+  /*
+   * General
+   */
+  /*
+   * Sidebar
+   */
+  /*
+   * Top
+   */
+  /*
+   * Content
+   */
+  /*
+   * Buttons
+   */
+  /*
+   * Inputs
+   */
+  /*
+   * Messages
+   */
+  /*
+   * Login
+   */
+  /*
+   * jQuery UI
+   */
+  /*
+   * Charts
    */
   min-width: 100px; }
   .select2-container--jet .hidden {

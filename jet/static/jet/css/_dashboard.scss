@@ -35,7 +35,7 @@
     background: $background-color;
     border-radius: 4px;
     margin-bottom: 20px;
-    @include transition(background 0.3s);
+    @include transition(background $transitions-duration);
 
     &:last-child {
       margin-bottom: 0;
@@ -199,31 +199,31 @@
       canvas {
         .chart {
           &-fillColor {
-            color: transparentize($hover-link-color, 0.75);
+            color: $chart-fillColor;
           }
 
           &-strokeColor {
-            color: $hover-link-color;
+            color: $chart-strokeColor;
           }
 
           &-pointColor {
-            color: $content-contrast2-text-color
+            color: $chart-pointColor;
           }
 
           &-pointHighlightFill {
-            color: $hover-link-color;
+            color: $chart-pointHighlightFill;
           }
 
           &-scaleGridLineColor {
-            color: transparentize($black-color, 0.9);
+            color: $chart-scaleGridLineColor;
           }
 
           &-scaleLineColor {
-            color: transparentize($black-color, 0.9);
+            color: $chart-scaleLineColor;
           }
 
           &-scaleFontColor {
-            color: $content-contrast2-text-color
+            color: $chart-scaleFontColor;
           }
         }
       }

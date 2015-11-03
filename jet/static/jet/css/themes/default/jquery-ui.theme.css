@@ -3,6 +3,10 @@
  * These theme uses default variables at ../_variables.scss
  */
 /*
+ * Default variable values
+ * Create separate themes/theme/_variables.scss to override these variables
+ */
+/*
  * General
  */
 /*
@@ -28,6 +32,9 @@
  */
 /*
  * jQuery UI
+ */
+/*
+ * Charts
  */
 .hidden {
   display: none; }
@@ -392,6 +399,7 @@
   border: 0;
   box-shadow: none !important;
   opacity: 0.8;
-  font-size: 13px; }
+  font-size: 13px;
+  pointer-events: none; }
 
 /*# sourceMappingURL=jquery-ui.theme.css.map */

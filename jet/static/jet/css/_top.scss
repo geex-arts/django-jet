@@ -8,6 +8,7 @@
     font-size: 12px;
     font-weight: bold;
     line-height: $top-height;
+    color: $top-text-color;
 
     a, a:visited, a:hover {
       color: $top-link-color;
@@ -20,7 +21,7 @@
     }
 
     &-separator {
-      color: $top-text-color;
+      color: $top-separator-color;
       margin: 0 6px 0 6px;
       font-weight: bold !important;
       font-size: 15px;
@@ -62,6 +63,47 @@
       }
     }
 
+    &.opened &-welcome-msg-arrow {
+      color: $top-dropdown-icon-color;
+    }
+
+    &-contrast-block {
+      display: none;
+      padding: 8px 14px;
+      background: $top-dropdown-contrast-background-color;
+      color: $top-dropdown-contrast-text-color;
+
+      &-title {
+        text-transform: uppercase;
+        font-size: 10px;
+        font-weight: bold;
+        margin-bottom: 6px;
+      }
+    }
+
+    &.opened &-contrast-block {
+      display: block;
+    }
+
+    &-theme-link {
+      display: inline-block;
+      float: left;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      width: 14px;
+      height: 14px;
+      border: 1px solid $top-dropdown-contrast-background-color;
+      border-radius: 3px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &.selected {
+        box-shadow: 0 0 1px 1px $top-dropdown-selected-color;
+      }
+    }
+
     &-user-link {
       display: none;
       padding: 8px 14px;
@@ -77,6 +119,7 @@
       }
 
       &-icon {
+        color: $top-dropdown-icon-color;
         font-size: 15px;
         vertical-align: middle;
       }
@@ -90,7 +133,6 @@
 
     &.opened &-welcome-msg {
       border-bottom: 1px solid $top-dropdown-border-color;
-      margin-bottom: 6px;
     }
 
     &.opened &-user-link {

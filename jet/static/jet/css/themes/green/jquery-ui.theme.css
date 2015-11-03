@@ -1,8 +1,5 @@
 @charset "UTF-8";
 /*
- * All theme colors
- */
-/*
  * Customizable variables
  * Update these variable to create theme
  */
@@ -34,6 +31,13 @@
  * jQuery UI
  */
 /*
+ * Charts
+ */
+/*
+ * Default variable values
+ * Create separate themes/theme/_variables.scss to override these variables
+ */
+/*
  * General
  */
 /*
@@ -59,6 +63,9 @@
  */
 /*
  * jQuery UI
+ */
+/*
+ * Charts
  */
 .hidden {
   display: none; }
@@ -334,7 +341,7 @@
   border-color: #f5f3f4; }
 
 .ui-widget.ui-widget-content, .ui-timepicker-table.ui-widget-content {
-  background: white;
+  background: #fff;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); }
 
 .ui-widget {
@@ -344,38 +351,38 @@
 .ui-widget-header {
   border: 0;
   background: #3c706b;
-  color: white;
+  color: #fff;
   font-weight: bold; }
   .ui-widget-header a {
-    color: white; }
+    color: #fff; }
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   border: 1px solid #eff6f5;
-  background: white;
+  background: #fff;
   font-weight: bold;
   color: #62a29c;
   border-radius: 3px; }
 
 .ui-widget-header .ui-state-default {
   background: none;
-  color: white;
+  color: #fff;
   border: 0; }
 
 .ui-state-hover, .ui-widget-content .ui-state-hover, .ui-widget-header .ui-state-hover, .ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus {
   border: 1px solid #7FB1DC;
   background: #7FB1DC;
   font-weight: bold;
-  color: white; }
+  color: #fff; }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
   border: 1px solid #44b78b;
   background: #44b78b;
   font-weight: bold;
-  color: white; }
+  color: #fff; }
 
 .ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
   border: 1px solid #7FB1DC;
-  background: white;
+  background: #fff;
   color: #7FB1DC; }
 
 .ui-dialog-buttonpane {
@@ -413,16 +420,17 @@
   content: ""; }
 
 .ui-widget-overlay {
-  background: black;
+  background: #000;
   opacity: 0.5;
   filter: Alpha(Opacity=50); }
 
 .ui-tooltip {
-  background: black !important;
-  color: white;
+  background: #000 !important;
+  color: #fff;
   border: 0;
   box-shadow: none !important;
   opacity: 0.8;
-  font-size: 13px; }
+  font-size: 13px;
+  pointer-events: none; }
 
 /*# sourceMappingURL=jquery-ui.theme.css.map */

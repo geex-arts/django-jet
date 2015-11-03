@@ -9,7 +9,7 @@
   outline: 0;
   box-sizing: border-box;
   margin: 0;
-  @include transition(background 0.3s, box-shadow 0.3s, border 0.3s);
+  @include transition(background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration);
 }
 
 .input {
@@ -38,18 +38,21 @@
 .button {
   &, &:visited, &:hover {
     @extend .base_input;
-    font-weight: bold;
+    font-weight: lighter;
     font-size: 12px;
     text-align: center;
     background-color: $primary-button-background-color;
     color: $primary-button-text-color;
     padding: 0 20px;
     display: inline-block;
+    text-transform: uppercase;
   }
 
   &.button-secondary {
     background-color: $button-background-color;
     color: $button-text-color;
+    text-transform: none;
+    font-weight: normal;
   }
 
   &.button-red {
@@ -71,7 +74,7 @@
   &:hover {
     background-color: $button-hover-background-color;
     color: $button-hover-text-color;
-    font-weight: bold;
+    font-weight: lighter;
   }
 
   &:active {

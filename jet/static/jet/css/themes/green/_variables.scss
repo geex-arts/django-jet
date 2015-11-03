@@ -1,34 +1,4 @@
 /*
- * All theme colors
- */
-
-$black-color: black;
-$white-color: white;
-$border-color: #f5f3f4;
-$green-color-1: #254d49;
-$green-color-2: #2e5955;
-$green-color-3: #3c706b;
-$green-color-5: #6aa6a1;
-$green-color-9: #eff6f5;
-$green-color-10: #f5fdfa;
-$green-color-4: #62a29c;
-$green-color-7: #bbddd9;
-$green-color-8: #cceae4;
-$green-color-11: #B4DCD4;
-$contrast-color: #44b78b;
-$contrast-dim-color: transparentize($contrast-color, 0.25);
-$contrast2-color: #7FB1DC;
-$success-color-1: #bcd386;
-$success-color-2: #e0eec5;
-$info-color-1: #bebe92;
-$info-color-2: #e8e8bd;
-$selected-color-1: #e5e2a5;
-$selected-color-2: #fffcc0;
-$warning-color-1: #dba4a4;
-$warning-color-2: #f0dada;
-$warning-color-3: #c14747;
-
-/*
  * Customizable variables
  * Update these variable to create theme
  */
@@ -37,13 +7,13 @@ $warning-color-3: #c14747;
  * General
  */
 
-$background-color: $green-color-9;
-$text-color: $green-color-4;
-$dim-text-color: $green-color-8;
-$error-text-color: $warning-color-3;
+$background-color: #eff6f5;
+$text-color: #62a29c;
+$dim-text-color: #cceae4;
+$error-text-color: #c14747;
 
-$link-color: $contrast2-color;
-$hover-link-color: $contrast-color;
+$link-color: #7FB1DC;
+$hover-link-color: #44b78b;
 
 $font: Arial, sans-serif;
 $font-size: 14px;
@@ -54,28 +24,36 @@ $font-size: 14px;
 
 $sidebar-width: 250px;
 
-$sidebar-background-color: $green-color-2;
-$sidebar-border-color: $green-color-1;
-$sidebar-contrast-color: $contrast-color;
-$sidebar-contrast2-color: $contrast2-color;
+$sidebar-background-color: #2e5955;
+$sidebar-contrast-background-color: #254d49;
+$sidebar-contrast-text-color: #62a29c;
 
-$sidebar-text-color: $green-color-4;
-$sidebar-icon-color: $green-color-4;
-$sidebar-link-color: $green-color-7;
-$sidebar-hover-link-color: $white-color;
-$sidebar-hover-background-color: $green-color-1;
+$sidebar-arrow-color: #7FB1DC;
+$sidebar-hover-arrow-color: #7FB1DC;
 
-$sidebar-popup-search-input-background-color: $green-color-8;
-$sidebar-popup-search-input-text-color: $green-color-4;
-$sidebar-popup-search-input-placeholder-color: $green-color-8;
+$sidebar-action-color: #44b78b;
+$sidebar-hover-action-color: #7FB1DC;
 
-$sidebar-popup-background-color: $green-color-9;
-$sidebar-popup-text-color: $green-color-4;
-$sidebar-popup-overlay-color: $black-color;
+$sidebar-title-action-color: #44b78b;
+$sidebar-hover-title-action-item-color: #7FB1DC;
 
-$sidebar-popup-link-text-color: $green-color-4;
-$sidebar-popup-hover-link-color: $white-color;
-$sidebar-popup-hover-link-background-color: $contrast2-color;
+$sidebar-text-color: #62a29c;
+$sidebar-icon-color: #62a29c;
+$sidebar-link-color: #bbddd9;
+$sidebar-hover-link-color: #fff;
+$sidebar-hover-background-color: #254d49;
+
+$sidebar-popup-search-input-background-color: #cceae4;
+$sidebar-popup-search-input-text-color: #62a29c;
+$sidebar-popup-search-input-placeholder-color: #cceae4;
+
+$sidebar-popup-background-color: #eff6f5;
+$sidebar-popup-text-color: #62a29c;
+$sidebar-popup-overlay-color: #000;
+
+$sidebar-popup-link-text-color: #62a29c;
+$sidebar-popup-hover-link-color: #fff;
+$sidebar-popup-hover-link-background-color: #7FB1DC;
 
 /*
  * Top
@@ -83,120 +61,138 @@ $sidebar-popup-hover-link-background-color: $contrast2-color;
 
 $top-height: 32px;
 
-$top-text-color: $green-color-11;
-$top-link-color: $green-color-11;
-$top-hover-link-color: $contrast2-color;
-$top-border-color: $green-color-11;
-$top-icon-color: $contrast-color;
-$top-dropdown-background-color: $green-color-4;
-$top-dropdown-border-color: $green-color-5;
-$top-dropdown-text-color: $green-color-9;
-$top-dropdown-link-color: $green-color-9;
-$top-dropdown-hover-link-color: $green-color-9;
+$top-text-color: #62a29c;
+$top-separator-color: #B4DCD4;
+$top-link-color: #B4DCD4;
+$top-hover-link-color: #7FB1DC;
+$top-border-color: #B4DCD4;
+$top-icon-color: #44b78b;
+
+$top-dropdown-background-color: #62a29c;
+$top-dropdown-text-color: #eff6f5;
+$top-dropdown-contrast-background-color: #3c706b;
+$top-dropdown-contrast-text-color: #bbddd9;
+$top-dropdown-border-color: #6aa6a1;
+$top-dropdown-link-color: #eff6f5;
+$top-dropdown-hover-link-color: #eff6f5;
+$top-dropdown-icon-color: #eff6f5;
+$top-dropdown-selected-color: #e5e2a5;
 
 /*
  * Content
  */
 
-$content-background-color: $white-color;
-$content-contrast-background-color: $green-color-10; //inline list bg
-$content-contrast2-background-color: $green-color-3; //table header
-$content-contrast3-background-color: $green-color-8; //delete collapsable
-$content-selected-background-color: $selected-color-2;
-$content-contrast2-text-color: $white-color;
-$content-border-color: $border-color; //row bottom
-$content-border2-color: $green-color-8; //table bottom
-$content-selected-border-color: $selected-color-1;
+$content-background-color: #fff;
+$content-contrast-background-color: #f5fdfa; //inline list bg
+$content-contrast2-background-color: #3c706b; //table header
+$content-contrast3-background-color: #cceae4; //delete collapsable
+$content-selected-background-color: #fffcc0;
+$content-contrast2-text-color: #fff;
+$content-border-color: #f5f3f4; //row bottom
+$content-border2-color: #cceae4; //table bottom
+$content-selected-border-color: #e5e2a5;
 
-$tab-selected-border-color: $contrast2-color;
-$tab-error-border-color: $warning-color-3;
+$tab-selected-border-color: #7FB1DC;
+$tab-error-border-color: #c14747;
 
 /*
  * Buttons
  */
 
-$button-background-color: $green-color-8;
-$button-hover-background-color: $contrast2-color;
-$button-active-background-color: $green-color-4;
-$button-text-color: $green-color-4;
-$button-hover-text-color: $white-color;
-$button-active-text-color: $white-color;
+$button-background-color: #cceae4;
+$button-hover-background-color: #7FB1DC;
+$button-active-background-color: #62a29c;
+$button-text-color: #62a29c;
+$button-hover-text-color: #fff;
+$button-active-text-color: #fff;
 
-$primary-button-background-color: $contrast-color;
-$primary-button-text-color: $white-color;
+$primary-button-background-color: #44b78b;
+$primary-button-text-color: #fff;
 
-$danger-button-background-color: $warning-color-3;
-$danger-button-text-color: $white-color;
+$danger-button-background-color: #c14747;
+$danger-button-text-color: #fff;
 
-$background-button-background-color: $white-color;
-$background-button-text-color: $green-color-4;
+$background-button-background-color: #fff;
+$background-button-text-color: #62a29c;
 
 /*
  * Inputs
  */
 
-$input-background-color: $white-color;
-$input-contrast-background-color: $green-color-8;
-$input-border-color: $green-color-9;
-$input-hover-background-color: $contrast2-color;
-$input-icon-color: $contrast-color;
-$input-text-color: $green-color-4;
-$input-contrast-text-color: $green-color-4;
-$input-hover-text-color: $white-color;
-$input-selected-text-color: $contrast-color;
-$input-disabled-text-color: $green-color-8;
-$input-placeholder-color: $green-color-8;
-$input-shadow-color: $contrast-dim-color;
+$input-background-color: #fff;
+$input-contrast-background-color: #cceae4;
+$input-border-color: #eff6f5;
+$input-hover-background-color: #7FB1DC;
+$input-icon-color: #44b78b;
+$input-text-color: #62a29c;
+$input-contrast-text-color: #62a29c;
+$input-hover-text-color: #fff;
+$input-selected-text-color: #44b78b;
+$input-disabled-text-color: #cceae4;
+$input-placeholder-color: #cceae4;
+$input-shadow-color: transparentize(#44b78b, 0.25);
 
-$background-input-background-color: $white-color;
-$background-input-border-color: $white-color;
-$background-input-text-color: $green-color-4;
+$background-input-background-color: #fff;
+$background-input-border-color: #fff;
+$background-input-text-color: #62a29c;
 
 /*
  * Messages
  */
 
-$warning-color: $warning-color-2;
-$warning-text-color: $warning-color-1;
-$info-color: $info-color-2;
-$info-text-color: $info-color-1;
-$success-color: $success-color-2;
-$success-text-color: $success-color-1;
+$warning-color: #f0dada;
+$warning-text-color: #dba4a4;
+$info-color: #e8e8bd;
+$info-text-color: #bebe92;
+$success-color: #e0eec5;
+$success-text-color: #bcd386;
 
 /*
  * Login
  */
 
-$login-background-color: $green-color-2;
-$login-title-text-color: $green-color-4;
-$login-title-contrast-text-color: $white-color;
-$login-header-background-color: $green-color-3;
-$login-header-text-color: $white-color;
-$login-content-background-color: $white-color;
+$login-background-color: #2e5955;
+$login-title-text-color: #62a29c;
+$login-title-contrast-text-color: #fff;
+$login-header-background-color: #3c706b;
+$login-header-text-color: #fff;
+$login-content-background-color: #fff;
 
 /*
  * jQuery UI
  */
 
-$jquery-ui-buttonpane-background: $green-color-9;
+$jquery-ui-buttonpane-background: #eff6f5;
 
-$jquery-ui-state-default-background-color: $white-color;
-$jquery-ui-state-default-border-color: $green-color-9;
-$jquery-ui-state-default-text-color: $green-color-4;
+$jquery-ui-state-default-background-color: #fff;
+$jquery-ui-state-default-border-color: #eff6f5;
+$jquery-ui-state-default-text-color: #62a29c;
 
-$jquery-ui-state-hover-background-color: $contrast2-color;
-$jquery-ui-state-hover-border-color: $contrast2-color;
-$jquery-ui-state-hover-text-color: $white-color;
+$jquery-ui-state-hover-background-color: #7FB1DC;
+$jquery-ui-state-hover-border-color: #7FB1DC;
+$jquery-ui-state-hover-text-color: #fff;
 
-$jquery-ui-state-active-background-color: $contrast-color;
-$jquery-ui-state-active-border-color: $contrast-color;
-$jquery-ui-state-active-text-color: $white-color;
+$jquery-ui-state-active-background-color: #44b78b;
+$jquery-ui-state-active-border-color: #44b78b;
+$jquery-ui-state-active-text-color: #fff;
 
-$jquery-ui-state-highlight-background-color: $white-color;
-$jquery-ui-state-highlight-border-color: $contrast2-color;
-$jquery-ui-state-highlight-text-color: $contrast2-color;
+$jquery-ui-state-highlight-background-color: #fff;
+$jquery-ui-state-highlight-border-color: #7FB1DC;
+$jquery-ui-state-highlight-text-color: #7FB1DC;
 
-$jquery-ui-overlay-color: $black-color;
+$jquery-ui-overlay-color: #000;
 
-$jquery-ui-tooltip-background-color: $black-color;
-$jquery-ui-tooltip-text-color: $white-color;
+$jquery-ui-tooltip-background-color: #000;
+$jquery-ui-tooltip-text-color: #fff;
+
+/*
+ * Charts
+ */
+
+$chart-fillColor: transparentize($hover-link-color, 0.75);
+$chart-strokeColor: $hover-link-color;
+$chart-pointColor: $content-contrast2-text-color;
+$chart-pointHighlightFill: $hover-link-color;
+$chart-scaleGridLineColor: transparentize(#000, 0.9);
+$chart-scaleLineColor: transparentize(#000, 0.9);
+$chart-scaleFontColor: $content-contrast2-text-color;

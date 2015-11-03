@@ -1,8 +1,5 @@
 @charset "UTF-8";
 /*
- * All theme colors
- */
-/*
  * Customizable variables
  * Update these variable to create theme
  */
@@ -34,6 +31,13 @@
  * jQuery UI
  */
 /*
+ * Charts
+ */
+/*
+ * Default variable values
+ * Create separate themes/theme/_variables.scss to override these variables
+ */
+/*
  * General
  */
 /*
@@ -59,6 +63,9 @@
  */
 /*
  * jQuery UI
+ */
+/*
+ * Charts
  */
 .hidden {
   display: none; }
@@ -332,31 +339,8 @@
 
 .select2-container--jet {
   /*
-   * General
-   */
-  /*
-   * Sidebar
-   */
-  /*
-   * Top
-   */
-  /*
-   * Content
-   */
-  /*
-   * Buttons
-   */
-  /*
-   * Inputs
-   */
-  /*
-   * Messages
-   */
-  /*
-   * Login
-   */
-  /*
-   * jQuery UI
+   * Default variable values
+   * Create separate themes/theme/_variables.scss to override these variables
    */
   /*
    * General
@@ -384,6 +368,43 @@
    */
   /*
    * jQuery UI
+   */
+  /*
+   * Charts
+   */
+  /*
+   * Default variable values
+   * Create separate themes/theme/_variables.scss to override these variables
+   */
+  /*
+   * General
+   */
+  /*
+   * Sidebar
+   */
+  /*
+   * Top
+   */
+  /*
+   * Content
+   */
+  /*
+   * Buttons
+   */
+  /*
+   * Inputs
+   */
+  /*
+   * Messages
+   */
+  /*
+   * Login
+   */
+  /*
+   * jQuery UI
+   */
+  /*
+   * Charts
    */
   min-width: 100px; }
   .select2-container--jet .hidden {
@@ -785,7 +806,7 @@
   .select2-container--jet .fill_width {
     width: 100% !important; }
   .select2-container--jet .select2-selection--multiple {
-    background-color: white !important;
+    background-color: #fff !important;
     border: 1px solid #eff6f5;
     cursor: text;
     height: auto !important;
@@ -835,14 +856,14 @@
   .select2-container--jet.select2-container--disabled .select2-selection__choice__remove {
     display: none; }
   .select2-container--jet .select2-selection {
-    background-color: white;
+    background-color: #fff;
     border: 1px solid #eff6f5;
     border-radius: 4px;
     outline: 0;
     height: 32px; }
     .background-form .select2-container--jet .select2-selection {
-      background-color: white;
-      border-color: white; }
+      background-color: #fff;
+      border-color: #fff; }
     .select2-container--jet .select2-selection .select2-selection__rendered {
       color: #62a29c;
       line-height: 32px;
@@ -879,7 +900,7 @@
     .select2-container--jet .select2-search--dropdown .select2-search__field {
       outline: 0;
       border: 0;
-      background-color: white;
+      background-color: #fff;
       color: #62a29c;
       height: 32px;
       -webkit-appearance: textfield;
@@ -923,7 +944,7 @@
                 padding-left: 6em; }
   .select2-container--jet .select2-results__option--highlighted[aria-selected] {
     background-color: #7FB1DC;
-    color: white; }
+    color: #fff; }
   .select2-container--jet .select2-results__group {
     cursor: default;
     display: block;

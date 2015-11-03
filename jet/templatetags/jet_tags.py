@@ -244,7 +244,18 @@ def format_current_language(language):
 
 @register.assignment_tag(takes_context=True)
 def get_current_theme(context):
-    return settings.JET_THEME
+    if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
+        theme = context['request'].COOKIES['JET_THEME']
+        if isinstance(settings.JET_THEMES, list) and len(settings.JET_THEMES) > 0:
+            for conf_theme in settings.JET_THEMES:
+                if isinstance(conf_theme, dict) and conf_theme.get('theme') == theme:
+                    return theme
+    return settings.JET_DEFAULT_THEME
+
+
+@register.assignment_tag
+def get_themes():
+    return settings.JET_THEMES
 
 
 @register.assignment_tag

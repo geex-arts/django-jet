@@ -21,7 +21,7 @@ To change theme use parameter:
 
 .. code:: python
 
-    JET_THEME = 'default'
+    JET_DEFAULT_THEME = 'default'
 
 CUSTOM JET_THEME
 ----------------
