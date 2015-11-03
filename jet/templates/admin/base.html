@@ -12,9 +12,9 @@
     <link href="{% static "jet/vendor/jquery-ui-timepicker/jquery.ui.timepicker.css" %}" rel="stylesheet" />
     <link href="{% static "jet/vendor/perfect-scrollbar/css/perfect-scrollbar.css" %}" rel="stylesheet" />
     <link href="{% static "jet/css/icons/style.css" %}?v={{ JET_VERSION }}" rel="stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="base-stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="select2-stylesheet" />
-    <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" id="jquery-ui-stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}?v={{ JET_VERSION }}" rel="stylesheet" class="base-stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" class="select2-stylesheet" />
+    <link href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" rel="stylesheet" class="jquery-ui-stylesheet" />
     <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% block stylesheet_ie %}{% static "admin/css/ie.css" %}{% endblock %}" /><![endif]-->
     {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
     {% block extrastyle %}{% endblock %}
