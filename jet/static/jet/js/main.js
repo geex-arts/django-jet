@@ -71,8 +71,6 @@
             });
 
             $userTools.on('mouseleave', function() {
-                opened = false;
-
                 closeTimeout = setTimeout(function() {
                     $userTools.removeClass('opened');
                     closeTimeout = null;
