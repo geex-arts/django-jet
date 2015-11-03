@@ -926,7 +926,7 @@
             $('.choose-theme').on('click', function () {
                 var $link = $(this);
 
-                $.cookie('JET_THEME', $link.data('theme'), { expires: 365 });
+                $.cookie('JET_THEME', $link.data('theme'), { expires: 365, path: '/' });
 
                 $('#base-stylesheet').attr('href', $link.data('base-stylesheet'));
                 $('#select2-stylesheet').attr('href', $link.data('select2-stylesheet'));
