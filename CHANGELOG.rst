@@ -1,6 +1,18 @@
 Changelog
 =========
 
+0.1.3
+-----
+* [Feature] Add theme choosing ability
+* [Feature] New color themes
+* [Fix] Refactor themes
+* [Fix] Rename JET_THEME configuration option to JET_DEFAULT_OPTION
+* [Fix] Fixed scrolling to top when side menu opens
+* [Fix] Fixed read only fields paddings
+* [Fix] Issue-18: Remove unused resources which may brake static processing (thanks to DheerendraRathor for the report)
+* [Fix] Issue-19: Fixed datetime today button (thanks to carlosfvieira for the report)
+
+
 0.1.2
 -----
 * [Fix] Issue-14: Fixed ajax fields choices being rendered in page (thanks to dnmellen for the report)

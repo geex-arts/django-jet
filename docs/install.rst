@@ -26,15 +26,35 @@ Installation
         ...
     )
 
-* Make sure 'django.core.context_processors.request' context processor is enabled in settings.py:
+* Make sure ``django.template.context_processors.request`` context processor is enabled in settings.py (Django 1.8+ way):
 
 .. code:: python
 
-    from django.conf import global_settings
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': [
+                    ...
+                    'django.template.context_processors.request',
+                    ...
+                ],
+            },
+        },
+    ]
 
-    TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
-        'django.core.context_processors.request',
-    )
+.. warning::
+    Before Django 1.8 you should specify context processors different way. Also use ``django.core.context_processors.request`` instead of ``django.template.context_processors.request``.
+
+    .. code:: python
+
+        from django.conf import global_settings
+
+        TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+            'django.core.context_processors.request',
+        )
 
 * Add URL-pattern to the urlpatterns of your Django project urls.py file (they are needed for related–lookups and autocompletes):
 
