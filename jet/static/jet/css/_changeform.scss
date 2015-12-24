@@ -1,12 +1,6 @@
 @import "globals";
 
 .module {
-  border: 0;
-  margin: 0;
-  padding: 20px;
-  background-color: $content-background-color;
-  border-radius: 4px;
-
   .form-row {
     padding: 6px 0;
     overflow: hidden;
