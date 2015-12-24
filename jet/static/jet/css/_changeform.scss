@@ -42,6 +42,7 @@
       @extend .clear-list;
       @extend .small;
       color: $error-text-color;
+      margin-bottom: 10px !important;
     }
 
     .datetime {
