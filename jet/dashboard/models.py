@@ -35,6 +35,8 @@ class UserDashboardModule(models.Model):
             return module
         except AttributeError:
             return None
+        except ImportError:
+            return None
 
     def pop_settings(self, pop_settings):
         settings = json.loads(self.settings)
