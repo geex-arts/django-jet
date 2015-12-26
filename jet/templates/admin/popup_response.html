@@ -4,14 +4,12 @@
   <body>
     <script type="text/javascript">
       {% if action == 'change' %}
-        opener.dismissChangeRelatedObjectPopup(window, "{{ value }}", "{{ obj }}", "{{ new_value }}");
+        parent.window.dismissChangeRelatedObjectPopup(window, "{{ value }}", "{{ obj }}", "{{ new_value }}");
       {% elif action == 'delete' %}
-        opener.dismissDeleteRelatedObjectPopup(window, "{{ value }}");
+        parent.window.dismissDeleteRelatedObjectPopup(window, "{{ value }}");
       {% else %}
-        opener.dismissAddRelatedObjectPopup(window, "{{ value }}", "{{ obj }}");
+        parent.window.dismissAddRelatedObjectPopup(window, "{{ value }}", "{{ obj }}");
       {% endif %}
-
-      opener.jet.jQuery('select').trigger('select:init');
     </script>
   </body>
 </html>
