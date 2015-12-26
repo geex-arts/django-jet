@@ -8,6 +8,17 @@
   width: 500px;
 }
 
+#content {
+  > h1 {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: $top-height;
+    color: $top-text-color;
+    margin: 0 0 2em 0;
+  }
+}
+
 .small {
   font-size: 12px;
 }
