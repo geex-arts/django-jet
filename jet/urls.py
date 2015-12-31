@@ -27,7 +27,7 @@ urlpatterns = patterns(
     url(
         r'^jsi18n/$',
         javascript_catalog,
-        {'packages': ('jet',)},
+        {'packages': ('django.conf', 'django.contrib.admin', 'jet',)},
         name='jsi18n'
     ),
 )
