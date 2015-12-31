@@ -43,6 +43,9 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          width: 100%;
+          display: inline-block;
+          box-sizing: border-box;
           @include transition(color $transitions-duration);
         }
 
