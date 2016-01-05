@@ -97,3 +97,11 @@ Same as **JET_INDEX_DASHBOARD**, but for application pages
 
     JET_APP_INDEX_DASHBOARD = 'jet.dashboard.DefaultAppIndexDashboard'
 
+JET_BRANDING_ENABLED
+--------------------
+
+Boolean flag to enable or disable the django-jet branding in the lower left of the page. Defaults to true.
+
+.. code:: python
+
+    JET_BRANDING_ENABLED = False

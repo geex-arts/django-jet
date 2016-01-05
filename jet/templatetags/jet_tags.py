@@ -266,3 +266,7 @@ def get_current_jet_version():
 @register.assignment_tag
 def get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
+
+@register.assignment_tag
+def get_branding_enabled():
+    return settings.JET_BRANDING_ENABLED

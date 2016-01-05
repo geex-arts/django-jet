@@ -1,5 +1,5 @@
 {% load i18n admin_static jet_tags %}
-{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}{% get_themes as THEMES %}{% get_current_theme as THEME %}{% get_current_jet_version as JET_VERSION %}{% get_side_menu_compact as SIDE_MENU_COMPACT %}
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}{% format_current_language LANGUAGE_CODE as LANGUAGE_CODE %}{% get_themes as THEMES %}{% get_current_theme as THEME %}{% get_current_jet_version as JET_VERSION %}{% get_side_menu_compact as SIDE_MENU_COMPACT %}{% get_branding_enabled as BRANDING_ENABLED %}
 {% block html %}<!DOCTYPE html>
 <html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
@@ -164,6 +164,7 @@
                     <div id="branding">
                         {% block branding %}{% endblock %}
                     </div>
+                    <div id="logo"><img src="/static/logo.png"/></div>
                     <ul class="sidebar-menu">
                         <li class="sidebar-menu-item no-horizontal-padding">
                             <ul class="sidebar-menu-item-list compact">
@@ -291,7 +292,9 @@
                         {% endif %}
                     </ul>
                 </div>
+                {% if BRANDING_ENABLED %}
                 <div class="sidebar-copyright">powered by DJANGO JET</div>
+                {% endif %}
             </div>
 
             {% if not SIDE_MENU_COMPACT %}
