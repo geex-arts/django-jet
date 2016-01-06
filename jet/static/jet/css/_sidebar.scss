@@ -43,6 +43,9 @@
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+          width: 100%;
+          display: inline-block;
+          box-sizing: border-box;
           @include transition(color $transitions-duration);
         }
 
@@ -59,14 +62,16 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        padding: 0 24px;
+        padding: 0 14px 0 24px;
+        width: 100%;
+        display: inline-block;
+        box-sizing: border-box;
         @include transition(color $transitions-duration);
 
         &-icon {
           float: right;
           font-size: 14px;
           font-weight: bold !important;
-          margin-right: 14px;
 
           &, &:visited, &:hover {
             color: $sidebar-title-action-color;
@@ -76,6 +81,24 @@
           &:hover {
             color: $sidebar-hover-title-action-item-color;
           }
+        }
+      }
+
+      &-link {
+        &, &:visited, &:hover {
+          color: $sidebar-text-color;
+          text-transform: uppercase;
+          font-size: 11px;
+          font-weight: bold;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          padding: 0 24px;
+          @include transition(color $transitions-duration);
+        }
+
+        &:hover {
+          color: $sidebar-hover-title-action-item-color;
         }
       }
 
@@ -100,7 +123,7 @@
       &-list {
         @extend .clear-list;
 
-        .sidebar-menu-item-title + &:not(:empty) {
+        .sidebar-menu-item-title + &:not(:empty), .sidebar-menu-item-link + &:not(:empty) {
           margin-top: 10px !important;
         }
 

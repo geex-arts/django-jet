@@ -11,7 +11,10 @@ def get_current_dashboard(location):
         raise ValueError('Unknown dashboard location: %s' % location)
 
     module, cls = path.rsplit('.', 1)
-    module = import_module(module)
-    index_dashboard_cls = getattr(module, cls)
 
-    return index_dashboard_cls
+    try:
+        module = import_module(module)
+        index_dashboard_cls = getattr(module, cls)
+        return index_dashboard_cls
+    except ImportError:
+        return None

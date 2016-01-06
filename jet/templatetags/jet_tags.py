@@ -152,7 +152,7 @@ def get_menu(context):
         else:
             apps.append(app)
 
-    return {'apps': apps, 'pinned_apps': pinned_apps}
+    return {'apps': apps, 'pinned_apps': pinned_apps, 'all_apps': lambda: apps + pinned_apps}
 
 
 @register.assignment_tag
@@ -261,3 +261,8 @@ def get_themes():
 @register.assignment_tag
 def get_current_jet_version():
     return VERSION
+
+
+@register.assignment_tag
+def get_side_menu_compact():
+    return settings.JET_SIDE_MENU_COMPACT

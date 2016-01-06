@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-11 12:45+0000\n"
+"POT-Creation-Date: 2015-12-28 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,306 +15,103 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: dashboard/dashboard.py:159
+#: models.py:9 dashboard/modules.py:138 templates/admin/base.html:281
+msgid "URL"
+msgstr ""
+
+#: models.py:10
+msgid "title"
+msgstr ""
+
+#: models.py:11 models.py:26 dashboard/models.py:14
+msgid "user"
+msgstr ""
+
+#: models.py:12 models.py:27
+msgid "date created"
+msgstr ""
+
+#: models.py:15
+msgid "bookmark"
+msgstr ""
+
+#: models.py:16 templates/admin/base.html:294
+msgid "bookmarks"
+msgstr ""
+
+#: models.py:25 dashboard/models.py:13
+msgid "application name"
+msgstr ""
+
+#: models.py:30
+msgid "pinned application"
+msgstr ""
+
+#: models.py:31
+msgid "pinned applications"
+msgstr ""
+
+#: dashboard/dashboard.py:207
 msgid "Quick links"
 msgstr ""
 
-#: dashboard/dashboard.py:165
+#: dashboard/dashboard.py:213
 msgid "Return to site"
 msgstr ""
 
-#: dashboard/dashboard.py:166 templates/admin/base.html:80
+#: dashboard/dashboard.py:214 templates/admin/base.html:102
 msgid "Change password"
 msgstr ""
 
-#: dashboard/dashboard.py:168 templates/admin/base.html:84
+#: dashboard/dashboard.py:216 templates/admin/base.html:106
 msgid "Log out"
 msgstr ""
 
-#: dashboard/dashboard.py:176 dashboard/modules.py:160
-#: templates/admin/base.html:160 templates/admin/index.html:14
+#: dashboard/dashboard.py:224 dashboard/modules.py:268
+#: templates/admin/base.html:205 templates/admin/index.html:14
 msgid "Applications"
 msgstr ""
 
-#: dashboard/dashboard.py:184
+#: dashboard/dashboard.py:232
 msgid "Administration"
 msgstr ""
 
-#: dashboard/dashboard.py:192 dashboard/modules.py:242
+#: dashboard/dashboard.py:240 dashboard/modules.py:413
 #: templates/admin/index.html:68
 msgid "Recent Actions"
 msgstr ""
 
-#: dashboard/dashboard.py:200
+#: dashboard/dashboard.py:248
 msgid "Latest Django News"
 msgstr ""
 
-#: dashboard/dashboard.py:209
+#: dashboard/dashboard.py:257
 msgid "Support"
 msgstr ""
 
-#: dashboard/dashboard.py:212
+#: dashboard/dashboard.py:260
 msgid "Django documentation"
 msgstr ""
 
-#: dashboard/dashboard.py:217
+#: dashboard/dashboard.py:265
 msgid "Django \"django-users\" mailing list"
 msgstr ""
 
-#: dashboard/dashboard.py:222
+#: dashboard/dashboard.py:270
 msgid "Django irc channel"
 msgstr ""
 
-#: dashboard/dashboard.py:237
+#: dashboard/dashboard.py:285
 msgid "Application models"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:143
-#: dashboard/dashboard_modules/yandex_metrika.py:101
-msgid "Revoke access"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:148
-#: dashboard/dashboard_modules/yandex_metrika.py:106
-msgid "Grant access"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:161
-#: dashboard/dashboard_modules/yandex_metrika.py:116
-msgid "Access"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:162
-#: dashboard/dashboard_modules/yandex_metrika.py:117
-msgid "Counter"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:163
-#: dashboard/dashboard_modules/yandex_metrika.py:118
-msgid "Statistics period"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:164
-#: dashboard/dashboard_modules/yandex_metrika.py:119
-msgid "Today"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:165
-#: dashboard/dashboard_modules/yandex_metrika.py:120
-msgid "Last week"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:166
-#: dashboard/dashboard_modules/yandex_metrika.py:121
-msgid "Last month"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:167
-#: dashboard/dashboard_modules/yandex_metrika.py:122
-msgid "Last quarter"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:168
-#: dashboard/dashboard_modules/yandex_metrika.py:123
-msgid "Last year"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:178
-#: dashboard/dashboard_modules/yandex_metrika.py:133
-msgid "none"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:181
-#: dashboard/dashboard_modules/yandex_metrika.py:136
-msgid "grant access first"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:181
-#: dashboard/dashboard_modules/yandex_metrika.py:136
-msgid "counters loading failed"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:186
-#: dashboard/dashboard_modules/yandex_metrika.py:141
-msgid "Show"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:187
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
-msgid "Users"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:188
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
-msgid "Sessions"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:189
-#: dashboard/dashboard_modules/yandex_metrika.py:144
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
-msgid "Views"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:191
-#: dashboard/dashboard_modules/google_analytics.py:199
-#: dashboard/dashboard_modules/yandex_metrika.py:146
-#: dashboard/dashboard_modules/yandex_metrika.py:154
-msgid "Group"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:192
-#: dashboard/dashboard_modules/google_analytics.py:200
-#: dashboard/dashboard_modules/yandex_metrika.py:147
-#: dashboard/dashboard_modules/yandex_metrika.py:155
-msgid "By day"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:193
-#: dashboard/dashboard_modules/google_analytics.py:201
-#: dashboard/dashboard_modules/yandex_metrika.py:148
-#: dashboard/dashboard_modules/yandex_metrika.py:156
-msgid "By week"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:194
-#: dashboard/dashboard_modules/google_analytics.py:202
-#: dashboard/dashboard_modules/yandex_metrika.py:149
-#: dashboard/dashboard_modules/yandex_metrika.py:157
-msgid "By month"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:275
-#, python-format
-msgid ""
-"Please <a href=\"%s\">attach Google account and choose Google Analytics "
-"counter</a> to start using widget"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:278
-#, python-format
-msgid ""
-"Please <a href=\"%s\">select Google Analytics counter</a> to start using "
-"widget"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:297
-#: dashboard/dashboard_modules/google_analytics_views.py:42
-#: dashboard/dashboard_modules/yandex_metrika.py:234
-#: dashboard/dashboard_modules/yandex_metrika_views.py:37
-msgid "API request failed."
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:299
-#: dashboard/dashboard_modules/yandex_metrika.py:236
-#, python-format
-msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:304
-msgid "Google Analytics visitors totals"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:316
-msgid "users"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:317
-msgid "sessions"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:318
-#: dashboard/dashboard_modules/yandex_metrika.py:257
-msgid "views"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:320
-#: dashboard/dashboard_modules/google_analytics.py:365
-#: dashboard/dashboard_modules/google_analytics.py:404
-#: dashboard/dashboard_modules/yandex_metrika.py:259
-#: dashboard/dashboard_modules/yandex_metrika.py:298
-#: dashboard/dashboard_modules/yandex_metrika.py:331
-msgid "Bad server response"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:324
-msgid "Google Analytics visitors chart"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:369
-msgid "Google Analytics period visitors"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics_views.py:26
-#: dashboard/dashboard_modules/google_analytics_views.py:46
-#: dashboard/dashboard_modules/yandex_metrika_views.py:23
-#: dashboard/dashboard_modules/yandex_metrika_views.py:45
-msgid "Module not found"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics_views.py:44
-#: dashboard/dashboard_modules/yandex_metrika_views.py:43
-msgid "Bad arguments"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:142
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
-msgid "Visitors"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:143
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
-msgid "Visits"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:217
-#, python-format
-msgid ""
-"Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
-"counter</a> to start using widget"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:220
-#, python-format
-msgid ""
-"Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:243
-msgid "Yandex Metrika visitors totals"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:255
-msgid "visitors"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:256
-msgid "visits"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:263
-msgid "Yandex Metrika visitors chart"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:302
-msgid "Yandex Metrika period visitors"
-msgstr ""
-
-#: dashboard/models.py:11 dashboard/modules.py:116
-#: templates/admin/base.html:192
+#: dashboard/models.py:11 dashboard/modules.py:139
+#: templates/admin/base.html:279
 msgid "Title"
 msgstr ""
 
 #: dashboard/models.py:12
 msgid "module"
-msgstr ""
-
-#: dashboard/models.py:13 models.py:28
-msgid "application name"
-msgstr ""
-
-#: dashboard/models.py:14 models.py:14 models.py:29
-msgid "user"
 msgstr ""
 
 #: dashboard/models.py:15
@@ -345,61 +142,308 @@ msgstr ""
 msgid "user dashboard modules"
 msgstr ""
 
-#: dashboard/modules.py:115 models.py:12 templates/admin/base.html:194
-msgid "URL"
-msgstr ""
-
-#: dashboard/modules.py:117
+#: dashboard/modules.py:140
 msgid "External link"
 msgstr ""
 
-#: dashboard/modules.py:121
+#: dashboard/modules.py:144
 msgid "Layout"
 msgstr ""
 
-#: dashboard/modules.py:121
+#: dashboard/modules.py:144
 msgid "Stacked"
 msgstr ""
 
-#: dashboard/modules.py:121
+#: dashboard/modules.py:144
 msgid "Inline"
 msgstr ""
 
-#: dashboard/modules.py:125 dashboard/modules.py:131
+#: dashboard/modules.py:190 dashboard/modules.py:214
 msgid "Links"
 msgstr ""
 
-#: dashboard/modules.py:130
+#: dashboard/modules.py:213
 msgid "Link"
 msgstr ""
 
-#: dashboard/modules.py:201
+#: dashboard/modules.py:340
 msgid "Models"
 msgstr ""
 
-#: dashboard/modules.py:238 dashboard/modules.py:309
+#: dashboard/modules.py:383 dashboard/modules.py:490
 msgid "Items limit"
 msgstr ""
 
-#: dashboard/modules.py:310
+#: dashboard/modules.py:491
 msgid "Feed URL"
 msgstr ""
 
-#: dashboard/modules.py:314
+#: dashboard/modules.py:522
 msgid "RSS Feed"
 msgstr ""
 
-#: dashboard/modules.py:356
+#: dashboard/modules.py:568
 msgid "You must install the FeedParser python module"
 msgstr ""
 
-#: dashboard/modules.py:361
+#: dashboard/modules.py:573
 msgid "You must provide a valid feed URL"
+msgstr ""
+
+#: dashboard/views.py:17
+msgid "Widget was successfully updated"
+msgstr ""
+
+#: dashboard/views.py:85 dashboard/templates/jet.dashboard/module.html:19
+#: dashboard/templates/jet.dashboard/modules/app_list.html:24
+#: dashboard/templates/jet.dashboard/modules/model_list.html:14
+#: templates/admin/index.html:40 templates/admin/edit_inline/stacked.html:44
+#: templates/admin/edit_inline/tabular.html:39
+msgid "Change"
+msgstr ""
+
+#: dashboard/views.py:89 dashboard/views.py:90
+msgid "Items"
+msgstr ""
+
+#: dashboard/views.py:152
+msgid "Widget has been successfully added"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:144
+#: dashboard/dashboard_modules/yandex_metrika.py:102
+msgid "Revoke access"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:149
+#: dashboard/dashboard_modules/yandex_metrika.py:107
+msgid "Grant access"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:162
+#: dashboard/dashboard_modules/yandex_metrika.py:117
+msgid "Access"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:163
+#: dashboard/dashboard_modules/yandex_metrika.py:118
+msgid "Counter"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:164
+#: dashboard/dashboard_modules/yandex_metrika.py:119
+msgid "Statistics period"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:165
+#: dashboard/dashboard_modules/yandex_metrika.py:120
+msgid "Today"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:166
+#: dashboard/dashboard_modules/yandex_metrika.py:121
+msgid "Last week"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:167
+#: dashboard/dashboard_modules/yandex_metrika.py:122
+msgid "Last month"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:168
+#: dashboard/dashboard_modules/yandex_metrika.py:123
+msgid "Last quarter"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:169
+#: dashboard/dashboard_modules/yandex_metrika.py:124
+msgid "Last year"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:179
+#: dashboard/dashboard_modules/yandex_metrika.py:134
+msgid "none"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:182
+#: dashboard/dashboard_modules/yandex_metrika.py:137
+msgid "grant access first"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:182
+#: dashboard/dashboard_modules/yandex_metrika.py:137
+msgid "counters loading failed"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:187
+#: dashboard/dashboard_modules/yandex_metrika.py:142
+msgid "Show"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:188
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
+msgid "Users"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:189
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
+msgid "Sessions"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:190
+#: dashboard/dashboard_modules/yandex_metrika.py:145
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
+msgid "Views"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:192
+#: dashboard/dashboard_modules/google_analytics.py:200
+#: dashboard/dashboard_modules/yandex_metrika.py:147
+#: dashboard/dashboard_modules/yandex_metrika.py:155
+msgid "Group"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:193
+#: dashboard/dashboard_modules/google_analytics.py:201
+#: dashboard/dashboard_modules/yandex_metrika.py:148
+#: dashboard/dashboard_modules/yandex_metrika.py:156
+msgid "By day"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:194
+#: dashboard/dashboard_modules/google_analytics.py:202
+#: dashboard/dashboard_modules/yandex_metrika.py:149
+#: dashboard/dashboard_modules/yandex_metrika.py:157
+msgid "By week"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:195
+#: dashboard/dashboard_modules/google_analytics.py:203
+#: dashboard/dashboard_modules/yandex_metrika.py:150
+#: dashboard/dashboard_modules/yandex_metrika.py:158
+msgid "By month"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:276
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Google account and choose Google Analytics "
+"counter</a> to start using widget"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:279
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Google Analytics counter</a> to start using "
+"widget"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:298
+#: dashboard/dashboard_modules/google_analytics_views.py:42
+#: dashboard/dashboard_modules/yandex_metrika.py:235
+#: dashboard/dashboard_modules/yandex_metrika_views.py:37
+msgid "API request failed."
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:300
+#: dashboard/dashboard_modules/yandex_metrika.py:237
+#, python-format
+msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:310
+msgid "Google Analytics visitors totals"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:325
+msgid "users"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:326
+msgid "sessions"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:327
+#: dashboard/dashboard_modules/yandex_metrika.py:266
+msgid "views"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:329
+#: dashboard/dashboard_modules/google_analytics.py:387
+#: dashboard/dashboard_modules/google_analytics.py:437
+#: dashboard/dashboard_modules/yandex_metrika.py:268
+#: dashboard/dashboard_modules/yandex_metrika.py:320
+#: dashboard/dashboard_modules/yandex_metrika.py:364
+msgid "Bad server response"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:339
+msgid "Google Analytics visitors chart"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics.py:397
+msgid "Google Analytics period visitors"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics_views.py:26
+#: dashboard/dashboard_modules/google_analytics_views.py:46
+#: dashboard/dashboard_modules/yandex_metrika_views.py:23
+#: dashboard/dashboard_modules/yandex_metrika_views.py:45
+msgid "Module not found"
+msgstr ""
+
+#: dashboard/dashboard_modules/google_analytics_views.py:44
+#: dashboard/dashboard_modules/yandex_metrika_views.py:43
+msgid "Bad arguments"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:143
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
+msgid "Visitors"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:144
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
+msgid "Visits"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:218
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
+"counter</a> to start using widget"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:221
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:249
+msgid "Yandex Metrika visitors totals"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:264
+msgid "visitors"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:265
+msgid "visits"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:278
+msgid "Yandex Metrika visitors chart"
+msgstr ""
+
+#: dashboard/dashboard_modules/yandex_metrika.py:330
+msgid "Yandex Metrika period visitors"
 msgstr ""
 
 #: dashboard/templates/admin/app_index.html:32
 #: dashboard/templates/jet.dashboard/update_module.html:14
-#: templates/admin/base.html:95 templates/admin/base.html.py:144
+#: templates/admin/base.html:117 templates/admin/base.html.py:173
 #: templates/admin/change_form.html:17 templates/admin/change_list.html:33
 #: templates/admin/delete_confirmation.html:8
 #: templates/admin/delete_selected_confirmation.html:8
@@ -446,19 +490,45 @@ msgstr ""
 msgid "Are you sure want to reset widgets?"
 msgstr ""
 
-#: dashboard/templates/jet.dashboard/module.html:19
-#: dashboard/templates/jet.dashboard/modules/app_list.html:24
-#: dashboard/templates/jet.dashboard/modules/model_list.html:14
-#: dashboard/views.py:86 templates/admin/edit_inline/stacked.html:44
-#: templates/admin/edit_inline/tabular.html:39 templates/admin/index.html:40
-msgid "Change"
-msgstr ""
-
 #: dashboard/templates/jet.dashboard/module.html:22
 #: templates/admin/delete_confirmation.html:12
 #: templates/admin/related_widget_wrapper.html:24
 #: templates/admin/submit_line.html:11
 msgid "Delete"
+msgstr ""
+
+#: dashboard/templates/jet.dashboard/update_module.html:35
+#: templates/admin/change_form.html:62
+msgid "General"
+msgstr ""
+
+#: dashboard/templates/jet.dashboard/update_module.html:56
+#: templates/admin/change_list.html:61 templates/admin/login.html:27
+#: templates/admin/edit_inline/stacked.html:8
+#: templates/admin/edit_inline/tabular.html:10
+#: templates/admin/includes/fieldset.html:9
+#: templates/registration/password_change_form.html:21
+msgid "Please correct the errors below."
+msgstr ""
+
+#: dashboard/templates/jet.dashboard/update_module.html:126
+#: templates/admin/base.html:301 templates/admin/base.html.py:308
+#: templates/admin/edit_inline/stacked.html:21
+#: templates/admin/edit_inline/stacked.html:75
+#: templates/admin/edit_inline/tabular.html:100
+msgid "Remove"
+msgstr ""
+
+#: dashboard/templates/jet.dashboard/update_module.html:127
+#: templates/admin/edit_inline/stacked.html:76
+#: templates/admin/edit_inline/tabular.html:99
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#: dashboard/templates/jet.dashboard/update_module.html:135
+#: templates/admin/pagination.html:20 templates/admin/submit_line.html:4
+msgid "Save"
 msgstr ""
 
 #: dashboard/templates/jet.dashboard/modules/app_list.html:7
@@ -494,76 +564,6 @@ msgstr ""
 msgid "Unknown content"
 msgstr ""
 
-#: dashboard/templates/jet.dashboard/update_module.html:35
-#: templates/admin/change_form.html:62
-msgid "General"
-msgstr ""
-
-#: dashboard/templates/jet.dashboard/update_module.html:56
-#: templates/admin/change_list.html:61
-#: templates/admin/edit_inline/stacked.html:8
-#: templates/admin/edit_inline/tabular.html:10
-#: templates/admin/includes/fieldset.html:9 templates/admin/login.html:27
-#: templates/registration/password_change_form.html:21
-msgid "Please correct the errors below."
-msgstr ""
-
-#: dashboard/templates/jet.dashboard/update_module.html:126
-#: templates/admin/base.html:214 templates/admin/base.html.py:221
-#: templates/admin/edit_inline/stacked.html:21
-#: templates/admin/edit_inline/stacked.html:75
-#: templates/admin/edit_inline/tabular.html:100
-msgid "Remove"
-msgstr ""
-
-#: dashboard/templates/jet.dashboard/update_module.html:127
-#: templates/admin/edit_inline/stacked.html:76
-#: templates/admin/edit_inline/tabular.html:99
-#, python-format
-msgid "Add another %(verbose_name)s"
-msgstr ""
-
-#: dashboard/templates/jet.dashboard/update_module.html:135
-#: templates/admin/pagination.html:20 templates/admin/submit_line.html:4
-msgid "Save"
-msgstr ""
-
-#: dashboard/views.py:18
-msgid "Widget was successfully updated"
-msgstr ""
-
-#: dashboard/views.py:90 dashboard/views.py:91
-msgid "Items"
-msgstr ""
-
-#: dashboard/views.py:153
-msgid "Widget has been successfully added"
-msgstr ""
-
-#: models.py:13
-msgid "title"
-msgstr ""
-
-#: models.py:15 models.py:30
-msgid "date created"
-msgstr ""
-
-#: models.py:18
-msgid "bookmark"
-msgstr ""
-
-#: models.py:19 templates/admin/base.html:207
-msgid "bookmarks"
-msgstr ""
-
-#: models.py:33
-msgid "pinned application"
-msgstr ""
-
-#: models.py:34
-msgid "pinned applications"
-msgstr ""
-
 #: templates/admin/actions.html:8
 msgid "Run the selected action"
 msgstr ""
@@ -585,27 +585,35 @@ msgstr ""
 msgid "Clear selection"
 msgstr ""
 
-#: templates/admin/base.html:149
+#: templates/admin/base.html:80
+msgid "current theme"
+msgstr ""
+
+#: templates/admin/base.html:159
+msgid "back"
+msgstr ""
+
+#: templates/admin/base.html:180
 msgid "View site"
 msgstr ""
 
-#: templates/admin/base.html:189 templates/admin/base.html.py:206
-msgid "Add bookmark"
-msgstr ""
-
-#: templates/admin/base.html:202
-msgid "Delete bookmark"
-msgstr ""
-
-#: templates/admin/base.html:203
-msgid "Are you sure want to delete this bookmark?"
-msgstr ""
-
-#: templates/admin/base.html:229
+#: templates/admin/base.html:188
 msgid "Documentation"
 msgstr ""
 
-#: templates/admin/base.html:252
+#: templates/admin/base.html:276 templates/admin/base.html.py:293
+msgid "Add bookmark"
+msgstr ""
+
+#: templates/admin/base.html:289
+msgid "Delete bookmark"
+msgstr ""
+
+#: templates/admin/base.html:290
+msgid "Are you sure want to delete this bookmark?"
+msgstr ""
+
+#: templates/admin/base.html:333
 msgid "Application page"
 msgstr ""
 
@@ -713,17 +721,9 @@ msgid ""
 "following objects and their related items will be deleted:"
 msgstr ""
 
-#: templates/admin/edit_inline/tabular.html:25
-msgid "Delete?"
-msgstr ""
-
 #: templates/admin/filter.html:6
 #, python-format
 msgid "%(filter_title)s"
-msgstr ""
-
-#: templates/admin/includes/object_delete_summary.html:2
-msgid "Summary"
 msgstr ""
 
 #: templates/admin/index.html:56
@@ -805,6 +805,14 @@ msgstr ""
 
 #: templates/admin/submit_line.html:7
 msgid "Save and continue editing"
+msgstr ""
+
+#: templates/admin/edit_inline/tabular.html:25
+msgid "Delete?"
+msgstr ""
+
+#: templates/admin/includes/object_delete_summary.html:2
+msgid "Summary"
 msgstr ""
 
 #: templates/registration/logged_out.html:9
