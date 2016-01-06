@@ -4,3 +4,4 @@
 /dist/
 /.idea
 /docs/_build/
+.sass-cache

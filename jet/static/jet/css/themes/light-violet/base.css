@@ -4427,18 +4427,26 @@ table#change-history {
 .fill_width {
   width: 100% !important; }
 
+html,
+body {
+  width: 100%;
+  height: 100%; }
+
+html {
+  display: table; }
+
+body {
+  display: table-cell;
+  vertical-align: middle; }
+
 .login {
-  background: #554488;
-  position: relative; }
+  background: #554488; }
   .login-title {
     width: 100%;
     color: #aaddcc;
     font-size: 36px;
     text-transform: uppercase;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    margin-top: -175px; }
+    text-align: center; }
     .login-title .bright {
       color: #fff;
       font-weight: bold; }
@@ -4446,11 +4454,7 @@ table#change-history {
     border-radius: 4px;
     width: 400px;
     overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -200px;
-    margin-top: -115px; }
+    margin: 20px auto 10px auto; }
     .login-container-header {
       background: #E3ECF2;
       color: #8B9AA7;
