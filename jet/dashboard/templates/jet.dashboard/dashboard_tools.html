@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="background-form">
+<div class="background-form" style="float: left;">
     <form action="{% url "jet-dashboard:add_user_dashboard_module" %}" method="POST" id="add-dashboard-module-form">
         {% csrf_token %}
         <select class="add-dashboard" name="module">
