@@ -5,6 +5,7 @@ from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
+from django.template.defaulttags import NowNode
 from django.template import loader, Context
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
