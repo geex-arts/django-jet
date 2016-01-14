@@ -253,6 +253,16 @@ def get_current_theme(context):
     return settings.JET_DEFAULT_THEME
 
 
+@register.tag
+def jet_date(parser, token):
+    return NowNode(get_config('JET_HEADER_DATE_FORMAT'))
+
+
+@register.tag
+def jet_time(parser, token):
+    return NowNode(get_config('JET_HEADER_TIME_FORMAT'))
+
+
 @register.assignment_tag
 def get_themes():
     return settings.JET_THEMES
