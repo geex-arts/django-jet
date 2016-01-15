@@ -296,11 +296,16 @@
 #branding {
   background-color: rgba(0, 0, 0, 0.28);
   color: rgba(255, 255, 255, 0.75);
-  padding: 14px 0;
+  padding: 0.875rem 0.313rem;
   text-align: center;
   #site-name {
     margin: 0;
-    font-size: 20px;
-    letter-spacing: 4px;
+    font-size: 1.250rem;
+    letter-spacing: 0.250rem;
+  }
+  span {
+    font-size: 0.750rem;
+    float: right;
+    margin: 0.313rem;
   }
 }
