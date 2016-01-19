@@ -128,7 +128,7 @@ class LazyDateTimeEncoder(json.JSONEncoder):
             return obj.isoformat()
         elif isinstance(obj, Promise):
             return force_text(obj)
-        return json.JSONEncoder.default(self, obj)
+        return self.encode(obj)
 
 
 def get_model_instance_label(instance):
