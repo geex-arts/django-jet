@@ -5,7 +5,7 @@ Autocomplete
 By default Django JET renders all possible choices for select inputs. This behavior may be unwanted if number of
 available options is rather big. In this case Django JET allows you to load these options dynamically through AJAX.
 
-In order to achieve this functionality all you have to do is :
+In order to achieve this functionality all you have to do is:
 
 * Specify which model fields should be searchable by AJAX queries. Add this static method to all models which you want to be searchable with AJAX:
 

@@ -113,7 +113,7 @@ If want to show all application's models use ``__all__`` keyword.
 .. note::
 
     You can use ``jet_custom_apps_example`` management command to generate example ``JET_SIDE_MENU_CUSTOM_APPS``
-    setting which includes all your applcations and models. You can use it this way:
+    setting which includes all your applications and models. You can use it this way:
 
     .. code:: python
 
