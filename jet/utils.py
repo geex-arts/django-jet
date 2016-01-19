@@ -3,7 +3,10 @@ import json
 try:
     from django.apps.registry import apps
 except ImportError:
-    from django.apps import apps # Fix Django < 1.8 import issue
+    try:
+        from django.apps import apps # Fix Django 1.7 import issue
+    except ImportError:
+        pass
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve, NoReverseMatch
@@ -71,8 +74,12 @@ def get_app_list(context, order=True):
                 if app_label in app_dict:
                     app_dict[app_label]['models'].append(model_dict)
                 else:
+                    try:
+                        name = apps.get_app_config(app_label).verbose_name
+                    except NameError:
+                        name = app_label.title()
                     app_dict[app_label] = {
-                        'name': apps.get_app_config(app_label).verbose_name,
+                        'name': name,
                         'app_label': app_label,
                         'app_url': reverse(
                             'admin:app_list',
