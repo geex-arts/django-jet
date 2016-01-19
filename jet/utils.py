@@ -81,7 +81,7 @@ def get_app_list(context, order=True):
                     }
 
     # Sort the apps alphabetically.
-    app_list = app_dict.values()
+    app_list = list(app_dict.values())
 
     if order:
         app_list.sort(key=lambda x: x['name'].lower())
