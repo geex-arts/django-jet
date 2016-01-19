@@ -8,7 +8,6 @@ from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_text
 from django.utils.text import capfirst
-import six
 from django.contrib import messages
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
@@ -82,7 +81,7 @@ def get_app_list(context, order=True):
                     }
 
     # Sort the apps alphabetically.
-    app_list = list(six.itervalues(app_dict))
+    app_list = app_dict.values()
 
     if order:
         app_list.sort(key=lambda x: x['name'].lower())
