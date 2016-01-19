@@ -1,6 +1,9 @@
 import datetime
 import json
-from django.apps.registry import apps
+try:
+    from django.apps.registry import apps
+except ImportError:
+    from django.apps import apps # Fix Django < 1.8 import issue
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve, NoReverseMatch
