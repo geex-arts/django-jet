@@ -663,9 +663,16 @@
                 $('img[src$="admin/img/icon-unknown.gif"]').after($('<span class="icon-question">'));
             };
 
+            var initChangelistRowSelection = function() {
+                $('#result_list td').on('click', function(e) {
+                    $(this).closest('tr').find('.action-checkbox .action-select').click();
+                });
+            };
+
             initChangelistHeaders();
             initChangelistFooters();
             initChangelistImages();
+            initChangelistRowSelection();
         };
 
         var initTooltips = function() {
