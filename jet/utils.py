@@ -47,7 +47,10 @@ def get_app_list(context, order=True):
     app_dict = {}
     for model, model_admin in admin_site._registry.items():
         app_label = model._meta.app_label
-        has_module_perms = model_admin.has_module_permission(request)
+        try:
+            has_module_perms = model_admin.has_module_permission(request)
+        except AttributeError:
+            has_module_perms = request.user.has_module_perms(app_label) # Fix Django < 1.8 issue
 
         if has_module_perms:
             perms = model_admin.get_model_perms(request)
