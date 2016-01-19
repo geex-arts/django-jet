@@ -126,12 +126,48 @@ def format_deletable_object(deletable_object):
 
 @register.assignment_tag(takes_context=True)
 def get_menu(context):
-    app_list = get_app_list(context)
+    if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
+        app_list = get_app_list(context, False)
+        app_dict = {}
+        models_dict = {}
+
+        for app in app_list:
+            app_label = app.get('app_label', app.get('name'))
+            app_dict[app_label] = app
+
+            for model in app['models']:
+                if app_label not in models_dict:
+                    models_dict[app_label] = {}
+
+                models_dict[app_label][model['object_name']] = model
+
+            app['models'] = []
+
+        app_list = []
+
+        for item in settings.JET_SIDE_MENU_CUSTOM_APPS:
+            app_label, models = item
+
+            if app_label in app_dict:
+                app = app_dict[app_label]
+
+                for model_label in models:
+                    if model_label == '__all__':
+                        app['models'] = models_dict[app_label].values()
+                        break
+                    elif model_label in models_dict[app_label]:
+                        model = models_dict[app_label][model_label]
+                        app['models'].append(model)
+
+                app_list.append(app)
+    else:
+        app_list = get_app_list(context)
 
     current_found = False
 
     pinned = PinnedApplication.objects.values_list('app_label', flat=True)
 
+    all_aps = []
     apps = []
     pinned_apps = []
 
@@ -152,7 +188,9 @@ def get_menu(context):
         else:
             apps.append(app)
 
-    return {'apps': apps, 'pinned_apps': pinned_apps, 'all_apps': lambda: apps + pinned_apps}
+        all_aps.append(app)
+
+    return {'apps': apps, 'pinned_apps': pinned_apps, 'all_apps': all_aps}
 
 
 @register.assignment_tag
