@@ -1,6 +1,4 @@
 from django import forms
-from django.forms import ModelChoiceField
-from django.forms.forms import BoundField
 from django.test import TestCase
 from jet.templatetags.jet_tags import select2_lookups
 from jet.tests.models import TestModel, SearchableTestModel
