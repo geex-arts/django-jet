@@ -77,6 +77,48 @@ You can use **/jet/static/jet/css/themes/light-violet/** folder as an example (a
 _variables.scss contains **all** customizable variables. You'll have to compile all .scss files in theme directory
 to start using your own theme.
 
+CUSTOM MENU
+-----------
+
+By default JET displays all applications and it models in the side menu in the alphabetical order.
+To display applications and models you want or to change their order you can use ``JET_SIDE_MENU_CUSTOM_APPS`` setting.
+
+.. code:: python
+
+    JET_SIDE_MENU_CUSTOM_APPS = [
+        ('core', [ # Each list element is a tuple with application name (app_label) and list of models
+            'User',
+            'MenuItem',
+            'Block',
+        ]),
+        ('shops', [
+            'Shop',
+            'City',
+            'MetroStation',
+        ]),
+        ('feedback', [
+            'Feedback',
+        ]),
+    ]
+
+If want to show all application's models use ``__all__`` keyword.
+
+.. code:: python
+
+    JET_SIDE_MENU_CUSTOM_APPS = [
+        ('core', ['__all__']),
+        ...
+    ]
+
+.. note::
+
+    You can use ``jet_custom_apps_example`` management command to generate example ``JET_SIDE_MENU_CUSTOM_APPS``
+    setting which includes all your applcations and models. You can use it this way:
+
+    .. code:: python
+
+        python manage.py jet_custom_apps_example
+
 
 JET_INDEX_DASHBOARD
 -------------------
