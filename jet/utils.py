@@ -39,7 +39,7 @@ def get_app_list(context):
     try:
         return template_response.context_data['app_list']
     except Exception:
-        return None
+        return []
 
 
 def get_admin_site(current_app):
