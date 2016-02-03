@@ -106,8 +106,8 @@ class Dashboard(object):
         i = 0
 
         for module in self.children:
-            column = module.column if module.column else i % self.columns
-            order = module.order if module.order else int(i / self.columns)
+            column = module.column if module.column is not None else i % self.columns
+            order = module.order if module.order is not None else int(i / self.columns)
 
             module_models.append(UserDashboardModule.objects.create(
                 title=module.title,
