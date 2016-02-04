@@ -110,6 +110,7 @@
 
   tbody {
     tr {
+      background: $content-background-color;
       border-bottom: 1px solid $content-border-color;
 
       &:last-child {
@@ -130,7 +131,7 @@
       }
     }
 
-    tr.selected {
+    tr.selected, tr.dragging {
       border-color: $content-selected-border-color;
 
       &:last-child {
