@@ -18,7 +18,7 @@
                     {% if field.is_checkbox %}
                         {{ field.field }}{{ field.label_tag }}
                     {% else %}
-                        {{ field.label_tag }}
+                        {% if field.field.label != '' %}{{ field.label_tag }}{% endif %}
                         {% if field.is_readonly %}
                             <p>{{ field.contents }}</p>
                         {% else %}

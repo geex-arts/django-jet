@@ -49,7 +49,7 @@
 
             var addLabelToCheckboxes = function() {
                 var $containers = $('.action-checkbox, .action-checkbox-column').add('.tabular.inline-related .form-row');
-                var $checkboxes = $containers.find('input[type="checkbox"]').add('.checkbox-without-label');
+                var $checkboxes = $containers.find('input[type="checkbox"]').add('.checkbox-without-label').add('label > input[type="checkbox"]');
 
                 $checkboxes.each(function() {
                     addLabelToCheckbox($(this));
@@ -663,9 +663,21 @@
                 $('img[src$="admin/img/icon-unknown.gif"]').after($('<span class="icon-question">'));
             };
 
+            var initChangelistRowSelection = function() {
+                $('#result_list tbody th, #result_list tbody td').on('click', function(e) {
+                    // Fix selection on clicking elements inside row (e.x. links)
+                    if (e.target != this) {
+                        return;
+                    }
+
+                    $(this).closest('tr').find('.action-checkbox .action-select').click();
+                });
+            };
+
             initChangelistHeaders();
             initChangelistFooters();
             initChangelistImages();
+            initChangelistRowSelection();
         };
 
         var initTooltips = function() {
@@ -967,6 +979,32 @@
             });
         };
 
+        var initRelatedPopups = function() {
+            var closeRelatedPopup = function () {
+                var $popups = $('.related-popup');
+                var $container = $('.related-popup-container');
+                var $popup = $popups.last();
+
+                $popup.remove();
+
+                if ($popups.length == 1) {
+                    $container.fadeOut(200, 'swing', function () {
+                        $('.related-popup-back').hide();
+                        $('body').removeClass('non-scrollable');
+                    });
+                }
+            };
+
+            $('.related-popup-back').on('click', function (e) {
+                e.preventDefault();
+                closeRelatedPopup();
+            });
+
+            $(window).on('related-popup:close', function () {
+                closeRelatedPopup();
+            });
+        };
+
         initjQueryCaseInsensitiveSelector();
         initjQuerySlideFadeToggle();
         initFilters();
@@ -983,5 +1021,6 @@
         initUnsavedChangesWarning();
         initScrollbars();
         initThemeChoosing();
+        initRelatedPopups();
     });
 })(jet.jQuery);

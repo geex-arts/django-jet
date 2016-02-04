@@ -1,6 +1,20 @@
 Changelog
 =========
 
+0.1.4
+-----
+* [Feature] Side bar compact mode (lists all models without opening second menu)
+* [Feature] Custom side bar menu applications and models content and ordering
+* [Feature] Related objects actions in nice-looking popup instead of new window
+* [Feature] Add changelist row selection on row background click
+* [Fix] Better 3rd party applications template compatibility
+* [Fix] JET and Django js translation conflicts
+* [Fix] Hide empty model form labels
+* [Fix] Wrong positioning for 0 column
+* [Fix] Issue-21: Init label wrapped checkboxes
+* [Improvement] Add top bar arrow transition
+
+
 0.1.3
 -----
 * [Feature] Add theme choosing ability

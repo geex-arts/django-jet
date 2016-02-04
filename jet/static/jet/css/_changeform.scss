@@ -1,11 +1,9 @@
 @import "globals";
 
 .module {
-  border: 0;
-  margin: 0;
-  padding: 20px;
-  background-color: $content-background-color;
-  border-radius: 4px;
+  &-separator {
+    height: 1em;
+  }
 
   .form-row {
     padding: 6px 0;
@@ -22,6 +20,10 @@
         padding-top: 6px;
         margin: 4px 0 4px (150px + 10px);
       }
+    }
+
+    br {
+      clear: both;
     }
 
     &.errors label {
@@ -48,6 +50,7 @@
       @extend .clear-list;
       @extend .small;
       color: $error-text-color;
+      margin-bottom: 10px !important;
     }
 
     .datetime {
@@ -99,6 +102,23 @@
         width: auto;
         margin-left: 10px;
       }
+    }
+  }
+
+  &.aligned {
+    background-color: $content-background-color;
+    border-radius: 4px;
+    padding: 20px;
+
+    ul label {
+      display: inline;
+      float: none;
+      width: auto;
+    }
+
+    ul {
+      margin: 0 0 0 160px;
+      padding: 0;
     }
   }
 }
@@ -175,19 +195,11 @@
   }
 
   .module {
-    padding: 0;
-    background: none;
-    border-radius: 0;
-
     .form-row {
       .select2 {
         max-width: 800px - 20px * 2 - 150px - 24px;
       }
     }
-  }
-
-  .aligned {
-    padding: 20px 20px 0 20px;
   }
 
   .inline-group {

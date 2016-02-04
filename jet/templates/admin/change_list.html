@@ -5,9 +5,6 @@
 
 {% block extrastyle %}
     {{ block.super }}
-    {% if cl.formset or action_form %}
-    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-    {% endif %}
     {{ media.css }}
 {% endblock %}
 
@@ -43,7 +40,7 @@
   <div id="content-main">
     {% block object-tools %}
       {% if has_add_permission %}
-        <ul class="object-tools fr">
+        <ul class="object-tools">
           {% block object-tools-items %}
             <li>
               {% url cl.opts|admin_urlname:'add' as add_url %}

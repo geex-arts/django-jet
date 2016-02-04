@@ -8,17 +8,30 @@
   width: 500px;
 }
 
+#content {
+  > h1 {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: $top-height;
+    color: $top-text-color;
+    margin: 0 0 2em 0;
+  }
+}
+
 .small {
   font-size: 12px;
 }
 
 .changeform-object-tools {
   text-align: right;
+  overflow: auto;
 }
 
 ul.object-tools {
   @extend .clear-list;
   margin-bottom: 20px !important;
+  float: right;
 
   li {
     margin-top: 10px;

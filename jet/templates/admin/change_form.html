@@ -3,7 +3,6 @@
 
 {% block extrahead %}
     {{ block.super }}
-    <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
     {{ media }}
 {% endblock %}
 
@@ -46,6 +45,7 @@
         <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
             {% csrf_token %}
             {% block form_top %}{% endblock %}
+            {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
             {% filter_fieldsets_with_errors adminform as fieldsets_with_errors %}
             <div class="changeform">
                 {% if adminform.fieldsets|length > 1 or inline_admin_formsets|length > 0 %}
@@ -78,7 +78,6 @@
 
                 {% if is_popup %}<input type="hidden" name="{{ is_popup_var }}" value="1" />{% endif %}
                 {% if to_field %}<input type="hidden" name="{{ to_field_var }}" value="{{ to_field }}" />{% endif %}
-                {% if save_on_top %}{% block submit_buttons_top %}{% submit_row %}{% endblock %}{% endif %}
                 {% if errors %}
                     {{ adminform.form.non_field_errors }}
                 {% endif %}
@@ -104,8 +103,6 @@
 
                 {% block after_related_objects %}{% endblock %}
 
-                {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
-
                 {% block admin_change_form_document_ready %}
                     <script type="text/javascript">
                         (function($) {
@@ -129,6 +126,7 @@
                 {# JavaScript for prepopulated fields #}
                 {% prepopulated_fields_js %}
             </div>
+            {% block submit_buttons_bottom %}{% submit_row %}{% endblock %}
         </form>
     </div>
 {% endblock %}
