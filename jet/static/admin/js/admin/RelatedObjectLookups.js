@@ -66,6 +66,14 @@ function showRelatedObjectPopup(triggeringLink) {
     var href = triggeringLink.href;
 
     // Django JET
+    if (href.indexOf('_popup=1') == -1) {
+        if (href.indexOf('?') == -1) {
+            href += '?_popup=1';
+        } else {
+            href += '&_popup=1';
+        }
+    }
+
     showRelatedPopup(name, href);
 
     return false;
