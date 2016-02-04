@@ -223,8 +223,3 @@ class ViewsTestCase(TestCase):
         response = json.loads(response.content.decode())
         self.assertFalse(response['error'])
         self.assertFalse(UserDashboardModule.objects.filter(pk=module.pk).exists())
-
-
-
-
-
