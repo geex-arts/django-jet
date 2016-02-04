@@ -49,7 +49,7 @@
 
             var addLabelToCheckboxes = function() {
                 var $containers = $('.action-checkbox, .action-checkbox-column').add('.tabular.inline-related .form-row');
-                var $checkboxes = $containers.find('input[type="checkbox"]').add('.checkbox-without-label');
+                var $checkboxes = $containers.find('input[type="checkbox"]').add('.checkbox-without-label').add('label > input[type="checkbox"]');
 
                 $checkboxes.each(function() {
                     addLabelToCheckbox($(this));
