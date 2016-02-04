@@ -25,11 +25,13 @@
 
 .changeform-object-tools {
   text-align: right;
+  overflow: auto;
 }
 
 ul.object-tools {
   @extend .clear-list;
   margin-bottom: 20px !important;
+  float: right;
 
   li {
     margin-top: 10px;
