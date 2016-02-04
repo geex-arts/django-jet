@@ -60,11 +60,13 @@
         color: $top-icon-color;
         font-size: 24px;
         line-height: $top-height - 2px !important;
+        @include transition(color $transitions-duration);
       }
     }
 
     &.opened &-welcome-msg-arrow {
       color: $top-dropdown-icon-color;
+      @include transform(rotate(180deg));
     }
 
     &-contrast-block {
