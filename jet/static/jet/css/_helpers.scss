@@ -104,6 +104,13 @@
   transition: $values;
 }
 
+@mixin transform($transform) {
+  -webkit-transform: $transform;
+  -moz-transform: $transform;
+  -o-transform: $transform;
+  transform: $transform;
+}
+
 @mixin font-icon {
   font-family: 'jet-icons';
   speak: none;
