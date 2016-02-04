@@ -664,7 +664,7 @@
             };
 
             var initChangelistRowSelection = function() {
-                $('#result_list td').on('click', function(e) {
+                $('#result_list tbody th, #result_list tbody td').on('click', function(e) {
                     // Fix selection on clicking elements inside row (e.x. links)
                     if (e.target != this) {
                         return;
