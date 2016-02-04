@@ -147,8 +147,9 @@ opener = parent.window;
 
 function showRelatedPopup(name, href) {
     django.jQuery(function($) {
-        var $container = $('.related-popup-container');
-        var $loading = $container.find('.loading-indicator');
+        var $container = $('.related-popup-container', parent.document);
+        var $loading = $container.find('.loading-indicator', parent.document);
+        var $body = $('body').addClass('non-scrollable', parent.document);
         var $popup = $('<iframe>').attr('name', name).attr('src', href).addClass('related-popup').on('load', function() {
             $popup.add($('.related-popup-back')).fadeIn(200, 'swing', function() {
                 $loading.hide();
@@ -157,9 +158,9 @@ function showRelatedPopup(name, href) {
 
         $loading.show();
         $container.fadeIn(200, 'swing', function() {
-            $('.related-popup-container').append($popup);
+            $container.append($popup);
         });
-        $('body').addClass('non-scrollable');
+        $body.addClass('non-scrollable', parent.document);
     });
 }
 
