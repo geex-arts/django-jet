@@ -768,6 +768,7 @@ a:hover {
     .table thead th.sorted.descending .text:after, #changelist table thead th.sorted.descending .text:after, table#change-history thead th.sorted.descending .text:after {
       content: ""; }
   .table tbody tr, #changelist table tbody tr, table#change-history tbody tr {
+    background: #fff;
     border-bottom: 1px solid #f1f2f4; }
     .table tbody tr:last-child, #changelist table tbody tr:last-child, table#change-history tbody tr:last-child {
       border-bottom: 0; }
@@ -778,13 +779,13 @@ a:hover {
       font-size: 13px; }
       .table tbody tr th.action-checkbox, #changelist table tbody tr th.action-checkbox, table#change-history tbody tr th.action-checkbox, .table tbody tr td.action-checkbox, #changelist table tbody tr td.action-checkbox, table#change-history tbody tr td.action-checkbox {
         text-align: center; }
-  .table tbody tr.selected, #changelist table tbody tr.selected, table#change-history tbody tr.selected {
+  .table tbody tr.selected, #changelist table tbody tr.selected, table#change-history tbody tr.selected, .table tbody tr.dragging, #changelist table tbody tr.dragging, table#change-history tbody tr.dragging {
     border-color: #EFEDC8; }
-    .table tbody tr.selected:last-child th:first-child, #changelist table tbody tr.selected:last-child th:first-child, table#change-history tbody tr.selected:last-child th:first-child, .table tbody tr.selected:last-child td:first-child, #changelist table tbody tr.selected:last-child td:first-child, table#change-history tbody tr.selected:last-child td:first-child {
+    .table tbody tr.selected:last-child th:first-child, #changelist table tbody tr.selected:last-child th:first-child, table#change-history tbody tr.selected:last-child th:first-child, .table tbody tr.selected:last-child td:first-child, #changelist table tbody tr.selected:last-child td:first-child, table#change-history tbody tr.selected:last-child td:first-child, .table tbody tr.dragging:last-child th:first-child, #changelist table tbody tr.dragging:last-child th:first-child, table#change-history tbody tr.dragging:last-child th:first-child, .table tbody tr.dragging:last-child td:first-child, #changelist table tbody tr.dragging:last-child td:first-child, table#change-history tbody tr.dragging:last-child td:first-child {
       border-radius: 0 0 0 4px; }
-    .table tbody tr.selected:last-child th:last-child, #changelist table tbody tr.selected:last-child th:last-child, table#change-history tbody tr.selected:last-child th:last-child, .table tbody tr.selected:last-child td:last-child, #changelist table tbody tr.selected:last-child td:last-child, table#change-history tbody tr.selected:last-child td:last-child {
+    .table tbody tr.selected:last-child th:last-child, #changelist table tbody tr.selected:last-child th:last-child, table#change-history tbody tr.selected:last-child th:last-child, .table tbody tr.selected:last-child td:last-child, #changelist table tbody tr.selected:last-child td:last-child, table#change-history tbody tr.selected:last-child td:last-child, .table tbody tr.dragging:last-child th:last-child, #changelist table tbody tr.dragging:last-child th:last-child, table#change-history tbody tr.dragging:last-child th:last-child, .table tbody tr.dragging:last-child td:last-child, #changelist table tbody tr.dragging:last-child td:last-child, table#change-history tbody tr.dragging:last-child td:last-child {
       border-radius: 0 0 4px 0; }
-    .table tbody tr.selected th, #changelist table tbody tr.selected th, table#change-history tbody tr.selected th, .table tbody tr.selected td, #changelist table tbody tr.selected td, table#change-history tbody tr.selected td {
+    .table tbody tr.selected th, #changelist table tbody tr.selected th, table#change-history tbody tr.selected th, .table tbody tr.selected td, #changelist table tbody tr.selected td, table#change-history tbody tr.selected td, .table tbody tr.dragging th, #changelist table tbody tr.dragging th, table#change-history tbody tr.dragging th, .table tbody tr.dragging td, #changelist table tbody tr.dragging td, table#change-history tbody tr.dragging td {
       background-color: #FFFDDB; }
   .table tbody tr.contrast, #changelist table tbody tr.contrast, table#change-history tbody tr.contrast {
     background: #F8FAFC; }
@@ -2031,9 +2032,17 @@ a:hover {
         float: right;
         color: #79A7D8;
         font-size: 24px;
-        line-height: 30px !important; }
+        line-height: 30px !important;
+        -webkit-transition: color 0.3s;
+        -moz-transition: color 0.3s;
+        -o-transition: color 0.3s;
+        transition: color 0.3s; }
     .top-user-tools.opened .top-user-tools-welcome-msg-arrow {
-      color: #8b9cb3; }
+      color: #8b9cb3;
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg); }
     .top-user-tools-contrast-block {
       display: none;
       padding: 8px 14px;
@@ -3486,6 +3495,8 @@ table#change-history {
 .fill_width {
   width: 100% !important; }
 
+.module-separator {
+  height: 1em; }
 .module .form-row {
   padding: 6px 0;
   overflow: hidden; }
@@ -3498,6 +3509,8 @@ table#change-history {
     .module .form-row label + p {
       padding-top: 6px;
       margin: 4px 0 4px 160px; }
+  .module .form-row br {
+    clear: both; }
   .module .form-row.errors label {
     color: #c7254e; }
   .module .form-row .checkbox-row label {
@@ -3555,6 +3568,17 @@ table#change-history {
       padding: 0;
       width: auto;
       margin-left: 10px; }
+.module.aligned {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px; }
+  .module.aligned ul label {
+    display: inline;
+    float: none;
+    width: auto; }
+  .module.aligned ul {
+    margin: 0 0 0 160px;
+    padding: 0; }
 
 .submit-row {
   padding: 20px 0; }
@@ -3598,14 +3622,8 @@ table#change-history {
       display: none; }
       .changeform-tabs ~ .module .stacked.inline-related.selected {
         display: block; }
-  .changeform .module {
-    padding: 0;
-    background: none;
-    border-radius: 0; }
-    .changeform .module .form-row .select2 {
-      max-width: 586px; }
-  .changeform .aligned {
-    padding: 20px 20px 0 20px; }
+  .changeform .module .form-row .select2 {
+    max-width: 586px; }
   .changeform .inline-group .errornote {
     color: #c7254e;
     margin: 0;
@@ -4807,10 +4825,12 @@ table#change-history {
   font-size: 12px; }
 
 .changeform-object-tools {
-  text-align: right; }
+  text-align: right;
+  overflow: auto; }
 
 ul.object-tools {
-  margin-bottom: 20px !important; }
+  margin-bottom: 20px !important;
+  float: right; }
   ul.object-tools li {
     margin-top: 10px;
     text-align: right; }
@@ -5723,5 +5743,337 @@ img[src$="admin/img/icon-no.gif"] + span {
     vertical-align: middle;
     font-weight: bold;
     font-size: 18px; }
+
+/*
+ * Default variable values
+ * Create separate themes/theme/_variables.scss to override these variables
+ */
+/*
+ * General
+ */
+/*
+ * Sidebar
+ */
+/*
+ * Top
+ */
+/*
+ * Content
+ */
+/*
+ * Buttons
+ */
+/*
+ * Inputs
+ */
+/*
+ * Messages
+ */
+/*
+ * Login
+ */
+/*
+ * jQuery UI
+ */
+/*
+ * Charts
+ */
+.hidden {
+  display: none; }
+
+.clear-list, .sidebar-menu, .sidebar-menu-item-list, .sidebar-popup-list, .top-user-tools, .messagelist, .module .form-row .errorlist, .changeform-tabs, .changeform .tabular.inline-related .module .errorlist, .changeform .stacked-inline-list, .delete-summary ul, .delete-objects-list, .login-form .form-row .errorlist, ul.object-tools, .dashboard-item-content ul:not(.inline), .dashboard-item-content ul.inline {
+  margin: 0;
+  padding: 0;
+  list-style: none; }
+
+.fl {
+  float: left; }
+
+.fr {
+  float: right; }
+
+.cf:before, .cf:after {
+  content: "";
+  display: table; }
+
+.cf:after {
+  clear: both; }
+
+.p10 {
+  padding: 10px; }
+
+.p20 {
+  padding: 20px; }
+
+.p30 {
+  padding: 30px; }
+
+.p40 {
+  padding: 40px; }
+
+.p50 {
+  padding: 50px; }
+
+.p60 {
+  padding: 60px; }
+
+.p70 {
+  padding: 70px; }
+
+.p80 {
+  padding: 80px; }
+
+.pt10 {
+  padding-top: 10px; }
+
+.pt20 {
+  padding-top: 20px; }
+
+.pt30 {
+  padding-top: 30px; }
+
+.pt40 {
+  padding-top: 40px; }
+
+.pt50 {
+  padding-top: 50px; }
+
+.pt60 {
+  padding-top: 60px; }
+
+.pt70 {
+  padding-top: 70px; }
+
+.pt80 {
+  padding-top: 80px; }
+
+.pr10 {
+  padding-right: 10px; }
+
+.pr20 {
+  padding-right: 20px; }
+
+.pr30 {
+  padding-right: 30px; }
+
+.pr40 {
+  padding-right: 40px; }
+
+.pr50 {
+  padding-right: 50px; }
+
+.pr60 {
+  padding-right: 60px; }
+
+.pr70 {
+  padding-right: 70px; }
+
+.pr80 {
+  padding-right: 80px; }
+
+.pb10 {
+  padding-bottom: 10px; }
+
+.pb20 {
+  padding-bottom: 20px; }
+
+.pb30 {
+  padding-bottom: 30px; }
+
+.pb40 {
+  padding-bottom: 40px; }
+
+.pb50 {
+  padding-bottom: 50px; }
+
+.pb60 {
+  padding-bottom: 60px; }
+
+.pb70 {
+  padding-bottom: 70px; }
+
+.pb80 {
+  padding-bottom: 80px; }
+
+.pl10 {
+  padding-left: 10px; }
+
+.pl20 {
+  padding-left: 20px; }
+
+.pl30 {
+  padding-left: 30px; }
+
+.pl40 {
+  padding-left: 40px; }
+
+.pl50 {
+  padding-left: 50px; }
+
+.pl60 {
+  padding-left: 60px; }
+
+.pl70 {
+  padding-left: 70px; }
+
+.pl80 {
+  padding-left: 80px; }
+
+.m10 {
+  margin: 10px; }
+
+.m20 {
+  margin: 20px; }
+
+.m30 {
+  margin: 30px; }
+
+.m40 {
+  margin: 40px; }
+
+.m50 {
+  margin: 50px; }
+
+.m60 {
+  margin: 60px; }
+
+.m70 {
+  margin: 70px; }
+
+.m80 {
+  margin: 80px; }
+
+.mt10 {
+  margin-top: 10px; }
+
+.mt20 {
+  margin-top: 20px; }
+
+.mt30 {
+  margin-top: 30px; }
+
+.mt40 {
+  margin-top: 40px; }
+
+.mt50 {
+  margin-top: 50px; }
+
+.mt60 {
+  margin-top: 60px; }
+
+.mt70 {
+  margin-top: 70px; }
+
+.mt80 {
+  margin-top: 80px; }
+
+.mr10 {
+  margin-right: 10px; }
+
+.mr20 {
+  margin-right: 20px; }
+
+.mr30 {
+  margin-right: 30px; }
+
+.mr40 {
+  margin-right: 40px; }
+
+.mr50 {
+  margin-right: 50px; }
+
+.mr60 {
+  margin-right: 60px; }
+
+.mr70 {
+  margin-right: 70px; }
+
+.mr80 {
+  margin-right: 80px; }
+
+.mb10 {
+  margin-bottom: 10px; }
+
+.mb20 {
+  margin-bottom: 20px; }
+
+.mb30 {
+  margin-bottom: 30px; }
+
+.mb40 {
+  margin-bottom: 40px; }
+
+.mb50 {
+  margin-bottom: 50px; }
+
+.mb60 {
+  margin-bottom: 60px; }
+
+.mb70 {
+  margin-bottom: 70px; }
+
+.mb80 {
+  margin-bottom: 80px; }
+
+.ml10 {
+  margin-left: 10px; }
+
+.ml20 {
+  margin-left: 20px; }
+
+.ml30 {
+  margin-left: 30px; }
+
+.ml40 {
+  margin-left: 40px; }
+
+.ml50 {
+  margin-left: 50px; }
+
+.ml60 {
+  margin-left: 60px; }
+
+.ml70 {
+  margin-left: 70px; }
+
+.ml80 {
+  margin-left: 80px; }
+
+.pos_rel {
+  position: relative; }
+
+.pos_abs {
+  position: absolute; }
+
+.fill_width {
+  width: 100% !important; }
+
+#result_list thead .column-_reorder, table.helper thead .column-_reorder {
+  width: 16px !important; }
+  #result_list thead .column-_reorder *, table.helper thead .column-_reorder * {
+    display: none !important; }
+#result_list tbody tr .field-_reorder, table.helper tbody tr .field-_reorder {
+  text-align: center; }
+  #result_list tbody tr .field-_reorder div.drag, table.helper tbody tr .field-_reorder div.drag {
+    visibility: hidden;
+    background: none !important; }
+    #result_list tbody tr .field-_reorder div.drag:after, table.helper tbody tr .field-_reorder div.drag:after {
+      font-family: 'jet-icons';
+      speak: none;
+      font-style: normal;
+      font-weight: normal;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      /* Better Font Rendering =========== */
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 16px;
+      font-weight: bold;
+      content: ""; }
+#result_list tbody tr:hover .field-_reorder div.drag, #result_list tbody tr.dragging .field-_reorder div.drag, table.helper tbody tr:hover .field-_reorder div.drag, table.helper tbody tr.dragging .field-_reorder div.drag {
+  visibility: visible; }
 
 /*# sourceMappingURL=base.css.map */
