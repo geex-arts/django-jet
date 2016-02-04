@@ -2031,9 +2031,17 @@ a:hover {
         float: right;
         color: #79A7D8;
         font-size: 24px;
-        line-height: 30px !important; }
+        line-height: 30px !important;
+        -webkit-transition: color 0.3s;
+        -moz-transition: color 0.3s;
+        -o-transition: color 0.3s;
+        transition: color 0.3s; }
     .top-user-tools.opened .top-user-tools-welcome-msg-arrow {
-      color: #8b9cb3; }
+      color: #8b9cb3;
+      -webkit-transform: rotate(180deg);
+      -moz-transform: rotate(180deg);
+      -o-transform: rotate(180deg);
+      transform: rotate(180deg); }
     .top-user-tools-contrast-block {
       display: none;
       padding: 8px 14px;
@@ -3486,6 +3494,8 @@ table#change-history {
 .fill_width {
   width: 100% !important; }
 
+.module-separator {
+  height: 1em; }
 .module .form-row {
   padding: 6px 0;
   overflow: hidden; }
@@ -3498,6 +3508,8 @@ table#change-history {
     .module .form-row label + p {
       padding-top: 6px;
       margin: 4px 0 4px 160px; }
+  .module .form-row br {
+    clear: both; }
   .module .form-row.errors label {
     color: #c7254e; }
   .module .form-row .checkbox-row label {
@@ -3555,6 +3567,17 @@ table#change-history {
       padding: 0;
       width: auto;
       margin-left: 10px; }
+.module.aligned {
+  background-color: #fff;
+  border-radius: 4px;
+  padding: 20px; }
+  .module.aligned ul label {
+    display: inline;
+    float: none;
+    width: auto; }
+  .module.aligned ul {
+    margin: 0 0 0 160px;
+    padding: 0; }
 
 .submit-row {
   padding: 20px 0; }
@@ -3598,14 +3621,8 @@ table#change-history {
       display: none; }
       .changeform-tabs ~ .module .stacked.inline-related.selected {
         display: block; }
-  .changeform .module {
-    padding: 0;
-    background: none;
-    border-radius: 0; }
-    .changeform .module .form-row .select2 {
-      max-width: 586px; }
-  .changeform .aligned {
-    padding: 20px 20px 0 20px; }
+  .changeform .module .form-row .select2 {
+    max-width: 586px; }
   .changeform .inline-group .errornote {
     color: #c7254e;
     margin: 0;
@@ -4807,10 +4824,12 @@ table#change-history {
   font-size: 12px; }
 
 .changeform-object-tools {
-  text-align: right; }
+  text-align: right;
+  overflow: auto; }
 
 ul.object-tools {
-  margin-bottom: 20px !important; }
+  margin-bottom: 20px !important;
+  float: right; }
   ul.object-tools li {
     margin-top: 10px;
     text-align: right; }
