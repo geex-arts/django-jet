@@ -77,6 +77,19 @@ You can use **/jet/static/jet/css/themes/light-violet/** folder as an example (a
 _variables.scss contains **all** customizable variables. You'll have to compile all .scss files in theme directory
 to start using your own theme.
 
+COMPACT MENU
+------------
+
+If you don't have a lot of apps and models it can be annoying to have a two-level menu.
+In this case you can use menu's compact mode, which will list applications and models in the side menu without need
+to move pointer over applications to show models.
+
+.. code:: python
+
+    JET_SIDE_MENU_COMPACT = True
+
+Default is ``False``
+
 CUSTOM MENU
 -----------
 
