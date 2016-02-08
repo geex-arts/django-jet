@@ -32,7 +32,7 @@ jQuery(function($) {
 
 	$('#result_list').sortable({
         tolerance: 'pointer',
-		items: 'tr',
+		items: 'tbody tr',
         cursor: 'move',
         axis: 'y',
 		containment: $('#result_list tbody'),
