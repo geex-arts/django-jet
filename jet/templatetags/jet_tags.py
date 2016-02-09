@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import django
 from django import template
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
@@ -10,6 +11,7 @@ from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
 import re
 from jet.utils import get_app_list, get_model_instance_label
+from distutils.version import StrictVersion
 
 register = template.Library()
 
@@ -304,3 +306,11 @@ def get_current_jet_version():
 @register.assignment_tag
 def get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
+
+
+@register.simple_tag
+def supports_old_ie():
+    if StrictVersion(django.get_version()) < StrictVersion('1.9.2'):
+        return True
+    else:
+        return False;
