@@ -308,7 +308,7 @@ def get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
 
 
-@register.simple_tag
+@register.assignment_tag
 def supports_old_ie():
     if StrictVersion(django.get_version()) < StrictVersion('1.9.2'):
         return True
