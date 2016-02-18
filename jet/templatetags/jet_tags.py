@@ -125,7 +125,7 @@ def format_deletable_object(deletable_object):
 
 
 @register.assignment_tag(takes_context=True)
-def get_menu(context):
+def get_menu(context, user):
     if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
         app_list = get_app_list(context, False)
         app_dict = {}
@@ -165,7 +165,7 @@ def get_menu(context):
 
     current_found = False
 
-    pinned = PinnedApplication.objects.filter(user=context['request'].user).values_list('app_label', flat=True)
+    pinned = PinnedApplication.objects.filter(user=user).values_list('app_label', flat=True)
 
     all_aps = []
     apps = []

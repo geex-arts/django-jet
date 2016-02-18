@@ -194,7 +194,7 @@
                         </li>
 
                         {% if user.is_active and user.is_staff %}
-                            {% get_menu as app_list %}
+                            {% get_menu user as app_list %}
                             {% if app_list.apps or app_list.pinned_apps %}
                                 <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
                                     {% csrf_token %}
