@@ -165,7 +165,7 @@ def get_menu(context, user):
 
     current_found = False
 
-    pinned = PinnedApplication.objects.filter(user=user).values_list('app_label', flat=True)
+    pinned = PinnedApplication.objects.filter(user=user.id).values_list('app_label', flat=True)
 
     all_aps = []
     apps = []
