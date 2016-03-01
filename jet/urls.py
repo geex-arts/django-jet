@@ -1,9 +1,12 @@
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.views.i18n import javascript_catalog
 from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
 
-urlpatterns = patterns(
-    '',
+js_info_dict = {
+    'packages': ('django.conf', 'django.contrib.admin', 'jet',),
+}
+
+urlpatterns = [
     url(
         r'^add_bookmark/$',
         add_bookmark_view,
@@ -26,8 +29,7 @@ urlpatterns = patterns(
     ),
     url(
         r'^jsi18n/$',
-        javascript_catalog,
-        {'packages': ('jet',)},
+        javascript_catalog, js_info_dict,
         name='jsi18n'
     ),
-)
+]
