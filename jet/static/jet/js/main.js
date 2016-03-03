@@ -166,7 +166,9 @@
                 $popupLinks.on('mouseenter', function () {
                     $popupLink = $(this);
                     clearHideTimeout();
-                    if ($currentPopupLink === null) showPopup($popupLink);
+                    if ($currentPopupLink === null) {
+                        itemSwitchTimeout = setTimeout(function() { showPopup($popupLink) }, 200);
+                    }
                     else {
                         if ($currentPopupLink !== $popupLink) {
                             clearISTimeout();
