@@ -167,6 +167,7 @@
                     $popupLink = $(this);
                     clearHideTimeout();
                     if ($currentPopupLink === null) {
+                        clearISTimeout();
                         itemSwitchTimeout = setTimeout(function() { showPopup($popupLink) }, 200);
                     }
                     else {
