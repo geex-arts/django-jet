@@ -21,8 +21,9 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
         return True
 
     def field_choices(self, field, request, model_admin):
-        app_label = field.remote_field.model._meta.app_label
-        model_name = field.remote_field.model._meta.object_name
+        model = field.remote_field.model if hasattr(field, 'remote_field') else field.related_field.model
+        app_label = model._meta.app_label
+        model_name = model._meta.object_name
 
         self.ajax_attrs = format_html('{}', flatatt({
             'data-app-label': app_label,
