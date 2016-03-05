@@ -13,8 +13,8 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
         return True
 
     def field_choices(self, field, request, model_admin):
-        app_label = field.related_model._meta.app_label
-        model_name = field.related_model._meta.object_name
+        app_label = field.remote_field.model._meta.app_label
+        model_name = field.remote_field.model._meta.object_name
 
         self.ajax_attrs = format_html('{}', flatatt({
             'data-app-label': app_label,
