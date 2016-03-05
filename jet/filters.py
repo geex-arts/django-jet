@@ -25,7 +25,7 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
         app_label = model._meta.app_label
         model_name = model._meta.object_name
 
-        self.ajax_attrs = format_html('{}', flatatt({
+        self.ajax_attrs = format_html('{0}', flatatt({
             'data-app-label': app_label,
             'data-model': model_name,
             'data-ajax--url': reverse('jet:model_lookup'),
