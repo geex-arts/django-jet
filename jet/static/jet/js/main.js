@@ -189,6 +189,7 @@
                     }
 
                     hidePopup();
+                    if ($currentPopupLink === null) clearISTimeout();
                 });
 
                 $popup.on('mouseenter', function (e) {
