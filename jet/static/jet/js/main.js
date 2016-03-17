@@ -86,7 +86,9 @@
                 var $popupLinks = $('.popup-item-link');
                 var $popupLink;
                 var t;
+                var itemSwitchTimeout = null;
                 var $currentPopupItem;
+                var $currentPopupLink = null;
                 var $currentPopupItemListItem;
                 var $currentPopupItemListItems = function() { return $currentPopupItem.find('.sidebar-popup-list-item:visible') };
 
@@ -115,6 +117,8 @@
                 var showPopup = function ($popupLink) {
                     clearHideTimeout();
 
+                    $currentPopupLink = $popupLink;
+
                     var popupItemId = $popupLink.data('popup-item-id');
                     var $popupItem = $('#' + popupItemId);
                     var $search = $popupItem.find('.sidebar-popup-search');
@@ -141,6 +145,7 @@
                         $('body').removeClass('non-scrollable');
 
                         $currentPopupItem = null;
+                        $currentPopupLink = null;
                     }, 200);
                 };
 
@@ -151,10 +156,29 @@
                     t = null;
                 };
 
+                var clearISTimeout = function() {
+                    if (itemSwitchTimeout !== null) {
+                        clearTimeout(itemSwitchTimeout);
+                    }
+                    itemSwitchTimeout = null;
+                };
+
                 $popupLinks.on('mouseenter', function () {
                     $popupLink = $(this);
-
-                    showPopup($popupLink);
+                    clearHideTimeout();
+                    if ($currentPopupLink === null) {
+                        clearISTimeout();
+                        itemSwitchTimeout = setTimeout(function() { showPopup($popupLink) }, 200);
+                    }
+                    else {
+                        if ($currentPopupLink !== $popupLink) {
+                            clearISTimeout();
+                            itemSwitchTimeout = setTimeout(function() { showPopup($popupLink) }, 500);
+                        }
+                        else {
+                            clearISTimeout();
+                        }
+                    }
                 });
 
                 $popupLinks.on('mouseleave', function (e) {
@@ -165,10 +189,12 @@
                     }
 
                     hidePopup();
+                    if ($currentPopupLink === null) clearISTimeout();
                 });
 
                 $popup.on('mouseenter', function (e) {
                     clearHideTimeout();
+                    clearISTimeout();
                 });
 
                 $popup.on('mouseleave', function (e) {
