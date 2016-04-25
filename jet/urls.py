@@ -1,4 +1,5 @@
-from django.conf.urls import url
+import django
+from django.conf.urls import patterns, url
 from django.views.i18n import javascript_catalog
 from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
 
@@ -30,3 +31,6 @@ urlpatterns = [
         name='jsi18n'
     ),
 ]
+
+if django.VERSION[:2] < (1, 8):
+    urlpatterns = patterns('', *urlpatterns)
