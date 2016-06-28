@@ -164,6 +164,7 @@ input[type=checkbox] {
 
     &:after {
       content: '*';
+      color: $error-text-color;
     }
   }
 
