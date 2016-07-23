@@ -83,7 +83,45 @@
   }
 }
 
-a.button {
+.segmented-button {
+  &, &:visited, &:hover {
+    @extend .base_input;
+    font-size: 12px;
+    text-align: center;
+    background-color: $button-background-color;
+    color: $button-text-color;
+    padding: 0 10px;
+    display: inline-block;
+    text-transform: none;
+    border-radius: 0;
+  }
+
+  &:hover {
+    background-color: $button-hover-background-color;
+    color: $button-hover-text-color;
+  }
+
+  &:active {
+    background-color: $button-active-background-color;
+    color: $button-active-text-color;
+  }
+
+  &.disabled {
+    background-color: $button-background-color !important;
+    color: $button-text-color;
+    opacity: 0.5;
+  }
+
+  &.left {
+    border-radius: 4px 0 0 4px;
+  }
+
+  &.right {
+    border-radius: 0 4px 4px 0;
+  }
+}
+
+a.button, a.segmented-button {
   line-height: 32px;
 }
 
