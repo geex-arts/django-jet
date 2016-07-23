@@ -77,7 +77,7 @@
                             {% is_fieldset_with_errors forloop.counter0 fieldsets_with_errors as fieldset_with_errors %}
 
                             <li class="changeform-tabs-item{% if selected %} selected{% endif %}{% if fieldset_with_errors %} errors{% endif %}">
-                                <a href="#" class="changeform-tabs-item-link" data-module-id="module_{{ forloop.counter0 }}">
+                                <a href="#/module_{{ forloop.counter0 }}" class="changeform-tabs-item-link" data-module-id="module_{{ forloop.counter0 }}">
                                     {% if fieldset.name %}
                                         {{ fieldset.name }}
                                     {% else %}
@@ -90,7 +90,7 @@
                             {% formset_has_errors inline_admin_formset.formset as errors %}
 
                             <li class="changeform-tabs-item{% if errors %} errors{% endif %}">
-                                <a href="#" class="changeform-tabs-item-link" data-module-id="inline_module_{{ forloop.counter0 }}">
+                                <a href="#/inline_module_{{ forloop.counter0 }}" class="changeform-tabs-item-link" data-module-id="inline_module_{{ forloop.counter0 }}">
                                     {{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
                                 </a>
                             </li>
