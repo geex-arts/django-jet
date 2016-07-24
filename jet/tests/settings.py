@@ -1,5 +1,8 @@
+import os
 import django
 from django.conf import global_settings
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 SECRET_KEY = '!DJANGO_JET_TESTS!'
 
@@ -34,9 +37,18 @@ if django.VERSION[:2] < (1, 9):
         'django.core.context_processors.request',
     )
 else:
-    TEMPLATE_CONTEXT_PROCESSORS = tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
-        'django.template.context_processors.request',
-    )
+    TEMPLATES = [
+        {
+            'BACKEND': 'django.template.backends.django.DjangoTemplates',
+            'DIRS': [os.path.join(BASE_DIR, 'templates')],
+            'APP_DIRS': True,
+            'OPTIONS': {
+                'context_processors': tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
+                    'django.template.context_processors.request',
+                )
+            },
+        },
+    ]
 
 DATABASES = {
     'default': {
