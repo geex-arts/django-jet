@@ -1,4 +1,3 @@
-from django.contrib.auth.models import User
 from django.test import TestCase, Client
 from jet.dashboard.modules import LinkList, RecentActions
 from jet.dashboard.models import UserDashboardModule
@@ -14,12 +13,17 @@ class DashboardTestCase(TestCase):
         self._login()
         self._init_dashboard()
 
+    @property
+    def User(self):
+        from django.contrib.auth.models import User
+        return User
+
     def _login(self):
         username = 'admin'
         email = 'admin@example.com'
         password = 'admin'
         self.admin = Client()
-        self.admin_user = User.objects.create_superuser(username, email, password)
+        self.admin_user = self.User.objects.create_superuser(username, email, password)
         return self.admin.login(username=username, password=password)
 
     def _init_dashboard(self):
