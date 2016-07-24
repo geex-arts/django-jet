@@ -356,11 +356,11 @@ def jet_sibling_object_url(context, next):
     return url
 
 
-@register.simple_tag(takes_context=True)
+@register.assignment_tag(takes_context=True)
 def jet_previous_object_url(context):
     return jet_sibling_object_url(context, False)
 
 
-@register.simple_tag(takes_context=True)
+@register.assignment_tag(takes_context=True)
 def jet_next_object_url(context):
     return jet_sibling_object_url(context, True)
