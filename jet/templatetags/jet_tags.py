@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import django
 from django import template
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
@@ -57,7 +58,10 @@ class FormatBreadcrumbsNode(template.Node):
         items = filter(None, items)
 
         t = loader.get_template('admin/breadcrumbs.html')
-        c = Context({'items': items})
+        c = {'items': items}
+
+        if django.VERSION[:2] < (1, 9):
+            c = Context(c)
 
         return t.render(c)
 
