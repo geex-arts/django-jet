@@ -12,6 +12,14 @@ class TestModel(models.Model):
 
 
 @python_2_unicode_compatible
+class RelatedToTestModel(models.Model):
+    field = models.ForeignKey(TestModel)
+
+    def __str__(self):
+        return self.field
+
+
+@python_2_unicode_compatible
 class SearchableTestModel(models.Model):
     field1 = models.CharField(max_length=255)
     field2 = models.IntegerField()

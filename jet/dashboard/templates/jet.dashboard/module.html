@@ -26,6 +26,7 @@
     </div>
 
     <div class="dashboard-item-content{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
+        {{ module.pre_contenta|default_if_none:"" }}
         {% if module.ajax_load %}
             <div class="loading-indicator-wrapper">
                 <span class="icon-refresh loading-indicator"></span>
@@ -33,5 +34,6 @@
         {% else %}
             {{ module.render }}
         {% endif %}
+        {{ module.post_content|default_if_none:"" }}
     </div>
 </div>

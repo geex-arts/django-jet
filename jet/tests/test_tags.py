@@ -1,14 +1,15 @@
 from django import forms
+from django.core.urlresolvers import reverse
 from django.test import TestCase
-from jet.templatetags.jet_tags import select2_lookups
+from jet.templatetags.jet_tags import select2_lookups, jet_next_object_url, jet_previous_object_url
 from jet.tests.models import TestModel, SearchableTestModel
 
 
 class TagsTestCase(TestCase):
-    models = []
-    searchable_models = []
-
     def setUp(self):
+        self.models = []
+        self.searchable_models = []
+
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='first', field2=1))
@@ -55,4 +56,35 @@ class TagsTestCase(TestCase):
 
         self.assertEqual(len(choices), len(self.models) + 1)
 
+    def test_jet_sibling_object_next_url(self):
+        instance = self.models[0]
+        ordering_field = 1  # field1 in list_display
+        preserved_filters = '_changelist_filters=o%%3D%d' % ordering_field
 
+        context = {
+            'original': instance,
+            'preserved_filters': preserved_filters
+        }
+
+        actual_url = jet_next_object_url(context)
+        expected_url = reverse('admin:%s_%s_change' % (
+            TestModel._meta.app_label,
+            TestModel._meta.model_name
+        ), args=(self.models[1].pk,)) + '?' + preserved_filters
+
+        self.assertEqual(actual_url, expected_url)
+
+    def test_jet_sibling_object_previous_url(self):
+        instance = self.models[0]
+        ordering_field = 1  # field1 in list_display
+        preserved_filters = '_changelist_filters=o%%3D%d' % ordering_field
+
+        context = {
+            'original': instance,
+            'preserved_filters': preserved_filters
+        }
+
+        actual_url = jet_previous_object_url(context)
+        expected_url = None
+
+        self.assertEqual(actual_url, expected_url)

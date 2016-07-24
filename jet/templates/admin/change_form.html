@@ -15,7 +15,13 @@
     <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
     &rsaquo; <a href="{% url 'admin:app_list' app_label=opts.app_label %}">{% if opts.app_config.verbose_name %}{{ opts.app_config.verbose_name }}{% else %}{% trans app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}</a>
-    &rsaquo; {% if has_change_permission %}<a href="{% url opts|admin_urlname:'changelist' %}">{{ opts.verbose_name_plural|capfirst }}</a>{% else %}{{ opts.verbose_name_plural|capfirst }}{% endif %}
+    &rsaquo;
+    {% if has_change_permission %}
+        {% url opts|admin_urlname:'changelist' as url %}
+        <a href="{% jet_add_preserved_filters url %}">{{ opts.verbose_name_plural|capfirst }}</a>
+    {% else %}
+        {{ opts.verbose_name_plural|capfirst }}
+    {% endif %}
     &rsaquo; {% if add %}{% trans 'Add' %} {{ opts.verbose_name }}{% else %}{{ original|truncatewords:"18" }}{% endif %}
     </div>
     {% endblock %}
@@ -23,24 +29,42 @@
 
 {% block content %}
     <div id="content-main">
-        <div class="changeform-object-tools">
-            {% block object-tools %}
-                {% if change %}
-                    {% if not is_popup %}
-                        <ul class="object-tools horizontal">
-                            {% block object-tools-items %}
-                                <li>
-                                    {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
-                                    <a href="{% jet_add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
-                                </li>
-                                {% if has_absolute_url %}
-                                    <li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>
-                                {% endif %}
-                            {% endblock %}
-                        </ul>
+        <div class="cf">
+            {% jet_change_form_sibling_links_enabled as show_siblings %}
+            {% if change and show_siblings %}
+                <div class="changeform-navigation">
+                    {% spaceless %}
+                        {% jet_previous_object_url as url %}
+                        <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button left{% if not url %} disabled{% endif %}">
+                            {% trans "←" %}
+                        </a>
+
+                        {% jet_next_object_url as url %}
+                        <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button right{% if not url %} disabled{% endif %}">
+                            {% trans "→" %}
+                        </a>
+                    {% endspaceless %}
+                </div>
+            {% endif %}
+            <div class="changeform-object-tools">
+                {% block object-tools %}
+                    {% if change %}
+                        {% if not is_popup %}
+                            <ul class="object-tools horizontal">
+                                {% block object-tools-items %}
+                                    <li>
+                                        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+                                        <a href="{% jet_add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+                                    </li>
+                                    {% if has_absolute_url %}
+                                        <li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>
+                                    {% endif %}
+                                {% endblock %}
+                            </ul>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endblock %}
+                {% endblock %}
+            </div>
         </div>
         <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
             {% csrf_token %}
@@ -55,7 +79,7 @@
                             {% is_fieldset_with_errors forloop.counter0 fieldsets_with_errors as fieldset_with_errors %}
 
                             <li class="changeform-tabs-item{% if selected %} selected{% endif %}{% if fieldset_with_errors %} errors{% endif %}">
-                                <a href="#" class="changeform-tabs-item-link" data-module-id="module_{{ forloop.counter0 }}">
+                                <a href="#/module_{{ forloop.counter0 }}" class="changeform-tabs-item-link" data-module-id="module_{{ forloop.counter0 }}">
                                     {% if fieldset.name %}
                                         {{ fieldset.name }}
                                     {% else %}
@@ -68,7 +92,7 @@
                             {% formset_has_errors inline_admin_formset.formset as errors %}
 
                             <li class="changeform-tabs-item{% if errors %} errors{% endif %}">
-                                <a href="#" class="changeform-tabs-item-link" data-module-id="inline_module_{{ forloop.counter0 }}">
+                                <a href="#/inline_module_{{ forloop.counter0 }}" class="changeform-tabs-item-link" data-module-id="inline_module_{{ forloop.counter0 }}">
                                     {{ inline_admin_formset.opts.verbose_name_plural|capfirst }}
                                 </a>
                             </li>

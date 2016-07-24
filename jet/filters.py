@@ -1,9 +1,17 @@
 from django.contrib.admin import RelatedFieldListFilter
-from django.contrib.admin.utils import get_model_from_relation
-from django.core.urlresolvers import reverse
-from django.forms.utils import flatatt
 from django.utils.encoding import smart_text
 from django.utils.html import format_html
+from django.core.urlresolvers import reverse
+
+try:
+    from django.contrib.admin.utils import get_model_from_relation
+except ImportError: # Django 1.6
+    from django.contrib.admin.util import get_model_from_relation
+
+try:
+    from django.forms.utils import flatatt
+except ImportError: # Django 1.6
+    from django.forms.util import flatatt
 
 
 class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
@@ -13,10 +21,11 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
         return True
 
     def field_choices(self, field, request, model_admin):
-        app_label = field.related_model._meta.app_label
-        model_name = field.related_model._meta.object_name
+        model = field.remote_field.model if hasattr(field, 'remote_field') else field.related_field.model
+        app_label = model._meta.app_label
+        model_name = model._meta.object_name
 
-        self.ajax_attrs = format_html('{}', flatatt({
+        self.ajax_attrs = format_html('{0}', flatatt({
             'data-app-label': app_label,
             'data-model': model_name,
             'data-ajax--url': reverse('jet:model_lookup'),
@@ -32,5 +41,5 @@ class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
         else:
             rel_name = other_model._meta.pk.name
 
-        queryset = field.related_model._default_manager.filter(**{rel_name: self.lookup_val}).all()
+        queryset = model._default_manager.filter(**{rel_name: self.lookup_val}).all()
         return [(x._get_pk_val(), smart_text(x)) for x in queryset]

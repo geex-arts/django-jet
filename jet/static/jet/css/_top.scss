@@ -1,5 +1,12 @@
 @import "globals";
 
+.breadcrumbs {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 200px;
+  overflow: hidden;
+}
+
 .top {
   padding: 20px;
 
