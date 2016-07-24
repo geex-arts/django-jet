@@ -31,3 +31,7 @@ matrix:
       env: DJANGO=1.8.3
     - python: 2.6
       env: DJANGO=1.9.8
+    - python: 3.2
+      env: DJANGO=1.9.8
+    - python: 3.3
+      env: DJANGO=1.9.8
