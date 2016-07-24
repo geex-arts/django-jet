@@ -3,10 +3,13 @@ from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
 from jet.dashboard import modules
 from jet.dashboard.models import UserDashboardModule
-from django.core.context_processors import csrf
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
 from jet.utils import get_admin_site_name
+try:
+    from django.template.context_processors import csrf
+except ImportError:
+    from django.core.context_processors import csrf
 
 
 class Dashboard(object):
