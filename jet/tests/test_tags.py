@@ -1,7 +1,7 @@
 from django import forms
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from jet.templatetags.jet_tags import select2_lookups, jet_sibling_object_url
+from jet.templatetags.jet_tags import select2_lookups, jet_next_object_url, jet_previous_object_url
 from jet.tests.models import TestModel, SearchableTestModel
 
 
@@ -66,7 +66,7 @@ class TagsTestCase(TestCase):
             'preserved_filters': preserved_filters
         }
 
-        actual_url = jet_sibling_object_url(context, next=True)
+        actual_url = jet_next_object_url(context)
         expected_url = reverse('admin:%s_%s_change' % (
             TestModel._meta.app_label,
             TestModel._meta.model_name
@@ -84,7 +84,7 @@ class TagsTestCase(TestCase):
             'preserved_filters': preserved_filters
         }
 
-        actual_url = jet_sibling_object_url(context, next=False)
+        actual_url = jet_previous_object_url(context)
         expected_url = None
 
         self.assertEqual(actual_url, expected_url)

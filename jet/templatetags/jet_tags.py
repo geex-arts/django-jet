@@ -316,7 +316,6 @@ def jet_change_form_sibling_links_enabled():
     return settings.JET_CHANGE_FORM_SIBLING_LINKS
 
 
-@register.simple_tag(takes_context=True)
 def jet_sibling_object_url(context, next):
     original = context.get('original')
 
