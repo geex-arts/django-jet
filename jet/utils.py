@@ -182,8 +182,10 @@ def get_model_queryset(model, preserved_filters=None):
     list_display = model_admin.get_list_display(request)
     list_display_links = model_admin.get_list_display_links(request, list_display)
     list_filter = model_admin.get_list_filter(request)
-    search_fields = model_admin.get_search_fields(request)
-    list_select_related = model_admin.get_list_select_related(request)
+    search_fields = model_admin.get_search_fields(request) \
+        if hasattr(model_admin, 'get_search_fields') else model_admin.search_fields
+    list_select_related = model_admin.get_list_select_related(request) \
+        if hasattr(model_admin, 'get_list_select_related') else model_admin.list_select_related
 
     actions = model_admin.get_actions(request)
     if actions:
