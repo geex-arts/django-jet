@@ -1986,6 +1986,12 @@ a:hover {
 .fill_width {
   width: 100% !important; }
 
+.breadcrumbs {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 200px;
+  overflow: hidden; }
+
 .top {
   padding: 20px; }
   .top-breadcrumbs {
@@ -2393,7 +2399,7 @@ a:hover {
 .fill_width {
   width: 100% !important; }
 
-.base_input, .sidebar-popup-search, .input, .background-form .input, input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, .button, input[type="submit"], input[type="button"], .button:visited, input[type="submit"]:visited, input[type="button"]:visited, .button:hover, input[type="submit"]:hover, input[type="button"]:hover {
+.base_input, .sidebar-popup-search, .input, .background-form .input, input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, .button, input[type="submit"], input[type="button"], .button:visited, input[type="submit"]:visited, input[type="button"]:visited, .button:hover, input[type="submit"]:hover, input[type="button"]:hover, .segmented-button, .segmented-button:visited, .segmented-button:hover {
   border: 0;
   border-radius: 4px;
   font-size: 13px;
@@ -2461,7 +2467,31 @@ a:hover {
   background-color: #5EADDE;
   color: #fff; }
 
-a.button {
+.segmented-button, .segmented-button:visited, .segmented-button:hover {
+  font-size: 12px;
+  text-align: center;
+  background-color: #E3ECF2;
+  color: #7f8fa4;
+  padding: 0 10px;
+  display: inline-block;
+  text-transform: none;
+  border-radius: 0; }
+.segmented-button:hover {
+  background-color: #1cacfc;
+  color: #fff; }
+.segmented-button:active {
+  background-color: #5EADDE;
+  color: #fff; }
+.segmented-button.disabled {
+  background-color: #E3ECF2 !important;
+  color: #7f8fa4;
+  opacity: 0.5; }
+.segmented-button.left {
+  border-radius: 4px 0 0 4px; }
+.segmented-button.right {
+  border-radius: 0 4px 4px 0; }
+
+a.button, a.segmented-button {
   line-height: 32px; }
 
 textarea {
@@ -3590,6 +3620,9 @@ table#change-history {
   background-color: #fff;
   border-radius: 4px;
   min-width: 800px; }
+  .changeform-navigation {
+    float: left;
+    margin-bottom: 20px; }
   .changeform-tabs {
     border-bottom: 2px solid #f8fafc;
     padding-left: 16px !important; }
