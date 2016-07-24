@@ -1,3 +1,4 @@
+import django
 from importlib import import_module
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
@@ -9,6 +10,11 @@ from jet.utils import get_admin_site_name
 try:
     from django.template.context_processors import csrf
 except ImportError:
+    from django.core.context_processors import csrf
+
+if django.VERSION >= (1, 8,):
+    from django.template.context_processors import csrf
+else:
     from django.core.context_processors import csrf
 
 
