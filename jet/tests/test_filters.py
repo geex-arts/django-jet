@@ -11,10 +11,8 @@ except ImportError: # Django 1.6
 
 
 class FiltersTestCase(TestCase):
-    models = []
-    factory = None
-
     def setUp(self):
+        self.models = []
         self.factory = RequestFactory()
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))

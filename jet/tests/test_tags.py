@@ -6,10 +6,10 @@ from jet.tests.models import TestModel, SearchableTestModel
 
 
 class TagsTestCase(TestCase):
-    models = []
-    searchable_models = []
-
     def setUp(self):
+        self.models = []
+        self.searchable_models = []
+
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='first', field2=1))
