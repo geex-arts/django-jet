@@ -29,40 +29,42 @@
 
 {% block content %}
     <div id="content-main">
-        {% jet_change_form_sibling_links_enabled as show_siblings %}
-        {% if change and show_siblings %}
-            <div class="changeform-navigation">
-                {% spaceless %}
-                    {% jet_previous_object_url as url %}
-                    <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button left{% if not url %} disabled{% endif %}">
-                        {% trans "←" %}
-                    </a>
+        <div class="cf">
+            {% jet_change_form_sibling_links_enabled as show_siblings %}
+            {% if change and show_siblings %}
+                <div class="changeform-navigation">
+                    {% spaceless %}
+                        {% jet_previous_object_url as url %}
+                        <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button left{% if not url %} disabled{% endif %}">
+                            {% trans "←" %}
+                        </a>
 
-                    {% jet_next_object_url as url %}
-                    <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button right{% if not url %} disabled{% endif %}">
-                        {% trans "→" %}
-                    </a>
-                {% endspaceless %}
-            </div>
-        {% endif %}
-        <div class="changeform-object-tools">
-            {% block object-tools %}
-                {% if change %}
-                    {% if not is_popup %}
-                        <ul class="object-tools horizontal">
-                            {% block object-tools-items %}
-                                <li>
-                                    {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
-                                    <a href="{% jet_add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
-                                </li>
-                                {% if has_absolute_url %}
-                                    <li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>
-                                {% endif %}
-                            {% endblock %}
-                        </ul>
+                        {% jet_next_object_url as url %}
+                        <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button right{% if not url %} disabled{% endif %}">
+                            {% trans "→" %}
+                        </a>
+                    {% endspaceless %}
+                </div>
+            {% endif %}
+            <div class="changeform-object-tools">
+                {% block object-tools %}
+                    {% if change %}
+                        {% if not is_popup %}
+                            <ul class="object-tools horizontal">
+                                {% block object-tools-items %}
+                                    <li>
+                                        {% url opts|admin_urlname:'history' original.pk|admin_urlquote as history_url %}
+                                        <a href="{% jet_add_preserved_filters history_url %}" class="historylink">{% trans "History" %}</a>
+                                    </li>
+                                    {% if has_absolute_url %}
+                                        <li><a href="{{ absolute_url }}" class="viewsitelink">{% trans "View on site" %}</a></li>
+                                    {% endif %}
+                                {% endblock %}
+                            </ul>
+                        {% endif %}
                     {% endif %}
-                {% endif %}
-            {% endblock %}
+                {% endblock %}
+            </div>
         </div>
         <form {% if has_file_field %}enctype="multipart/form-data" {% endif %}action="{{ form_url }}" method="post" id="{{ opts.model_name }}_form" novalidate>
             {% csrf_token %}
