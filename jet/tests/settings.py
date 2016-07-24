@@ -1,3 +1,4 @@
+import django
 from django.conf import global_settings
 
 SECRET_KEY = '!DJANGO_JET_TESTS!'
@@ -28,9 +29,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-TEMPLATE_CONTEXT_PROCESSORS = tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
-    'django.core.context_processors.request',
-)
+if django.VERSION[:2] < (1, 9):
+    TEMPLATE_CONTEXT_PROCESSORS = tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
+        'django.core.context_processors.request',
+    )
+else:
+    TEMPLATE_CONTEXT_PROCESSORS = tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
+        'django.template.context_processors.request',
+    )
 
 DATABASES = {
     'default': {
