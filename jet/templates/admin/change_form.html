@@ -30,7 +30,7 @@
 {% block content %}
     <div id="content-main">
         {% jet_change_form_sibling_links_enabled as show_siblings %}
-        {% if show_siblings %}
+        {% if change and show_siblings %}
             <div class="changeform-navigation">
                 {% spaceless %}
                     {% jet_previous_object_url as url %}
