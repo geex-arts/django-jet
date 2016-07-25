@@ -1,20 +1,31 @@
 from __future__ import unicode_literals
-import django
-from django import template
-from django.core.urlresolvers import reverse
-from django.db.models import OneToOneField
-from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
-from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
-from django.utils.formats import get_format
-from django.template import loader, Context
-from jet import settings, VERSION
-from jet.models import Bookmark, PinnedApplication
 import re
-from jet.utils import get_app_list, get_model_instance_label, get_model_queryset
 try:
     from urllib.parse import parse_qsl
 except ImportError:
     from urlparse import parse_qsl
+
+import django
+from django import template
+from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.core.urlresolvers import reverse
+from django.db.models import OneToOneField
+from django.forms import CheckboxInput
+from django.forms import ModelChoiceField
+from django.forms import ModelMultipleChoiceField
+from django.forms import Select
+from django.forms import SelectMultiple
+from django.template import loader
+from django.template import Context
+from django.template.defaulttags import NowNode
+from django.utils.formats import get_format
+
+from jet import settings, VERSION
+from jet.models import Bookmark
+from jet.models import PinnedApplication
+from jet.utils import get_app_list
+from jet.utils import get_model_instance_label
+from jet.utils import get_model_queryset
 
 
 register = template.Library()
@@ -303,6 +314,16 @@ def get_current_theme(context):
 @register.assignment_tag
 def get_themes():
     return settings.JET_THEMES
+
+
+@register.assignment_tag
+def jet_date(parser, token):
+    return NowNode(settings.JET_HEADER_DATE_FORMAT)
+
+
+@register.assignment_tag
+def jet_time(parser, token):
+    return NowNode(settings.JET_HEADER_TIME_FORMAT)
 
 
 @register.assignment_tag

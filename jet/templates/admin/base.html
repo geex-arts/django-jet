@@ -66,6 +66,7 @@
                         <div id="header" class="top">
                             <div class="top-right">
                                 {% block top-right %}{% endblock %}
+                                {% block top-right-extends %}{% endblock %}
                                 {% block usertools %}
                                     {% if user.is_active and user.is_staff %}
                                         <ul class="top-user-tools" id="user-tools">
