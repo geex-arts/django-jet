@@ -4,3 +4,7 @@
 /dist/
 /.idea
 /docs/_build/
+/node_modules/
+
+/jet/static2/
+/jet/templates2/

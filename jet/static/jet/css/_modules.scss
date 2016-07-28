@@ -1,0 +1,48 @@
+@import "globals";
+
+/* MODULES */
+
+fieldset.module {
+  background-color: $content-background-color;
+  border-radius: 4px;
+  padding: 20px;
+  border: 0;
+}
+
+.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.module blockquote {
+  margin-left: 12px;
+}
+
+.module ul, .module ol {
+  margin-left: 1.5em;
+}
+
+.module h3 {
+  margin-top: .6em;
+}
+
+.module h2, .module caption, .inline-group h2 {
+  margin: 0;
+  padding: 8px;
+  font-weight: 400;
+  font-size: 13px;
+  text-align: left;
+  background: #79aec8;
+  color: #fff;
+}
+
+.module caption,
+.inline-group h2 {
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.module table {
+  border-collapse: collapse;
+}

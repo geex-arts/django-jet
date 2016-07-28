@@ -1,3 +1,7 @@
+/*
+  DJANGO JET Admin styles
+*/
+
 @import "globals";
 
 html, body {
@@ -7,6 +11,7 @@ html, body {
 }
 
 body {
+  background: $background-color;
   color: $text-color;
   font-family: $font;
   font-size: $font-size;
@@ -16,20 +21,40 @@ body {
   }
 }
 
-a, a:visited, a:hover {
-  color: $link-color;
-  font-weight: normal;
-  text-decoration: none;
+/* PAGE STRUCTURE */
+
+#container {
+  padding: 0 0 0 $sidebar-width;
+  min-height: 100%;
 }
 
-a:hover {
-  color: $hover-link-color;
+#content {
+  padding: 20px;
+
+  & > h1 {
+    display: none;
+  }
 }
 
-.container {
-  padding-left: $sidebar-width;
-  height: 100%;
-  position: relative;
+//.dashboard #content {
+//    width: 600px;
+//}
+//
+//#content-main {
+//    float: left;
+//    width: 100%;
+//}
+//
+//#content-related {
+//    float: right;
+//    width: 260px;
+//    position: relative;
+//    margin-right: -300px;
+//}
+
+#footer {
+  clear: both;
+  padding: 10px;
 }
 
 .sidebar {
@@ -41,33 +66,125 @@ a:hover {
   overflow-y: auto;
 }
 
-.content {
-  width: 100%;
-  min-height: 100%;
-  z-index: 1;
-  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.25);
-  position: relative;
+.dialog-confirm {
+  display: none;
 }
 
-#content {
-  padding: 20px;
-}
+/* COLUMN TYPES */
 
-.module {
-  border: 0;
-  margin: 0;
-}
+//.colMS {
+//    margin-right: 300px;
+//}
+//
+//.colSM {
+//    margin-left: 300px;
+//}
+//
+//.colSM #content-related {
+//    float: left;
+//    margin-right: 0;
+//    margin-left: -300px;
+//}
+//
+//.colSM #content-main {
+//    float: right;
+//}
+//
+//.popup .colM {
+//    width: auto;
+//}
+//
 
-@import "table";
-@import "buttongroup";
-@import "sidebar";
-@import "top";
-@import "forms";
-@import "messages";
-@import "changelist";
-@import "changeform";
-@import "delete";
-@import "login";
+/* SIDEBAR */
+
+//#content-related {
+//    background: #f8f8f8;
+//}
+//
+//#content-related .module {
+//    background: none;
+//}
+//
+//#content-related h3 {
+//    font-size: 14px;
+//    color: #666;
+//    padding: 0 16px;
+//    margin: 0 0 16px;
+//}
+//
+//#content-related h4 {
+//    font-size: 13px;
+//}
+//
+//#content-related p {
+//    padding-left: 16px;
+//    padding-right: 16px;
+//}
+//
+//#content-related .actionlist {
+//    padding: 0;
+//    margin: 16px;
+//}
+//
+//#content-related .actionlist li {
+//    line-height: 1.2;
+//    margin-bottom: 10px;
+//    padding-left: 18px;
+//}
+//
+//#content-related .module h2 {
+//    background: none;
+//    padding: 16px;
+//    margin-bottom: 16px;
+//    border-bottom: 1px solid #eaeaea;
+//    font-size: 18px;
+//    color: #333;
+//}
+//
+//.delete-confirmation form input[type="submit"] {
+//    background: #ba2121;
+//    border-radius: 4px;
+//    padding: 10px 15px;
+//    color: #fff;
+//}
+//
+//.delete-confirmation form input[type="submit"]:active,
+//.delete-confirmation form input[type="submit"]:focus,
+//.delete-confirmation form input[type="submit"]:hover {
+//    background: #a41515;
+//}
+//
+//.delete-confirmation form .cancel-link {
+//    display: inline-block;
+//    vertical-align: middle;
+//    height: 15px;
+//    line-height: 15px;
+//    background: #ddd;
+//    border-radius: 4px;
+//    padding: 10px 15px;
+//    color: #333;
+//    margin: 0 0 0 10px;
+//}
+//
+//.delete-confirmation form .cancel-link:active,
+//.delete-confirmation form .cancel-link:focus,
+//.delete-confirmation form .cancel-link:hover {
+//    background: #ccc;
+//}
+//
+
+@import "jquery-ui/jquery-ui.theme";
+@import "select2/layout";
 @import "content";
-@import "dashboard";
+@import "forms";
+@import "tables";
+@import "messages";
+@import "header";
+@import "breadcrumbs";
+@import "modules";
+@import "object-tools";
+@import "changeform";
+@import "changelist";
+@import "sidebar";
 @import "relatedpopup";
+@import "dashboard";

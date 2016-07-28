@@ -268,18 +268,20 @@
     }
 
     &-search {
-      @extend .base_input;
+      background-color: $sidebar-popup-search-input-background-color;
+      color: $sidebar-popup-search-input-text-color;
+      width: 100%;
+      height: 32px;
+      text-indent: 20px;
+      border: 0;
+      font-size: 13px;
+      outline: 0;
+      padding: 0;
+      margin: 0 0 12px 0;
+
       @include placeholder {
         color: $sidebar-popup-search-input-placeholder-color;
       }
-      background-color: $sidebar-popup-search-input-background-color;
-      color: $sidebar-popup-search-input-text-color;
-      border-radius: 0 !important;
-      width: 100%;
-      height: 32px;
-      padding: 0 !important;
-      text-indent: 20px;
-      margin-bottom: 12px !important;
     }
 
     &-list {
