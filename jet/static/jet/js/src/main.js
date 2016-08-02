@@ -4,6 +4,7 @@ require('./layout-updaters/paginator');
 require('./layout-updaters/toolbar');
 require('./layout-updaters/user-tools');
 require('./layout-updaters/changeform-tabs');
+require('./layout-updaters/tabular-inline');
 require('./features/side-menu');
 require('./features/filters');
 require('./features/changeform-tabs');

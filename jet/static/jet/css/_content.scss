@@ -243,6 +243,15 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
   }
 }
 
+.inlineviewlink {
+  &:before {
+    @include font-icon;
+    content: $icon-open-external;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
+
 /* BOOLEAN ICONS */
 
 img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-yes.svg"],

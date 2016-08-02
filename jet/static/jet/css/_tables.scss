@@ -27,6 +27,24 @@ table {
       }
     }
   }
+
+  thead th {
+    background: $content-contrast2-background-color;
+    color: $content-contrast2-text-color;
+    text-transform: uppercase;
+    @include transition(background-color $fast-transitions-duration);
+
+    a:link, a:visited {
+      color: $content-contrast2-text-color;
+    }
+
+    .text {
+      a {
+        display: block;
+        cursor: pointer;
+      }
+    }
+  }
 }
 
 td, th {
@@ -76,27 +94,11 @@ tbody tr {
 
 table {
   thead th {
-    background: $content-contrast2-background-color;
-    color: $content-contrast2-text-color;
-    text-transform: uppercase;
-    @include transition(background-color $fast-transitions-duration);
-
     &.sortable {
       cursor: pointer;
 
       &:hover {
         background: $button-hover-background-color;
-      }
-    }
-
-    a:link, a:visited {
-      color: $content-contrast2-text-color;
-    }
-
-    .text {
-      a {
-        display: block;
-        cursor: pointer;
       }
     }
 
