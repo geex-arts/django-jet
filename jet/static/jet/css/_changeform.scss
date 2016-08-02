@@ -470,6 +470,11 @@ body.popup .submit-row {
     td.original {
       white-space: nowrap;
       width: 1px;
+      padding-right: 0;
+
+      &.empty {
+        padding: 0;
+      }
 
       p {
         padding: 0;

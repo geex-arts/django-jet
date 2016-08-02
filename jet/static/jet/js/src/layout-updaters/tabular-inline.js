@@ -24,6 +24,10 @@ TabularInlineUpdater.prototype = {
             });
 
             $container.find('a').text('');
+
+            if ($container.children().length == 0) {
+                $container.parent().addClass('empty');
+            }
         });
     },
     run: function() {
