@@ -56,9 +56,30 @@ ChangeFormTabs.prototype = {
 
         this.showTab(location.hash, true);
     },
+    updateErrorState: function() {
+        var $tabItems = this.$changeform.find('.changeform-tabs-item');
+        var $contentWrappers = this.getContentWrappers();
+        var obj = this;
+
+        $tabItems.each(function() {
+            var $tabItem = $(this);
+            var selector = obj.getHashSelector(
+                $tabItem.find('.changeform-tabs-item-link').attr('href')
+            );
+
+            if (selector) {
+                var $contentWrapper = $contentWrappers.filter('.' + selector);
+
+                if ($contentWrapper.find('.form-row.errors').length) {
+                    $tabItem.addClass('errors');
+                }
+            }
+        });
+    },
     run: function() {
         try {
             this.initTabs();
+            this.updateErrorState();
         } catch (e) {
             console.error(e);
         }
