@@ -27,20 +27,18 @@ fieldset.module {
 }
 
 .module h2, .module caption, .inline-group h2 {
-  margin: 0;
-  padding: 8px;
-  font-weight: 400;
-  font-size: 13px;
+  border-radius: 4px;
+  padding: 6px;
   text-align: left;
-  background: #79aec8;
-  color: #fff;
-}
-
-.module caption,
-.inline-group h2 {
-  font-size: 12px;
-  letter-spacing: 0.5px;
   text-transform: uppercase;
+  font-size: 11px;
+  font-weight: bold;
+
+  a {
+    color: $text-color;
+    font-size: 11px;
+    font-weight: bold;
+  }
 }
 
 .module table {

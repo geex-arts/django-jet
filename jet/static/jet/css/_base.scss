@@ -36,21 +36,21 @@ body {
   }
 }
 
-//.dashboard #content {
-//    width: 600px;
-//}
-//
-//#content-main {
-//    float: left;
-//    width: 100%;
-//}
-//
-//#content-related {
-//    float: right;
-//    width: 260px;
-//    position: relative;
-//    margin-right: -300px;
-//}
+.dashboard #content {
+    width: 600px;
+}
+
+#content-main {
+  float: left;
+  width: 100%;
+}
+
+#content-related {
+  float: right;
+  width: 260px;
+  position: relative;
+  margin-right: -300px;
+}
 
 #footer {
   clear: both;
