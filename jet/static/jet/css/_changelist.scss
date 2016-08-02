@@ -105,6 +105,10 @@
     margin-right: 2px;
     margin-bottom: 2px;
     display: inline-block;
+
+    .select2-container--jet {
+      min-width: 100px;
+    }
   }
 }
 
