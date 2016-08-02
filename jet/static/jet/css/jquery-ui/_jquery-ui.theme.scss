@@ -108,7 +108,7 @@
   pointer-events: none;
 }
 
-.ui-datepicker {
+.ui-datepicker, .ui-timepicker {
   table {
     margin: 0 0 .4em;
     background: transparent;
@@ -125,4 +125,12 @@
   tbody tr {
     border-bottom: inherit;
   }
+}
+
+.ui-datepicker table {
+  margin: 0 0 .4em;
+}
+
+.ui-timepicker-table table {
+  margin: .15em 0 0;
 }
