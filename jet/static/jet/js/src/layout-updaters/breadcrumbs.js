@@ -21,7 +21,16 @@ BreadcrumbsUpdater.prototype = {
 };
 
 $(document).ready(function() {
-    $('.breadcrumbs').each(function() {
+    var $breadcrumbs = $('.breadcrumbs');
+
+    if ($breadcrumbs.length == 0) {
+        $breadcrumbs = $('<div>')
+            .addClass('breadcrumbs')
+            .text('Начало')
+            .insertAfter($('#header'));
+    }
+
+    $breadcrumbs.each(function() {
         new BreadcrumbsUpdater($(this)).run();
     });
 });
