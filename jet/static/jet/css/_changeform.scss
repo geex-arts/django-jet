@@ -315,6 +315,30 @@ body.popup .submit-row {
 .vDateField, .vTimeField {
   margin-right: 2px;
   margin-bottom: 4px;
+  border-radius: 4px 0 0 4px !important;
+  border-right: 0 !important;
+
+  &-link {
+    vertical-align: top;
+    display: inline-block;
+
+    span {
+      width: 32px;
+      height: 32px;
+      line-height: 32px !important;
+      background-color: $button-background-color;
+      color: $button-text-color;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:hover span {
+      background-color: $button-hover-background-color;
+      color: $button-hover-text-color;
+    }
+  }
 }
 
 .vDateField {
@@ -323,6 +347,10 @@ body.popup .submit-row {
 
 .vTimeField {
   min-width: 4.7em;
+}
+
+.vDateField-link + .vTimeField {
+  margin-left: 10px;
 }
 
 .vURLField {
