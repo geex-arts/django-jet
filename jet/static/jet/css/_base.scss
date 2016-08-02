@@ -26,6 +26,10 @@ body {
 #container {
   padding: 0 0 0 $sidebar-width;
   min-height: 100%;
+
+  .popup & {
+    padding-left: 0;
+  }
 }
 
 #content {
