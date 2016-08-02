@@ -5,7 +5,7 @@ $input-height: 32px;
 .select2-container--jet {
   @import "single";
   @import "multiple";
-  min-width: 100px;
+  min-width: 240px;
 
   .select2-selection {
     background-color: $input-background-color;
