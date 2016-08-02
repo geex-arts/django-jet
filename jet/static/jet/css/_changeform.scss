@@ -388,8 +388,15 @@ body.popup .submit-row {
 /* INLINES */
 
 .inline-group {
+  padding: 0;
+  background-color: $content-background-color;
+  border-radius: 4px;
+  border: 0;
+
+  fieldset.module {
+    background-color: inherit;
     padding: 0;
-    margin: 0 0 30px;
+  }
 }
 
 .inline-group thead th {
@@ -554,5 +561,61 @@ form .related-widget-wrapper ul {
   &-button {
     font-weight: bold;
     vertical-align: middle;
+  }
+}
+
+/* TABS */
+
+.changeform-tabs {
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px solid $background-color;
+  padding-left: 16px !important;
+  background-color: $content-background-color;
+  border-radius: 4px 4px 0 0;
+
+  &-item {
+    display: inline-block;
+    padding: 0;
+    line-height: normal;
+
+    a, a:hover, a:visited {
+      display: inline-block;
+      padding: 12px 4px;
+      margin: 0 4px;
+      border-bottom: 2px solid transparent;
+      position: relative;
+      top: 2px;
+      color: $dim-text-color;
+      font-weight: bold;
+      font-size: 11px;
+      text-transform: uppercase;
+    }
+
+    a:hover {
+      color: $text-color;
+    }
+
+    &.selected {
+      & a, & a:hover, & a:visited {
+        color: $text-color;
+        border-color: $tab-selected-border-color;
+      }
+    }
+
+    &.errors {
+      & a, & a:hover, & a:visited {
+        border-color: $tab-error-border-color;
+      }
+    }
+  }
+
+  ~ .module, ~ .inline-group {
+    display: none;
+    border-radius: 0 0 4px 4px;
+
+    &.selected {
+      display: block;
+    }
   }
 }

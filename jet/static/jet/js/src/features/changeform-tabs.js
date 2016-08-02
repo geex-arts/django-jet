@@ -1,43 +1,72 @@
 var $ = require('jquery');
 
-var initChangeformTabs = function() {
-    $('.changeform').each(function() {
-        var $changeform = $(this);
-        var $tabItems = $changeform.find('.changeform-tabs-item');
-        var $modules = $changeform.find('.module');
+var ChangeFormTabs = function($changeform) {
+    this.$changeform = $changeform;
+};
 
-        if ($tabItems.length == 0) {
+ChangeFormTabs.prototype = {
+    getContentWrappers: function() {
+        var $container = this.$changeform.find('#content-main > form > div');
+        var $modules = $container.find('> .module');
+        var $inlines = $container.find('> .inline-group');
+
+        return $().add($modules).add($inlines);
+    },
+    getHashSelector: function(hash) {
+        var result = hash.match(/^(#(\/tab\/(.+)\/)?)?$/i);
+
+        if (result == null) {
+            return null;
+        }
+
+        return result[3] != undefined ? result[3] : '';
+    },
+    showTab: function(hash, firstOnError) {
+        var $tabItems = this.$changeform.find('.changeform-tabs-item');
+        var $contentWrappers = this.getContentWrappers();
+        var selector = this.getHashSelector(hash);
+
+        if (!firstOnError && selector == null) {
             return;
         }
 
-        var showTab = function(selector) {
-            selector = selector.replace(/^#\/?/, '');
+        if (selector == null || selector.length == 0) {
+            selector = this.getHashSelector(
+                $tabItems.first().find('.changeform-tabs-item-link').attr('href')
+            )
+        }
 
-            var $module = selector.length > 0 ? $modules.filter('#' + selector) : $();
+        var $contentWrapper = $contentWrappers.filter('.' + selector);
+        var $tabItem = $tabItems
+            .find('.changeform-tabs-item-link[href="#/tab/' + selector + '/"]')
+            .closest('.changeform-tabs-item');
 
-            if ($module && $module.length == 0) {
-                selector = $tabItems.first().find('a').attr('href').replace(/^#\/?/, '');
-            }
+        $tabItems.removeClass('selected');
+        $tabItem.addClass('selected');
 
-            var $tabItem = $tabItems.find('a[href="#/' + selector + '"]').closest('.changeform-tabs-item');
+        $contentWrappers.removeClass('selected');
+        $contentWrapper.addClass('selected');
+    },
+    initTabs: function() {
+        var self = this;
 
-
-            $tabItems.removeClass('selected');
-            $tabItem.addClass('selected');
-            $module = $modules.removeClass('selected').filter('#' + selector).addClass('selected');
-            $module.find('select').trigger('select:init');
-        };
-
-        $('.changeform-tabs-item-link').click(function (e) {
-            var moduleSelector = $(this).attr('href');
-
-            showTab(moduleSelector);
+        $(window).on('hashchange',function() {
+            self.showTab(location.hash, false);
         });
 
-        showTab(location.hash);
-    });
+        this.showTab(location.hash, true);
+    },
+    run: function() {
+        try {
+            this.initTabs();
+        } catch (e) {
+            console.error(e);
+        }
+    }
 };
 
 $(document).ready(function() {
-    initChangeformTabs();
+    $('.change-form').each(function() {
+        new ChangeFormTabs($(this)).run();
+    });
 });
