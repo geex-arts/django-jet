@@ -47,8 +47,8 @@ ChangeFormTabsUpdater.prototype = {
                 .addClass('changeform-tabs-item');
             var $link = $('<a>')
                 .addClass('changeform-tabs-item-link')
-                .html(tab['title'])
-                .attr('href', '#/tab/' + tab['className'] + '/');
+                .html(tab.title)
+                .attr('href', '#/tab/' + tab.className + '/');
 
             $link.appendTo($item);
             $item.appendTo($tabs);
