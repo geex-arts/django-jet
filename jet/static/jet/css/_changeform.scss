@@ -658,6 +658,7 @@ form .related-widget-wrapper ul {
       font-weight: bold;
       font-size: 11px;
       text-transform: uppercase;
+      @include transition(color $fast-transitions-duration, border-color $transitions-duration);
     }
 
     a:hover {
