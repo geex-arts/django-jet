@@ -61,6 +61,10 @@
   transition: all $duration;
 }
 
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
 @function prefix($property, $prefixes: (webkit moz o ms)) {
   $vendor-prefixed-properties: transform background-clip background-size;
   $result: ();

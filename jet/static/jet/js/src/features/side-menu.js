@@ -356,6 +356,10 @@ var initScrollbars = function() {
 };
 
 $(document).ready(function() {
+    if ($('.sidebar').length == 0) {
+        return;
+    }
+
     initSideMenu();
     initScrollbars();
 });

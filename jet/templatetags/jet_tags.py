@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import json
 import django
 from django import template
 from django.core.urlresolvers import reverse
@@ -364,3 +365,16 @@ def jet_previous_object_url(context):
 @register.assignment_tag(takes_context=True)
 def jet_next_object_url(context):
     return jet_sibling_object_url(context, True)
+
+
+@register.assignment_tag(takes_context=True)
+def popup_response_data(context):
+    if context.get('popup_response_data'):
+        return context['popup_response_data']
+
+    return json.dumps({
+        'action': context.get('action'),
+        'value': context.get('value') or context.get('pk_value'),
+        'obj': str(context.get('obj')),
+        'new_value': context.get('new_value')
+    })

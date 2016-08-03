@@ -566,26 +566,6 @@ body.popup .submit-row {
 
 /* RELATED FIELD ADD ONE / LOOKUP */
 
-.add-another, .related-lookup {
-    margin-left: 5px;
-    display: inline-block;
-    vertical-align: middle;
-    background-repeat: no-repeat;
-    background-size: 14px;
-}
-
-.add-another {
-    width: 16px;
-    height: 16px;
-    background-image: url(../img/icon-addlink.svg);
-}
-
-.related-lookup {
-    width: 16px;
-    height: 16px;
-    background-image: url(../img/search.svg);
-}
-
 form .related-widget-wrapper ul {
     display: inline-block;
     margin-left: 0;
@@ -603,6 +583,52 @@ form .related-widget-wrapper ul {
   &-button {
     font-weight: bold;
     vertical-align: middle;
+  }
+}
+
+.related-widget-wrapper-link {
+  opacity: 0.5;
+  @include transition(opacity $transitions-duration);
+
+  &:link {
+    opacity: 1;
+  }
+}
+
+.related-widget-wrapper-image {
+  &:before {
+    @include font-icon;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  &.add-related {
+    &:before {
+      content: $icon-add3;
+    }
+  }
+
+  &.change-related {
+    &:before {
+      content: $icon-edit;
+    }
+  }
+
+  &.delete-related {
+    &:before {
+      content: $icon-cross;
+    }
+  }
+}
+
+.related-lookup {
+  margin-left: 6px;
+
+  &:before {
+    @include font-icon;
+    font-size: 20px;
+    vertical-align: middle;
+    content: $icon-search;
   }
 }
 

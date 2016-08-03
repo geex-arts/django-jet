@@ -2,18 +2,6 @@
 
 /* POPUP */
 
-//.popup #content {
-//    padding: 20px;
-//}
-//
-//.popup #container {
-//    min-width: 0;
-//}
-//
-//.popup #header {
-//    padding: 10px 20px;
-//}
-
 .related-popup {
   position: absolute;
   top: 0;
@@ -49,6 +37,7 @@
       left: 50%;
       margin-left: -48px;
       margin-top: -48px;
+      animation: spin 4s linear infinite;
     }
   }
 
@@ -71,7 +60,7 @@
       @include transition(background-color $transitions-duration, color $transitions-duration);
     }
 
-    &:hover {
+    &:hover, &:focus {
       background: $background-color;
       color: $text-color;
     }
