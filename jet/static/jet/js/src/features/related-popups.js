@@ -111,53 +111,7 @@ RelatedPopups.prototype = {
             var $popup = $popups.last();
 
             if (response != undefined) {
-                var $input = $popup.data('input');
-
-                switch (response.action) {
-                    case 'change':
-                        $input.find('option').each(function() {
-                            var $option = $(this);
-
-                            if ($option.val() == response.value) {
-                                $option.html(response.obj).val(response.new_value);
-                            }
-                        });
-
-                        $input.trigger('change').trigger('select:init');
-
-                        break;
-                    case 'delete':
-                        $input.find('option').each(function() {
-                            var $option = $(this);
-
-                            if ($option.val() == response.value) {
-                                $option.remove();
-                            }
-                        });
-
-                        $input.trigger('change').trigger('select:init');
-
-                        break;
-                    default:
-                        if ($input.is('select')) {
-                            var $option = $('<option>')
-                                .val(response.value)
-                                .html(response.obj);
-
-                            $input.append($option);
-                            $option.attr('selected', true);
-
-                            $input
-                                .trigger('change')
-                                .trigger('select:init');
-                        } else if ($input.is('input.vManyToManyRawIdAdminField') && $input.val()) {
-                            $input.val($input.val() + ',' + response.value);
-                        } else if ($input.is('input')) {
-                            $input.val(response.value);
-                        }
-
-                        break;
-                }
+                obj.processPopupResponse($popup, response);
             }
 
             obj.windowStorage.pop();
@@ -173,7 +127,7 @@ RelatedPopups.prototype = {
             }
         })(previousWindow ? previousWindow.jet.jQuery : $);
     },
-    processPopupResponse: function() {
+    findPopupResponse: function() {
         var obj = this;
 
         $('#django-admin-popup-response-constants').each(function() {
@@ -182,6 +136,55 @@ RelatedPopups.prototype = {
 
             obj.closePopup(response);
         });
+    },
+    processPopupResponse: function($popup, response) {
+        var $input = $popup.data('input');
+
+        switch (response.action) {
+            case 'change':
+                $input.find('option').each(function() {
+                    var $option = $(this);
+
+                    if ($option.val() == response.value) {
+                        $option.html(response.obj).val(response.new_value);
+                    }
+                });
+
+                $input.trigger('change').trigger('select:init');
+
+                break;
+            case 'delete':
+                $input.find('option').each(function() {
+                    var $option = $(this);
+
+                    if ($option.val() == response.value) {
+                        $option.remove();
+                    }
+                });
+
+                $input.trigger('change').trigger('select:init');
+
+                break;
+            default:
+                if ($input.is('select')) {
+                    var $option = $('<option>')
+                        .val(response.value)
+                        .html(response.obj);
+
+                    $input.append($option);
+                    $option.attr('selected', true);
+
+                    $input
+                        .trigger('change')
+                        .trigger('select:init');
+                } else if ($input.is('input.vManyToManyRawIdAdminField') && $input.val()) {
+                    $input.val($input.val() + ',' + response.value);
+                } else if ($input.is('input')) {
+                    $input.val(response.value);
+                }
+
+                break;
+        }
     },
     overrideRelatedGlobals: function() {
         var obj = this;
@@ -213,7 +216,7 @@ RelatedPopups.prototype = {
         try {
             this.initLinks();
             this.initPopupBackButton();
-            this.processPopupResponse();
+            this.findPopupResponse();
             this.overrideRelatedGlobals();
             this.initDeleteRelatedCancellation();
             this.overrideRelatedGlobals();
