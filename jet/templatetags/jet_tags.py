@@ -368,7 +368,7 @@ def jet_next_object_url(context):
 
 
 @register.assignment_tag(takes_context=True)
-def popup_response_data(context):
+def jet_popup_response_data(context):
     if context.get('popup_response_data'):
         return context['popup_response_data']
 

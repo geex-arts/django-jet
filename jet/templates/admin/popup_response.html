@@ -5,7 +5,7 @@
       <script src="{% static "jet/js/build/bundle.min.js" %}"></script>
   </head>
   <body>
-    {% popup_response_data as data %}
+    {% jet_popup_response_data as data %}
     <div id="django-admin-popup-response-constants"
          data-popup-response="{{ data|escape }}">
     </div>
