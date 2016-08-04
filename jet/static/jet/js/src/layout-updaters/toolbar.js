@@ -1,8 +1,20 @@
 var $ = require('jquery');
 
-var ToolbarUpdater = function() { };
+var ToolbarUpdater = function($changelist) {
+    this.$changelist = $changelist;
+};
 
 ToolbarUpdater.prototype = {
+    getToolbar: function($changelist) {
+        var $toolbar = $changelist.find('#toolbar');
+
+        if ($toolbar.length == 0) {
+            $toolbar = $('<div>').attr('id', 'toolbar');
+            $('#content-main').prepend($toolbar);
+        }
+
+        return $toolbar;
+    },
     moveToolbar: function($toolbar) {
         $toolbar.remove();
         $('#content-main').prepend($toolbar);
@@ -11,15 +23,8 @@ ToolbarUpdater.prototype = {
         var placeholder = $toolbar.find('input[type="submit"]').val();
         $toolbar.find('#searchbar').attr('placeholder', placeholder);
     },
-    moveFilters: function($changelist) {
+    moveFilters: function($changelist, $toolbar) {
         var filterName;
-        var $toolbar = $('#toolbar');
-
-        if ($toolbar.length == 0) {
-            $toolbar = $('<div>').attr('id', 'toolbar');
-            $('#content-main').prepend($toolbar);
-        }
-
         var $search = $toolbar.find('#searchbar');
 
         $changelist.find('#changelist-filter').children().each(function() {
@@ -89,13 +94,12 @@ ToolbarUpdater.prototype = {
         });
     },
     run: function() {
-        var $changelist = $('#changelist');
-        var $toolbar = $changelist.find('#toolbar');
+        var $toolbar = this.getToolbar(this.$changelist);
 
         try {
             this.moveToolbar($toolbar);
             this.updateToolbar($toolbar);
-            this.moveFilters($changelist);
+            this.moveFilters(this.$changelist, $toolbar);
         } catch (e) {
             console.error(e);
         }
@@ -111,5 +115,7 @@ ToolbarUpdater.prototype = {
 };
 
 $(document).ready(function() {
-    new ToolbarUpdater().run();
+    $('#changelist').each(function() {
+        new ToolbarUpdater($(this)).run();
+    });
 });
