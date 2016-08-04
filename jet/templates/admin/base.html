@@ -24,6 +24,8 @@
 {% block footer %}
     {{ block.super }}
 
+    {% jet_delete_confirmation_context %}
+
     {% jet_change_form_sibling_links_enabled as show_siblings %}
     {% if change and show_siblings %}
         <div class="changeform-navigation">

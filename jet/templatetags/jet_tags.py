@@ -8,6 +8,7 @@ from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleC
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
 from django.template import loader, Context
+from django.utils.safestring import mark_safe
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
 import re
@@ -378,3 +379,10 @@ def jet_popup_response_data(context):
         'obj': str(context.get('obj')),
         'new_value': context.get('new_value')
     })
+
+
+@register.simple_tag(takes_context=True)
+def jet_delete_confirmation_context(context):
+    if context.get('deletable_objects') is None and context.get('deleted_objects') is None:
+        return ''
+    return mark_safe('<div class="delete-confirmation-marker"></div>')

@@ -2,7 +2,7 @@
 
 /* FORM BUTTONS */
 
-input[type="submit"], input[type="button"], .object-tools a {
+.button, input[type="submit"], input[type="button"], .object-tools a {
   &, &:visited, &:hover {
     display: inline-block;
     background-color: $button-background-color;
