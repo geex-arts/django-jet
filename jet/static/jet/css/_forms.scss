@@ -136,7 +136,6 @@ input[type=checkbox] {
 
   + label:before {
     @include font-icon;
-
     color: $input-icon-color;
     font-size: 12px;
     content: $icon-checkbox-outline;
