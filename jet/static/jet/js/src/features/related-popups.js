@@ -1,6 +1,9 @@
 var $ = require('jquery');
+var WindowStorage = require('../utils/windowStorage');
 
-var RelatedPopups = function() { };
+var RelatedPopups = function() {
+    this.windowStorage = new WindowStorage('relatedWindows');
+};
 
 RelatedPopups.prototype = {
     updateLinks: function($select) {
@@ -97,6 +100,9 @@ RelatedPopups.prototype = {
         $body.addClass('non-scrollable');
     },
     closePopup: function(response) {
+        var previousWindow = this.windowStorage.previous();
+        var obj = this;
+
         (function($) {
             var $document = $(window.top.document);
             var $popups = $document.find('.related-popup');
@@ -153,6 +159,8 @@ RelatedPopups.prototype = {
                 }
             }
 
+            obj.windowStorage.pop();
+
             if ($popups.length == 1) {
                 $container.fadeOut(200, 'swing', function() {
                     $document.find('.related-popup-back').hide();
@@ -162,7 +170,7 @@ RelatedPopups.prototype = {
             } else {
                 $popup.remove();
             }
-        })(window.parent.jet.jQuery);
+        })(previousWindow ? previousWindow.jet.jQuery : $);
     },
     processPopupResponse: function() {
         var obj = this;
@@ -182,7 +190,7 @@ RelatedPopups.prototype = {
             = window.showRelatedObjectPopup
             = function() { };
 
-        window.opener = window.parent;
+        window.opener = this.windowStorage.previous();
         window.dismissRelatedLookupPopup = function(win, chosenId) {
             obj.closePopup({
                 action: 'lookup',
@@ -199,6 +207,8 @@ RelatedPopups.prototype = {
         }).removeAttr('onclick');
     },
     run: function() {
+        this.windowStorage.push(window);
+
         try {
             this.initLinks();
             this.initPopupBackButton();
