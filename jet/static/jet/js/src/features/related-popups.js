@@ -25,12 +25,12 @@ RelatedPopups.prototype = {
         });
     },
     initLinks: function() {
-        var obj = this;
+        var self = this;
 
         $('.form-row select').each(function() {
             var $select = $(this);
 
-            obj.updateLinks($select);
+            self.updateLinks($select);
 
             $select.find('~ .add-related, ~ .change-related, ~ .delete-related, ~ .add-another').each(function() {
                 var $link = $(this);
@@ -45,12 +45,12 @@ RelatedPopups.prototype = {
                             href += (href.indexOf('?') == -1) ? '?_popup=1' : '&_popup=1';
                         }
 
-                        obj.showPopup($select, href);
+                        self.showPopup($select, href);
                     }
                 });
             });
         }).on('change', function() {
-            obj.updateLinks($(this));
+            self.updateLinks($(this));
         });
 
         $('.form-row input').each(function() {
@@ -66,17 +66,17 @@ RelatedPopups.prototype = {
 
                     href += (href.indexOf('?') == -1) ? '?_popup=1' : '&_popup=1';
 
-                    obj.showPopup($input, href);
+                    self.showPopup($input, href);
                 });
             });
         });
     },
     initPopupBackButton: function() {
-        var obj = this;
+        var self = this;
 
         $('.related-popup-back').on('click', function(e) {
             e.preventDefault();
-            obj.closePopup();
+            self.closePopup();
         });
     },
     showPopup: function($input, href) {
@@ -102,7 +102,7 @@ RelatedPopups.prototype = {
     },
     closePopup: function(response) {
         var previousWindow = this.windowStorage.previous();
-        var obj = this;
+        var self = this;
 
         (function($) {
             var $document = $(window.top.document);
@@ -111,10 +111,10 @@ RelatedPopups.prototype = {
             var $popup = $popups.last();
 
             if (response != undefined) {
-                obj.processPopupResponse($popup, response);
+                self.processPopupResponse($popup, response);
             }
 
-            obj.windowStorage.pop();
+            self.windowStorage.pop();
 
             if ($popups.length == 1) {
                 $container.fadeOut(200, 'swing', function() {
@@ -128,13 +128,13 @@ RelatedPopups.prototype = {
         })(previousWindow ? previousWindow.jet.jQuery : $);
     },
     findPopupResponse: function() {
-        var obj = this;
+        var self = this;
 
         $('#django-admin-popup-response-constants').each(function() {
             var $constants = $(this);
             var response = $constants.data('popup-response');
 
-            obj.closePopup(response);
+            self.closePopup(response);
         });
     },
     processPopupResponse: function($popup, response) {
@@ -187,7 +187,7 @@ RelatedPopups.prototype = {
         }
     },
     overrideRelatedGlobals: function() {
-        var obj = this;
+        var self = this;
 
         window.showRelatedObjectLookupPopup
             = window.showAddAnotherPopup
@@ -196,18 +196,18 @@ RelatedPopups.prototype = {
 
         window.opener = this.windowStorage.previous();
         window.dismissRelatedLookupPopup = function(win, chosenId) {
-            obj.closePopup({
+            self.closePopup({
                 action: 'lookup',
                 value: chosenId
             });
         };
     },
     initDeleteRelatedCancellation: function() {
-        var obj = this;
+        var self = this;
 
         $('.popup.delete-confirmation .cancel-link').on('click', function(e) {
             e.preventDefault();
-            obj.closePopup();
+            self.closePopup();
         }).removeAttr('onclick');
     },
     run: function() {
