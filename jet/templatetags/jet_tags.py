@@ -220,7 +220,7 @@ def select2_lookups(field):
         qs = field.field.queryset
         model = qs.model
 
-        if getattr(model, 'autocomplete_search_fields', None):
+        if getattr(model, 'autocomplete_search_fields', None) and getattr(field.field, 'autocomplete', True):
             choices = []
             app_label = model._meta.app_label
             model_name = model._meta.object_name
