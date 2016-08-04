@@ -217,6 +217,8 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 /* ACTION ICONS */
 
 .addlink {
+  vertical-align: middle;
+
   &:before {
     @include font-icon;
     content: $icon-add3;
@@ -226,6 +228,8 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 }
 
 .changelink, .inlinechangelink {
+  vertical-align: middle;
+
   &:before {
     @include font-icon;
     content: $icon-edit;
@@ -235,6 +239,8 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 }
 
 .deletelink {
+  vertical-align: middle;
+
   &:before {
     @include font-icon;
     content: $icon-cross;
@@ -244,6 +250,8 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 }
 
 .inlineviewlink {
+  vertical-align: middle;
+
   &:before {
     @include font-icon;
     content: $icon-open-external;

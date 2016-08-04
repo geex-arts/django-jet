@@ -12,21 +12,24 @@
     height: 32px;
     line-height: 32px;
     outline: 0;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: normal;
     text-align: center;
-    padding: 0 8px;
+    padding: 0 10px;
     @include transition(background $transitions-duration);
   }
 
   &.default {
-    font-size: 12px;
     font-weight: lighter;
     background-color: $primary-button-background-color;
     color: $primary-button-text-color;
     text-transform: uppercase;
     margin: 0 8px 0 0;
     padding: 0 20px;
+  }
+
+  &.transparent {
+    background-color: transparent;
   }
 
   &:hover, &:focus {

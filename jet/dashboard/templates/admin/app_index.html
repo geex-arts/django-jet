@@ -1,11 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static jet_dashboard_tags %}
 
-{% block html %}
-    {% get_dashboard 'app_index' as dashboard %}
-    {{ block.super }}
-{% endblock %}
-
 {% block extrastyle %}
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
@@ -40,10 +35,13 @@
 
 {% block sidebar %}{% endblock %}
 
-{% block top-right %}
+{% block usertools %}
+    {% get_dashboard 'app_index' as dashboard %}
     {{ dashboard.render_tools }}
+    {{ block.super }}
 {% endblock %}
 
 {% block content %}
+    {% get_dashboard 'app_index' as dashboard %}
     {{ dashboard.render }}
 {% endblock %}

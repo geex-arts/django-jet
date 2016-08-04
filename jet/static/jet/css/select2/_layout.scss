@@ -14,19 +14,10 @@ $input-height: 32px;
     outline: 0;
     height: $input-height;
 
-    .background-form & {
-      background-color: $background-input-background-color;
-      border-color: $background-input-border-color;
-    }
-
     .select2-selection__rendered {
       color: $input-text-color;
       line-height: $input-height;
       font-size: 13px;
-
-      .background-form & {
-        color: $background-input-text-color;
-      }
     }
 
     .select2-selection__placeholder {
