@@ -74,6 +74,7 @@
     list-style: none;
     display: inline-block;
     width: 175px;
+    z-index: 1;
 
     &.opened {
       background-color: $top-dropdown-background-color;
