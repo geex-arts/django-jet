@@ -595,26 +595,34 @@ form .related-widget-wrapper ul {
   }
 }
 
-.related-widget-wrapper-image {
+.add-related, .add-another, .change-related, .delete-related, .related-lookup {
+  display: none;
+
+  &.initialized {
+    display: inline;
+  }
+}
+
+.related-widget-wrapper-icon {
   &:before {
     @include font-icon;
     font-size: 20px;
     vertical-align: middle;
   }
 
-  &.add-related {
+  .add-related &, .add-another & {
     &:before {
       content: $icon-add3;
     }
   }
 
-  &.change-related {
+  .change-related & {
     &:before {
       content: $icon-edit;
     }
   }
 
-  &.delete-related {
+  .delete-related & {
     &:before {
       content: $icon-cross;
     }

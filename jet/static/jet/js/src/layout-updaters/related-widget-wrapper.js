@@ -3,29 +3,26 @@ var $ = require('jquery');
 var RelatedWidgetWrapperUpdater = function() { };
 
 RelatedWidgetWrapperUpdater.prototype = {
-    replaceLinkIcon: function(selector, className) {
+    replaceLinkIcon: function(selector) {
         var $img = $(selector);
 
         $('<span>')
-            .addClass('related-widget-wrapper-image')
-            .addClass(className)
+            .addClass('related-widget-wrapper-icon')
             .insertAfter($img);
         $img.remove();
     },
     updateLinkIcons: function() {
         this.replaceLinkIcon(
-            'img[src*="admin/img/icon-addlink"], img[src*="admin/img/icon_addlink"]',
-            'add-related'
+            'img[src*="admin/img/icon-addlink"], img[src*="admin/img/icon_addlink"]'
         );
         this.replaceLinkIcon(
-            'img[src*="admin/img/icon-changelink"]',
-            'change-related'
+            'img[src*="admin/img/icon-changelink"]'
         );
         this.replaceLinkIcon(
-            'img[src*="admin/img/icon-deletelink"]',
-            'delete-related'
+            'img[src*="admin/img/icon-deletelink"]'
         );
         $('img[src*="admin/img/selector-search"]').remove();
+        $('.add-related, .add-another, .change-related, .delete-related, .related-lookup').addClass('initialized');
     },
     updateLinks: function($select) {
         $select.find('~ .change-related, ~ .delete-related, ~ .add-another').each(function() {
