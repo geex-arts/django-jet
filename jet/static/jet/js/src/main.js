@@ -27,3 +27,4 @@ require('./features/changeform');
 require('./features/themes');
 require('./features/siblings');
 require('./features/selects');
+require('./features/related-popups');
