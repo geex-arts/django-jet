@@ -10,11 +10,12 @@ RelatedPopups.prototype = {
         $select.find('~ .change-related, ~ .delete-related, ~ .add-another').each(function() {
             var $link = $(this);
             var hrefTemplate = $link.data('href-template');
-            var value = $select.val();
 
             if (hrefTemplate == undefined) {
                 return;
             }
+
+            var value = $select.val();
 
             if (value) {
                 $link.attr('href', hrefTemplate.replace('__fk__', value))
