@@ -16,22 +16,40 @@
         };
 
         var initChangeformTabs = function() {
-            var $tabItems = $('.changeform-tabs-item');
-            var $modules = $('.module');
+            $('.changeform').each(function() {
+                var $changeform = $(this);
+                var $tabItems = $changeform.find('.changeform-tabs-item');
+                var $modules = $changeform.find('.module');
 
-            $('.changeform-tabs-item-link').click(function (e) {
-                var $tabItemLink = $(this);
-                var $tabItem = $tabItemLink.closest('.changeform-tabs-item');
-                var moduleId = $tabItemLink.data('module-id');
+                if ($tabItems.length == 0) {
+                    return;
+                }
 
-                $tabItems.removeClass('selected');
-                $tabItem.addClass('selected');
+                var showTab = function(selector) {
+                    selector = selector.replace(/^#\/?/, '');
 
-                var $module = $modules.removeClass('selected').filter('#' + moduleId).addClass('selected');
+                    var $module = selector.length > 0 ? $modules.filter('#' + selector) : $();
 
-                $module.find('select').trigger('select:init');
+                    if ($module && $module.length == 0) {
+                        selector = $tabItems.first().find('a').attr('href').replace(/^#\/?/, '');
+                    }
 
-                e.preventDefault();
+                    var $tabItem = $tabItems.find('a[href="#/' + selector + '"]').closest('.changeform-tabs-item');
+
+
+                    $tabItems.removeClass('selected');
+                    $tabItem.addClass('selected');
+                    $module = $modules.removeClass('selected').filter('#' + selector).addClass('selected');
+                    $module.find('select').trigger('select:init');
+                };
+
+                $('.changeform-tabs-item-link').click(function (e) {
+                    var moduleSelector = $(this).attr('href');
+
+                    showTab(moduleSelector);
+                });
+
+                showTab(location.hash);
             });
         };
 

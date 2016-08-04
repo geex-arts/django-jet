@@ -1,6 +1,18 @@
 Changelog
 =========
 
+0.1.5
+-----
+* Add inlines.min.js
+* Specify IE compatibility version
+* Add previous/next buttons to change form
+* Add preserving filters when returning to changelist
+* Add opened tab remembering
+* Fix breadcrumbs text overflow
+* PR-65: Fixed Django 1.8+ compatibility issues (thanks to hanuprateek, SalahAdDin, cdrx for pull requests)
+* PR-73: Added missing safe template tag on the change password page (thanks to JensAstrup for pull request)
+
+
 0.1.4
 -----
 * [Feature] Side bar compact mode (lists all models without opening second menu)

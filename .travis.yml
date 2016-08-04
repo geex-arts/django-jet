@@ -10,6 +10,7 @@ env:
   - DJANGO=1.6.11
   - DJANGO=1.7.7
   - DJANGO=1.8.3
+  - DJANGO=1.9.8
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
@@ -28,3 +29,9 @@ matrix:
       env: DJANGO=1.7.7
     - python: 2.6
       env: DJANGO=1.8.3
+    - python: 2.6
+      env: DJANGO=1.9.8
+    - python: 3.2
+      env: DJANGO=1.9.8
+    - python: 3.3
+      env: DJANGO=1.9.8

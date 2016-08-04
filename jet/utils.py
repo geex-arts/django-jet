@@ -10,13 +10,16 @@ except ImportError:
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 from django.core.urlresolvers import reverse, resolve, NoReverseMatch
-from django.contrib import admin
 from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_text
 from django.utils.text import capfirst
 from django.contrib import messages
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
+from django.contrib.admin.options import IncorrectLookupParameters
+from django.core import urlresolvers
+from django.contrib import admin
+from django.test.client import RequestFactory
 
 
 class JsonResponse(HttpResponse):
@@ -152,3 +155,52 @@ class SuccessMessageMixin(object):
 
     def get_success_message(self, cleaned_data):
         return self.success_message % cleaned_data
+
+
+def get_model_queryset(model, preserved_filters=None):
+    model_admin = admin.site._registry.get(model)
+
+    changelist_url = urlresolvers.reverse('admin:%s_%s_changelist' % (
+        model._meta.app_label,
+        model._meta.model_name
+    ))
+    changelist_filters = None
+
+    if preserved_filters:
+        changelist_filters = preserved_filters.get('_changelist_filters')
+
+    if changelist_filters:
+        changelist_url += '?' + changelist_filters
+
+    request = RequestFactory().get(changelist_url)
+
+    if model_admin:
+        queryset = model_admin.get_queryset(request)
+    else:
+        queryset = model.objects
+
+    list_display = model_admin.get_list_display(request)
+    list_display_links = model_admin.get_list_display_links(request, list_display)
+    list_filter = model_admin.get_list_filter(request)
+    search_fields = model_admin.get_search_fields(request) \
+        if hasattr(model_admin, 'get_search_fields') else model_admin.search_fields
+    list_select_related = model_admin.get_list_select_related(request) \
+        if hasattr(model_admin, 'get_list_select_related') else model_admin.list_select_related
+
+    actions = model_admin.get_actions(request)
+    if actions:
+        list_display = ['action_checkbox'] + list(list_display)
+
+    ChangeList = model_admin.get_changelist(request)
+
+    try:
+        cl = ChangeList(
+            request, model, list_display, list_display_links, list_filter, model_admin.date_hierarchy, search_fields,
+            list_select_related, model_admin.list_per_page, model_admin.list_max_show_all, model_admin.list_editable,
+            model_admin)
+
+        queryset = cl.get_queryset(request)
+    except IncorrectLookupParameters:
+        pass
+
+    return queryset

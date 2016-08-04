@@ -11,23 +11,18 @@ except ImportError: # Django 1.6
 
 
 class FiltersTestCase(TestCase):
-    models = []
-    factory = None
-
     def setUp(self):
+        self.models = []
         self.factory = RequestFactory()
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))
 
     def get_related_field_ajax_list_filter_params(self):
-        class ModelAdmin(admin.ModelAdmin):
-            pass
-
         model = RelatedToTestModel
         field_path = 'field'
         field = get_fields_from_path(model, field_path)[-1]
         lookup_params = {}
-        model_admin = ModelAdmin
+        model_admin = admin.site._registry.get(model)
 
         return field, lookup_params, model, model_admin, field_path
 

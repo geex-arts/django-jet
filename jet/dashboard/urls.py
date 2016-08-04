@@ -1,3 +1,4 @@
+import django
 from django.conf.urls import patterns, url
 from django.views.i18n import javascript_catalog
 from jet.dashboard import dashboard
@@ -5,8 +6,7 @@ from jet.dashboard.views import update_dashboard_modules_view, add_user_dashboar
     update_dashboard_module_collapse_view, remove_dashboard_module_view, UpdateDashboardModuleView, \
     load_dashboard_module_view, reset_dashboard_view
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^module/(?P<pk>\d+)/$',
         UpdateDashboardModuleView.as_view(),
@@ -48,6 +48,9 @@ urlpatterns = patterns(
         {'packages': ('jet',)},
         name='jsi18n'
     ),
-)
+]
 
 urlpatterns += dashboard.urls.get_urls()
+
+if django.VERSION[:2] < (1, 8):
+    urlpatterns = patterns('', *urlpatterns)

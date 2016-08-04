@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+import django
 from django import template
 from django.core.urlresolvers import reverse
 from django.db.models import OneToOneField
@@ -9,7 +10,12 @@ from django.template import loader, Context
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
 import re
-from jet.utils import get_app_list, get_model_instance_label
+from jet.utils import get_app_list, get_model_instance_label, get_model_queryset
+try:
+    from urllib.parse import parse_qsl
+except ImportError:
+    from urlparse import parse_qsl
+
 
 register = template.Library()
 
@@ -52,7 +58,10 @@ class FormatBreadcrumbsNode(template.Node):
         items = filter(None, items)
 
         t = loader.get_template('admin/breadcrumbs.html')
-        c = Context({'items': items})
+        c = {'items': items}
+
+        if django.VERSION[:2] < (1, 9):
+            c = Context(c)
 
         return t.render(c)
 
@@ -304,3 +313,54 @@ def get_current_jet_version():
 @register.assignment_tag
 def get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
+
+
+@register.assignment_tag
+def jet_change_form_sibling_links_enabled():
+    return settings.JET_CHANGE_FORM_SIBLING_LINKS
+
+
+def jet_sibling_object_url(context, next):
+    original = context.get('original')
+
+    if not original:
+        return
+
+    model = type(original)
+    preserved_filters_plain = context.get('preserved_filters', '')
+    preserved_filters = dict(parse_qsl(preserved_filters_plain))
+    queryset = get_model_queryset(model, preserved_filters=preserved_filters)
+
+    sibling_object = None
+    object_pks = list(queryset.values_list('pk', flat=True))
+
+    try:
+        index = object_pks.index(original.pk)
+        sibling_index = index + 1 if next else index - 1
+        exists = sibling_index < len(object_pks) if next else sibling_index >= 0
+        sibling_object = queryset.get(pk=object_pks[sibling_index]) if exists else None
+    except ValueError:
+        pass
+
+    if sibling_object is None:
+        return
+
+    url = reverse('admin:%s_%s_change' % (
+        model._meta.app_label,
+        model._meta.model_name
+    ), args=(sibling_object.pk,))
+
+    if preserved_filters_plain != '':
+        url += '?' + preserved_filters_plain
+
+    return url
+
+
+@register.assignment_tag(takes_context=True)
+def jet_previous_object_url(context):
+    return jet_sibling_object_url(context, False)
+
+
+@register.assignment_tag(takes_context=True)
+def jet_next_object_url(context):
+    return jet_sibling_object_url(context, True)

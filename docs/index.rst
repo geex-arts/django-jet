@@ -12,10 +12,6 @@ About
     :height: 500px
     :scale: 50%
 
-Beta
-====
-Current version is still in beta phase. Use it at your own risk (though may be already enough workable).
-
 Getting started
 ===============
 
