@@ -12,6 +12,7 @@
 
   .results {
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
 
     @include for-mobile {
       margin-bottom: 0 !important;
