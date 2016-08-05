@@ -12,9 +12,9 @@ ActionsUpdater.prototype = {
             return;
         }
 
-        var $label = $input[0].previousSibling;
+        var $label = $($input[0].previousSibling);
 
-        if ($label.nodeType == 3) {
+        if ($label.get(0).nodeType == 3) {
             $label.remove();
         }
     },
