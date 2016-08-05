@@ -80,6 +80,14 @@ form {
     width: 160px;
     word-wrap: break-word;
     line-height: 1;
+
+    @include for-mobile {
+      display: block;
+      padding: 0 0 0 2px;
+      margin-bottom: 8px;
+      float: none;
+      width: auto;
+    }
   }
 
   label + p {
@@ -87,6 +95,10 @@ form {
     margin-top: 0;
     margin-bottom: 0;
     margin-left: 170px;
+
+    @include for-mobile {
+      margin-left: 0;
+    }
   }
 
   ul label {
@@ -116,6 +128,11 @@ form .aligned {
   ul {
     margin-left: 160px;
     padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
   }
 
   ul.radiolist {
@@ -129,6 +146,11 @@ form .aligned {
     margin-top: 0;
     margin-left: 160px;
     padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
   }
 
   label + p.help {
@@ -146,6 +168,11 @@ form .aligned {
   select + p.help {
     margin-left: 160px;
     padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
   }
 
   ul li {
@@ -160,10 +187,18 @@ form .aligned {
 
 .colMS .aligned .vLargeTextField, .colMS .aligned .vXMLLargeTextField {
   width: 350px;
+
+  @include for-mobile {
+    width: 100%;
+  }
 }
 
 .colM .aligned .vLargeTextField, .colM .aligned .vXMLLargeTextField {
   width: 610px;
+
+  @include for-mobile {
+    width: 100%;
+  }
 }
 
 .checkbox-row p.help {
@@ -192,14 +227,26 @@ fieldset {
 
 form .wide p, form .wide input + p.help {
   margin-left: 200px;
+
+  @include for-mobile {
+    margin-left: 0;
+  }
 }
 
 form .wide p.help {
   padding-left: 38px;
+
+  @include for-mobile {
+    padding-left: 0;
+  }
 }
 
 .colM fieldset.wide .vLargeTextField, .colM fieldset.wide .vXMLLargeTextField {
   width: 450px;
+
+  @include for-mobile {
+    width: 100%;
+  }
 }
 
 /* COLLAPSED FIELDSETS */
@@ -242,19 +289,34 @@ fieldset.monospace textarea {
 /* SUBMIT ROW */
 
 .submit-row {
-  margin: 0 0 20px;
+  margin: 20px 0;
   overflow: hidden;
-  padding: 20px 0;
+
+  @include for-mobile {
+    margin-bottom: 10px;
+  }
 
   input {
     &, &:visited, &:hover {
-      margin: 0 5px 0 0;
+      margin: 0 5px 5px 0;
       padding: 0 20px;
       font-size: 12px;
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+        margin: 0 0 8px 0;
+      }
     }
 
     &.default {
-      margin: 0 8px 0 0;
+      margin: 0 8px 5px 0;
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+        margin: 0 0 20px 0;
+      }
     }
   }
 
@@ -263,9 +325,16 @@ fieldset.monospace textarea {
   }
 
   p.deletelink-box {
+    display: block;
     float: right;
     padding: 0;
-    margin: 0;
+    margin: 0 5px 5px 0;
+
+    @include for-phone {
+      float: none;
+      display: block;
+      margin: 0 0 8px 0;
+    }
   }
 
   a.deletelink {
@@ -283,7 +352,13 @@ fieldset.monospace textarea {
       text-align: center;
       padding: 0 20px;
       text-transform: uppercase;
+      box-sizing: border-box;
       @include transition(background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration);
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+      }
     }
 
     &:hover, &:focus {
@@ -359,6 +434,10 @@ body.popup .submit-row {
 
 .vLargeTextField, .vXMLLargeTextField {
   width: 48em;
+
+  @include for-mobile {
+    width: 100%;
+  }
 }
 
 .flatpages-flatpage #id_content {
@@ -371,6 +450,10 @@ body.popup .submit-row {
 
 .vTextField {
   width: 20em;
+
+  @include for-phone {
+    width: 100%;
+  }
 }
 
 .vIntegerField {
@@ -412,6 +495,11 @@ body.popup .submit-row {
     color: $text-color;
     padding: 20px 30px 0 30px;
 
+    @include for-mobile {
+      padding: 20px 20px 0 20px;
+      line-height: 2;
+    }
+
     .inline_label {
       margin-left: 10px;
       background: $content-contrast2-background-color;
@@ -420,6 +508,11 @@ body.popup .submit-row {
       border-radius: 5px;
       font-size: 10px;
       font-weight: normal;
+
+      @include for-mobile {
+        margin-right: 10px;
+        line-height: normal;
+      }
 
       ~ .inlinechangelink, ~ .inlineviewlink {
         font-size: 18px;
@@ -443,6 +536,12 @@ body.popup .submit-row {
       font-size: 10px;
       font-weight: normal;
       vertical-align: middle;
+
+      @include for-mobile {
+        float: none;
+        margin-left: 0;
+        line-height: normal;
+      }
 
       label {
         font-size: 10px;
@@ -580,6 +679,11 @@ form .related-widget-wrapper ul {
   float: left;
   margin-bottom: 20px;
 
+  @include for-mobile {
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+
   &-button {
     font-weight: bold;
     vertical-align: middle;
@@ -644,11 +748,14 @@ form .related-widget-wrapper ul {
 
 .changeform-tabs {
   margin: 0;
-  padding: 0;
+  padding: 0 0 0 16px;
   border-bottom: 2px solid $background-color;
-  padding-left: 16px !important;
   background-color: $content-background-color;
   border-radius: 4px 4px 0 0;
+
+  @include for-mobile {
+    padding: 10px 10px 5px 10px;
+  }
 
   &-item {
     display: inline-block;
@@ -658,7 +765,7 @@ form .related-widget-wrapper ul {
     a, a:hover, a:visited {
       display: inline-block;
       padding: 12px 4px;
-      margin: 0 4px;
+      margin: 0 8px 0 0;
       border-bottom: 2px solid transparent;
       position: relative;
       top: 2px;
@@ -666,23 +773,49 @@ form .related-widget-wrapper ul {
       font-weight: bold;
       font-size: 11px;
       text-transform: uppercase;
-      @include transition(color $fast-transitions-duration, border-color $transitions-duration);
+
+      @include transition(
+        background-color $fast-transitions-duration,
+        color $fast-transitions-duration,
+        border-color $transitions-duration
+      );
+
+      @include for-mobile {
+        margin: 0 5px 5px 0;
+        padding: 8px 12px;
+        top: auto;
+        border: 0;
+        border-radius: 5px;
+        font-weight: normal;
+        background: $button-background-color;
+        color: $button-text-color;
+      }
     }
 
     a:hover {
       color: $text-color;
     }
 
+    &.errors {
+      & a, & a:hover, & a:visited {
+        border-color: $tab-error-border-color;
+
+        @include for-mobile {
+          background: $danger-button-background-color;
+          color: $danger-button-text-color;
+        }
+      }
+    }
+
     &.selected {
       & a, & a:hover, & a:visited {
         color: $text-color;
         border-color: $tab-selected-border-color;
-      }
-    }
 
-    &.errors {
-      & a, & a:hover, & a:visited {
-        border-color: $tab-error-border-color;
+        @include for-mobile {
+          background: $button-hover-background-color;
+          color: $button-hover-text-color;
+        }
       }
     }
   }

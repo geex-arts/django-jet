@@ -21,6 +21,10 @@ table {
     border-radius: 0;
     box-shadow: none;
 
+    @include for-mobile {
+      display: none !important;
+    }
+
     thead {
       th {
         border-radius: 0 !important;

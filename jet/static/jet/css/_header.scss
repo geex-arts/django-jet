@@ -55,6 +55,10 @@
 
   &.initialized {
     display: block;
+
+    @include for-mobile {
+      display: none;
+    }
   }
 }
 

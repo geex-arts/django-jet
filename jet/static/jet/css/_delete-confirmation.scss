@@ -57,6 +57,12 @@
       font-weight: lighter;
       padding: 0 20px;
       text-transform: uppercase;
+      margin-bottom: 5px;
+
+      @include for-mobile {
+        display: block;
+        width: 100%;
+      }
 
       &:hover, &:focus {
         background-color: $button-hover-background-color;
@@ -72,6 +78,14 @@
     .button {
       vertical-align: middle;
       margin-left: 10px;
+      margin-bottom: 5px;
+      box-sizing: border-box;
+
+      @include for-mobile {
+        margin-left: 0;
+        display: block;
+        width: 100%;
+      }
     }
   }
 }

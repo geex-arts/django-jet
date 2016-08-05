@@ -17,14 +17,14 @@
     {% endfor %}
 {% endblock %}
 
-{% block coltype %}colMS{% endblock %}
+{% block bodyclass %}{{ block.super }} dashboard jet{% endblock %}
 
 {% block sidebar %}{% endblock %}
 
-{% block usertools %}
+{% block breadcrumbs %}
+    {{ block.super }}
     {% get_dashboard 'index' as dashboard %}
     {{ dashboard.render_tools }}
-    {{ block.super }}
 {% endblock %}
 
 {% block content %}

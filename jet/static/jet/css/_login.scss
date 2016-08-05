@@ -6,6 +6,10 @@ body.login {
   background: $login-background-color;
   padding: 100px 30px 30px 30px;
 
+  @include for-phone {
+    padding: 30px 10px 10px 10px;
+  }
+
   #container {
     background: $login-content-background-color;
     border-radius: 4px;
@@ -14,6 +18,10 @@ body.login {
     margin-left: auto;
     margin-right: auto;
     width: 400px;
+
+    @include for-phone {
+      width: 100%;
+    }
   }
 
   #header {
@@ -42,8 +50,7 @@ body.login {
   }
 
   .form-row {
-    overflow: visible;
-    padding: 4px 0;
+    padding: 4px;
     float: left;
     width: 100%;
 

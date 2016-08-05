@@ -7,6 +7,10 @@ fieldset.module {
   border-radius: 4px;
   padding: 20px;
   border: 0;
+
+  @include for-mobile {
+    padding: 10px;
+  }
 }
 
 .module p, .module ul, .module h3, .module h4, .module dl, .module pre {

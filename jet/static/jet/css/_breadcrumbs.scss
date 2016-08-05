@@ -11,6 +11,16 @@ div.breadcrumbs {
   padding: 20px 175px + 20px + 20px 20px 20px;
   visibility: hidden;
 
+  @include for-mobile {
+    padding: 20px 20px 10px 20px;
+    white-space: nowrap;
+    overflow: auto;
+  }
+
+  @include for-phone {
+    padding: 10px;
+  }
+
   &.initialized {
     visibility: inherit;
   }

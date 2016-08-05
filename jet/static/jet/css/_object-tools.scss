@@ -5,8 +5,13 @@
 .object-tools {
   display: block;
   text-align: right;
+  padding: 0;
   margin: 0 0 20px 0;
-  overflow: hidden;
+
+  @include for-mobile {
+    text-align: left;
+    margin-bottom: 10px;
+  }
 
   .form-row & {
     margin-top: 5px;
@@ -19,6 +24,12 @@
   li {
     display: inline-block;
     margin-left: 5px;
+    margin-bottom: 5px;
+
+    @include for-mobile {
+      margin-left: 0;
+      margin-right: 5px;
+    }
   }
 
   a.addlink {

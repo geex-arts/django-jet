@@ -4,6 +4,10 @@
   background-color: $sidebar-background-color;
   @include transition(background-color $transitions-duration);
 
+  @include for-mobile {
+    display: none;
+  }
+
   &-menu {
     @extend .clear-list;
     margin-bottom: 32px !important;

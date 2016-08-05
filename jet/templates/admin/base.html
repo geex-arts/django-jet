@@ -19,6 +19,7 @@
         var DATETIME_FORMAT = "{% get_datetime_format %}";
     </script>
     <script src="{% static "jet/js/build/bundle.min.js" %}"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 {% endblock %}
 
 {% block footer %}
@@ -46,7 +47,7 @@
     {% get_side_menu_compact as SIDE_MENU_COMPACT %}
     {% if not is_popup %}
         <div class="related-popup-container">
-            <a href="#" class="related-popup-back"><span class="icon-arrow-left"></span> {% trans "back" %}</a>
+            <a href="#" class="related-popup-back"><span class="related-popup-back-icon icon-arrow-left"></span> <span class="related-popup-back-label">{% trans "back" %}</span></a>
             <span class="icon-refresh loading-indicator"></span>
         </div>
         <div class="sidebar">

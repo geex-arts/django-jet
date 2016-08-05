@@ -52,7 +52,7 @@ PaginatorUpdater.prototype = {
 
         this.$paginator.prepend($('<span>').addClass('pages-wrapper').append($pageNodes));
     },
-    moveTextNodes: function() {
+    wrapTextNodes: function() {
         var foundPage = false;
         var $nodes = $([]);
 
@@ -69,13 +69,16 @@ PaginatorUpdater.prototype = {
             }
         });
 
-        this.$paginator.prepend($nodes);
+        $('<div>')
+            .addClass('label')
+            .append($nodes)
+            .appendTo(this.$paginator);
     },
     run: function() {
         try {
             this.removeSpacesBetweenPages();
             this.wrapPages();
-            this.moveTextNodes();
+            this.wrapTextNodes();
         } catch (e) {
             console.error(e);
         }

@@ -16,6 +16,13 @@
     font-weight: normal;
     text-align: center;
     padding: 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     @include transition(background $transitions-duration);
   }
 
@@ -59,6 +66,9 @@ input[type="text"], input[type="email"], input[type="password"], input[type="url
   color: $input-text-color;
   border: 1px solid $input-border-color;
   padding: 0 12px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
   @include transition(background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration);
 
   @include placeholder {

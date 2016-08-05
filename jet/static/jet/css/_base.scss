@@ -15,6 +15,7 @@ body {
   color: $text-color;
   font-family: $font;
   font-size: $font-size;
+  -webkit-text-size-adjust: 100%;
 
   &.non-scrollable {
     overflow: hidden;
@@ -27,6 +28,10 @@ body {
   padding: 0 0 0 $sidebar-width;
   min-height: 100%;
 
+  @include for-mobile {
+    padding-left: 0;
+  }
+
   .popup & {
     padding-left: 0;
   }
@@ -35,18 +40,22 @@ body {
 #content {
   padding: 20px;
 
+  @include for-phone {
+    padding: 10px;
+  }
+
   & > h1 {
     display: none;
   }
 }
 
-.dashboard #content {
-    width: 600px;
-}
-
 #content-main {
   float: left;
   width: 100%;
+
+  @include for-mobile {
+    float: none;
+  }
 }
 
 #content-related {
@@ -54,11 +63,22 @@ body {
   width: 260px;
   position: relative;
   margin-right: -300px;
+
+  @include for-mobile {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    position: static;
+  }
 }
 
 #footer {
   clear: both;
   padding: 10px;
+
+  &:empty {
+    display: none;
+  }
 }
 
 .sidebar {
@@ -76,28 +96,44 @@ body {
 
 /* COLUMN TYPES */
 
-//.colMS {
-//    margin-right: 300px;
-//}
-//
-//.colSM {
-//    margin-left: 300px;
-//}
-//
-//.colSM #content-related {
-//    float: left;
-//    margin-right: 0;
-//    margin-left: -300px;
-//}
-//
-//.colSM #content-main {
-//    float: right;
-//}
-//
-//.popup .colM {
-//    width: auto;
-//}
-//
+.colMS {
+  margin-right: 300px;
+
+  @include for-mobile {
+    margin-right: 0;
+  }
+}
+
+.colSM {
+  margin-left: 300px;
+
+  @include for-mobile {
+    margin-left: 0;
+  }
+}
+
+.colSM #content-related {
+  float: left;
+  margin-right: 0;
+  margin-left: -300px;
+
+  @include for-mobile {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+.colSM #content-main {
+  float: right;
+
+  @include for-mobile {
+    float: none;
+  }
+}
+
+.popup .colM {
+  width: auto;
+}
 
 /* SIDEBAR */
 

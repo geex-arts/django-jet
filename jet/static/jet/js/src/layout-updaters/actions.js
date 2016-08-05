@@ -18,9 +18,13 @@ ActionsUpdater.prototype = {
             $label.remove();
         }
     },
+    wrapLabels: function($actions) {
+        var $wrapper = $('<div>').addClass('labels');
+        $actions.find('span.all, span.action-counter, span.clear, span.question')
+                .wrapAll($wrapper);
+    },
     moveActions: function($actions) {
         $actions.remove();
-        //$actions.insertAfter(this.$changelist.find('.results'));
 
         var $paginator = this.$changelist.find('.paginator');
         var $wrapper = $('<div>').addClass('changelist-footer');
@@ -38,6 +42,7 @@ ActionsUpdater.prototype = {
 
         try {
             this.removeLabel($actions);
+            this.wrapLabels($actions);
             this.moveActions($actions);
         } catch (e) {
             console.error(e);

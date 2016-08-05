@@ -12,6 +12,10 @@
 
   .results {
     overflow-x: auto;
+
+    @include for-mobile {
+      margin-bottom: 0 !important;
+    }
   }
 
   .toplinks {
@@ -20,6 +24,14 @@
 
   .paginator {
     text-align: right;
+
+    @include for-mobile {
+      text-align: left;
+    }
+
+    @include for-phone {
+      text-align: center;
+    }
   }
 }
 
@@ -65,6 +77,11 @@
 #toolbar {
   float: left;
   margin-bottom: 20px;
+
+  @include for-mobile {
+    float: none;
+    margin-bottom: 10px;
+  }
 
   form {
     label[for="searchbar"] {
@@ -206,6 +223,14 @@
 
   .pages-wrapper {
     margin-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+    }
+  }
+
+  .label  {
+    padding: 8px 0;
   }
 
   input[type="submit"] {
@@ -238,16 +263,50 @@
     float: left;
     display: none;
 
+    @include for-mobile {
+      float: none;
+      margin-bottom: 20px;
+    }
+
     &.initialized {
-      display: inherit;
+      display: inline-block;
+
+      @include for-mobile {
+        display: block;
+      }
+    }
+
+    label {
+      @include for-mobile {
+        margin-bottom: 5px;
+        display: inline-block;
+      }
+
+      @include for-phone {
+        display: block;
+      }
+    }
+
+    .select2 {
+      @include for-phone {
+        width: 100% !important;
+      }
+    }
+
+    .labels {
+      padding: 8px 0;
+
+      @include for-phone {
+        text-align: center;
+      }
     }
 
     span.all, span.action-counter, span.clear, span.question {
       display: none;
     }
 
-    &:last-child {
-      border-bottom: none;
+    span.clear {
+      margin-left: 5px;
     }
 
     .button {
@@ -267,6 +326,14 @@
         text-transform: uppercase;
         margin: 0 8px 0 0;
         @include transition(background $transitions-duration);
+
+        @include for-mobile {
+          margin-bottom: 5px;
+        }
+
+        @include for-phone {
+          width: 100%;
+        }
       }
 
       &:hover, &:focus {
@@ -296,6 +363,14 @@
     right: 20px;
     bottom: 0;
     border-top: 2px solid $content-border2-color;
+
+    @include for-mobile {
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      border-top: 0;
+    }
   }
 
   &.popup {

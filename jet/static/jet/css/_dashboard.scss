@@ -2,22 +2,36 @@
 
 /* DASHBOARD */
 
-.dashboard .module {
-  margin-bottom: 10px;
+.dashboard {
+  .module {
+    margin-bottom: 10px;
 
-  table {
-    th {
-      width: 100%;
-    }
+    table {
+      th {
+        width: 100%;
+      }
 
-    td {
-      white-space: nowrap;
+      td {
+        white-space: nowrap;
 
-      a {
-        display: block;
-        padding-right: .6em;
+        a {
+          display: block;
+          padding-right: .6em;
+        }
       }
     }
+  }
+
+  #content {
+    max-width: 600px;
+
+    @include for-mobile {
+      max-width: none;
+    }
+  }
+
+  &.jet #content {
+    max-width: none;
   }
 }
 
@@ -59,11 +73,17 @@ ul.actionlist li {
 /* JET DASHBOARD */
 
 .dashboard {
-  min-height: 100%;
+  &-container {
+    min-height: 100%;
+  }
 
   @for $i from 1 through 5 {
-    &.columns_#{$i} &-column-wrapper {
+    &-container.columns_#{$i} &-column-wrapper {
       width: (100% / $i);
+
+      @include for-mobile {
+        width: 100%;
+      }
     }
   }
 
@@ -71,6 +91,19 @@ ul.actionlist li {
     position: absolute;
     top: 20px;
     right: 20px + 175px + 20px;
+
+    @include for-mobile {
+      position: static;
+      margin: 20px 20px 0 20px;
+    }
+
+    @include for-phone {
+      margin: 10px 10px 0 10px;
+    }
+
+    .button {
+      vertical-align: middle;
+    }
   }
 
   &-column {
@@ -78,6 +111,11 @@ ul.actionlist li {
     border: 2px dashed transparent;
     min-height: 100px;
     border-radius: 4px;
+
+    @include for-mobile {
+      margin-left: 0;
+      min-height: 0;
+    }
 
     &-wrapper {
       float: left;
@@ -101,8 +139,16 @@ ul.actionlist li {
     margin-bottom: 20px;
     @include transition(background $transitions-duration);
 
+    @include for-mobile {
+      margin-bottom: 10px;
+    }
+
     &:last-child {
       margin-bottom: 0;
+
+      @include for-mobile {
+        margin-bottom: 10px;
+      }
     }
 
     &.collapsed {
@@ -130,6 +176,10 @@ ul.actionlist li {
       &-drag {
         float: right;
         line-height: 30px !important;
+
+        @include for-mobile {
+          display: none;
+        }
       }
 
       &-collapse-button {
@@ -143,6 +193,10 @@ ul.actionlist li {
         font-size: 13px;
         vertical-align: middle;
         visibility: hidden;
+
+        @include for-mobile {
+          visibility: visible;
+        }
       }
 
       &:hover &-buttons {

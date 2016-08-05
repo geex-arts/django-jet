@@ -47,6 +47,24 @@
   width: 100% !important;
 }
 
+@mixin for-width($width) {
+  @media only screen and (max-width: $width) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @include for-width($mobile-max-width) {
+    @content;
+  }
+}
+
+@mixin for-phone {
+  @include for-width($phone-max-width) {
+    @content;
+  }
+}
+
 @mixin placeholder {
   &::-webkit-input-placeholder {@content}
   &:-moz-placeholder           {@content}

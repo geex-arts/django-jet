@@ -18,6 +18,10 @@
   background: $background-color;
   background-clip: content-box;
 
+  @include for-mobile {
+    padding-left: 0;
+  }
+
   &-container {
     display: none;
     background-color: transparentize($sidebar-popup-overlay-color, 0.5);
@@ -58,17 +62,38 @@
       text-transform: uppercase;
       border-radius: 6px 0 0 6px;
       @include transition(background-color $transitions-duration, color $transitions-duration);
+
+      @include for-mobile {
+        margin-left: 0;
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        padding: 10px;
+        border-radius: 6px;
+      }
     }
 
     &:hover, &:focus {
       background: $background-color;
       color: $text-color;
+
+      @include for-mobile {
+        background: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
     }
 
-    span {
+    &-icon {
       vertical-align: middle;
       font-weight: bold;
       font-size: 18px;
+    }
+
+    &-label {
+      @include for-mobile {
+        display: none;
+      }
     }
   }
 }
