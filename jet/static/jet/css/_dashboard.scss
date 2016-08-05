@@ -137,7 +137,7 @@ ul.actionlist li {
     background: $background-color;
     border-radius: 4px;
     margin-bottom: 20px;
-    @include transition(background $transitions-duration);
+    transition: background $transitions-duration;
 
     @include for-mobile {
       margin-bottom: 10px;

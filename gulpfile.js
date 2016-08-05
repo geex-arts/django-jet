@@ -1,3 +1,5 @@
+require('es6-promise').polyfill();
+
 var gulp = require('gulp');
 var browserify = require('browserify');
 var concatCss = require('gulp-concat-css');
@@ -8,6 +10,7 @@ var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge-stream');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('js', function() {
     browserify('./jet/static/jet/js/src/main.js')
@@ -51,6 +54,10 @@ gulp.task('scss', function() {
     gulp.src('./jet/static/jet/css/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass())
+        .on('error', function(error) {
+            console.error(error);
+        })
+        .pipe(autoprefixer())
         .on('error', function(error) {
             console.error(error);
         })

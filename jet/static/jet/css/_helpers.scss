@@ -1,5 +1,5 @@
 .hidden {
-    display: none;
+  display: none;
 }
 
 .clear-list {
@@ -65,73 +65,7 @@
   }
 }
 
-@mixin placeholder {
-  &::-webkit-input-placeholder {@content}
-  &:-moz-placeholder           {@content}
-  &::-moz-placeholder          {@content}
-  &:-ms-input-placeholder      {@content}
-}
-
-@mixin transition-all($duration) {
-  -webkit-transition: all $duration;
-  -moz-transition: all $duration;
-  -o-transition: all $duration;
-  transition: all $duration;
-}
-
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
-
-@function prefix($property, $prefixes: (webkit moz o ms)) {
-  $vendor-prefixed-properties: transform background-clip background-size;
-  $result: ();
-  @each $prefix in $prefixes {
-    @if index($vendor-prefixed-properties, $property) {
-      $property: -#{$prefix}-#{$property}
-    }
-    $result: append($result, $property);
-  }
-  @return $result;
-}
-
-@function trans-prefix($transition, $prefix: moz) {
-  $prefixed: ();
-  @each $trans in $transition {
-    $prop-name: nth($trans, 1);
-    $vendor-prop-name: prefix($prop-name, $prefix);
-    $prop-vals: nth($trans, 2);
-    $prefixed: append($prefixed, ($vendor-prop-name $prop-vals), comma);
-  }
-
-  @return $prefixed;
-}
-
-@mixin transition($values...) {
-  $transitions: ();
-  @each $declaration in $values {
-    $prop: nth($declaration, 1);
-    $prop-opts: ();
-    $length: length($declaration);
-    @for $i from 2 through $length {
-      $prop-opts: append($prop-opts, nth($declaration, $i));
-    }
-    $trans: ($prop, $prop-opts);
-    $transitions: append($transitions, $trans, comma);
-  }
-
-  -webkit-transition: trans-prefix($transitions, webkit);
-  -moz-transition: trans-prefix($transitions, moz);
-  -o-transition: trans-prefix($transitions, o);
-  transition: $values;
-}
-
-@mixin transform($transform) {
-  -webkit-transform: $transform;
-  -moz-transform: $transform;
-  -o-transform: $transform;
-  transform: $transform;
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
 
 @mixin font-icon {
   font-family: 'jet-icons';

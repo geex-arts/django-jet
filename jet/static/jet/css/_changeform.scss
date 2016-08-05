@@ -353,7 +353,7 @@ fieldset.monospace textarea {
       padding: 0 20px;
       text-transform: uppercase;
       box-sizing: border-box;
-      @include transition(background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration);
+      transition: background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration;
 
       @include for-phone {
         display: block;
@@ -589,7 +589,7 @@ body.popup .submit-row {
 .inline-group {
   .tabular {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
 
     table {
       box-shadow: none;
@@ -695,7 +695,7 @@ form .related-widget-wrapper ul {
 
 .related-widget-wrapper-link {
   opacity: 0.5;
-  @include transition(opacity $transitions-duration);
+  transition: opacity $transitions-duration;
 
   &:link {
     opacity: 1;
@@ -776,12 +776,9 @@ form .related-widget-wrapper ul {
       font-weight: bold;
       font-size: 11px;
       text-transform: uppercase;
-
-      @include transition(
-        background-color $fast-transitions-duration,
-        color $fast-transitions-duration,
-        border-color $transitions-duration
-      );
+      transition: background-color $fast-transitions-duration,
+                  color $fast-transitions-duration,
+                  border-color $transitions-duration;
 
       @include for-mobile {
         margin: 0 5px 5px 0;

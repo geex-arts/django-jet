@@ -61,7 +61,7 @@
       box-sizing: border-box;
       text-transform: uppercase;
       border-radius: 6px 0 0 6px;
-      @include transition(background-color $transitions-duration, color $transitions-duration);
+      transition: background-color $transitions-duration, color $transitions-duration;
 
       @include for-mobile {
         margin-left: 0;

@@ -108,7 +108,7 @@
         font-size: 24px;
         vertical-align: middle;
         line-height: 30px;
-        @include transition(color $transitions-duration);
+        transition: color $transitions-duration;
       }
     }
 
@@ -117,7 +117,7 @@
 
       &:after {
         color: $top-dropdown-icon-color;
-        @include transform(rotate(180deg));
+        transform: rotate(180deg);
       }
     }
 

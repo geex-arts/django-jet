@@ -36,7 +36,7 @@ table {
     background: $content-contrast2-background-color;
     color: $content-contrast2-text-color;
     text-transform: uppercase;
-    @include transition(background-color $fast-transitions-duration);
+    transition: background-color $fast-transitions-duration;
 
     a:link, a:visited {
       color: $content-contrast2-text-color;

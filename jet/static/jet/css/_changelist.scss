@@ -12,7 +12,7 @@
 
   .results {
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
 
     @include for-mobile {
       background: $sidebar-background-color;
@@ -346,7 +346,7 @@
         padding: 0 20px;
         text-transform: uppercase;
         margin: 0 8px 0 0;
-        @include transition(background $transitions-duration);
+        transition: background $transitions-duration;
 
         @include for-mobile {
           margin-bottom: 5px;

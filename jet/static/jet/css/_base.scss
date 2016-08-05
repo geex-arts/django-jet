@@ -15,7 +15,7 @@ body {
   color: $text-color;
   font-family: $font;
   font-size: $font-size;
-  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 
   &.non-scrollable {
     overflow: hidden;
