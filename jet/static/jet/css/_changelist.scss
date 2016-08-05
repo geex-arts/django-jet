@@ -15,7 +15,27 @@
     -webkit-overflow-scrolling: touch;
 
     @include for-mobile {
+      background: $sidebar-background-color;
+    }
+
+    @include for-mobile {
+      position: relative;
+      left: -20px;
+      width: calc(100% + 40px);
       margin-bottom: 0 !important;
+
+      table {
+        border-radius: 0;
+      }
+
+      thead th, tfoot td {
+        border-radius: 0
+      }
+    }
+
+    @include for-phone {
+      left: -10px;
+      width: calc(100% + 20px);
     }
   }
 
