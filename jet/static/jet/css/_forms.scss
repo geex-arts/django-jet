@@ -68,7 +68,7 @@ input[type="text"], input[type="email"], input[type="password"], input[type="url
   transition: background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration;
 
   //noinspection CssInvalidPseudoSelector
-  &:placeholder {
+  &::placeholder {
     color: $input-placeholder-color;
   }
 

@@ -51,7 +51,7 @@ $sidebar-hover-background-color: #2b3647 !default;
 
 $sidebar-popup-search-input-background-color: #d0dbe6 !default;
 $sidebar-popup-search-input-text-color: #6f7e95 !default;
-$sidebar-popup-search-input-placeholder-color: #d0dbe6 !default;
+$sidebar-popup-search-input-placeholder-color: transparentize(#6f7e95, 0.5) !default;
 
 $sidebar-popup-background-color: #ecf2f6 !default;
 $sidebar-popup-text-color: #6f7e95 !default;
