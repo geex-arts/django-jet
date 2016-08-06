@@ -14,7 +14,7 @@ require('./layout-updaters/tabular-inline');
 require('./layout-updaters/stacked-inline');
 require('./layout-updaters/related-widget-wrapper');
 require('./layout-updaters/delete-confirmation');
-require('./features/side-menu');
+require('./features/sidebar/main');
 require('./features/filters');
 require('./features/changeform-tabs');
 require('./features/checkboxes');

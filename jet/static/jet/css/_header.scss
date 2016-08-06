@@ -3,51 +3,30 @@
 
 /* HEADER */
 
-//#header {
-    //width: auto;
-    //height: 40px;
-    //padding: 10px 40px;
-    //background: #417690;
-    //line-height: 40px;
-    //color: #ffc;
-    //overflow: hidden;
-//}
-
-//#header a:link, #header a:visited {
-//    color: #fff;
-//}
-//
-//#header a:focus , #header a:hover {
-//    text-decoration: underline;
-//}
+#header {
+  display: none;
+}
 
 #branding {
-  display: none;
-    float: left;
-}
+  background-color: $sidebar-contrast-background-color;
+  color: $sidebar-contrast-text-color;
+  padding: 14px;
+  text-align: center;
 
-#branding h1 {
+  h1, h2 {
     padding: 0;
-    margin: 0 20px 0 0;
-    font-weight: 300;
-    font-size: 24px;
-    color: #f5dd5d;
-}
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
 
-#branding h1, #branding h1 a:link, #branding h1 a:visited {
-    color: #f5dd5d;
-}
+  a, a:visited, a:hover {
+    color: $sidebar-contrast-text-color;
+  }
 
-#branding h2 {
-    padding: 0 10px;
-    font-size: 14px;
-    margin: -8px 0 8px 0;
-    font-weight: normal;
-    color: #ffc;
-}
-
-#branding a:hover {
-    text-decoration: none;
+  a:hover {
+    color: $sidebar-hover-action-color;
+  }
 }
 
 #user-tools {

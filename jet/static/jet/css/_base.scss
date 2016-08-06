@@ -84,10 +84,10 @@ body {
 .sidebar {
   position: fixed;
   width: $sidebar-width;
-  height: 100%;
   top: 0;
   left: 0;
-  overflow-y: auto;
+  bottom: 0;
+  z-index: 3;
 }
 
 .dialog-confirm {
