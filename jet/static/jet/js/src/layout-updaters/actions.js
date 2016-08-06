@@ -24,15 +24,13 @@ ActionsUpdater.prototype = {
                 .wrapAll($wrapper);
     },
     moveActions: function($actions) {
-        $actions.remove();
-
         var $paginator = this.$changelist.find('.paginator');
         var $wrapper = $('<div>').addClass('changelist-footer');
 
         $wrapper.insertAfter($paginator);
 
-        $actions.remove();
-        $paginator.remove();
+        $actions.detach();
+        $paginator.detach();
 
         $wrapper.append($actions);
         $wrapper.append($paginator);

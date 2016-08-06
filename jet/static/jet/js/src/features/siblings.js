@@ -6,7 +6,7 @@ var Siblings = function($siblings) {
 
 Siblings.prototype = {
     moveSiblings: function($siblings) {
-        $siblings.remove().insertBefore($('.object-tools'));
+        $siblings.detach().insertBefore($('.object-tools'));
     },
     run: function() {
         try {

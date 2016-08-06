@@ -43,7 +43,7 @@ PaginatorUpdater.prototype = {
             if (pageNode && !pagesEnded) {
                 var $node = $(this);
 
-                $node.remove();
+                $node.detach();
                 $pageNodes = $pageNodes.add($node);
             } else {
                 pagesEnded = true
@@ -64,7 +64,7 @@ PaginatorUpdater.prototype = {
             } else if (foundPage && !pageNode && this.tagName != 'INPUT') {
                 var $node = $(this);
 
-                $node.remove();
+                $node.detach();
                 $nodes = $nodes.add($node);
             }
         });

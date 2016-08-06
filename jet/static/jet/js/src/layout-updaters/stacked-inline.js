@@ -15,7 +15,7 @@ StackedInlineUpdater.prototype = {
             .text('');
         $changelink
             .text('')
-            .remove()
+            .detach()
             .insertAfter($label);
     },
     run: function() {
