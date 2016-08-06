@@ -98,10 +98,15 @@
 #toolbar {
   float: left;
   margin-bottom: 20px;
+  display: none;
 
   @include for-mobile {
     float: none;
     margin-bottom: 10px;
+  }
+
+  &.initialized {
+    display: block;
   }
 
   form {
