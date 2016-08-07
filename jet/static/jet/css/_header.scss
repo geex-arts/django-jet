@@ -1,20 +1,16 @@
 @import "globals";
 
-
 /* HEADER */
 
-#header {
-  display: none;
-}
-
 #branding {
+  display: none;
   background-color: $sidebar-contrast-background-color;
   color: $sidebar-contrast-text-color;
   padding: 14px;
   text-align: center;
 
-  @include for-mobile {
-    display: none;
+  &.initialized {
+    display: block;
   }
 
   h1, h2 {

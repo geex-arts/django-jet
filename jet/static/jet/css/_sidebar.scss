@@ -72,10 +72,9 @@
 
   &-close {
     display: none;
-    position: absolute;
-    top: 12px;
-    right: 18px;
+    float: right;
     padding: 4px;
+    margin: 12px 18px 0 12px;
     background: $sidebar-contrast-background-color;
     border-radius: 5px;
     z-index: 1;
