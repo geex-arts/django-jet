@@ -33,6 +33,12 @@
   &.jet #content {
     max-width: none;
   }
+
+  .breadcrumbs {
+    @include for-mobile {
+      display: none;
+    }
+  }
 }
 
 /* RECENT ACTIONS MODULE */
