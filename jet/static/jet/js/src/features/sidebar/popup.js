@@ -54,7 +54,7 @@ SideBarPopup.prototype = {
             }
 
             $popupContainer.stop().fadeIn(200, 'swing');
-            $('body').addClass('non-scrollable');
+            $(document.body).addClass('non-scrollable');
         }, delay);
     },
     closePopup: function($popupContainer, delay) {
@@ -70,7 +70,7 @@ SideBarPopup.prototype = {
             self.$currentSection = null;
 
             $popupContainer.stop().fadeOut(200, 'swing');
-            $('body').removeClass('non-scrollable');
+                $(document.body).removeClass('non-scrollable');
         }, delay);
     },
     initSectionsDisplay: function($sidebar) {
