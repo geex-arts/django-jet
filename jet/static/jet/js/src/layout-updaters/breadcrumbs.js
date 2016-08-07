@@ -16,7 +16,7 @@ BreadcrumbsUpdater.prototype = {
         $breadcrumbs.scrollLeft($breadcrumbs[0].scrollWidth - $breadcrumbs.width());
     },
     run: function() {
-        var $breadcrumbs = this.$breadcrumbs
+        var $breadcrumbs = this.$breadcrumbs;
 
         try {
             this.replaceSeparators($breadcrumbs);
