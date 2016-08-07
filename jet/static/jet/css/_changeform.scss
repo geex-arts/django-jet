@@ -589,7 +589,7 @@ body.popup .submit-row {
 .inline-group {
   .tabular {
     overflow-x: auto;
-    overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 
     table {
       box-shadow: none;
