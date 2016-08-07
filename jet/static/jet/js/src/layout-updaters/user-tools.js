@@ -1,5 +1,8 @@
 var $ = require('jquery');
 
+require('browsernizr/test/touchevents');
+require('browsernizr');
+
 var UserToolsUpdater = function($usertools) {
     this.$usertools = $usertools;
 };
@@ -9,7 +12,14 @@ UserToolsUpdater.prototype = {
         var $list = $('<ul>');
         var user = $usertools.find('strong').first().text();
 
-        $('<li>').addClass('user-tools-welcome-msg').text(user).appendTo($list);
+        $('<li>')
+            .addClass('user-tools-welcome-msg')
+            .text(user).appendTo($list)
+            .on('click', function() {
+                if ($(document.documentElement).hasClass('touchevents')) {
+                    $list.toggleClass('opened');
+                }
+            });
 
         $usertools.find('a').each(function() {
             var $link = $(this);
@@ -20,9 +30,7 @@ UserToolsUpdater.prototype = {
 
         $list.on('mouseenter', function() {
             $list.addClass('opened');
-        });
-
-        $list.on('mouseleave', function() {
+        }).on('mouseleave', function() {
             $list.removeClass('opened');
         });
     },
