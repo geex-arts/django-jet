@@ -29,7 +29,7 @@ body {
   }
 
   @include for-mobile {
-    padding-top: 60px;
+    padding-top: $sidebar-header-height;
   }
 }
 
