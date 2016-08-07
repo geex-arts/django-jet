@@ -20,6 +20,10 @@ body {
   &.non-scrollable {
     overflow: hidden;
   }
+
+  @include for-mobile {
+    padding-top: 60px;
+  }
 }
 
 /* PAGE STRUCTURE */
@@ -79,15 +83,6 @@ body {
   &:empty {
     display: none;
   }
-}
-
-.sidebar {
-  position: fixed;
-  width: $sidebar-width;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  z-index: 3;
 }
 
 .dialog-confirm {

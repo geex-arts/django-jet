@@ -4,6 +4,8 @@ var SideBarBookmarks = require('./bookmarks');
 var SideBarPopup = require('./popup');
 
 require('perfect-scrollbar/jquery')($);
+require('browsernizr/test/touchevents');
+require('browsernizr');
 
 var SideBar = function($sidebar) {
     this.$sidebar = $sidebar;
@@ -11,7 +13,20 @@ var SideBar = function($sidebar) {
 
 SideBar.prototype = {
     initScrollBars: function($sidebar) {
-        $sidebar.find('.sidebar-wrapper').perfectScrollbar();
+        if (!$(document.documentElement).hasClass('touchevents')) {
+            $sidebar.find('.sidebar-wrapper').perfectScrollbar();
+        }
+    },
+    initSideBarToggle: function() {
+        $('.sidebar-toggle').on('click', function(e) {
+            e.preventDefault();
+
+            var $dependent = $('.sidebar-dependent');
+            var open = !$dependent.hasClass('sidebar-opened');
+
+            $(document.body).toggleClass('non-scrollable', open);
+            $dependent.toggleClass('sidebar-opened', open);
+        });
     },
     run: function() {
         var $sidebar = this.$sidebar;
@@ -22,6 +37,7 @@ SideBar.prototype = {
 
         try {
             this.initScrollBars($sidebar);
+            this.initSideBarToggle();
         } catch (e) {
             console.error(e);
         }

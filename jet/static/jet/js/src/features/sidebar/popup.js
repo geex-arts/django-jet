@@ -2,6 +2,9 @@ require('./../../utils/jquery-icontains');
 
 var $ = window.jQuery = require('jquery');
 
+require('browsernizr/test/touchevents');
+require('browsernizr');
+
 var SideBarPopup = function($sidebar) {
     this.$sidebar = $sidebar;
 };
@@ -70,7 +73,10 @@ SideBarPopup.prototype = {
             self.$currentSection = null;
 
             $popupContainer.stop().fadeOut(200, 'swing');
+
+            if (!$(document.documentElement).hasClass('touchevents')) {
                 $(document.body).removeClass('non-scrollable');
+            }
         }, delay);
     },
     initSectionsDisplay: function($sidebar) {
@@ -85,6 +91,17 @@ SideBarPopup.prototype = {
             self.setCurrentSectionLink($link);
             self.openPopup($popupContainer, changingSection ? 500 : null);
         }).on('mouseleave', function() {
+            self.closePopup($popupContainer);
+        }).on('click', function(e) {
+            e.preventDefault();
+
+            if (!$(document.documentElement).hasClass('touchevents')) {
+                document.location = $(this).attr('href');
+            }
+        });
+
+        $sidebar.find('.sidebar-back').on('click', function(e) {
+            e.preventDefault();
             self.closePopup($popupContainer);
         });
 

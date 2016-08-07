@@ -51,8 +51,16 @@
             <span class="icon-refresh loading-indicator"></span>
         </div>
 
-        <div class="sidebar">
+        <div class="sidebar-header sidebar-dependent">
+            <a href="#" class="sidebar-header-menu sidebar-toggle">
+                <span class="sidebar-header-menu-icon icon-menu"></span>
+            </a>
+        </div>
+        <div class="sidebar sidebar-dependent">
             <div class="sidebar-wrapper">
+                <a href="#" class="sidebar-close sidebar-toggle">
+                    <span class="sidebar-close-icon icon-arrow-left"></span>
+                </a>
                 <div id="branding">
                     {% block branding %}{% endblock %}
                 </div>
@@ -220,6 +228,9 @@
             {% if app_list and not SIDE_MENU_COMPACT %}
                 <div class="sidebar-popup-container">
                     <div class="sidebar-popup">
+                        <a href="#" class="sidebar-close popup sidebar-back">
+                            <span class="sidebar-close-icon icon-arrow-left"></span>
+                        </a>
                         {% for app in app_list.apps|add:app_list.pinned_apps %}
                             <div class="sidebar-popup-section sidebar-popup-section-{{ app.app_label }}">
                                 <div class="sidebar-popup-title">

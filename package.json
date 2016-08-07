@@ -2,6 +2,7 @@
   "name": "django-jet",
   "devDependencies": {
     "browserify": "13.0.1",
+    "browsernizr": "2.1.0",
     "es6-promise": "3.2.1",
     "gulp": "3.9.1",
     "gulp-autoprefixer": "3.1.0",

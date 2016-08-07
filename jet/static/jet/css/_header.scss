@@ -13,6 +13,10 @@
   padding: 14px;
   text-align: center;
 
+  @include for-mobile {
+    display: none;
+  }
+
   h1, h2 {
     padding: 0;
     margin: 0;

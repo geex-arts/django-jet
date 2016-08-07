@@ -1,23 +1,119 @@
 @import "globals";
 
 .sidebar {
+  position: fixed;
+  width: $sidebar-width;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 3;
   background-color: $sidebar-background-color;
+  color: $sidebar-text-color;
   transition: background-color $transitions-duration;
   padding-bottom: 32px;
 
   @include for-mobile {
+    min-width: 280px;
+    max-width: 360px;
+    width: 80%;
+    padding-bottom: 0;
+    transform: translate3d(-100%, 0, 0);
+    transition: transform $transitions-duration;
+  }
+
+  &.sidebar-opened {
+    @include for-mobile {
+      transform: none;
+      box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &-header {
     display: none;
+    background-color: $sidebar-background-color;
+    color: $sidebar-text-color;
+    height: 60px;
+    line-height: 60px;
+    padding: 0 20px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    transition: background-color $transitions-duration, transform $transitions-duration;
+
+    @include for-mobile {
+      display: block;
+
+      body.scroll-to-bottom & {
+        transform: translate3d(0, -60px, 0);
+      }
+    }
+
+    &.sidebar-opened {
+      background-color: $sidebar-contrast-background-color;
+      color: $sidebar-contrast-text-color;
+    }
+
+    &-menu {
+      &, &:visited, &:hover {
+        font-size: 14px;
+        text-transform: uppercase;
+        color: $sidebar-link-color;
+      }
+
+      &-icon {
+        font-size: 20px;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &-close {
+    display: none;
+    position: absolute;
+    top: 12px;
+    right: 18px;
+    padding: 4px;
+    background: $sidebar-contrast-background-color;
+    border-radius: 5px;
+    z-index: 1;
+
+    @include for-mobile {
+      display: inline-block;
+    }
+
+    &.popup {
+      background-color: $sidebar-popup-search-input-background-color;
+    }
+
+    &-icon {
+      color: $sidebar-action-color;
+      font-size: 32px;
+      font-weight: bold;
+      vertical-align: middle;
+    }
+
+    &.popup &-icon {
+      color: $sidebar-popup-search-input-text-color;
+    }
   }
 
   &-wrapper {
     height: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   &-section {
     padding: 20px 0;
     border-bottom: 1px solid $sidebar-contrast-background-color;
     transition: border-bottom-color 0.3s;
+
+    @include for-mobile {
+      padding: 10px 0;
+    }
 
     &:last-child {
       border-bottom: 0;
@@ -36,6 +132,11 @@
     padding: 0 14px 0 24px;
     margin-bottom: 10px;
     transition: color $transitions-duration;
+
+    @include for-mobile {
+      padding: 12px 18px 12px 30px;
+      margin-bottom: 0;
+    }
 
     &-link {
       &, &:visited, &:hover {
@@ -61,6 +162,10 @@
       vertical-align: middle;
       transition: color $transitions-duration, background-color $transitions-duration;
       position: relative;
+
+      @include for-mobile {
+        padding: 12px 18px 12px 30px;
+      }
 
       &.icon {
         font-size: 11px;
@@ -107,6 +212,10 @@
     position: absolute;
     left: 4px;
 
+    @include for-mobile {
+      left: 8px;
+    }
+
     &.collapsible {
       display: none;
     }
@@ -118,6 +227,10 @@
         font-size: 14px;
         color: $sidebar-action-color;
         transition: color $transitions-duration;
+
+        @include for-mobile {
+          display: none;
+        }
       }
 
       &:hover {
@@ -144,6 +257,10 @@
 
     &.collapsible {
       display: none;
+
+      @include for-mobile {
+        display: inline;
+      }
     }
 
     &-plus {
@@ -184,6 +301,10 @@
   }
 
   .apps-hide {
+    @include for-mobile {
+      display: none;
+    }
+
     &-label {
       display: none;
     }
@@ -210,16 +331,27 @@
     font-size: 11px;
     font-weight: bold;
     transition: background-color $transitions-duration, color $transitions-duration;
+
+    @include for-mobile {
+      display: none;
+    }
   }
 
   &-popup {
     position: absolute;
     top: 0;
     bottom: 0;
+    left: 0;
     width: $sidebar-width;
     color: $sidebar-popup-text-color;
     background-color: $sidebar-popup-background-color;
     overflow-y: auto;
+
+    @include for-mobile {
+      min-width: 280px;
+      max-width: 360px;
+      width: 80%;
+    }
 
     &-container {
       display: none;
@@ -229,6 +361,11 @@
       left: $sidebar-width;
       bottom: 0;
       right: 0;
+      z-index: 4;
+
+      @include for-mobile {
+        left: 0;
+      }
     }
 
     &-section {
@@ -243,6 +380,12 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
+      @include for-mobile {
+        padding: 24px 30px;
+        margin-bottom: 0;
+        font-size: 14px;
+      }
     }
 
     &-search {
@@ -256,10 +399,17 @@
       outline: 0;
       padding: 0;
       margin: 0 0 12px 0;
+      border-radius: 0;
 
       //noinspection CssInvalidPseudoSelector
       &::placeholder {
         color: $sidebar-popup-search-input-placeholder-color;
+      }
+
+      @include for-mobile {
+        font-size: 14px;
+        height: 40px;
+        text-indent: 30px;
       }
     }
 
@@ -273,6 +423,13 @@
           color: $sidebar-popup-link-text-color;
           padding: 8px 20px;
           display: block;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+
+          @include for-mobile {
+            padding: 16px 30px;
+          }
         }
 
         &.selected a {
