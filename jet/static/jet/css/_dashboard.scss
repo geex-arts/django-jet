@@ -94,11 +94,11 @@ ul.actionlist li {
 
     @include for-mobile {
       position: static;
-      margin: 20px 20px 0 20px;
+      margin: 20px;
     }
 
     @include for-phone {
-      margin: 10px 10px 0 10px;
+      margin: 20px 10px;
     }
 
     .button {
@@ -373,14 +373,50 @@ ul.actionlist li {
   + .select2 {
     background-color: transparent;
 
+    @include for-phone {
+      width: 100% !important;
+      margin-bottom: 5px;
+    }
+
     .select2-selection {
       border-radius: 4px 0 0 4px !important;
       border: 0;
+
+      @include for-phone {
+        border-radius: 4px !important;
+      }
     }
   }
 
   &-link {
     border-radius: 0 4px 4px 0 !important;
     padding: 0 10px !important;
+
+    @include for-phone {
+      border-radius: 4px !important;
+      margin-right: 5px;
+    }
+
+    &-label {
+      display: none;
+      vertical-align: middle;
+      margin-left: 4px;
+
+      @include for-phone {
+        display: inline;
+      }
+    }
+  }
+}
+
+.reset-dashboard-link {
+  &-label {
+    display: none;
+    vertical-align: middle;
+    margin-left: 6px;
+
+    @include for-phone {
+      display: inline;
+    }
   }
 }

@@ -15,10 +15,10 @@
                     <option value="{{ forloop.counter0 }}" data-type="children">{{ module.title }}</option>
                 {% endfor %}
             </optgroup>
-        </select><a href="#" class="button add-dashboard-link" title="{% trans "Add" %}"><span class="icon-add"></span></a>
+        </select><a href="#" class="button add-dashboard-link" title="{% trans "Add" %}"><span class="icon-add"></span><span class="add-dashboard-link-label">{% trans "Add" %}</span></a>
         <input type="hidden" name="app_label" value="{% if app_label %}{{ app_label }}{% endif %}">
         <input type="hidden" name="type" value="">
-        <a href="#" class="button transparent reset-dashboard-link" title="{% trans "Reset widgets" %}"><span class="icon-reset"></span></a>
+        <a href="#" class="button transparent reset-dashboard-link" title="{% trans "Reset widgets" %}"><span class="icon-reset"></span><span class="reset-dashboard-link-label">{% trans "Reset widgets" %}</span></a>
     </form>
     <form action="{% url "jet-dashboard:reset_dashboard" %}" method="POST" id="reset-dashboard-form">
         {% csrf_token %}
