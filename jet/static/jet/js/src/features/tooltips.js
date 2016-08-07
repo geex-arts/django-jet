@@ -4,13 +4,25 @@ require('jquery-ui/ui/core');
 require('jquery-ui/ui/position');
 require('jquery-ui/ui/widget');
 require('jquery-ui/ui/tooltip');
+require('browsernizr/test/touchevents');
+require('browsernizr');
 
-var initTooltips = function() {
-    $('a[title], .tooltip[title]').tooltip({
-        track: true
-    });
+var Tooltips = function() { };
+
+Tooltips.prototype = {
+    run: function() {
+        try {
+            if (!$(document.documentElement).hasClass('touchevents')) {
+                $('a[title], .tooltip[title]').tooltip({
+                    track: true
+                });
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
 };
 
 $(document).ready(function() {
-    initTooltips();
+    new Tooltips($(this)).run();
 });
