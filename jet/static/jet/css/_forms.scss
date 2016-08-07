@@ -52,7 +52,7 @@
   opacity: 0.4;
 }
 
-input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, .vTextField {
+input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, select, .vTextField {
   border-radius: 4px;
   font-size: 13px;
   height: 32px;
@@ -84,16 +84,6 @@ textarea {
   padding: 12px;
   white-space: pre-wrap;
   vertical-align: top;
-}
-
-select {
-  color: $input-text-color;
-  background-color: $input-background-color;
-  border: 1px solid $input-border-color;
-  border-radius: 4px;
-  outline: 0;
-  height: 32px;
-  font-size: 13px;
 }
 
 .segmented-button {
