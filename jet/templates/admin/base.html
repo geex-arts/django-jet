@@ -126,7 +126,12 @@
                             </form>
 
                             <div class="sidebar-section">
-                                <div class="sidebar-title">{% trans 'Applications' %}</div>
+                                <div class="sidebar-title">
+                                    <span class="sidebar-right">
+                                        <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                                    </span>
+                                    {% trans 'Applications' %}
+                                </div>
 
                                 <div class="apps-list-pinned">
                                     {% for app in app_list.pinned_apps %}
@@ -140,11 +145,13 @@
                                                 <span class="sidebar-right-arrow icon-arrow-right"></span>
                                             </span>
 
-                                            {% if app.name != app.app_label|capfirst|escape %}
-                                                {{ app.name }}
-                                            {% else %}
-                                                {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                            {% endif %}
+                                            <span class="sidebar-link-label">
+                                                {% if app.name != app.app_label|capfirst|escape %}
+                                                    {{ app.name }}
+                                                {% else %}
+                                                    {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
+                                                {% endif %}
+                                            </span>
                                         </a>
                                     {% endfor %}
                                 </div>
@@ -164,11 +171,13 @@
                                                 <span class="sidebar-right-arrow icon-arrow-right"></span>
                                             </span>
 
-                                            {% if app.name != app.app_label|capfirst|escape %}
-                                                {{ app.name }}
-                                            {% else %}
-                                                {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                            {% endif %}
+                                            <span class="sidebar-link-label">
+                                                {% if app.name != app.app_label|capfirst|escape %}
+                                                    {{ app.name }}
+                                                {% else %}
+                                                    {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
+                                                {% endif %}
+                                            </span>
                                         </a>
                                     {% endfor %}
                                 </div>

@@ -46,6 +46,7 @@ SideBarApplicationPinning.prototype = {
 
         $sidebar.find('.pin-toggle').on('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
 
             var $appItem = $(this).closest('.app-item');
             var appLabel = $appItem.data('app-label');
@@ -54,6 +55,11 @@ SideBarApplicationPinning.prototype = {
             $form.find('input[name="app_label"]').val(appLabel);
 
             self.pinToggle($form, $sidebar, $appItem);
+        });
+
+        $sidebar.find('.edit-apps-list').on('click', function(e) {
+            e.preventDefault();
+            $(this).parents('.sidebar-section').toggleClass('editing');
         });
     },
     updateAppsHide: function($sidebar) {

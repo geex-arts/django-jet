@@ -192,6 +192,13 @@
 
     &-label {
       vertical-align: middle;
+      display: inline-block;
+      transition: transform $transitions-duration;
+
+      html.touchevents .editing & {
+        display: inline-block;
+        transform: translate3d(20px, 0, 0);
+      }
     }
   }
 
@@ -220,16 +227,28 @@
     position: absolute;
     left: 4px;
 
-    @include for-mobile {
+    html.touchevents & {
+      top: 0;
+      bottom: 0;
       left: 8px;
+      transition: opacity $transitions-duration, transform $transitions-duration;
     }
 
     &.collapsible {
       display: none;
+
+      html.touchevents & {
+        display: inline-block;
+        width: 0;
+        opacity: 0;
+        transform: scale(0);
+        overflow: hidden;
+      }
     }
 
     &-pin, &-unpin {
       &, &:visited, &:hover {
+        display: inline-block;
         position: absolute;
         top: 1px;
         font-size: 14px;
@@ -237,7 +256,9 @@
         transition: color $transitions-duration;
 
         html.touchevents & {
-          display: none;
+          position: static;
+          padding: 6px;
+          margin-top: 7px;
         }
       }
 
@@ -255,8 +276,14 @@
     }
   }
 
-  &-link:hover &-left.collapsible {
+  html.no-touchevents &-link:hover &-left.collapsible {
     display: inline-block;
+  }
+
+  html.touchevents .editing &-left.collapsible {
+    opacity: 1;
+    transform: scale(1);
+    width: auto;
   }
 
   &-right {
@@ -265,6 +292,15 @@
 
     &.collapsible {
       display: none;
+
+      html.touchevents & {
+        display: inline;
+      }
+    }
+
+    &-edit {
+      display: none;
+      font-size: 18px;
 
       html.touchevents & {
         display: inline;
@@ -280,7 +316,11 @@
       color: $sidebar-arrow-color;
       font-size: 16px;
       font-weight: bold !important;
-      transition: color $transitions-duration;
+      transition: color $transitions-duration, opacity $transitions-duration;
+
+      html.touchevents .editing & {
+        opacity: 0;
+      }
     }
 
     &-remove {

@@ -79,17 +79,21 @@ SideBarPopup.prototype = {
             }
         }, delay);
     },
+    onSectionLinkInteracted: function($popupContainer, $link) {
+        var changingSection = this.$currentSectionLink && $link !== this.$currentSectionLink;
+
+        this.setCurrentSectionLink($link);
+        this.openPopup($popupContainer, changingSection ? 500 : null);
+    },
     initSectionsDisplay: function($sidebar) {
         var self = this;
         var $popupContainer = $sidebar.find('.sidebar-popup-container');
         var $popup = $sidebar.find('.sidebar-popup');
 
         $sidebar.find('.popup-section-link').on('mouseenter', function() {
-            var $link = $(this);
-            var changingSection = self.$currentSectionLink && $link !== self.$currentSectionLink;
-
-            self.setCurrentSectionLink($link);
-            self.openPopup($popupContainer, changingSection ? 500 : null);
+            if (!$(document.documentElement).hasClass('touchevents')) {
+                self.onSectionLinkInteracted($popupContainer, $(this));
+            }
         }).on('mouseleave', function() {
             self.closePopup($popupContainer);
         }).on('click', function(e) {
@@ -97,6 +101,8 @@ SideBarPopup.prototype = {
 
             if (!$(document.documentElement).hasClass('touchevents')) {
                 document.location = $(this).attr('href');
+            } else {
+                self.onSectionLinkInteracted($popupContainer, $(this));
             }
         });
 
