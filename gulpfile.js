@@ -10,7 +10,18 @@ var buffer = require('vinyl-buffer');
 var source = require('vinyl-source-stream');
 var sourcemaps = require('gulp-sourcemaps');
 var merge = require('merge-stream');
-var autoprefixer = require('gulp-autoprefixer');
+var postcss = require('gulp-postcss');
+var pxtorem = require('postcss-pxtorem');
+var autoprefixer = require('autoprefixer');
+
+var cssProcessors = [
+    autoprefixer(),
+    pxtorem({
+        rootValue: 14,
+        replace: false,
+        propWhiteList: []
+    })
+];
 
 gulp.task('js', function() {
     browserify('./jet/static/jet/js/src/main.js')
@@ -39,6 +50,10 @@ gulp.task('vendor-css', function() {
                 console.error(error);
             })
     )
+        .pipe(postcss(cssProcessors))
+        .on('error', function(error) {
+            console.error(error);
+        })
         .pipe(minifyCss())
         .on('error', function(error) {
             console.error(error);
@@ -57,7 +72,7 @@ gulp.task('scss', function() {
         .on('error', function(error) {
             console.error(error);
         })
-        .pipe(autoprefixer())
+        .pipe(postcss(cssProcessors))
         .on('error', function(error) {
             console.error(error);
         })

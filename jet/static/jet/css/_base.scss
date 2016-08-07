@@ -9,12 +9,19 @@ html, body {
   padding: 0;
 }
 
+html {
+  font-size: 87.5%;
+
+  @include for-mobile {
+    font-size: 100%;
+  }
+}
+
 body {
   height: 100%;
   background: $background-color;
   color: $text-color;
   font-family: $font;
-  font-size: $font-size;
   text-size-adjust: 100%;
 
   &.non-scrollable {
