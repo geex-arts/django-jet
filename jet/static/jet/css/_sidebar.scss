@@ -32,8 +32,8 @@
     display: none;
     background-color: $sidebar-background-color;
     color: $sidebar-text-color;
-    height: 60px;
-    line-height: 60px;
+    height: $sidebar-header-height;
+    line-height: $sidebar-header-height;
     padding: 0 20px;
     position: fixed;
     top: 0;
@@ -46,7 +46,7 @@
       display: block;
 
       body.scroll-to-bottom & {
-        transform: translate3d(0, -60px, 0);
+        transform: translate3d(0, -$sidebar-header-height, 0);
       }
     }
 
@@ -90,7 +90,7 @@
 
     &-icon {
       color: $sidebar-action-color;
-      font-size: 32px;
+      font-size: 28px;
       font-weight: bold;
       vertical-align: middle;
     }
@@ -136,6 +136,10 @@
     @include for-mobile {
       padding: 12px 18px 12px 30px;
       margin-bottom: 0;
+
+      html.touchevents & {
+        padding-left: 20px;
+      }
     }
 
     &-link {
@@ -165,6 +169,10 @@
 
       @include for-mobile {
         padding: 12px 18px 12px 30px;
+
+        html.touchevents & {
+          padding-left: 20px;
+        }
       }
 
       &.icon {
@@ -200,6 +208,10 @@
       padding: 8px 0;
       text-transform: uppercase;
       transition: color $transitions-duration, background-color $transitions-duration;
+
+      @include for-mobile {
+        padding: 12px 20px;
+      }
     }
 
     &:hover {
@@ -378,7 +390,7 @@
       white-space: nowrap;
 
       @include for-mobile {
-        padding: 24px 30px;
+        padding: 24px 20px;
         margin-bottom: 0;
         font-size: 14px;
       }
@@ -405,7 +417,6 @@
       @include for-mobile {
         font-size: 14px;
         height: 40px;
-        text-indent: 30px;
       }
     }
 
@@ -424,7 +435,7 @@
           white-space: nowrap;
 
           @include for-mobile {
-            padding: 16px 30px;
+            padding: 12px 20px;
           }
         }
 
