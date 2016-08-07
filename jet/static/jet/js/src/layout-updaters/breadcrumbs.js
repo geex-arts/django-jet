@@ -5,18 +5,27 @@ var BreadcrumbsUpdater = function($breadcrumbs) {
 };
 
 BreadcrumbsUpdater.prototype = {
+    replaceSeparators: function($breadcrumbs) {
+        var html = $breadcrumbs.html();
+
+        html = html.replace(/›/g, '<span class="icon-arrow-right breadcrumbs-separator"></span>');
+
+        $breadcrumbs.html(html);
+    },
+    scrollToEnd: function($breadcrumbs) {
+        $breadcrumbs.scrollLeft($breadcrumbs[0].scrollWidth - $breadcrumbs.width());
+    },
     run: function() {
+        var $breadcrumbs = this.$breadcrumbs
+
         try {
-            var html = this.$breadcrumbs.html();
-
-            html = html.replace(/›/g, '<span class="icon-arrow-right breadcrumbs-separator"></span>');
-
-            this.$breadcrumbs.html(html);
+            this.replaceSeparators($breadcrumbs);
+            this.scrollToEnd($breadcrumbs);
         } catch (e) {
             console.error(e);
         }
 
-        this.$breadcrumbs.addClass('initialized');
+        $breadcrumbs.addClass('initialized');
     }
 };
 
