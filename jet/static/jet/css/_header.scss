@@ -34,10 +34,6 @@
 
   &.initialized {
     display: block;
-
-    @include for-mobile {
-      display: none;
-    }
   }
 }
 
@@ -58,18 +54,40 @@
     width: 175px;
     z-index: 1;
 
+    @include for-mobile {
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 4;
+      width: auto;
+      color: $sidebar-link-color;
+      border: 0;
+      border-left: 1px solid $sidebar-contrast-background-color;
+      border-radius: 0;
+      transform: none;
+      transition: transform $transitions-duration;
+
+      body.scroll-to-bottom & {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+
     &.opened {
       background-color: $top-dropdown-background-color;
       border-color: transparent;
       color: $top-dropdown-text-color;
+
+      @include for-mobile {
+        border-radius: 0 0 0 4px;
+        border: 0;
+      }
     }
 
     li {
       display: block;
       list-style-type: none;
       margin: 0;
-      line-height: 30px;
-      padding: 0 10px 0 14px;
+      padding: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
@@ -77,6 +95,13 @@
 
     li.user-tools-welcome-msg {
       font-weight: bold;
+      padding: 0 10px 0 14px;
+      line-height: 30px;
+
+      @include for-mobile {
+        padding-left: 18px;
+        line-height: $sidebar-header-height;
+      }
 
       &:after {
         @include font-icon;
@@ -88,6 +113,13 @@
         vertical-align: middle;
         line-height: 30px;
         transition: color $transitions-duration;
+        margin-left: 5px;
+
+        @include for-mobile {
+          line-height: $sidebar-header-height;
+          font-size: 20px;
+          font-weight: bold;
+        }
       }
     }
 
@@ -104,8 +136,15 @@
       display: none;
 
       a, a:visited, a:hover {
+        display: block;
+        line-height: 30px;
+        padding: 0 14px;
         color: $top-dropdown-link-color;
         text-decoration: none;
+
+        @include for-mobile {
+          line-height: $sidebar-header-height;
+        }
       }
 
       a:hover {

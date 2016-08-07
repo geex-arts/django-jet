@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 3;
+  z-index: 4;
   background-color: $sidebar-background-color;
   color: $sidebar-text-color;
   transition: background-color $transitions-duration;
@@ -34,7 +34,6 @@
     color: $sidebar-text-color;
     height: $sidebar-header-height;
     line-height: $sidebar-header-height;
-    padding: 0 20px;
     position: fixed;
     top: 0;
     right: 0;
@@ -46,26 +45,24 @@
       display: block;
 
       body.scroll-to-bottom & {
-        transform: translate3d(0, -$sidebar-header-height, 0);
+        transform: translate3d(0, -100%, 0);
       }
-    }
-
-    &.sidebar-opened {
-      background-color: $sidebar-contrast-background-color;
-      color: $sidebar-contrast-text-color;
     }
 
     &-menu {
       &, &:visited, &:hover {
+        display: inline-block;
         font-size: 14px;
         text-transform: uppercase;
         color: $sidebar-link-color;
+        line-height: $sidebar-header-height;
+        padding: 0 16px;
+        border-right: 1px solid $sidebar-contrast-background-color;
       }
 
       &-icon {
-        font-size: 20px;
+        font-size: 16px;
         vertical-align: middle;
-        margin-right: 10px;
       }
     }
   }
@@ -368,7 +365,7 @@
       left: $sidebar-width;
       bottom: 0;
       right: 0;
-      z-index: 4;
+      z-index: 5;
 
       @include for-mobile {
         left: 0;
