@@ -706,7 +706,11 @@ form .related-widget-wrapper ul {
   display: none;
 
   &.initialized {
-    display: inline;
+    display: inline-block;
+  }
+
+  .form-row & {
+    margin-top: 10px;
   }
 }
 
