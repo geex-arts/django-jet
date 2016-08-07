@@ -22,7 +22,10 @@
 {% block sidebar %}{% endblock %}
 
 {% block breadcrumbs %}
-    {{ block.super }}
+    {% if not is_popup %}
+        <div class="breadcrumbs"></div>
+    {% endif %}
+
     {% get_dashboard 'index' as dashboard %}
     {{ dashboard.render_tools }}
 {% endblock %}

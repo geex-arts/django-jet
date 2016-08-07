@@ -23,15 +23,7 @@
 
 {% block breadcrumbs %}
     {% if not is_popup %}
-        <div class="breadcrumbs">
-            <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-            &rsaquo;
-            {% for app in app_list %}
-                {% if app.name != app.app_label|capfirst|escape %}{{ app.name }}{% else %}{% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}{% endif %}
-            {% endfor %}
-        </div>
-    {% else %}
-        {{ block.super }}
+        <div class="breadcrumbs"></div>
     {% endif %}
 
     {% get_dashboard 'app_index' as dashboard %}

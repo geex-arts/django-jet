@@ -35,6 +35,8 @@
   }
 
   .breadcrumbs {
+    margin-bottom: 20px;
+
     @include for-mobile {
       display: none;
     }
