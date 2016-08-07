@@ -10,7 +10,8 @@ ChangeFormTabsUpdater.prototype = {
 
         $modules.each(function(i) {
             var $module = $(this);
-            var title = 'General';
+            var $header = $module.find('> h2').first();
+            var title = $header.length != 0 ? $header.html() : 'General';
             var className = 'module_' + i;
 
             $module.addClass(className);
