@@ -228,7 +228,7 @@
         color: $sidebar-action-color;
         transition: color $transitions-duration;
 
-        @include for-mobile {
+        html.touchevents & {
           display: none;
         }
       }
@@ -258,7 +258,7 @@
     &.collapsible {
       display: none;
 
-      @include for-mobile {
+      html.touchevents & {
         display: inline;
       }
     }
@@ -301,10 +301,6 @@
   }
 
   .apps-hide {
-    @include for-mobile {
-      display: none;
-    }
-
     &-label {
       display: none;
     }

@@ -177,7 +177,7 @@ ul.actionlist li {
         float: right;
         line-height: 30px !important;
 
-        @include for-mobile {
+        html.touchevents & {
           display: none;
         }
       }
@@ -194,7 +194,7 @@ ul.actionlist li {
         vertical-align: middle;
         visibility: hidden;
 
-        @include for-mobile {
+        html.touchevents & {
           visibility: visible;
         }
       }

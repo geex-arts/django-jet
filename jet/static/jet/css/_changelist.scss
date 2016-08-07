@@ -16,9 +16,6 @@
 
     @include for-mobile {
       background: $sidebar-background-color;
-    }
-
-    @include for-mobile {
       position: relative;
       left: -20px;
       width: calc(100% + 40px);
