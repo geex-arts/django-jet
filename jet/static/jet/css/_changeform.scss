@@ -400,7 +400,7 @@ body.popup .submit-row {
   border-radius: 4px 0 0 4px !important;
   border-right: 0 !important;
 
-  @include for-phone {
+  @include for-width(374px) {
     border-radius: 4px !important;
     border-right: 1px !important;
   }
@@ -409,7 +409,7 @@ body.popup .submit-row {
     vertical-align: top;
     display: inline-block;
 
-    @include for-phone {
+    @include for-width(374px) {
        display: none;
     }
 
