@@ -84,15 +84,17 @@ RelatedPopups.prototype = {
         var $container = $document.find('.related-popup-container');
         var $loading = $container.find('.loading-indicator');
         var $body = $document.find('body').addClass('non-scrollable');
-        var $popup = $('<iframe>')
+        var $iframe = $('<iframe>')
             .attr('src', href)
-            .data('input', $input)
-            .addClass('related-popup')
             .on('load', function() {
                 $popup.add($document.find('.related-popup-back')).fadeIn(200, 'swing', function() {
                     $loading.hide();
                 });
             });
+        var $popup = $('<div>')
+            .addClass('related-popup')
+            .data('input', $input)
+            .append($iframe);
 
         $loading.show();
         $container.fadeIn(200, 'swing', function() {
