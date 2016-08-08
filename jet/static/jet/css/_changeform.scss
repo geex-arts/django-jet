@@ -500,14 +500,24 @@ body.popup .submit-row {
       line-height: 2;
     }
 
+    > b {
+      margin-right: 10px;
+    }
+
     .inline_label {
-      margin-left: 10px;
+      display: inline-block;
       background: $content-contrast2-background-color;
       color: $content-contrast2-text-color;
       padding: 4px 8px;
       border-radius: 5px;
       font-size: 10px;
       font-weight: normal;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      box-sizing: border-box;
+      vertical-align: middle;
 
       @include for-mobile {
         margin-right: 10px;
@@ -536,6 +546,7 @@ body.popup .submit-row {
       font-size: 10px;
       font-weight: normal;
       vertical-align: middle;
+      white-space: nowrap;
 
       @include for-mobile {
         float: none;
