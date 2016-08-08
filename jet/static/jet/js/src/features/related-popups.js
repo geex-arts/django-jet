@@ -83,7 +83,7 @@ RelatedPopups.prototype = {
         var $document = $(window.top.document);
         var $container = $document.find('.related-popup-container');
         var $loading = $container.find('.loading-indicator');
-        var $body = $document.find('body').addClass('non-scrollable');
+        var $body = $document.find('body');
         var $iframe = $('<iframe>')
             .attr('src', href)
             .on('load', function() {
