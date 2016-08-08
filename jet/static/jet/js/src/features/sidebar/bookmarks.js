@@ -138,7 +138,7 @@ SideBarBookmarks.prototype = {
             this.initBookmarksAdding(this.$sidebar);
             this.initBookmarksRemoving(this.$sidebar);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

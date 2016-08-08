@@ -194,7 +194,7 @@ SideBarPopup.prototype = {
             this.initSectionsSearch(this.$sidebar);
             this.initSectionLists(this.$sidebar);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

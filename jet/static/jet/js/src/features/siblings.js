@@ -12,7 +12,7 @@ Siblings.prototype = {
         try {
             this.moveSiblings(this.$siblings);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         this.$siblings.addClass('initialized');

@@ -67,7 +67,7 @@ ChangeFormTabsUpdater.prototype = {
             var tabs = this.findTabs($modules, $inlines);
             this.createTabs($contentWrappers, tabs);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

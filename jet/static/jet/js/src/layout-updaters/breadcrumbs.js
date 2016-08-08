@@ -22,7 +22,7 @@ BreadcrumbsUpdater.prototype = {
             this.replaceSeparators($breadcrumbs);
             this.scrollToEnd($breadcrumbs);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         $breadcrumbs.addClass('initialized');

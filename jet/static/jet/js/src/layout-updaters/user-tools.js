@@ -38,7 +38,7 @@ UserToolsUpdater.prototype = {
         try {
             this.updateUserTools(this.$usertools);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         this.$usertools.addClass('initialized');

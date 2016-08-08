@@ -101,13 +101,13 @@ ToolbarUpdater.prototype = {
             this.updateToolbar($toolbar);
             this.moveFilters(this.$changelist, $toolbar);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         try {
             this.fixFloatLineBreak();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         $toolbar.addClass('initialized');

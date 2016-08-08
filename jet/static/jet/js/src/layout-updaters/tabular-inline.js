@@ -34,7 +34,7 @@ TabularInlineUpdater.prototype = {
         try {
             this.updateOriginalCell();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         this.$inline.addClass('initialized');

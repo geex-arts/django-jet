@@ -104,7 +104,7 @@ SideBarApplicationPinning.prototype = {
             this.initApplicationPinning(this.$sidebar);
             this.initAppsHide(this.$sidebar);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

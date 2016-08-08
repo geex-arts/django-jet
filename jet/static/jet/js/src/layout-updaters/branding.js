@@ -11,7 +11,7 @@ BrandingUpdater.prototype = {
         try {
             $branding.detach().prependTo($('.sidebar-wrapper'));
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         $branding.addClass('initialized');

@@ -9,7 +9,7 @@ DeleteConfirmationUpdater.prototype = {
                 $('body').addClass('delete-confirmation');
             }
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

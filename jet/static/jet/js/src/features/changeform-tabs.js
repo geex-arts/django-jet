@@ -81,7 +81,7 @@ ChangeFormTabs.prototype = {
             this.initTabs();
             this.updateErrorState();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

@@ -39,7 +39,7 @@ SideBar.prototype = {
             this.initScrollBars($sidebar);
             this.initSideBarToggle();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         $sidebar.addClass('initialized');

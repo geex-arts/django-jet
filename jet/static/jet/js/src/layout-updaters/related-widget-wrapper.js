@@ -31,7 +31,7 @@ RelatedWidgetWrapperUpdater.prototype = {
         try {
             this.updateLinkIcons();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
     }
 };

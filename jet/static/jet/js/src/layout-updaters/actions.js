@@ -43,7 +43,7 @@ ActionsUpdater.prototype = {
             this.wrapLabels($actions);
             this.moveActions($actions);
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         $actions.addClass('initialized');

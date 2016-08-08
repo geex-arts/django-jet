@@ -22,7 +22,7 @@ StackedInlineUpdater.prototype = {
         try {
             this.updateObjectLinks();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         this.$inline.addClass('initialized');

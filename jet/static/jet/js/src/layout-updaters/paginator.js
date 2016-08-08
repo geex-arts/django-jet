@@ -80,7 +80,7 @@ PaginatorUpdater.prototype = {
             this.wrapPages();
             this.wrapTextNodes();
         } catch (e) {
-            console.error(e);
+            console.error(e, e.stack);
         }
 
         this.$paginator.addClass('initialized');
