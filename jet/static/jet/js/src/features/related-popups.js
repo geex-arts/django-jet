@@ -1,5 +1,5 @@
 var $ = require('jquery');
-var WindowStorage = require('../utils/windowStorage');
+var WindowStorage = require('../utils/window-storage');
 
 var RelatedPopups = function() {
     this.windowStorage = new WindowStorage('relatedWindows');
