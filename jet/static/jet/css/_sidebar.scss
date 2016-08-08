@@ -230,7 +230,6 @@
     html.touchevents & {
       top: 0;
       bottom: 0;
-      left: 8px;
       transition: opacity $transitions-duration, transform $transitions-duration;
     }
 
@@ -258,7 +257,8 @@
         html.touchevents & {
           position: static;
           padding: 6px;
-          margin-top: 7px;
+          margin-top: 5px;
+          font-size: 18px;
         }
       }
 
