@@ -469,6 +469,10 @@ ul.actionlist li {
     float: none;
   }
 
+  &-icon {
+    vertical-align: middle;
+  }
+
   &-label {
     display: none;
     vertical-align: middle;
