@@ -18,6 +18,13 @@
   p {
     padding-left: 0;
   }
+
+  .select2 {
+    @include for-phone {
+      width: auto !important;
+      max-width: 100%;
+    }
+  }
 }
 
 .hidden {
@@ -393,9 +400,18 @@ body.popup .submit-row {
   border-radius: 4px 0 0 4px !important;
   border-right: 0 !important;
 
+  @include for-phone {
+    border-radius: 4px !important;
+    border-right: 1px !important;
+  }
+
   &-link {
     vertical-align: top;
     display: inline-block;
+
+    @include for-phone {
+       display: none;
+    }
 
     span {
       width: 32px;

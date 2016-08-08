@@ -11,6 +11,10 @@ fieldset.module {
   @include for-mobile {
     padding: 10px;
   }
+
+  @include for-phone {
+    padding: 5px;
+  }
 }
 
 .module p, .module ul, .module h3, .module h4, .module dl, .module pre {
