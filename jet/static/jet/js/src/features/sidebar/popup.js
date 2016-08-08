@@ -1,4 +1,4 @@
-require('./../../utils/jquery-icontains');
+require('../../utils/jquery-icontains');
 
 var $ = window.jQuery = require('jquery');
 
