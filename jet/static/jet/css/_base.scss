@@ -24,12 +24,18 @@ body {
   font-family: $font;
   text-size-adjust: 100%;
 
+  @include for-mobile {
+    padding-top: $sidebar-header-height;
+  }
+
   &.non-scrollable {
     overflow: hidden;
   }
 
-  @include for-mobile {
-    padding-top: $sidebar-header-height;
+  &.popup {
+    @include for-mobile {
+      padding-top: 0;
+    }
   }
 }
 
