@@ -17,21 +17,27 @@ fieldset.module {
   }
 }
 
-.module p, .module ul, .module h3, .module h4, .module dl, .module pre {
-  padding-left: 10px;
-  padding-right: 10px;
-}
+.module {
+  p, ul, h3, h4, dl, pre {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 
-.module blockquote {
-  margin-left: 12px;
-}
+  blockquote {
+    margin-left: 12px;
+  }
 
-.module ul, .module ol {
-  margin-left: 1.5em;
-}
+  ul, .ol {
+    margin-left: 1.5em;
+  }
 
-.module h3 {
-  margin-top: .6em;
+  h3 {
+    margin-top: .6em;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
 }
 
 .module h2, .module caption, .inline-group h2 {
@@ -46,8 +52,4 @@ fieldset.module {
     font-size: 11px;
     font-weight: bold;
   }
-}
-
-.module table {
-  border-collapse: collapse;
 }
