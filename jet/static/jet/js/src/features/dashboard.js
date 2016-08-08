@@ -135,6 +135,10 @@ var initDashboard = function() {
         });
     });
 
+    $('.dashboard-tools-toggle').on('click', function() {
+        $('.dashboard-tools').toggleClass('visible');
+    });
+
     var $form = $('#add-dashboard-module-form');
 
     $form.find('.add-dashboard-link').on('click', function (e) {

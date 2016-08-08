@@ -101,16 +101,46 @@ ul.actionlist li {
     right: 20px + 175px + 20px;
 
     @include for-mobile {
+      display: none;
       position: static;
-      margin: 20px;
+      margin: 10px 20px 0 20px;
+      padding: 10px;
+      background: $content-background-color;
+      border-radius: 5px;
     }
 
     @include for-phone {
-      margin: 20px 10px;
+      margin: 10px 10px 0 10px;
     }
 
     .button {
       vertical-align: middle;
+    }
+
+    &.visible {
+      @include for-mobile {
+        display: block;
+      }
+    }
+
+    &-toggle {
+      &-icon {
+        vertical-align: middle;
+      }
+
+      &-container {
+        display: none;
+        margin: 20px 20px 0 20px;
+        text-align: right;
+
+        @include for-mobile {
+          display: block;
+        }
+
+        @include for-phone {
+          margin: 10px 10px 0 10px;
+        }
+      }
     }
   }
 
@@ -382,17 +412,24 @@ ul.actionlist li {
   + .select2 {
     background-color: transparent;
 
+    @include for-mobile {
+      min-width: 160px;
+      max-width: 160px;
+    }
+
     @include for-phone {
       width: 100% !important;
+      max-width: none;
       margin-bottom: 5px;
     }
 
     .select2-selection {
       border-radius: 4px 0 0 4px !important;
-      border: 0;
+      border-width: 0;
 
-      @include for-phone {
+      @include for-mobile {
         border-radius: 4px !important;
+        border-width: 1px;
       }
     }
   }
@@ -401,30 +438,43 @@ ul.actionlist li {
     border-radius: 0 4px 4px 0 !important;
     padding: 0 10px !important;
 
-    @include for-phone {
+    @include for-mobile {
+      margin-left: 6px;
       border-radius: 4px !important;
       margin-right: 5px;
+    }
+
+    @include for-phone {
+      margin-left: 0;
+    }
+
+    &-icon {
+      vertical-align: middle;
     }
 
     &-label {
       display: none;
       vertical-align: middle;
       margin-left: 4px;
-
-      @include for-phone {
-        display: inline;
-      }
     }
   }
 }
 
 .reset-dashboard-link {
+  @include for-mobile {
+    float: right;
+  }
+
+  @include for-phone {
+    float: none;
+  }
+
   &-label {
     display: none;
     vertical-align: middle;
     margin-left: 6px;
 
-    @include for-phone {
+    @include for-mobile {
       display: inline;
     }
   }
