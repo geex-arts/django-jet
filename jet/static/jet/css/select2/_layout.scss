@@ -7,6 +7,10 @@ $input-height: 32px;
   @import "multiple";
   min-width: 240px;
 
+  @include for-phone {
+    min-width: 160px;
+  }
+
   .select2-selection {
     background-color: $input-background-color;
     border: 1px solid $input-border-color;
