@@ -15,6 +15,7 @@ ChangeFormTabsUpdater.prototype = {
             var className = 'module_' + i;
 
             $module.addClass(className);
+            $header.remove();
 
             tabs.push({
                 className: className,
