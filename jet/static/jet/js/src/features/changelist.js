@@ -1,100 +1,74 @@
 var $ = require('jquery');
 
-var initChangelist = function() {
-    var initChangelistHeaders = function() {
-        var $originalThead = $('#changelist .results thead');
+var Changelist = function($changelist) {
+    this.$changelist = $changelist;
+};
 
-        if ($originalThead.length == 0) {
-            return;
+Changelist.prototype = {
+    updateFixedHeaderVisibility: function($fixedTable, $originalHeader) {
+        if ($(window).scrollTop() > $originalHeader.offset().top) {
+            $fixedTable.closest('table').show();
+        } else {
+            $fixedTable.closest('table').hide();
         }
+    },
+    updateFixedHeaderWidth: function($fixedHeader, $originalHeader) {
+        var $originalColumns = $originalHeader.find('th');
+        var $columns = $fixedHeader.find('th');
 
-        var $thead = $originalThead.clone();
-        var $table = $('<table>').addClass('table helper').append($thead);
-
-        $table.find('.action-checkbox-column').empty();
-        $table.appendTo(document.body);
-
-        var updateChangelistHeaderVisibility = function () {
-            if ($(window).scrollTop() > $originalThead.offset().top) {
-                $table.show();
-            } else {
-                $table.hide();
-            }
-        };
-
-        var updateChangelistHeaderWidth = function () {
-            var $originalTheadColumns = $originalThead.find('th');
-            var $theadColumns = $thead.find('th');
-
-            $originalTheadColumns.each(function (i) {
-                $theadColumns.eq(i).css('width', $(this).width());
-            });
-        };
-
-        $(window).on('scroll', updateChangelistHeaderVisibility);
-        $(window).on('resize', updateChangelistHeaderWidth);
-
-        updateChangelistHeaderWidth();
-    };
-
-    var initChangelistFooters = function() {
-        var $changelistFooters = $('.changelist-footer');
-
-        if ($changelistFooters.length == 0) {
-            return;
-        }
-
-        var updateChangelistFooters = function () {
-            $changelistFooters.each(function () {
-                var $changelistFooter = $(this);
-                var $results = $changelistFooter.siblings('.results');
-
-                if ($results.length == 0) {
-                    return;
-                }
-
-                if ($(window).scrollTop() + $(window).height() - $changelistFooter.outerHeight(false) < $results.offset().top + $results.outerHeight(false)) {
-                    if (!$changelistFooter.hasClass('fixed')) {
-                        var previousScrollTop = $(window).scrollTop();
-
-                        $changelistFooter.addClass('fixed');
-                        $results.css('margin-bottom', ($changelistFooter.outerHeight(false) - 20 - 2) + 'px');
-
-                        $(window).scrollTop(previousScrollTop);
-                    }
-                } else {
-                    if ($changelistFooter.hasClass('fixed')) {
-                        $changelistFooter.removeClass('fixed');
-                        $results.css('margin-bottom', 0);
-                    }
-                }
-            });
-        };
-
-        $(window).on('scroll', updateChangelistFooters);
-        $(window).on('resize', updateChangelistFooters);
-
-        updateChangelistFooters();
-    };
-
-    var initChangelistImages = function() {
-        $('img[src$="admin/img/icon-yes.gif"]').add('img[src$="admin/img/icon-yes.svg"]').after($('<span class="icon-tick">'));
-        $('img[src$="admin/img/icon-no.gif"]').add('img[src$="admin/img/icon-no.svg"]').after($('<span class="icon-cross">'));
-        $('img[src$="admin/img/icon-unknown.gif"]').add('img[src$="admin/img/icon-unknown.svg"]').after($('<span class="icon-question">'));
-    };
-
-    var initChangelistRowSelection = function() {
-        $('#result_list tbody th, #result_list tbody td').on('click', function(e) {
-            // Fix selection on clicking elements inside row (e.x. links)
-            if (e.target != this) {
-                return;
-            }
-
-            $(this).closest('tr').find('.action-checkbox .action-select').click();
+        $originalColumns.each(function(i) {
+            $columns.eq(i).css('width', $(this).width());
         });
-    };
+    },
+    initFixedHeader: function($changelist) {
+        var $originalHeader = $changelist.find('#result_list thead');
 
-    var initChangelistSortableSelection = function() {
+        if ($originalHeader.length == 0) {
+            return;
+        }
+
+        var $fixedHeader = $originalHeader.clone();
+        var $fixedTable = $('<table>').addClass('helper').append($fixedHeader);
+
+        $fixedTable.find('.action-checkbox-column').empty();
+        $fixedTable.appendTo(document.body);
+
+        $(window).on('scroll', $.proxy(this.updateFixedHeaderVisibility, this, $fixedTable, $originalHeader));
+        $(window).on('resize', $.proxy(this.updateFixedHeaderWidth, this, $fixedHeader, $originalHeader));
+
+        this.updateFixedHeaderWidth($fixedHeader, $originalHeader);
+    },
+    updateFixedFooter: function($results, $footer) {
+        if ($(window).scrollTop() + $(window).height() - $footer.outerHeight(false) < $results.offset().top + $results.outerHeight(false)) {
+            if (!$footer.hasClass('fixed')) {
+                var previousScrollTop = $(window).scrollTop();
+
+                $footer.addClass('fixed');
+                $results.css('margin-bottom', ($footer.outerHeight(false) - 20 - 2) + 'px');
+
+                $(window).scrollTop(previousScrollTop);
+            }
+        } else {
+            if ($footer.hasClass('fixed')) {
+                $footer.removeClass('fixed');
+                $results.css('margin-bottom', 0);
+            }
+        }
+    },
+    initFixedFooter: function($changelist) {
+        var $footer = $changelist.find('.changelist-footer');
+        var $results = $footer.siblings('.results');
+
+        if ($footer.length == 0 || $results.length == 0) {
+            return;
+        }
+
+        $(window).on('scroll', $.proxy(this.updateFixedFooter, this, $results, $footer));
+        $(window).on('resize', $.proxy(this.updateFixedFooter, this, $results, $footer));
+
+        this.updateFixedFooter($results, $footer);
+    },
+    initHeaderSortableSelection: function() {
         $('table thead .sortable').on('click', function(e) {
 
             if (e.target != this) {
@@ -107,15 +81,35 @@ var initChangelist = function() {
                 link.click();
             }
         });
-    };
+    },
+    initRowSelection: function($changelist) {
+        $changelist.find('#result_list tbody th, #result_list tbody td').on('click', function(e) {
+            // Fix selection on clicking elements inside row (e.x. links)
+            if (e.target != this) {
+                return;
+            }
 
-    initChangelistHeaders();
-    initChangelistFooters();
-    initChangelistImages();
-    initChangelistRowSelection();
-    initChangelistSortableSelection();
+            $(this).closest('tr').find('.action-checkbox .action-select').click();
+        });
+    },
+    run: function() {
+        var $changelist = this.$changelist;
+
+        try {
+            this.initFixedHeader($changelist);
+            this.initFixedFooter($changelist);
+            this.initHeaderSortableSelection($changelist);
+            this.initRowSelection($changelist);
+        } catch (e) {
+            console.error(e, e.stack);
+        }
+
+        this.$changelist.addClass('initialized');
+    }
 };
 
 $(document).ready(function() {
-    initChangelist();
+    $('#changelist').each(function() {
+        new Changelist($(this)).run();
+    });
 });

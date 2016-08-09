@@ -15,6 +15,7 @@ require('./layout-updaters/stacked-inline');
 require('./layout-updaters/related-widget-wrapper');
 require('./layout-updaters/delete-confirmation');
 require('./layout-updaters/branding');
+require('./layout-updaters/icons');
 require('./features/sidebar/main');
 require('./features/filters');
 require('./features/changeform-tabs');
