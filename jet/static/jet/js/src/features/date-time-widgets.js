@@ -5,46 +5,59 @@ require('jquery-ui/ui/datepicker');
 
 require('timepicker');
 
-var initDateTimeWidgets = function() {
-    var removePreviousSibling = function($element) {
-        var node = $element[0].previousSibling;
-        node.parentNode.removeChild(node);
-    };
+var DateTimeWidgets = function() { };
 
-    var djangoDateTimeFormatToJs = function(format) {
-        return format.toLowerCase().replace(/%\w/g, function(format) {
-            format = format.replace(/%/,"");
-            return format + format;
-        });
-    };
+DateTimeWidgets.prototype = {
+    removeInputTextNode: function($input) {
+        if ($input.length == 0) {
+            return;
+        }
 
-    var updateDatetimeLayout = function() {
+        var node = $input.get(0).previousSibling;
+
+        if (node.nodeType == 3) {
+            $(node).remove();
+        }
+    },
+    updateDatetimeLayout: function() {
+        var self = this;
+
         $('.form-row .datetime').each(function () {
             var $dateTime = $(this);
             var $dateField = $dateTime.find('.vDateField');
             var $timeField = $dateTime.find('.vTimeField');
 
-            removePreviousSibling($dateField);
-            removePreviousSibling($timeField);
+            self.removeInputTextNode($dateField);
+            self.removeInputTextNode($timeField);
 
             $dateField.nextAll('br').first().remove();
         });
-    };
+    },
+    djangoDateTimeFormatToJs: function(format) {
+        return format.toLowerCase().replace(/%\w/g, function(format) {
+            format = format.replace(/%/,"");
+            return format + format;
+        });
+    },
+    initDateWidgets: function() {
+        var self = this;
 
-    var initDateWidget = function() {
         $('.form-row .vDateField').each(function () {
             var $dateField = $(this);
-            var $dateLink = $('<a href="#">').addClass('vDateField-link');
             var $dateButton = $('<span>').addClass('icon-calendar');
-
-            $dateLink.append($dateButton).insertAfter($dateField);
+            var $dateLink = $('<a>')
+                .attr('href', '#')
+                .addClass('vDateField-link')
+                .append($dateButton)
+                .insertAfter($dateField);
 
             $dateField.datepicker({
-                dateFormat: djangoDateTimeFormatToJs(DATE_FORMAT),
+                dateFormat: self.djangoDateTimeFormatToJs(DATE_FORMAT),
                 showButtonPanel: true,
                 nextText: '',
                 prevText: ''
             });
+
             $dateLink.on('click', function (e) {
                 if ($dateField.datepicker('widget').is(':visible')) {
                     $dateField.datepicker('hide');
@@ -61,21 +74,23 @@ var initDateTimeWidgets = function() {
             old_goToToday.call(this,id);
             this._selectDate(id);
         };
-    };
-
-    var initTimeWidget = function() {
+    },
+    initTimeWidgets: function() {
         $('.form-row .vTimeField').each(function () {
             var $timeField = $(this);
-            var $timeLink = $('<a href="#">').addClass('vTimeField-link');
             var $timeButton = $('<span>').addClass('icon-clock');
-
-            $timeLink.append($timeButton).insertAfter($timeField);
+            var $timeLink = $('<a>')
+                .attr('href', '#')
+                .addClass('vTimeField-link')
+                .append($timeButton)
+                .insertAfter($timeField);
 
             $timeField.timepicker({
                 showPeriodLabels: false,
                 showCloseButton: true,
                 showNowButton: true
             });
+
             $timeLink.on('click', function (e) {
                 if ($timeField.datepicker('widget').is(':visible')) {
                     $timeField.datepicker('hide');
@@ -86,13 +101,18 @@ var initDateTimeWidgets = function() {
                 e.preventDefault();
             });
         });
-    };
-
-    updateDatetimeLayout();
-    initDateWidget();
-    initTimeWidget();
+    },
+    run: function() {
+        try {
+            this.updateDatetimeLayout();
+            this.initDateWidgets();
+            this.initTimeWidgets();
+        } catch (e) {
+            console.error(e, e.stack);
+        }
+    }
 };
 
 $(document).ready(function() {
-    initDateTimeWidgets();
+    new DateTimeWidgets().run();
 });
