@@ -10,13 +10,16 @@ require('browsernizr');
 var Tooltips = function() { };
 
 Tooltips.prototype = {
+    initTooltips: function() {
+        if (!$(document.documentElement).hasClass('touchevents')) {
+            $('a[title], .tooltip[title]').tooltip({
+                track: true
+            });
+        }
+    },
     run: function() {
         try {
-            if (!$(document.documentElement).hasClass('touchevents')) {
-                $('a[title], .tooltip[title]').tooltip({
-                    track: true
-                });
-            }
+            this.initTooltips();
         } catch (e) {
             console.error(e, e.stack);
         }
