@@ -31,7 +31,7 @@ gulp.task('js', function() {
         })
         .pipe(source('bundle.min.js'))
         .pipe(buffer())
-        .pipe(uglify({'mangle': false}))
+        .pipe(uglify())
         .pipe(gulp.dest('./jet/static/jet/js/build/'));
 });
 
