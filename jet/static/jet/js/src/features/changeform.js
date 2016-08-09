@@ -1,34 +1,50 @@
 var $ = require('jquery');
 
-var initUnsavedChangesWarning = function() {
-    var $changeform = $('.change-form #content-main form');
+var ChangeForm = function($changeForm) {
+    this.$changeForm = $changeForm;
+};
 
-    if ($changeform.length) {
-        var $inputs = $changeform.find('input, textarea, select');
-        var bound = false;
+ChangeForm.prototype = {
+    changeDetected: false,
+    onWindowBeforeUnload: function() {
+        return django.gettext('Warning: you have unsaved changes');
+    },
+    onFormInputChanged: function($inputs) {
+        $inputs.off('change', this.onFormInputChanged);
 
-        var onBeforeUnload = function() {
-            return django.gettext('Warning: you have unsaved changes');
-        };
+        if (!self.changeDetected) {
+            $(window).bind('beforeunload', this.onWindowBeforeUnload);
+        }
 
-        var onChange = function() {
-            $inputs.off('change', onChange);
+        this.changeDetected = true;
+    },
+    initUnsavedChangesWarning: function($changeForm) {
+        var self = this;
+        var $form = $changeForm.find('#content-main form');
 
-            if (!bound) {
-                $(window).bind('beforeunload', onBeforeUnload);
+        if ($form.length == 0) {
+            return;
+        }
 
-                bound = true;
-            }
-        };
+        var $inputs = $form.find('input, textarea, select');
 
         $(document).on('submit', 'form', function() {
-            $(window).off('beforeunload', onBeforeUnload);
+            $(window).off('beforeunload', self.onWindowBeforeUnload);
         });
 
-        $inputs.on('change', onChange);
+        $inputs.on('change', $.proxy(this.onFormInputChanged, this, $inputs));
+    },
+    run: function() {
+        try {
+            this.initUnsavedChangesWarning(this.$changeForm);
+        } catch (e) {
+            console.error(e, e.stack);
+        }
     }
 };
 
 $(document).ready(function() {
-    initUnsavedChangesWarning();
+    $('.change-form').each(function() {
+        new ChangeForm($(this)).run();
+    });
 });
