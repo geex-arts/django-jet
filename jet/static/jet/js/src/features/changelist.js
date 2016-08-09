@@ -1,10 +1,10 @@
 var $ = require('jquery');
 
-var Changelist = function($changelist) {
+var ChangeList = function($changelist) {
     this.$changelist = $changelist;
 };
 
-Changelist.prototype = {
+ChangeList.prototype = {
     updateFixedHeaderVisibility: function($fixedTable, $originalHeader) {
         if ($(window).scrollTop() > $originalHeader.offset().top) {
             $fixedTable.closest('table').show();
@@ -110,6 +110,6 @@ Changelist.prototype = {
 
 $(document).ready(function() {
     $('#changelist').each(function() {
-        new Changelist($(this)).run();
+        new ChangeList($(this)).run();
     });
 });
