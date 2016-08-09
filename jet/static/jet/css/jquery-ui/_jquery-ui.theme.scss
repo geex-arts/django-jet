@@ -61,6 +61,14 @@
   color: $jquery-ui-state-highlight-text-color;
 }
 
+.ui-dialog {
+  @include for-phone {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+  }
+}
+
 .ui-dialog-buttonpane {
   background: $jquery-ui-buttonpane-background;
   margin: .5em -0.2em -0.2em -0.2em;

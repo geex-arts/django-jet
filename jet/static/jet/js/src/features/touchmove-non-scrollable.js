@@ -13,7 +13,7 @@ TouchMoveNonScrollable.prototype = {
                     if ($node.hasClass('non-scrollable')) {
                         allowed = false;
                         break;
-                    } else if ($node.hasClass('scrollable')) {
+                    } else if ($node.hasClass('scrollable') || $node.hasClass('ui-widget-overlay')) {
                         break;
                     } else {
                         $node = $node.parent();
