@@ -5,13 +5,20 @@ var ChangeFormTabsUpdater = function($changeform) {
 };
 
 ChangeFormTabsUpdater.prototype = {
+    t: function(s) {
+        if (window.django == undefined) {
+            return s;
+        }
+        return django.gettext(s);
+    },
     findTabs: function($modules, $inlines) {
+        var self = this;
         var tabs = [];
 
         $modules.each(function(i) {
             var $module = $(this);
             var $header = $module.find('> h2').first();
-            var title = $header.length != 0 ? $header.html() : 'General';
+            var title = $header.length != 0 ? $header.html() : self.t('General');
             var className = 'module_' + i;
 
             $module.addClass(className);
@@ -26,7 +33,7 @@ ChangeFormTabsUpdater.prototype = {
         $inlines.each(function(i) {
             var $inline = $(this);
             var $header = $inline.find('> h2, .tabular.inline-related > .module > h2').first();
-            var title = $header.length != 0 ? $header.html() : 'Tab';
+            var title = $header.length != 0 ? $header.html() : self.t('Tab');
             var className = 'inline_' + i;
 
             $inline.addClass(className);
