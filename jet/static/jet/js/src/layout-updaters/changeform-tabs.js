@@ -41,6 +41,10 @@ ChangeFormTabsUpdater.prototype = {
         return tabs;
     },
     createTabs: function($contentWrappers, tabs) {
+        if (tabs.length < 2) {
+            return;
+        }
+
         var $tabs = $('<ul>').addClass('changeform-tabs');
 
         $.each(tabs, function() {
