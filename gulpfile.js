@@ -23,7 +23,7 @@ var cssProcessors = [
     })
 ];
 
-gulp.task('js', function() {
+gulp.task('scripts', function() {
     browserify('./jet/static/jet/js/src/main.js')
         .bundle()
         .on('error', function(error) {
@@ -35,7 +35,24 @@ gulp.task('js', function() {
         .pipe(gulp.dest('./jet/static/jet/js/build/'));
 });
 
-gulp.task('vendor-css', function() {
+gulp.task('styles', function() {
+    gulp.src('./jet/static/jet/css/**/*.scss')
+        .pipe(sourcemaps.init())
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
+        .on('error', function(error) {
+            console.error(error);
+        })
+        .pipe(postcss(cssProcessors))
+        .on('error', function(error) {
+            console.error(error);
+        })
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('./jet/static/jet/css'));
+});
+
+gulp.task('vendor-styles', function() {
     merge(
         gulp.src([
             './node_modules/select2/dist/css/select2.css',
@@ -67,7 +84,7 @@ gulp.task('vendor-css', function() {
         .pipe(gulp.dest('./jet/static/jet/css'));
 });
 
-gulp.task('vendor-i18n', function() {
+gulp.task('vendor-translations', function() {
     gulp.src(['./node_modules/jquery-ui/ui/i18n/*.js'])
         .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui/'));
 
@@ -78,26 +95,11 @@ gulp.task('vendor-i18n', function() {
         .pipe(gulp.dest('./jet/static/jet/js/i18n/select2/'));
 });
 
-gulp.task('scss', function() {
-    gulp.src('./jet/static/jet/css/**/*.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass({
-            outputStyle: 'compressed'
-        }))
-        .on('error', function(error) {
-            console.error(error);
-        })
-        .pipe(postcss(cssProcessors))
-        .on('error', function(error) {
-            console.error(error);
-        })
-        .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest('./jet/static/jet/css'));
-});
+gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations']);
 
 gulp.task('watch', function() {
-    gulp.watch('./jet/static/jet/js/src/**/*.js', ['js']);
-    gulp.watch('./jet/static/jet/css/**/*.scss', ['scss']);
+    gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
+    gulp.watch('./jet/static/jet/css/**/*.scss', ['styles']);
 });
 
-gulp.task('default', ['js', 'scss', 'vendor-css', 'vendor-i18n', 'watch']);
+gulp.task('default', ['build', 'watch']);
