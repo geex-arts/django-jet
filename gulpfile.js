@@ -1,18 +1,18 @@
 require('es6-promise').polyfill();
 
-var gulp = require('gulp');
-var browserify = require('browserify');
-var concatCss = require('gulp-concat-css');
-var minifyCss = require('gulp-minify-css');
-var sass = require('gulp-sass');
-var uglify = require('gulp-uglify');
-var buffer = require('vinyl-buffer');
-var source = require('vinyl-source-stream');
-var sourcemaps = require('gulp-sourcemaps');
-var merge = require('merge-stream');
-var postcss = require('gulp-postcss');
-var pxtorem = require('postcss-pxtorem');
-var autoprefixer = require('autoprefixer');
+var gulp = require('gulp'),
+    browserify = require('browserify'),
+    concatCss = require('gulp-concat-css'),
+    minifyCss = require('gulp-minify-css'),
+    sass = require('gulp-sass'),
+    uglify = require('gulp-uglify'),
+    buffer = require('vinyl-buffer'),
+    source = require('vinyl-source-stream'),
+    sourcemaps = require('gulp-sourcemaps'),
+    merge = require('merge-stream'),
+    postcss = require('gulp-postcss'),
+    pxtorem = require('postcss-pxtorem'),
+    autoprefixer = require('autoprefixer');
 
 var cssProcessors = [
     autoprefixer(),
