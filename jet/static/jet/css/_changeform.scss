@@ -499,6 +499,10 @@ body.popup .submit-row {
   .aligned label {
     width: 160px;
   }
+
+  > fieldset.module {
+    padding: 0;
+  }
 }
 
 .inline-related {
