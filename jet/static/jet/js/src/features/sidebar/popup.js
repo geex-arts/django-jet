@@ -106,7 +106,7 @@ SideBarPopup.prototype = {
             }
         });
 
-        $sidebar.find('.sidebar-back').on('click', function(e) {
+        $sidebar.find('.sidebar-back').on('click touchend', function(e) {
             e.preventDefault();
             self.closePopup($popupContainer);
         });
@@ -180,7 +180,7 @@ SideBarPopup.prototype = {
     initSectionLists: function($sidebar) {
         var self = this;
 
-        $sidebar.find('.sidebar-popup-list-item-link').on('mouseenter', function () {
+        $sidebar.find('.sidebar-popup-list-item-link').on('mouseenter', function() {
             self.$currentSectionListItem = $(this).closest('.sidebar-popup-list-item');
             self.resetCurrentSectionListItems();
             self.$currentSectionListItem.addClass('selected');
