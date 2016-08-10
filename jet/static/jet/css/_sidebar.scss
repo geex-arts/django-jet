@@ -392,6 +392,7 @@
     color: $sidebar-popup-text-color;
     background-color: $sidebar-popup-background-color;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @include for-mobile {
       min-width: 280px;
