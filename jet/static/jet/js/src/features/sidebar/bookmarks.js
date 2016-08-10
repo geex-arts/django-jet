@@ -37,7 +37,9 @@ SideBarBookmarks.prototype = {
 
                 $item
                     .attr('href', result.url)
-                    .append(result.title)
+                    .find('.sidebar-link-label')
+                    .append(result.title);
+                $item
                     .find('.bookmarks-remove')
                     .data('bookmark-id', result.id);
 

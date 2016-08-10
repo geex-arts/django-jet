@@ -72,16 +72,20 @@
                     {% if user.is_active and user.is_staff %}
                         <div>
                             <a href="{% url 'admin:index' %}" class="sidebar-link icon">
-                                <span class="sidebar-link-icon icon-data"></span>
-                                <span class="sidebar-link-label">{% trans 'Home' %}</span>
+                                <span class="sidebar-link-label">
+                                    <span class="sidebar-link-icon icon-data"></span>
+                                    {% trans 'Home' %}
+                                </span>
                             </a>
                         </div>
                     {% endif %}
                     {% if site_url %}
                         <div>
                             <a href="{{ site_url }}" class="sidebar-link icon">
-                                <span class="sidebar-link-icon icon-open-external"></span>
-                                <span class="sidebar-link-label">{% trans 'View site' %}</span>
+                                <span class="sidebar-link-label">
+                                    <span class="sidebar-link-icon icon-open-external"></span>
+                                    {% trans 'View site' %}
+                                </span>
                             </a>
                         </div>
                     {% endif %}
@@ -89,8 +93,10 @@
                     {% if docsroot %}
                         <div>
                             <a href="{{ docsroot }}" class="sidebar-link icon">
-                                <span class="sidebar-link-icon icon-book"></span>
-                                <span class="sidebar-link-label">{% trans 'Documentation' %}</span>
+                                <span class="sidebar-link-label">
+                                    <span class="sidebar-link-icon icon-book"></span>
+                                    {% trans 'Documentation' %}
+                                </span>
                             </a>
                         </div>
                     {% endif %}
@@ -119,7 +125,7 @@
                                                     <span class="sidebar-right">
                                                         <span class="sidebar-right-arrow icon-arrow-right"></span>
                                                     </span>
-                                                    {{ model.name }}
+                                                    <span class="sidebar-link-label">{{ model.name }}</span>
                                                 </a>
                                             </div>
                                         {% endif %}
@@ -224,12 +230,13 @@
                                     <span class="sidebar-right collapsible">
                                         <span class="sidebar-right-remove bookmarks-remove" data-bookmark-id="{{ bookmark.pk }}">{% trans "Remove" %}</span>
                                     </span>
-                                    {{ bookmark.title }}
+                                    <span class="sidebar-link-label">{{ bookmark.title }}</span>
                                 </a>
                             {% endfor %}
                             <a class="sidebar-link bookmark-item clone">
                                 <span class="sidebar-right collapsible">
                                     <span class="sidebar-right-remove bookmarks-remove">{% trans "Remove" %}</span>
+                                    <span class="sidebar-link-label"></span>
                                 </span>
                             </a>
                         </div>

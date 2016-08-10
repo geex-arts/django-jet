@@ -155,9 +155,6 @@
     &, &:visited, &:hover {
       display: block;
       color: $sidebar-link-color;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
       padding: 8px 12px 8px 24px;
       vertical-align: middle;
       transition: color $transitions-duration, background-color $transitions-duration;
@@ -188,12 +185,16 @@
       margin-right: 6px;
       color: $sidebar-icon-color;
       transition: color $transitions-duration;
+      display: inline-block;
     }
 
     &-label {
       vertical-align: middle;
-      display: inline-block;
+      display: block;
       transition: transform $transitions-duration;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 
       html.touchevents .editing & {
         display: inline-block;
