@@ -280,3 +280,17 @@ img[src$="admin/img/icon-yes.gif"] + span, img[src$="admin/img/icon-yes.svg"] + 
 img[src$="admin/img/icon-no.gif"] + span, img[src$="admin/img/icon-no.svg"] + span {
   color: $warning-text-color;
 }
+
+/* LOADING INDOCATOR */
+
+.loading-indicator {
+  display: inline-block;
+  font-size: 32px;
+  color: $button-hover-background-color;
+  animation: spin 4s linear infinite;
+
+  &-wrapper {
+    text-align: center;
+    padding: 40px 0;
+  }
+}
