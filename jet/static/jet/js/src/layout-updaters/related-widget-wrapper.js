@@ -16,10 +16,10 @@ RelatedWidgetWrapperUpdater.prototype = {
             'img[src*="admin/img/icon-addlink"], img[src*="admin/img/icon_addlink"]'
         );
         this.replaceLinkIcon(
-            'img[src*="admin/img/icon-changelink"]'
+            'img[src*="admin/img/icon-changelink"], img[src*="admin/img/icon_changelink"]'
         );
         this.replaceLinkIcon(
-            'img[src*="admin/img/icon-deletelink"]'
+            'img[src*="admin/img/icon-deletelink"], img[src*="admin/img/icon_deletelink"]'
         );
 
         $('img[src*="admin/img/selector-search"]').remove();
