@@ -1,11 +1,12 @@
 {% extends "admin/base_site.html" %}
 {% load i18n static jet_dashboard_tags %}
 
+{% block html %}{% get_dashboard 'app_index' as dashboard %}{{ block.super }}{% endblock %}
+
 {% block extrastyle %}
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
 
-    {% get_dashboard 'app_index' as dashboard %}
     {% for css in dashboard.media.css %}
         <link href="{% static css %}" rel="stylesheet" />
     {% endfor %}
@@ -14,7 +15,6 @@
 {% block extrahead %}
     {{ block.super }}
 
-    {% get_dashboard 'app_index' as dashboard %}
     {% for js in dashboard.media.js %}
         <script src="{% static js %}"></script>
     {% endfor %}
@@ -29,11 +29,9 @@
         <div class="breadcrumbs"></div>
     {% endif %}
 
-    {% get_dashboard 'app_index' as dashboard %}
     {{ dashboard.render_tools }}
 {% endblock %}
 
 {% block content %}
-    {% get_dashboard 'app_index' as dashboard %}
     {{ dashboard.render }}
 {% endblock %}
