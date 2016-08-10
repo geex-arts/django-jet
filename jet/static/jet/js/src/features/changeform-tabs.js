@@ -13,6 +13,10 @@ ChangeFormTabs.prototype = {
         return $().add($modules).add($inlines);
     },
     getHashSelector: function(hash) {
+        if (hash == undefined) {
+            return null;
+        }
+
         var result = hash.match(/^(#(\/tab\/(.+)\/)?)?$/i);
 
         if (result == null) {
