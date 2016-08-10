@@ -60,6 +60,7 @@
       right: 0;
       z-index: 4;
       width: auto;
+      max-width: 200px;
       color: $sidebar-link-color;
       border: 0;
       border-left: 1px solid $sidebar-contrast-background-color;
@@ -155,6 +156,50 @@
 
     &.opened li.user-tools-link {
       display: block;
+    }
+
+    li.user-tools-contrast-block {
+      display: none;
+      padding: 8px 14px;
+      background: $top-dropdown-contrast-background-color;
+      color: $top-dropdown-contrast-text-color;
+      white-space: normal;
+    }
+
+    &.opened li.user-tools-contrast-block {
+      display: block;
+    }
+  }
+
+  &-contrast-block {
+    &-title {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+  }
+
+  &-theme-link {
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $top-dropdown-contrast-background-color;
+    border-radius: 3px;
+
+    @include for-mobile {
+      width: 24px;
+      height: 24px;
+      margin: 0 8px 8px 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.selected {
+      box-shadow: 0 0 1px 1px $top-dropdown-selected-color;
     }
   }
 }

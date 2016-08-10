@@ -3,12 +3,13 @@
 
 {% block extrastyle %}
     {{ block.super }}
+    {% get_current_theme as THEME %}
     {% get_current_jet_version as JET_VERSION %}
     <link rel="stylesheet" type="text/css" href="{% static "jet/css/vendor.css" %}?v={{ JET_VERSION }}" />
     <link rel="stylesheet" type="text/css" href="{% static "jet/css/icons/style.css" %}?v={{ JET_VERSION }}" />
-    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/default/base.css" %}?v={{ JET_VERSION }}" />
-    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/default/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" />
-    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/default/select2.theme.css" %}?v={{ JET_VERSION }}" />
+    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" %}?v={{ JET_VERSION }}" class="base-stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" %}?v={{ JET_VERSION }}" class="select2-stylesheet" />
+    <link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}" class="jquery-ui-stylesheet" />
 {% endblock %}
 
 {% block extrahead %}
@@ -276,5 +277,31 @@
                 </div>
             {% endif %}
         </div>
+    {% endif %}
+
+    {% get_themes as THEMES %}
+    {% if THEMES %}
+        {% get_current_theme as THEME %}
+        {% get_current_jet_version as JET_VERSION %}
+        <li class="user-tools-contrast-block theme-chooser">
+            <div class="user-tools-contrast-block-title">{% trans "current theme" %}</div>
+            <div class="user-tools-theme-link-container">
+                {% spaceless %}
+                    {% for conf_theme in THEMES %}
+                        {% if conf_theme.theme %}
+                            <a href="#"
+                               class="user-tools-theme-link choose-theme{% if conf_theme.theme == THEME %} selected{% endif %}"
+                               data-theme="{{ conf_theme.theme }}"
+                               data-base-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/base.css" %}?v={{ JET_VERSION }}"
+                               data-select2-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/select2.theme.css" %}?v={{ JET_VERSION }}"
+                               data-jquery-ui-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}"
+                               {% if conf_theme.title %} title="{{ conf_theme.title }}"{% endif %}
+                               style="background-color: {{ conf_theme.color|default:"white" }};"
+                                    ></a>
+                        {% endif %}
+                    {% endfor %}
+                {% endspaceless %}
+            </div>
+        </li>
     {% endif %}
 {% endblock %}
