@@ -45,7 +45,9 @@ gulp.task('vendor-css', function() {
         gulp.src([
             './node_modules/perfect-scrollbar/src/css/main.scss'
         ])
-            .pipe(sass())
+            .pipe(sass({
+                outputStyle: 'compressed'
+            }))
             .on('error', function(error) {
                 console.error(error);
             })
@@ -79,7 +81,9 @@ gulp.task('vendor-i18n', function() {
 gulp.task('scss', function() {
     gulp.src('./jet/static/jet/css/**/*.scss')
         .pipe(sourcemaps.init())
-        .pipe(sass())
+        .pipe(sass({
+            outputStyle: 'compressed'
+        }))
         .on('error', function(error) {
             console.error(error);
         })
