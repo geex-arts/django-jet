@@ -65,6 +65,17 @@ gulp.task('vendor-css', function() {
         .pipe(gulp.dest('./jet/static/jet/css'));
 });
 
+gulp.task('vendor-i18n', function() {
+    gulp.src(['./node_modules/jquery-ui/ui/i18n/*.js'])
+        .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui/'));
+
+    gulp.src(['./node_modules/timepicker/i18n/*.js'])
+        .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui-timepicker/'));
+
+    gulp.src(['./node_modules/select2/dist/js/i18n/*.js'])
+        .pipe(gulp.dest('./jet/static/jet/js/i18n/select2/'));
+});
+
 gulp.task('scss', function() {
     gulp.src('./jet/static/jet/css/**/*.scss')
         .pipe(sourcemaps.init())
@@ -85,4 +96,4 @@ gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/css/**/*.scss', ['scss']);
 });
 
-gulp.task('default', ['js', 'scss', 'vendor-css', 'watch']);
+gulp.task('default', ['js', 'scss', 'vendor-css', 'vendor-i18n', 'watch']);

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import json
+import os
 import django
 from django import template
 from django.core.urlresolvers import reverse
@@ -12,7 +13,8 @@ from django.utils.safestring import mark_safe
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
 import re
-from jet.utils import get_app_list, get_model_instance_label, get_model_queryset
+from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes
+
 try:
     from urllib.parse import parse_qsl
 except ImportError:
@@ -386,3 +388,28 @@ def jet_delete_confirmation_context(context):
     if context.get('deletable_objects') is None and context.get('deleted_objects') is None:
         return ''
     return mark_safe('<div class="delete-confirmation-marker"></div>')
+
+
+@register.assignment_tag
+def jet_static_translation_urls():
+    language_codes = get_possible_language_codes()
+
+    urls = []
+    url_templates = [
+        'jet/js/i18n/jquery-ui/datepicker-__LANGUAGE_CODE__.js',
+        'jet/js/i18n/jquery-ui-timepicker/jquery.ui.timepicker-__LANGUAGE_CODE__.js',
+        'jet/js/i18n/select2/__LANGUAGE_CODE__.js'
+    ]
+
+    static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static')
+
+    for tpl in url_templates:
+        for language_code in language_codes:
+            url = tpl.replace('__LANGUAGE_CODE__', language_code)
+            path = os.path.join(static_dir, url)
+
+            if os.path.exists(path):
+                urls.append(url)
+                break
+
+    return urls

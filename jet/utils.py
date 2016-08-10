@@ -1,5 +1,7 @@
 import datetime
 import json
+from django.utils import translation
+
 try:
     from django.apps.registry import apps
 except ImportError:
@@ -204,3 +206,23 @@ def get_model_queryset(model, preserved_filters=None):
         pass
 
     return queryset
+
+
+def get_possible_language_codes():
+    language_code = translation.get_language()
+
+    language_code = language_code.replace('_', '-').lower()
+    language_codes = []
+
+    # making dialect part uppercase
+    split = language_code.split('-', 2)
+    if len(split) == 2:
+        language_code = '%s-%s' % (split[0].lower(), split[1].upper()) if split[0] != split[1] else split[0]
+
+    language_codes.append(language_code)
+
+    # adding language code without dialect part
+    if len(split) == 2:
+        language_codes.append(split[0].lower())
+
+    return language_codes

@@ -19,6 +19,12 @@
         var DATETIME_FORMAT = "{% get_datetime_format %}";
     </script>
     <script src="{% static "jet/js/build/bundle.min.js" %}"></script>
+
+    {% jet_static_translation_urls as translation_urls %}
+    {% for url in translation_urls %}
+        <script src="{% static url %}"></script>
+    {% endfor %}
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
 {% endblock %}
 
