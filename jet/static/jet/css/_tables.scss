@@ -17,6 +17,7 @@ table {
     z-index: 2;
     top: 0;
     right: 20px;
+    left: $sidebar-width + 20px;
     width: auto;
     border-radius: 0;
     box-shadow: none;
