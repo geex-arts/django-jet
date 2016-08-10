@@ -143,35 +143,29 @@
                 </a>
                 <div class="sidebar-section">
                     {% if user.is_active and user.is_staff %}
-                        <div>
-                            <a href="{% url 'admin:index' %}" class="sidebar-link icon">
-                                <span class="sidebar-link-label">
-                                    <span class="sidebar-link-icon icon-data"></span>
-                                    {% trans 'Home' %}
-                                </span>
-                            </a>
-                        </div>
+                        <a href="{% url 'admin:index' %}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-data"></span>
+                                {% trans 'Home' %}
+                            </span>
+                        </a>
                     {% endif %}
                     {% if site_url %}
-                        <div>
-                            <a href="{{ site_url }}" class="sidebar-link icon">
-                                <span class="sidebar-link-label">
-                                    <span class="sidebar-link-icon icon-open-external"></span>
-                                    {% trans 'View site' %}
-                                </span>
-                            </a>
-                        </div>
+                        <a href="{{ site_url }}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-open-external"></span>
+                                {% trans 'View site' %}
+                            </span>
+                        </a>
                     {% endif %}
                     {% url 'django-admindocs-docroot' as docsroot %}
                     {% if docsroot %}
-                        <div>
-                            <a href="{{ docsroot }}" class="sidebar-link icon">
-                                <span class="sidebar-link-label">
-                                    <span class="sidebar-link-icon icon-book"></span>
-                                    {% trans 'Documentation' %}
-                                </span>
-                            </a>
-                        </div>
+                        <a href="{{ docsroot }}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-book"></span>
+                                {% trans 'Documentation' %}
+                            </span>
+                        </a>
                     {% endif %}
                     {% block nav-global %}{% endblock %}
                 </div>
