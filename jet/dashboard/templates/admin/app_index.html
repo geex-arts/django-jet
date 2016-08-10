@@ -5,6 +5,7 @@
     {{ block.super }}
     <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
 
+    {% get_dashboard 'app_index' as dashboard %}
     {% for css in dashboard.media.css %}
         <link href="{% static css %}" rel="stylesheet" />
     {% endfor %}
@@ -12,6 +13,8 @@
 
 {% block extrahead %}
     {{ block.super }}
+
+    {% get_dashboard 'app_index' as dashboard %}
     {% for js in dashboard.media.js %}
         <script src="{% static js %}"></script>
     {% endfor %}
