@@ -69,7 +69,8 @@
 
   &-close {
     display: none;
-    float: right;
+    position: absolute;
+    right: 0;
     padding: 4px;
     margin: 12px 18px 0 12px;
     background: $sidebar-contrast-background-color;
@@ -100,6 +101,7 @@
     height: 100%;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    position: relative;
   }
 
   &-section {
@@ -185,7 +187,6 @@
       margin-right: 6px;
       color: $sidebar-icon-color;
       transition: color $transitions-duration;
-      display: inline-block;
     }
 
     &-label {
