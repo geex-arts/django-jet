@@ -384,6 +384,11 @@ ul.actionlist li {
           }
         }
       }
+
+      table {
+        width: 100%;
+        box-shadow: none;
+      }
     }
 
     &-collapse .icon-arrow-up {
