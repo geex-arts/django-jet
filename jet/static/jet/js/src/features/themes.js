@@ -10,7 +10,9 @@ Themes.prototype = {
         $('.user-tools-welcome-msg').after($chooser);
     },
     initChooser: function() {
-        $('.choose-theme').on('click', function () {
+        $('.choose-theme').on('click', function (e) {
+            e.preventDefault();
+            
             var $link = $(this);
 
             $.cookie('JET_THEME', $link.data('theme'), { expires: 365, path: '/' });

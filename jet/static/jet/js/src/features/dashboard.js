@@ -28,7 +28,6 @@ Dashboard.prototype = {
 
         $dashboard.find('.dashboard-tools-toggle').on('click', function (e) {
             e.preventDefault();
-
             $dashboard.find('.dashboard-tools').toggleClass('visible');
         });
 
