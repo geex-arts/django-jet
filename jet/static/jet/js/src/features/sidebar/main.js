@@ -1,4 +1,4 @@
-var $ = window.jQuery = require('jquery');
+var $ = require('jquery');
 var SideBarApplicationPinning = require('./application-pinning');
 var SideBarBookmarks = require('./bookmarks');
 var SideBarPopup = require('./popup');

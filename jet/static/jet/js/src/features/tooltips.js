@@ -1,4 +1,4 @@
-var $ = window.jQuery = require('jquery');
+var $ = require('jquery');
 
 require('jquery-ui/ui/core');
 require('jquery-ui/ui/position');

@@ -1,6 +1,6 @@
 require('../../utils/jquery-icontains');
 
-var $ = window.jQuery = require('jquery');
+var $ = require('jquery');
 
 require('browsernizr/test/touchevents');
 require('browsernizr');
