@@ -656,127 +656,6 @@
 .select2-container--classic.select2-container--open .select2-dropdown {
   border-color: #5897fb;
 }
-.ps-container.ps-in-scrolling,
-.ps-container:hover.ps-in-scrolling {
-  pointer-events: none;
-}
-
-.ps-container {
-  -ms-touch-action: none;
-  overflow: hidden!important;
-}
-
-.ps-container.ps-active-x>.ps-scrollbar-x-rail,
-.ps-container.ps-active-y>.ps-scrollbar-y-rail {
-  display: block;
-}
-
-.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  background-color: #999;
-}
-
-.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  background-color: #999;
-}
-
-.ps-container>.ps-scrollbar-x-rail {
-  display: none;
-  position: absolute;
-  border-radius: .28571rem;
-  opacity: 0;
-  -webkit-transition: background-color .2s linear,opacity .2s linear;
-  transition: background-color .2s linear,opacity .2s linear;
-  bottom: 3px;
-  bottom: .21429rem;
-  height: 8px;
-  height: .57143rem;
-}
-
-.ps-container>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  position: absolute;
-  background-color: #aaa;
-  border-radius: .28571rem;
-  -webkit-transition: background-color .2s linear;
-  transition: background-color .2s linear;
-  bottom: 0;
-  height: 8px;
-  height: .57143rem;
-}
-
-.ps-container>.ps-scrollbar-y-rail {
-  display: none;
-  position: absolute;
-  border-radius: .28571rem;
-  opacity: 0;
-  -webkit-transition: background-color .2s linear,opacity .2s linear;
-  transition: background-color .2s linear,opacity .2s linear;
-  right: 3px;
-  right: .21429rem;
-  width: 8px;
-  width: .57143rem;
-}
-
-.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  position: absolute;
-  background-color: #aaa;
-  border-radius: .28571rem;
-  -webkit-transition: background-color .2s linear;
-  transition: background-color .2s linear;
-  right: 0;
-  width: 8px;
-  width: .57143rem;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
-  background-color: #999;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
-  background-color: #999;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail,
-.ps-container:hover>.ps-scrollbar-y-rail {
-  opacity: .6;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail:hover {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container:hover>.ps-scrollbar-x-rail:hover>.ps-scrollbar-x {
-  background-color: #999;
-}
-
-.ps-container:hover>.ps-scrollbar-y-rail:hover {
-  background-color: #eee;
-  opacity: .9;
-}
-
-.ps-container:hover>.ps-scrollbar-y-rail:hover>.ps-scrollbar-y {
-  background-color: #999;
-}
 /*!
  * jQuery UI CSS Framework 1.11.4
  * http://jqueryui.com
@@ -2817,6 +2696,127 @@ body .ui-tooltip {
   margin: -8px 0 0 -8px;
   padding: 8px;
   border-radius: 8px;
+}
+.ps-container.ps-in-scrolling,
+.ps-container:hover.ps-in-scrolling {
+  pointer-events: none;
+}
+
+.ps-container {
+  -ms-touch-action: none;
+  overflow: hidden!important;
+}
+
+.ps-container.ps-active-x>.ps-scrollbar-x-rail,
+.ps-container.ps-active-y>.ps-scrollbar-y-rail {
+  display: block;
+}
+
+.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
+  background-color: #999;
+}
+
+.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+  background-color: #999;
+}
+
+.ps-container>.ps-scrollbar-x-rail {
+  display: none;
+  position: absolute;
+  border-radius: .28571rem;
+  opacity: 0;
+  -webkit-transition: background-color .2s linear,opacity .2s linear;
+  transition: background-color .2s linear,opacity .2s linear;
+  bottom: 3px;
+  bottom: .21429rem;
+  height: 8px;
+  height: .57143rem;
+}
+
+.ps-container>.ps-scrollbar-x-rail>.ps-scrollbar-x {
+  position: absolute;
+  background-color: #aaa;
+  border-radius: .28571rem;
+  -webkit-transition: background-color .2s linear;
+  transition: background-color .2s linear;
+  bottom: 0;
+  height: 8px;
+  height: .57143rem;
+}
+
+.ps-container>.ps-scrollbar-y-rail {
+  display: none;
+  position: absolute;
+  border-radius: .28571rem;
+  opacity: 0;
+  -webkit-transition: background-color .2s linear,opacity .2s linear;
+  transition: background-color .2s linear,opacity .2s linear;
+  right: 3px;
+  right: .21429rem;
+  width: 8px;
+  width: .57143rem;
+}
+
+.ps-container>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+  position: absolute;
+  background-color: #aaa;
+  border-radius: .28571rem;
+  -webkit-transition: background-color .2s linear;
+  transition: background-color .2s linear;
+  right: 0;
+  width: 8px;
+  width: .57143rem;
+}
+
+.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container:hover.ps-in-scrolling.ps-x>.ps-scrollbar-x-rail>.ps-scrollbar-x {
+  background-color: #999;
+}
+
+.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container:hover.ps-in-scrolling.ps-y>.ps-scrollbar-y-rail>.ps-scrollbar-y {
+  background-color: #999;
+}
+
+.ps-container:hover>.ps-scrollbar-x-rail,
+.ps-container:hover>.ps-scrollbar-y-rail {
+  opacity: .6;
+}
+
+.ps-container:hover>.ps-scrollbar-x-rail:hover {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container:hover>.ps-scrollbar-x-rail:hover>.ps-scrollbar-x {
+  background-color: #999;
+}
+
+.ps-container:hover>.ps-scrollbar-y-rail:hover {
+  background-color: #eee;
+  opacity: .9;
+}
+
+.ps-container:hover>.ps-scrollbar-y-rail:hover>.ps-scrollbar-y {
+  background-color: #999;
 }
 #ui-timepicker-div,
 .ui-timepicker-hours,
