@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var t = require('../utils/translate');
 
 var ChangeForm = function($changeForm) {
     this.$changeForm = $changeForm;
@@ -7,7 +8,7 @@ var ChangeForm = function($changeForm) {
 ChangeForm.prototype = {
     changeDetected: false,
     onWindowBeforeUnload: function() {
-        return django.gettext('Warning: you have unsaved changes');
+        return t('Warning: you have unsaved changes');
     },
     onFormInputChanged: function($inputs) {
         $inputs.off('change', this.onFormInputChanged);

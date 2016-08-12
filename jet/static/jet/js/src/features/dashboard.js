@@ -1,6 +1,7 @@
 require('./../utils/jquery-slidefade');
 
 var $ = require('jquery');
+var t = require('../utils/translate');
 
 require('jquery-ui/ui/core');
 require('jquery-ui/ui/widget');
@@ -17,15 +18,7 @@ var Dashboard = function($dashboard) {
 };
 
 Dashboard.prototype = {
-    t: function(s) {
-        if (window.django == undefined) {
-            return s;
-        }
-        return django.gettext(s);
-    },
     initTools: function($dashboard) {
-        var self = this;
-
         $dashboard.find('.dashboard-tools-toggle').on('click', function (e) {
             e.preventDefault();
             $dashboard.find('.dashboard-tools').toggleClass('visible');
@@ -78,12 +71,12 @@ Dashboard.prototype = {
                 });
             };
 
-            buttons[self.t('Yes')] = function() {
+            buttons[t('Yes')] = function() {
                 resetDashboard();
                 $(this).dialog('close');
             };
 
-            buttons[self.t('Cancel')] = function() {
+            buttons[t('Cancel')] = function() {
                 $(this).dialog('close');
             };
 
@@ -182,7 +175,6 @@ Dashboard.prototype = {
         });
     },
     initDeletableModules: function($dashboard) {
-        var self = this;
         var $form = $dashboard.find('#remove-dashboard-module-form');
 
         $dashboard.find('.dashboard-item.deletable').each(function () {
@@ -208,12 +200,12 @@ Dashboard.prototype = {
                     });
                 };
 
-                buttons[self.t('Delete')] = function () {
+                buttons[t('Delete')] = function () {
                     deleteModule();
                     $(this).dialog('close');
                 };
 
-                buttons[self.t('Cancel')] = function () {
+                buttons[t('Cancel')] = function () {
                     $(this).dialog('close');
                 };
 

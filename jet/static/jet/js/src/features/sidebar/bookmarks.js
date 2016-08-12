@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var t = require('../../utils/translate');
 
 require('jquery-ui/ui/core');
 require('jquery-ui/ui/widget');
@@ -13,12 +14,6 @@ var SideBarBookmarks = function($sidebar) {
 };
 
 SideBarBookmarks.prototype = {
-    t: function(s) {
-        if (window.django == undefined) {
-            return s;
-        }
-        return django.gettext(s);
-    },
     addBookmark: function($form, $container) {
         $.ajax({
             url: $form.attr('action'),
@@ -82,12 +77,12 @@ SideBarBookmarks.prototype = {
 
             var buttons = {};
 
-            buttons[self.t('Add')] = function() {
+            buttons[t('Add')] = function() {
                 self.addBookmark($form, $container);
                 $(this).dialog('close');
             };
 
-            buttons[self.t('Cancel')] = function() {
+            buttons[t('Cancel')] = function() {
                 $(this).dialog('close');
             };
 
@@ -115,12 +110,12 @@ SideBarBookmarks.prototype = {
 
             var buttons = {};
 
-            buttons[self.t('Delete')] = function() {
+            buttons[t('Delete')] = function() {
                 self.deleteBookmark($form, $item);
                 $(this).dialog('close');
             };
 
-            buttons[self.t('Cancel')] = function() {
+            buttons[t('Cancel')] = function() {
                 $(this).dialog('close');
             };
 

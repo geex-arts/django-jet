@@ -1,6 +1,7 @@
 require('select2');
 
 var $ = require('jquery');
+var t = require('../utils/translate');
 
 var Select2 = function() { };
 
@@ -105,10 +106,10 @@ Select2.prototype = {
                 buttons =
                     '<div class="select2-buttons">' +
                     '<a href="#" class="select2-buttons-button select2-buttons-button-select-all">' +
-                    django.gettext('select all') +
+                    t('select all') +
                     '</a> ' +
                     '<a href="#" class="select2-buttons-button select2-buttons-button-deselect-all">' +
-                    django.gettext('deselect all') +
+                    t('deselect all') +
                     '</a>' +
                     '</div>';
             }
