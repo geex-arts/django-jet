@@ -203,3 +203,11 @@
     }
   }
 }
+
+.theme-chooser {
+  display: none;
+
+  &.initialized {
+    display: block;
+  }
+}

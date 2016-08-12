@@ -5,12 +5,16 @@ var $ = require('jquery');
 var Themes = function() { };
 
 Themes.prototype = {
-    moveChooser: function() {
-        var $chooser = $('.theme-chooser').detach();
-        $('.user-tools-welcome-msg').after($chooser);
+    moveChooser: function($chooser) {
+        $chooser
+            .detach()
+            .insertAfter($('.user-tools-welcome-msg'))
+            .addClass('initialized');
     },
-    initChooser: function() {
-        $('.choose-theme').on('click', function (e) {
+    initChooser: function($chooser) {
+        var $links = $chooser.find('.choose-theme');
+
+        $links.on('click', function (e) {
             e.preventDefault();
             
             var $link = $(this);
@@ -45,14 +49,16 @@ Themes.prototype = {
                     .remove();
             });
 
-            $('.choose-theme').removeClass('selected');
+            $links.removeClass('selected');
             $link.addClass('selected');
         });
     },
     run: function() {
+        var $chooser = $('.theme-chooser');
+
         try {
-            this.moveChooser();
-            this.initChooser();
+            this.moveChooser($chooser);
+            this.initChooser($chooser);
         } catch (e) {
             console.error(e, e.stack);
         }
