@@ -128,7 +128,10 @@
     {% get_side_menu_compact as SIDE_MENU_COMPACT %}
     {% if not is_popup %}
         <div class="related-popup-container scrollable">
-            <a href="#" class="related-popup-back"><span class="related-popup-back-icon icon-arrow-left"></span> <span class="related-popup-back-label">{% trans "back" %}</span></a>
+            <a href="#" class="related-popup-back">
+                <span class="related-popup-back-icon icon-arrow-left"></span>
+                <span class="related-popup-back-label">{% trans "back" %}</span>
+            </a>
             <span class="icon-refresh loading-indicator"></span>
         </div>
 
