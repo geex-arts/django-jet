@@ -37,14 +37,14 @@ Themes.prototype = {
                 }
             };
 
-            cssToLoad.forEach(function(css) {
+            $.each(cssToLoad, function() {
                 $('<link>')
                     .attr('rel', 'stylesheet')
-                    .addClass(css['class'])
-                    .attr('href', css['url'])
+                    .addClass(this['class'])
+                    .attr('href', this['url'])
                     .load(onCssLoaded)
                     .appendTo('head');
-                $('.' + css['class'])
+                $('.' + this['class'])
                     .slice(0, -2)
                     .remove();
             });
