@@ -15,6 +15,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: static/jet/js/src/features/sidebar/bookmarks.js:80
+msgid "Add"
+msgstr "Добавить"
+
 #: static/jet/js/src/features/sidebar/bookmarks.js:85 static/jet/js/src/features/sidebar/bookmarks.js:118
 msgid "Cancel"
 msgstr "Отмена"
