@@ -7,33 +7,35 @@
         </li>
     {% else %}
         {% for entry in module.children %}
-            <li class="nowrap">
+            <li>
                 <span class="float-right">
                     <span class="icon-user tooltip" title="{{ entry.user }}"></span>
                     <span class="icon-clock tooltip" title="{{ entry.action_time }}"></span>
                 </span>
 
-                {% if entry.is_addition %}
-                    <span class="icon-add3"></span>
-                {% endif %}
-                {% if entry.is_change %}
-                    <span class="icon-edit"></span>
-                {% endif %}
-                {% if entry.is_deletion %}
-                    <span class="icon-cross"></span>
-                {% endif %}
+                <div class="nowrap">
+                    {% if entry.is_addition %}
+                        <span class="icon-add3"></span>
+                    {% endif %}
+                    {% if entry.is_change %}
+                        <span class="icon-edit"></span>
+                    {% endif %}
+                    {% if entry.is_deletion %}
+                        <span class="icon-cross"></span>
+                    {% endif %}
 
-                {% if entry.content_type %}
-                    <span>{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
-                {% else %}
-                    <span>{% trans 'Unknown content' %}</span>
-                {% endif %}
+                    {% if entry.content_type %}
+                        <span>{% filter capfirst %}{{ entry.content_type }}{% endfilter %}</span>
+                    {% else %}
+                        <span>{% trans 'Unknown content' %}</span>
+                    {% endif %}
 
-                {% if entry.is_deletion or not entry.get_admin_url %}
-                    {{ entry.object_repr }}
-                {% else %}
-                    <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
-                {% endif %}
+                    {% if entry.is_deletion or not entry.get_admin_url %}
+                        {{ entry.object_repr }}
+                    {% else %}
+                        <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                    {% endif %}
+                </div>
             </li>
         {% endfor %}
     {% endif %}

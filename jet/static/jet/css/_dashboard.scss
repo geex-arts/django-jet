@@ -266,12 +266,6 @@ ul.actionlist li {
           font-size: 13px;
           padding: 8px;
 
-          &.nowrap {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-
           &.contrast {
             background: $content-contrast2-background-color;
             font-size: 12px;
@@ -351,6 +345,13 @@ ul.actionlist li {
 
       .dim {
         color: $dim-text-color;
+      }
+
+      .nowrap {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
 
       canvas {
