@@ -15,22 +15,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: static/jet/js/src/features/sidebar/bookmarks.js:85 static/jet/js/src/features/sidebar/bookmarks.js:118
+#: static/jet/js/src/features/dashboard.js:79 static/jet/js/src/features/dashboard.js:208
 msgid "Cancel"
-msgstr "Отмена"
+msgstr ""
 
-#: static/jet/js/src/features/sidebar/bookmarks.js:113
+#: static/jet/js/src/features/dashboard.js:203
 msgid "Delete"
-msgstr "Удалить"
+msgstr ""
 
-#: static/jet/js/src/features/changeform.js:11
-msgid "Warning: you have unsaved changes"
-msgstr "Внимание: у вас есть несохраненные изменения"
-
-#: static/jet/js/src/features/selects.js:109
-msgid "select all"
-msgstr "выбрать все"
-
-#: static/jet/js/src/features/selects.js:112
-msgid "deselect all"
-msgstr "убрать все"
+#: static/jet/js/src/features/dashboard.js:74
+msgid "Yes"
+msgstr ""
