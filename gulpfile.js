@@ -12,7 +12,8 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     postcss = require('gulp-postcss'),
     pxtorem = require('postcss-pxtorem'),
-    autoprefixer = require('autoprefixer');
+    autoprefixer = require('autoprefixer'),
+    shell = require('gulp-shell');
 
 var cssProcessors = [
     autoprefixer(),
@@ -95,11 +96,14 @@ gulp.task('vendor-translations', function() {
         .pipe(gulp.dest('./jet/static/jet/js/i18n/select2/'));
 });
 
-gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations']);
+gulp.task('locales', shell.task('python manage.py compilemessages', { quiet: true }));
+
+gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations', 'locales']);
 
 gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
     gulp.watch('./jet/static/jet/css/**/*.scss', ['styles']);
+    gulp.watch('./jet/locale/**/*.po', ['locales']);
 });
 
 gulp.task('default', ['build', 'watch']);
