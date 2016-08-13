@@ -104,7 +104,7 @@
         line-height: $sidebar-header-height;
       }
 
-      &:after {
+      &:before {
         @include font-icon;
         content: $icon-arrow-down;
         font-weight: normal;
