@@ -1,6 +1,11 @@
 Changelog
 =========
 
+new
+---
+* Fixed compatibility issue with Django 1.10
+
+
 0.1.5
 -----
 * Add inlines.min.js
