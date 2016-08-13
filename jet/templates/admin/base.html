@@ -265,7 +265,7 @@
                         {% endif %}
                     {% endif %}
 
-                    <div class="sidebar-section">
+                    <div class="sidebar-section last">
                         <div class="dialog-confirm" id="bookmarks-add-dialog" title="{% trans "Add bookmark" %}">
                             <form action="{% url "jet:add_bookmark" %}" method="POST" id="bookmarks-add-form">
                                 {% csrf_token %}

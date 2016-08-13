@@ -113,7 +113,7 @@
       padding: 10px 0;
     }
 
-    &:last-child {
+    &:last-child, &.last {
       border-bottom: 0;
     }
   }
