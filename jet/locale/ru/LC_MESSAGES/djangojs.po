@@ -38,3 +38,7 @@ msgstr "выбрать все"
 #: static/jet/js/src/features/selects.js:112
 msgid "deselect all"
 msgstr "убрать все"
+
+#: static/jet/js/src/layout-updaters/changeform-tabs.js:15 static/jet/js/src/layout-updaters/changeform-tabs.js:30
+msgid "General"
+msgstr "Общее"

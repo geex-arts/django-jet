@@ -27,7 +27,7 @@ ChangeFormTabsUpdater.prototype = {
         $inlines.each(function(i) {
             var $inline = $(this);
             var $header = $inline.find('> h2, > fieldset.module > h2, .tabular.inline-related > .module > h2').first();
-            var title = $header.length != 0 ? $header.html() : t('Tab');
+            var title = $header.length != 0 ? $header.html() : t('General');
             var className = 'inline_' + i;
 
             $inline.addClass(className);
