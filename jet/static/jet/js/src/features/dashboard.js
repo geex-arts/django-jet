@@ -247,6 +247,75 @@ Dashboard.prototype = {
             });
         });
     },
+    updateModuleChildrenFormsetLabels: function($inline) {
+        $inline.find('.inline-related').each(function(i) {
+            $(this).find('.inline_label').text('#' + (i + 1));
+        });
+    },
+    updateModuleChildrenFormsetFormIndex: function($form, index) {
+        var prefix = "children";
+        var id_regex = new RegExp("(" + prefix + "-(\\d+|__prefix__))");
+        var replacement = prefix + "-" + index;
+
+        $form.find("fieldset.module *").each(function() {
+            var $el = $(this);
+
+            $.each(['for', 'id', 'name'], function() {
+                var attr = this;
+
+                if ($el.attr(attr)) {
+                    $el.attr(attr, $el.attr(attr).replace(id_regex, replacement));
+                }
+            });
+        });
+    },
+    updateModuleChildrenFormsetFormsIndexes: function($inline) {
+        var self = this;
+        var from = parseInt($inline.find('.inline-related.has_original').length);
+
+        $inline.find('.inline-related.last-related').each(function(i) {
+            self.updateModuleChildrenFormsetFormIndex($(this), from + i);
+        });
+    },
+    updateModuleChildrenFormsetTotalForms: function($inline) {
+        var $totalFormsInput = $inline.find('[name="children-TOTAL_FORMS"]');
+        var totalForms = parseInt($inline.find('.inline-related').length);
+
+        $totalFormsInput.val(totalForms);
+    },
+    initModuleChildrenFormsetUpdate: function($dashboard) {
+        if (!$dashboard.hasClass('change-form')) {
+            return;
+        }
+
+        var self = this;
+        var $inline = $dashboard.find('.inline-group');
+
+        $inline.find('.add-row a').on('click', function(e) {
+            e.preventDefault();
+
+            var $empty = $inline.find('.inline-related.empty-form');
+            var $clone = $empty
+                .clone(true)
+                .removeClass('empty-form')
+                .insertBefore($empty);
+
+            self.updateModuleChildrenFormsetLabels($inline);
+            self.updateModuleChildrenFormsetFormIndex($empty, parseInt($inline.find('.inline-related').length) - 1);
+            self.updateModuleChildrenFormsetFormIndex($clone, parseInt($inline.find('.inline-related').length) - 2);
+            self.updateModuleChildrenFormsetTotalForms($inline);
+        });
+
+        $inline.find('.inline-deletelink').on('click', function(e) {
+            e.preventDefault();
+
+            $(this).closest('.inline-related').remove();
+
+            self.updateModuleChildrenFormsetFormsIndexes($inline);
+            self.updateModuleChildrenFormsetLabels($inline);
+            self.updateModuleChildrenFormsetTotalForms($inline);
+        });
+    },
     run: function() {
         var $dashboard = this.$dashboard;
 
@@ -256,6 +325,7 @@ Dashboard.prototype = {
             this.initCollapsibleModules($dashboard);
             this.initDeletableModules($dashboard);
             this.initAjaxModules($dashboard);
+            this.initModuleChildrenFormsetUpdate($dashboard);
         } catch (e) {
             console.error(e, e.stack);
         }
