@@ -58,7 +58,7 @@ def toggle_application_pin_view(request):
 def model_lookup_view(request):
     result = {'error': False}
 
-    form = ModelLookupForm(request.GET)
+    form = ModelLookupForm(request, request.GET)
 
     if form.is_valid():
         items, total = form.lookup()
