@@ -362,12 +362,8 @@
         text-align: center;
         padding: 0 20px;
         text-transform: uppercase;
-        margin: 0 8px 0 0;
+        margin: 0 8px 5px 0;
         transition: background $transitions-duration;
-
-        @include for-mobile {
-          margin-bottom: 5px;
-        }
 
         @include for-phone {
           width: 100%;
