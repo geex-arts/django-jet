@@ -97,6 +97,7 @@ RelatedPopups.prototype = {
 
         $popup.append($iframe);
         $loading.show();
+        $document.find('.related-popup').add($document.find('.related-popup-back')).fadeOut(200, 'swing');
         $container.fadeIn(200, 'swing', function() {
             $container.append($popup);
         });
@@ -124,8 +125,9 @@ RelatedPopups.prototype = {
                     $document.find('body').removeClass('non-scrollable');
                     $popup.remove();
                 });
-            } else {
+            } else if ($popups.length > 1) {
                 $popup.remove();
+                $popups.eq($popups.length - 2).show();
             }
         })(previousWindow ? previousWindow.jet.jQuery : $);
     },
