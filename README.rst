@@ -16,7 +16,7 @@ and applications without the provisions of the GPLv2.
     :width: 500px
     :height: 500px
     :scale: 50%
-    :alt: Screenshot #1
+    :alt: Logo
     :align: center
     
 * Home page: http://jet.geex-arts.com/
@@ -28,20 +28,20 @@ and applications without the provisions of the GPLv2.
 Screenshots
 ===========
 
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1_720.png
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen1_720.png
     :alt: Screenshot #1
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen1.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2_720.png
-    :alt: Screenshot #1
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen2_720.png
+    :alt: Screenshot #2
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen2.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3_720.png
-    :alt: Screenshot #1
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen3_720.png
+    :alt: Screenshot #3
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen3.png
 
 License
 =======
