@@ -221,7 +221,6 @@ RelatedPopups.prototype = {
             this.findPopupResponse();
             this.overrideRelatedGlobals();
             this.initDeleteRelatedCancellation();
-            this.overrideRelatedGlobals();
         } catch (e) {
             console.error(e, e.stack);
         }
