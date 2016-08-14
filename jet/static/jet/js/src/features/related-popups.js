@@ -212,6 +212,18 @@ RelatedPopups.prototype = {
             self.closePopup();
         }).removeAttr('onclick');
     },
+    initLookupLinks: function() {
+        var self = this;
+
+        $("a[data-popup-opener]").click(function(e) {
+            e.preventDefault();
+
+            self.closePopup({
+                action: 'lookup',
+                value: $(this).data("popup-opener")
+            });
+        });
+    },
     run: function() {
         this.windowStorage.push(window);
 
@@ -221,6 +233,7 @@ RelatedPopups.prototype = {
             this.findPopupResponse();
             this.overrideRelatedGlobals();
             this.initDeleteRelatedCancellation();
+            this.initLookupLinks();
         } catch (e) {
             console.error(e, e.stack);
         }
