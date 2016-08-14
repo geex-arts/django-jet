@@ -710,12 +710,17 @@ form .related-widget-wrapper ul {
 }
 
 .changeform-navigation {
+  display: none;
   float: left;
   margin-bottom: 20px;
 
   @include for-mobile {
     margin-bottom: 5px;
     margin-right: 10px;
+  }
+
+  &.initialized {
+    display: block;
   }
 
   &-button {
