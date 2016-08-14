@@ -1,73 +1,162 @@
+/*
+  DJANGO JET Admin styles
+*/
+
 @import "globals";
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+}
+
+html {
+  font-size: 87.5%;
+
+  @include for-mobile {
+    font-size: 100%;
+  }
 }
 
 body {
+  height: 100%;
+  background: $background-color;
   color: $text-color;
   font-family: $font;
-  font-size: $font-size;
+  text-size-adjust: 100%;
+
+  @include for-mobile {
+    padding-top: $sidebar-header-height;
+  }
 
   &.non-scrollable {
     overflow: hidden;
   }
+
+  &.popup {
+    @include for-mobile {
+      padding-top: 0;
+    }
+  }
 }
 
-a, a:visited, a:hover {
-  color: $link-color;
-  font-weight: normal;
-  text-decoration: none;
-}
+/* PAGE STRUCTURE */
 
-a:hover {
-  color: $hover-link-color;
-}
-
-.container {
-  padding-left: $sidebar-width;
-  height: 100%;
-  position: relative;
-}
-
-.sidebar {
-  position: fixed;
-  width: $sidebar-width;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow-y: auto;
-}
-
-.content {
-  width: 100%;
+#container {
+  padding: 0 0 0 $sidebar-width;
   min-height: 100%;
-  z-index: 1;
-  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.25);
-  position: relative;
+
+  @include for-mobile {
+    padding-left: 0;
+  }
+
+  .popup & {
+    padding-left: 0;
+  }
 }
 
 #content {
   padding: 20px;
+
+  @include for-phone {
+    padding: 10px;
+  }
+
+  & > h1 {
+    display: none;
+  }
 }
 
-.module {
-  border: 0;
-  margin: 0;
+#content-main {
+  float: left;
+  width: 100%;
+
+  @include for-mobile {
+    float: none;
+  }
 }
 
-@import "table";
-@import "buttongroup";
-@import "sidebar";
-@import "top";
-@import "forms";
-@import "messages";
-@import "changelist";
-@import "changeform";
-@import "delete";
-@import "login";
+#content-related {
+  float: right;
+  width: 260px;
+  position: relative;
+  margin-right: -300px;
+
+  @include for-mobile {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+    position: static;
+  }
+}
+
+#footer {
+  clear: both;
+  padding: 10px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+.dialog-confirm {
+  display: none;
+}
+
+/* COLUMN TYPES */
+
+.colMS {
+  margin-right: 300px;
+
+  @include for-mobile {
+    margin-right: 0;
+  }
+}
+
+.colSM {
+  margin-left: 300px;
+
+  @include for-mobile {
+    margin-left: 0;
+  }
+}
+
+.colSM #content-related {
+  float: left;
+  margin-right: 0;
+  margin-left: -300px;
+
+  @include for-mobile {
+    float: none;
+    margin-left: 0;
+  }
+}
+
+.colSM #content-main {
+  float: right;
+
+  @include for-mobile {
+    float: none;
+  }
+}
+
+.popup .colM {
+  width: auto;
+}
+
+@import "jquery-ui/jquery-ui.theme";
+@import "select2/layout";
 @import "content";
-@import "dashboard";
+@import "forms";
+@import "tables";
+@import "messages";
+@import "header";
+@import "breadcrumbs";
+@import "modules";
+@import "object-tools";
+@import "changeform";
+@import "changelist";
+@import "sidebar";
 @import "relatedpopup";
+@import "dashboard";
+@import "delete-confirmation";
+@import "login";

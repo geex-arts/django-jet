@@ -1,80 +1,45 @@
 @import "globals";
 
-.base_input {
-  border: 0;
-  border-radius: 4px;
-  font-size: 13px;
-  height: 32px;
-  white-space: nowrap;
-  outline: 0;
-  box-sizing: border-box;
-  margin: 0;
-  @include transition(background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration);
-}
+/* FORM BUTTONS */
 
-.input {
-  @extend .base_input;
-  @include placeholder {
-    color: $input-placeholder-color;
-  }
-  background-color: $input-background-color;
-  color: $input-text-color;
-  border: 1px solid $input-border-color;
-  padding: 0 12px;
-
-  &:focus {
-    box-shadow: 0 0 4px 0 $input-shadow-color;
-    border-color: $input-background-color;
-  }
-}
-
-.background-form .input {
-  @extend .input;
-  background-color: $background-input-background-color;
-  color: $background-input-text-color;
-  border-color: $background-input-border-color;
-}
-
-.button {
+.button, input[type="submit"], input[type="button"], .object-tools a {
   &, &:visited, &:hover {
-    @extend .base_input;
-    font-weight: lighter;
-    font-size: 12px;
-    text-align: center;
-    background-color: $primary-button-background-color;
-    color: $primary-button-text-color;
-    padding: 0 20px;
     display: inline-block;
-    text-transform: uppercase;
-  }
-
-  &.button-secondary {
     background-color: $button-background-color;
     color: $button-text-color;
-    text-transform: none;
+    border: 0;
+    border-radius: 4px;
+    height: 32px;
+    line-height: 32px;
+    outline: 0;
+    font-size: 12px;
     font-weight: normal;
-  }
-
-  &.button-red {
-    background-color: $danger-button-background-color;
-    color: $danger-button-text-color;
-  }
-
-  &.button-background {
-    background-color: $background-button-background-color;
-    color: $background-button-text-color;
-  }
-
-  &.button-transparent {
-    background-color: transparent;
-    color: $text-color;
+    text-align: center;
     padding: 0 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    appearance: none;
+    transition: background $transitions-duration;
   }
 
-  &:hover {
+  &.default {
+    font-weight: lighter;
+    background-color: $primary-button-background-color;
+    color: $primary-button-text-color;
+    text-transform: uppercase;
+    margin: 0 8px 0 0;
+    padding: 0 20px;
+  }
+
+  &.transparent {
+    background-color: transparent;
+  }
+
+  &:hover, &:focus {
     background-color: $button-hover-background-color;
     color: $button-hover-text-color;
-    font-weight: lighter;
   }
 
   &:active {
@@ -83,9 +48,55 @@
   }
 }
 
+.button[disabled], input[type=submit][disabled], input[type=button][disabled] {
+  opacity: 0.4;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, select, .vTextField {
+  border-radius: 4px;
+  font-size: 13px;
+  height: 32px;
+  white-space: nowrap;
+  outline: 0;
+  box-sizing: border-box;
+  margin: 0;
+  background-color: $input-background-color;
+  color: $input-text-color;
+  border: 1px solid $input-border-color;
+  padding: 0 12px;
+  appearance: none;
+  transition: background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration;
+
+  //noinspection CssInvalidPseudoSelector
+  &::placeholder {
+    color: $input-placeholder-color;
+  }
+
+  @include for-mobile {
+    fieldset.module & {
+      box-shadow: inset 0 2px 6px 0 rgba(0, 0, 0, 0.04)
+    }
+  }
+
+  &:focus, fieldset.module &:focus {
+    box-shadow: 0 0 4px 0 $input-shadow-color;
+    border-color: $input-background-color;
+  }
+}
+
+textarea {
+  height: auto;
+  line-height: normal;
+  padding: 12px;
+  white-space: pre-wrap;
+  vertical-align: top;
+}
+
 .segmented-button {
   &, &:visited, &:hover {
-    @extend .base_input;
+    border: 0;
+    height: 32px;
+    line-height: 32px;
     font-size: 12px;
     text-align: center;
     background-color: $button-background-color;
@@ -94,9 +105,10 @@
     display: inline-block;
     text-transform: none;
     border-radius: 0;
+    transition: background $transitions-duration;
   }
 
-  &:hover {
+  &:hover, &:focus {
     background-color: $button-hover-background-color;
     color: $button-hover-text-color;
   }
@@ -121,26 +133,6 @@
   }
 }
 
-a.button, a.segmented-button {
-  line-height: 32px;
-}
-
-input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"] {
-  @extend .input;
-}
-
-textarea {
-  @extend .input;
-  height: auto;
-  line-height: normal;
-  padding: 12px;
-  white-space: pre-wrap;
-}
-
-.button, input[type="submit"], input[type="button"] {
-  @extend .button;
-}
-
 input[type=checkbox] {
   display: none;
 
@@ -150,7 +142,6 @@ input[type=checkbox] {
 
   + label:before {
     @include font-icon;
-
     color: $input-icon-color;
     font-size: 12px;
     content: $icon-checkbox-outline;
@@ -166,50 +157,8 @@ input[type=checkbox] {
   }
 }
 
-.form-row {
-  .vDateField, .vTimeField {
-    border-radius: 4px 0 0 4px !important;
+/* SELECTOR */
 
-    &-link {
-      vertical-align: top;
-      display: inline-block;
-
-      span {
-        width: 32px;
-        height: 32px;
-        line-height: 32px !important;
-        background-color: $button-background-color;
-        color: $button-text-color;
-        display: inline-block;
-        vertical-align: middle;
-        text-align: center;
-        border-radius: 0 4px 4px 0;
-      }
-
-      &:hover span {
-        background-color: $button-hover-background-color;
-        color: $button-hover-text-color;
-      }
-    }
-  }
-
-  .vDateField-link + .vTimeField {
-    margin-left: 10px;
-  }
-
-  label.required {
-    font-weight: bold;
-
-    &:after {
-      content: '*';
-    }
-  }
-
-  select {
-    min-width: 200px;
-  }
-}
-
-.empty-form {
+.selector {
   display: none;
 }

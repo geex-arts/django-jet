@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="dashboard columns_{{ columns|length }} cf">
+<div class="dashboard-container columns_{{ columns|length }} cf">
     {% for i in columns %}
         <div class="dashboard-column-wrapper">
             <div class="dashboard-column{% if forloop.first %} first{% endif %}">

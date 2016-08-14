@@ -67,6 +67,12 @@ class ToggleApplicationPinForm(forms.ModelForm):
         model = PinnedApplication
         fields = ['app_label']
 
+    def clean(self):
+        data = super(ToggleApplicationPinForm, self).clean()
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
+        return data
+
     def save(self, commit=True):
         if commit:
             try:
@@ -93,8 +99,15 @@ class ModelLookupForm(forms.Form):
     object_id = forms.IntegerField(required=False)
     model_cls = None
 
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super(ModelLookupForm, self).__init__(*args, **kwargs)
+
     def clean(self):
         data = super(ModelLookupForm, self).clean()
+
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
 
         try:
             self.model_cls = get_model(data['app_label'], data['model'])

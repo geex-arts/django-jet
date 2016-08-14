@@ -1,29 +1,95 @@
 @import "globals";
 
-.messagelist {
-  @extend .clear-list;
+/* MESSAGES & ERRORS */
 
-  @mixin message-item {
+ul.messagelist {
+  padding: 0;
+  margin: 0;
+
+  li {
+    display: block;
     margin: 0 20px 10px 20px;
     border-radius: 6px;
-    padding: 10px
+    padding: 10px;
+
+    &.success {
+      background: $success-color;
+      color: $success-text-color;
+    }
+
+    &.warning, &.error {
+      background: $warning-color;
+      color: $warning-text-color;
+    }
+
+    &.info, &.debug {
+      background: $info-color;
+      color: $info-text-color;
+    }
+  }
+}
+
+.errornote {
+  display: block;
+  margin: 0 0 10px 0;
+  border-radius: 6px;
+  padding: 10px;
+  background: $warning-color;
+  color: $warning-text-color;
+}
+
+ul.errorlist {
+  margin: 0 0 4px;
+  padding: 0;
+  color: #ba2121;
+  background: #fff;
+
+  li {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 4px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: underline;
+    }
   }
 
-  .warning, .error {
-    @include message-item;
-    background: $warning-color;
-    color: $warning-text-color;
-  }
+  td & {
+    margin: 0;
+    padding: 0;
 
-  .info, .debug {
-    @include message-item;
-    background: $info-color;
-    color: $info-text-color;
+    li {
+      margin: 0;
+    }
   }
+}
 
-  .success {
-    @include message-item;
-    background: $success-color;
-    color: $success-text-color;
+.form-row.errors {
+  ul.errorlist li {
+    padding-left: 0;
   }
+}
+
+div.system-message {
+    background: #ffc;
+    margin: 10px;
+    padding: 6px 8px;
+    font-size: .8em;
+}
+
+div.system-message p.system-message-title {
+    padding: 4px 5px 4px 25px;
+    margin: 0;
+    color: #c11;
+    background: #ffefef url(../img/icon-no.svg) 5px 5px no-repeat;
+}
+
+.description {
+    font-size: 12px;
+    padding: 5px 0 0 12px;
 }
