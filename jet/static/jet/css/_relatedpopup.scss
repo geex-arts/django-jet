@@ -1,5 +1,7 @@
 @import "globals";
 
+/* POPUP */
+
 .related-popup {
   position: absolute;
   top: 0;
@@ -7,14 +9,23 @@
   bottom: 0;
   left: 0;
   z-index: 4;
-  border: 0;
-  width: 100%;
-  height: 100%;
   padding-left: 250px;
   box-sizing: border-box;
   display: none;
   background: $background-color;
   background-clip: content-box;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: scroll;
+
+  @include for-mobile {
+    padding-left: 0;
+  }
+
+  iframe {
+    border: 0;
+    width: 100%;
+    height: 100%;
+  }
 
   &-container {
     display: none;
@@ -24,7 +35,7 @@
     left: 0;
     bottom: 0;
     right: 0;
-    z-index: 3;
+    z-index: 5;
 
     .loading-indicator {
       display: none;
@@ -35,6 +46,7 @@
       left: 50%;
       margin-left: -48px;
       margin-top: -48px;
+      animation: spin 4s linear infinite;
     }
   }
 
@@ -54,18 +66,39 @@
       box-sizing: border-box;
       text-transform: uppercase;
       border-radius: 6px 0 0 6px;
-      @include transition(background-color $transitions-duration, color $transitions-duration);
+      transition: background-color $transitions-duration, color $transitions-duration;
+
+      @include for-mobile {
+        margin-left: 0;
+        top: auto;
+        bottom: 10px;
+        left: 10px;
+        width: auto;
+        padding: 10px;
+        border-radius: 6px;
+      }
     }
 
-    &:hover {
+    &:hover, &:focus {
       background: $background-color;
       color: $text-color;
+
+      @include for-mobile {
+        background: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
     }
 
-    span {
+    &-icon {
       vertical-align: middle;
       font-weight: bold;
       font-size: 18px;
+    }
+
+    &-label {
+      @include for-mobile {
+        display: none;
+      }
     }
   }
 }

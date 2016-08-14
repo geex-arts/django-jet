@@ -1,67 +1,417 @@
 @import "globals";
 
+/* CHANGELISTS */
+
 #changelist {
-  .changelist-filter {
-    margin-bottom: 20px;
-    line-height: 40px;
+  position: relative;
+  width: 100%;
 
-    * {
-      vertical-align: top;
-    }
-
-    &-submit-block {
-      white-space: nowrap;
-      line-height: 32px;
-      display: inline-block;
-    }
+  table {
+    width: 100%;
   }
 
   .results {
     overflow-x: auto;
-  }
+    -webkit-overflow-scrolling: touch;
 
-  table {
-    @extend .table;
-    box-shadow: 0 2px 0 0 $content-border2-color;
-    width: 100%;
-  }
+    @include for-mobile {
+      position: relative;
+      left: -20px;
+      width: calc(100% + 40px);
+      margin-bottom: 0 !important;
 
-  .changelist-footer {
-    margin-top: 20px;
-    background: $background-color;
-
-    &.fixed {
-      position: fixed;
-      left: 250px + 20px;
-      right: 20px;
-      bottom: 0;
-      margin: 0;
-      padding: 20px 0;
-      border-top: 2px solid $content-border2-color;
-    }
-
-    &.popup {
-      left: 20px;
-    }
-
-    .actions {
-      float: left;
-
-      &-label {
-        margin-left: 10px;
+      table {
+        border-radius: 0;
       }
 
-      span {
-        .all, .action-counter, .clear, .question {
-          display: none;
-        }
+      thead th, tfoot td {
+        border-radius: 0
+      }
+    }
+
+    @include for-phone {
+      left: -10px;
+      width: calc(100% + 20px);
+    }
+  }
+
+  .paginator {
+    text-align: right;
+
+    @include for-mobile {
+      text-align: left;
+    }
+
+    @include for-phone {
+      text-align: center;
+    }
+  }
+}
+
+.change-list {
+  .hiddenfields {
+    display: none;
+  }
+
+  .filtered table {
+    border-right: none;
+  }
+
+  .filtered {
+    min-height: 400px;
+  }
+
+  .filtered table tbody th {
+    padding-right: 1em;
+  }
+}
+
+/* CHANGELIST TABLES */
+
+#changelist table {
+  thead th {
+    &.action-checkbox-column {
+      width: 1.5em;
+      text-align: center;
+    }
+  }
+
+  tbody td.action-checkbox {
+    text-align: center;
+  }
+
+  tfoot {
+    color: #666;
+  }
+}
+
+/* TOOLBAR */
+
+#toolbar {
+  float: left;
+  margin-bottom: 20px;
+  display: none;
+
+  @include for-mobile {
+    float: none;
+  }
+
+  &.initialized {
+    display: block;
+  }
+
+  form {
+    label[for="searchbar"] {
+      display: none;
+    }
+
+    #searchbar {
+      margin-bottom: 2px;
+      margin-right: 2px;
+      vertical-align: top;
+
+      @include for-mobile {
+        margin-right: 5px;
+        margin-bottom: 5px;
+      }
+
+      @include for-phone {
+        width: 100%;
+      }
+    }
+
+    input[type="submit"] {
+      &, &:visited, &:hover {
+        background-color: $primary-button-background-color;
+        color: $primary-button-text-color;
+        font-size: 12px;
+        font-weight: lighter;
+        padding: 0 20px;
+        text-transform: uppercase;
+        vertical-align: middle;
+      }
+
+      &:hover, &:focus {
+        background-color: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
+
+      &:active {
+        background-color: $button-active-background-color;
+        color: $button-active-text-color;
       }
     }
   }
 }
 
-table#change-history {
-  @extend .table;
-  box-shadow: 0 2px 0 0 $content-border2-color;
-  width: 100%;
+.changelist-filter-select {
+  &-wrapper {
+    margin-right: 2px;
+    margin-bottom: 2px;
+    display: inline-block;
+
+    @include for-mobile {
+      margin-right: 5px;
+      margin-bottom: 5px;
+    }
+
+    .select2-container--jet {
+      min-width: 100px;
+    }
+  }
+}
+
+/* FILTER COLUMN */
+
+#changelist-filter {
+  display: none;
+}
+
+/* DATE DRILLDOWN */
+
+.change-list ul.toplinks {
+  display: block;
+  padding: 0;
+  margin: 0;
+
+  li {
+    list-style-type: none;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    background-color: $button-background-color;
+    color: $button-text-color;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 4px;
+  }
+
+  a {
+    &, &:visited {
+      color: $button-text-color;
+    }
+
+    &:focus, &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* PAGINATOR */
+
+.paginator {
+  display: none;
+  line-height: normal;
+  padding: 0 !important;
+  margin: 0;
+  font-size: 12px;
+
+  &.initialized {
+    display: inherit;
+  }
+
+  span:not(.pages-wrapper), a {
+    font-size: 14px;
+    padding: 6px 10px;
+    display: inline-block;
+
+    &:first-child {
+      border-radius: 4px 0 0 4px;
+    }
+
+    &:last-child {
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:first-child:last-child {
+      border-radius: 4px;
+    }
+  }
+
+  span:not(.pages-wrapper) {
+    background-color: $button-active-background-color;
+    color: $button-active-text-color;
+
+    &.disabled {
+      background-color: $button-background-color;
+      color: $button-text-color;
+    }
+  }
+
+  a:not(.showall) {
+    &:link, &:visited {
+      background-color: $button-background-color;
+      color: $button-text-color;
+      text-decoration: none;
+    }
+
+    &:focus, &:hover {
+      background-color: $button-hover-background-color;
+      color: $button-hover-text-color;
+    }
+  }
+
+  a.showall {
+    &:link, &:visited {
+      font-size: 12px;
+    }
+  }
+
+  .pages-wrapper {
+    margin-left: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
+
+    @include for-mobile {
+      margin-left: 0;
+    }
+  }
+
+  .label  {
+    padding: 8px 0;
+  }
+
+  input[type="submit"] {
+    &, &:hover, &:focus {
+      font-size: 13px;
+      padding: 6px 10px;
+      height: auto;
+      line-height: normal;
+      margin: 0 0 0 10px;
+    }
+  }
+}
+
+/* ACTIONS */
+
+#changelist {
+  table {
+    input {
+      margin: 0;
+      vertical-align: baseline;
+    }
+
+    tbody tr.selected {
+      border-color: $content-selected-border-color;
+      background-color: $content-selected-background-color;
+    }
+  }
+
+  .actions {
+    float: left;
+    display: none;
+
+    @include for-mobile {
+      float: none;
+      margin-bottom: 20px;
+    }
+
+    &.initialized {
+      display: inline-block;
+
+      @include for-mobile {
+        display: block;
+      }
+    }
+
+    label {
+      @include for-mobile {
+        margin-bottom: 5px;
+        display: inline-block;
+      }
+
+      @include for-phone {
+        display: block;
+      }
+    }
+
+    .select2 {
+      @include for-phone {
+        width: 100% !important;
+      }
+    }
+
+    .labels {
+      padding: 8px 0;
+
+      @include for-phone {
+        text-align: center;
+      }
+    }
+
+    span.all, span.action-counter, span.clear, span.question {
+      display: none;
+    }
+
+    span.clear {
+      margin-left: 5px;
+    }
+
+    .button {
+      &, &:visited, &:hover {
+        display: inline-block;
+        background-color: $primary-button-background-color;
+        color: $primary-button-text-color;
+        border: 0;
+        border-radius: 4px;
+        height: 32px;
+        line-height: 32px;
+        outline: 0;
+        font-size: 12px;
+        font-weight: lighter;
+        text-align: center;
+        padding: 0 20px;
+        text-transform: uppercase;
+        margin: 0 8px 5px 0;
+        transition: background $transitions-duration;
+
+        @include for-phone {
+          width: 100%;
+        }
+      }
+
+      &:hover, &:focus {
+        background-color: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
+
+      &:active {
+        background-color: $button-active-background-color;
+        color: $button-active-text-color;
+      }
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+}
+
+.changelist-footer {
+  padding: 20px 0;
+  background: $background-color;
+
+  &.fixed {
+    position: fixed;
+    left: $sidebar-width + 20px;
+    right: 20px;
+    bottom: 0;
+    border-top: 2px solid $content-border2-color;
+
+    body.popup & {
+      left: 20px;
+    }
+
+    @include for-mobile {
+      position: static;
+      left: auto;
+      right: auto;
+      bottom: auto;
+      border-top: 0;
+    }
+  }
+
+  &.popup {
+    left: 20px;
+  }
 }

@@ -1,90 +1,117 @@
 @import "globals";
 
-.login {
-  $width: 400px;
-  $expected-height: 230px;
+/* LOGIN FORM */
 
+body.login {
   background: $login-background-color;
-  position: relative;
+  padding: 100px 30px 30px 30px;
 
-  &-title {
-    width: 100%;
-    color: $login-title-text-color;
-    font-size: 36px;
-    text-transform: uppercase;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    margin-top: -($expected-height / 2) - 60px;
-
-    .bright {
-      color: $login-title-contrast-text-color;
-      font-weight: bold;
-    }
+  @include for-phone {
+    padding: 30px 10px 10px 10px;
   }
 
-  &-container {
+  #container {
+    background: $login-content-background-color;
     border-radius: 4px;
-    width: $width;
-    overflow: hidden;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin-left: -($width / 2);
-    margin-top: -($expected-height / 2);
+    min-height: 0;
+    padding: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
 
-    &-header {
-      background: $login-header-background-color;
-      color: $login-header-text-color;
-      text-transform: uppercase;
-      padding: 10px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    &-content {
-      background: $login-content-background-color;
-      height: 100%;
-      padding: 30px;
-    }
-
-    &-submit-row {
-      text-align: center;
-      margin-top: 20px;
+    @include for-phone {
+      width: 100%;
     }
   }
-}
 
-.login-form {
+  #header {
+    background: $login-header-background-color;
+    color: $login-header-text-color;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 4px 4px 0 0;
+  }
+
+  #content {
+    padding: 30px;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .sidebar-header {
+    display: none;
+  }
+
+  .breadcrumbs {
+    display: none;
+  }
+
+  #content-main {
+    width: 100%;
+  }
+
   .form-row {
-    padding: 6px 0;
-    clear: both;
+    padding: 4px;
+    float: left;
+    width: 100%;
 
     label {
-      display: block;
-      padding: 6px 10px 0 0;
-      float: left;
-      width: 130px;
-      word-wrap: break-word;
+      padding-right: 0.5em;
+      line-height: 2em;
+      font-size: 1em;
+      clear: both;
+
+      &.required:after {
+        content: '';
+      }
     }
 
-    &.errors label {
-      color: $error-text-color;
+    #id_username, #id_password {
+      clear: both;
+      padding: 6px;
+      width: 100%;
+      box-sizing: border-box;
     }
+  }
 
-    input[type="text"], input[type="password"] {
-      width: 170px;
-    }
-
-    .errorlist {
-      @extend .clear-list;
-      @extend .small;
-      color: $error-text-color;
-    }
+  span.help {
+    font-size: 10px;
+    display: block;
   }
 
   .submit-row {
-    margin-top: 20px;
+    clear: both;
+    padding: 20px 0 0 0;
+    margin: 0;
     text-align: center;
+
+    input[type="submit"] {
+      font-size: 12px;
+      font-weight: lighter;
+      background-color: $primary-button-background-color;
+      color: $primary-button-text-color;
+      text-transform: uppercase;
+
+      &:hover, &:focus {
+        background-color: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
+
+      &:active {
+        background-color: $button-active-background-color;
+        color: $button-active-text-color;
+      }
+    }
+  }
+
+  .password-reset-link {
+    text-align: center;
+  }
+
+  #footer {
+    padding: 0;
   }
 }

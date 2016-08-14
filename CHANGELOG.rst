@@ -3,6 +3,14 @@ Changelog
 
 new
 ---
+* Almost complete layout rewrite with only 3 template overrides
+* Responsive layout for mobile devices
+* Reorganized scripts (Browserify + gulp)
+* Updated table sortable headers style
+* Fixed related object popups bugs
+* Added check for JS language files existence before load
+* Refactored locale files
+* Fixed admin permissions checks
 * Fixed compatibility issue with Django 1.10
 
 
