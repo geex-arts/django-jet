@@ -1,6 +1,19 @@
 Changelog
 =========
 
+new
+---
+* Fixed compatibility issue with Django 1.10
+* Almost complete layout rewrite with only 3 template overrides
+* Responsive layout for mobile devices
+* Reorganized scripts (Browserify + gulp)
+* Updated table sortable headers style
+* Fixed related object popups bugs
+* Added check for JS language files existence before load
+* Refactored locale files
+* Fix admin permissions checks
+
+
 0.1.5
 -----
 * Add inlines.min.js
