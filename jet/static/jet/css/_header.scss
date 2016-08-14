@@ -127,7 +127,7 @@
     &.opened .user-tools-welcome-msg {
       border-bottom: 1px solid $top-dropdown-border-color;
 
-      &:after {
+      &:before {
         color: $top-dropdown-icon-color;
         transform: rotate(180deg);
       }
