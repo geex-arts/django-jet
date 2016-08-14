@@ -41,4 +41,4 @@ msgstr ""
 
 #: static/jet/js/src/layout-updaters/changeform-tabs.js:15 static/jet/js/src/layout-updaters/changeform-tabs.js:30
 msgid "General"
-msgstr "Общее"
+msgstr ""
