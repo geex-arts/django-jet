@@ -75,6 +75,8 @@ ChangeFormTabsUpdater.prototype = {
         } catch (e) {
             console.error(e, e.stack);
         }
+
+        $contentWrappers.addClass('initialized');
     }
 };
 

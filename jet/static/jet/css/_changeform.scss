@@ -856,10 +856,21 @@ form .related-widget-wrapper ul {
   }
 
   ~ .module, ~ .inline-group {
-    display: none;
+    display: none !important;
     border-radius: 0 0 4px 4px;
 
     &.selected {
+      display: block !important;
+    }
+  }
+}
+
+
+body.change-form #content-main > form > div {
+  > .module, > .inline-group {
+    display: none;
+
+    &.initialized {
       display: block;
     }
   }
