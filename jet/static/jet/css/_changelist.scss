@@ -393,10 +393,14 @@
 
   &.fixed {
     position: fixed;
-    left: 250px + 20px;
+    left: $sidebar-width + 20px;
     right: 20px;
     bottom: 0;
     border-top: 2px solid $content-border2-color;
+
+    body.popup & {
+      left: 20px;
+    }
 
     @include for-mobile {
       position: static;

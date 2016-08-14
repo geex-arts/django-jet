@@ -22,6 +22,10 @@ table {
     border-radius: 0;
     box-shadow: none;
 
+    body.popup & {
+      left: 20px;
+    }
+
     @include for-mobile {
       display: none !important;
     }
