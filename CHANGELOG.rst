@@ -1,8 +1,8 @@
 Changelog
 =========
 
-new
----
+0.9.0
+-----
 * Almost complete layout rewrite with only 3 template overrides
 * Responsive layout for mobile devices
 * Reorganized scripts (Browserify + gulp)
