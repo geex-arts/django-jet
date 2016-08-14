@@ -259,6 +259,8 @@
 
   .pages-wrapper {
     margin-left: 10px;
+    display: inline-block;
+    margin-bottom: 5px;
 
     @include for-mobile {
       margin-left: 0;
@@ -275,7 +277,7 @@
       padding: 6px 10px;
       height: auto;
       line-height: normal;
-      margin-left: 10px;
+      margin: 0 0 0 10px;
     }
   }
 }
