@@ -103,7 +103,7 @@ gulp.task('build', ['scripts', 'styles', 'vendor-styles', 'vendor-translations',
 gulp.task('watch', function() {
     gulp.watch('./jet/static/jet/js/src/**/*.js', ['scripts']);
     gulp.watch('./jet/static/jet/css/**/*.scss', ['styles']);
-    gulp.watch('./jet/locale/**/*.po', ['locales']);
+    gulp.watch(['./jet/locale/**/*.po', './jet/dashboard/locale/**/*.po'], ['locales']);
 });
 
 gulp.task('default', ['build', 'watch']);
