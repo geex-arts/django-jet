@@ -383,7 +383,7 @@ msgid "available"
 msgstr "доступные"
 
 #: dashboard/templates/jet.dashboard/dashboard_tools.html:13
-msgid "inititals"
+msgid "initials"
 msgstr "изначальные"
 
 #: dashboard/templates/jet.dashboard/dashboard_tools.html:21

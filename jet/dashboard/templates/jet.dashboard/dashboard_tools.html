@@ -15,7 +15,7 @@
                     <option value="{{ forloop.counter0 }}" data-type="available_children">{{ module.title }}</option>
                 {% endfor %}
             </optgroup>
-            <optgroup label="{% trans "inititals" %}">
+            <optgroup label="{% trans "initials" %}">
                 {% for module in children %}
                     <option value="{{ forloop.counter0 }}" data-type="children">{{ module.title }}</option>
                 {% endfor %}
