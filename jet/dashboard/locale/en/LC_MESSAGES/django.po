@@ -389,10 +389,6 @@ msgstr ""
 msgid "Are you sure want to reset widgets?"
 msgstr ""
 
-#: dashboard/templates/jet.dashboard/update_module.html:35
-msgid "General"
-msgstr ""
-
 #: dashboard/templates/jet.dashboard/modules/feed.html:13
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:34
 #: dashboard/templates/jet.dashboard/modules/google_analytics_visitors_chart.html:30
