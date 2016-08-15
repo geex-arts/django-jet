@@ -143,7 +143,7 @@ class YandexMetrikaChartSettingsForm(YandexMetrikaSettingsForm):
     show = forms.ChoiceField(label=_('Show'), choices=(
         ('visitors', capfirst(_('visitors'))),
         ('visits', capfirst(_('visits'))),
-        ('page_views', capfirst(_('Views'))),
+        ('page_views', capfirst(_('views'))),
     ))
     group = forms.ChoiceField(label=_('Group'), choices=(
         ('day', _('By day')),
