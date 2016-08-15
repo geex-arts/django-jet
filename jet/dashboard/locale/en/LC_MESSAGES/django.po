@@ -129,170 +129,170 @@ msgstr ""
 msgid "Widget has been successfully added"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:144
+#: dashboard/dashboard_modules/google_analytics.py:145
 #: dashboard/dashboard_modules/yandex_metrika.py:102
 msgid "Revoke access"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:149
+#: dashboard/dashboard_modules/google_analytics.py:150
 #: dashboard/dashboard_modules/yandex_metrika.py:107
 msgid "Grant access"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:162
+#: dashboard/dashboard_modules/google_analytics.py:163
 #: dashboard/dashboard_modules/yandex_metrika.py:117
 msgid "Access"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:163
+#: dashboard/dashboard_modules/google_analytics.py:164
 #: dashboard/dashboard_modules/yandex_metrika.py:118
 msgid "Counter"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:164
+#: dashboard/dashboard_modules/google_analytics.py:165
 #: dashboard/dashboard_modules/yandex_metrika.py:119
 msgid "Statistics period"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:165
+#: dashboard/dashboard_modules/google_analytics.py:166
 #: dashboard/dashboard_modules/yandex_metrika.py:120
 msgid "Today"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:166
+#: dashboard/dashboard_modules/google_analytics.py:167
 #: dashboard/dashboard_modules/yandex_metrika.py:121
 msgid "Last week"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:167
+#: dashboard/dashboard_modules/google_analytics.py:168
 #: dashboard/dashboard_modules/yandex_metrika.py:122
 msgid "Last month"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:168
+#: dashboard/dashboard_modules/google_analytics.py:169
 #: dashboard/dashboard_modules/yandex_metrika.py:123
 msgid "Last quarter"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:169
+#: dashboard/dashboard_modules/google_analytics.py:170
 #: dashboard/dashboard_modules/yandex_metrika.py:124
 msgid "Last year"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:179
+#: dashboard/dashboard_modules/google_analytics.py:180
 #: dashboard/dashboard_modules/yandex_metrika.py:134
 msgid "none"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:182
+#: dashboard/dashboard_modules/google_analytics.py:183
 #: dashboard/dashboard_modules/yandex_metrika.py:137
 msgid "grant access first"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:182
+#: dashboard/dashboard_modules/google_analytics.py:183
 #: dashboard/dashboard_modules/yandex_metrika.py:137
 msgid "counters loading failed"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:187
+#: dashboard/dashboard_modules/google_analytics.py:188
 #: dashboard/dashboard_modules/yandex_metrika.py:142
 msgid "Show"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:192
-#: dashboard/dashboard_modules/google_analytics.py:200
+#: dashboard/dashboard_modules/google_analytics.py:193
+#: dashboard/dashboard_modules/google_analytics.py:201
 #: dashboard/dashboard_modules/yandex_metrika.py:147
 #: dashboard/dashboard_modules/yandex_metrika.py:155
 msgid "Group"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:193
-#: dashboard/dashboard_modules/google_analytics.py:201
+#: dashboard/dashboard_modules/google_analytics.py:194
+#: dashboard/dashboard_modules/google_analytics.py:202
 #: dashboard/dashboard_modules/yandex_metrika.py:148
 #: dashboard/dashboard_modules/yandex_metrika.py:156
 msgid "By day"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:194
-#: dashboard/dashboard_modules/google_analytics.py:202
+#: dashboard/dashboard_modules/google_analytics.py:195
+#: dashboard/dashboard_modules/google_analytics.py:203
 #: dashboard/dashboard_modules/yandex_metrika.py:149
 #: dashboard/dashboard_modules/yandex_metrika.py:157
 msgid "By week"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:195
-#: dashboard/dashboard_modules/google_analytics.py:203
+#: dashboard/dashboard_modules/google_analytics.py:196
+#: dashboard/dashboard_modules/google_analytics.py:204
 #: dashboard/dashboard_modules/yandex_metrika.py:150
 #: dashboard/dashboard_modules/yandex_metrika.py:158
 msgid "By month"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:276
+#: dashboard/dashboard_modules/google_analytics.py:277
 #, python-format
 msgid ""
 "Please <a href=\"%s\">attach Google account and choose Google Analytics "
 "counter</a> to start using widget"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:279
+#: dashboard/dashboard_modules/google_analytics.py:280
 #, python-format
 msgid ""
 "Please <a href=\"%s\">select Google Analytics counter</a> to start using "
 "widget"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:298
+#: dashboard/dashboard_modules/google_analytics.py:299
 #: dashboard/dashboard_modules/google_analytics_views.py:42
-#: dashboard/dashboard_modules/yandex_metrika.py:235
+#: dashboard/dashboard_modules/yandex_metrika.py:236
 #: dashboard/dashboard_modules/yandex_metrika_views.py:37
 msgid "API request failed."
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:300
-#: dashboard/dashboard_modules/yandex_metrika.py:237
+#: dashboard/dashboard_modules/google_analytics.py:301
+#: dashboard/dashboard_modules/yandex_metrika.py:238
 #, python-format
 msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:310
+#: dashboard/dashboard_modules/google_analytics.py:311
 msgid "Google Analytics visitors totals"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:188
+#: dashboard/dashboard_modules/google_analytics.py:189
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
-#: dashboard/dashboard_modules/google_analytics.py:325
+#: dashboard/dashboard_modules/google_analytics.py:326
 msgid "users"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:189
+#: dashboard/dashboard_modules/google_analytics.py:190
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
-#: dashboard/dashboard_modules/google_analytics.py:326
+#: dashboard/dashboard_modules/google_analytics.py:327
 msgid "sessions"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:190
-#: dashboard/dashboard_modules/yandex_metrika.py:145
+#: dashboard/dashboard_modules/google_analytics.py:191
+#: dashboard/dashboard_modules/yandex_metrika.py:146
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
 #: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
-#: dashboard/dashboard_modules/google_analytics.py:327
-#: dashboard/dashboard_modules/yandex_metrika.py:266
+#: dashboard/dashboard_modules/google_analytics.py:328
+#: dashboard/dashboard_modules/yandex_metrika.py:267
 msgid "views"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:329
-#: dashboard/dashboard_modules/google_analytics.py:387
-#: dashboard/dashboard_modules/google_analytics.py:437
-#: dashboard/dashboard_modules/yandex_metrika.py:268
-#: dashboard/dashboard_modules/yandex_metrika.py:320
-#: dashboard/dashboard_modules/yandex_metrika.py:364
+#: dashboard/dashboard_modules/google_analytics.py:330
+#: dashboard/dashboard_modules/google_analytics.py:388
+#: dashboard/dashboard_modules/google_analytics.py:438
+#: dashboard/dashboard_modules/yandex_metrika.py:269
+#: dashboard/dashboard_modules/yandex_metrika.py:321
+#: dashboard/dashboard_modules/yandex_metrika.py:365
 msgid "Bad server response"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:339
+#: dashboard/dashboard_modules/google_analytics.py:340
 msgid "Google Analytics visitors chart"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:397
+#: dashboard/dashboard_modules/google_analytics.py:398
 msgid "Google Analytics period visitors"
 msgstr ""
 
@@ -308,40 +308,40 @@ msgstr ""
 msgid "Bad arguments"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:218
+#: dashboard/dashboard_modules/yandex_metrika.py:219
 #, python-format
 msgid ""
 "Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
 "counter</a> to start using widget"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:221
+#: dashboard/dashboard_modules/yandex_metrika.py:222
 #, python-format
 msgid ""
 "Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:249
+#: dashboard/dashboard_modules/yandex_metrika.py:250
 msgid "Yandex Metrika visitors totals"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:143
+#: dashboard/dashboard_modules/yandex_metrika.py:144
 #: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
-#: dashboard/dashboard_modules/yandex_metrika.py:264
+#: dashboard/dashboard_modules/yandex_metrika.py:265
 msgid "visitors"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:144
+#: dashboard/dashboard_modules/yandex_metrika.py:145
 #: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
-#: dashboard/dashboard_modules/yandex_metrika.py:265
+#: dashboard/dashboard_modules/yandex_metrika.py:266
 msgid "visits"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:278
+#: dashboard/dashboard_modules/yandex_metrika.py:279
 msgid "Yandex Metrika visitors chart"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:330
+#: dashboard/dashboard_modules/yandex_metrika.py:331
 msgid "Yandex Metrika period visitors"
 msgstr ""
 
