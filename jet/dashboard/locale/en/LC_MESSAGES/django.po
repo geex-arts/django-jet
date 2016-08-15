@@ -199,23 +199,6 @@ msgstr ""
 msgid "Show"
 msgstr ""
 
-#: dashboard/dashboard_modules/google_analytics.py:188
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
-msgid "Users"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:189
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
-msgid "Sessions"
-msgstr ""
-
-#: dashboard/dashboard_modules/google_analytics.py:190
-#: dashboard/dashboard_modules/yandex_metrika.py:145
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
-msgid "Views"
-msgstr ""
-
 #: dashboard/dashboard_modules/google_analytics.py:192
 #: dashboard/dashboard_modules/google_analytics.py:200
 #: dashboard/dashboard_modules/yandex_metrika.py:147
@@ -275,14 +258,22 @@ msgstr ""
 msgid "Google Analytics visitors totals"
 msgstr ""
 
+#: dashboard/dashboard_modules/google_analytics.py:188
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
 #: dashboard/dashboard_modules/google_analytics.py:325
 msgid "users"
 msgstr ""
 
+#: dashboard/dashboard_modules/google_analytics.py:189
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
 #: dashboard/dashboard_modules/google_analytics.py:326
 msgid "sessions"
 msgstr ""
 
+#: dashboard/dashboard_modules/google_analytics.py:190
+#: dashboard/dashboard_modules/yandex_metrika.py:145
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
 #: dashboard/dashboard_modules/google_analytics.py:327
 #: dashboard/dashboard_modules/yandex_metrika.py:266
 msgid "views"
@@ -317,16 +308,6 @@ msgstr ""
 msgid "Bad arguments"
 msgstr ""
 
-#: dashboard/dashboard_modules/yandex_metrika.py:143
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
-msgid "Visitors"
-msgstr ""
-
-#: dashboard/dashboard_modules/yandex_metrika.py:144
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
-msgid "Visits"
-msgstr ""
-
 #: dashboard/dashboard_modules/yandex_metrika.py:218
 #, python-format
 msgid ""
@@ -344,10 +325,14 @@ msgstr ""
 msgid "Yandex Metrika visitors totals"
 msgstr ""
 
+#: dashboard/dashboard_modules/yandex_metrika.py:143
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
 #: dashboard/dashboard_modules/yandex_metrika.py:264
 msgid "visitors"
 msgstr ""
 
+#: dashboard/dashboard_modules/yandex_metrika.py:144
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
 #: dashboard/dashboard_modules/yandex_metrika.py:265
 msgid "visits"
 msgstr ""

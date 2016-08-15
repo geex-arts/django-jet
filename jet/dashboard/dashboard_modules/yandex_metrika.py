@@ -7,6 +7,7 @@ from django.forms import Widget
 from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.utils.text import capfirst
 from jet.dashboard.modules import DashboardModule
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
@@ -140,9 +141,9 @@ class YandexMetrikaSettingsForm(forms.Form):
 
 class YandexMetrikaChartSettingsForm(YandexMetrikaSettingsForm):
     show = forms.ChoiceField(label=_('Show'), choices=(
-        ('visitors', _('Visitors')),
-        ('visits', _('Visits')),
-        ('page_views', _('Views')),
+        ('visitors', capfirst(_('visitors'))),
+        ('visits', capfirst(_('visits'))),
+        ('page_views', capfirst(_('Views'))),
     ))
     group = forms.ChoiceField(label=_('Group'), choices=(
         ('day', _('By day')),

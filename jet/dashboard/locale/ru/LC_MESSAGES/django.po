@@ -199,23 +199,6 @@ msgstr "не удалось загрузить счетчики"
 msgid "Show"
 msgstr "Показывать"
 
-#: dashboard/dashboard_modules/google_analytics.py:188
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
-msgid "Users"
-msgstr "Пользователи"
-
-#: dashboard/dashboard_modules/google_analytics.py:189
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
-msgid "Sessions"
-msgstr "Сессии"
-
-#: dashboard/dashboard_modules/google_analytics.py:190
-#: dashboard/dashboard_modules/yandex_metrika.py:145
-#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
-msgid "Views"
-msgstr "Просмотры"
-
 #: dashboard/dashboard_modules/google_analytics.py:192
 #: dashboard/dashboard_modules/google_analytics.py:200
 #: dashboard/dashboard_modules/yandex_metrika.py:147
@@ -278,14 +261,22 @@ msgstr " Попробуйте <a href=\"%s\">убрать и предостав�
 msgid "Google Analytics visitors totals"
 msgstr "Данные о посещениях Google Analytics"
 
+#: dashboard/dashboard_modules/google_analytics.py:188
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
 #: dashboard/dashboard_modules/google_analytics.py:325
 msgid "users"
 msgstr "пользователи"
 
+#: dashboard/dashboard_modules/google_analytics.py:189
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
 #: dashboard/dashboard_modules/google_analytics.py:326
 msgid "sessions"
 msgstr "сессии"
 
+#: dashboard/dashboard_modules/google_analytics.py:190
+#: dashboard/dashboard_modules/yandex_metrika.py:145
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
 #: dashboard/dashboard_modules/google_analytics.py:327
 #: dashboard/dashboard_modules/yandex_metrika.py:266
 msgid "views"
@@ -320,16 +311,6 @@ msgstr "Модуль не найден"
 msgid "Bad arguments"
 msgstr "Некорректные аргументы"
 
-#: dashboard/dashboard_modules/yandex_metrika.py:143
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
-msgid "Visitors"
-msgstr "Посетители"
-
-#: dashboard/dashboard_modules/yandex_metrika.py:144
-#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
-msgid "Visits"
-msgstr "Визиты"
-
 #: dashboard/dashboard_modules/yandex_metrika.py:218
 #, python-format
 msgid ""
@@ -350,10 +331,14 @@ msgstr ""
 msgid "Yandex Metrika visitors totals"
 msgstr "Данные о посещениях Яндекс Метрики"
 
+#: dashboard/dashboard_modules/yandex_metrika.py:143
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
 #: dashboard/dashboard_modules/yandex_metrika.py:264
 msgid "visitors"
 msgstr "посетители"
 
+#: dashboard/dashboard_modules/yandex_metrika.py:144
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
 #: dashboard/dashboard_modules/yandex_metrika.py:265
 msgid "visits"
 msgstr "визиты"
