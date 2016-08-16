@@ -1,10 +1,7 @@
 {% extends "admin/base_site.html" %}
 {% load i18n admin_static jet_dashboard_tags static %}
 
-{% block html %}
-    {% get_dashboard 'index' as dashboard %}
-    {{ block.super }}
-{% endblock %}
+{% block html %}{% get_dashboard 'index' as dashboard %}{{ block.super }}{% endblock %}
 
 {% block extrastyle %}
     {{ block.super }}
@@ -17,16 +14,21 @@
 
 {% block extrahead %}
     {{ block.super }}
+
     {% for js in dashboard.media.js %}
         <script src="{% static js %}"></script>
     {% endfor %}
 {% endblock %}
 
-{% block coltype %}colMS{% endblock %}
+{% block bodyclass %}{{ block.super }} dashboard jet{% endblock %}
 
 {% block sidebar %}{% endblock %}
 
-{% block top-right %}
+{% block breadcrumbs %}
+    {% if not is_popup %}
+        <div class="breadcrumbs"></div>
+    {% endif %}
+
     {{ dashboard.render_tools }}
 {% endblock %}
 

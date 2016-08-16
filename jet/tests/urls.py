@@ -1,5 +1,5 @@
 import django
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, url
 from django.contrib import admin
 
 admin.autodiscover()
@@ -12,4 +12,5 @@ urlpatterns = [
 ]
 
 if django.VERSION[:2] < (1, 8):
+    from django.conf.urls import patterns
     urlpatterns = patterns('', *urlpatterns)

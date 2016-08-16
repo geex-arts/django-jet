@@ -1,498 +1,882 @@
 @import "globals";
 
-.module {
-  &-separator {
-    height: 1em;
+/* FORM ROWS */
+
+.form-row {
+  overflow: hidden;
+  padding: 10px;
+
+  img, input {
+    vertical-align: middle;
   }
 
-  .form-row {
-    padding: 6px 0;
-    overflow: hidden;
+  label input[type="checkbox"] {
+    margin-top: 0;
+    vertical-align: 0;
+  }
+
+  p {
+    padding-left: 0;
+  }
+
+  .select2 {
+    @include for-phone {
+      width: auto !important;
+      max-width: 100%;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+/* FORM LABELS */
+
+label {
+  .required &, &.required {
+    font-weight: bold;
+
+    &:after {
+      content: "*";
+    }
+  }
+
+  .form-row.errors & {
+    color: $error-text-color;
+  }
+}
+
+/* RADIO BUTTONS */
+
+form {
+  ul.radiolist {
+    li {
+      list-style-type: none;
+    }
 
     label {
-      display: block;
-      padding: 6px 10px 0 0;
-      float: left;
-      width: 150px;
-      word-wrap: break-word;
-
-      + p {
-        padding-top: 6px;
-        margin: 4px 0 4px (150px + 10px);
-      }
-    }
-
-    br {
-      clear: both;
-    }
-
-    &.errors label {
-      color: $error-text-color;
-    }
-
-    .checkbox-row label {
       float: none;
       display: inline;
     }
 
-    .help {
-      @extend .small;
-      clear: left;
-      color: $dim-text-color;
-      margin: 12px 0 0 160px;
-    }
-
-    .checkbox-row .help {
-      margin-left: 0;
-    }
-
-    .errorlist {
-      @extend .clear-list;
-      @extend .small;
-      color: $error-text-color;
-      margin-bottom: 10px !important;
-    }
-
-    .datetime {
-      margin-left: 160px;
-    }
-
-    .add-related span {
-      font-size: 18px;
-      vertical-align: middle;
-    }
-
-    .change-related span {
-      font-size: 20px;
-      vertical-align: middle;
-    }
-
-    .add-another {
-      margin-left: 4px;
-
-      &:before {
-        @include font-icon;
-        vertical-align: middle;
-        font-size: 18px;
-        content: $icon-add3;
-      }
-
-      img {
-        display: none;
-      }
-    }
-
-    .field-box {
-      margin-right: 20px;
-      float: left;
-    }
-
-    .file-upload {
-      background: $content-contrast-background-color;
-      display: inline-block;
-      margin: 0;
-      line-height: 1.5em;
-      padding: 10px;
-      border-radius: 4px;
-
-      .clearable-file-input label {
-        display: inline;
-        float: none;
-        padding: 0;
-        width: auto;
-        margin-left: 10px;
-      }
+    input[type="radio"] {
+      margin: -2px 4px 0 0;
+      padding: 0;
     }
   }
 
-  &.aligned {
-    background-color: $content-background-color;
-    border-radius: 4px;
-    padding: 20px;
+  ul.inline {
+    margin-left: 0;
+    padding: 0;
 
-    ul label {
-      display: inline;
+    li {
+      float: left;
+      padding-right: 7px;
+    }
+  }
+}
+
+/* ALIGNED FIELDSETS */
+
+.aligned {
+  label {
+    display: block;
+    padding: 8px 10px 0 0;
+    float: left;
+    width: 160px;
+    word-wrap: break-word;
+    line-height: 1;
+
+    @include for-mobile {
+      display: block;
+      padding: 0 0 0 2px;
+      margin-bottom: 8px;
       float: none;
       width: auto;
     }
+  }
 
-    ul {
-      margin: 0 0 0 160px;
-      padding: 0;
+  label + p {
+    padding: 6px 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 170px;
+
+    @include for-mobile {
+      margin-left: 0;
+    }
+  }
+
+  ul label {
+    display: inline;
+    float: none;
+    width: auto;
+  }
+
+  .form-row input {
+    margin-bottom: 0;
+  }
+
+  .vCheckboxLabel {
+    float: none;
+    width: auto;
+    display: inline-block;
+    vertical-align: -3px;
+    padding: 0 0 5px 0;
+
+    & + p.help {
+      margin-top: -4px;
     }
   }
 }
+
+form .aligned {
+  ul {
+    margin-left: 160px;
+    padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  ul.radiolist {
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+  }
+
+  p.help {
+    clear: left;
+    margin-top: 0;
+    margin-left: 160px;
+    padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  label + p.help {
+    margin-left: 0;
+    padding-left: 0;
+  }
+
+  p.help:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  input + p.help,
+  textarea + p.help,
+  select + p.help {
+    margin-left: 160px;
+    padding-left: 10px;
+
+    @include for-mobile {
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  ul li {
+    list-style: none;
+  }
+
+  table p {
+    margin-left: 0;
+    padding-left: 0;
+  }
+}
+
+.colMS .aligned .vLargeTextField, .colMS .aligned .vXMLLargeTextField {
+  width: 350px;
+
+  @include for-mobile {
+    width: 100%;
+  }
+}
+
+.colM .aligned .vLargeTextField, .colM .aligned .vXMLLargeTextField {
+  width: 510px;
+
+  @include for-mobile {
+    width: 100%;
+  }
+}
+
+.checkbox-row p.help {
+  margin-left: 0;
+  padding-left: 0;
+}
+
+/* FIELDSETS */
+
+fieldset {
+  .field-box {
+    float: left;
+    margin-right: 20px;
+  }
+
+  &.monospace textarea {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  }
+}
+
+/* WIDE FIELDSETS */
+
+.wide label {
+  width: 200px;
+}
+
+form .wide p, form .wide input + p.help {
+  margin-left: 200px;
+
+  @include for-mobile {
+    margin-left: 0;
+  }
+}
+
+form .wide p.help {
+  padding-left: 38px;
+
+  @include for-mobile {
+    padding-left: 0;
+  }
+}
+
+.colM fieldset.wide .vLargeTextField, .colM fieldset.wide .vXMLLargeTextField {
+  width: 450px;
+
+  @include for-mobile {
+    width: 100%;
+  }
+}
+
+/* COLLAPSED FIELDSETS */
+
+//fieldset.collapsed * {
+//    display: none;
+//}
+//
+//fieldset.collapsed h2, fieldset.collapsed {
+//    display: block;
+//}
+//
+//fieldset.collapsed {
+//    border: 1px solid #eee;
+//    border-radius: 4px;
+//    overflow: hidden;
+//}
+//
+//fieldset.collapsed h2 {
+//    background: #f8f8f8;
+//    color: #666;
+//}
+//
+//fieldset .collapse-toggle {
+//    color: #fff;
+//}
+//
+//fieldset.collapsed .collapse-toggle {
+//    background: transparent;
+//    display: inline;
+//    color: #447e9b;
+//}
+
+/* MONOSPACE TEXTAREAS */
+
+fieldset.monospace textarea {
+    font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+}
+
+/* SUBMIT ROW */
 
 .submit-row {
-  padding: 20px 0;
+  margin: 20px 0;
+  overflow: hidden;
 
-  .deletelink-box {
+  @include for-mobile {
+    margin-bottom: 10px;
+  }
+
+  input {
+    &, &:visited, &:hover {
+      margin: 0 5px 5px 0;
+      padding: 0 20px;
+      font-size: 12px;
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+        margin: 0 0 8px 0;
+      }
+    }
+
+    &.default {
+      margin: 0 8px 5px 0;
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+        margin: 0 0 20px 0;
+      }
+    }
+  }
+
+  p {
+    margin: 0.3em;
+  }
+
+  p.deletelink-box {
+    display: block;
     float: right;
     padding: 0;
-    margin: 0;
+    margin: 0 5px 5px 0;
+
+    @include for-phone {
+      float: none;
+      display: block;
+      margin: 0 0 8px 0;
+    }
+  }
+
+  a.deletelink {
+    &, &:visited, &:hover {
+      display: inline-block;
+      background-color: $danger-button-background-color;
+      color: $danger-button-text-color;
+      border: 0;
+      border-radius: 4px;
+      height: 32px;
+      line-height: 32px;
+      outline: 0;
+      font-size: 12px;
+      font-weight: lighter;
+      text-align: center;
+      padding: 0 20px;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      transition: background $transitions-duration, box-shadow $transitions-duration, border $transitions-duration;
+
+      @include for-phone {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    &:hover, &:focus {
+      background-color: $button-hover-background-color;
+      color: $button-hover-text-color;
+    }
+
+    &:active {
+      background-color: $button-active-background-color;
+      color: $button-active-text-color;
+    }
   }
 }
 
-.changeform {
+body.popup .submit-row {
+  overflow: auto;
+}
+
+/* CUSTOM FORM FIELDS */
+
+.vSelectMultipleField {
+  vertical-align: top;
+}
+
+.vCheckboxField {
+  border: none;
+}
+
+.vDateField, .vTimeField {
+  margin-right: 2px;
+  margin-bottom: 4px;
+  border-radius: 4px 0 0 4px !important;
+  border-right: 0 !important;
+
+  @include for-width(374px) {
+    border-radius: 4px !important;
+    border-right: 1px !important;
+  }
+
+  &-link {
+    vertical-align: top;
+    display: inline-block;
+
+    @include for-width(374px) {
+       display: none;
+    }
+
+    span {
+      width: 32px;
+      height: 32px;
+      line-height: 32px !important;
+      background-color: $button-background-color;
+      color: $button-text-color;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      border-radius: 0 4px 4px 0;
+    }
+
+    &:hover span {
+      background-color: $button-hover-background-color;
+      color: $button-hover-text-color;
+    }
+  }
+}
+
+.vDateField {
+  min-width: 6.85em;
+}
+
+.vTimeField {
+  min-width: 4.7em;
+}
+
+.vDateField-link + .vTimeField {
+  margin-left: 10px;
+}
+
+.vURLField {
+  width: 30em;
+}
+
+.vLargeTextField, .vXMLLargeTextField {
+  width: 48em;
+
+  @include for-mobile {
+    width: 100%;
+  }
+}
+
+.flatpages-flatpage #id_content {
+  height: 40.2em;
+}
+
+.module table .vPositiveSmallIntegerField {
+  width: 2.2em;
+}
+
+.vTextField {
+  width: 20em;
+
+  @include for-phone {
+    width: 100%;
+  }
+}
+
+.vIntegerField {
+  width: 6em;
+}
+
+.vBigIntegerField {
+  width: 10em;
+}
+
+.vForeignKeyRawIdAdminField {
+  width: 5em;
+}
+
+/* INLINES */
+
+.inline-group {
+  padding: 0;
   background-color: $content-background-color;
   border-radius: 4px;
-  min-width: 800px;
+  border: 0;
 
-  &-navigation {
-    float: left;
-    margin-bottom: 20px;
+  thead th {
+    padding: 8px 10px;
   }
 
-  &-tabs {
-    @extend .clear-list;
-    border-bottom: 2px solid $background-color;
-    padding-left: 16px !important;
+  .aligned label {
+    width: 160px;
+  }
 
-    &-item {
+  > fieldset.module {
+    padding: 0;
+  }
+}
+
+.inline-related {
+  position: relative;
+
+  h3 {
+    margin: 0;
+    background: linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
+    font-weight: bold;
+    color: $text-color;
+    padding: 20px 30px 0 30px;
+
+    @include for-mobile {
+      padding: 20px 20px 0 20px;
+      line-height: 2;
+    }
+
+    > b {
+      margin-right: 10px;
+    }
+
+    .inline_label {
       display: inline-block;
-
-      & a, & a:hover, & a:visited {
-        display: inline-block;
-        padding: 12px 4px;
-        margin: 0 4px;
-        border-bottom: 2px solid transparent;
-        position: relative;
-        top: 2px;
-        color: $dim-text-color;
-        font-weight: bold;
-        font-size: 11px;
-        text-transform: uppercase;
-      }
-
-      & a:hover {
-        color: $text-color;
-      }
-
-      &.selected {
-        & a, & a:hover, & a:visited {
-          color: $text-color;
-          border-color: $tab-selected-border-color;
-        }
-      }
-
-      &.errors {
-        & a, & a:hover, & a:visited {
-          border-color: $tab-error-border-color;
-        }
-      }
-    }
-  }
-
-  &-tabs ~ .module {
-    display: none;
-
-    &.selected {
-      display: block;
-    }
-
-    .stacked.inline-related {
-      display: none;
-
-      &.selected {
-        display: block;
-      }
-    }
-  }
-
-  .module {
-    .form-row {
-      .select2 {
-        max-width: 800px - 20px * 2 - 150px - 24px;
-      }
-    }
-  }
-
-  .inline-group {
-    .errornote {
-      color: $error-text-color;
-      margin: 0;
-      padding: 20px;
-    }
-  }
-
-  .tabular.inline-related {
-    .module {
-      border: 0;
-      margin: 0;
-      padding: 0;
-
-      .errornote {
-        background-color: $content-contrast-background-color;
-      }
-
-      .errorlist {
-        @extend .clear-list;
-        @extend .small;
-        color: $error-text-color;
-      }
-
-      table {
-        border-collapse: collapse;
-        width: 100%;
-
-        thead {
-          th {
-            background: -webkit-linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
-            background: linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
-            padding: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            text-align: left;
-            text-transform: uppercase;
-
-            &.action-checkbox-column {
-              width: 20px;
-              text-align: center;
-            }
-          }
-        }
-
-        tbody {
-          tr {
-            border-bottom: 1px solid $content-border-color;
-
-            &:last-child {
-              border-bottom: 0;
-            }
-
-            & th, & td {
-              padding: 8px;
-              text-align: left;
-              font-size: 13px;
-
-              &.original {
-                text-align: center;
-                font-size: 18px;
-                width: 36px;
-                padding-right: 0;
-                white-space: nowrap;
-
-                p {
-                  margin: 0;
-                }
-
-                .icon-new {
-                  font-size: 18px;
-                  vertical-align: middle;
-                }
-
-                .icon-edit {
-                  font-size: 18px;
-                  vertical-align: middle;
-                }
-
-                .icon-open-external {
-                  font-size: 18px;
-                  vertical-align: middle;
-                }
-              }
-            }
-          }
-
-          .add-row {
-            td {
-              padding: 16px;
-
-              a {
-                font-size: 12px;
-                font-weight: bold;
-
-                span {
-                  vertical-align: middle;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .stacked-inline {
-    $side-width: 250px;
-
-    position: relative;
-
-    &.side {
-      margin-left: $side-width;
-    }
-
-    &-side {
-      float: left;
-      width: $side-width;
-      margin-left: -$side-width;
-      background: $content-contrast-background-color;
-      max-height: 60vh;
-      overflow-y: auto;
-
-      &-top {
-        height: 40px;
-        background: -webkit-linear-gradient(to bottom, $content-background-color 0%, $content-contrast-background-color 100%);
-        background: linear-gradient(to bottom, $content-background-color 0%, $content-contrast-background-color 100%);
-      }
-
-      &-bottom {
-        height: 40px;
-        background: -webkit-linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
-        background: linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
-      }
-    }
-
-    &-content {
-      float: right;
-      width: 100%;
-
-      .actions {
-        margin: 20px 20px 0 20px;
-
-        .icon-new {
-          font-size: 18px;
-          vertical-align: middle;
-        }
-
-        .icon-edit {
-          font-size: 18px;
-          vertical-align: middle;
-        }
-
-        .icon-open-external {
-          font-size: 18px;
-          vertical-align: middle;
-        }
-      }
-
-      .delete {
-        margin: 20px 20px 0 20px;
-        border-radius: 4px;
-        padding: 10px;
-        border: 2px solid $warning-color;
-        box-sizing: border-box;
-      }
-    }
-
-    .add-row {
-      position: absolute;
-      top: 0;
-      left: -$side-width;
-      width: $side-width;
-      height: 40px;
-      line-height: 40px;
-      padding: 0 20px;
+      background: $content-contrast2-background-color;
+      color: $content-contrast2-text-color;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: normal;
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
-      white-space: nowrap;
+      max-width: 100%;
       box-sizing: border-box;
-      background: -webkit-linear-gradient(to bottom, $content-background-color 0%, $content-contrast-background-color 100%);
-      background: linear-gradient(to bottom, $content-background-color 0%, $content-contrast-background-color 100%);
+      vertical-align: middle;
 
-      a {
-        font-size: 12px;
-        font-weight: bold;
+      @include for-mobile {
+        margin-right: 10px;
+        line-height: normal;
+      }
 
-        span {
-          vertical-align: middle;
+      ~ .inlinechangelink, ~ .inlineviewlink {
+        font-size: 18px;
+        margin-left: 10px;
+        vertical-align: middle;
+
+        &:before {
+          margin: 0;
         }
       }
     }
 
-    &-list {
-      @extend .clear-list;
+    span.delete, .inline-deletelink {
+      float: right;
+      margin-left: 10px;
+      display: inline-block;
+      background: $danger-button-background-color;
+      color: $danger-button-text-color;
+      padding: 4px 8px;
+      border-radius: 5px;
+      font-size: 10px;
+      font-weight: normal;
+      vertical-align: middle;
+      white-space: nowrap;
 
-      &-item {
-        &-link{
-          &-remove {
-            position: relative;
-            float: right;
-            display: none;
-          }
+      @include for-mobile {
+        float: none;
+        margin-left: 0;
+        line-height: normal;
+      }
 
-          &:hover .stacked-inline-list-item-link-remove {
-            display: inline-block;
-          }
-        }
+      label {
+        font-size: 10px;
+        vertical-align: middle;
 
-        a, a:visited, a:hover {
-          display: block;
-          padding: 8px 10px 8px 20px;
-          color: $dim-text-color;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          @include transition-all(0.2s);
-        }
-
-        a:hover {
-          color: $button-hover-text-color;
-          background-color: $button-hover-background-color;
-        }
-
-        &.selected {
-          a, a:visited, a:hover {
-            color: $text-color;
-          }
-
-          a:hover {
-            color: $text-color;
-            background-color: transparent;
-          }
-        }
-
-        &:not(.has_original) {
-          a, a:visited {
-
-          }
-        }
-
-        &.empty {
-          display: none;
-        }
-
-        &.delete {
-          a, a:visited, a:hover {
-            text-decoration: line-through;
-          }
-        }
-
-        &.errors {
-          a, a:visited, a:hover {
-            color: $error-text-color;
-          }
+        &:before {
+          font-size: 10px;
+          color: $danger-button-text-color;
+          vertical-align: middle;
         }
       }
     }
   }
 
-  .submit-row {
-    padding: 20px;
+  fieldset {
+    margin: 0;
+    background: #fff;
+    width: 100%;
+
+    &.module {
+      background-color: inherit;
+      box-sizing: border-box;
+
+      h3 {
+        margin: 0;
+        padding: 2px 5px 3px 5px;
+        font-size: 11px;
+        text-align: left;
+        font-weight: bold;
+        background: #bcd;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.inline-related.tabular fieldset.module {
+  padding: 0;
+
+  table {
+    width: 100%;
+  }
+}
+
+.inline-group {
+  .tabular {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+
+    table {
+      box-shadow: none;
+      margin: 0;
+    }
+
+    thead th, thead td {
+      background: linear-gradient(to top, $content-background-color 0%, $content-contrast-background-color 100%);
+      font-weight: bold;
+      color: $text-color;
+
+      a:link, a:visited {
+        color: $text-color;
+      }
+    }
+
+    td.original {
+      white-space: nowrap;
+      width: 1px;
+      padding-right: 0;
+
+      &.empty {
+        padding: 0;
+      }
+
+      p {
+        padding: 0;
+
+        .inlinechangelink, .inlineviewlink {
+          font-size: 18px;
+          margin: 0;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    tr.add-row td {
+      padding: 8px 10px;
+      border-bottom: 1px solid #eee;
+    }
+  }
+
+  ul.tools {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    li {
+      display: inline;
+      padding: 0 5px;
+    }
+  }
+
+  div.add-row, .tabular tr.add-row td {
+    padding: 16px;
+    border: 0;
+  }
+
+  ul.tools a.add, div.add-row a, .tabular tr.add-row td a {
+    font-size: 12px;
+    font-weight: bold;
+    vertical-align: middle;
+
+    &:before {
+      @include font-icon;
+      content: $icon-add;
+      vertical-align: middle;
+      margin-right: 4px;
+    }
+  }
+}
+
+.empty-form {
+  display: none;
+}
+
+/* RELATED FIELD ADD ONE / LOOKUP */
+
+form .related-widget-wrapper ul {
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.clearable-file-input input {
+    margin-top: 0;
+}
+
+.changeform-navigation {
+  display: none;
+  float: left;
+  margin-bottom: 20px;
+
+  @include for-mobile {
+    margin-bottom: 5px;
+    margin-right: 10px;
+  }
+
+  &.initialized {
+    display: block;
+  }
+
+  &-button {
+    font-weight: bold;
+    vertical-align: middle;
+  }
+}
+
+.related-widget-wrapper-link {
+  opacity: 0.5;
+  transition: opacity $transitions-duration;
+
+  &:link {
+    opacity: 1;
+  }
+}
+
+.add-related, .add-another, .change-related, .delete-related, .related-lookup {
+  display: none;
+
+  &.initialized {
+    display: inline-block;
+  }
+
+  .form-row & {
+    margin-top: 10px;
+  }
+}
+
+.related-widget-wrapper-icon {
+  &:before {
+    @include font-icon;
+    font-size: 20px;
+    vertical-align: middle;
+  }
+
+  .add-related &, .add-another & {
+    &:before {
+      content: $icon-add3;
+    }
+  }
+
+  .change-related & {
+    &:before {
+      content: $icon-edit;
+    }
+  }
+
+  .delete-related & {
+    &:before {
+      content: $icon-cross;
+    }
   }
 }
 
 .related-lookup {
-  margin-left: 10px;
+  margin-left: 6px;
 
   &:before {
     @include font-icon;
-    color: $button-text-color;
-    vertical-align: middle;
     font-size: 20px;
+    vertical-align: middle;
     content: $icon-search;
-  }
-
-  img {
-    display: none;
-  }
-
-  + strong {
-    font-weight: normal;
-    font-size: 12px;
   }
 }
 
-.related-widget-wrapper {
-  float: left;
+/* TABS */
+
+.changeform-tabs {
+  margin: 0;
+  padding: 0 0 0 16px;
+  border-bottom: 2px solid $background-color;
+  background-color: $content-background-color;
+  border-radius: 4px 4px 0 0;
+
+  @include for-mobile {
+    padding: 10px 10px 5px 10px;
+  }
+
+  &-item {
+    display: inline-block;
+    padding: 0;
+    line-height: normal;
+
+    a, a:hover, a:visited {
+      display: inline-block;
+      padding: 12px 4px;
+      margin: 0 8px 0 0;
+      border-bottom: 2px solid transparent;
+      position: relative;
+      top: 2px;
+      color: $dim-text-color;
+      font-weight: bold;
+      font-size: 11px;
+      text-transform: uppercase;
+      transition: background-color $fast-transitions-duration,
+                  color $fast-transitions-duration,
+                  border-color $transitions-duration;
+
+      @include for-mobile {
+        margin: 0 5px 5px 0;
+        padding: 8px 12px;
+        top: auto;
+        border: 0;
+        border-radius: 5px;
+        font-weight: normal;
+        background: $button-background-color;
+        color: $button-text-color;
+      }
+    }
+
+    a:hover {
+      color: $text-color;
+    }
+
+    &.errors {
+      & a, & a:hover, & a:visited {
+        border-color: $tab-error-border-color;
+
+        @include for-mobile {
+          background: $danger-button-background-color;
+          color: $danger-button-text-color;
+        }
+      }
+    }
+
+    &.selected {
+      & a, & a:hover, & a:visited {
+        color: $text-color;
+        border-color: $tab-selected-border-color;
+
+        @include for-mobile {
+          background: $button-hover-background-color;
+          color: $button-hover-text-color;
+        }
+      }
+    }
+  }
+
+  ~ .module, ~ .inline-group {
+    display: none !important;
+    border-radius: 0 0 4px 4px;
+
+    &.selected {
+      display: block !important;
+    }
+  }
+}
+
+
+body.change-form #content-main > form > div {
+  > .module, > .inline-group {
+    display: none;
+
+    &.initialized {
+      display: block;
+    }
+  }
 }

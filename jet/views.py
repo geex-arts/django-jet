@@ -11,7 +11,11 @@ def add_bookmark_view(request):
 
     if form.is_valid():
         bookmark = form.save()
-        result['id'] = bookmark.pk
+        result.update({
+            'id': bookmark.pk,
+            'title': bookmark.title,
+            'url': bookmark.url
+        })
     else:
         result['error'] = True
 
@@ -54,7 +58,7 @@ def toggle_application_pin_view(request):
 def model_lookup_view(request):
     result = {'error': False}
 
-    form = ModelLookupForm(request.GET)
+    form = ModelLookupForm(request, request.GET)
 
     if form.is_valid():
         items, total = form.lookup()

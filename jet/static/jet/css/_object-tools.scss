@@ -1,0 +1,49 @@
+@import "globals";
+
+/* OBJECT TOOLS */
+
+.object-tools {
+  display: block;
+  text-align: right;
+  padding: 0;
+  margin: 0 0 20px 0;
+
+  @include for-mobile {
+    text-align: left;
+  }
+
+  .form-row & {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: none;
+    height: 2em;
+    padding-left: 3.5em;
+  }
+
+  li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+
+    @include for-mobile {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
+
+  a.addlink {
+    &:before {
+      @include font-icon;
+      color: $button-text-color;
+      font-size: 13px;
+      content: $icon-add;
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 3px;
+    }
+
+    &:hover:before {
+      color: $button-hover-text-color;
+    }
+  }
+}

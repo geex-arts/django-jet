@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.forms.formsets import formset_factory
+from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST, require_GET
 from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModuleForm, \
     UpdateDashboardModuleCollapseForm, RemoveDashboardModuleForm, ResetDashboardForm
@@ -17,6 +18,9 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
     success_message = _('Widget was successfully updated')
     object = None
     module = None
+
+    def has_permission(self, request):
+        return request.user.is_active and request.user.is_staff
 
     def get_success_url(self):
         if self.object.app_label:
@@ -92,6 +96,10 @@ class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
         return data
 
     def dispatch(self, request, *args, **kwargs):
+        if not self.has_permission(request):
+            index_path = reverse('admin:index')
+            return HttpResponseRedirect(index_path)
+
         self.object = self.get_object()
         self.module = self.get_module()(model=self.object)
         return super(UpdateDashboardModuleView, self).dispatch(request, *args, **kwargs)

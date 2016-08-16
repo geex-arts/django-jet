@@ -17,6 +17,9 @@ class UpdateDashboardModulesForm(forms.Form):
     def clean(self):
         data = super(UpdateDashboardModulesForm, self).clean()
 
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
+
         try:
             modules = json.loads(data['modules'])
 
@@ -65,6 +68,9 @@ class AddUserDashboardModuleForm(forms.ModelForm):
     def clean(self):
         data = super(AddUserDashboardModuleForm, self).clean()
 
+        if not self.request.user.is_authenticated():
+            raise ValidationError('error')
+
         if 'app_label' in data:
             index_dashboard_cls = get_current_dashboard('app_index' if data['app_label'] else 'index')
             index_dashboard = index_dashboard_cls({'request': self.request}, app_label=data['app_label'])
@@ -104,7 +110,7 @@ class UpdateDashboardModuleCollapseForm(forms.ModelForm):
     def clean(self):
         data = super(UpdateDashboardModuleCollapseForm, self).clean()
 
-        if self.instance.user != self.request.user.pk:
+        if not self.request.user.is_authenticated() or self.instance.user != self.request.user.pk:
             raise ValidationError('error')
 
         return data
@@ -122,7 +128,7 @@ class RemoveDashboardModuleForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(RemoveDashboardModuleForm, self).clean()
 
-        if self.instance.user != self.request.user.pk:
+        if not self.request.user.is_authenticated() or self.instance.user != self.request.user.pk:
             raise ValidationError('error')
 
         return cleaned_data
