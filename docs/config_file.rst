@@ -38,11 +38,6 @@ You can allow your users to change admin panel color scheme. This option will ad
             'title': 'Default' # theme title
         },
         {
-            'theme': 'violet',
-            'color': '#a464c4',
-            'title': 'Violet'
-        },
-        {
             'theme': 'green',
             'color': '#44b78b',
             'title': 'Green'
@@ -141,7 +136,7 @@ your own dashboard with custom modules and pre-installed layout.
 
 .. code:: python
 
-    JET_INDEX_DASHBOARD = 'jet.dashboard.DefaultIndexDashboard'
+    JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 
 JET_APP_INDEX_DASHBOARD
 -----------------------
@@ -150,5 +145,5 @@ Same as **JET_INDEX_DASHBOARD**, but for application pages
 
 .. code:: python
 
-    JET_APP_INDEX_DASHBOARD = 'jet.dashboard.DefaultAppIndexDashboard'
+    JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 
