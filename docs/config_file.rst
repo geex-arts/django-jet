@@ -133,6 +133,20 @@ If want to show all application's models use ``__all__`` keyword.
 
         python manage.py jet_custom_apps_example
 
+JET_CHANGE_FORM_SIBLING_LINKS
+-----------------------------
+
+.. image:: _static/change_form_sibling_links.png
+    :width: 100%
+
+Adds buttons to change forms that allows you to navigate to previous/next object without returning back to change list.
+Can be disabled if hit performance.
+
+.. code:: python
+
+    JET_CHANGE_FORM_SIBLING_LINKS = True
+
+Default is ``True``
 
 JET_INDEX_DASHBOARD
 -------------------
