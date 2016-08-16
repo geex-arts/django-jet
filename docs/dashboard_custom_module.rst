@@ -47,6 +47,9 @@ Example of ``dashboard_modules.py``:
     should be set, also ``store_children`` should return ``True``. You can validate loaded from database children
     in ``__init__`` method.
 
+.. image:: _static/dashboard_module_settings.png
+    :width: 100%
+
 Example of ``LinkList`` dashboard module which has custom settings and editable list of links:
 
     .. code-block:: python

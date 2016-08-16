@@ -8,11 +8,17 @@ Build-in dashboard modules
 LinkList
 --------
 
+.. image:: _static/dashboard_module_link_list.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.LinkList
    :members:
 
 AppList
 -------
+
+.. image:: _static/dashboard_module_app_list.png
+    :width: 100%
 
 .. autoclass:: jet.dashboard.modules.AppList
    :members:
@@ -20,17 +26,26 @@ AppList
 ModelList
 ---------
 
+.. image:: _static/dashboard_module_model_list.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.ModelList
    :members:
 
 RecentActions
 -------------
 
+.. image:: _static/dashboard_module_recent_actions.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.RecentActions
    :members:
 
 Feed
 ----
+
+.. image:: _static/dashboard_module_feed.png
+    :width: 100%
 
 .. autoclass:: jet.dashboard.modules.Feed
    :members:
@@ -40,6 +55,9 @@ Google Analytics widgets
 
 .. attention::
    Google Analytics widgets required extra setup
+
+.. image:: _static/dashboard_module_google_analytics.png
+    :width: 100%
 
 Extra Installation
 ------------------
@@ -94,6 +112,9 @@ Yandex Metrika widgets
 
 .. attention::
    Yandex Metrika widgets required extra setup
+
+.. image:: _static/dashboard_module_yandex_metrika.png
+    :width: 100%
 
 Extra Installation
 ------------------

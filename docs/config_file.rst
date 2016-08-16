@@ -27,6 +27,9 @@ To change theme use parameter:
 JET_THEMES
 ----------
 
+.. image:: _static/themes.png
+    :width: 100%
+
 You can allow your users to change admin panel color scheme. This option will add color scheme chooser to the user dropdown menu. Make ``JET_THEMES`` an empty list to disable this feature.
 
 .. code:: python
@@ -74,6 +77,9 @@ to start using your own theme.
 
 COMPACT MENU
 ------------
+
+.. image:: _static/side_menu_compact.png
+    :width: 100%
 
 If you don't have a lot of apps and models it can be annoying to have a two-level menu.
 In this case you can use menu's compact mode, which will list applications and models in the side menu without need
