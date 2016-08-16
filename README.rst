@@ -25,6 +25,18 @@ and applications without the provisions of the GPLv2.
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
+Why Django JET?
+===============
+
+* New fresh look
+* Responsive mobile interface
+* Useful admin home page
+* Minimal template overriding
+* Easy integration
+* Themes support
+* Autocompletion
+* Handy controls
+
 Screenshots
 ===========
 
