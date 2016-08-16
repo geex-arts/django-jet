@@ -12,36 +12,16 @@ About
     :height: 500px
     :scale: 50%
 
-Getting started
-===============
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
+   :caption: Documentation
 
    getting_started
-
-Configuration
-=============
-
-.. toctree::
-   :maxdepth: 2
-
    configuration
-
-Dashboard
-=========
-
-.. toctree::
-   :maxdepth: 2
-
    dashboard
-
-Dashboard API
-=============
-
-.. toctree::
-   :maxdepth: 2
-
    dashboard_api
 
 License
