@@ -41,8 +41,8 @@ License
 
 Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
 code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
-license (in this case please email at support@jet.geex-arts.com). The commercial license
-is designed for using Django JET in commercial products and applications without the provisions of the GPLv2.
+license (visit Home page). The commercial license is designed for using Django JET in commercial products and
+applications without the provisions of the GPLv2.
 
 Resources
 =========
@@ -72,7 +72,7 @@ Changelist
     :align: center
     :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
 
-Changeform + sidemenu
+Sidemenu
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3_720.png
     :alt: Screenshot #3
