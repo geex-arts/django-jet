@@ -36,6 +36,14 @@ Dashboard
 
    dashboard
 
+Dashboard API
+=============
+
+.. toctree::
+   :maxdepth: 2
+
+   dashboard_api
+
 License
 =======
 
