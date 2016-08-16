@@ -2,8 +2,12 @@
 Autocomplete
 ============
 
+
 By default Django JET renders all possible choices for select inputs. This behavior may be unwanted if number of
 available options is rather big. In this case Django JET allows you to load these options dynamically through AJAX.
+
+Configuration
+-------------
 
 In order to achieve this functionality all you have to do is:
 
@@ -60,3 +64,18 @@ Example from Django JET demo site:
 
 .. note::
     This work for both ForeignKey and ManyToManyField fields.
+
+Disabling autocomplete for form fields
+--------------------------------------
+
+Autocomplete is nice, but sometimes you don't want this behaviour (e.x. because you want to limit the provided
+queryset for a particular widget). In this case you can disable autocompletion this way:
+
+    .. code:: python
+
+        class YourForm(forms.ModelForm):
+            def __init__(self, *args, **kwargs):
+                super(YourForm, self).__init__(*args, **kwargs)
+                if SOME_CASE(self.instance):
+                    self.fields['FIELD_NAME'].autocomplete = False
+                    self.fields['FIELD_NAME'].queryset = Model.queryset.some_filter()
