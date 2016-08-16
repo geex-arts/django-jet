@@ -1,8 +1,8 @@
 =================
-Dashboard modules
+Dashboard Modules
 =================
 
-Build-in dashboard modules
+Build-In Dashboard Modules
 ==========================
 
 LinkList
@@ -50,7 +50,7 @@ Feed
 .. autoclass:: jet.dashboard.modules.Feed
    :members:
 
-Google Analytics widgets
+Google Analytics Widgets
 ========================
 
 .. attention::
@@ -81,7 +81,7 @@ Extra Installation
    from jet.dashboard.dashboard_modules import google_analytics_views
 
 
-Usage example
+Usage Example
 -------------
    .. code-block:: python
 
@@ -107,7 +107,7 @@ Usage example
 .. autoclass:: jet.dashboard.dashboard_modules.google_analytics.GoogleAnalyticsPeriodVisitors
    :members:
 
-Yandex Metrika widgets
+Yandex Metrika Widgets
 ======================
 
 .. attention::
@@ -133,7 +133,7 @@ Extra Installation
    from jet.dashboard.dashboard_modules import yandex_metrika_views
 
 
-Usage example
+Usage Example
 -------------
    .. code-block:: python
 

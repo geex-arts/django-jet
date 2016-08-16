@@ -65,7 +65,7 @@ Example from Django JET demo site:
 .. note::
     This work for both ForeignKey and ManyToManyField fields.
 
-Disabling autocomplete for form fields
+Disabling Autocomplete For Form Fields
 --------------------------------------
 
 Autocomplete is nice, but sometimes you don't want this behaviour (e.x. because you want to limit the provided

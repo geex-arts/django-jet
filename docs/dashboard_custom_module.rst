@@ -5,9 +5,9 @@ Custom Dashboard module
 
 In order create your own dashboard module you need to follow these steps:
 
-- Inherit :ref:`Dashboard Module <Dashboard Module>`
-- Create module template
-- *(optional) Add module views*
+* Inherit :ref:`Dashboard Module <Dashboard Module>`
+* Create module template
+* *(optional) Add module views*
 
 Also you can always see build-in modules as examples in ``jet/dashboard/modules.py`` file and
 ``jet/dashboard/dashboard_modules/`` directory on the repository.
@@ -16,12 +16,11 @@ Inherit Dashboard Module
 ------------------------
 
 
-- Create dashboard modules file ``dashboard_modules.py`` (or any other you prefer) inside your Django application
--
-    Create dashboard module class inherited from base :ref:`dashboard module <Dashboard Module>` class and add it to
-    ``dashboard_modules.py`` file. You can see list of all available module attributes :ref:`here <Dashboard Module>`.
-    ``init_with_context`` method allows you to load data and initialize module's state. You can store data in
-    module's fields as this instance will be passed to template.
+* Create dashboard modules file ``dashboard_modules.py`` (or any other you prefer) inside your Django application
+* Create dashboard module class inherited from base :ref:`dashboard module <Dashboard Module>` class and add it to
+  ``dashboard_modules.py`` file. You can see list of all available module attributes :ref:`here <Dashboard Module>`.
+  ``init_with_context`` method allows you to load data and initialize module's state. You can store data in
+  module's fields as this instance will be passed to template.
 
 Example of ``dashboard_modules.py``:
 
@@ -40,12 +39,11 @@ Example of ``dashboard_modules.py``:
             def init_with_context(self, context):
                 self.children = Ticket.objects.order_by('-date_add')[:self.limit]
 
--
-    Optionally you can add customizable module settings and content which will be seen in administration interface.
-    For customizable settings ``settings_form`` should be set, also ``settings_dict`` and ``load_settings`` methods
-    should be implemented. For customizable content items ``child_form``, ``child_name`` and ``child_name_plural``
-    should be set, also ``store_children`` should return ``True``. You can validate loaded from database children
-    in ``__init__`` method.
+* Optionally you can add customizable module settings and content which will be seen in administration interface.
+  For customizable settings ``settings_form`` should be set, also ``settings_dict`` and ``load_settings`` methods
+  should be implemented. For customizable content items ``child_form``, ``child_name`` and ``child_name_plural``
+  should be set, also ``store_children`` should return ``True``. You can validate loaded from database children
+  in ``__init__`` method.
 
 .. image:: _static/dashboard_module_settings.png
     :width: 100%
@@ -99,7 +97,7 @@ Example of ``LinkList`` dashboard module which has custom settings and editable 
             title = forms.CharField(label='Title')
             external = forms.BooleanField(label='External link', required=False)
 
-Create module template
+Create Module Template
 ----------------------
 
 Create template at path specified in module class. Module instance is passed to template as ``module`` variable
@@ -134,7 +132,7 @@ so you can get data directly from it.
         </ul>
 
 
-Add module views (optional)
+Add Module Views (Optional)
 ---------------------------
 
 If your dashboard module needs to have own views you can register them the following way and store for example
