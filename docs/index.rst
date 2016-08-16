@@ -23,6 +23,7 @@ Contents
    configuration
    dashboard
    dashboard_api
+   contribution
 
 License
 =======
