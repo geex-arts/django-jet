@@ -7,8 +7,6 @@
   text-align: right;
   padding: 0;
   margin: 0 0 20px 0;
-  position: relative;
-  z-index: 1;
 
   @include for-mobile {
     text-align: left;
@@ -41,6 +39,8 @@
 
   body.change-list & {
     float: right;
+    position: relative;
+    z-index: 1;
 
     @include for-mobile {
       float: none;
