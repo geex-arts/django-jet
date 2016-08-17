@@ -305,6 +305,10 @@
       margin-bottom: 20px;
     }
 
+    @include for-phone {
+      padding: 0 10px;
+    }
+
     &.initialized {
       display: inline-block;
 
