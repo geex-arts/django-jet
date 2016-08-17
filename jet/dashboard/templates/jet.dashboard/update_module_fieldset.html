@@ -6,7 +6,7 @@
             <div class="form-row{% if field.errors %} errors{% endif %}">
                 {{ field.errors }}
 
-                {% if field|is_checkbox %}
+                {% if field|jet_is_checkbox %}
                     {{ field }} <label{% if field.field.required %} class="required"{% endif %} for="{{ field.id_for_label }}">{{ field.label }}</label>
                 {% else %}
                     <label{% if field.field.required %} class="required"{% endif %} for="{{ field.id_for_label }}">{{ field.label }}:</label>

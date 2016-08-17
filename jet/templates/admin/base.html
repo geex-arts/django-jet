@@ -1,7 +1,7 @@
 {% load i18n static jet_tags %}<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
-{% get_current_theme as THEME %}
-{% get_current_jet_version as JET_VERSION %}
+{% jet_get_current_theme as THEME %}
+{% jet_get_current_version as JET_VERSION %}
 {% block html %}<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
 <head>
 <title>{% block title %}{% endblock %}</title>
@@ -19,9 +19,9 @@
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
 
 <script type="text/javascript" charset="utf-8">
-    var DATE_FORMAT = "{% get_date_format %}";
-    var TIME_FORMAT = "{% get_time_format %}";
-    var DATETIME_FORMAT = "{% get_datetime_format %}";
+    var DATE_FORMAT = "{% jet_get_date_format %}";
+    var TIME_FORMAT = "{% jet_get_time_format %}";
+    var DATETIME_FORMAT = "{% jet_get_datetime_format %}";
 </script>
 <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
 <script src="{% static "jet/js/build/bundle.min.js" %}"></script>
@@ -125,7 +125,7 @@
         </div>
     {% endif %}
 
-    {% get_side_menu_compact as SIDE_MENU_COMPACT %}
+    {% jet_get_side_menu_compact as SIDE_MENU_COMPACT %}
     {% if not is_popup %}
         <div class="related-popup-container scrollable">
             <a href="#" class="related-popup-back">
@@ -175,7 +175,7 @@
                 </div>
 
                 {% if user.is_active and user.is_staff %}
-                    {% get_menu as app_list %}
+                    {% jet_get_menu as app_list %}
                     {% if app_list.apps or app_list.pinned_apps %}
                         {% if SIDE_MENU_COMPACT %}
                             {% for app in app_list.all_apps %}
@@ -295,7 +295,7 @@
                         </div>
 
                         <div class="bookmarks-list">
-                            {% get_bookmarks user as bookmarks %}
+                            {% jet_get_bookmarks user as bookmarks %}
                             {% for bookmark in bookmarks %}
                                 <a href="{{ bookmark.url }}" class="sidebar-link bookmark-item">
                                     <span class="sidebar-right collapsible">
@@ -357,7 +357,7 @@
         </div>
     {% endif %}
 
-    {% get_themes as THEMES %}
+    {% jet_get_themes as THEMES %}
     {% if THEMES %}
         <li class="user-tools-contrast-block theme-chooser">
             <div class="user-tools-contrast-block-title">{% trans "current theme" %}</div>

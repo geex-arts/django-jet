@@ -21,22 +21,22 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_date_format():
+def jet_get_date_format():
     return get_format('DATE_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_time_format():
+def jet_get_time_format():
     return get_format('TIME_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_datetime_format():
+def jet_get_datetime_format():
     return get_format('DATETIME_INPUT_FORMATS')[0]
 
 
 @register.assignment_tag(takes_context=True)
-def get_menu(context):
+def jet_get_menu(context):
     if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
         app_list = get_app_list(context, False)
         app_dict = {}
@@ -105,19 +105,19 @@ def get_menu(context):
 
 
 @register.assignment_tag
-def get_bookmarks(user):
+def jet_get_bookmarks(user):
     if user is None:
         return None
     return Bookmark.objects.filter(user=user.pk)
 
 
-@register.filter(name='is_checkbox')
-def is_checkbox(field):
+@register.filter
+def jet_is_checkbox(field):
     return field.field.widget.__class__.__name__ == CheckboxInput().__class__.__name__
 
 
 @register.filter
-def select2_lookups(field):
+def jet_select2_lookups(field):
     if hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
         qs = field.field.queryset
         model = qs.model
@@ -166,7 +166,7 @@ def select2_lookups(field):
 
 
 @register.assignment_tag(takes_context=True)
-def get_current_theme(context):
+def jet_get_current_theme(context):
     if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
         theme = context['request'].COOKIES['JET_THEME']
         if isinstance(settings.JET_THEMES, list) and len(settings.JET_THEMES) > 0:
@@ -177,12 +177,12 @@ def get_current_theme(context):
 
 
 @register.assignment_tag
-def get_themes():
+def jet_get_themes():
     return settings.JET_THEMES
 
 
 @register.assignment_tag
-def get_current_jet_version():
+def jet_get_current_version():
     return VERSION
 
 
@@ -195,7 +195,7 @@ def jet_append_version(url):
 
 
 @register.assignment_tag
-def get_side_menu_compact():
+def jet_get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
 
 
