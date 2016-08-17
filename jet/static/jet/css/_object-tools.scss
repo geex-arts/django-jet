@@ -3,13 +3,17 @@
 /* OBJECT TOOLS */
 
 .object-tools {
-  display: block;
+  display: none;
   text-align: right;
   padding: 0;
   margin: 0 0 20px 0;
 
   @include for-mobile {
     text-align: left;
+  }
+
+  &.initialized {
+    display: block;
   }
 
   .form-row & {
