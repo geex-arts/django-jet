@@ -154,8 +154,14 @@
       margin-right: 5px;
     }
 
-    .select2-container--jet {
-      min-width: 100px;
+    @include for-phone {
+      width: 100%;
+    }
+
+    .select2 {
+      @include for-phone {
+        width: 100% !important;
+      }
     }
   }
 }
