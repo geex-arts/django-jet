@@ -314,6 +314,14 @@ def get_current_jet_version():
     return VERSION
 
 
+@register.filter
+def jet_append_version(url):
+    if '?' in url:
+        return '%s&v=%s' % (url, VERSION)
+    else:
+        return '%s?v=%s' % (url, VERSION)
+
+
 @register.assignment_tag
 def get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
