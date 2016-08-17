@@ -28,10 +28,24 @@
     display: inline-block;
     margin-left: 5px;
     margin-bottom: 5px;
+    list-style-type: none;
+    vertical-align: top;
 
     @include for-mobile {
       margin-left: 0;
       margin-right: 5px;
+    }
+  }
+
+  body.change-list & {
+    float: right;
+
+    @include for-mobile {
+      float: none;
+    }
+
+    li {
+      display: list-item;
     }
   }
 
