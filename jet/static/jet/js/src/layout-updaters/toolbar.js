@@ -5,6 +5,16 @@ var ToolbarUpdater = function($changelist) {
 };
 
 ToolbarUpdater.prototype = {
+    getToolbar: function($changelist) {
+        var $toolbar = $changelist.find('#toolbar');
+
+        if ($toolbar.length == 0) {
+            $toolbar = $('<div>').attr('id', 'toolbar');
+            $('#changelist').prepend($toolbar);
+        }
+
+        return $toolbar;
+    },
     updateToolbar: function($toolbar) {
         var placeholder = $toolbar.find('input[type="submit"]').val();
         $toolbar.find('#searchbar').attr('placeholder', placeholder);
@@ -80,7 +90,7 @@ ToolbarUpdater.prototype = {
         });
     },
     run: function() {
-        var $toolbar = this.$changelist.find('#toolbar');
+        var $toolbar = this.getToolbar(this.$changelist);
 
         try {
             this.updateToolbar($toolbar);
