@@ -9,7 +9,7 @@ var UserToolsUpdater = function($usertools) {
 
 UserToolsUpdater.prototype = {
     updateUserTools: function($usertools) {
-        var $list = $('<ul>');
+        var $list = $('<ul>').addClass('sidebar-dependent');
         var user = $usertools.find('strong').first().text();
 
         $('<li>')

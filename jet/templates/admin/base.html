@@ -135,16 +135,16 @@
             <span class="icon-refresh loading-indicator"></span>
         </div>
 
-        <div class="sidebar-header sidebar-dependent">
-            <a href="#" class="sidebar-header-menu sidebar-toggle">
-                <span class="sidebar-header-menu-icon icon-menu"></span>
-            </a>
+        <div class="sidebar-header-wrapper sidebar-dependent">
+            <div class="sidebar-header sidebar-dependent">
+                <a href="#" class="sidebar-header-menu sidebar-toggle">
+                    <span class="sidebar-header-menu-icon icon-menu"></span>
+                    <span class="sidebar-header-menu-icon icon-cross"></span>
+                </a>
+            </div>
         </div>
         <div class="sidebar sidebar-dependent">
             <div class="sidebar-wrapper scrollable">
-                <a href="#" class="sidebar-close sidebar-toggle">
-                    <span class="sidebar-close-icon icon-arrow-left"></span>
-                </a>
                 <div class="sidebar-section">
                     {% if user.is_active and user.is_staff %}
                         <a href="{% url 'admin:index' %}" class="sidebar-link icon">

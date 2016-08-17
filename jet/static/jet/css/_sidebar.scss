@@ -13,12 +13,14 @@
   padding-bottom: 32px;
 
   @include for-mobile {
-    min-width: 280px;
-    max-width: 360px;
-    width: 80%;
+    width: 360px;
     padding-bottom: 0;
     transform: translate3d(-100%, 0, 0);
     transition: transform $transitions-duration cubic-bezier(0, 0.5, 0.5, 1);
+  }
+
+  @include for-phone {
+    width: 80%;
   }
 
   &.sidebar-opened {
@@ -29,23 +31,41 @@
   }
 
   &-header {
-    display: none;
-    background-color: $sidebar-background-color;
-    color: $sidebar-text-color;
     height: $sidebar-header-height;
     line-height: $sidebar-header-height;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 3;
-    transition: background-color $transitions-duration, transform $transitions-duration;
+    transition: transform $transitions-duration;
 
-    @include for-mobile {
-      display: block;
+    &.sidebar-opened {
+      @include for-mobile {
+        transform: translate3d(360px, 0, 0);
+      }
 
-      body.scroll-to-bottom & {
-        transform: translate3d(0, -100%, 0);
+      @include for-phone {
+        transform: translate3d(80%, 0, 0);
+      }
+    }
+
+    &-wrapper {
+      display: none;
+      background-color: $sidebar-background-color;
+      color: $sidebar-text-color;
+      position: fixed;
+      top: 0;
+      right: 0;
+      left: 0;
+      z-index: 3;
+      transition: background-color $transitions-duration, transform $transitions-duration;
+
+      @include for-mobile {
+        display: block;
+
+        body.scroll-to-bottom & {
+          transform: translate3d(0, -100%, 0);
+        }
+      }
+
+      &.sidebar-opened {
+        background-color: $sidebar-contrast-background-color;
       }
     }
 
@@ -63,37 +83,22 @@
       &-icon {
         font-size: 16px;
         vertical-align: middle;
+
+        &.icon-cross {
+          display: none;
+          font-size: 20px;
+        }
       }
     }
-  }
 
-  &-close {
-    display: none;
-    position: absolute;
-    right: 0;
-    padding: 4px;
-    margin: 12px 18px 0 12px;
-    background: $sidebar-contrast-background-color;
-    border-radius: 5px;
-    z-index: 1;
+    &.sidebar-opened &-menu-icon {
+      &.icon-menu {
+        display: none;
+      }
 
-    @include for-mobile {
-      display: inline-block;
-    }
-
-    &.popup {
-      background-color: $sidebar-popup-search-input-background-color;
-    }
-
-    &-icon {
-      color: $sidebar-action-color;
-      font-size: 28px;
-      font-weight: bold;
-      vertical-align: middle;
-    }
-
-    &.popup &-icon {
-      color: $sidebar-popup-search-input-text-color;
+      &.icon-cross {
+        display: inline;
+      }
     }
   }
 
