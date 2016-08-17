@@ -165,27 +165,6 @@ def select2_lookups(field):
     return field
 
 
-@register.simple_tag(takes_context=True)
-def jet_add_preserved_filters(context, url, popup=False, to_field=None):
-    try:
-        from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
-        try:
-            return add_preserved_filters(context, url, popup, to_field)
-        except TypeError:
-            return add_preserved_filters(context, url, popup)  # old django
-    except ImportError:
-        return url
-
-
-@register.assignment_tag
-def format_current_language(language):
-    language = language.replace('_', '-').lower()
-    split = language.split('-', 2)
-    if len(split) == 2:
-        language = split[0] + '-' + split[1].upper() if split[0] != split[1] else split[0]
-    return language
-
-
 @register.assignment_tag(takes_context=True)
 def get_current_theme(context):
     if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
