@@ -8,7 +8,7 @@ Changelog
 * More documentation added
 * Improved object tools and toolbar arrangement
 * Fixed change list footer misplacement
-* Fix chromium sidebar scrollbar misplacement
+* Fixed chromium sidebar scrollbar misplacement
 * Remove unused tags
 * Prefixed JET template tags
 * Fixed jet_custom_apps_example command
