@@ -66,6 +66,7 @@
 
       &.sidebar-opened {
         background-color: $sidebar-contrast-background-color;
+        transform: none !important;
       }
     }
 
