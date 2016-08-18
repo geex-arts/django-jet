@@ -1,18 +1,14 @@
 from __future__ import unicode_literals
 import json
 import os
-import django
 from django import template
 from django.core.urlresolvers import reverse
-from django.db.models import OneToOneField
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
-from django.template import loader, Context
 from django.utils.safestring import mark_safe
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
-import re
 from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes
 
 try:
@@ -25,120 +21,22 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_date_format():
+def jet_get_date_format():
     return get_format('DATE_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_time_format():
+def jet_get_time_format():
     return get_format('TIME_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_datetime_format():
+def jet_get_datetime_format():
     return get_format('DATETIME_INPUT_FORMATS')[0]
 
 
-@register.tag
-def format_breadcrumbs(parser, token):
-    nodelist = parser.parse(('endformat_breadcrumbs',))
-    parser.delete_first_token()
-    return FormatBreadcrumbsNode(nodelist)
-
-
-class FormatBreadcrumbsNode(template.Node):
-    def __init__(self, nodelist):
-        self.nodelist = nodelist
-
-    def render(self, context):
-        output = self.nodelist.render(context)
-
-        regex = re.compile('<[^!(a>)]([^>]|\n)*[^!(/a)]>', re.IGNORECASE)
-        clean = re.sub(regex, '', output)
-        clean = clean.replace('\u203A', '&rsaquo;')
-        items = clean.split('&rsaquo;')
-
-        items = map(lambda i: i.strip(), items)
-        items = filter(None, items)
-
-        t = loader.get_template('admin/breadcrumbs.html')
-        c = {'items': items}
-
-        if django.VERSION[:2] < (1, 9):
-            c = Context(c)
-
-        return t.render(c)
-
-
-@register.assignment_tag
-def filter_fieldsets_with_errors(fieldsets):
-    i = 0
-    fieldsets_with_errors = list()
-
-    for fieldset in fieldsets:
-        errors = False
-
-        for line in fieldset:
-            for field in line:
-                if hasattr(field.field, 'errors') and len(field.field.errors) > 0:
-                    errors = True
-                    break
-            if errors:
-                break
-
-        if errors:
-            fieldsets_with_errors.append(i)
-
-        i += 1
-
-    return fieldsets_with_errors
-
-
-@register.assignment_tag
-def is_fieldset_selected(fieldset_index, fieldsets_with_errors):
-    if len(fieldsets_with_errors) == 0:
-        return fieldset_index == 0
-    else:
-        return fieldset_index == fieldsets_with_errors[0]
-
-
-@register.assignment_tag
-def is_fieldset_with_errors(fieldset_index, fieldsets_with_errors):
-    return fieldset_index in fieldsets_with_errors
-
-
-@register.assignment_tag
-def formset_has_errors(formset):
-    if formset is None or getattr(formset, 'errors') is None:
-        return False
-    for errors in formset.errors:
-        if errors:
-            return True
-    return False
-
-
-@register.filter
-def get_type(value):
-    return type(value).__name__
-
-
-@register.filter
-def format_deletable_object(deletable_object):
-    item = None
-    items = []
-
-    for object in deletable_object:
-        if type(object) != list:
-            item = {'text': object}
-            items.append(item)
-        elif item is not None:
-            item['list'] = object
-
-    return items
-
-
 @register.assignment_tag(takes_context=True)
-def get_menu(context):
+def jet_get_menu(context):
     if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
         app_list = get_app_list(context, False)
         app_dict = {}
@@ -207,19 +105,19 @@ def get_menu(context):
 
 
 @register.assignment_tag
-def get_bookmarks(user):
+def jet_get_bookmarks(user):
     if user is None:
         return None
     return Bookmark.objects.filter(user=user.pk)
 
 
-@register.filter(name='is_checkbox')
-def is_checkbox(field):
+@register.filter
+def jet_is_checkbox(field):
     return field.field.widget.__class__.__name__ == CheckboxInput().__class__.__name__
 
 
 @register.filter
-def select2_lookups(field):
+def jet_select2_lookups(field):
     if hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
         qs = field.field.queryset
         model = qs.model
@@ -267,34 +165,8 @@ def select2_lookups(field):
     return field
 
 
-@register.simple_tag(takes_context=True)
-def jet_add_preserved_filters(context, url, popup=False, to_field=None):
-    try:
-        from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
-        try:
-            return add_preserved_filters(context, url, popup, to_field)
-        except TypeError:
-            return add_preserved_filters(context, url, popup)  # old django
-    except ImportError:
-        return url
-
-
-@register.filter()
-def if_onetoone(formset):
-    return getattr(formset, 'fk') and isinstance(formset.fk, OneToOneField)
-
-
-@register.assignment_tag
-def format_current_language(language):
-    language = language.replace('_', '-').lower()
-    split = language.split('-', 2)
-    if len(split) == 2:
-        language = split[0] + '-' + split[1].upper() if split[0] != split[1] else split[0]
-    return language
-
-
 @register.assignment_tag(takes_context=True)
-def get_current_theme(context):
+def jet_get_current_theme(context):
     if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
         theme = context['request'].COOKIES['JET_THEME']
         if isinstance(settings.JET_THEMES, list) and len(settings.JET_THEMES) > 0:
@@ -305,17 +177,25 @@ def get_current_theme(context):
 
 
 @register.assignment_tag
-def get_themes():
+def jet_get_themes():
     return settings.JET_THEMES
 
 
 @register.assignment_tag
-def get_current_jet_version():
+def jet_get_current_version():
     return VERSION
 
 
+@register.filter
+def jet_append_version(url):
+    if '?' in url:
+        return '%s&v=%s' % (url, VERSION)
+    else:
+        return '%s?v=%s' % (url, VERSION)
+
+
 @register.assignment_tag
-def get_side_menu_compact():
+def jet_get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
 
 

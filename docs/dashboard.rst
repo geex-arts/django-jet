@@ -7,4 +7,4 @@ Dashboard
 
    dashboard_getting_started
    dashboard_modules
-   dashboard_base
+   dashboard_custom_module

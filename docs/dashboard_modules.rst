@@ -1,12 +1,15 @@
 =================
-Dashboard modules
+Dashboard Modules
 =================
 
-Build-in dashboard modules
+Build-In Dashboard Modules
 ==========================
 
 LinkList
 --------
+
+.. image:: _static/dashboard_module_link_list.png
+    :width: 100%
 
 .. autoclass:: jet.dashboard.modules.LinkList
    :members:
@@ -14,11 +17,17 @@ LinkList
 AppList
 -------
 
+.. image:: _static/dashboard_module_app_list.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.AppList
    :members:
 
 ModelList
 ---------
+
+.. image:: _static/dashboard_module_model_list.png
+    :width: 100%
 
 .. autoclass:: jet.dashboard.modules.ModelList
    :members:
@@ -26,20 +35,29 @@ ModelList
 RecentActions
 -------------
 
+.. image:: _static/dashboard_module_recent_actions.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.RecentActions
    :members:
 
 Feed
 ----
 
+.. image:: _static/dashboard_module_feed.png
+    :width: 100%
+
 .. autoclass:: jet.dashboard.modules.Feed
    :members:
 
-Google Analytics widgets
+Google Analytics Widgets
 ========================
 
 .. attention::
    Google Analytics widgets required extra setup
+
+.. image:: _static/dashboard_module_google_analytics.png
+    :width: 100%
 
 Extra Installation
 ------------------
@@ -63,7 +81,7 @@ Extra Installation
    from jet.dashboard.dashboard_modules import google_analytics_views
 
 
-Usage example
+Usage Example
 -------------
    .. code-block:: python
 
@@ -89,11 +107,14 @@ Usage example
 .. autoclass:: jet.dashboard.dashboard_modules.google_analytics.GoogleAnalyticsPeriodVisitors
    :members:
 
-Yandex Metrika widgets
+Yandex Metrika Widgets
 ======================
 
 .. attention::
    Yandex Metrika widgets required extra setup
+
+.. image:: _static/dashboard_module_yandex_metrika.png
+    :width: 100%
 
 Extra Installation
 ------------------
@@ -112,7 +133,7 @@ Extra Installation
    from jet.dashboard.dashboard_modules import yandex_metrika_views
 
 
-Usage example
+Usage Example
 -------------
    .. code-block:: python
 

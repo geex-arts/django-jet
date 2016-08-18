@@ -39,12 +39,12 @@ ChangeList.prototype = {
         this.updateFixedHeaderWidth($fixedHeader, $originalHeader);
     },
     updateFixedFooter: function($results, $footer) {
-        if ($(window).scrollTop() + $(window).height() - $footer.outerHeight(false) < $results.offset().top + $results.outerHeight(false)) {
+        if ($(window).scrollTop() + $(window).height() < $results.offset().top + $results.outerHeight(false) + $footer.innerHeight()) {
             if (!$footer.hasClass('fixed')) {
                 var previousScrollTop = $(window).scrollTop();
 
                 $footer.addClass('fixed');
-                $results.css('margin-bottom', ($footer.outerHeight(false) - 20 - 2) + 'px');
+                $results.css('margin-bottom', ($footer.innerHeight()) + 'px');
 
                 $(window).scrollTop(previousScrollTop);
             }

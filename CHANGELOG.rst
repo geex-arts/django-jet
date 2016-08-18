@@ -1,6 +1,24 @@
 Changelog
 =========
 
+0.9.1
+-----
+* Mobile UX improved
+* Refactored and optimized locale files
+* More documentation added
+* Improved object tools and toolbar arrangement
+* Fixed change list footer misplacement
+* Fix chromium sidebar scrollbar misplacement
+* Remove unused tags
+* Prefixed JET template tags
+* Fixed jet_custom_apps_example command
+* Fixed Django 1.6 user tools permission check
+* Issue-93: Fixed static urls version appending (thanks to kbruner32 for report)
+* Fixed Django 1.6 line.has_visible_field field
+* Updated default dashboard action list style
+* Added Django 1.10.0 tests
+
+
 0.9.0
 -----
 * Almost complete layout rewrite with only 3 template overrides

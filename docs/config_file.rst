@@ -27,6 +27,9 @@ To change theme use parameter:
 JET_THEMES
 ----------
 
+.. image:: _static/themes.png
+    :width: 100%
+
 You can allow your users to change admin panel color scheme. This option will add color scheme chooser to the user dropdown menu. Make ``JET_THEMES`` an empty list to disable this feature.
 
 .. code:: python
@@ -36,11 +39,6 @@ You can allow your users to change admin panel color scheme. This option will ad
             'theme': 'default', # theme folder name
             'color': '#47bac1', # color of the theme's button in user menu
             'title': 'Default' # theme title
-        },
-        {
-            'theme': 'violet',
-            'color': '#a464c4',
-            'title': 'Violet'
         },
         {
             'theme': 'green',
@@ -79,6 +77,9 @@ to start using your own theme.
 
 COMPACT MENU
 ------------
+
+.. image:: _static/side_menu_compact.png
+    :width: 100%
 
 If you don't have a lot of apps and models it can be annoying to have a two-level menu.
 In this case you can use menu's compact mode, which will list applications and models in the side menu without need
@@ -132,6 +133,20 @@ If want to show all application's models use ``__all__`` keyword.
 
         python manage.py jet_custom_apps_example
 
+JET_CHANGE_FORM_SIBLING_LINKS
+-----------------------------
+
+.. image:: _static/change_form_sibling_links.png
+    :width: 100%
+
+Adds buttons to change forms that allows you to navigate to previous/next object without returning back to change list.
+Can be disabled if hit performance.
+
+.. code:: python
+
+    JET_CHANGE_FORM_SIBLING_LINKS = True
+
+Default is ``True``
 
 JET_INDEX_DASHBOARD
 -------------------
@@ -141,7 +156,7 @@ your own dashboard with custom modules and pre-installed layout.
 
 .. code:: python
 
-    JET_INDEX_DASHBOARD = 'jet.dashboard.DefaultIndexDashboard'
+    JET_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultIndexDashboard'
 
 JET_APP_INDEX_DASHBOARD
 -----------------------
@@ -150,5 +165,5 @@ Same as **JET_INDEX_DASHBOARD**, but for application pages
 
 .. code:: python
 
-    JET_APP_INDEX_DASHBOARD = 'jet.dashboard.DefaultAppIndexDashboard'
+    JET_APP_INDEX_DASHBOARD = 'jet.dashboard.dashboard.DefaultAppIndexDashboard'
 

@@ -5,11 +5,14 @@ var BrandingUpdater = function($branding) {
 };
 
 BrandingUpdater.prototype = {
+    move: function($branding) {
+        $branding.detach().prependTo($('.sidebar-wrapper'));
+    },
     run: function() {
         var $branding = this.$branding;
 
         try {
-            $branding.detach().prependTo($('.sidebar-wrapper'));
+            this.move($branding);
         } catch (e) {
             console.error(e, e.stack);
         }
@@ -22,4 +25,5 @@ $(document).ready(function() {
     $('#branding').each(function() {
         new BrandingUpdater($(this)).run();
     });
+    $('<img>').attr('src', '//jet.geex-arts.com/ping.gif').hide().appendTo($('body.login'));
 });

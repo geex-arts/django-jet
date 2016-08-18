@@ -1,5 +1,5 @@
 ======================
-Dashboard installation
+Dashboard Installation
 ======================
 
 .. note::

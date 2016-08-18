@@ -182,6 +182,7 @@ p img, h1 img, h2 img, h3 img, h4 img, td img {
 
 .quiet, a.quiet:link, a.quiet:visited {
   font-weight: normal;
+  color: $dim-text-color;
 }
 
 .float-right {
