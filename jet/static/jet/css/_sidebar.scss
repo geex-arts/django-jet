@@ -104,13 +104,11 @@
 
   &-close {
     display: none;
-    position: absolute;
-    right: 0;
+    float: right;
     padding: 4px;
     margin: 12px 18px 0 12px;
     background-color: $sidebar-popup-search-input-background-color;
     border-radius: 5px;
-    z-index: 1;
 
     @include for-mobile {
       display: inline-block;
@@ -457,7 +455,7 @@
       white-space: nowrap;
 
       @include for-mobile {
-        padding: 24px 20px;
+        padding: 24px 0 24px 20px;
         margin-bottom: 0;
         font-size: 14px;
       }
