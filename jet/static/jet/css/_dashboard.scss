@@ -72,10 +72,15 @@
 ul.actionlist li {
   padding: 8px;
   list-style-type: none;
+  font-size: 13px;
+  border-bottom: 1px solid $content-border-color;
+  white-space: normal;
   overflow: hidden;
   text-overflow: ellipsis;
-  -o-text-overflow: ellipsis;
-  border-bottom: 1px solid $content-border-color;
+
+  br {
+    display: none;
+  }
 }
 
 /* JET DASHBOARD */
