@@ -12,6 +12,7 @@ Any custom **Dashboard** class should inherit ``jet.dashboard.dashboard.Dashboar
 and use ``init_with_context`` to fill it with widgets. You should add your widgets
 to ``children`` and ``available_children`` attributes.
 
+Before continue make sure you have completed :doc:`install_dashboard`.
 
 Set Up Custom Dashboard
 -----------------------

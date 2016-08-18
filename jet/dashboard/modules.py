@@ -16,14 +16,22 @@ class DashboardModule(object):
     #: Path to widget's template. There is no need to extend such templates from any base templates.
     template = 'jet.dashboard/module.html'
     enabled = True
+
+    #: Specify if module can be draggable or has static position.
     draggable = True
+
+    #: Specify if module can be collapsed.
     collapsible = True
+
+    #: Specify if module can be deleted.
     deletable = True
     show_title = True
 
     #: Default widget title that will be displayed for widget in the dashboard. User can change it later
     #: for every widget.
     title = ''
+
+    #: Specify title url. ``None`` if title shouldn't be clickable.
     title_url = None
     css_classes = None
 
@@ -39,7 +47,11 @@ class DashboardModule(object):
 
     #: A ``django.forms.Form`` class which may contain custom widget child settings, if it has any. Not required.
     child_form = None
+
+    #: Child name that will be displayed when editing module contents. Required if ``child_form`` set.
     child_name = None
+
+    #: Same as child name, but plural.
     child_name_plural = None
     settings = None
     column = None
@@ -78,15 +90,25 @@ class DashboardModule(object):
         return self.__module__ + "." + self.__class__.__name__
 
     def load_settings(self, settings):
+        """
+        Should be implemented to restore saved in database settings. Required if you have custom settings.
+        """
         pass
 
     def load_children(self, children):
         self.children = children
 
     def store_children(self):
+        """
+        Specify if children field should be saved to database.
+        """
         return False
 
     def settings_dict(self):
+        """
+        Should be implemented to save settings to database. This method should return ``dict`` which will be serialized
+        using ``json``. Required if you have custom settings.
+        """
         pass
 
     def dump_settings(self, settings=None):
@@ -120,6 +142,9 @@ class DashboardModule(object):
                 pass
 
     def init_with_context(self, context):
+        """
+        Allows you to load data and initialize module's state.
+        """
         pass
 
     def get_context_data(self):

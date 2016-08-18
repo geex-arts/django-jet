@@ -10,6 +10,7 @@ class Command(NoArgsCommand):
         class User:
             is_active = True
             is_staff = True
+            is_superuser = True
 
             def has_module_perms(self, app):
                 return True

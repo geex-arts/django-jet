@@ -20,6 +20,7 @@
     text-overflow: ellipsis;
     overflow: hidden;
     max-width: 100%;
+    box-sizing: border-box;
     appearance: none;
     transition: background $transitions-duration;
   }

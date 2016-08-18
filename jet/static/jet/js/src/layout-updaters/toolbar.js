@@ -10,14 +10,10 @@ ToolbarUpdater.prototype = {
 
         if ($toolbar.length == 0) {
             $toolbar = $('<div>').attr('id', 'toolbar');
-            $('#content-main').prepend($toolbar);
+            $('#changelist').prepend($toolbar);
         }
 
         return $toolbar;
-    },
-    moveToolbar: function($toolbar) {
-        $toolbar.remove();
-        $('#content-main').prepend($toolbar);
     },
     updateToolbar: function($toolbar) {
         var placeholder = $toolbar.find('input[type="submit"]').val();
@@ -78,7 +74,7 @@ ToolbarUpdater.prototype = {
         $('#content-main').each(function() {
             var $content = $(this);
 
-            $.each(['.object-tools', '#toolbar', 'changeform-navigation'], function(i, selector) {
+            $.each(['#toolbar', '.object-tools', 'changeform-navigation'], function(i, selector) {
                 var $element = $content.find(selector).first();
 
                 if ($element.length == 0) {
@@ -97,7 +93,6 @@ ToolbarUpdater.prototype = {
         var $toolbar = this.getToolbar(this.$changelist);
 
         try {
-            this.moveToolbar($toolbar);
             this.updateToolbar($toolbar);
             this.moveFilters(this.$changelist, $toolbar);
         } catch (e) {

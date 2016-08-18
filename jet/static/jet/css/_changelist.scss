@@ -88,7 +88,6 @@
 /* TOOLBAR */
 
 #toolbar {
-  float: left;
   margin-bottom: 20px;
   display: none;
 
@@ -106,13 +105,12 @@
     }
 
     #searchbar {
-      margin-bottom: 2px;
+      margin-bottom: 5px;
       margin-right: 2px;
       vertical-align: top;
 
       @include for-mobile {
         margin-right: 5px;
-        margin-bottom: 5px;
       }
 
       @include for-phone {
@@ -129,6 +127,7 @@
         padding: 0 20px;
         text-transform: uppercase;
         vertical-align: middle;
+        margin-bottom: 5px;
       }
 
       &:hover, &:focus {
@@ -147,16 +146,22 @@
 .changelist-filter-select {
   &-wrapper {
     margin-right: 2px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
     display: inline-block;
+    vertical-align: top;
 
     @include for-mobile {
       margin-right: 5px;
-      margin-bottom: 5px;
     }
 
-    .select2-container--jet {
-      min-width: 100px;
+    @include for-phone {
+      width: 100%;
+    }
+
+    .select2 {
+      @include for-phone {
+        width: 100% !important;
+      }
     }
   }
 }
@@ -304,6 +309,10 @@
     @include for-mobile {
       float: none;
       margin-bottom: 20px;
+    }
+
+    @include for-phone {
+      padding: 0 10px;
     }
 
     &.initialized {

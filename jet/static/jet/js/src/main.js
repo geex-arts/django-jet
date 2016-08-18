@@ -8,6 +8,7 @@ require('./layout-updaters/actions');
 require('./layout-updaters/breadcrumbs');
 require('./layout-updaters/paginator');
 require('./layout-updaters/toolbar');
+require('./layout-updaters/object-tools');
 require('./layout-updaters/user-tools');
 require('./layout-updaters/changeform-tabs');
 require('./layout-updaters/tabular-inline');

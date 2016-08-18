@@ -303,6 +303,10 @@ fieldset.monospace textarea {
     margin-bottom: 10px;
   }
 
+  @include for-phone {
+    padding: 0 10px;
+  }
+
   input {
     &, &:visited, &:hover {
       margin: 0 5px 5px 0;
@@ -445,7 +449,11 @@ body.popup .submit-row {
 }
 
 .vURLField {
-  width: 30em;
+  width: 26em;
+
+  @include for-phone {
+    width: 100%;
+  }
 }
 
 .vLargeTextField, .vXMLLargeTextField {
