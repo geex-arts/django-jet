@@ -17,14 +17,15 @@ Checkboxes.prototype = {
     },
     addLabelToCheckboxes: function() {
         var self = this;
-        var $containers = $('.action-checkbox, .action-checkbox-column, .tabular.inline-related .form-row');
-        var $checkboxes = $containers
-            .find('input[type="checkbox"]')
-            .add('.checkbox-without-label')
-            .add('label > input[type="checkbox"]');
 
-        $checkboxes.each(function() {
-            self.addLabelToCheckbox($(this));
+        $('input[type="checkbox"]').each(function() {
+            var $checkbox = $(this);
+
+            if ($checkbox.attr('id') != undefined && $('label[for="' + $checkbox.attr('id') + '"').length != 0) {
+                return;
+            }
+
+            self.addLabelToCheckbox($checkbox);
         });
     },
     run: function() {
