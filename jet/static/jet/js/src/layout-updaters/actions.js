@@ -32,8 +32,10 @@ ActionsUpdater.prototype = {
         $actions.detach();
         $paginator.detach();
 
-        $wrapper.append($actions);
-        $wrapper.append($paginator);
+        $wrapper
+            .append($actions)
+            .append($paginator)
+            .append($('<div>').addClass('cf'));
     },
     run: function() {
         var $actions = this.$changelist.find('.actions');
