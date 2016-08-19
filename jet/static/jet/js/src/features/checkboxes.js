@@ -21,7 +21,7 @@ Checkboxes.prototype = {
         $('input[type="checkbox"]').each(function() {
             var $checkbox = $(this);
 
-            if ($checkbox.attr('id') != undefined && $('label[for="' + $checkbox.attr('id') + '"').length != 0) {
+            if ($checkbox.attr('id') != undefined && $('label[for="' + $checkbox.attr('id') + '"]').length != 0) {
                 return;
             }
 
