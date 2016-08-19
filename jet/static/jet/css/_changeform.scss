@@ -536,6 +536,7 @@ body.popup .submit-row {
       display: inline-block;
       background: $content-contrast2-background-color;
       color: $content-contrast2-text-color;
+      margin-right: 10px;
       padding: 4px 8px;
       border-radius: 5px;
       font-size: 10px;
@@ -548,13 +549,12 @@ body.popup .submit-row {
       vertical-align: middle;
 
       @include for-mobile {
-        margin-right: 10px;
         line-height: normal;
       }
 
       ~ .inlinechangelink, ~ .inlineviewlink {
         font-size: 18px;
-        margin-left: 10px;
+        margin-right: 10px;
         vertical-align: middle;
 
         &:before {
