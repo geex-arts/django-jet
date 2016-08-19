@@ -12,6 +12,11 @@ ul.messagelist {
     border-radius: 6px;
     padding: 10px;
 
+    @include for-phone {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
     &.success {
       background: $success-color;
       color: $success-text-color;
