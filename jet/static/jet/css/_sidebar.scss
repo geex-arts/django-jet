@@ -285,8 +285,12 @@
         html.touchevents & {
           position: static;
           padding: 6px;
-          margin-top: 6px;
+          margin-top: 2px;
           font-size: 18px;
+
+          @include for-mobile {
+            margin-top: 6px;
+          }
         }
       }
 
