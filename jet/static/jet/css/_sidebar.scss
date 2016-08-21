@@ -497,6 +497,8 @@
       list-style: none;
 
       &-item {
+        display: block;
+
         a, a:visited, a:hover {
           color: $sidebar-popup-link-text-color;
           padding: 8px 20px;
