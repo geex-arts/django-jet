@@ -1,6 +1,6 @@
-===============
-Getting Started
-===============
+================
+Custom Dashboard
+================
 
 .. note::
    Django JET Dashboard tries to be as compatible as possible with django-admin-tools dashboard so that
@@ -63,4 +63,4 @@ Set Up Custom Dashboard
 
 That's all, now you have dashboard with only one widget - ``LinkList``. Dashboard reset may be needed
 if your had another dashboard already rendered for any user. Visit :doc:`dashboard_modules` to learn
-other widgets you can add to your custom dashboard or create your own.
+other widgets you can add to your custom dashboard or :doc:`dashboard_custom_module` to create your own.
