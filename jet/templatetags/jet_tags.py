@@ -219,7 +219,8 @@ def jet_sibling_object_url(context, next):
     model = type(original)
     preserved_filters_plain = context.get('preserved_filters', '')
     preserved_filters = dict(parse_qsl(preserved_filters_plain))
-    queryset = get_model_queryset(model, preserved_filters=preserved_filters)
+    admin_site = get_admin_site(context)
+    queryset = get_model_queryset(admin_site, model, preserved_filters=preserved_filters)
 
     sibling_object = None
     object_pks = list(queryset.values_list('pk', flat=True))
@@ -235,7 +236,8 @@ def jet_sibling_object_url(context, next):
     if sibling_object is None:
         return
 
-    url = reverse('admin:%s_%s_change' % (
+    url = reverse('%s:%s_%s_change' % (
+        admin_site.name,
         model._meta.app_label,
         model._meta.model_name
     ), args=(sibling_object.pk,))

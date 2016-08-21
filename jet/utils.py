@@ -164,10 +164,11 @@ class SuccessMessageMixin(object):
         return self.success_message % cleaned_data
 
 
-def get_model_queryset(model, preserved_filters=None):
-    model_admin = admin.site._registry.get(model)
+def get_model_queryset(admin_site, model, preserved_filters=None):
+    model_admin = admin_site._registry.get(model)
 
-    changelist_url = urlresolvers.reverse('admin:%s_%s_changelist' % (
+    changelist_url = urlresolvers.reverse('%s:%s_%s_changelist' % (
+        admin_site.name,
         model._meta.app_label,
         model._meta.model_name
     ))
