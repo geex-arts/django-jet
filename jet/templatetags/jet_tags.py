@@ -82,7 +82,7 @@ def jet_get_menu(context):
 
     current_found = False
 
-    pinned = PinnedApplication.objects.values_list('app_label', flat=True)
+    pinned = PinnedApplication.objects.filter(user=context.get('user').pk).values_list('app_label', flat=True)
 
     all_aps = []
     apps = []
