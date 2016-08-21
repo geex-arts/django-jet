@@ -124,6 +124,24 @@ If want to show all application's models use ``__all__`` keyword.
         ...
     ]
 
+If have multiple admin sites and you want to specify different menu applications for each admin site, wrap menu lists
+in dictionary with admin site names as keys:
+
+.. code:: python
+
+    JET_SIDE_MENU_CUSTOM_APPS = {
+        'admin': [
+            ('core', ['__all__']),
+            ...
+        ],
+        'custom_admin': [
+            ('custom_admin_app', [
+                'CustomAdminAppModel',
+            ]),
+            ...
+        ]
+    }
+
 .. note::
 
     You can use ``jet_custom_apps_example`` management command to generate example ``JET_SIDE_MENU_CUSTOM_APPS``
