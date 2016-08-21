@@ -277,6 +277,7 @@ ul.actionlist li {
         @extend .clear-list;
 
         li {
+          display: block;
           border-bottom: 1px solid $content-border-color;
           font-size: 13px;
           padding: 8px;
