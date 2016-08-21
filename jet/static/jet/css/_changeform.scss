@@ -402,11 +402,16 @@ body.popup .submit-row {
   margin-right: 2px;
   margin-bottom: 4px;
   border-radius: 4px 0 0 4px !important;
-  border-right: 0 !important;
+  border-right-width: 0 !important;
+
+  #changelist & {
+    border-radius: 4px !important;
+    border-right-width: 1px !important;
+  }
 
   @include for-width(374px) {
     border-radius: 4px !important;
-    border-right: 1px !important;
+    border-right-width: 1px !important;
   }
 
   &-link {
