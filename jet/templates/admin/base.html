@@ -45,9 +45,7 @@
     {% if not is_popup %}
     <!-- Header -->
     <div id="header">
-        <div id="branding">
-        {% block branding %}{% endblock %}
-        </div>
+        <div id="branding">{% block branding %}{% endblock %}</div>
         {% block usertools %}
         {% if user.is_active and user.is_staff or has_permission %}
         <div id="user-tools">
