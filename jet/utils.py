@@ -46,7 +46,7 @@ class JsonResponse(HttpResponse):
 
 
 def get_app_list(context, order=True):
-    admin_site = get_admin_site(context.get('current_app', ''))
+    admin_site = get_admin_site(context)
     request = context['request']
 
     app_dict = {}
@@ -111,10 +111,15 @@ def get_app_list(context, order=True):
     return app_list
 
 
-def get_admin_site(current_app):
+def get_admin_site(context):
     try:
-        resolver_match = resolve(reverse('%s:index' % current_app))
-        for func_closure in resolver_match.func.func_closure:
+        current_resolver = resolve(context.get('request').path)
+        index_resolver = resolve(reverse('%s:index' % current_resolver.namespaces[0]))
+
+        if hasattr(index_resolver.func, 'admin_site'):
+            return index_resolver.func.admin_site
+
+        for func_closure in index_resolver.func.__closure__:
             if isinstance(func_closure.cell_contents, AdminSite):
                 return func_closure.cell_contents
     except:
