@@ -41,6 +41,12 @@
       display: none;
     }
   }
+
+  &.jet.change-form .breadcrumbs {
+    @include for-mobile {
+      display: block;
+    }
+  }
 }
 
 /* RECENT ACTIONS MODULE */
