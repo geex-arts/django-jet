@@ -17,10 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:8
-msgid "Jet Admin Skin"
-msgstr "Tema Administración Jet"
-
 #: models.py:9 templates/admin/base.html:278
 msgid "URL"
 msgstr "URL"

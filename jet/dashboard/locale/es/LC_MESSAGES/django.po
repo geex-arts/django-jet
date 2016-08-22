@@ -17,10 +17,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: dashboard/apps.py:8
-msgid "Jet Dashboard"
-msgstr "Tablero Jet"
-
 #: dashboard/dashboard.py:210
 msgid "Quick links"
 msgstr "Enlaces Rápidos"
