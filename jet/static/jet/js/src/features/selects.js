@@ -147,7 +147,8 @@ Select2.prototype = {
     initSelect: function($select, DropdownAdapter) {
         var settings = {
             theme: 'jet',
-            dropdownAdapter: DropdownAdapter
+            dropdownAdapter: DropdownAdapter,
+            width: 'auto'
         };
 
         if ($select.hasClass('ajax')) {
