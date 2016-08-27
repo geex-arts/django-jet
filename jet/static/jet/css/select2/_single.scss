@@ -3,6 +3,10 @@
 .select2-selection--single {
   height: $input-height;
 
+  .select2-selection__rendered {
+    padding-right: 24px;
+  }
+
   .select2-selection__clear {
     cursor: pointer;
     float: right;
