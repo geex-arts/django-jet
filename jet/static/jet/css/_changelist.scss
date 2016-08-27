@@ -162,6 +162,20 @@
       @include for-phone {
         width: 100% !important;
       }
+
+      &-selection--multiple {
+        overflow: auto;
+        height: $input-height !important;
+
+        .select2-selection__rendered {
+          padding: 0 2px !important;
+        }
+
+        .select2-selection__choice {
+          margin-top: 2px !important;
+          margin-right: 2px !important;
+        }
+      }
     }
   }
 }
