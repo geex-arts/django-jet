@@ -9,7 +9,8 @@ from django.utils.formats import get_format
 from django.utils.safestring import mark_safe
 from jet import settings, VERSION
 from jet.models import Bookmark, PinnedApplication
-from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes
+from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes, \
+    get_admin_site
 
 try:
     from urllib.parse import parse_qsl
@@ -55,8 +56,13 @@ def jet_get_menu(context):
             app['models'] = []
 
         app_list = []
+        settings_app_list = settings.JET_SIDE_MENU_CUSTOM_APPS
 
-        for item in settings.JET_SIDE_MENU_CUSTOM_APPS:
+        if isinstance(settings_app_list, dict):
+            admin_site = get_admin_site(context)
+            settings_app_list = settings_app_list.get(admin_site.name, [])
+
+        for item in settings_app_list:
             app_label, models = item
 
             if app_label in app_dict:
@@ -76,7 +82,7 @@ def jet_get_menu(context):
 
     current_found = False
 
-    pinned = PinnedApplication.objects.values_list('app_label', flat=True)
+    pinned = PinnedApplication.objects.filter(user=context.get('user').pk).values_list('app_label', flat=True)
 
     all_aps = []
     apps = []
@@ -213,7 +219,8 @@ def jet_sibling_object_url(context, next):
     model = type(original)
     preserved_filters_plain = context.get('preserved_filters', '')
     preserved_filters = dict(parse_qsl(preserved_filters_plain))
-    queryset = get_model_queryset(model, preserved_filters=preserved_filters)
+    admin_site = get_admin_site(context)
+    queryset = get_model_queryset(admin_site, model, preserved_filters=preserved_filters)
 
     sibling_object = None
     object_pks = list(queryset.values_list('pk', flat=True))
@@ -229,7 +236,8 @@ def jet_sibling_object_url(context, next):
     if sibling_object is None:
         return
 
-    url = reverse('admin:%s_%s_change' % (
+    url = reverse('%s:%s_%s_change' % (
+        admin_site.name,
         model._meta.app_label,
         model._meta.model_name
     ), args=(sibling_object.pk,))

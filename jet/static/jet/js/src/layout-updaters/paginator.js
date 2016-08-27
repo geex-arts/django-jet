@@ -18,7 +18,7 @@ PaginatorUpdater.prototype = {
 
                 if ($.trim($node.text()) == '...') {
                     $node.wrap($('<span>').addClass('disabled'));
-                } else {
+                } else if ($.trim($node.text()) == '') {
                     $node.remove();
                 }
             }
@@ -30,7 +30,8 @@ PaginatorUpdater.prototype = {
         var $pageNodes = $([]);
 
         this.$paginator.contents().each(function() {
-            var pageNode = this.tagName == 'A' || this.tagName == 'SPAN';
+            var $node = $(this);
+            var pageNode = (this.tagName == 'A' && !$node.hasClass('showall')) || this.tagName == 'SPAN';
 
             if (pageNode) {
                 foundPage = true;
@@ -41,8 +42,6 @@ PaginatorUpdater.prototype = {
             }
 
             if (pageNode && !pagesEnded) {
-                var $node = $(this);
-
                 $node.detach();
                 $pageNodes = $pageNodes.add($node);
             } else {
@@ -57,13 +56,12 @@ PaginatorUpdater.prototype = {
         var $nodes = $([]);
 
         this.$paginator.contents().each(function() {
-            var pageNode = this.tagName == 'A' || this.tagName == 'SPAN';
+            var $node = $(this);
+            var pageNode = (this.tagName == 'A' && !$node.hasClass('showall')) || this.tagName == 'SPAN';
 
             if (pageNode) {
                 foundPage = true;
             } else if (foundPage && !pageNode && this.tagName != 'INPUT') {
-                var $node = $(this);
-
                 $node.detach();
                 $nodes = $nodes.add($node);
             }

@@ -56,7 +56,7 @@
 input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, select, .vTextField {
   border-radius: 4px;
   font-size: 13px;
-  height: 32px;
+  height: $input-height;
   white-space: nowrap;
   outline: 0;
   box-sizing: border-box;

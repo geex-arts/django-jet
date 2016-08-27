@@ -41,6 +41,12 @@
       display: none;
     }
   }
+
+  &.jet.change-form .breadcrumbs {
+    @include for-mobile {
+      display: block;
+    }
+  }
 }
 
 /* RECENT ACTIONS MODULE */
@@ -210,15 +216,20 @@ ul.actionlist li {
       padding: 0 10px 0 6px;
 
       &-title {
+        display: block;
         font-size: 11px;
         font-weight: bold;
         text-transform: uppercase;
         line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       &-drag {
         float: right;
         line-height: 30px !important;
+        margin-left: 10px;
 
         html.touchevents & {
           display: none;
@@ -232,14 +243,19 @@ ul.actionlist li {
       }
 
       &-buttons {
+        float: right;
         margin-left: 10px;
         font-size: 13px;
+        line-height: 30px;
         vertical-align: middle;
         visibility: hidden;
 
+        a {
+          vertical-align: middle;
+        }
+
         html.touchevents & {
           visibility: visible;
-          float: right;
         }
       }
 
@@ -267,6 +283,7 @@ ul.actionlist li {
         @extend .clear-list;
 
         li {
+          display: block;
           border-bottom: 1px solid $content-border-color;
           font-size: 13px;
           padding: 8px;

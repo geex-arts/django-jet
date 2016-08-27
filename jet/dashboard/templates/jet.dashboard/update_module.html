@@ -1,13 +1,6 @@
 {% extends "admin/base_site.html" %}
 {% load i18n jet_tags static %}
 
-{% block extrahead %}
-    {{ block.super }}
-    <script type="text/javascript" src="{% static "admin/js/jquery.js" %}"></script>
-    <script type="text/javascript" src="{% static "admin/js/jquery.init.js" %}"></script>
-    <script type="text/javascript" src="{% static "admin/js/inlines.js" %}"></script>
-{% endblock %}
-
 {% if not is_popup %}
     {% block breadcrumbs %}
         <div class="breadcrumbs">

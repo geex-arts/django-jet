@@ -52,7 +52,7 @@ class UtilsTestCase(TestCase):
                 self.assertIsNotNone(app, model.get('name'))
 
     def test_get_admin_site(self):
-        admin_site = get_admin_site('')
+        admin_site = get_admin_site({})
         self.assertIsInstance(admin_site, AdminSite)
 
     def test_lazy_date_time_encoder_dates(self):

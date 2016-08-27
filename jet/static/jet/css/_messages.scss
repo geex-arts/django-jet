@@ -12,6 +12,11 @@ ul.messagelist {
     border-radius: 6px;
     padding: 10px;
 
+    @include for-phone {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
     &.success {
       background: $success-color;
       color: $success-text-color;
@@ -76,20 +81,32 @@ ul.errorlist {
 }
 
 div.system-message {
-    background: #ffc;
-    margin: 10px;
-    padding: 6px 8px;
-    font-size: .8em;
-}
+  margin: 0 20px 10px 20px;
+  border-radius: 6px;
+  padding: 10px;
+  background: $warning-color;
+  color: $warning-text-color;
 
-div.system-message p.system-message-title {
-    padding: 4px 5px 4px 25px;
+  @include for-phone {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  p.system-message-title {
     margin: 0;
-    color: #c11;
-    background: #ffefef url(../img/icon-no.svg) 5px 5px no-repeat;
+
+    &:before {
+      @include font-icon;
+      content: $icon-cross;
+      vertical-align: middle;
+      margin-right: 4px;
+      color: $warning-text-color;
+    }
+  }
 }
 
 .description {
-    font-size: 12px;
-    padding: 5px 0 0 12px;
+  font-size: 12px;
+  margin: 0;
+  padding: 6px 0 0 0;
 }

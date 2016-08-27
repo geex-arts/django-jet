@@ -30,8 +30,13 @@ ToolbarUpdater.prototype = {
                 filterName = $element.text();
             } else if ($element.prop('tagName') == 'UL') {
                 var $select = $('<select>').addClass('changelist-filter-select');
+                var $items = $element.find('li');
 
-                $element.find('li').each(function(i) {
+                if ($items.filter('.selected').length > 1) {
+                    $select.attr('multiple', true);
+                }
+
+                $items.each(function(i) {
                     var $item = $(this);
                     var $link = $item.find('a');
                     var $option = $('<option>')

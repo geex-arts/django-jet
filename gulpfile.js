@@ -3,7 +3,7 @@ require('es6-promise').polyfill();
 var gulp = require('gulp'),
     browserify = require('browserify'),
     concatCss = require('gulp-concat-css'),
-    minifyCss = require('gulp-minify-css'),
+    cleanCSS = require('gulp-clean-css'),
     sass = require('gulp-sass'),
     uglify = require('gulp-uglify'),
     buffer = require('vinyl-buffer'),
@@ -13,7 +13,8 @@ var gulp = require('gulp'),
     postcss = require('gulp-postcss'),
     pxtorem = require('postcss-pxtorem'),
     autoprefixer = require('autoprefixer'),
-    shell = require('gulp-shell');
+    shell = require('gulp-shell'),
+    replace = require('gulp-replace');
 
 var cssProcessors = [
     autoprefixer(),
@@ -54,12 +55,31 @@ gulp.task('styles', function() {
 });
 
 gulp.task('vendor-styles', function() {
+    gulp.src('./node_modules/jquery-ui/themes/base/images/*')
+        .pipe(gulp.dest('./jet/static/jet/css/jquery-ui/images/'));
+
     merge(
         gulp.src([
             './node_modules/select2/dist/css/select2.css',
-            './node_modules/jquery-ui/themes/base/all.css',
             './node_modules/timepicker/jquery.ui.timepicker.css'
         ]),
+        gulp.src([
+            './node_modules/jquery-ui/themes/base/all.css'
+        ])
+            .pipe(cleanCSS()) // needed to remove jQuery UI comments breaking concatCss
+            .on('error', function(error) {
+                console.error(error);
+            })
+            .pipe(concatCss('jquery-ui.css', {
+                rebaseUrls: false
+            }))
+            .on('error', function(error) {
+                console.error(error);
+            })
+            .pipe(replace('images/', 'jquery-ui/images/'))
+            .on('error', function(error) {
+                console.error(error);
+            }),
         gulp.src([
             './node_modules/perfect-scrollbar/src/css/main.scss'
         ])
@@ -74,11 +94,13 @@ gulp.task('vendor-styles', function() {
         .on('error', function(error) {
             console.error(error);
         })
-        .pipe(minifyCss())
+        .pipe(concatCss('vendor.css', {
+            rebaseUrls: false
+        }))
         .on('error', function(error) {
             console.error(error);
         })
-        .pipe(concatCss('vendor.css'))
+        .pipe(cleanCSS())
         .on('error', function(error) {
             console.error(error);
         })

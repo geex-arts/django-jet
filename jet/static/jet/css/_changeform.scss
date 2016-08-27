@@ -402,11 +402,16 @@ body.popup .submit-row {
   margin-right: 2px;
   margin-bottom: 4px;
   border-radius: 4px 0 0 4px !important;
-  border-right: 0 !important;
+  border-right-width: 0 !important;
+
+  #changelist & {
+    border-radius: 4px !important;
+    border-right-width: 1px !important;
+  }
 
   @include for-width(374px) {
     border-radius: 4px !important;
-    border-right: 1px !important;
+    border-right-width: 1px !important;
   }
 
   &-link {
@@ -536,6 +541,7 @@ body.popup .submit-row {
       display: inline-block;
       background: $content-contrast2-background-color;
       color: $content-contrast2-text-color;
+      margin-right: 10px;
       padding: 4px 8px;
       border-radius: 5px;
       font-size: 10px;
@@ -548,13 +554,12 @@ body.popup .submit-row {
       vertical-align: middle;
 
       @include for-mobile {
-        margin-right: 10px;
         line-height: normal;
       }
 
       ~ .inlinechangelink, ~ .inlineviewlink {
         font-size: 18px;
-        margin-left: 10px;
+        margin-right: 10px;
         vertical-align: middle;
 
         &:before {

@@ -1,7 +1,5 @@
 @import "../globals";
 
-$input-height: 32px;
-
 .select2-container--jet {
   @import "single";
   @import "multiple";
@@ -12,7 +10,6 @@ $input-height: 32px;
     border: 1px solid $input-border-color;
     border-radius: 4px;
     outline: 0;
-    height: $input-height;
 
     @include for-mobile {
       fieldset.module & {

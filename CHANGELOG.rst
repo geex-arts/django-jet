@@ -1,6 +1,28 @@
 Changelog
 =========
 
+1.0.0
+-----
+* Fixed dashboard module buttons mobile layout misplacement
+* Fixed double tap menu issue for iOS devices
+* Fixed changelist footer from fixed position transition
+* Fixed system messages style
+* Fixed jQuery UI base styles broken image paths
+* Issue-69, 72: Updated checkboxes without label UI (thanks to h00p, JuniorLima for report)
+* Issue-89: Fixed multiple admin sites support (thanks to sysint64 for report)
+* Added missing locale files to PyPI package (thanks to SalahAdDin for report)
+* Issue-49: Fixed AppList and ModelList models/exclude parsers (thanks to eltismerino for report)
+* Issue-50: Fix pinned application user filtering (thanks to eltismerino for report)
+* Fixed empty branding visibility
+* Fixed IE dashboard list items wrapping
+* Fixed IE sidebar popup items spacing
+* Fixed dashboard module wrong height after animation
+* Fixed dashboard module change form breadcrumbs
+* Improved paginator 'show all' layout
+* Updated documentation
+* Added support for filters with multiple select
+
+
 0.9.1
 -----
 * Mobile UX improved
@@ -8,7 +30,7 @@ Changelog
 * More documentation added
 * Improved object tools and toolbar arrangement
 * Fixed change list footer misplacement
-* Fix chromium sidebar scrollbar misplacement
+* Fixed chromium sidebar scrollbar misplacement
 * Remove unused tags
 * Prefixed JET template tags
 * Fixed jet_custom_apps_example command

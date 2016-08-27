@@ -162,6 +162,20 @@
       @include for-phone {
         width: 100% !important;
       }
+
+      &-selection--multiple {
+        overflow: auto;
+        height: $input-height !important;
+
+        .select2-selection__rendered {
+          padding: 0 2px !important;
+        }
+
+        .select2-selection__choice {
+          margin-top: 2px !important;
+          margin-right: 2px !important;
+        }
+      }
     }
   }
 }
@@ -215,53 +229,6 @@
     display: inherit;
   }
 
-  span:not(.pages-wrapper), a {
-    font-size: 14px;
-    padding: 6px 10px;
-    display: inline-block;
-
-    &:first-child {
-      border-radius: 4px 0 0 4px;
-    }
-
-    &:last-child {
-      border-radius: 0 4px 4px 0;
-    }
-
-    &:first-child:last-child {
-      border-radius: 4px;
-    }
-  }
-
-  span:not(.pages-wrapper) {
-    background-color: $button-active-background-color;
-    color: $button-active-text-color;
-
-    &.disabled {
-      background-color: $button-background-color;
-      color: $button-text-color;
-    }
-  }
-
-  a:not(.showall) {
-    &:link, &:visited {
-      background-color: $button-background-color;
-      color: $button-text-color;
-      text-decoration: none;
-    }
-
-    &:focus, &:hover {
-      background-color: $button-hover-background-color;
-      color: $button-hover-text-color;
-    }
-  }
-
-  a.showall {
-    &:link, &:visited {
-      font-size: 12px;
-    }
-  }
-
   .pages-wrapper {
     margin-left: 10px;
     display: inline-block;
@@ -269,6 +236,53 @@
 
     @include for-mobile {
       margin-left: 0;
+    }
+
+    span, a {
+      font-size: 14px;
+      padding: 6px 10px;
+      display: inline-block;
+
+      &:first-child {
+        border-radius: 4px 0 0 4px;
+      }
+
+      &:last-child {
+        border-radius: 0 4px 4px 0;
+      }
+
+      &:first-child:last-child {
+        border-radius: 4px;
+      }
+    }
+
+    span {
+      background-color: $button-active-background-color;
+      color: $button-active-text-color;
+
+      &.disabled {
+        background-color: $button-background-color;
+        color: $button-text-color;
+      }
+    }
+
+    a {
+      &:link, &:visited {
+        background-color: $button-background-color;
+        color: $button-text-color;
+        text-decoration: none;
+      }
+
+      &:focus, &:hover {
+        background-color: $button-hover-background-color;
+        color: $button-hover-text-color;
+      }
+    }
+  }
+
+  a.showall {
+    &:link, &:visited {
+      font-size: 12px;
     }
   }
 

@@ -239,7 +239,9 @@ Dashboard.prototype = {
                     $content.height(oldHeight);
                     $content.animate({
                         height: newHeight
-                    }, 250);
+                    }, 250, 'swing', function() {
+                        $content.height('auto');
+                    });
                 },
                 error: function () {
                     $content.empty();
