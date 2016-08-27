@@ -13,6 +13,10 @@
     margin: 0;
     padding: 0 5px;
     width: 100%;
+
+    li {
+      list-style-type: none;
+    }
   }
 
   .select2-selection__clear {
@@ -34,6 +38,7 @@
     margin-top: 5px;
     padding: 5px 5px;
     line-height: normal;
+    list-style-type: none;
   }
 
   .select2-selection__choice__remove {
