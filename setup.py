@@ -28,7 +28,7 @@ setup(
     author_email='support@jet.geex-arts.com',
     url='https://github.com/geex-arts/django-jet',
     packages=find_packages(),
-    license='AGPLv2',
+    license='AGPLv3',
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Framework :: Django',
