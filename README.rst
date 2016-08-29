@@ -55,11 +55,6 @@ Screenshots
     :align: center
     :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen3.png
 
-License
-=======
-Django JET is licensed under a
-The GNU General Public License, Version 2
-
 Installation
 ============
 
