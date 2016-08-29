@@ -7,10 +7,10 @@ Django JET
 
 **Modern template for Django admin interface with improved functionality**
 
-Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
-code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
+Django JET has two kinds of licenses: open-source (AGPLv2) and commercial. Please note that using AGPLv2
+code in your programs make them AGPL too. So if you don't want to comply with that we can provide you a commercial
 license (visit Home page). The commercial license is designed for using Django JET in commercial products
-and applications without the provisions of the GPLv2.
+and applications without the provisions of the AGPLv2.
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/logo.png
     :width: 500px

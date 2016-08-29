@@ -11,7 +11,7 @@ Requirements
 
 * Git master branch should always be stable
 * All pull requests are made to git dev branch
-* GPL (or similar) code is not eligible for inclusion
+* Non AGPL compatible code is not eligible for inclusion
 
 Guidelines For Reporting An Issue/Feature
 -----------------------------------------
