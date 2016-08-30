@@ -725,7 +725,7 @@ body.popup .submit-row {
       transition: background-color $transitions-duration, color $transitions-duration;
     }
 
-    body.no-touchevents &:hover, &:active {
+    html.no-touchevents &:hover, &:active {
       background: $button-hover-background-color;
       color: $button-hover-text-color;
     }
