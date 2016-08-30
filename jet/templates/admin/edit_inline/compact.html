@@ -8,11 +8,10 @@
     <div class="inline-navigation">
         <div class="inline-navigation-top"></div>
         <div class="inline-navigation-bottom"></div>
+        <div class="add-row">
+            <a href="#">{% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}</a>
+        </div>
         <div class="inline-navigation-content">
-            <div class="add-row">
-                <a href="#">{% blocktrans with verbose_name=inline_admin_formset.opts.verbose_name|capfirst %}Add another {{ verbose_name }}{% endblocktrans %}</a>
-            </div>
-
             <div class="inline-navigation-items">
                 {% for inline_admin_form in inline_admin_formset %}
                     <a href="#" class="inline-navigation-item{% if forloop.last %} empty{% endif %}" data-inline-related-id="{{ inline_admin_formset.formset.prefix }}-{% if not forloop.last %}{{ forloop.counter0 }}{% else %}empty{% endif %}">
