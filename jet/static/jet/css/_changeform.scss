@@ -665,7 +665,7 @@ body.popup .submit-row {
     top: 0;
     right: 0;
     left: 0;
-    height: 50px;
+    height: 40px;
     background: linear-gradient(to bottom, $content-background-color 25%, transparentize($content-contrast-background-color, 1) 100%);
     z-index: 1;
   }
@@ -675,7 +675,7 @@ body.popup .submit-row {
     right: 0;
     bottom: 0;
     left: 0;
-    height: 50px;
+    height: 40px;
     background: linear-gradient(to top, $content-background-color 25%, transparentize($content-contrast-background-color, 1) 100%);
     z-index: 1;
 
@@ -699,7 +699,7 @@ body.popup .submit-row {
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 40px 0 20px 0;
+    padding: 40px 0 30px 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 
