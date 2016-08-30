@@ -9,3 +9,4 @@ Contents:
 
    config_file
    autocomplete
+   compact_inline

@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var CompactInline = require('./compact-inline');
 
 var Inline = function($inline) {
     this.$inline = $inline;
@@ -14,6 +15,10 @@ Inline.prototype = {
         var $inline = this.$inline;
 
         try {
+            if ($inline.hasClass('compact')) {
+                new CompactInline($inline).run();
+            }
+
             this.initSelectsOnAddRow($inline);
         } catch (e) {
             console.error(e, e.stack);
