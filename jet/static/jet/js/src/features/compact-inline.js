@@ -85,11 +85,19 @@ CompactInline.prototype = {
     },
     openFirstNavigationItem: function($inline) {
         this.openNavigationItem($inline, $inline.find('.inline-navigation-item').first());
+        this.scrollNavigationToTop($inline);
     },
     addItemDeleteButton: function($item) {
         $item
             .children(':first')
             .append('<span><a class="inline-deletelink" href="#">' + this.deleteText + "</a></span>");
+    },
+    scrollNavigationToTop: function($inline) {
+        var $navigationItemsContainer = $inline.find('.inline-navigation-content');
+
+        $navigationItemsContainer.stop().animate({
+            scrollTop: 0
+        });
     },
     scrollNavigationToBottom: function($inline) {
         var $navigationItemsContainer = $inline.find('.inline-navigation-content');
