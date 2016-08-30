@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0.1
+-----
+* StackedInline from earlier JET versions is back as a CompactInline custom class
+* Changed license to AGPLv3
+* Fixed filters with multiple selectable items behavior
+
+
 1.0.0
 -----
 * Fixed dashboard module buttons mobile layout misplacement
