@@ -86,6 +86,11 @@ CompactInline.prototype = {
     openFirstNavigationItem: function($inline) {
         this.openNavigationItem($inline, $inline.find('.inline-navigation-item').first());
     },
+    addItemDeleteButton: function($item) {
+        $item
+            .children(':first')
+            .append('<span><a class="inline-deletelink" href="#">' + this.deleteText + "</a></span>");
+    },
     initAdding: function($inline) {
         var self = this;
 
@@ -107,8 +112,7 @@ CompactInline.prototype = {
 
             self.updateLabels($inline);
             self.openNavigationItem($inline, navigationItem);
-
-            $clone.children(':first').append('<span><a class="inline-deletelink" href="#">' + self.deleteText + "</a></span>");
+            self.addItemDeleteButton($clone);
         });
     },
     initDeletion: function($inline) {
