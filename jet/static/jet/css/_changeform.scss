@@ -691,6 +691,9 @@ body.popup .submit-row {
     left: 0;
     padding: 0 16px !important;
     z-index: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
 
   &-content {
