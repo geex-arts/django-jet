@@ -91,6 +91,13 @@ CompactInline.prototype = {
             .children(':first')
             .append('<span><a class="inline-deletelink" href="#">' + this.deleteText + "</a></span>");
     },
+    scrollNavigationToBottom: function($inline) {
+        var $navigationItemsContainer = $inline.find('.inline-navigation-content');
+
+        $navigationItemsContainer.stop().animate({
+            scrollTop: $navigationItemsContainer.prop('scrollHeight')
+        });
+    },
     initAdding: function($inline) {
         var self = this;
 
@@ -113,6 +120,7 @@ CompactInline.prototype = {
             self.updateLabels($inline);
             self.openNavigationItem($inline, navigationItem);
             self.addItemDeleteButton($clone);
+            self.scrollNavigationToBottom($inline);
         });
     },
     initDeletion: function($inline) {
