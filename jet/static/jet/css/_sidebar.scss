@@ -285,8 +285,12 @@
         html.touchevents & {
           position: static;
           padding: 6px;
-          margin-top: 6px;
+          margin-top: 2px;
           font-size: 18px;
+
+          @include for-mobile {
+            margin-top: 6px;
+          }
         }
       }
 
@@ -493,6 +497,8 @@
       list-style: none;
 
       &-item {
+        display: block;
+
         a, a:visited, a:hover {
           color: $sidebar-popup-link-text-color;
           padding: 8px 20px;

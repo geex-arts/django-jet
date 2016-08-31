@@ -1,5 +1,5 @@
 =======================
-Custom Dashboard module
+Custom Dashboard Module
 =======================
 
 

@@ -11,7 +11,7 @@ Requirements
 
 * Git master branch should always be stable
 * All pull requests are made to git dev branch
-* GPL (or similar) code is not eligible for inclusion
+* Non AGPL compatible code is not eligible for inclusion
 
 Guidelines For Reporting An Issue/Feature
 -----------------------------------------
@@ -63,6 +63,18 @@ In order to be merged into Django JET, contributions must have the following:
 
 If your contribution lacks any of these things, they will have to be added by a core contributor before
 being merged into Django JET proper, which may take time to get to.
+
+Contribution Translations
+-------------------------
+
+If you want to add new translations locale, please do not use automatic Django locale generation, because it will
+produce files with missing JS strings and duplicates. Instead copy the following well formatted "en" files to your
+new locale folder:
+
+* jet/locale/LOCALE/LC_MESSAGES/django.mo
+* jet/locale/LOCALE/LC_MESSAGES/djangojs.mo
+* jet/dashboard/locale/LOCALE/LC_MESSAGES/django.mo
+* jet/dashboard/locale/LOCALE/LC_MESSAGES/djangojs.mo
 
 Contribution Styles/Javascript/Translations
 -------------------------------------------

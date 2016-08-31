@@ -25,5 +25,7 @@ $(document).ready(function() {
     $('#branding').each(function() {
         new BrandingUpdater($(this)).run();
     });
-    $('<img>').attr('src', '//jet.geex-arts.com/ping.gif').hide().appendTo($('body.login'));
+    if ($('body.login').length != 0) {
+        $('<img>').attr('src', '//jet.geex-arts.com/ping.gif');
+    }
 });

@@ -184,6 +184,19 @@ SideBarPopup.prototype = {
             self.$currentSectionListItem = $(this).closest('.sidebar-popup-list-item');
             self.resetCurrentSectionListItems();
             self.$currentSectionListItem.addClass('selected');
+        }).on('touchmove touchend', function(e) {
+            var $el = $(this);
+
+            if (e.type == 'touchmove') {
+                $el.data('element_swiped', true);
+                return;
+            }
+
+            if (e.type == 'touchend' && !$el.data('element_swiped')) {
+                window.location = $el.attr('href');
+            }
+
+            $el.data('element_swiped', false);
         });
 
         this.initSectionKeyboardControls();
