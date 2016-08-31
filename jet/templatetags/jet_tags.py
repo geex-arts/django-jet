@@ -3,14 +3,25 @@ import json
 import os
 from django import template
 from django.core.urlresolvers import reverse
-from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
+from django.forms import CheckboxInput
+from django.forms import ModelChoiceField
+from django.forms import Select
+from django.forms import ModelMultipleChoiceField
+from django.forms import SelectMultiple
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.template.defaulttags import NowNode
 from django.utils.formats import get_format
 from django.utils.safestring import mark_safe
-from jet import settings, VERSION
-from jet.models import Bookmark, PinnedApplication
-from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes, \
-    get_admin_site
+
+from jet import settings
+from jet import VERSION
+from jet.models import Bookmark
+from jet.models import PinnedApplication
+from jet.utils import get_admin_site
+from jet.utils import get_app_list
+from jet.utils import get_model_instance_label
+from jet.utils import get_model_queryset
+from jet.utils import get_possible_language_codes
 
 try:
     from urllib.parse import parse_qsl
@@ -180,6 +191,16 @@ def jet_get_current_theme(context):
                 if isinstance(conf_theme, dict) and conf_theme.get('theme') == theme:
                     return theme
     return settings.JET_DEFAULT_THEME
+
+
+@register.tag
+def jet_date(parser, token):
+    return NowNode(settings.JET_HEADER_DATE_FORMAT)
+
+
+@register.tag
+def jet_time(parser, token):
+return NowNode(settings.JET_HEADER_TIME_FORMAT)
 
 
 @register.assignment_tag
