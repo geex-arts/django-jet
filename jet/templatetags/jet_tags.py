@@ -220,7 +220,8 @@ def jet_sibling_object_url(context, next):
     preserved_filters_plain = context.get('preserved_filters', '')
     preserved_filters = dict(parse_qsl(preserved_filters_plain))
     admin_site = get_admin_site(context)
-    queryset = get_model_queryset(admin_site, model, preserved_filters=preserved_filters)
+    request = context.get('request')
+    queryset = get_model_queryset(admin_site, model, request, preserved_filters=preserved_filters)
 
     sibling_object = None
     object_pks = list(queryset.values_list('pk', flat=True))
