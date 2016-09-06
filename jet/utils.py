@@ -21,7 +21,6 @@ from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.core import urlresolvers
 from django.contrib import admin
-from django.test.client import RequestFactory
 
 
 class JsonResponse(HttpResponse):
@@ -179,8 +178,6 @@ def get_model_queryset(admin_site, model, preserved_filters=None):
 
     if changelist_filters:
         changelist_url += '?' + changelist_filters
-
-    request = RequestFactory().get(changelist_url)
 
     if model_admin:
         queryset = model_admin.get_queryset(request)
