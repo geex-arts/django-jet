@@ -81,14 +81,18 @@ class TagsTestCase(TestCase):
         ordering_field = 1  # field1 in list_display
         preserved_filters = '_changelist_filters=o%%3D%d' % ordering_field
 
-        expected_url = None
+        changelist_url = reverse('admin:%s_%s_change' % (
+            TestModel._meta.app_label,
+            TestModel._meta.model_name
+        ), args=(self.models[1].pk,)) + '?' + preserved_filters
 
         context = {
             'original': instance,
             'preserved_filters': preserved_filters,
-            'request': RequestFactory().get(expected_url),
+            'request': RequestFactory().get(changelist_url),
         }
 
         actual_url = jet_previous_object_url(context)
+        expected_url = None
 
         self.assertEqual(actual_url, expected_url)
