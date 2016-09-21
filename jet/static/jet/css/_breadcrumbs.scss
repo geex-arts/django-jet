@@ -10,10 +10,12 @@ div.breadcrumbs {
   color: $top-text-color;
   padding: 20px 175px + 20px + 20px 20px 20px;
   visibility: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 
   @include for-mobile {
     padding: 20px 20px 10px 20px;
-    white-space: nowrap;
     overflow: auto;
   }
 
