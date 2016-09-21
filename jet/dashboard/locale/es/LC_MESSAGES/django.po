@@ -339,7 +339,7 @@ msgstr "módulos de usuario en tablero"
 
 #: dashboard/modules.py:163
 msgid "URL"
-msgstr "LRU"
+msgstr "URL"
 
 #: dashboard/modules.py:165
 msgid "External link"
@@ -375,7 +375,7 @@ msgstr "Límite de elementos"
 
 #: dashboard/modules.py:516
 msgid "Feed URL"
-msgstr "LRU de Alimentador"
+msgstr "URL de Alimentador"
 
 #: dashboard/modules.py:547
 msgid "RSS Feed"
@@ -387,7 +387,7 @@ msgstr "Debe instalar el módulo python FeedParser"
 
 #: dashboard/modules.py:598
 msgid "You must provide a valid feed URL"
-msgstr "Debe proveer un LRU de alimentador válido"
+msgstr "Debe proveer un URL de alimentador válido"
 
 #: dashboard/templates/jet.dashboard/dashboard.html:17
 msgid "Delete widget"
