@@ -103,7 +103,7 @@ msgstr "Limit položek"
 
 #: dashboard/modules.py:491
 msgid "Feed URL"
-msgstr ""
+msgstr "URL feedu"
 
 #: dashboard/modules.py:522
 msgid "RSS Feed"
@@ -187,12 +187,12 @@ msgstr "nic"
 #: dashboard/dashboard_modules/google_analytics.py:183
 #: dashboard/dashboard_modules/yandex_metrika.py:137
 msgid "grant access first"
-msgstr ""
+msgstr "povolte nejdřív přístup"
 
 #: dashboard/dashboard_modules/google_analytics.py:183
 #: dashboard/dashboard_modules/yandex_metrika.py:137
 msgid "counters loading failed"
-msgstr ""
+msgstr "nepodařilo se načíst počítadla"
 
 #: dashboard/dashboard_modules/google_analytics.py:188
 #: dashboard/dashboard_modules/yandex_metrika.py:142
@@ -233,6 +233,8 @@ msgid ""
 "Please <a href=\"%s\">attach Google account and choose Google Analytics "
 "counter</a> to start using widget"
 msgstr ""
+"Prosím <a href=\"%s\">připojte Google účet a vyberte Google Analytics "
+"počítadlo</a> pro využívání widgetu"
 
 #: dashboard/dashboard_modules/google_analytics.py:280
 #, python-format
@@ -240,35 +242,37 @@ msgid ""
 "Please <a href=\"%s\">select Google Analytics counter</a> to start using "
 "widget"
 msgstr ""
+"Prosím <a href=\"%s\">vyberte Google Analytics počítadlo</a> pro využívání "
+"widgetu"
 
 #: dashboard/dashboard_modules/google_analytics.py:299
 #: dashboard/dashboard_modules/google_analytics_views.py:42
 #: dashboard/dashboard_modules/yandex_metrika.py:236
 #: dashboard/dashboard_modules/yandex_metrika_views.py:37
 msgid "API request failed."
-msgstr ""
+msgstr "Požadavek API se nezdařil."
 
 #: dashboard/dashboard_modules/google_analytics.py:301
 #: dashboard/dashboard_modules/yandex_metrika.py:238
 #, python-format
 msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
-msgstr ""
+msgstr " Zkuste <a href=\"%s\">zakázat a povolit přístup</a> znovu"
 
 #: dashboard/dashboard_modules/google_analytics.py:311
 msgid "Google Analytics visitors totals"
-msgstr ""
+msgstr "Celkový počet návštěvníků Google Analytics"
 
 #: dashboard/dashboard_modules/google_analytics.py:189
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
 #: dashboard/dashboard_modules/google_analytics.py:326
 msgid "users"
-msgstr ""
+msgstr "uživatelé"
 
 #: dashboard/dashboard_modules/google_analytics.py:190
 #: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
 #: dashboard/dashboard_modules/google_analytics.py:327
 msgid "sessions"
-msgstr ""
+msgstr "sezení"
 
 #: dashboard/dashboard_modules/google_analytics.py:191
 #: dashboard/dashboard_modules/yandex_metrika.py:146
@@ -277,7 +281,7 @@ msgstr ""
 #: dashboard/dashboard_modules/google_analytics.py:328
 #: dashboard/dashboard_modules/yandex_metrika.py:267
 msgid "views"
-msgstr ""
+msgstr "zobrazení"
 
 #: dashboard/dashboard_modules/google_analytics.py:330
 #: dashboard/dashboard_modules/google_analytics.py:388
@@ -286,27 +290,27 @@ msgstr ""
 #: dashboard/dashboard_modules/yandex_metrika.py:321
 #: dashboard/dashboard_modules/yandex_metrika.py:365
 msgid "Bad server response"
-msgstr ""
+msgstr "Špatná odpověď serveru"
 
 #: dashboard/dashboard_modules/google_analytics.py:340
 msgid "Google Analytics visitors chart"
-msgstr ""
+msgstr "Graf návštěvníků Google Analytics"
 
 #: dashboard/dashboard_modules/google_analytics.py:398
 msgid "Google Analytics period visitors"
-msgstr ""
+msgstr "Perioda návštěvníků Google Analytics"
 
 #: dashboard/dashboard_modules/google_analytics_views.py:26
 #: dashboard/dashboard_modules/google_analytics_views.py:46
 #: dashboard/dashboard_modules/yandex_metrika_views.py:23
 #: dashboard/dashboard_modules/yandex_metrika_views.py:45
 msgid "Module not found"
-msgstr ""
+msgstr "Modul nedostupný"
 
 #: dashboard/dashboard_modules/google_analytics_views.py:44
 #: dashboard/dashboard_modules/yandex_metrika_views.py:43
 msgid "Bad arguments"
-msgstr ""
+msgstr "Špatné argumenty"
 
 #: dashboard/dashboard_modules/yandex_metrika.py:219
 #, python-format
