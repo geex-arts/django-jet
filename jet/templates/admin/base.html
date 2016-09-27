@@ -1,4 +1,6 @@
-{% load i18n static jet_tags %}<!DOCTYPE html>
+{% load i18n jet_tags %}
+{% load static from staticfiles %}
+<!DOCTYPE html>
 {% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
 {% jet_get_current_theme as THEME %}
 {% jet_get_current_version as JET_VERSION %}
