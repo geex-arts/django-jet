@@ -1,5 +1,6 @@
 {% extends "admin/base_site.html" %}
-{% load i18n jet_tags static %}
+{% load i18n jet_tags %}
+{% load static from staticfiles %}
 
 {% if not is_popup %}
     {% block breadcrumbs %}
