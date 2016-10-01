@@ -84,7 +84,13 @@ CompactInline.prototype = {
         $inline.find('.inline-navigation-item[data-inline-related-id="' + $item.attr('id') + '"]').remove();
     },
     openFirstNavigationItem: function($inline) {
-        this.openNavigationItem($inline, $inline.find('.inline-navigation-item').first());
+        var $item = $inline.find('.inline-navigation-item:not(.empty)').first();
+
+        if ($item != undefined) {
+            return;
+        }
+
+        this.openNavigationItem($inline, $item);
         this.scrollNavigationToTop($inline);
     },
     addItemDeleteButton: function($item) {
