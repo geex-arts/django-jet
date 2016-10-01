@@ -89,7 +89,7 @@ CompactInline.prototype = {
     openFirstNavigationItem: function($inline) {
         var $item = $inline.find('.inline-navigation-item:not(.empty)').first();
 
-        if ($item != undefined) {
+        if ($item == undefined) {
             return;
         }
 
