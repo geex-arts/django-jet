@@ -1,6 +1,25 @@
 Changelog
 =========
 
+1.0.2
+-----
+* PR-115: Removed mock request from get_model_queryset to fix 3rd party packages (thanks to imdario for PR)
+* PR-106: Added Spanish localization (thanks to SalahAdDin for PR)
+* PR-107, 119: Added Brazilian Portuguese localization (thanks to sedir, mord4z for PR)
+* PR-109: Added German localization (thanks to dbartenstein for PR)
+* PR-123: Added Czech localization (thanks to usakc for PR)
+* Added breadcrumbs text wrapping
+* Issue-127: Removed forgotten untranslated label in breadcrumbs (thanks to hermanocabral for report)
+* PR-121, 122: Fixed jet_custom_apps_example.py for Django 1.10 (thanks to retailify for PR)
+* Fixed CompactInline opening first navigation item when there are no items
+* Issue-118: Fixed inlines max_forms field for CompactInline (thanks to a1Gupta for report)
+* Issue-117: Fixed draggable field for dashboard modules (thanks to a1Gupta for report)
+* Issue-117: Added LinkList module draggable/deletable/collapsible settings saving (thanks to a1Gupta for report)
+* Issue-114: Fixed Django 1.10 filter_horizontal not working (thanks to vishalbanwari for report)
+* Issue-126: Fixed related popup links for new inline items (thanks to kmorey for report)
+* Issue-128: Fixed delete confirmation submit button misplacement (thanks to retailify for report)
+
+
 1.0.1
 -----
 * StackedInline from earlier JET versions is back as a CompactInline custom class
@@ -19,7 +38,7 @@ Changelog
 * Issue-89: Fixed multiple admin sites support (thanks to sysint64 for report)
 * Added missing locale files to PyPI package (thanks to SalahAdDin for report)
 * Issue-49: Fixed AppList and ModelList models/exclude parsers (thanks to eltismerino for report)
-* Issue-50: Fix pinned application user filtering (thanks to eltismerino for report)
+* Issue-50: Fixed pinned application user filtering (thanks to eltismerino for report)
 * Fixed empty branding visibility
 * Fixed IE dashboard list items wrapping
 * Fixed IE sidebar popup items spacing
