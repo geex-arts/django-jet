@@ -245,10 +245,16 @@ class LinkList(DashboardModule):
 
     def settings_dict(self):
         return {
+            'draggable': self.draggable,
+            'deletable': self.deletable,
+            'collapsible': self.collapsible,
             'layout': self.layout
         }
 
     def load_settings(self, settings):
+        self.draggable = settings.get('draggable', self.draggable)
+        self.deletable = settings.get('deletable', self.deletable)
+        self.collapsible = settings.get('collapsible', self.collapsible)
         self.layout = settings.get('layout', self.layout)
 
     def store_children(self):
