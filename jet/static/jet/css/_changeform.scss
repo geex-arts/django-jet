@@ -505,6 +505,16 @@ body.popup .submit-row {
   border-radius: 4px;
   border: 0;
 
+  &.compact {
+    position: relative;
+    min-height: 400px;
+
+    @include for-mobile {
+      position: static;
+      min-height: 0;
+    }
+  }
+
   thead th {
     padding: 8px 10px;
   }
@@ -622,11 +632,121 @@ body.popup .submit-row {
   }
 }
 
+.inline-group.compact .inline-related h3 {
+  background: transparent;
+}
+
 .inline-related.tabular fieldset.module {
   padding: 0;
 
   table {
     width: 100%;
+  }
+}
+
+.inline-navigation {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 200px;
+  background: $content-contrast-background-color;
+
+  @include for-mobile {
+    position: relative;
+    width: auto;
+    top: auto;
+    bottom: auto;
+    left: auto;
+  }
+
+  &-top {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, $content-background-color 25%, transparentize($content-contrast-background-color, 1) 100%);
+    z-index: 1;
+  }
+
+  &-bottom {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 40px;
+    background: linear-gradient(to top, $content-background-color 25%, transparentize($content-contrast-background-color, 1) 100%);
+    z-index: 1;
+
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  .add-row {
+    position: absolute;
+    top: 10px;
+    right: 0;
+    left: 0;
+    padding: 0 16px !important;
+    z-index: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 40px 0 30px 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+
+    @include for-mobile {
+      position: static;
+      top: auto;
+      right: auto;
+      bottom: auto;
+      left: auto;
+      padding-bottom: 10px;
+      max-height: 200px;
+    }
+  }
+
+  &-item {
+    &, &:visited, &:hover {
+      display: block;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding: 8px 10px 8px 20px;
+      color: $dim-text-color;
+      transition: background-color $transitions-duration, color $transitions-duration;
+    }
+
+    html.no-touchevents &:hover, &:active {
+      background: $button-hover-background-color;
+      color: $button-hover-text-color;
+    }
+
+    &.empty {
+      display: none;
+    }
+
+    &.selected {
+      background: transparent;
+      color: $text-color;
+      font-weight: bold;
+      cursor: default;
+    }
+
+    &.delete {
+      text-decoration: line-through;
+    }
   }
 }
 
@@ -673,6 +793,19 @@ body.popup .submit-row {
     tr.add-row td {
       padding: 8px 10px;
       border-bottom: 1px solid #eee;
+    }
+  }
+
+  .compact {
+    display: none;
+    margin-left: 200px;
+
+    @include for-mobile {
+      margin-left: 0;
+    }
+
+    &.selected {
+      display: block;
     }
   }
 

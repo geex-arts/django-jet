@@ -219,6 +219,10 @@ Select2.prototype = {
         });
 
         $('select').trigger('select:init');
+
+        $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
+            $inlineItem.find('select').trigger('select:init');
+        });
     },
     run: function() {
         try {

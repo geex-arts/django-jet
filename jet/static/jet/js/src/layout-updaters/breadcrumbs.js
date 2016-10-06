@@ -35,7 +35,6 @@ $(document).ready(function() {
     if ($breadcrumbs.length == 0) {
         $breadcrumbs = $('<div>')
             .addClass('breadcrumbs')
-            .text('Начало')
             .insertAfter($('#header'));
     }
 
