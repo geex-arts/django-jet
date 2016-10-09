@@ -1,0 +1,7 @@
+#filter-content fieldset.module {
+	padding: 0px !important;
+}
+
+#filter-content fieldset.module .form-row {
+	padding-left:  0px !important;
+}

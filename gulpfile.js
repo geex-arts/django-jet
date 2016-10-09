@@ -61,7 +61,8 @@ gulp.task('vendor-styles', function() {
     merge(
         gulp.src([
             './node_modules/select2/dist/css/select2.css',
-            './node_modules/timepicker/jquery.ui.timepicker.css'
+            './node_modules/timepicker/jquery.ui.timepicker.css',
+            './node_modules/webui-popover/src/jquery.webui-popover.css'
         ]),
         gulp.src([
             './node_modules/jquery-ui/themes/base/all.css'

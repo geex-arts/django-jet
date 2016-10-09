@@ -1,4 +1,5 @@
 var $ = require('jquery');
+var popover = require('webui-popover');
 
 var ToolbarUpdater = function($changelist) {
     this.$changelist = $changelist;
@@ -70,6 +71,21 @@ ToolbarUpdater.prototype = {
                 }
 
                 filterName = null;
+            } else if ($element.prop('tagName') == 'DIV') {
+                var $wrapper = $('<span>')
+                    .addClass('changelist-filter-select-wrapper')
+                    .append($element);
+
+                if ($search.length) {
+                    $wrapper.insertAfter($search);
+                } else {
+                    $toolbar.append($wrapper);
+                }
+
+                $wrapper.find('#filter-title').webuiPopover({
+                    url: '#filter-content',
+                    width: 200,
+                });
             }
         });
 
