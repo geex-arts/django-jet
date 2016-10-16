@@ -17,7 +17,15 @@
     <div id="filter-content" style="display: none">
         <form method="GET" action="." id="{{ choices.0.system_name }}-form">
             {{ spec.form.media }}
-            {{ spec.form }}
+            <fieldset class="module aligned ">
+            {% for field in spec.form %}
+                <div class="form-row {{ field.id }}">
+                    <div>
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            </fieldset>
             {% for choice in choices %}
                 <input type="hidden" id="{{ choice.system_name }}-query-string" value="{{ choice.query_string }}">
             {% endfor %}
