@@ -13,8 +13,7 @@ def read(fname):
 
 def get_install_requires():
     install_requires = [
-        'Django', 
-        'django-form-admin'
+        'Django'
     ]
     try:
         import importlib

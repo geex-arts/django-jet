@@ -1,4 +1,4 @@
-{% load i18n admin_static formadmin_filters %}
+{% load i18n admin_static %}
 
 <script>
     function datefilter_apply(event, qs_name, form_name){
@@ -17,7 +17,7 @@
     <div id="filter-content" style="display: none">
         <form method="GET" action="." id="{{ choices.0.system_name }}-form">
             {{ spec.form.media }}
-            {{ spec.form|as_django_admin }}
+            {{ spec.form }}
             {% for choice in choices %}
                 <input type="hidden" id="{{ choice.system_name }}-query-string" value="{{ choice.query_string }}">
             {% endfor %}
