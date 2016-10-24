@@ -267,7 +267,7 @@ def jet_popup_response_data(context):
     return json.dumps({
         'action': context.get('action'),
         'value': context.get('value') or context.get('pk_value'),
-        'obj': str(context.get('obj')),
+        'obj': str(context.get('obj').encode('utf8')),
         'new_value': context.get('new_value')
     })
 
