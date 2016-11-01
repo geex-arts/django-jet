@@ -32,6 +32,10 @@ ToolbarUpdater.prototype = {
                 var $select = $('<select>').addClass('changelist-filter-select');
                 var $items = $element.find('li');
 
+                $.each($element.prop('attributes'), function() {
+                    $select.attr(this.name, this.value);
+                });
+
                 if ($items.filter('.selected').length > 1) {
                     $select.attr('multiple', true);
                 }

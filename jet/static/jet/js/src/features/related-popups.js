@@ -85,7 +85,9 @@ RelatedPopups.prototype = {
         });
 
         $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
-            self.initLinksForRow($inlineItem.find('.form-row'));
+            $inlineItem.find('.form-row').each(function() {
+                self.initLinksForRow($(this));
+            });
         });
     },
     initPopupBackButton: function() {

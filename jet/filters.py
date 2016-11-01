@@ -15,6 +15,7 @@ except ImportError: # Django 1.6
 
 
 class RelatedFieldAjaxListFilter(RelatedFieldListFilter):
+    template = 'jet/related_field_ajax_list_filter.html'
     ajax_attrs = None
 
     def has_output(self):

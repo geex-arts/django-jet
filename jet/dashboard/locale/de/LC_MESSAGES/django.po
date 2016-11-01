@@ -260,7 +260,7 @@ msgid "You must install the FeedParser python module"
 msgstr "Bitte FeedParser Python modul installieren"
 
 msgid "You must provide a valid feed URL"
-msgstr "Bitte eine valide feed URL angeben"
+msgstr "Bitte eine gültige Feed URL angeben"
 
 msgid "Delete widget"
 msgstr "Widget löschen"

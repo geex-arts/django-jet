@@ -22,6 +22,7 @@ and applications without the provisions of the AGPLv3.
 * Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
+* libi.io http://libi.io/library/1683
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
@@ -167,7 +168,7 @@ Dashboard installation
 
 .. code::
 
-    pip install google-api-python-client
+    pip install google-api-python-client==1.4.1
 
 * Create database tables:
 

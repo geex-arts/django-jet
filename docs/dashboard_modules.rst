@@ -66,7 +66,7 @@ Extra Installation
 
 .. code::
 
-   pip install google-api-python-client
+   pip install google-api-python-client==1.4.1
 
 * Specify path to your Google Analytics ``client_secrets.json`` (obtained at Google website):
 

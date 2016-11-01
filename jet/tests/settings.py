@@ -69,6 +69,5 @@ MEDIA_URL = ''
 
 STATIC_URL = '/static/'
 
-
-
-
+JET_INDEX_DASHBOARD = 'jet.tests.dashboard.TestIndexDashboard'
+JET_APP_INDEX_DASHBOARD = 'jet.tests.dashboard.TestAppIndexDashboard'
