@@ -167,7 +167,7 @@ Dashboard installation
 
 .. code::
 
-    pip install google-api-python-client
+    pip install google-api-python-client==1.4.1
 
 * Create database tables:
 
