@@ -13,7 +13,8 @@ def read(fname):
 
 def get_install_requires():
     install_requires = [
-        'Django'
+        'Django',
+        'django-admin-rangefilter'
     ]
     try:
         import importlib
