@@ -16,6 +16,7 @@ from django.utils.translation import ugettext as _
 from django.utils.encoding import smart_text
 from django.utils.html import format_html
 from django.core.urlresolvers import reverse
+from rangefilter.filter import DateRangeFilter
 
 try:
     from django.contrib.admin.utils import get_model_from_relation
@@ -67,3 +68,18 @@ class RelatedFieldAjaxListFilter(admin.RelatedFieldListFilter):
 
         queryset = model._default_manager.filter(**{rel_name: self.lookup_val}).all()
         return [(x._get_pk_val(), smart_text(x)) for x in queryset]
+
+
+class DateRangeFilter(DateRangeFilter):
+
+    def get_template(self):
+        return 'rangefilter/date_filter.html'
+
+    @staticmethod
+    def _get_media():
+        css = [
+            'style.css',
+        ]
+        return forms.Media(
+            css={'all': ['range_filter/css/%s' % path for path in css]}
+        )
