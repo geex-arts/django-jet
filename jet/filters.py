@@ -66,6 +66,8 @@ class DateRangeFilter(DateRangeFilter):
         return 'rangefilter/date_filter.html'
 
     def _get_form_fields(self):
+        # this is here, because in parent DateRangeFilter AdminDateWidget
+        # could be imported from django-suit
         return OrderedDict((
             (self.lookup_kwarg_gte, forms.DateField(
                 label='',
