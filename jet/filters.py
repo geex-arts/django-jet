@@ -29,16 +29,6 @@ except ImportError:  # Django 1.6
     from django.forms.util import flatatt
 
 
-def make_dt_aware(dt):
-    if pytz is not None and settings.USE_TZ:
-        timezone = pytz.timezone(settings.TIME_ZONE)
-        if dt.tzinfo is not None:
-            dt = timezone.normalize(dt)
-        else:
-            dt = timezone.localize(dt)
-    return dt
-
-
 class RelatedFieldAjaxListFilter(admin.RelatedFieldListFilter):
     ajax_attrs = None
 
@@ -74,6 +64,22 @@ class DateRangeFilter(DateRangeFilter):
 
     def get_template(self):
         return 'rangefilter/date_filter.html'
+
+    def _get_form_fields(self):
+        return OrderedDict((
+            (self.lookup_kwarg_gte, forms.DateField(
+                label='',
+                widget=AdminDateWidget(attrs={'placeholder': _('From date')}),
+                localize=True,
+                required=False
+            )),
+            (self.lookup_kwarg_lte, forms.DateField(
+                label='',
+                widget=AdminDateWidget(attrs={'placeholder': _('To date')}),
+                localize=True,
+                required=False
+            )),
+        ))
 
     @staticmethod
     def _get_media():
