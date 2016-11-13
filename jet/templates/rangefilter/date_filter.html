@@ -30,7 +30,7 @@
                 <input type="hidden" id="{{ choice.system_name }}-query-string" value="{{ choice.query_string }}">
             {% endfor %}
             <div class="controls">
-                <input type="submit" value="{% trans "Search" %}" onclick="datefilter_apply(event, '{{ choices.0.system_name }}-query-string', '{{ choices.0.system_name }}-form')">
+                <input type="button" value="{% trans "Search" %}" onclick="datefilter_apply(event, '{{ choices.0.system_name }}-query-string', '{{ choices.0.system_name }}-form')">
                 <input type="reset" class="button" value="{% trans "Reset" %}" onclick="datefilter_reset('{{ choices.0.system_name }}-query-string')">
             </div>
         </form>
