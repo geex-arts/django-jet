@@ -180,6 +180,27 @@
   }
 }
 
+.changelist-filter-popup {
+  position: relative;
+
+  &-content {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    min-width: 200px;
+    background: $content-background-color;
+    border-radius: 4px;
+    box-shadow: 0 0 4px 0 $input-shadow-color;
+    z-index: 1;
+
+    &.visible {
+      display: block;
+    }
+  }
+}
+
 /* FILTER COLUMN */
 
 #changelist-filter {
