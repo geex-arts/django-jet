@@ -92,7 +92,7 @@ def jet_get_menu(context):
     for app in app_list:
         if not current_found:
             for model in app['models']:
-                if context['request'].path.startswith(model['admin_url']):
+                if 'admin_url' in model and context['request'].path.startswith(model['admin_url']):
                     model['current'] = True
                     current_found = True
                     break
@@ -221,8 +221,15 @@ def jet_sibling_object_url(context, next):
     preserved_filters_plain = context.get('preserved_filters', '')
     preserved_filters = dict(parse_qsl(preserved_filters_plain))
     admin_site = get_admin_site(context)
+
+    if admin_site is None:
+        return
+
     request = context.get('request')
     queryset = get_model_queryset(admin_site, model, request, preserved_filters=preserved_filters)
+
+    if queryset is None:
+        return
 
     sibling_object = None
     object_pks = list(queryset.values_list('pk', flat=True))

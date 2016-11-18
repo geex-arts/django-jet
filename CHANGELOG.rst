@@ -1,6 +1,19 @@
 Changelog
 =========
 
+1.0.3
+-----
+* PR-140: Added change message as tooltip to recent action dashboard module (thanks to michaelkuty for PR)
+* PR-130: Implement JET ui for django-admin-rangefilter (thanks to timur-orudzhov for PR)
+* PR-131: Use WSGIRequest resolver_match instead of resolve (thanks to m-vdb for PR)
+* PR-138: Fixed encoding error in jet_popup_response_data (thanks to michaelkuty for PR)
+* PR-137,138: Fixed UnicodeEncodeError in related popups (thanks to michaelkuty, Copperfield for PRs)
+* Issue-146: Fixed Django CMS plugin edit issue (thanks to bculpepper for report)
+* Issue-147: Fixed login for non superusers (thanks to gio82 for report)
+* Issue-147: Fixed RelatedFieldAjaxListFilter in Django 0.9+ (thanks to a1Gupta for report)
+* Issue-126: Fixed related popups for new items in tabular inlines (thanks to kmorey for report)
+
+
 1.0.2
 -----
 * PR-115: Removed mock request from get_model_queryset to fix 3rd party packages (thanks to imdario for PR)
