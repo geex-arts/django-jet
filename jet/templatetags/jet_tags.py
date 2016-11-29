@@ -125,7 +125,8 @@ def jet_is_checkbox(field):
 
 @register.filter
 def jet_select2_lookups(field):
-    if hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
+    if hasattr(field, 'field') and \
+            (isinstance(field.field, ModelChoiceField) or isinstance(field.field, ModelMultipleChoiceField)):
         qs = field.field.queryset
         model = qs.model
 
