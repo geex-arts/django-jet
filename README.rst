@@ -22,7 +22,7 @@ and applications without the provisions of the AGPLv3.
 * Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
-* libi.io http://libi.io/library/1683
+* libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 

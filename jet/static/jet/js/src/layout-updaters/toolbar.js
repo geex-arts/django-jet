@@ -29,12 +29,14 @@ ToolbarUpdater.prototype = {
             if ($element.prop('tagName') == 'H3') {
                 filterName = $element.text();
             } else if ($element.prop('tagName') == 'UL') {
-                var $select = $('<select>').addClass('changelist-filter-select');
+                var $select = $('<select>');
                 var $items = $element.find('li');
 
                 $.each($element.prop('attributes'), function() {
                     $select.attr(this.name, this.value);
                 });
+
+                $select.addClass('changelist-filter-select');
 
                 if ($items.filter('.selected').length > 1) {
                     $select.attr('multiple', true);

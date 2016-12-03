@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0.4
+-----
+* IMPORTANT: Fixed security issue with accessing model_lookup_view (when using RelatedFieldAjaxListFilter) without permissions
+* Fixed admin filters custom class attribute overrides
+* Fixed RelatedFieldAjaxListFilter to work with m2m fields
+
+
 1.0.3
 -----
 * PR-140: Added change message as tooltip to recent action dashboard module (thanks to michaelkuty for PR)
