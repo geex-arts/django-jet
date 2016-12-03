@@ -71,7 +71,7 @@ class ToggleApplicationPinForm(forms.ModelForm):
 
     def clean(self):
         data = super(ToggleApplicationPinForm, self).clean()
-        if not self.request.user.is_authenticated():
+        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
             raise ValidationError('error')
         return data
 
