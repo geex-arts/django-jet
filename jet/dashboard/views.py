@@ -211,7 +211,7 @@ def load_dashboard_module_view(request, pk):
     result = {'error': False}
 
     try:
-        instance = UserDashboardModule.objects.get(pk=pk)
+        instance = UserDashboardModule.objects.get(pk=pk, user=request.user.pk)
         module_cls = instance.load_module()
         module = module_cls(model=instance, context={'request': request})
         result['html'] = module.render()
