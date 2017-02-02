@@ -128,7 +128,7 @@ class ModelLookupForm(forms.Form):
         qs = self.model_cls.objects
 
         if self.cleaned_data['q']:
-            if getattr(self.model_cls, 'autocomplete_search_fields', None):
+            if getattr(self.model_cls, 'autocomplete_filter_search_fields', None):
                 search_fields = self.model_cls.autocomplete_search_fields()
                 filter_data = [Q((field + '__icontains', self.cleaned_data['q'])) for field in search_fields]
                 # if self.cleaned_data['object_id']:
