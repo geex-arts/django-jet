@@ -10,12 +10,18 @@ except ImportError: # Django 1.6
     from django.contrib.admin.util import get_fields_from_path
 
 
+class FakeChangeList(object):
+    def get_query_string(self, *args, **kwargs):
+        return ""
+
+
 class FiltersTestCase(TestCase):
     def setUp(self):
         self.models = []
         self.factory = RequestFactory()
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))
+        self.fake_change_list = FakeChangeList()
 
     def get_related_field_ajax_list_filter_params(self):
         model = RelatedToTestModel
@@ -36,7 +42,15 @@ class FiltersTestCase(TestCase):
         choices = list_filter.field_choices(field, request, model_admin)
 
         self.assertIsInstance(choices, list)
-        self.assertEqual(len(choices), 0)
+        self.assertEqual(len(choices), 1)
+
+        # check choice selection
+        choices = list(list_filter.choices(self.fake_change_list))
+        choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
+        self.assertEqual(choices, [
+            {'display': 'All', 'query_string': '', 'selected': False},
+            {'display': 'second2', 'query_string': '', 'selected': False},
+        ])
 
     def test_related_field_ajax_list_filter_with_initial(self):
         initial = self.models[1]
@@ -52,3 +66,10 @@ class FiltersTestCase(TestCase):
         self.assertEqual(len(choices), 1)
         self.assertEqual(choices[0], (initial.pk, smart_text(initial)))
 
+        # check choice selection
+        choices = list(list_filter.choices(self.fake_change_list))
+        choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
+        self.assertEqual(choices, [
+            {'display': 'All', 'query_string': '', 'selected': False},
+            {'display': 'second2', 'query_string': '', 'selected': True},
+        ])
