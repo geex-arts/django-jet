@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.test import TestCase, RequestFactory
 from django.utils.encoding import smart_text
+from django.utils.translation import ugettext_lazy as _
 from jet.filters import RelatedFieldAjaxListFilter
 from jet.tests.models import RelatedToTestModel, TestModel
 
@@ -48,9 +49,8 @@ class FiltersTestCase(TestCase):
 
         # check choice selection
         choices = list(list_filter.choices(self.fake_change_list))
-        choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
         self.assertEqual(choices, [
-            {'display': 'All', 'query_string': '', 'selected': True},
+            {'display': _('All'), 'query_string': '', 'selected': True},
             {'display': 'first1', 'query_string': '', 'selected': False},
             {'display': 'second2', 'query_string': '', 'selected': False},
         ])
@@ -72,9 +72,8 @@ class FiltersTestCase(TestCase):
 
         # check choice selection
         choices = list(list_filter.choices(self.fake_change_list))
-        choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
         self.assertEqual(choices, [
-            {'display': 'All', 'query_string': '', 'selected': False},
+            {'display': _('All'), 'query_string': '', 'selected': False},
             {'display': 'first1', 'query_string': '', 'selected': False},
             {'display': 'second2', 'query_string': '', 'selected': True},
         ])
