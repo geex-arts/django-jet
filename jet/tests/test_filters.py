@@ -39,16 +39,19 @@ class FiltersTestCase(TestCase):
 
         self.assertTrue(list_filter.has_output())
 
-        choices = list_filter.field_choices(field, request, model_admin)
+        field_choices = list_filter.field_choices(field, request, model_admin)
 
-        self.assertIsInstance(choices, list)
-        self.assertEqual(len(choices), 1)
+        self.assertEqual(field_choices, [
+            (self.models[0].pk, smart_text(self.models[0])),
+            (self.models[1].pk, smart_text(self.models[1])),
+        ])
 
         # check choice selection
         choices = list(list_filter.choices(self.fake_change_list))
         choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
         self.assertEqual(choices, [
-            {'display': 'All', 'query_string': '', 'selected': False},
+            {'display': 'All', 'query_string': '', 'selected': True},
+            {'display': 'first1', 'query_string': '', 'selected': False},
             {'display': 'second2', 'query_string': '', 'selected': False},
         ])
 
@@ -60,16 +63,18 @@ class FiltersTestCase(TestCase):
 
         self.assertTrue(list_filter.has_output())
 
-        choices = list_filter.field_choices(field, request, model_admin)
+        field_choices = list_filter.field_choices(field, request, model_admin)
 
-        self.assertIsInstance(choices, list)
-        self.assertEqual(len(choices), 1)
-        self.assertEqual(choices[0], (initial.pk, smart_text(initial)))
+        self.assertEqual(field_choices, [
+            (self.models[0].pk, smart_text(self.models[0])),
+            (self.models[1].pk, smart_text(self.models[1])),
+        ])
 
         # check choice selection
         choices = list(list_filter.choices(self.fake_change_list))
         choices[0]['display'] = str(choices[0]['display'])  # gettext_lazy()
         self.assertEqual(choices, [
             {'display': 'All', 'query_string': '', 'selected': False},
+            {'display': 'first1', 'query_string': '', 'selected': False},
             {'display': 'second2', 'query_string': '', 'selected': True},
         ])
