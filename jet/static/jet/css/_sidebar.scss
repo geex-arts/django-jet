@@ -10,7 +10,6 @@
   background-color: $sidebar-background-color;
   color: $sidebar-text-color;
   transition: background-color $transitions-duration;
-  padding-bottom: 32px;
 
   @include for-mobile {
     width: 360px;
