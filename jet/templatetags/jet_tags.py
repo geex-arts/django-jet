@@ -160,9 +160,12 @@ def jet_select2_lookups(field):
                 field.field.choices = choices
             elif hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
                 if initial_value:
-                    initial_object = model.objects.get(pk=initial_value)
-                    attrs['data-object-id'] = initial_value
-                    choices.append((initial_object.pk, get_model_instance_label(initial_object)))
+                    try:
+                        initial_object = model.objects.get(pk=initial_value)
+                        attrs['data-object-id'] = initial_value
+                        choices.append((initial_object.pk, get_model_instance_label(initial_object)))
+                    except model.DoesNotExist:
+                        pass
 
                 if isinstance(field.field.widget, RelatedFieldWidgetWrapper):
                     field.field.widget.widget = Select(attrs)
