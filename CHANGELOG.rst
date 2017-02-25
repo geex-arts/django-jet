@@ -1,6 +1,17 @@
 Changelog
 =========
 
+1.0.5
+-----
+* PR-167: Added fallback to window.opener to support old Django popups (thanks to michaelkuty for PR)
+* PR-169: Added zh-cn localization (thanks to hbiboluo for PR)
+* PR-172: Added Polish localization (thanks to lburdzy for PR)
+* PR-174: Fixed permission error on ModelLookupForm (thanks to brenouchoa for PR)
+* PR-178: Added Arabic localization by KUWAITNET (thanks to Bashar for PR)
+* Removed "powered by Django JET" copyright
+* Fixed exception when initial object not found for RelatedFieldAjaxListFilter
+
+
 1.0.4
 -----
 * IMPORTANT: Fixed security issue with accessing model_lookup_view (when using RelatedFieldAjaxListFilter) without permissions
