@@ -7,7 +7,7 @@ var Inline = function($inline) {
 
 Inline.prototype = {
     initAddRow: function($inline) {
-        $inline.find('.add-row a').on('click', function() {
+        $inline.on('click', '.add-row a', function() {
             var $inlineItem = $inline.find('.inline-related:not(.empty-form)').last();
             $inline.trigger('inline-group-row:added', [$inlineItem]);
         });
