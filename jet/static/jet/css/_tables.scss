@@ -16,11 +16,10 @@ table {
     position: fixed;
     z-index: 2;
     top: 0;
-    right: 20px;
-    left: $sidebar-width + 20px;
-    width: auto;
     border-radius: 0;
     box-shadow: none;
+    width: 100%;
+    padding: 0 20px;
 
     body.popup & {
       left: 20px;

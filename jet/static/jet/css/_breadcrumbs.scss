@@ -8,21 +8,25 @@ div.breadcrumbs {
   text-transform: uppercase;
   line-height: $top-height;
   color: $top-text-color;
-  padding: 20px 175px + 20px + 20px 20px 20px;
+  padding: 0 0 0 20px;
   visibility: hidden;
+  display: inline-block;
+  vertical-align: middle;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
 
+  body.menu-pinned & {
+    @include for-desktop {
+      padding-left: 0;
+    }
+  }
+
   @include for-mobile {
-    padding: 20px 20px 10px 20px;
     white-space: normal;
     text-overflow: clip;
     overflow: auto;
-  }
-
-  @include for-phone {
-    padding: 10px;
+    padding: 0;
   }
 
   &.initialized {
@@ -46,4 +50,38 @@ div.breadcrumbs {
   font-weight: bold !important;
   font-size: 15px;
   vertical-align: middle;
+}
+
+.breadcrumbs-container {
+  position: relative;
+  min-height: 31px;
+  padding: 10px 175px + 20px + 20px 10px 20px;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
+
+  @include for-mobile {
+    padding: 20px 20px 10px 20px;
+  }
+
+  @include for-phone {
+    padding-left: 10px;
+  }
+}
+
+#breadcrumbs-menu {
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+  line-height: 31px;
+
+  &:hover {
+    color: $hover-link-color;
+  }
+
+  body.menu-pinned & {
+    display: none;
+  }
+
+  @include for-mobile {
+    display: none;
+  }
 }

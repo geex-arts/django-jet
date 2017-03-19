@@ -36,16 +36,19 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+<body class="{% if request.COOKIES.pinned == 'true' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
 <div id="container">
-
     {% if not is_popup %}
     <!-- Header -->
     <div id="header">
-        <div id="branding">{% block branding %}{% endblock %}</div>
+        <div id="branding">
+            <span id="branding-menu" class="sidebar-header-menu-icon icon-menu"></span>
+            {% block branding %}{% endblock %}
+            <span id="branding-pin" class="sidebar-link-icon icon-pin"></span>
+        </div>
         {% block usertools %}
         {% if user.is_active and user.is_staff or has_permission %}
         <div id="user-tools">
@@ -73,12 +76,15 @@
         {% endblock %}
     </div>
     <!-- END Header -->
-    {% block breadcrumbs %}
-    <div class="breadcrumbs">
-    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
-    {% if title %} &rsaquo; {{ title }}{% endif %}
+
+    <div id="breadcrumbs-container" class="breadcrumbs-container">
+        <span id="breadcrumbs-menu" class="sidebar-header-menu-icon icon-menu"></span>
+        {% block breadcrumbs %}
+            <div class="breadcrumbs">
+                <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>{% if title %} &rsaquo; {{ title }}{% endif %}
+            </div>
+        {% endblock %}
     </div>
-    {% endblock %}
     {% endif %}
 
     {% block messages %}

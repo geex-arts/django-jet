@@ -35,8 +35,6 @@
   }
 
   .breadcrumbs {
-    margin-bottom: 20px;
-
     @include for-mobile {
       display: none;
     }
@@ -108,7 +106,8 @@ ul.actionlist li {
 
   &-tools {
     position: absolute;
-    top: 20px;
+    top: 50%;
+    transform: translateY(-50%);
     right: 20px + 175px + 20px;
 
     @include for-mobile {

@@ -6,8 +6,9 @@
   display: none;
   background-color: $sidebar-contrast-background-color;
   color: $sidebar-contrast-text-color;
-  padding: 14px;
+  padding: 19.5px 14px;
   text-align: center;
+  position: relative;
 
   &.initialized {
     display: block;
@@ -31,6 +32,49 @@
   a:hover {
     color: $sidebar-hover-action-color;
   }
+
+  @include for-mobile() {
+    padding: 15.7px;
+  }
+}
+
+#branding-pin {
+  position: absolute;
+  top: 50%;
+  font-size: 22px;
+  right: 8px;
+  cursor: pointer;
+  transition: transform 0.3s;
+  transform: translateY(-50%) rotate(-45deg);
+
+  body.menu-pinned & {
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  &:hover {
+    color: #fff;
+  }
+
+  @include for-mobile {
+    display: none;
+  }
+}
+
+#branding-menu {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transform: translateY(-50%);
+
+  &:hover {
+    color: #fff;
+  }
+
+  @include for-mobile() {
+    display: none;
+  }
 }
 
 #user-tools {
@@ -44,7 +88,7 @@
 .user-tools {
   ul {
     position: absolute;
-    top: $top-height - 12px;
+    top: 10px;
     right: 20px;
     border: 1px solid $top-border-color;
     border-radius: 4px;
@@ -120,6 +164,7 @@
         line-height: 30px;
         transition: color $transitions-duration;
         margin-left: 5px;
+        margin-right: 0;
 
         @include for-mobile {
           line-height: $sidebar-header-height;

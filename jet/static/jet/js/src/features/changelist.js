@@ -1,26 +1,23 @@
 var $ = require('jquery');
 
-var ChangeList = function($changelist) {
+var ChangeList = function ($changelist) {
     this.$changelist = $changelist;
 };
 
 ChangeList.prototype = {
-    updateFixedHeaderVisibility: function($fixedTable, $originalHeader) {
-        if ($(window).scrollTop() > $originalHeader.offset().top) {
-            $fixedTable.closest('table').show();
-        } else {
-            $fixedTable.closest('table').hide();
-        }
+    updateFixedHeaderVisibility: function ($fixedTable, $originalHeader) {
+        var isShow = $(window).scrollTop() > $originalHeader.offset().top;
+        $fixedTable.closest('table').css({display: isShow ? 'block' : 'none'});
     },
-    updateFixedHeaderWidth: function($fixedHeader, $originalHeader) {
+    updateFixedHeaderWidth: function ($fixedHeader, $originalHeader) {
         var $originalColumns = $originalHeader.find('th');
         var $columns = $fixedHeader.find('th');
 
-        $originalColumns.each(function(i) {
+        $originalColumns.each(function (i) {
             $columns.eq(i).css('width', $(this).width());
         });
     },
-    initFixedHeader: function($changelist) {
+    initFixedHeader: function ($changelist) {
         var $originalHeader = $changelist.find('#result_list thead');
 
         if ($originalHeader.length == 0) {
@@ -38,7 +35,7 @@ ChangeList.prototype = {
 
         this.updateFixedHeaderWidth($fixedHeader, $originalHeader);
     },
-    updateFixedFooter: function($results, $footer) {
+    updateFixedFooter: function ($results, $footer) {
         if ($(window).scrollTop() + $(window).height() < $results.offset().top + $results.outerHeight(false) + $footer.innerHeight()) {
             if (!$footer.hasClass('fixed')) {
                 var previousScrollTop = $(window).scrollTop();
@@ -55,7 +52,7 @@ ChangeList.prototype = {
             }
         }
     },
-    initFixedFooter: function($changelist) {
+    initFixedFooter: function ($changelist) {
         var $footer = $changelist.find('.changelist-footer');
         var $results = $footer.siblings('.results');
 
@@ -68,8 +65,8 @@ ChangeList.prototype = {
 
         this.updateFixedFooter($results, $footer);
     },
-    initHeaderSortableSelection: function() {
-        $('table thead .sortable').on('click', function(e) {
+    initHeaderSortableSelection: function () {
+        $('table thead .sortable').on('click', function (e) {
 
             if (e.target != this) {
                 return;
@@ -82,8 +79,8 @@ ChangeList.prototype = {
             }
         });
     },
-    initRowSelection: function($changelist) {
-        $changelist.find('#result_list tbody th, #result_list tbody td').on('click', function(e) {
+    initRowSelection: function ($changelist) {
+        $changelist.find('#result_list tbody th, #result_list tbody td').on('click', function (e) {
             // Fix selection on clicking elements inside row (e.x. links)
             if (e.target != this) {
                 return;
@@ -92,7 +89,7 @@ ChangeList.prototype = {
             $(this).closest('tr').find('.action-checkbox .action-select').click();
         });
     },
-    run: function() {
+    run: function () {
         var $changelist = this.$changelist;
 
         try {
@@ -108,8 +105,8 @@ ChangeList.prototype = {
     }
 };
 
-$(document).ready(function() {
-    $('#changelist').each(function() {
+$(document).ready(function () {
+    $('#changelist').each(function () {
         new ChangeList($(this)).run();
     });
 });
