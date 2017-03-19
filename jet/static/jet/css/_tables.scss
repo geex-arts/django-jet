@@ -17,12 +17,16 @@ table {
     z-index: 2;
     top: 0;
     right: 20px;
-    left: $sidebar-width + 20px;
+    left: 20px;
     width: auto;
     border-radius: 0;
     box-shadow: none;
 
-    body.popup & {
+    body.menu-pinned & {
+      left: $sidebar-width + 20px;
+    }
+
+    body.menu-pinned.popup & {
       left: 20px;
     }
 

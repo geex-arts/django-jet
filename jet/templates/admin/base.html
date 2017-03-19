@@ -36,7 +36,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+<body class="{% if request.COOKIES.sidebar_pinned == 'true' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
@@ -45,7 +45,11 @@
     {% if not is_popup %}
     <!-- Header -->
     <div id="header">
-        <div id="branding">{% block branding %}{% endblock %}</div>
+        <div id="branding">
+            <span id="branding-menu" class="sidebar-header-menu-icon icon-menu"></span>
+            <span id="branding-pin" class="sidebar-link-icon icon-pin"></span>
+            {% block branding %}{% endblock %}
+        </div>
         {% block usertools %}
         {% if user.is_active and user.is_staff or has_permission %}
         <div id="user-tools">
@@ -73,6 +77,7 @@
         {% endblock %}
     </div>
     <!-- END Header -->
+    <span class="breadcrumbs-menu sidebar-header-menu-icon icon-menu"></span>
     {% block breadcrumbs %}
     <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
