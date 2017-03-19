@@ -6,18 +6,19 @@ var SideBarPopup = require('./popup');
 require('perfect-scrollbar/jquery')($);
 require('browsernizr/test/touchevents');
 require('browsernizr');
+require('jquery.cookie');
 
-var SideBar = function ($sidebar) {
+var SideBar = function($sidebar) {
     this.$sidebar = $sidebar;
 };
 
 SideBar.prototype = {
-    initScrollBars: function ($sidebar) {
+    initScrollBars: function($sidebar) {
         if (!$(document.documentElement).hasClass('touchevents')) {
             $sidebar.find('.sidebar-wrapper').perfectScrollbar();
         }
     },
-    initSideBarToggle: function () {
+    initSideBarToggle: function() {
         var toggle = function (e) {
             e.preventDefault();
             this.sideBarToggle();
@@ -26,7 +27,7 @@ SideBar.prototype = {
         $('.sidebar-toggle, #branding-menu').on('click', toggle.bind(this));
         $(document.body).on('click', '.sidebar-backdrop', toggle.bind(this));
     },
-    sideBarToggle: function () {
+    sideBarToggle: function() {
         var $dependent = $('.sidebar-dependent');
         var open = !$dependent.hasClass('sidebar-opened') && !$(document.body).hasClass('menu-pinned');
 
@@ -36,7 +37,7 @@ SideBar.prototype = {
         this.storePinStatus(false);
         this.toggleBackdrop(open);
     },
-    toggleBackdrop: function (open) {
+    toggleBackdrop: function(open) {
         if (open) {
             var backdrop = $('<div/>', {class: 'sidebar-backdrop'});
             $(document.body).append(backdrop);
@@ -47,7 +48,7 @@ SideBar.prototype = {
             });
         }
     },
-    initPinSideBar: function ($sidebar) {
+    initPinSideBar: function($sidebar) {
         $sidebar.on('click', '#branding-pin', (function () {
             var $dependent = $('.sidebar-dependent');
 
@@ -59,14 +60,18 @@ SideBar.prototype = {
                 this.storePinStatus(true);
                 $(document.body).addClass('menu-pinned').removeClass('non-scrollable');
             }
+
             this.toggleBackdrop(false);
+
+            setTimeout(function() {
+                $(window).trigger('resize');
+            }, 500);
         }).bind(this));
     },
-    storePinStatus: function (status) {
-        var date = new Date(new Date().getTime() + 3 * 365 * 24 * 60 * 1000);
-        document.cookie = "pinned=" + status + "; path=/; expires=" + date.toUTCString();
+    storePinStatus: function(status) {
+        $.cookie('sidebar_pinned', status, { expires: 365, path: '/' });
     },
-    run: function () {
+    run: function() {
         var $sidebar = this.$sidebar;
 
         new SideBarApplicationPinning($sidebar).run();
@@ -85,9 +90,9 @@ SideBar.prototype = {
     }
 };
 
-$(document).ready(function () {
-    $('.sidebar').each(function () {
-        (new SideBar($(this))).run();
+$(document).ready(function() {
+    $('.sidebar').each(function() {
+        new SideBar($(this)).run();
     });
 });
 

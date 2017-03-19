@@ -70,7 +70,7 @@
       top: 0;
       right: 0;
       left: 0;
-      z-index: 3;
+      z-index: 6;
       transition: background-color $transitions-duration, transform $transitions-duration;
 
       @include for-mobile {

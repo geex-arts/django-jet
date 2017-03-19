@@ -436,23 +436,18 @@
   background: $background-color;
 
   &.fixed {
-    box-sizing: border-box;
-    width: 100%;
-    left: 0;
-    padding-left: 20px;
-    padding-right: 20px;
     position: fixed;
+    left: 20px;
+    right: 20px;
     bottom: 0;
     border-top: 2px solid $content-border2-color;
     transition: left 0.3s;
 
     body.menu-pinned & {
-      @include for-desktop {
-        left: $sidebar-width;
-      }
+      left: $sidebar-width + 20px;
     }
 
-    body.popup & {
+    body.menu-pinned.popup & {
       left: 20px;
     }
 

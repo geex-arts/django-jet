@@ -8,25 +8,22 @@ div.breadcrumbs {
   text-transform: uppercase;
   line-height: $top-height;
   color: $top-text-color;
-  padding: 0 0 0 20px;
+  padding: 10px 175px + 20px + 20px 10px 20px;
   visibility: hidden;
-  display: inline-block;
-  vertical-align: middle;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-
-  body.menu-pinned & {
-    @include for-desktop {
-      padding-left: 0;
-    }
-  }
+  min-height: 32px;
 
   @include for-mobile {
+    padding: 20px 20px 10px 20px;
     white-space: normal;
     text-overflow: clip;
     overflow: auto;
-    padding: 0;
+  }
+
+  @include for-phone {
+    padding: 10px;
   }
 
   &.initialized {
@@ -44,12 +41,35 @@ div.breadcrumbs {
   }
 }
 
-.breadcrumbs-separator {
-  color: $top-separator-color;
-  margin: 0 6px 0 6px;
-  font-weight: bold !important;
-  font-size: 15px;
-  vertical-align: middle;
+.breadcrumbs {
+  &-separator {
+    color: $top-separator-color;
+    margin: 0 6px 0 6px;
+    font-weight: bold !important;
+    font-size: 15px;
+    vertical-align: middle;
+  }
+
+  &-menu {
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 31px;
+    padding: 10px 0 10px 20px;
+
+    &:hover {
+      color: $hover-link-color;
+    }
+
+    body.menu-pinned & {
+      display: none;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+  }
 }
 
 .breadcrumbs-container {
@@ -67,21 +87,3 @@ div.breadcrumbs {
   }
 }
 
-#breadcrumbs-menu {
-  display: inline-block;
-  vertical-align: middle;
-  cursor: pointer;
-  line-height: 31px;
-
-  &:hover {
-    color: $hover-link-color;
-  }
-
-  body.menu-pinned & {
-    display: none;
-  }
-
-  @include for-mobile {
-    display: none;
-  }
-}

@@ -6,9 +6,15 @@
   display: none;
   background-color: $sidebar-contrast-background-color;
   color: $sidebar-contrast-text-color;
-  padding: 19.5px 14px;
+  padding: 14px;
   text-align: center;
   position: relative;
+  min-height: 52px;
+  box-sizing: border-box;
+
+  @include for-mobile {
+    min-height: 0;
+  }
 
   &.initialized {
     display: block;
@@ -18,11 +24,20 @@
     display: none;
   }
 
+  &:after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+  }
+
   h1, h2 {
-    padding: 0;
+    display: inline-block;
+    padding: 0 20px;
     margin: 0;
     text-transform: uppercase;
     font-size: 11px;
+    vertical-align: middle;
   }
 
   a, a:visited, a:hover {
@@ -33,47 +48,46 @@
     color: $sidebar-hover-action-color;
   }
 
-  @include for-mobile() {
-    padding: 15.7px;
-  }
-}
+  &-pin {
+    position: absolute;
+    top: 50%;
+    right: 4px;
+    margin-top: -11px;
+    display: inline-block;
+    font-size: 22px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    transform: rotate(-45deg);
 
-#branding-pin {
-  position: absolute;
-  top: 50%;
-  font-size: 22px;
-  right: 8px;
-  cursor: pointer;
-  transition: transform 0.3s;
-  transform: translateY(-50%) rotate(-45deg);
+    body.menu-pinned & {
+      transform: rotate(45deg);
+    }
 
-  body.menu-pinned & {
-    transform: translateY(-50%) rotate(45deg);
-  }
+    &:hover {
+      color: #fff;
+    }
 
-  &:hover {
-    color: #fff;
-  }
-
-  @include for-mobile {
-    display: none;
-  }
-}
-
-#branding-menu {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transform: translateY(-50%);
-
-  &:hover {
-    color: #fff;
+    @include for-mobile {
+      display: none;
+    }
   }
 
-  @include for-mobile() {
-    display: none;
+  &-menu {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    margin-top: -8px;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+
+    &:hover {
+      color: #fff;
+    }
+
+    @include for-mobile() {
+      display: none;
+    }
   }
 }
 
@@ -88,7 +102,7 @@
 .user-tools {
   ul {
     position: absolute;
-    top: 10px;
+    top: ($top-height + 10px * 2) / 2 - 30px / 2;
     right: 20px;
     border: 1px solid $top-border-color;
     border-radius: 4px;
@@ -164,7 +178,6 @@
         line-height: 30px;
         transition: color $transitions-duration;
         margin-left: 5px;
-        margin-right: 0;
 
         @include for-mobile {
           line-height: $sidebar-header-height;

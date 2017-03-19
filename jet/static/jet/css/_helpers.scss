@@ -71,11 +71,7 @@
   }
 }
 
-@keyframes spin {
-  100% {
-    transform: rotate(360deg);
-  }
-}
+@keyframes spin { 100% { transform: rotate(360deg); } }
 
 @mixin font-icon {
   font-family: 'jet-icons';

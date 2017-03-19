@@ -1,6 +1,7 @@
 /*
   DJANGO JET Admin styles
 */
+
 @import "globals";
 
 html, body {
@@ -46,13 +47,17 @@ body {
   transition: padding-left 0.3s;
 
   body.menu-pinned & {
-    @include for-desktop {
-      padding-left: $sidebar-width;
-    }
+    padding-left: $sidebar-width;
+  }
+
+  body.menu-pinned.popup & {
+    padding-left: 0;
   }
 
   @include for-mobile {
-    padding-left: 0;
+    &, body.menu-pinned & {
+      padding-left: 0;
+    }
   }
 
   .popup & {
