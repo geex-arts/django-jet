@@ -146,7 +146,7 @@ def jet_change_form_sibling_links_enabled():
     return settings.JET_CHANGE_FORM_SIBLING_LINKS
 
 
-def jet_sibling_object_url(context, next):
+def jet_sibling_object(context, next):
     original = context.get('original')
 
     if not original:
@@ -189,17 +189,20 @@ def jet_sibling_object_url(context, next):
     if preserved_filters_plain != '':
         url += '?' + preserved_filters_plain
 
-    return url
+    return {
+        'label': str(sibling_object),
+        'url': url
+    }
 
 
 @register.assignment_tag(takes_context=True)
-def jet_previous_object_url(context):
-    return jet_sibling_object_url(context, False)
+def jet_previous_object(context):
+    return jet_sibling_object(context, False)
 
 
 @register.assignment_tag(takes_context=True)
-def jet_next_object_url(context):
-    return jet_sibling_object_url(context, True)
+def jet_next_object(context):
+    return jet_sibling_object(context, True)
 
 
 @register.assignment_tag(takes_context=True)

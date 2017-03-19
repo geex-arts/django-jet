@@ -115,14 +115,28 @@
     {% if change and show_siblings %}
         <div class="changeform-navigation">
             {% spaceless %}
-                {% jet_previous_object_url as url %}
-                <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button left{% if not url %} disabled{% endif %}">
-                    <span class="changeform-navigation-button icon-arrow-left"></span>
+                {% jet_previous_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon left icon-arrow-left"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            {% trans "none" %}
+                        {% endif %}
+                    </span>
                 </a>
 
-                {% jet_next_object_url as url %}
-                <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button right{% if not url %} disabled{% endif %}">
-                    <span class="changeform-navigation-button icon-arrow-right"></span>
+                {% jet_next_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon right icon-arrow-right"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </span>
                 </a>
             {% endspaceless %}
         </div>

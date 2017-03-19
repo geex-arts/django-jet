@@ -870,8 +870,51 @@ form .related-widget-wrapper ul {
   }
 
   &-button {
-    font-weight: bold;
-    vertical-align: middle;
+    &, &:visited, &:hover {
+      width: 120px;
+      vertical-align: middle;
+      box-sizing: border-box;
+    }
+
+    &-icon {
+      font-weight: bold;
+      vertical-align: middle;
+      line-height: 32px;
+
+      &.left {
+        float: left;
+      }
+
+      &.right {
+        float: right;
+      }
+    }
+
+    &-label {
+      display: block;
+      opacity: 0.5;
+      transition: opacity $transitions-duration;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-icon.left + &-label {
+      margin-left: 16px;
+    }
+
+    &-icon.right + &-label {
+      margin-right: 16px;
+    }
+
+    &:hover &-label {
+      opacity: 1;
+    }
+
+    &.disabled:hover &-label {
+      opacity: 0.5;
+    }
   }
 }
 
