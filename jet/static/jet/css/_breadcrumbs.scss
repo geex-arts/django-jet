@@ -14,20 +14,21 @@ div.breadcrumbs {
   text-overflow: ellipsis;
   overflow: hidden;
   min-height: 32px;
+  display: inline;
 
   @include for-mobile {
-    padding: 20px 20px 10px 20px;
+    padding: 20px 20px 10px 0;
     white-space: normal;
     text-overflow: clip;
     overflow: auto;
   }
 
-  @include for-phone {
-    padding: 10px;
-  }
-
   &.initialized {
     visibility: inherit;
+  }
+
+  body.menu-pinned & {
+    padding-left: 0;
   }
 
   a {
@@ -56,7 +57,7 @@ div.breadcrumbs {
     vertical-align: middle;
     cursor: pointer;
     line-height: 31px;
-    padding: 10px 0 10px 20px;
+    padding: 0; 
 
     &:hover {
       color: $hover-link-color;
