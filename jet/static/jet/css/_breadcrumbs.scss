@@ -27,6 +27,10 @@ div.breadcrumbs {
     visibility: inherit;
   }
 
+  body.menu-pinned & {
+    padding-left: 0;
+  }
+
   a {
     &, &:visited {
       color: $top-link-color;
