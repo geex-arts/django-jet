@@ -78,6 +78,10 @@ div.breadcrumbs {
   padding: 10px 175px + 20px + 20px 10px 20px;
   box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
 
+  body.login & {
+    display: none;
+  }
+
   @include for-mobile {
     padding: 20px 20px 10px 20px;
   }
