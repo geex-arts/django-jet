@@ -1,0 +1,216 @@
+/*  Filebrowser Pulldown Actions
+------------------------------------------------------------------------------------------------------ */
+
+.pulldown-versions-container {
+    position: relative;
+    float: left;
+}
+.pulldown-versions-handler {
+    position: relative;
+    display: block;
+    margin-left: 2px;
+    padding: 0 !important;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+}
+.pulldown-versions-handler:link, .pulldown-versions-handler:visited {
+    border: 1px solid #2B8AAB;
+    background: #309bbf url('../img/icon-pulldown-versions.png') 50% 9px no-repeat scroll;
+    background: url('../img/icon-pulldown-versions.png') 50% 9px no-repeat scroll, 
+                -moz-linear-gradient(top, #4FB2D3, #309bbf);
+    background: url('../img/icon-pulldown-versions.png') 50% 9px no-repeat scroll, 
+                -webkit-gradient(linear, left top, left bottom, from(#4FB2D3), to(#309bbf));
+}
+.pulldown-versions-handler:hover, .pulldown-versions-handler:active {
+    border: 1px solid #373737;
+    background: #666 url('../img/icon-pulldown-versions-hover.png') 50% 9px no-repeat scroll;
+    background: url('../img/icon-pulldown-versions-hover.png') 50% 9px no-repeat scroll, 
+                -moz-linear-gradient(top, #555, #444);
+    background: url('../img/icon-pulldown-versions-hover.png') 50% 9px no-repeat scroll, 
+                -webkit-gradient(linear, left top, left bottom, from(#555), to(#444));
+}
+.open .pulldown-versions-handler {
+    border: 1px solid #373737;
+    background: #666 url('../img/icon-pulldown-versions-active.png') 50% 8px no-repeat scroll;
+    background: url('../img/icon-pulldown-versions-active.png') 50% 8px no-repeat scroll, 
+                -moz-linear-gradient(top, #555, #444);
+    background: url('../img/icon-pulldown-versions-active.png') 50% 8px no-repeat scroll, 
+                -webkit-gradient(linear, left top, left bottom, from(#555), to(#444));
+}
+ul.pulldown-versions {
+    display: none;
+}
+.open ul.pulldown-versions {
+    display: block;
+    position: absolute;
+    z-index: 1000;
+    margin: 2px 0 0 2px;
+    padding: 0;
+    border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px;
+    background: #eee;
+    background: #309bbf;
+    box-shadow: 0 0 50px #333; -moz-box-shadow: 0 0 50px #333; -webkit-box-shadow: 0 0 50px #333;
+}
+ul.pulldown-versions li {
+    list-style: none;
+    border-top: 1px solid #3da8cc;
+    border-bottom: 1px solid #2987a6;
+}
+ul.pulldown-versions li:first-child {
+    border-top: 0;
+}
+ul.pulldown-versions li:last-child {
+    border-bottom: 0;
+}
+ul.pulldown-versions a {
+    display: block;
+    padding: 5px 30px 5px 10px;
+    white-space: nowrap;
+}
+ul.pulldown-versions li:first-child a {
+    border-top-left-radius: 5px; -moz-border-radius-topleft: 5px; -webkit-border-top-left-radius: 5px;
+    border-top-right-radius: 5px; -moz-border-radius-topright: 5px; -webkit-border-top-right-radius: 5px;
+}
+ul.pulldown-versions li:last-child a {
+    border-bottom-left-radius: 5px; -moz-border-radius-bottomleft: 5px; -webkit-border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px; -moz-border-radius-bottomright: 5px; -webkit-border-bottom-right-radius: 5px;
+}
+ul.pulldown-versions a:link, ul.pulldown-versions a:visited {
+    color: #fff;
+    background: #309bbf;
+}
+ul.pulldown-versions a:hover, ul.pulldown-versions a:active {
+    color: #fff;
+    background: #444;
+}
+
+/* Table Header */
+thead th.sorted .text {
+    padding-right: 24px;
+}
+
+/* Upload button
+------------------------------------------------------------------------------------------------------ */
+.qq-upload-button {
+    display: inline-block;
+    background-color: #47bac1;
+    color: #fff;
+    border: 0;
+    border-radius: 0.28571rem;
+    height: 2.28571rem;
+    line-height: 32px;
+    line-height: 2.28571rem;
+    outline: 0;
+    font-size: 12px;
+    font-size: 0.85714rem;
+    font-weight: lighter;
+    text-align: center;
+    margin: 0 8px 0 0;
+    margin: 0 0.57143rem 0 0;
+    padding: 0 20px;
+    padding: 0 1.42857rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 100%;
+    box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-transition: background .3s;
+    transition: background .3s;
+}
+.qq-upload-button:hover {
+    background-color: #639af5;
+    color: #fff;
+}
+.qq-upload-list {
+    position: relative;
+    clear: both;
+    margin-top: 12px;
+    border-top: 1px solid #e0e0e0;
+}
+.qq-upload-list:empty {
+    margin-top: 0;
+    border-top: 0;
+}
+.qq-upload-list > div {
+    position: relative;
+    font: 12px Arial, sans-serif;
+    padding: 8px 0;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+.qq-upload-list > div + > div {
+    border-top: 1px solid #fff;
+}
+.qq-upload-list > div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+span.qq-upload-file {
+    font-weight: bold;
+}
+.qq-upload-failed-text {
+    display: none;
+}
+.qq-upload-fail .qq-upload-failed-text {
+    display: inline;
+    margin-left: 10px;
+    color: #bf3030;
+    font-weight: bold;
+}
+.qq-upload-cancel {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    color: transparent !important;
+    width: 16px;
+    height: 16px;
+    background: url('../img/cancel.png') top left no-repeat;
+    cursor: pointer;
+}
+.qq-upload-cancel:hover {
+    color: transparent !important;
+    background: url('../img/cancel_hover.png') top left no-repeat;
+}
+.qq-upload-size {
+    font-size: 11px;
+    margin-left: 10px;
+}
+.qq-upload-complete {
+    display: none;
+    position: absolute;
+    right: 0;
+    margin: -15px -2px 0 0;
+    color: transparent !important;
+    width: 16px;
+    height: 16px;
+    background: url('../img/completed.png') top left no-repeat;
+}
+.qq-upload-success .qq-upload-complete {
+    display: block;
+}
+.progress-bar {
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px; 
+
+    background-color: #fff;
+    border: 1px solid #999;
+    height: 6px;
+    margin: 4px 0 2px;
+}
+.progress-bar .content {
+    background: #639af5;
+
+    height: 6px;
+    width: 0%;
+}
+.qq-upload-success .progress-bar .content {
+    background: #47bac1;
+}
+.qq-upload-success .progress-bar .content:after {
+    background: transparent url('../img/cancel.png') 0 0 no-repeat scroll;
+}
