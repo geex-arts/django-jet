@@ -19,12 +19,12 @@ SideBar.prototype = {
         }
     },
     initSideBarToggle: function() {
-        var toggle = function (e) {
+        var toggle = function(e) {
             e.preventDefault();
             this.sideBarToggle();
         };
 
-        $('.sidebar-toggle, #branding-menu').on('click', toggle.bind(this));
+        $('.sidebar-toggle').on('click', toggle.bind(this));
         $(document.body).on('click', '.sidebar-backdrop', toggle.bind(this));
     },
     sideBarToggle: function() {
@@ -49,7 +49,7 @@ SideBar.prototype = {
         }
     },
     initPinSideBar: function($sidebar) {
-        $sidebar.on('click', '#branding-pin', (function () {
+        $sidebar.on('click', '.sidebar-pin', (function () {
             var $dependent = $('.sidebar-dependent');
 
             if ($(document.body).hasClass('menu-pinned')) {
