@@ -14,21 +14,20 @@ div.breadcrumbs {
   text-overflow: ellipsis;
   overflow: hidden;
   min-height: 32px;
-  display: inline;
 
   @include for-mobile {
-    padding: 20px 20px 10px 0;
+    padding: 20px 20px 10px 20px;
     white-space: normal;
     text-overflow: clip;
     overflow: auto;
   }
 
-  &.initialized {
-    visibility: inherit;
+  @include for-phone {
+    padding: 10px;
   }
 
-  body.menu-pinned & {
-    padding-left: 0;
+  &.initialized {
+    visibility: inherit;
   }
 
   a {
@@ -50,45 +49,4 @@ div.breadcrumbs {
     font-size: 15px;
     vertical-align: middle;
   }
-
-  &-menu {
-    float: left;
-    display: inline-block;
-    vertical-align: middle;
-    cursor: pointer;
-    line-height: 31px;
-    padding: 0; 
-
-    &:hover {
-      color: $hover-link-color;
-    }
-
-    body.menu-pinned & {
-      display: none;
-    }
-
-    @include for-mobile {
-      display: none;
-    }
-  }
 }
-
-.breadcrumbs-container {
-  position: relative;
-  min-height: 31px;
-  padding: 10px 175px + 20px + 20px 10px 20px;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.05);
-
-  body.login & {
-    display: none;
-  }
-
-  @include for-mobile {
-    padding: 20px 20px 10px 20px;
-  }
-
-  @include for-phone {
-    padding-left: 10px;
-  }
-}
-

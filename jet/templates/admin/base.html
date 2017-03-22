@@ -77,17 +77,12 @@
         {% endblock %}
     </div>
     <!-- END Header -->
-    
-    {% block breadcrumbs_container %}
-        <div id="breadcrumbs-container" class="breadcrumbs-container">
-            <span id="breadcrumbs-menu" class="breadcrumbs-menu sidebar-header-menu-icon icon-menu"></span>
-            {% block breadcrumbs %}
-                <div class="breadcrumbs">
-                    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>{% if title %} &rsaquo;
-                    {{ title }}{% endif %}
-                </div>
-            {% endblock %}
-        </div>
+
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
     {% endblock %}
     {% endif %}
 

@@ -539,4 +539,25 @@
       }
     }
   }
+
+  &-container-toggle {
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 31px;
+    padding: 10px 0 10px 20px;
+
+    &:hover {
+      color: $hover-link-color;
+    }
+
+    body.menu-pinned & {
+      display: none;
+    }
+
+    @include for-mobile {
+      display: none;
+    }
+  }
 }

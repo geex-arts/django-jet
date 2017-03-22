@@ -71,6 +71,12 @@ SideBar.prototype = {
     storePinStatus: function(status) {
         $.cookie('sidebar_pinned', status, { expires: 365, path: '/' });
     },
+    addToggleButton: function() {
+        var $button = $('<span>')
+          .addClass('sidebar-container-toggle sidebar-header-menu-icon icon-menu sidebar-toggle');
+
+        $('#container').prepend($button);
+    },
     run: function() {
         var $sidebar = this.$sidebar;
 
@@ -80,6 +86,7 @@ SideBar.prototype = {
 
         try {
             this.initScrollBars($sidebar);
+            this.addToggleButton();
             this.initSideBarToggle();
             this.initPinSideBar($sidebar);
         } catch (e) {
