@@ -302,14 +302,22 @@ def get_menu_items(context):
         def get_menu_item_app_model(app_label, data):
             item = {'has_perms': True}
 
-            if 'name' in data and app_label in original_app_list:
-                models = dict(map(
-                    lambda x: (x['name'], x),
-                    original_app_list[app_label]['models']
-                ))
+            if 'name' in data:
+                parts = data['name'].split('.', 2)
 
-                if data['name'] in models:
-                    item = models[data['name']]
+                if len(parts) > 1:
+                    app_label, name = parts
+                else:
+                    name = data['name']
+
+                if app_label in original_app_list:
+                    models = dict(map(
+                        lambda x: (x['name'], x),
+                        original_app_list[app_label]['models']
+                    ))
+
+                    if name in models:
+                        item = models[name].copy()
 
             if 'label' in data:
                 item['label'] = data['label']
