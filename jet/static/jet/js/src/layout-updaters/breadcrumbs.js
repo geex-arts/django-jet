@@ -42,7 +42,7 @@ $(document).ready(function() {
     if ($breadcrumbs.length == 0) {
         $breadcrumbs = $('<div>')
             .addClass('breadcrumbs')
-            .insertAfter($('#header'));
+            .appendTo($('#breadcrumbs-container'));
     }
 
     $breadcrumbs.each(function() {
