@@ -340,9 +340,11 @@
                                     <input class="sidebar-popup-search" placeholder="Search...">
 
                                     <ul class="sidebar-popup-list">
-                                        <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
-                                            <a href="{{ app.app_url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
-                                        </li>
+                                        {% if app.url %}
+                                            <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
+                                                <a href="{{ app.url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
+                                            </li>
+                                        {% endif %}
 
                                         {% for model in app.models %}
                                             {% if model.has_perms %}
