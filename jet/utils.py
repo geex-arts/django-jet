@@ -342,7 +342,7 @@ def get_menu_items(context):
                 app_label = 'custom_%s' % slugify(data['label'])
 
             if app_label in original_app_list:
-                item = original_app_list[app_label]
+                item = original_app_list[app_label].copy()
             else:
                 item = {'app_label': app_label, 'has_perms': True}
 
