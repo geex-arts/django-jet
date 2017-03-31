@@ -339,7 +339,7 @@ def get_menu_items(context):
             if not app_label:
                 if 'label' not in data:
                     raise Exception('Custom menu items should at least have \'label\' or \'app_label\' key')
-                app_label = 'custom_%s' % slugify(data['label'])
+                app_label = 'custom_%s' % slugify(data['label'], allow_unicode=True)
 
             if app_label in original_app_list:
                 item = original_app_list[app_label].copy()
