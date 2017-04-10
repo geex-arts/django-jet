@@ -1,7 +1,7 @@
 from django import forms
 from django.core.urlresolvers import reverse
 from django.test import TestCase
-from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object_url, jet_previous_object_url
+from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object, jet_previous_object
 from jet.tests.models import TestModel, SearchableTestModel
 from django.test.client import RequestFactory
 
@@ -72,7 +72,7 @@ class TagsTestCase(TestCase):
             'request': RequestFactory().get(expected_url),
         }
 
-        actual_url = jet_next_object_url(context)
+        actual_url = jet_next_object_url(context)['url']
 
         self.assertEqual(actual_url, expected_url)
 
@@ -92,7 +92,7 @@ class TagsTestCase(TestCase):
             'request': RequestFactory().get(changelist_url),
         }
 
-        actual_url = jet_previous_object_url(context)
+        actual_url = jet_previous_object(context)['url']
         expected_url = None
 
         self.assertEqual(actual_url, expected_url)
