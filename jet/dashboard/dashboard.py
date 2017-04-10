@@ -1,3 +1,4 @@
+from django.template import Context
 from importlib import import_module
 from django.core.urlresolvers import reverse
 from django.template.loader import render_to_string
@@ -47,6 +48,9 @@ class Dashboard(object):
         self.set_context(context)
 
     def set_context(self, context):
+        if isinstance(context, Context):
+            context = context.flatten()
+
         self.context = context
         self.init_with_context(context)
         self.load_modules()
