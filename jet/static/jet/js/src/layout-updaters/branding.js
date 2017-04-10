@@ -6,7 +6,7 @@ var BrandingUpdater = function($branding) {
 
 BrandingUpdater.prototype = {
     move: function($branding) {
-        $branding.detach().prependTo($('.sidebar-wrapper'));
+        $branding.detach().prependTo($('.sidebar-wrapper')).css('height', $branding.outerHeight());
     },
     run: function() {
         var $branding = this.$branding;

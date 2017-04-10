@@ -33,9 +33,7 @@ $(document).ready(function() {
     var $breadcrumbs = $('.breadcrumbs');
 
     if ($breadcrumbs.length == 0) {
-        $breadcrumbs = $('<div>')
-            .addClass('breadcrumbs')
-            .insertAfter($('#header'));
+        return;
     }
 
     $breadcrumbs.each(function() {
