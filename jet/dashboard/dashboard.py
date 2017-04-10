@@ -49,7 +49,10 @@ class Dashboard(object):
 
     def set_context(self, context):
         if isinstance(context, Context):
-            context = context.flatten()
+            flat = {}
+            for d in context.dicts:
+                flat.update(d)
+            context = flat
 
         self.context = context
         self.init_with_context(context)
