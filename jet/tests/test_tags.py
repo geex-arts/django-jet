@@ -92,7 +92,7 @@ class TagsTestCase(TestCase):
             'request': RequestFactory().get(changelist_url),
         }
 
-        actual_url = jet_previous_object(context)['url']
-        expected_url = None
+        previous_object = jet_previous_object(context)
+        expected_object = None
 
-        self.assertEqual(actual_url, expected_url)
+        self.assertEqual(previous_object, expected_object)
