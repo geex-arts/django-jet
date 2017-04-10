@@ -7,12 +7,12 @@ python:
   - 3.4
   - pypy
 env:
-  - DJANGO=<1.7
-  - DJANGO=<1.8
-  - DJANGO=<1.9
-  - DJANGO=<1.10
-  - DJANGO=<1.11
-  - DJANGO=<1.12
+  - DJANGO="<1.7"
+  - DJANGO="<1.8"
+  - DJANGO="<1.9"
+  - DJANGO="<1.10"
+  - DJANGO="<1.11"
+  - DJANGO="<1.12"
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
