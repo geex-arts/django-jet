@@ -72,7 +72,7 @@ class TagsTestCase(TestCase):
             'request': RequestFactory().get(expected_url),
         }
 
-        actual_url = jet_next_object_url(context)['url']
+        actual_url = jet_next_object(context)['url']
 
         self.assertEqual(actual_url, expected_url)
 
