@@ -224,7 +224,7 @@ Dashboard.prototype = {
             var autoreload_time = $item.data('ajax-autoreload-time');
             var url = $item.data('ajax-url');
 
-            var _loadModule = function () {
+            function _loadmodule() {
                 $.ajax({
                     url: url,
                     dataType: 'json',
@@ -246,14 +246,15 @@ Dashboard.prototype = {
                         });
 
                         if (autoreload_time) {
-                            setTimeout(_loadModule, autoreload_time)
+                            setTimeout(_loadmodule, autoreload_time)
                         }
                     },
                     error: function () {
                         $content.empty();
                     }
                 });
-            }()
+            }
+            _loadmodule();
         });
     },
     updateModuleChildrenFormsetLabels: function($inline) {
