@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="dashboard-item{% if module.collapsible %} collapsible{% endif %}{% if module.model.collapsed %} collapsed{% endif %}{% if module.deletable %} deletable{% endif %}{% if module.ajax_load %} ajax{% endif %}{% if module.draggable %} draggable{% endif %} {% if module.ajax_autoreload_time %} autoreload{% endif %}" {% if module.ajax_autoreload_time %} data-ajax-autoreload-time="{{ module.ajax_autoreload_time }}"{% endif %}{% if module.ajax_load %} data-ajax-url="{% url "jet-dashboard:load_dashboard_module" pk=module.model.id %}"{% endif %} data-module-id="{{ module.model.id }}">
+<div class="dashboard-item{% if module.collapsible %} collapsible{% endif %}{% if module.model.collapsed %} collapsed{% endif %}{% if module.deletable %} deletable{% endif %}{% if module.ajax_load %} ajax{% endif %}{% if module.draggable %} draggable{% endif %} {% if module.ajax_autoreload_time != 0 %} autoreload{% endif %}" {% if module.ajax_autoreload_time != 0 %} data-ajax-autoreload-time="{{ module.ajax_autoreload_time }}"{% endif %}{% if module.ajax_load %} data-ajax-url="{% url "jet-dashboard:load_dashboard_module" pk=module.model.id %}"{% endif %} data-module-id="{{ module.model.id }}">
     <div class="dashboard-item-header">
         {% if module.draggable %}
             <span class="dashboard-item-header-drag icon-grid"></span>

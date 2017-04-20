@@ -62,8 +62,8 @@ class DashboardModule(object):
     ajax_load = False
 
     #: A int field which specify if the widget needs to be updated, every X ms. Works only if ajax_load is at True
-    #: default: False, no update
-    ajax_autoreload_time = False
+    #: default: 0, no update
+    ajax_autoreload_time = 0
 
     #: A boolean field which makes widget ui color contrast.
     contrast = False

@@ -245,7 +245,7 @@ Dashboard.prototype = {
                             $content.height('auto');
                         });
 
-                        if (autoreload_time) {
+                        if (autoreload_time!=0) {
                             setTimeout(_loadmodule, autoreload_time)
                         }
                     },
