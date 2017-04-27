@@ -1,5 +1,9 @@
 from django import forms
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.test import TestCase
 from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object_url, jet_previous_object_url
 from jet.tests.models import TestModel, SearchableTestModel
