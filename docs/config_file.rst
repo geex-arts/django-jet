@@ -99,27 +99,52 @@ To display applications and models you want or to change their order you can use
 
 .. code:: python
 
-    JET_SIDE_MENU_ITEMS = [  # A list of application or custom dicts
-        {'label': _('General'), 'app_label': 'core', 'models': [
+    JET_SIDE_MENU_ITEMS = [  # A list of application or custom item dicts
+        {'label': _('General'), 'app_label': 'core', 'items': [
             {'name': 'help.question'},
-            {'name': 'pages.page'},
+            {'name': 'pages.page', 'label': _('Static page')},
             {'name': 'city'},
             {'name': 'validationcode'},
+            {'label': _('Analytics'), 'url': 'http://example.com', 'url_blank': True},
         ]},
-        {'label': _('Users'), 'models': [
+        {'label': _('Users'), 'items': [
             {'name': 'core.user'},
             {'name': 'auth.group'},
-            {'name': 'core.userprofile'},
+            {'name': 'core.userprofile', 'permissions': ['core.user']},
         ]},
-        {'app_label': 'banners', 'models': [
+        {'app_label': 'banners', 'items': [
             {'name': 'banner'},
             {'name': 'bannertype'},
         ]},
-        {'app_label': 'talks', 'models': [
-            {'name': 'talk'},
-            {'name': 'talkmessage'},
-        ]},
     ]
+
+JET_SIDE_MENU_ITEMS is a list of application or custom item dicts. Each item can have the following keys:
+
+* `app_label` - application name
+* `label` - application text label
+* `items` - list of children items
+* `url` - custom url (format is described below)
+* `url_blank` - open url in new table (boolean)
+* `permissions` - list of required permissions to display item
+
+Setting `items` and either `app_label` or `label` is required. Other keys are optional to override default behavior.
+Order of items is respected. Each menu item is also a dict with the following keys:
+
+* `name` - model name (can be either `MODEL_NAME` or `APP_LABEL.MODEL_NAME`)
+* `label` - item text label
+* `url` - custom url (format is described below)
+* `url_blank` - open url in new table (boolean)
+* `permissions` - list of required permissions to display item
+
+Setting either `name` or `label` is required. Other keys are optional to override default behavior.
+Order of items is respected.
+
+URLs can be either `string` or `dict`. Examples of possible values:
+
+* http://example.com/
+* {'type': 'app', 'app_label': 'pages'}
+* {'type': 'model', 'app_label': 'pages', 'model': 'page'}
+* {'type': 'reverse', 'name': 'pages:list', 'args': [1], 'kwargs': {'category': 2}}
 
 .. deprecated:: 1.0.6
 
@@ -151,7 +176,7 @@ in dictionary with admin site names as keys:
 
     JET_SIDE_MENU_ITEMS = {
         'admin': [
-            {'label': _('General'), 'app_label': 'core', 'models': [
+            {'label': _('General'), 'app_label': 'core', 'items': [
                 {'name': 'help.question'},
                 {'name': 'pages.page'},
                 {'name': 'city'},
@@ -160,7 +185,7 @@ in dictionary with admin site names as keys:
             ...
         ],
         'custom_admin': [
-            {'app_label': 'talks', 'models': [
+            {'app_label': 'talks', 'items': [
                 {'name': 'talk'},
                 {'name': 'talkmessage'},
             ]},
