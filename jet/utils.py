@@ -1,5 +1,6 @@
 import datetime
 import json
+from django.template import Context
 from django.utils import translation
 from jet import settings
 from jet.models import PinnedApplication
@@ -426,3 +427,13 @@ def get_menu_items(context):
                 app['current'] = False
 
     return app_list
+
+
+def context_to_dict(context):
+    if isinstance(context, Context):
+        flat = {}
+        for d in context.dicts:
+            flat.update(d)
+        context = flat
+
+    return context
