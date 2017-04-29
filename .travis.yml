@@ -18,8 +18,8 @@ env:
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
-  - pip install -q "Django${DJANGO}" --use-mirrors
-  - pip install . --use-mirrors
+  - pip install -q "Django${DJANGO}"
+  - pip install .
   - pip install coverage==3.7.1
   - pip install coveralls==0.5
 script:
