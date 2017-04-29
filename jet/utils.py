@@ -26,7 +26,11 @@ from django.core import urlresolvers
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
-from collections import OrderedDict
+
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict  # Python 2.6
 
 
 class JsonResponse(HttpResponse):
