@@ -72,10 +72,6 @@ SideBar.prototype = {
         $.cookie('sidebar_pinned', status, { expires: 365, path: '/' });
     },
     addToggleButton: function() {
-        if (!this.$sidebar.length) {
-            return;
-        }
-
         var $button = $('<span>')
           .addClass('sidebar-container-toggle sidebar-header-menu-icon icon-menu sidebar-toggle');
 
