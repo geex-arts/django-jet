@@ -1,6 +1,10 @@
 from django.contrib import messages
 from django.core.exceptions import ValidationError
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST, require_GET
