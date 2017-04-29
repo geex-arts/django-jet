@@ -1,5 +1,6 @@
 import datetime
 import json
+from django.template import Context
 from django.utils import translation
 from jet import settings
 from jet.models import PinnedApplication
@@ -13,7 +14,11 @@ except ImportError:
         pass
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
-from django.core.urlresolvers import reverse, resolve, NoReverseMatch
+try:
+    from django.core.urlresolvers import reverse, resolve, NoReverseMatch
+except ImportError: # Django 1.11
+    from django.urls import reverse, resolve, NoReverseMatch
+
 from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_text
 from django.utils.text import capfirst
@@ -21,11 +26,14 @@ from django.contrib import messages
 from django.utils.encoding import force_text
 from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
-from django.core import urlresolvers
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
-from collections import OrderedDict
+
+try:
+    from collections import OrderedDict
+except ImportError:
+    from ordereddict import OrderedDict  # Python 2.6
 
 
 class JsonResponse(HttpResponse):
@@ -173,7 +181,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
     model_admin = admin_site._registry.get(model)
 
     try:
-        changelist_url = urlresolvers.reverse('%s:%s_%s_changelist' % (
+        changelist_url = reverse('%s:%s_%s_changelist' % (
             admin_site.name,
             model._meta.app_label,
             model._meta.model_name
@@ -349,8 +357,8 @@ def get_menu_items(context):
             if 'label' in data:
                 item['label'] = data['label']
 
-            if 'models' in data:
-                item['models'] = list(map(lambda x: get_menu_item_app_model(app_label, x), data['models']))
+            if 'items' in data:
+                item['items'] = list(map(lambda x: get_menu_item_app_model(app_label, x), data['items']))
 
             if 'url' in data:
                 item['url'] = get_menu_item_url(data['url'], original_app_list)
@@ -382,7 +390,7 @@ def get_menu_items(context):
 
                 models_dict[app_label][model['object_name']] = model
 
-            app['models'] = []
+            app['items'] = []
 
         app_list = []
 
@@ -398,21 +406,24 @@ def get_menu_items(context):
 
                 for model_label in models:
                     if model_label == '__all__':
-                        app['models'] = models_dict[app_label].values()
+                        app['items'] = models_dict[app_label].values()
                         break
                     elif model_label in models_dict[app_label]:
                         model = models_dict[app_label][model_label]
-                        app['models'].append(model)
+                        app['items'].append(model)
 
                 app_list.append(app)
     else:
-        app_list = original_app_list.values()
+        def map_item(item):
+            item['items'] = item['models']
+            return item
+        app_list = map(map_item, original_app_list.values())
 
     current_found = False
 
     for app in app_list:
         if not current_found:
-            for model in app['models']:
+            for model in app['items']:
                 if not current_found and model.get('url') and context['request'].path.startswith(model['url']):
                     model['current'] = True
                     current_found = True
@@ -426,3 +437,13 @@ def get_menu_items(context):
                 app['current'] = False
 
     return app_list
+
+
+def context_to_dict(context):
+    if isinstance(context, Context):
+        flat = {}
+        for d in context.dicts:
+            flat.update(d)
+        context = flat
+
+    return context

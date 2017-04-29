@@ -1,12 +1,16 @@
-from django.template import Context
 from importlib import import_module
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.template.loader import render_to_string
 from jet.dashboard import modules
 from jet.dashboard.models import UserDashboardModule
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
-from jet.utils import get_admin_site_name
+from jet.utils import get_admin_site_name, context_to_dict
+
 try:
     from django.template.context_processors import csrf
 except ImportError:
@@ -48,9 +52,6 @@ class Dashboard(object):
         self.set_context(context)
 
     def set_context(self, context):
-        if isinstance(context, Context):
-            context = context.flatten()
-
         self.context = context
         self.init_with_context(context)
         self.load_modules()
@@ -150,7 +151,7 @@ class Dashboard(object):
         self.modules = loaded_modules
 
     def render(self):
-        context = self.context
+        context = context_to_dict(self.context)
         context.update({
             'columns': range(self.columns),
             'modules': self.modules,
@@ -161,7 +162,7 @@ class Dashboard(object):
         return render_to_string('jet.dashboard/dashboard.html', context)
 
     def render_tools(self):
-        context = self.context
+        context = context_to_dict(self.context)
         context.update({
             'children': self.children,
             'app_label': self.app_label,

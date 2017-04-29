@@ -36,7 +36,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if request.COOKIES.sidebar_pinned == 'true' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+<body class="{% if request.COOKIES.sidebar_pinned != 'false' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
@@ -202,7 +202,7 @@
                                             {{ app.label }}
                                         </a>
                                     </div>
-                                    {% for model in app.models %}
+                                    {% for model in app.items %}
                                         {% if model.has_perms %}
                                             <div>
                                                 <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
@@ -346,7 +346,7 @@
                                             </li>
                                         {% endif %}
 
-                                        {% for model in app.models %}
+                                        {% for model in app.items %}
                                             {% if model.has_perms %}
                                                 <li class="sidebar-popup-list-item{% if model.name %} model-{{ model.name }}{% endif %}{{ model.current|yesno:" current," }}">
                                                     <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-popup-list-item-link"{% if model.url_blank %} target="_blank"{% endif %}>

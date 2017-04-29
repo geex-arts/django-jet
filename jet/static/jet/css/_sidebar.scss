@@ -552,7 +552,7 @@
       color: $hover-link-color;
     }
 
-    body.menu-pinned & {
+    body.login &, body.menu-pinned & {
       display: none;
     }
 

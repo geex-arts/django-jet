@@ -1,6 +1,20 @@
 Changelog
 =========
 
+1.0.6
+-----
+* PR-191: Added sidebar pinning functionality (thanks to grigory51 for PR)
+* Issue-199: Fixed Django 1.11 context issue (thanks to gileadslostson for report)
+* Issue-202: Fixed inline-group-row:added event (thanks to a1Gupta for report)
+* Issue-188: Make testing use latest major Django versions and Python 3.5, 3.6 (thanks to liminspace for report)
+* Added new flexible menu customizing setting JET_SIDE_MENU_ITEMS
+* Added labels to sibling buttons
+* Fixed django.jQuery select change events
+* Fixed sidebar "Search..." label localization
+* Added select disabled style
+* Fixed initial value for select2 ajax fields when POST request
+
+
 1.0.5
 -----
 * PR-167: Added fallback to window.opener to support old Django popups (thanks to michaelkuty for PR)

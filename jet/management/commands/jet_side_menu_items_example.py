@@ -39,7 +39,7 @@ class Command(NoArgsCommand):
         self.stdout.write('JET_SIDE_MENU_ITEMS = [')
 
         for app in app_list:
-            self.stdout.write('    {\'app_label\': \'%s\', \'models\': [' % (
+            self.stdout.write('    {\'app_label\': \'%s\', \'items\': [' % (
                 app['app_label']
             ))
 
