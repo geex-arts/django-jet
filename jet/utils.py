@@ -417,7 +417,7 @@ def get_menu_items(context):
         def map_item(item):
             item['items'] = item['models']
             return item
-        app_list = map(map_item, original_app_list.values())
+        app_list = list(map(map_item, original_app_list.values()))
 
     current_found = False
 
