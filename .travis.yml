@@ -51,3 +51,11 @@ matrix:
       env: DJANGO="<1.12"
     - python: 3.3
       env: DJANGO="<1.12"
+    - python: 3.5
+      env: DJANGO="<1.7"
+    - python: 3.5
+      env: DJANGO="<1.8"
+    - python: 3.6
+      env: DJANGO="<1.7"
+    - python: 3.6
+      env: DJANGO="<1.8"
