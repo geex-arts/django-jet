@@ -357,8 +357,8 @@ def get_menu_items(context):
             if 'label' in data:
                 item['label'] = data['label']
 
-            if 'models' in data:
-                item['models'] = list(map(lambda x: get_menu_item_app_model(app_label, x), data['models']))
+            if 'items' in data:
+                item['items'] = list(map(lambda x: get_menu_item_app_model(app_label, x), data['items']))
 
             if 'url' in data:
                 item['url'] = get_menu_item_url(data['url'], original_app_list)
@@ -390,7 +390,7 @@ def get_menu_items(context):
 
                 models_dict[app_label][model['object_name']] = model
 
-            app['models'] = []
+            app['items'] = []
 
         app_list = []
 
@@ -406,11 +406,11 @@ def get_menu_items(context):
 
                 for model_label in models:
                     if model_label == '__all__':
-                        app['models'] = models_dict[app_label].values()
+                        app['items'] = models_dict[app_label].values()
                         break
                     elif model_label in models_dict[app_label]:
                         model = models_dict[app_label][model_label]
-                        app['models'].append(model)
+                        app['items'].append(model)
 
                 app_list.append(app)
     else:
@@ -420,7 +420,7 @@ def get_menu_items(context):
 
     for app in app_list:
         if not current_found:
-            for model in app['models']:
+            for model in app['items']:
                 if not current_found and model.get('url') and context['request'].path.startswith(model['url']):
                     model['current'] = True
                     current_found = True
