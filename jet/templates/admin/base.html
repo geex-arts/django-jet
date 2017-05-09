@@ -36,7 +36,7 @@
 </head>
 {% load i18n %}
 
-<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+<body class="{% if request.COOKIES.sidebar_pinned != 'false' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
   data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
@@ -45,7 +45,11 @@
     {% if not is_popup %}
     <!-- Header -->
     <div id="header">
-        <div id="branding">{% block branding %}{% endblock %}</div>
+        <div id="branding">
+            <span id="branding-menu" class="sidebar-header-menu-icon icon-menu sidebar-toggle"></span>
+            <span id="branding-pin" class="sidebar-link-icon icon-pin sidebar-pin"></span>
+            {% block branding %}{% endblock %}
+        </div>
         {% block usertools %}
         {% if user.is_active and user.is_staff or has_permission %}
         <div id="user-tools">
@@ -73,6 +77,7 @@
         {% endblock %}
     </div>
     <!-- END Header -->
+
     {% block breadcrumbs %}
     <div class="breadcrumbs">
     <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
@@ -110,14 +115,28 @@
     {% if change and show_siblings %}
         <div class="changeform-navigation">
             {% spaceless %}
-                {% jet_previous_object_url as url %}
-                <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button left{% if not url %} disabled{% endif %}">
-                    <span class="changeform-navigation-button icon-arrow-left"></span>
+                {% jet_previous_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon left icon-arrow-left"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </span>
                 </a>
 
-                {% jet_next_object_url as url %}
-                <a{% if url %} href="{{ url }}"{% endif %} class="segmented-button right{% if not url %} disabled{% endif %}">
-                    <span class="changeform-navigation-button icon-arrow-right"></span>
+                {% jet_next_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon right icon-arrow-right"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </span>
                 </a>
             {% endspaceless %}
         </div>
@@ -174,97 +193,89 @@
 
                 {% if user.is_active and user.is_staff %}
                     {% jet_get_menu as app_list %}
-                    {% if app_list.apps or app_list.pinned_apps %}
-                        {% if SIDE_MENU_COMPACT %}
-                            {% for app in app_list.all_apps %}
+                    {% if SIDE_MENU_COMPACT %}
+                        {% for app in app_list %}
+                            {% if app.has_perms %}
                                 <div class="sidebar-section">
                                     <div class="sidebar-title">
-                                        <a href="{{ app.app_url }}" class="sidebar-title-link">
-                                            {% if app.name != app.app_label|capfirst|escape %}
-                                                {{ app.name }}
-                                            {% else %}
-                                                {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                            {% endif %}
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-title-link"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            {{ app.label }}
                                         </a>
                                     </div>
-                                    {% for model in app.models %}
-                                        {% if model.admin_url %}
+                                    {% for model in app.items %}
+                                        {% if model.has_perms %}
                                             <div>
-                                                <a href="{{ model.admin_url }}" class="sidebar-link">
+                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
                                                     <span class="sidebar-right">
                                                         <span class="sidebar-right-arrow icon-arrow-right"></span>
                                                     </span>
-                                                    <span class="sidebar-link-label">{{ model.name }}</span>
+                                                    <span class="sidebar-link-label">{{ model.label }}</span>
                                                 </a>
                                             </div>
                                         {% endif %}
                                     {% endfor %}
                                 </div>
-                            {% endfor %}
-                        {% else %}
-                            <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
-                                {% csrf_token %}
-                                <input type="hidden" name="app_label">
-                            </form>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="app_label">
+                        </form>
 
-                            <div class="sidebar-section">
-                                <div class="sidebar-title">
-                                    <span class="sidebar-right">
-                                        <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
-                                    </span>
-                                    {% trans 'Applications' %}
-                                </div>
-
-                                <div class="apps-list-pinned">
-                                    {% for app in app_list.pinned_apps %}
-                                        <a href="{{ app.app_url }}" class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}">
-                                            <span class="sidebar-left collapsible">
-                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
-                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
-                                            </span>
-
-                                            <span class="sidebar-right">
-                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
-                                            </span>
-
-                                            <span class="sidebar-link-label">
-                                                {% if app.name != app.app_label|capfirst|escape %}
-                                                    {{ app.name }}
-                                                {% else %}
-                                                    {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                                {% endif %}
-                                            </span>
-                                        </a>
-                                    {% endfor %}
-                                </div>
-                                <a href="#" class="sidebar-center-link apps-hide">
-                                    <span class="apps-hide-label apps-visible">{% trans "Hide applications" %}</span>
-                                    <span class="apps-hide-label apps-hidden">{% trans "Show hidden" %}</span>
-                                </a>
-                                <div class="apps-list">
-                                    {% for app in app_list.apps %}
-                                        <a href="{{ app.app_url }}" class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}">
-                                            <span class="sidebar-left collapsible">
-                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
-                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
-                                            </span>
-
-                                            <span class="sidebar-right">
-                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
-                                            </span>
-
-                                            <span class="sidebar-link-label">
-                                                {% if app.name != app.app_label|capfirst|escape %}
-                                                    {{ app.name }}
-                                                {% else %}
-                                                    {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                                {% endif %}
-                                            </span>
-                                        </a>
-                                    {% endfor %}
-                                </div>
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">
+                                <span class="sidebar-right">
+                                    <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                                </span>
+                                {% trans 'Applications' %}
                             </div>
-                        {% endif %}
+
+                            <div class="apps-list-pinned">
+                                {% for app in app_list %}
+                                    {% if app.has_perms and app.pinned %}
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                {{ app.label }}
+                                            </span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a href="#" class="sidebar-center-link apps-hide">
+                                <span class="apps-hide-label apps-visible">{% trans "Hide applications" %}</span>
+                                <span class="apps-hide-label apps-hidden">{% trans "Show hidden" %}</span>
+                            </a>
+                            <div class="apps-list">
+                                {% for app in app_list %}
+                                    {% if app.has_perms and not app.pinned %}
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                {{ app.label }}
+                                            </span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
                     {% endif %}
 
                     <div class="sidebar-section last">
@@ -319,34 +330,34 @@
                         <a href="#" class="sidebar-close sidebar-back">
                             <span class="sidebar-close-icon icon-arrow-left"></span>
                         </a>
-                        {% for app in app_list.apps|add:app_list.pinned_apps %}
-                            <div class="sidebar-popup-section sidebar-popup-section-{{ app.app_label }}">
-                                <div class="sidebar-popup-title">
-                                    {% if app.name != app.app_label|capfirst|escape %}
-                                        {{ app.name }}
-                                    {% else %}
-                                        {% trans app.app_label as app_label %}{{ app_label|capfirst|escape }}
-                                    {% endif %}
-                                </div>
+                        {% for app in app_list %}
+                            {% if app.has_perms %}
+                                <div class="sidebar-popup-section sidebar-popup-section-{{ app.app_label }}">
+                                    <div class="sidebar-popup-title">
+                                        {{ app.label }}
+                                    </div>
 
-                                <input class="sidebar-popup-search" placeholder="Search...">
+                                    <input class="sidebar-popup-search" placeholder="{% trans "Search" %}...">
 
-                                <ul class="sidebar-popup-list">
-                                    <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
-                                        <a href="{{ app.app_url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
-                                    </li>
+                                    <ul class="sidebar-popup-list">
+                                        {% if app.url %}
+                                            <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
+                                                <a href="{{ app.url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
+                                            </li>
+                                        {% endif %}
 
-                                    {% for model in app.models %}
-                                        <li class="sidebar-popup-list-item model-{{ model.object_name|lower }}{{ model.current|yesno:" current," }}">
-                                            {% if model.admin_url %}
-                                                <a href="{{ model.admin_url }}" class="sidebar-popup-list-item-link">{{ model.name }}</a>
-                                            {% else %}
-                                                {{ model.name }}
+                                        {% for model in app.items %}
+                                            {% if model.has_perms %}
+                                                <li class="sidebar-popup-list-item{% if model.name %} model-{{ model.name }}{% endif %}{{ model.current|yesno:" current," }}">
+                                                    <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-popup-list-item-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                                                        {{ model.label }}
+                                                    </a>
+                                                </li>
                                             {% endif %}
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            </div>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>

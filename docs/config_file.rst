@@ -95,61 +95,112 @@ CUSTOM MENU
 -----------
 
 By default JET displays all applications and it models in the side menu in the alphabetical order.
-To display applications and models you want or to change their order you can use ``JET_SIDE_MENU_CUSTOM_APPS`` setting.
+To display applications and models you want or to change their order you can use ``JET_SIDE_MENU_ITEMS`` setting.
 
 .. code:: python
 
-    JET_SIDE_MENU_CUSTOM_APPS = [
-        ('core', [ # Each list element is a tuple with application name (app_label) and list of models
-            'User',
-            'MenuItem',
-            'Block',
-        ]),
-        ('shops', [
-            'Shop',
-            'City',
-            'MetroStation',
-        ]),
-        ('feedback', [
-            'Feedback',
-        ]),
+    JET_SIDE_MENU_ITEMS = [  # A list of application or custom item dicts
+        {'label': _('General'), 'app_label': 'core', 'items': [
+            {'name': 'help.question'},
+            {'name': 'pages.page', 'label': _('Static page')},
+            {'name': 'city'},
+            {'name': 'validationcode'},
+            {'label': _('Analytics'), 'url': 'http://example.com', 'url_blank': True},
+        ]},
+        {'label': _('Users'), 'items': [
+            {'name': 'core.user'},
+            {'name': 'auth.group'},
+            {'name': 'core.userprofile', 'permissions': ['core.user']},
+        ]},
+        {'app_label': 'banners', 'items': [
+            {'name': 'banner'},
+            {'name': 'bannertype'},
+        ]},
     ]
 
-If want to show all application's models use ``__all__`` keyword.
+JET_SIDE_MENU_ITEMS is a list of application or custom item dicts. Each item can have the following keys:
 
-.. code:: python
+* `app_label` - application name
+* `label` - application text label
+* `items` - list of children items
+* `url` - custom url (format is described below)
+* `url_blank` - open url in new table (boolean)
+* `permissions` - list of required permissions to display item
 
-    JET_SIDE_MENU_CUSTOM_APPS = [
-        ('core', ['__all__']),
-        ...
-    ]
+Setting `items` and either `app_label` or `label` is required. Other keys are optional to override default behavior.
+Order of items is respected. Each menu item is also a dict with the following keys:
+
+* `name` - model name (can be either `MODEL_NAME` or `APP_LABEL.MODEL_NAME`)
+* `label` - item text label
+* `url` - custom url (format is described below)
+* `url_blank` - open url in new table (boolean)
+* `permissions` - list of required permissions to display item
+
+Setting either `name` or `label` is required. Other keys are optional to override default behavior.
+Order of items is respected.
+
+URLs can be either `string` or `dict`. Examples of possible values:
+
+* http://example.com/
+* {'type': 'app', 'app_label': 'pages'}
+* {'type': 'model', 'app_label': 'pages', 'model': 'page'}
+* {'type': 'reverse', 'name': 'pages:list', 'args': [1], 'kwargs': {'category': 2}}
+
+.. deprecated:: 1.0.6
+
+    Old way of customizing menu items via `JET_SIDE_MENU_CUSTOM_APPS` setting is now deprecated in favor
+    of new `JET_SIDE_MENU_ITEMS` setting.
+
+    .. code:: python
+
+        JET_SIDE_MENU_CUSTOM_APPS = [
+            ('core', [ # Each list element is a tuple with application name (app_label) and list of models
+                'User',
+                'MenuItem',
+                'Block',
+            ]),
+            ('shops', [
+                'Shop',
+                'City',
+                'MetroStation',
+            ]),
+            ('feedback', [
+                'Feedback',
+            ]),
+        ]
 
 If have multiple admin sites and you want to specify different menu applications for each admin site, wrap menu lists
 in dictionary with admin site names as keys:
 
 .. code:: python
 
-    JET_SIDE_MENU_CUSTOM_APPS = {
+    JET_SIDE_MENU_ITEMS = {
         'admin': [
-            ('core', ['__all__']),
+            {'label': _('General'), 'app_label': 'core', 'items': [
+                {'name': 'help.question'},
+                {'name': 'pages.page'},
+                {'name': 'city'},
+                {'name': 'validationcode'},
+            ]},
             ...
         ],
         'custom_admin': [
-            ('custom_admin_app', [
-                'CustomAdminAppModel',
-            ]),
+            {'app_label': 'talks', 'items': [
+                {'name': 'talk'},
+                {'name': 'talkmessage'},
+            ]},
             ...
         ]
     }
 
 .. note::
 
-    You can use ``jet_custom_apps_example`` management command to generate example ``JET_SIDE_MENU_CUSTOM_APPS``
+    You can use ``jet_side_menu_items_example`` management command to generate example ``JET_SIDE_MENU_ITEMS``
     setting which includes all your applications and models. You can use it this way:
 
     .. code:: python
 
-        python manage.py jet_custom_apps_example
+        python manage.py jet_side_menu_items_example
 
 JET_CHANGE_FORM_SIBLING_LINKS
 -----------------------------

@@ -53,6 +53,12 @@
   }
 }
 
+@mixin for-desktop {
+  @media only screen and (min-width: $mobile-max-width) {
+    @content;
+  }
+}
+
 @mixin for-mobile {
   @include for-width($mobile-max-width) {
     @content;

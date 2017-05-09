@@ -307,7 +307,7 @@
     }
   }
 
-  .label  {
+  .label {
     padding: 8px 0;
   }
 
@@ -437,12 +437,17 @@
 
   &.fixed {
     position: fixed;
-    left: $sidebar-width + 20px;
+    left: 20px;
     right: 20px;
     bottom: 0;
     border-top: 2px solid $content-border2-color;
+    transition: left 0.3s;
 
-    body.popup & {
+    body.menu-pinned & {
+      left: $sidebar-width + 20px;
+    }
+
+    body.menu-pinned.popup & {
       left: 20px;
     }
 
@@ -452,6 +457,7 @@
       right: auto;
       bottom: auto;
       border-top: 0;
+      padding: 20px 0;
     }
   }
 

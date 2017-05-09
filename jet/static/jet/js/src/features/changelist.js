@@ -6,11 +6,8 @@ var ChangeList = function($changelist) {
 
 ChangeList.prototype = {
     updateFixedHeaderVisibility: function($fixedTable, $originalHeader) {
-        if ($(window).scrollTop() > $originalHeader.offset().top) {
-            $fixedTable.closest('table').show();
-        } else {
-            $fixedTable.closest('table').hide();
-        }
+        var show = $(window).scrollTop() > $originalHeader.offset().top;
+        $fixedTable.closest('table').toggle(show);
     },
     updateFixedHeaderWidth: function($fixedHeader, $originalHeader) {
         var $originalColumns = $originalHeader.find('th');
