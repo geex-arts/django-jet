@@ -42,11 +42,22 @@ body {
 /* PAGE STRUCTURE */
 
 #container {
-  padding: 0 0 0 $sidebar-width;
+  padding: 0;
   min-height: 100%;
+  transition: padding-left 0.3s;
+
+  body.menu-pinned & {
+    padding-left: $sidebar-width;
+  }
+
+  body.menu-pinned.popup & {
+    padding-left: 0;
+  }
 
   @include for-mobile {
-    padding-left: 0;
+    &, body.menu-pinned & {
+      padding-left: 0;
+    }
   }
 
   .popup & {

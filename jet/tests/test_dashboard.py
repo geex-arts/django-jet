@@ -1,5 +1,9 @@
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.test import TestCase, Client
 from jet.dashboard.dashboard import Dashboard
 from jet.dashboard.modules import LinkList, RecentActions

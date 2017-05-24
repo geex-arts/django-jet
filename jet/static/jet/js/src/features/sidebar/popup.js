@@ -99,7 +99,7 @@ SideBarPopup.prototype = {
         }).on('click', function(e) {
             e.preventDefault();
 
-            if (!$(document.documentElement).hasClass('touchevents')) {
+            if (!$(document.documentElement).hasClass('touchevents') && $(this).attr('href')) {
                 document.location = $(this).attr('href');
             } else {
                 self.onSectionLinkInteracted($popupContainer, $(this));
@@ -168,7 +168,11 @@ SideBarPopup.prototype = {
                 self.moveSectionListItemSelection(true);
             } else if (e.which == 13) {
                 if (self.$currentSectionListItem) {
-                    document.location = self.$currentSectionListItem.find('a').attr('href');
+                    var $el =  self.$currentSectionListItem.find('a');
+
+                    if ($el.attr('href')) {
+                        document.location = $el.attr('href');
+                    }
                 }
             } else {
                 return;
@@ -192,7 +196,7 @@ SideBarPopup.prototype = {
                 return;
             }
 
-            if (e.type == 'touchend' && !$el.data('element_swiped')) {
+            if (e.type == 'touchend' && !$el.data('element_swiped') && $el.attr('href')) {
                 window.location = $el.attr('href');
             }
 

@@ -2,16 +2,20 @@ from __future__ import unicode_literals
 import json
 import os
 from django import template
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
 from django.utils.safestring import mark_safe
 from django.utils.encoding import smart_text
 from jet import settings, VERSION
-from jet.models import Bookmark, PinnedApplication
-from jet.utils import get_app_list, get_model_instance_label, get_model_queryset, get_possible_language_codes, \
-    get_admin_site
+from jet.models import Bookmark
+from jet.utils import get_model_instance_label, get_model_queryset, get_possible_language_codes, \
+    get_admin_site, get_menu_items
 
 try:
     from urllib.parse import parse_qsl
@@ -39,76 +43,7 @@ def jet_get_datetime_format():
 
 @register.assignment_tag(takes_context=True)
 def jet_get_menu(context):
-    if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
-        app_list = get_app_list(context, False)
-        app_dict = {}
-        models_dict = {}
-
-        for app in app_list:
-            app_label = app.get('app_label', app.get('name'))
-            app_dict[app_label] = app
-
-            for model in app['models']:
-                if app_label not in models_dict:
-                    models_dict[app_label] = {}
-
-                models_dict[app_label][model['object_name']] = model
-
-            app['models'] = []
-
-        app_list = []
-        settings_app_list = settings.JET_SIDE_MENU_CUSTOM_APPS
-
-        if isinstance(settings_app_list, dict):
-            admin_site = get_admin_site(context)
-            settings_app_list = settings_app_list.get(admin_site.name, [])
-
-        for item in settings_app_list:
-            app_label, models = item
-
-            if app_label in app_dict:
-                app = app_dict[app_label]
-
-                for model_label in models:
-                    if model_label == '__all__':
-                        app['models'] = models_dict[app_label].values()
-                        break
-                    elif model_label in models_dict[app_label]:
-                        model = models_dict[app_label][model_label]
-                        app['models'].append(model)
-
-                app_list.append(app)
-    else:
-        app_list = get_app_list(context)
-
-    current_found = False
-
-    pinned = PinnedApplication.objects.filter(user=context.get('user').pk).values_list('app_label', flat=True)
-
-    all_aps = []
-    apps = []
-    pinned_apps = []
-
-    for app in app_list:
-        if not current_found:
-            for model in app['models']:
-                if 'admin_url' in model and context['request'].path.startswith(model['admin_url']):
-                    model['current'] = True
-                    current_found = True
-                    break
-
-            if not current_found and context['request'].path.startswith(app['app_url']):
-                app['current'] = True
-                current_found = True
-
-        if app.get('app_label', app.get('name')) in pinned:
-            pinned_apps.append(app)
-        else:
-            apps.append(app)
-
-        all_aps.append(app)
-
-    return {'apps': apps, 'pinned_apps': pinned_apps, 'all_apps': all_aps}
+    return get_menu_items(context)
 
 
 @register.assignment_tag
@@ -142,8 +77,7 @@ def jet_select2_lookups(field):
                 'data-ajax--url': reverse('jet:model_lookup')
             }
 
-            form = field.form
-            initial_value = form.data.get(field.name) if form.data != {} else form.initial.get(field.name)
+            initial_value = field.value()
 
             if hasattr(field, 'field') and isinstance(field.field, ModelMultipleChoiceField):
                 if initial_value:
@@ -215,7 +149,7 @@ def jet_change_form_sibling_links_enabled():
     return settings.JET_CHANGE_FORM_SIBLING_LINKS
 
 
-def jet_sibling_object_url(context, next):
+def jet_sibling_object(context, next):
     original = context.get('original')
 
     if not original:
@@ -258,17 +192,20 @@ def jet_sibling_object_url(context, next):
     if preserved_filters_plain != '':
         url += '?' + preserved_filters_plain
 
-    return url
+    return {
+        'label': str(sibling_object),
+        'url': url
+    }
 
 
 @register.assignment_tag(takes_context=True)
-def jet_previous_object_url(context):
-    return jet_sibling_object_url(context, False)
+def jet_previous_object(context):
+    return jet_sibling_object(context, False)
 
 
 @register.assignment_tag(takes_context=True)
-def jet_next_object_url(context):
-    return jet_sibling_object_url(context, True)
+def jet_next_object(context):
+    return jet_sibling_object(context, True)
 
 
 @register.assignment_tag(takes_context=True)
