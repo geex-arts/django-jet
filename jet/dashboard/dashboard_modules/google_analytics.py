@@ -2,11 +2,16 @@
 import datetime
 import json
 from django import forms
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.forms import Widget
 from django.utils import formats
 from django.utils.html import format_html
 from django.utils.safestring import mark_safe
+from django.utils.text import capfirst
 from googleapiclient.discovery import build
 import httplib2
 from jet.dashboard.modules import DashboardModule
@@ -185,9 +190,9 @@ class GoogleAnalyticsSettingsForm(forms.Form):
 
 class GoogleAnalyticsChartSettingsForm(GoogleAnalyticsSettingsForm):
     show = forms.ChoiceField(label=_('Show'), choices=(
-        ('ga:users', _('Users')),
-        ('ga:sessions', _('Sessions')),
-        ('ga:pageviews', _('Views')),
+        ('ga:users', capfirst(_('users'))),
+        ('ga:sessions', capfirst(_('sessions'))),
+        ('ga:pageviews', capfirst(_('views'))),
     ))
     group = forms.ChoiceField(label=_('Group'), choices=(
         ('day', _('By day')),

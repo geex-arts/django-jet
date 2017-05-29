@@ -1,0 +1,392 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-28 13:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: dashboard/modules.py:138 templates/admin/base.html:281
+msgid "URL"
+msgstr "URL"
+
+#: dashboard/dashboard.py:207
+msgid "Quick links"
+msgstr "Быстрые ссылки"
+
+#: dashboard/dashboard.py:213
+msgid "Return to site"
+msgstr "Вернуться на сайт"
+
+#: dashboard/dashboard.py:224 dashboard/modules.py:268
+msgid "Applications"
+msgstr "Приложения"
+
+#: dashboard/dashboard.py:232
+msgid "Administration"
+msgstr "Администрирование"
+
+#: dashboard/dashboard.py:240 dashboard/modules.py:413
+msgid "Recent Actions"
+msgstr "Последние действия"
+
+#: dashboard/dashboard.py:248
+msgid "Latest Django News"
+msgstr "Новости от Django"
+
+#: dashboard/dashboard.py:257
+msgid "Support"
+msgstr "Поддержка"
+
+#: dashboard/dashboard.py:260
+msgid "Django documentation"
+msgstr "Документация по Django"
+
+#: dashboard/dashboard.py:265
+msgid "Django \"django-users\" mailing list"
+msgstr "Гугл-группа \"django-users\""
+
+#: dashboard/dashboard.py:270
+msgid "Django irc channel"
+msgstr "IRC канал Django"
+
+#: dashboard/dashboard.py:285
+msgid "Application models"
+msgstr "Модели приложения"
+
+#: dashboard/models.py:11 dashboard/modules.py:139
+msgid "Title"
+msgstr "Название"
+
+#: dashboard/modules.py:140
+msgid "External link"
+msgstr "Внешняя ссылка"
+
+#: dashboard/modules.py:144
+msgid "Layout"
+msgstr "Отображение"
+
+#: dashboard/modules.py:144
+msgid "Stacked"
+msgstr "Списком"
+
+#: dashboard/modules.py:144
+msgid "Inline"
+msgstr "В строчку"
+
+#: dashboard/modules.py:190 dashboard/modules.py:214
+msgid "Links"
+msgstr "Ссылки"
+
+#: dashboard/modules.py:213
+msgid "Link"
+msgstr "Ссылка"
+
+#: dashboard/modules.py:340
+msgid "Models"
+msgstr "Модели"
+
+#: dashboard/modules.py:383 dashboard/modules.py:490
+msgid "Items limit"
+msgstr "Количество элементов"
+
+#: dashboard/modules.py:491
+msgid "Feed URL"
+msgstr "URL потока"
+
+#: dashboard/modules.py:522
+msgid "RSS Feed"
+msgstr "RSS поток"
+
+#: dashboard/modules.py:568
+msgid "You must install the FeedParser python module"
+msgstr "Необходимо установить python модуль FeedParser"
+
+#: dashboard/modules.py:573
+msgid "You must provide a valid feed URL"
+msgstr "Необходимо указать корректный URL потока"
+
+#: dashboard/views.py:17
+msgid "Widget was successfully updated"
+msgstr "Виджет успешно изменен"
+
+#: dashboard/views.py:89 dashboard/views.py:90
+msgid "Items"
+msgstr "Элементы"
+
+#: dashboard/views.py:152
+msgid "Widget has been successfully added"
+msgstr "Виджет успешно добавлен"
+
+#: dashboard/dashboard_modules/google_analytics.py:145
+#: dashboard/dashboard_modules/yandex_metrika.py:103
+msgid "Revoke access"
+msgstr "Убрать доступ"
+
+#: dashboard/dashboard_modules/google_analytics.py:150
+#: dashboard/dashboard_modules/yandex_metrika.py:108
+msgid "Grant access"
+msgstr "Предоставить доступ"
+
+#: dashboard/dashboard_modules/google_analytics.py:163
+#: dashboard/dashboard_modules/yandex_metrika.py:118
+msgid "Access"
+msgstr "Доступ"
+
+#: dashboard/dashboard_modules/google_analytics.py:164
+#: dashboard/dashboard_modules/yandex_metrika.py:119
+msgid "Counter"
+msgstr "Счетчик"
+
+#: dashboard/dashboard_modules/google_analytics.py:165
+#: dashboard/dashboard_modules/yandex_metrika.py:120
+msgid "Statistics period"
+msgstr "Статистика за период"
+
+#: dashboard/dashboard_modules/google_analytics.py:166
+#: dashboard/dashboard_modules/yandex_metrika.py:121
+msgid "Today"
+msgstr "Сегодня"
+
+#: dashboard/dashboard_modules/google_analytics.py:167
+#: dashboard/dashboard_modules/yandex_metrika.py:122
+msgid "Last week"
+msgstr "Последняя неделя"
+
+#: dashboard/dashboard_modules/google_analytics.py:168
+#: dashboard/dashboard_modules/yandex_metrika.py:123
+msgid "Last month"
+msgstr "Последний месяц"
+
+#: dashboard/dashboard_modules/google_analytics.py:169
+#: dashboard/dashboard_modules/yandex_metrika.py:124
+msgid "Last quarter"
+msgstr "Последний квартал"
+
+#: dashboard/dashboard_modules/google_analytics.py:170
+#: dashboard/dashboard_modules/yandex_metrika.py:125
+msgid "Last year"
+msgstr "Последний год"
+
+#: dashboard/dashboard_modules/google_analytics.py:180
+#: dashboard/dashboard_modules/yandex_metrika.py:135
+msgid "none"
+msgstr "не указано"
+
+#: dashboard/dashboard_modules/google_analytics.py:183
+#: dashboard/dashboard_modules/yandex_metrika.py:138
+msgid "grant access first"
+msgstr "сначала предоставьте доступ"
+
+#: dashboard/dashboard_modules/google_analytics.py:183
+#: dashboard/dashboard_modules/yandex_metrika.py:138
+msgid "counters loading failed"
+msgstr "не удалось загрузить счетчики"
+
+#: dashboard/dashboard_modules/google_analytics.py:188
+#: dashboard/dashboard_modules/yandex_metrika.py:143
+msgid "Show"
+msgstr "Показывать"
+
+#: dashboard/dashboard_modules/google_analytics.py:193
+#: dashboard/dashboard_modules/google_analytics.py:201
+#: dashboard/dashboard_modules/yandex_metrika.py:148
+#: dashboard/dashboard_modules/yandex_metrika.py:156
+msgid "Group"
+msgstr "Группировать"
+
+#: dashboard/dashboard_modules/google_analytics.py:194
+#: dashboard/dashboard_modules/google_analytics.py:202
+#: dashboard/dashboard_modules/yandex_metrika.py:149
+#: dashboard/dashboard_modules/yandex_metrika.py:157
+msgid "By day"
+msgstr "По дням"
+
+#: dashboard/dashboard_modules/google_analytics.py:195
+#: dashboard/dashboard_modules/google_analytics.py:203
+#: dashboard/dashboard_modules/yandex_metrika.py:150
+#: dashboard/dashboard_modules/yandex_metrika.py:158
+msgid "By week"
+msgstr "По неделям"
+
+#: dashboard/dashboard_modules/google_analytics.py:196
+#: dashboard/dashboard_modules/google_analytics.py:204
+#: dashboard/dashboard_modules/yandex_metrika.py:151
+#: dashboard/dashboard_modules/yandex_metrika.py:159
+msgid "By month"
+msgstr "По месяцам"
+
+#: dashboard/dashboard_modules/google_analytics.py:277
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Google account and choose Google Analytics "
+"counter</a> to start using widget"
+msgstr ""
+"Пожалуйста <a href=\"%s\">прикрепите аккаунт Google и выберите счетчик "
+"Google Analytics</a> для виджета"
+
+#: dashboard/dashboard_modules/google_analytics.py:280
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Google Analytics counter</a> to start using "
+"widget"
+msgstr ""
+"Пожалуйста <a href=\"%s\">выберите счетчик Google Analytics</a> для виджета"
+
+#: dashboard/dashboard_modules/google_analytics.py:299
+#: dashboard/dashboard_modules/google_analytics_views.py:42
+#: dashboard/dashboard_modules/yandex_metrika.py:236
+#: dashboard/dashboard_modules/yandex_metrika_views.py:37
+msgid "API request failed."
+msgstr "Ошибка запроса к API."
+
+#: dashboard/dashboard_modules/google_analytics.py:301
+#: dashboard/dashboard_modules/yandex_metrika.py:238
+#, python-format
+msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
+msgstr " Попробуйте <a href=\"%s\">убрать и предоставить доступ</a> заново"
+
+#: dashboard/dashboard_modules/google_analytics.py:311
+msgid "Google Analytics visitors totals"
+msgstr "Данные о посещениях Google Analytics"
+
+#: dashboard/dashboard_modules/google_analytics.py:189
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:15
+#: dashboard/dashboard_modules/google_analytics.py:326
+msgid "users"
+msgstr "пользователи"
+
+#: dashboard/dashboard_modules/google_analytics.py:190
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:16
+#: dashboard/dashboard_modules/google_analytics.py:327
+msgid "sessions"
+msgstr "сессии"
+
+#: dashboard/dashboard_modules/google_analytics.py:191
+#: dashboard/dashboard_modules/yandex_metrika.py:146
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:17
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:17
+#: dashboard/dashboard_modules/google_analytics.py:328
+#: dashboard/dashboard_modules/yandex_metrika.py:267
+msgid "views"
+msgstr "просмотры"
+
+#: dashboard/dashboard_modules/google_analytics.py:330
+#: dashboard/dashboard_modules/google_analytics.py:388
+#: dashboard/dashboard_modules/google_analytics.py:438
+#: dashboard/dashboard_modules/yandex_metrika.py:269
+#: dashboard/dashboard_modules/yandex_metrika.py:321
+#: dashboard/dashboard_modules/yandex_metrika.py:365
+msgid "Bad server response"
+msgstr "Некорректный ответ сервера"
+
+#: dashboard/dashboard_modules/google_analytics.py:340
+msgid "Google Analytics visitors chart"
+msgstr "График посещений Google Analytics"
+
+#: dashboard/dashboard_modules/google_analytics.py:398
+msgid "Google Analytics period visitors"
+msgstr "Посещения Google Analytics за период"
+
+#: dashboard/dashboard_modules/google_analytics_views.py:26
+#: dashboard/dashboard_modules/google_analytics_views.py:46
+#: dashboard/dashboard_modules/yandex_metrika_views.py:23
+#: dashboard/dashboard_modules/yandex_metrika_views.py:45
+msgid "Module not found"
+msgstr "Модуль не найден"
+
+#: dashboard/dashboard_modules/google_analytics_views.py:44
+#: dashboard/dashboard_modules/yandex_metrika_views.py:43
+msgid "Bad arguments"
+msgstr "Некорректные аргументы"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:219
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
+"counter</a> to start using widget"
+msgstr ""
+"Пожалуйста <a href=\"%s\">прикрепите аккаунт Яндекс и выберите счетчик "
+"Яндекс Метрики</a> для виджета"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:222
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
+msgstr ""
+"Пожалуйста <a href=\"%s\">выберите счетчик Яндекс Метрики</a> для виджета"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:250
+msgid "Yandex Metrika visitors totals"
+msgstr "Данные о посещениях Яндекс Метрики"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:144
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:15
+#: dashboard/dashboard_modules/yandex_metrika.py:265
+msgid "visitors"
+msgstr "посетители"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:145
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
+#: dashboard/dashboard_modules/yandex_metrika.py:266
+msgid "visits"
+msgstr "визиты"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:279
+msgid "Yandex Metrika visitors chart"
+msgstr "График посещений Яндекс Метрики"
+
+#: dashboard/dashboard_modules/yandex_metrika.py:331
+msgid "Yandex Metrika period visitors"
+msgstr "Посещения Яндекс Метрики за период"
+
+#: dashboard/templates/jet.dashboard/dashboard.html:17
+msgid "Delete widget"
+msgstr "Удалить виджет"
+
+#: dashboard/templates/jet.dashboard/dashboard.html:18
+msgid "Are you sure want to delete this widget?"
+msgstr "Вы точно хотите удалить этот виджет?"
+
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:7
+msgid "widgets"
+msgstr "виджеты"
+
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:8
+msgid "available"
+msgstr "доступные"
+
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:13
+msgid "initials"
+msgstr "изначальные"
+
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:21
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:27
+msgid "Reset widgets"
+msgstr "Сбросить виджеты"
+
+#: dashboard/templates/jet.dashboard/dashboard_tools.html:28
+msgid "Are you sure want to reset widgets?"
+msgstr "Вы точно хотите сбросить виджеты?"
+
+#: dashboard/templates/jet.dashboard/modules/feed.html:13
+#: dashboard/templates/jet.dashboard/modules/google_analytics_period_visitors.html:34
+#: dashboard/templates/jet.dashboard/modules/google_analytics_visitors_chart.html:30
+#: dashboard/templates/jet.dashboard/modules/google_analytics_visitors_totals.html:23
+#: dashboard/templates/jet.dashboard/modules/link_list.html:26
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:34
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_visitors_chart.html:30
+#: dashboard/templates/jet.dashboard/modules/yandex_metrika_visitors_totals.html:23
+msgid "Nothing to show"
+msgstr "Содержимое отсутствует"

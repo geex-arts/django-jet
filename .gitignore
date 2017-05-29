@@ -25,6 +25,8 @@ Thumbs.db
 .sass-cache
 /docs/_build/
 /dist/
+/.idea
+/docs/_build/
 
 /node_modules
 /static

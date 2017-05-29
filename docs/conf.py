@@ -20,8 +20,12 @@ import shlex
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('..'))
-from django.conf import settings
-settings.configure()
+
+# Autodoc may need to import some models modules which require django settings
+# be configured
+os.environ['DJANGO_SETTINGS_MODULE'] = 'jet.tests.settings'
+import django
+django.setup()
 
 # -- General configuration ------------------------------------------------
 

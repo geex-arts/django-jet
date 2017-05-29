@@ -1,3 +1,3 @@
-var SelectFilter = {
-    init: function($a, $b, $c, $d) {  } //stub
+window.SelectFilter = {
+    init: function (field_id, field_name, is_stacked) { }
 };

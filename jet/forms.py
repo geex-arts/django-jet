@@ -1,5 +1,7 @@
 import json
 from django import forms
+from django.contrib.auth.models import Permission
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 import operator
@@ -25,7 +27,7 @@ class AddBookmarkForm(forms.ModelForm):
 
     def clean(self):
         data = super(AddBookmarkForm, self).clean()
-        if not self.request.user.is_authenticated():
+        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
             raise ValidationError('error')
         if not self.request.user.has_perm('jet.change_bookmark'):
             raise ValidationError('error')
@@ -47,7 +49,7 @@ class RemoveBookmarkForm(forms.ModelForm):
 
     def clean(self):
         data = super(RemoveBookmarkForm, self).clean()
-        if not self.request.user.is_authenticated():
+        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
             raise ValidationError('error')
         if self.instance.user != self.request.user.pk:
             raise ValidationError('error')
@@ -66,6 +68,12 @@ class ToggleApplicationPinForm(forms.ModelForm):
     class Meta:
         model = PinnedApplication
         fields = ['app_label']
+
+    def clean(self):
+        data = super(ToggleApplicationPinForm, self).clean()
+        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+            raise ValidationError('error')
+        return data
 
     def save(self, commit=True):
         if commit:
@@ -93,12 +101,25 @@ class ModelLookupForm(forms.Form):
     object_id = forms.IntegerField(required=False)
     model_cls = None
 
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super(ModelLookupForm, self).__init__(*args, **kwargs)
+
     def clean(self):
         data = super(ModelLookupForm, self).clean()
+
+        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+            raise ValidationError('error')
 
         try:
             self.model_cls = get_model(data['app_label'], data['model'])
         except:
+            raise ValidationError('error')
+
+        content_type = ContentType.objects.get_for_model(self.model_cls)
+        permission = Permission.objects.filter(content_type=content_type, codename__startswith='change_').first()
+
+        if not self.request.user.has_perm('{}.{}'.format(data['app_label'], permission.codename)):
             raise ValidationError('error')
 
         return data

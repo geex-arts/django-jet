@@ -5,6 +5,6 @@ Dashboard
 .. toctree::
    :maxdepth: 2
 
-   dashboard_getting_started
+   dashboard_custom
    dashboard_modules
-   dashboard_base
+   dashboard_custom_module

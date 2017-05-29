@@ -12,43 +12,33 @@ About
     :height: 500px
     :scale: 50%
 
-Getting started
-===============
+Contents
+========
 
 .. toctree::
    :maxdepth: 2
+   :caption: Documentation
 
    getting_started
-
-Configuration
-=============
-
-.. toctree::
-   :maxdepth: 2
-
    configuration
-
-Dashboard
-=========
-
-.. toctree::
-   :maxdepth: 2
-
    dashboard
+   dashboard_api
+   contribution
 
 License
 =======
 
-Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
-code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
-license (in this case please email at support@jet.geex-arts.com). The commercial license
-is designed for using Django JET in commercial products and applications without the provisions of the GPLv2.
+Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
+code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you
+a commercial license (visit Home page). The commercial license is designed for using Django JET in commercial products
+and applications without the provisions of the AGPLv3.
 
 Resources
 =========
 
 * Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
+* libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
 
@@ -72,7 +62,7 @@ Changelist
     :align: center
     :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
 
-Changeform + sidemenu
+Sidemenu
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3_720.png
     :alt: Screenshot #3

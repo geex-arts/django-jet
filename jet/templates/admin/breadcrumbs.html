@@ -1,9 +1,0 @@
-<div class="breadcrumbs">
-    {% for item in items %}
-        {% if not forloop.first %}
-            <span class="icon-arrow-right top-breadcrumbs-separator"></span>
-        {% endif %}
-
-        {{ item|safe }}
-    {% endfor %}
-</div>
