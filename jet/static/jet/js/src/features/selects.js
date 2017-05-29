@@ -189,6 +189,10 @@ Select2.prototype = {
             };
         }
 
+        $select.on('change', function(e) {
+            django.jQuery($select.get(0)).trigger(e);
+        });
+
         $select.select2(settings);
     },
     initSelect2: function() {
@@ -219,6 +223,10 @@ Select2.prototype = {
         });
 
         $('select').trigger('select:init');
+
+        $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
+            $inlineItem.find('select').trigger('select:init');
+        });
     },
     run: function() {
         try {

@@ -1,4 +1,4 @@
-{% load i18n %}
+{% load i18n jet_dashboard_tags %}
 
 <ul>
     {% if not module.children %}
@@ -31,9 +31,9 @@
                     {% endif %}
 
                     {% if entry.is_deletion or not entry.get_admin_url %}
-                        {{ entry.object_repr }}
+                        <span class="tooltip" title="{{ entry|format_change_message }}">{{ entry.object_repr }}</span>
                     {% else %}
-                        <a href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
+                        <a title="{{ entry|format_change_message }}" class="tooltip" href="{{ entry.get_admin_url }}">{{ entry.object_repr }}</a>
                     {% endif %}
                 </div>
             </li>

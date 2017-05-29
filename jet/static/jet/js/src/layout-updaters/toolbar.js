@@ -29,8 +29,14 @@ ToolbarUpdater.prototype = {
             if ($element.prop('tagName') == 'H3') {
                 filterName = $element.text();
             } else if ($element.prop('tagName') == 'UL') {
-                var $select = $('<select>').addClass('changelist-filter-select');
+                var $select = $('<select>');
                 var $items = $element.find('li');
+
+                $.each($element.prop('attributes'), function() {
+                    $select.attr(this.name, this.value);
+                });
+
+                $select.addClass('changelist-filter-select');
 
                 if ($items.filter('.selected').length > 1) {
                     $select.attr('multiple', true);
@@ -70,6 +76,32 @@ ToolbarUpdater.prototype = {
                 }
 
                 filterName = null;
+            } else if ($element.hasClass('changelist-filter-popup')) {
+                var $toggle = $element.find('.changelist-filter-popup-toggle');
+                var $content = $element.find('.changelist-filter-popup-content');
+                var $wrapper = $('<span>')
+                    .addClass('changelist-filter-select-wrapper')
+                    .append($element);
+
+                if ($search.length) {
+                    $wrapper.insertAfter($search);
+                } else {
+                    $toolbar.append($wrapper);
+                }
+
+                $toggle.on('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    $content.toggleClass('visible');
+                });
+
+                $content.on('click', function(e) {
+                    e.stopPropagation();
+                });
+
+                $(document.body).on('click', function() {
+                    $content.removeClass('visible');
+                });
             }
         });
 

@@ -26,7 +26,7 @@ var cssProcessors = [
 ];
 
 gulp.task('scripts', function() {
-    browserify('./jet/static/jet/js/src/main.js')
+    return browserify('./jet/static/jet/js/src/main.js')
         .bundle()
         .on('error', function(error) {
             console.error(error);
@@ -38,7 +38,7 @@ gulp.task('scripts', function() {
 });
 
 gulp.task('styles', function() {
-    gulp.src('./jet/static/jet/css/**/*.scss')
+    return gulp.src('./jet/static/jet/css/**/*.scss')
         .pipe(sourcemaps.init())
         .pipe(sass({
             outputStyle: 'compressed'
@@ -55,67 +55,68 @@ gulp.task('styles', function() {
 });
 
 gulp.task('vendor-styles', function() {
-    gulp.src('./node_modules/jquery-ui/themes/base/images/*')
-        .pipe(gulp.dest('./jet/static/jet/css/jquery-ui/images/'));
-
-    merge(
-        gulp.src([
-            './node_modules/select2/dist/css/select2.css',
-            './node_modules/timepicker/jquery.ui.timepicker.css'
-        ]),
-        gulp.src([
-            './node_modules/jquery-ui/themes/base/all.css'
-        ])
-            .pipe(cleanCSS()) // needed to remove jQuery UI comments breaking concatCss
+    return merge(
+        gulp.src('./node_modules/jquery-ui/themes/base/images/*')
+            .pipe(gulp.dest('./jet/static/jet/css/jquery-ui/images/')),
+        merge(
+            gulp.src([
+                './node_modules/select2/dist/css/select2.css',
+                './node_modules/timepicker/jquery.ui.timepicker.css'
+            ]),
+            gulp.src([
+                './node_modules/jquery-ui/themes/base/all.css'
+            ])
+                .pipe(cleanCSS()) // needed to remove jQuery UI comments breaking concatCss
+                .on('error', function(error) {
+                    console.error(error);
+                })
+                .pipe(concatCss('jquery-ui.css', {
+                    rebaseUrls: false
+                }))
+                .on('error', function(error) {
+                    console.error(error);
+                })
+                .pipe(replace('images/', 'jquery-ui/images/'))
+                .on('error', function(error) {
+                    console.error(error);
+                }),
+            gulp.src([
+                './node_modules/perfect-scrollbar/src/css/main.scss'
+            ])
+                .pipe(sass({
+                    outputStyle: 'compressed'
+                }))
+                .on('error', function(error) {
+                    console.error(error);
+                })
+        )
+            .pipe(postcss(cssProcessors))
             .on('error', function(error) {
                 console.error(error);
             })
-            .pipe(concatCss('jquery-ui.css', {
+            .pipe(concatCss('vendor.css', {
                 rebaseUrls: false
             }))
             .on('error', function(error) {
                 console.error(error);
             })
-            .pipe(replace('images/', 'jquery-ui/images/'))
-            .on('error', function(error) {
-                console.error(error);
-            }),
-        gulp.src([
-            './node_modules/perfect-scrollbar/src/css/main.scss'
-        ])
-            .pipe(sass({
-                outputStyle: 'compressed'
-            }))
+            .pipe(cleanCSS())
             .on('error', function(error) {
                 console.error(error);
             })
+            .pipe(gulp.dest('./jet/static/jet/css'))
     )
-        .pipe(postcss(cssProcessors))
-        .on('error', function(error) {
-            console.error(error);
-        })
-        .pipe(concatCss('vendor.css', {
-            rebaseUrls: false
-        }))
-        .on('error', function(error) {
-            console.error(error);
-        })
-        .pipe(cleanCSS())
-        .on('error', function(error) {
-            console.error(error);
-        })
-        .pipe(gulp.dest('./jet/static/jet/css'));
 });
 
 gulp.task('vendor-translations', function() {
-    gulp.src(['./node_modules/jquery-ui/ui/i18n/*.js'])
-        .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui/'));
-
-    gulp.src(['./node_modules/timepicker/i18n/*.js'])
-        .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui-timepicker/'));
-
-    gulp.src(['./node_modules/select2/dist/js/i18n/*.js'])
-        .pipe(gulp.dest('./jet/static/jet/js/i18n/select2/'));
+    return merge(
+        gulp.src(['./node_modules/jquery-ui/ui/i18n/*.js'])
+            .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui/')),
+        gulp.src(['./node_modules/timepicker/i18n/*.js'])
+            .pipe(gulp.dest('./jet/static/jet/js/i18n/jquery-ui-timepicker/')),
+        gulp.src(['./node_modules/select2/dist/js/i18n/*.js'])
+            .pipe(gulp.dest('./jet/static/jet/js/i18n/select2/'))
+    )
 });
 
 gulp.task('locales', shell.task('python manage.py compilemessages', { quiet: true }));

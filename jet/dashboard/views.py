@@ -1,5 +1,10 @@
 from django.contrib import messages
-from django.core.urlresolvers import reverse
+from django.core.exceptions import ValidationError
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
+
 from django.forms.formsets import formset_factory
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_POST, require_GET
@@ -211,11 +216,14 @@ def load_dashboard_module_view(request, pk):
     result = {'error': False}
 
     try:
-        instance = UserDashboardModule.objects.get(pk=pk)
+        if not request.user.is_authenticated() or not request.user.is_staff:
+            raise ValidationError('error')
+
+        instance = UserDashboardModule.objects.get(pk=pk, user=request.user.pk)
         module_cls = instance.load_module()
         module = module_cls(model=instance, context={'request': request})
         result['html'] = module.render()
-    except UserDashboardModule.DoesNotExist:
+    except (ValidationError, UserDashboardModule.DoesNotExist):
         result['error'] = True
 
     return JsonResponse(result)

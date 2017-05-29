@@ -24,10 +24,14 @@ RelatedPopups.prototype = {
             }
         });
     },
-    initLinks: function() {
+    initLinksForRow: function($row) {
+        if ($row.data('related-popups-links-initialized')) {
+            return;
+        }
+
         var self = this;
 
-        $('.form-row select').each(function() {
+        $row.find('select').each(function() {
             var $select = $(this);
 
             self.updateLinks($select);
@@ -53,7 +57,7 @@ RelatedPopups.prototype = {
             self.updateLinks($(this));
         });
 
-        $('.form-row input').each(function() {
+        $row.find('input').each(function() {
             var $input = $(this);
 
             $input.find('~ .related-lookup').each(function() {
@@ -68,6 +72,21 @@ RelatedPopups.prototype = {
 
                     self.showPopup($input, href);
                 });
+            });
+        });
+
+        $row.data('related-popups-links-initialized', true);
+    },
+    initLinks: function() {
+        var self = this;
+
+        $('.form-row').each(function() {
+            self.initLinksForRow($(this));
+        });
+
+        $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
+            $inlineItem.find('.form-row').each(function() {
+                self.initLinksForRow($(this));
             });
         });
     },
@@ -198,7 +217,7 @@ RelatedPopups.prototype = {
             = window.showRelatedObjectPopup
             = function() { };
 
-        window.opener = this.windowStorage.previous();
+        window.opener = this.windowStorage.previous() || window.opener;
         window.dismissRelatedLookupPopup = function(win, chosenId) {
             self.closePopup({
                 action: 'lookup',

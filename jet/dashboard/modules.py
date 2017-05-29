@@ -4,7 +4,7 @@ from django.contrib.admin.models import LogEntry
 from django.db.models import Q
 from django.template.loader import render_to_string
 from django.utils.translation import ugettext_lazy as _
-from jet.utils import get_app_list, LazyDateTimeEncoder
+from jet.utils import get_app_list, LazyDateTimeEncoder, context_to_dict
 import datetime
 
 
@@ -148,7 +148,7 @@ class DashboardModule(object):
         pass
 
     def get_context_data(self):
-        context = self.context
+        context = context_to_dict(self.context)
         context.update({
             'module': self
         })
@@ -245,10 +245,16 @@ class LinkList(DashboardModule):
 
     def settings_dict(self):
         return {
+            'draggable': self.draggable,
+            'deletable': self.deletable,
+            'collapsible': self.collapsible,
             'layout': self.layout
         }
 
     def load_settings(self, settings):
+        self.draggable = settings.get('draggable', self.draggable)
+        self.deletable = settings.get('deletable', self.deletable)
+        self.collapsible = settings.get('collapsible', self.collapsible)
         self.layout = settings.get('layout', self.layout)
 
     def store_children(self):

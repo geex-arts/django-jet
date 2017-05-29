@@ -56,9 +56,12 @@ CompactInline.prototype = {
     },
     updateTotalForms: function($inline) {
         var $totalFormsInput = $inline.find('[name="' + this.prefix + '-TOTAL_FORMS"]');
+        var $maxFormsInput = $inline.find('[name="' + this.prefix + '-MAX_NUM_FORMS"]');
         var totalForms = parseInt($inline.find('.inline-related').length);
+        var maxForms = $maxFormsInput.val() ? parseInt($maxFormsInput.val()) : Infinity;
 
         $totalFormsInput.val(totalForms);
+        $inline.find('.add-row').toggle(maxForms >= totalForms);
     },
     addNavigationItem: function($inline, $inlineItem) {
         var $empty = $inline.find('.inline-navigation-item.empty');
@@ -84,7 +87,13 @@ CompactInline.prototype = {
         $inline.find('.inline-navigation-item[data-inline-related-id="' + $item.attr('id') + '"]').remove();
     },
     openFirstNavigationItem: function($inline) {
-        this.openNavigationItem($inline, $inline.find('.inline-navigation-item').first());
+        var $item = $inline.find('.inline-navigation-item:not(.empty)').first();
+
+        if ($item == undefined) {
+            return;
+        }
+
+        this.openNavigationItem($inline, $item);
         this.scrollNavigationToTop($inline);
     },
     addItemDeleteButton: function($item) {

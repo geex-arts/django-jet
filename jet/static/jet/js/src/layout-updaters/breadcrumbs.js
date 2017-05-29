@@ -33,10 +33,7 @@ $(document).ready(function() {
     var $breadcrumbs = $('.breadcrumbs');
 
     if ($breadcrumbs.length == 0) {
-        $breadcrumbs = $('<div>')
-            .addClass('breadcrumbs')
-            .text('Начало')
-            .insertAfter($('#header'));
+        return;
     }
 
     $breadcrumbs.each(function() {

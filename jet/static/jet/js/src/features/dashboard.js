@@ -128,7 +128,7 @@ Dashboard.prototype = {
             tolerance: 'pointer',
             accept: '.dashboard-item'
         }).sortable({
-            items: '.dashboard-item',
+            items: '.dashboard-item.draggable',
             handle: '.dashboard-item-header',
             tolerance: 'pointer',
             connectWith: '.dashboard-column',

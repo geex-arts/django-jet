@@ -6,9 +6,10 @@ var Inline = function($inline) {
 };
 
 Inline.prototype = {
-    initSelectsOnAddRow: function($inline) {
-        $inline.find('.add-row a').on('click', function() {
-            $inline.find('.inline-related:not(.empty-form)').last().find('select').trigger('select:init');
+    initAddRow: function($inline) {
+        $inline.on('click', '.add-row a', function() {
+            var $inlineItem = $inline.find('.inline-related:not(.empty-form)').last();
+            $inline.trigger('inline-group-row:added', [$inlineItem]);
         });
     },
     run: function() {
@@ -19,7 +20,7 @@ Inline.prototype = {
                 new CompactInline($inline).run();
             }
 
-            this.initSelectsOnAddRow($inline);
+            this.initAddRow($inline);
         } catch (e) {
             console.error(e, e.stack);
         }
