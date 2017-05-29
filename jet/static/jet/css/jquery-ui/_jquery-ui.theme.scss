@@ -1,6 +1,7 @@
 @import "../globals";
 
 .ui-widget-content {
+  color: $text-color;
   border-color: $content-border-color;
 }
 
@@ -60,6 +61,14 @@
   color: $jquery-ui-state-highlight-text-color;
 }
 
+.ui-dialog {
+  @include for-phone {
+    left: 10px !important;
+    right: 10px !important;
+    width: auto !important;
+  }
+}
+
 .ui-dialog-buttonpane {
   background: $jquery-ui-buttonpane-background;
   margin: .5em -0.2em -0.2em -0.2em;
@@ -105,4 +114,31 @@
   opacity: 0.8;
   font-size: 13px;
   pointer-events: none;
+}
+
+.ui-datepicker, .ui-timepicker {
+  table {
+    margin: 0 0 .4em;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  th {
+    background: inherit;
+    color: inherit;
+    text-transform: inherit;
+  }
+
+  tbody tr {
+    border-bottom: inherit;
+  }
+}
+
+.ui-datepicker table {
+  margin: 0 0 .4em;
+}
+
+.ui-timepicker-table table {
+  margin: .15em 0 0;
 }

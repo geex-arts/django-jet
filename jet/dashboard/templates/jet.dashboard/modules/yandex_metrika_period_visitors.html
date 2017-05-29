@@ -12,9 +12,9 @@
         <thead>
             <tr>
                 <th>{% trans "Date" %}</th>
-                <th>{% trans "Visitors" %}</th>
-                <th>{% trans "Visits" %}</th>
-                <th>{% trans "Views" %}</th>
+                <th>{% trans "visitors" as label %}{{ label|capfirst }}</th>
+                <th>{% trans "visits" as label %}{{ label|capfirst }}</th>
+                <th>{% trans "views" as label %}{{ label|capfirst }}</th>
             </tr>
         </thead>
         <tbody>

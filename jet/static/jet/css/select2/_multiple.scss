@@ -1,12 +1,10 @@
 @import "../globals";
 
-$input-height: 0 !default;
-
 .select2-selection--multiple {
   background-color: $input-background-color !important;
   border: 1px solid $input-border-color;
   cursor: text;
-  height: auto !important;
+  height: auto;
   min-height: $input-height;
 
   .select2-selection__rendered {
@@ -15,6 +13,10 @@ $input-height: 0 !default;
     margin: 0;
     padding: 0 5px;
     width: 100%;
+
+    li {
+      list-style-type: none;
+    }
   }
 
   .select2-selection__clear {
@@ -36,6 +38,7 @@ $input-height: 0 !default;
     margin-top: 5px;
     padding: 5px 5px;
     line-height: normal;
+    list-style-type: none;
   }
 
   .select2-selection__choice__remove {

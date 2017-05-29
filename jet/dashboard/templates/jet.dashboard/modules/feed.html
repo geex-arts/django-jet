@@ -3,9 +3,9 @@
 <ul>
     {% if module.children %}
         {% for child in module.children %}
-            <li class="nowrap">
+            <li>
                 {% if child.date %}<span class="float-right dim">{{ child.date|date }}</span>{% endif %}
-                {% if child.warning %}<span class="warning">{{ child.title }}</span>{% else %}<a href="{{ child.link }}" target="_blank"><span class="icon-open-external"></span> {{ child.title }}</a>{% endif %}
+                {% if child.warning %}<span class="warning">{{ child.title }}</span>{% else %}<a href="{{ child.link }}" target="_blank" class="nowrap"><span class="icon-open-external"></span> {{ child.title }}</a>{% endif %}
             </li>
         {% endfor %}
     {% else %}

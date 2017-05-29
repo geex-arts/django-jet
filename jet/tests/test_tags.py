@@ -1,9 +1,13 @@
 from django import forms
-from django.core.urlresolvers import reverse
-from django.test import TestCase
-from jet.templatetags.jet_tags import select2_lookups, jet_next_object_url, jet_previous_object_url
-from jet.tests.models import TestModel, SearchableTestModel
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
 
+from django.test import TestCase
+from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object, jet_previous_object
+from jet.tests.models import TestModel, SearchableTestModel
+from django.test.client import RequestFactory
 
 class TagsTestCase(TestCase):
     def setUp(self):
@@ -23,7 +27,7 @@ class TagsTestCase(TestCase):
 
         form = TestForm(initial={'form_field': value.pk})
         field = form['form_field']
-        field = select2_lookups(field)
+        field = jet_select2_lookups(field)
         choices = [choice for choice in field.field.choices]
 
         self.assertEqual(len(choices), 1)
@@ -37,7 +41,7 @@ class TagsTestCase(TestCase):
 
         form = TestForm(data={'form_field': value.pk})
         field = form['form_field']
-        field = select2_lookups(field)
+        field = jet_select2_lookups(field)
         choices = [choice for choice in field.field.choices]
 
         self.assertEqual(len(choices), 1)
@@ -51,7 +55,7 @@ class TagsTestCase(TestCase):
 
         form = TestForm(initial={'form_field': value.pk})
         field = form['form_field']
-        field = select2_lookups(field)
+        field = jet_select2_lookups(field)
         choices = [choice for choice in field.field.choices]
 
         self.assertEqual(len(choices), len(self.models) + 1)
@@ -61,16 +65,18 @@ class TagsTestCase(TestCase):
         ordering_field = 1  # field1 in list_display
         preserved_filters = '_changelist_filters=o%%3D%d' % ordering_field
 
-        context = {
-            'original': instance,
-            'preserved_filters': preserved_filters
-        }
-
-        actual_url = jet_next_object_url(context)
         expected_url = reverse('admin:%s_%s_change' % (
             TestModel._meta.app_label,
             TestModel._meta.model_name
         ), args=(self.models[1].pk,)) + '?' + preserved_filters
+
+        context = {
+            'original': instance,
+            'preserved_filters': preserved_filters,
+            'request': RequestFactory().get(expected_url),
+        }
+
+        actual_url = jet_next_object(context)['url']
 
         self.assertEqual(actual_url, expected_url)
 
@@ -79,12 +85,18 @@ class TagsTestCase(TestCase):
         ordering_field = 1  # field1 in list_display
         preserved_filters = '_changelist_filters=o%%3D%d' % ordering_field
 
+        changelist_url = reverse('admin:%s_%s_change' % (
+            TestModel._meta.app_label,
+            TestModel._meta.model_name
+        ), args=(self.models[1].pk,)) + '?' + preserved_filters
+
         context = {
             'original': instance,
-            'preserved_filters': preserved_filters
+            'preserved_filters': preserved_filters,
+            'request': RequestFactory().get(changelist_url),
         }
 
-        actual_url = jet_previous_object_url(context)
-        expected_url = None
+        previous_object = jet_previous_object(context)
+        expected_object = None
 
-        self.assertEqual(actual_url, expected_url)
+        self.assertEqual(previous_object, expected_object)

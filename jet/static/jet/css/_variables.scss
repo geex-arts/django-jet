@@ -19,12 +19,17 @@ $font: Arial, sans-serif !default;
 $font-size: 14px !default;
 
 $transitions-duration: 0.3s !default;
+$fast-transitions-duration: 0.1s !default;
+
+$mobile-max-width: 960px;
+$phone-max-width: 480px;
 
 /*
  * Sidebar
  */
 
 $sidebar-width: 250px !default;
+$sidebar-header-height: 44px !default;
 
 $sidebar-background-color: #354052 !default;
 $sidebar-contrast-background-color: #2b3647 !default;
@@ -47,7 +52,7 @@ $sidebar-hover-background-color: #2b3647 !default;
 
 $sidebar-popup-search-input-background-color: #d0dbe6 !default;
 $sidebar-popup-search-input-text-color: #6f7e95 !default;
-$sidebar-popup-search-input-placeholder-color: #d0dbe6 !default;
+$sidebar-popup-search-input-placeholder-color: transparentize(#6f7e95, 0.5) !default;
 
 $sidebar-popup-background-color: #ecf2f6 !default;
 $sidebar-popup-text-color: #6f7e95 !default;
@@ -121,6 +126,7 @@ $background-button-text-color: #6f7e95 !default;
  * Inputs
  */
 
+$input-height: 32px !default;
 $input-background-color: #fff !default;
 $input-contrast-background-color: #d0dbe6 !default;
 $input-border-color: #ecf2f6 !default;

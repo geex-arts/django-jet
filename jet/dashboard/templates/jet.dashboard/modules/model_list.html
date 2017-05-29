@@ -5,13 +5,13 @@
         <li>
             <span class="float-right">
                 {% if model.add_url %}
-                    <a href="{{ model.add_url }}" class="addlink" title="{% trans 'Add' %}"><span class="icon-add3"></span></a>
+                    <a href="{{ model.add_url }}" class="addlink" title="{% trans 'Add' %}"></a>
                 {% else %}
                     &nbsp;
                 {% endif %}
 
                 {% if model.admin_url %}
-                    <a href="{{ model.admin_url }}" class="changelink" title="{% trans 'Change' %}"><span class="icon-edit"></span></a>
+                    <a href="{{ model.admin_url }}" class="changelink" title="{% trans 'Change' %}"></a>
                 {% else %}
                     &nbsp;
                 {% endif %}

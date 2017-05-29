@@ -32,206 +32,45 @@ register = template.Library()
 
 
 @register.simple_tag
-def get_date_format():
+def jet_get_date_format():
     return get_format('DATE_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_time_format():
+def jet_get_time_format():
     return get_format('TIME_INPUT_FORMATS')[0]
 
 
 @register.simple_tag
-def get_datetime_format():
+def jet_get_datetime_format():
     return get_format('DATETIME_INPUT_FORMATS')[0]
 
 
-@register.tag
-def format_breadcrumbs(parser, token):
-    nodelist = parser.parse(('endformat_breadcrumbs',))
-    parser.delete_first_token()
-    return FormatBreadcrumbsNode(nodelist)
-
-
-class FormatBreadcrumbsNode(template.Node):
-    def __init__(self, nodelist):
-        self.nodelist = nodelist
-
-    def render(self, context):
-        output = self.nodelist.render(context)
-
-        regex = re.compile('<[^!(a>)]([^>]|\n)*[^!(/a)]>', re.IGNORECASE)
-        clean = re.sub(regex, '', output)
-        clean = clean.replace('\u203A', '&rsaquo;')
-        items = clean.split('&rsaquo;')
-
-        items = map(lambda i: i.strip(), items)
-        items = filter(None, items)
-
-        t = loader.get_template('admin/breadcrumbs.html')
-        c = {'items': items}
-
-        if django.VERSION[:2] < (1, 9):
-            c = Context(c)
-
-        return t.render(c)
-
-
-@register.assignment_tag
-def filter_fieldsets_with_errors(fieldsets):
-    i = 0
-    fieldsets_with_errors = list()
-
-    for fieldset in fieldsets:
-        errors = False
-
-        for line in fieldset:
-            for field in line:
-                if hasattr(field.field, 'errors') and len(field.field.errors) > 0:
-                    errors = True
-                    break
-            if errors:
-                break
-
-        if errors:
-            fieldsets_with_errors.append(i)
-
-        i += 1
-
-    return fieldsets_with_errors
-
-
-@register.assignment_tag
-def is_fieldset_selected(fieldset_index, fieldsets_with_errors):
-    if len(fieldsets_with_errors) == 0:
-        return fieldset_index == 0
-    else:
-        return fieldset_index == fieldsets_with_errors[0]
-
-
-@register.assignment_tag
-def is_fieldset_with_errors(fieldset_index, fieldsets_with_errors):
-    return fieldset_index in fieldsets_with_errors
-
-
-@register.assignment_tag
-def formset_has_errors(formset):
-    if formset is None or getattr(formset, 'errors') is None:
-        return False
-    for errors in formset.errors:
-        if errors:
-            return True
-    return False
-
-
-@register.filter
-def get_type(value):
-    return type(value).__name__
-
-
-@register.filter
-def format_deletable_object(deletable_object):
-    item = None
-    items = []
-
-    for object in deletable_object:
-        if type(object) != list:
-            item = {'text': object}
-            items.append(item)
-        elif item is not None:
-            item['list'] = object
-
-    return items
-
-
 @register.assignment_tag(takes_context=True)
-def get_menu(context):
-    if settings.JET_SIDE_MENU_CUSTOM_APPS not in (None, False):
-        app_list = get_app_list(context, False)
-        app_dict = {}
-        models_dict = {}
-
-        for app in app_list:
-            app_label = app.get('app_label', app.get('name'))
-            app_dict[app_label] = app
-
-            for model in app['models']:
-                if app_label not in models_dict:
-                    models_dict[app_label] = {}
-
-                models_dict[app_label][model['object_name']] = model
-
-            app['models'] = []
-
-        app_list = []
-
-        for item in settings.JET_SIDE_MENU_CUSTOM_APPS:
-            app_label, models = item
-
-            if app_label in app_dict:
-                app = app_dict[app_label]
-
-                for model_label in models:
-                    if model_label == '__all__':
-                        app['models'] = models_dict[app_label].values()
-                        break
-                    elif model_label in models_dict[app_label]:
-                        model = models_dict[app_label][model_label]
-                        app['models'].append(model)
-
-                app_list.append(app)
-    else:
-        app_list = get_app_list(context)
-
-    current_found = False
-
-    pinned = PinnedApplication.objects.values_list('app_label', flat=True)
-
-    all_aps = []
-    apps = []
-    pinned_apps = []
-
-    for app in app_list:
-        if not current_found:
-            for model in app['models']:
-                if context['request'].path.startswith(model['admin_url']):
-                    model['current'] = True
-                    current_found = True
-                    break
-
-            if not current_found and context['request'].path.startswith(app['app_url']):
-                app['current'] = True
-                current_found = True
-
-        if app.get('app_label', app.get('name')) in pinned:
-            pinned_apps.append(app)
-        else:
-            apps.append(app)
-
-        all_aps.append(app)
-
-    return {'apps': apps, 'pinned_apps': pinned_apps, 'all_apps': all_aps}
+def jet_get_menu(context):
+    return get_menu_items(context)
 
 
 @register.assignment_tag
-def get_bookmarks(user):
+def jet_get_bookmarks(user):
     if user is None:
         return None
     return Bookmark.objects.filter(user=user.pk)
 
 
-@register.filter(name='is_checkbox')
-def is_checkbox(field):
+@register.filter
+def jet_is_checkbox(field):
     return field.field.widget.__class__.__name__ == CheckboxInput().__class__.__name__
 
 
 @register.filter
-def select2_lookups(field):
-    if hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
+def jet_select2_lookups(field):
+    if hasattr(field, 'field') and \
+            (isinstance(field.field, ModelChoiceField) or isinstance(field.field, ModelMultipleChoiceField)):
         qs = field.field.queryset
         model = qs.model
 
-        if getattr(model, 'autocomplete_search_fields', None):
+        if getattr(model, 'autocomplete_search_fields', None) and getattr(field.field, 'autocomplete', True):
             choices = []
             app_label = model._meta.app_label
             model_name = model._meta.object_name
@@ -243,8 +82,7 @@ def select2_lookups(field):
                 'data-ajax--url': reverse('jet:model_lookup')
             }
 
-            form = field.form
-            initial_value = form.data.get(field.name) if form.data != {} else form.initial.get(field.name)
+            initial_value = field.value()
 
             if hasattr(field, 'field') and isinstance(field.field, ModelMultipleChoiceField):
                 if initial_value:
@@ -261,9 +99,12 @@ def select2_lookups(field):
                 field.field.choices = choices
             elif hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
                 if initial_value:
-                    initial_object = model.objects.get(pk=initial_value)
-                    attrs['data-object-id'] = initial_value
-                    choices.append((initial_object.pk, get_model_instance_label(initial_object)))
+                    try:
+                        initial_object = model.objects.get(pk=initial_value)
+                        attrs['data-object-id'] = initial_value
+                        choices.append((initial_object.pk, get_model_instance_label(initial_object)))
+                    except model.DoesNotExist:
+                        pass
 
                 if isinstance(field.field.widget, RelatedFieldWidgetWrapper):
                     field.field.widget.widget = Select(attrs)
@@ -274,34 +115,8 @@ def select2_lookups(field):
     return field
 
 
-@register.simple_tag(takes_context=True)
-def jet_add_preserved_filters(context, url, popup=False, to_field=None):
-    try:
-        from django.contrib.admin.templatetags.admin_urls import add_preserved_filters
-        try:
-            return add_preserved_filters(context, url, popup, to_field)
-        except TypeError:
-            return add_preserved_filters(context, url, popup)  # old django
-    except ImportError:
-        return url
-
-
-@register.filter()
-def if_onetoone(formset):
-    return getattr(formset, 'fk') and isinstance(formset.fk, OneToOneField)
-
-
-@register.assignment_tag
-def format_current_language(language):
-    language = language.replace('_', '-').lower()
-    split = language.split('-', 2)
-    if len(split) == 2:
-        language = split[0] + '-' + split[1].upper() if split[0] != split[1] else split[0]
-    return language
-
-
 @register.assignment_tag(takes_context=True)
-def get_current_theme(context):
+def jet_get_current_theme(context):
     if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
         theme = context['request'].COOKIES['JET_THEME']
         if isinstance(settings.JET_THEMES, list) and len(settings.JET_THEMES) > 0:
@@ -312,7 +127,7 @@ def get_current_theme(context):
 
 
 @register.assignment_tag
-def get_themes():
+def jet_get_themes():
     return settings.JET_THEMES
 
 
@@ -331,8 +146,16 @@ def get_current_jet_version():
     return VERSION
 
 
+@register.filter
+def jet_append_version(url):
+    if '?' in url:
+        return '%s&v=%s' % (url, VERSION)
+    else:
+        return '%s?v=%s' % (url, VERSION)
+
+
 @register.assignment_tag
-def get_side_menu_compact():
+def jet_get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
 
 
@@ -341,7 +164,7 @@ def jet_change_form_sibling_links_enabled():
     return settings.JET_CHANGE_FORM_SIBLING_LINKS
 
 
-def jet_sibling_object_url(context, next):
+def jet_sibling_object(context, next):
     original = context.get('original')
 
     if not original:
@@ -350,7 +173,16 @@ def jet_sibling_object_url(context, next):
     model = type(original)
     preserved_filters_plain = context.get('preserved_filters', '')
     preserved_filters = dict(parse_qsl(preserved_filters_plain))
-    queryset = get_model_queryset(model, preserved_filters=preserved_filters)
+    admin_site = get_admin_site(context)
+
+    if admin_site is None:
+        return
+
+    request = context.get('request')
+    queryset = get_model_queryset(admin_site, model, request, preserved_filters=preserved_filters)
+
+    if queryset is None:
+        return
 
     sibling_object = None
     object_pks = list(queryset.values_list('pk', flat=True))
@@ -366,7 +198,8 @@ def jet_sibling_object_url(context, next):
     if sibling_object is None:
         return
 
-    url = reverse('admin:%s_%s_change' % (
+    url = reverse('%s:%s_%s_change' % (
+        admin_site.name,
         model._meta.app_label,
         model._meta.model_name
     ), args=(sibling_object.pk,))
@@ -374,14 +207,62 @@ def jet_sibling_object_url(context, next):
     if preserved_filters_plain != '':
         url += '?' + preserved_filters_plain
 
-    return url
+    return {
+        'label': str(sibling_object),
+        'url': url
+    }
 
 
 @register.assignment_tag(takes_context=True)
-def jet_previous_object_url(context):
-    return jet_sibling_object_url(context, False)
+def jet_previous_object(context):
+    return jet_sibling_object(context, False)
 
 
 @register.assignment_tag(takes_context=True)
-def jet_next_object_url(context):
-    return jet_sibling_object_url(context, True)
+def jet_next_object(context):
+    return jet_sibling_object(context, True)
+
+
+@register.assignment_tag(takes_context=True)
+def jet_popup_response_data(context):
+    if context.get('popup_response_data'):
+        return context['popup_response_data']
+
+    return json.dumps({
+        'action': context.get('action'),
+        'value': context.get('value') or context.get('pk_value'),
+        'obj': smart_text(context.get('obj')),
+        'new_value': context.get('new_value')
+    })
+
+
+@register.simple_tag(takes_context=True)
+def jet_delete_confirmation_context(context):
+    if context.get('deletable_objects') is None and context.get('deleted_objects') is None:
+        return ''
+    return mark_safe('<div class="delete-confirmation-marker"></div>')
+
+
+@register.assignment_tag
+def jet_static_translation_urls():
+    language_codes = get_possible_language_codes()
+
+    urls = []
+    url_templates = [
+        'jet/js/i18n/jquery-ui/datepicker-__LANGUAGE_CODE__.js',
+        'jet/js/i18n/jquery-ui-timepicker/jquery.ui.timepicker-__LANGUAGE_CODE__.js',
+        'jet/js/i18n/select2/__LANGUAGE_CODE__.js'
+    ]
+
+    static_dir = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'static')
+
+    for tpl in url_templates:
+        for language_code in language_codes:
+            url = tpl.replace('__LANGUAGE_CODE__', language_code)
+            path = os.path.join(static_dir, url)
+
+            if os.path.exists(path):
+                urls.append(url)
+                break
+
+    return urls

@@ -1,13 +1,8 @@
-{% load i18n jet_tags %}
-
-<fieldset class="module aligned {{ fieldset.classes }}{% if selected %} selected{% endif %}" id="module_{{ index }}">
+{% load jet_tags %}
+<fieldset class="module aligned {{ fieldset.classes }}">
+    {% if fieldset.name %}<h2>{{ fieldset.name }}</h2>{% endif %}
     {% if fieldset.description %}
         <div class="description">{{ fieldset.description|safe }}</div>
-    {% endif %}
-    {% if errors %}
-        <p class="errornote">
-            {% trans "Please correct the errors below." %}
-        </p>
     {% endif %}
     {% for line in fieldset %}
         <div class="form-row{% if line.fields|length_is:'1' and line.errors %} errors{% endif %}{% if line.has_visible_field == False %} hidden{% endif %}{% for field in line %}{% if field.field.name %} field-{{ field.field.name }}{% endif %}{% endfor %}">
@@ -18,11 +13,11 @@
                     {% if field.is_checkbox %}
                         {{ field.field }}{{ field.label_tag }}
                     {% else %}
-                        {% if field.field.label != '' %}{{ field.label_tag }}{% endif %}
+                        {{ field.label_tag }}
                         {% if field.is_readonly %}
                             <p>{{ field.contents }}</p>
                         {% else %}
-                            {{ field.field|select2_lookups }}
+                            {{ field.field|jet_select2_lookups }}
                         {% endif %}
                     {% endif %}
                     {% if field.field.help_text %}

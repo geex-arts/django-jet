@@ -7,46 +7,54 @@ Django JET
 
 **Modern template for Django admin interface with improved functionality**
 
-Django JET has two kinds of licenses: open-source (GPLv2) and commercial. Please note that using GPLv2
-code in your programs make them GPL too. So if you don't want to comply with that we can provide you a commercial
+Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
+code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you a commercial
 license (visit Home page). The commercial license is designed for using Django JET in commercial products
-and applications without the provisions of the GPLv2.
+and applications without the provisions of the AGPLv3.
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/logo.png
     :width: 500px
     :height: 500px
     :scale: 50%
-    :alt: Screenshot #1
+    :alt: Logo
     :align: center
     
 * Home page: http://jet.geex-arts.com/
 * **Live Demo**: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
+* libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
 * Support: support@jet.geex-arts.com
+
+Why Django JET?
+===============
+
+* New fresh look
+* Responsive mobile interface
+* Useful admin home page
+* Minimal template overriding
+* Easy integration
+* Themes support
+* Autocompletion
+* Handy controls
 
 Screenshots
 ===========
 
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen1_720.png
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen1_720.png
     :alt: Screenshot #1
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen1.png
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen1.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen2_720.png
-    :alt: Screenshot #1
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen2_720.png
+    :alt: Screenshot #2
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen2.png
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen2.png
     
-.. image:: https://raw.githubusercontent.com/geex-arts/jet/static/screen3_720.png
-    :alt: Screenshot #1
+.. image:: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen3_720.png
+    :alt: Screenshot #3
     :align: center
-    :target: https://raw.githubusercontent.com/geex-arts/jet/static/screen3.png
-
-License
-=======
-Django JET is licensed under a
-The GNU General Public License, Version 2
+    :target: https://raw.githubusercontent.com/geex-arts/django-jet/static/screen3.png
 
 Installation
 ============
@@ -160,7 +168,7 @@ Dashboard installation
 
 .. code::
 
-    pip install google-api-python-client
+    pip install google-api-python-client==1.4.1
 
 * Create database tables:
 

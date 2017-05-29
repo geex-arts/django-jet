@@ -1,0 +1,29 @@
+{
+  "name": "django-jet",
+  "devDependencies": {
+    "autoprefixer": "6.4.0",
+    "browserify": "13.0.1",
+    "browsernizr": "2.1.0",
+    "es6-promise": "3.2.1",
+    "gulp": "3.9.1",
+    "gulp-clean-css": "2.0.12",
+    "gulp-concat-css": "2.3.0",
+    "gulp-postcss": "6.1.1",
+    "gulp-replace": "0.5.4",
+    "gulp-sass": "2.3.2",
+    "gulp-shell": "0.5.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.5.4",
+    "jquery": "1.11.3",
+    "jquery-ui": "git://github.com/jquery/jquery-ui#1.11.4",
+    "jquery.cookie": "1.4.1",
+    "jquery.mousewheel": "3.1.9",
+    "merge-stream": "1.0.0",
+    "perfect-scrollbar": "git://github.com/noraesae/perfect-scrollbar#0.6.5",
+    "postcss-pxtorem": "3.3.1",
+    "select2": "4.0.0",
+    "timepicker": "git://github.com/geex-arts/timepicker",
+    "vinyl-buffer": "1.0.0",
+    "vinyl-source-stream": "1.1.0"
+  }
+}
