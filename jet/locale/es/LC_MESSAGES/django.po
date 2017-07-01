@@ -71,7 +71,7 @@ msgstr "Cambiar contraseña"
 
 #: templates/admin/base.html:71
 msgid "Log out"
-msgstr "Cerrar sessión"
+msgstr "Cerrar sesión"
 
 #: templates/admin/base.html:80 templates/admin/base.html:153
 msgid "Home"
@@ -111,7 +111,7 @@ msgstr "Está seguro de que quiere eliminar este marcador?"
 
 #: templates/admin/base.html:302 templates/admin/base.html:309
 msgid "Remove"
-msgstr "Remover"
+msgstr "Eliminar"
 
 #: templates/admin/base.html:339
 msgid "Application page"
