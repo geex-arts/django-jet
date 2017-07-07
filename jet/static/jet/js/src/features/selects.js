@@ -126,6 +126,8 @@ Select2.prototype = {
             $dropdown.find('.select2-buttons-button-select-all').on('click', function (e) {
                 e.preventDefault();
                 var selected = [];
+                debugger;
+
                 $element.find('option').each(function () {
                     selected.push($(this).val());
                 });
@@ -190,7 +192,7 @@ Select2.prototype = {
         }
 
         $select.on('change', function(e) {
-            django.jQuery($select.get(0)).trigger(e);
+           // django.jQuery($select.get(0)).trigger("change");
         });
 
         $select.select2(settings);

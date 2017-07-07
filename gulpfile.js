@@ -33,7 +33,7 @@ gulp.task('scripts', function() {
         })
         .pipe(source('bundle.min.js'))
         .pipe(buffer())
-        .pipe(uglify())
+       // .pipe(uglify())
         .pipe(gulp.dest('./jet/static/jet/js/build/'));
 });
 
