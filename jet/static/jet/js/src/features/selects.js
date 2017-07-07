@@ -126,7 +126,6 @@ Select2.prototype = {
             $dropdown.find('.select2-buttons-button-select-all').on('click', function (e) {
                 e.preventDefault();
                 var selected = [];
-                debugger;
 
                 $element.find('option').each(function () {
                     selected.push($(this).val());
