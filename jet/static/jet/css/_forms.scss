@@ -135,7 +135,7 @@ textarea {
 }
 
 input[type=checkbox] {
-  display: none;
+  display: inline-block;
 
   &#action-toggle {
     display: none !important;
