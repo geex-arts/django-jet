@@ -4,6 +4,9 @@ Django JET
 
 .. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
     :target: https://travis-ci.org/geex-arts/django-jet
+    
+.. image:: https://img.shields.io/discord/346712584415870977.svg   
+    :target:  https://discord.me/django-jet    
 
 **Modern template for Django admin interface with improved functionality**
 
