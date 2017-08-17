@@ -62,7 +62,7 @@ You can solve it with this [steps](https://github.com/geex-arts/django-jet/issue
 
 
 
-It's all. Thanks to (Boros Gabór)[https://github.com/gabor-boros] for supply this solution.
+It's all. Thanks to [Boros Gabór](https://github.com/gabor-boros) for supply this solution.
 
 DJANGO-TREEBEARD
 ----------------
