@@ -7,7 +7,7 @@ In this section we will treat with a few errors that `django-jet` could be with 
 DJANGO-ROSETTA
 --------------
 
-As you can see in .. _`198`:https://github.com/geex-arts/django-jet/issues/198 and [207](https://github.com/geex-arts/django-jet/issues/207) issues, `django-jet` have problems with `django-rosetta`, it can't renderize the styles properly.
+As you can see in [198](https://github.com/geex-arts/django-jet/issues/198) and [207](https://github.com/geex-arts/django-jet/issues/207) issues, `django-jet` have problems with `django-rosetta`, it can't renderize the styles properly.
 
 You can solve it with this [steps](https://github.com/geex-arts/django-jet/issues/198#issuecomment-302629559):
 
