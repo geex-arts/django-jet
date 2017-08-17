@@ -36,22 +36,8 @@
 </head>
 {% load i18n %}
 
-            <div class="content">
-                {% if not is_popup %}
-                    {% block header %}
-                        <div id="header" class="top">
-                            <div class="top-right">
-                                {% block top-right %}{% endblock %}
-                                {% block top-right-extends %}{% endblock %}
-                                {% block usertools %}
-                                    {% if user.is_active and user.is_staff %}
-                                        <ul class="top-user-tools" id="user-tools">
-                                            <li class="top-user-tools-welcome-msg">
-                                                <span class="top-user-tools-welcome-msg-arrow icon-arrow-down"></span>
-                                                {% block welcome-msg %}
-                                                    {% firstof user.get_short_name user.get_username %}
-                                                {% endblock %}
-                                            </li>
+<body class="{% if request.COOKIES.sidebar_pinned != 'false' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
 
 <!-- Container -->
 <div id="container">

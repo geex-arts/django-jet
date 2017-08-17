@@ -1,2 +1,2 @@
-VERSION = '0.1.5'
+VERSION = '1.0.7'
 default_app_config = 'jet.apps.JetConfig'
