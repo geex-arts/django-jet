@@ -141,10 +141,19 @@ class ModelLookupForm(forms.Form):
         page = self.cleaned_data['page'] or 1
         offset = (page - 1) * limit
 
+        if page == 1:
+            limit -= 1
+        else:
+            offset -= 1
+
         items = list(map(
             lambda instance: {'id': instance.pk, 'text': get_model_instance_label(instance)},
             qs.all()[offset:offset + limit]
         ))
-        total = qs.count()
+
+        if page == 1:
+            items.insert(0, {'id': '', 'text': '---------'})
+
+        total = qs.count() + 1
 
         return items, total
