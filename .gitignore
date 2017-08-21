@@ -1,7 +1,36 @@
+# File types
 *.pyc
-*.DS_Store
+*.swo
+*.swp
+*.swn
+*.log
+*.sql
+*.sqlite3
 *.egg*
+
+
+# OS files
+.DS_Store
+ehthumbs.db
+Icon?
+Thumbs.db
+*~
+
+# Configuration files
+.idea
+.tags
+.tags_sorted_by_file
+
+# Folders
+.sass-cache
+/docs/_build/
 /dist/
 /.idea
 /docs/_build/
-/node_modules/
+
+/node_modules
+/static
+/reports
+/uploads
+/gulpfile.babel-compiled.js
+/gulpfile.babel-compiled.js.map

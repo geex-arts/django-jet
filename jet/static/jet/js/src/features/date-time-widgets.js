@@ -100,7 +100,8 @@ DateTimeWidgets.prototype = {
             var $timeLink = $timeField.next('.vTimeField-link');
 
             $timeField.timepicker({
-                showPeriodLabels: false,
+                showPeriod: true,
+                showLeadingZero: true,
                 showCloseButton: true,
                 showNowButton: true
             });
