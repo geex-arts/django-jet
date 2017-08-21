@@ -1,26 +1,31 @@
 from __future__ import unicode_literals
-import json
-import os
-from django import template
-try:
-    from django.core.urlresolvers import reverse
-except ImportError: # Django 1.11
-    from django.urls import reverse
-
-from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
-from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
-from django.utils.formats import get_format
-from django.utils.safestring import mark_safe
-from django.utils.encoding import smart_text
-from jet import settings, VERSION
-from jet.models import Bookmark
-from jet.utils import get_model_instance_label, get_model_queryset, get_possible_language_codes, \
-    get_admin_site, get_menu_items
-
+import re
 try:
     from urllib.parse import parse_qsl
 except ImportError:
     from urlparse import parse_qsl
+
+import django
+from django import template
+from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.core.urlresolvers import reverse
+from django.db.models import OneToOneField
+from django.forms import CheckboxInput
+from django.forms import ModelChoiceField
+from django.forms import ModelMultipleChoiceField
+from django.forms import Select
+from django.forms import SelectMultiple
+from django.template import loader
+from django.template import Context
+from django.template.defaulttags import NowNode
+from django.utils.formats import get_format
+
+from jet import settings, VERSION
+from jet.models import Bookmark
+from jet.models import PinnedApplication
+from jet.utils import get_app_list
+from jet.utils import get_model_instance_label
+from jet.utils import get_model_queryset
 
 
 register = template.Library()
@@ -127,7 +132,17 @@ def jet_get_themes():
 
 
 @register.assignment_tag
-def jet_get_current_version():
+def jet_date(parser, token):
+    return NowNode(settings.JET_HEADER_DATE_FORMAT)
+
+
+@register.assignment_tag
+def jet_time(parser, token):
+    return NowNode(settings.JET_HEADER_TIME_FORMAT)
+
+
+@register.assignment_tag
+def get_current_jet_version():
     return VERSION
 
 

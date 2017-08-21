@@ -81,9 +81,10 @@ ul li {
   padding: 0;
 }
 
-li ul {
-  margin-bottom: 0;
-}
+  li {
+    margin-top: 10px;
+    text-align: right;
+    display: inline;
 
 dt, dd {
   line-height: 20px;
