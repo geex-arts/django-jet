@@ -297,6 +297,7 @@ def get_menu_item_url(url, original_app_list):
 def get_menu_items(context):
     pinned_apps = PinnedApplication.objects.filter(user=context['user'].pk).values_list('app_label', flat=True)
     original_app_list = OrderedDict(map(lambda app: (app['app_label'], app), get_original_menu_items(context)))
+    extra_menu_items = settings.JET_EXTRA_SIDE_MENU_ITEMS
     custom_app_list = settings.JET_SIDE_MENU_ITEMS
     custom_app_list_deprecated = settings.JET_SIDE_MENU_CUSTOM_APPS
 
@@ -436,6 +437,8 @@ def get_menu_items(context):
             else:
                 app['current'] = False
 
+    if extra_menu_items not in (None, False):
+        app_list += extra_menu_items
     return app_list
 
 
