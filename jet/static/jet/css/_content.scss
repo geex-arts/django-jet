@@ -1,6 +1,5 @@
 @import "globals";
 
-
 /* LINKS */
 
 a, a:visited, a:hover, a:focus {
@@ -81,10 +80,9 @@ ul li {
   padding: 0;
 }
 
-  li {
-    margin-top: 10px;
-    text-align: right;
-    display: inline;
+li ul {
+  margin-bottom: 0;
+}
 
 dt, dd {
   line-height: 20px;

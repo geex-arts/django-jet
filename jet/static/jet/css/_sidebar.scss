@@ -12,40 +12,11 @@
   transition: background-color $transitions-duration, transform $transitions-duration;
   transform: translate3d(-100%, 0, 0);
 
-  &-branding {
-    // header{
-    color: rgba(255, 255, 255, 0.75);
-    text-align: center;
-    &-site-name {
-      background-color: rgba(0, 0, 0, 0.28);
-      padding: rem-calc(16 0);
-      margin: 0 auto;
-      // margin: 0 -8%;
-      font-size: rem-calc(25);
-      letter-spacing: rem-calc(4);
-    }
-    &-time {
-      background-color: rgba(170, 170, 170, 0.3);
-      text-align: right;
-      margin: 0 auto;
-      // margin: 0 -8%;
-      padding: rem-calc(6 12);
-    }
-    span {
-      display: block;
-      // float: right;
-      // font-size: rem-calc(12);
-      margin: rem-calc(6);
-
-      &:before {
-        margin-right: rem-calc(10);
-      }
-    }
+  @include for-mobile {
+    width: 360px;
+    padding-bottom: 0;
+    transition: transform $transitions-duration cubic-bezier(0, 0.5, 0.5, 1);
   }
-
-  &-menu {
-    @extend .clear-list;
-    margin-bottom: 32px !important;
 
   @include for-phone {
     width: 80%;
