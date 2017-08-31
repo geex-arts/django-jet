@@ -66,19 +66,19 @@ Installation
 
 .. code:: bash
 
-    pip install git+https://github.com/SalahAdDin/django-jet.git@master
+    pip install git+https://github.com/jet-community/django-jet.git@master
     
 Use the ``--upgrade`` option if you already have any version of ``django-jet`` currently installed:
 
 .. code:: bash
 
-    pip install git+https://github.com/SalahAdDin/django-jet.git@master --upgrade
+    pip install git+https://github.com/jet-community/django-jet.git@master --upgrade
     
 If you have a ``requirements.txt`` file, then add this line to it:
 
 .. code:: bash
 
-    git+https://github.com/SalahAdDin/django-jet.git@master
+    git+https://github.com/jet-community/django-jet.git@master
     
 And finally issue the following command:
 
