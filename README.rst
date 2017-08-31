@@ -27,7 +27,7 @@ and applications without the provisions of the AGPLv3.
 * Documentation: http://jet.readthedocs.org/
 * libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
-* Support: https://discord.me/django-jet
+* Support: https://discord.me/jet-community
 
 Why Django JET?
 ===============
