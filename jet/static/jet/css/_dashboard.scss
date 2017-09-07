@@ -108,7 +108,7 @@ ul.actionlist li {
 
   &-tools {
     position: absolute;
-    top: 20px;
+    top: ($top-height + 10px * 2) / 2 - 30px / 2;
     right: 20px + 175px + 20px;
 
     @include for-mobile {

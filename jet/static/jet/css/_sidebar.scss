@@ -6,16 +6,15 @@
   top: 0;
   left: 0;
   bottom: 0;
-  z-index: 4;
+  z-index: 6;
   background-color: $sidebar-background-color;
   color: $sidebar-text-color;
-  transition: background-color $transitions-duration;
-  padding-bottom: 32px;
+  transition: background-color $transitions-duration, transform $transitions-duration;
+  transform: translate3d(-100%, 0, 0);
 
   @include for-mobile {
     width: 360px;
     padding-bottom: 0;
-    transform: translate3d(-100%, 0, 0);
     transition: transform $transitions-duration cubic-bezier(0, 0.5, 0.5, 1);
   }
 
@@ -24,10 +23,28 @@
   }
 
   &.sidebar-opened {
+    transform: none;
+
     @include for-mobile {
-      transform: none;
       box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.2);
     }
+  }
+
+  body.menu-pinned & {
+    @include for-desktop {
+      transform: none;
+    }
+  }
+
+  &-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #000;
+    opacity: 0;
+    z-index: 5;
   }
 
   &-header {
@@ -53,7 +70,7 @@
       top: 0;
       right: 0;
       left: 0;
-      z-index: 3;
+      z-index: 6;
       transition: background-color $transitions-duration, transform $transitions-duration;
 
       @include for-mobile {
@@ -184,7 +201,7 @@
     &, &:visited, &:hover {
       display: block;
       color: $sidebar-link-color;
-      padding: 8px 12px 8px 24px;
+      padding: 8px 12px 8px 20px;
       vertical-align: middle;
       transition: color $transitions-duration, background-color $transitions-duration;
       position: relative;
@@ -434,13 +451,16 @@
 
     &-container {
       display: none;
-      background-color: transparentize($sidebar-popup-overlay-color, 0.5);
       position: fixed;
       top: 0;
       left: $sidebar-width;
       bottom: 0;
       right: 0;
       z-index: 5;
+
+      body.menu-pinned & {
+        background-color: transparentize($sidebar-popup-overlay-color, 0.5);
+      }
 
       @include for-mobile {
         left: 0;
@@ -517,6 +537,27 @@
           color: $sidebar-popup-hover-link-color;
         }
       }
+    }
+  }
+
+  &-container-toggle {
+    float: left;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    line-height: 31px;
+    padding: 10px 0 10px 20px;
+
+    &:hover {
+      color: $hover-link-color;
+    }
+
+    body.login &, body.menu-pinned & {
+      display: none;
+    }
+
+    @include for-mobile {
+      display: none;
     }
   }
 }

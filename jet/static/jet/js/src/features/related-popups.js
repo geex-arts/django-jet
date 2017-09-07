@@ -217,7 +217,7 @@ RelatedPopups.prototype = {
             = window.showRelatedObjectPopup
             = function() { };
 
-        window.opener = this.windowStorage.previous();
+        window.opener = this.windowStorage.previous() || window.opener;
         window.dismissRelatedLookupPopup = function(win, chosenId) {
             self.closePopup({
                 action: 'lookup',

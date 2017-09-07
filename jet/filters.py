@@ -1,7 +1,10 @@
 from django.contrib.admin import RelatedFieldListFilter
 from django.utils.encoding import smart_text
 from django.utils.html import format_html
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ImportError: # Django 1.11
+    from django.urls import reverse
 
 try:
     from django.contrib.admin.utils import get_model_from_relation
