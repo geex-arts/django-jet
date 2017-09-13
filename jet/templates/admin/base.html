@@ -24,7 +24,7 @@
     var DATETIME_FORMAT = "{% jet_get_datetime_format %}";
 </script>
 <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
-<script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
+<script src="{% static "jet/js/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
 
 {% jet_static_translation_urls as translation_urls %}
 {% for url in translation_urls %}
