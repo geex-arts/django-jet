@@ -41,12 +41,12 @@ def jet_get_datetime_format():
     return get_format('DATETIME_INPUT_FORMATS')[0]
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_get_menu(context):
     return get_menu_items(context)
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_get_bookmarks(user):
     if user is None:
         return None
@@ -110,7 +110,7 @@ def jet_select2_lookups(field):
     return field
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_get_current_theme(context):
     if 'request' in context and 'JET_THEME' in context['request'].COOKIES:
         theme = context['request'].COOKIES['JET_THEME']
@@ -121,12 +121,12 @@ def jet_get_current_theme(context):
     return settings.JET_DEFAULT_THEME
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_get_themes():
     return settings.JET_THEMES
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_get_current_version():
     return VERSION
 
@@ -139,12 +139,12 @@ def jet_append_version(url):
         return '%s?v=%s' % (url, VERSION)
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_get_side_menu_compact():
     return settings.JET_SIDE_MENU_COMPACT
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_change_form_sibling_links_enabled():
     return settings.JET_CHANGE_FORM_SIBLING_LINKS
 
@@ -198,17 +198,17 @@ def jet_sibling_object(context, next):
     }
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_previous_object(context):
     return jet_sibling_object(context, False)
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_next_object(context):
     return jet_sibling_object(context, True)
 
 
-@register.assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_popup_response_data(context):
     if context.get('popup_response_data'):
         return context['popup_response_data']
@@ -228,7 +228,7 @@ def jet_delete_confirmation_context(context):
     return mark_safe('<div class="delete-confirmation-marker"></div>')
 
 
-@register.assignment_tag
+@register.simple_tag
 def jet_static_translation_urls():
     language_codes = get_possible_language_codes()
 
