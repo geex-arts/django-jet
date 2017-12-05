@@ -216,7 +216,7 @@ def load_dashboard_module_view(request, pk):
     result = {'error': False}
 
     try:
-        if not request.user.is_authenticated() or not request.user.is_staff:
+        if not request.user.is_authenticated or not request.user.is_staff:
             raise ValidationError('error')
 
         instance = UserDashboardModule.objects.get(pk=pk, user=request.user.pk)

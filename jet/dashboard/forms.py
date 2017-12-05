@@ -17,7 +17,7 @@ class UpdateDashboardModulesForm(forms.Form):
     def clean(self):
         data = super(UpdateDashboardModulesForm, self).clean()
 
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
 
         try:
@@ -68,7 +68,7 @@ class AddUserDashboardModuleForm(forms.ModelForm):
     def clean(self):
         data = super(AddUserDashboardModuleForm, self).clean()
 
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
 
         if 'app_label' in data:
@@ -110,7 +110,7 @@ class UpdateDashboardModuleCollapseForm(forms.ModelForm):
     def clean(self):
         data = super(UpdateDashboardModuleCollapseForm, self).clean()
 
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
 
         if self.instance.user != self.request.user.pk:
@@ -131,7 +131,7 @@ class RemoveDashboardModuleForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(RemoveDashboardModuleForm, self).clean()
 
-        if not self.request.user.is_authenticated() or self.instance.user != self.request.user.pk:
+        if not self.request.user.is_authenticated or self.instance.user != self.request.user.pk:
             raise ValidationError('error')
 
         return cleaned_data
@@ -156,7 +156,7 @@ class ResetDashboardForm(forms.Form):
         data = super(ResetDashboardForm, self).clean()
         data['app_label'] = data['app_label'] if data['app_label'] else None
 
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
 
         return data
