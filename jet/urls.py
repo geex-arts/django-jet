@@ -34,7 +34,6 @@ urlpatterns = [
     url(
         r'^jsi18n/$',
         jsc_view,
-        {'packages': ('django.conf', 'django.contrib.admin', 'jet',)},
         name='jsi18n'
     ),
 ]
