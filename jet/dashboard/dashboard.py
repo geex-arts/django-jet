@@ -5,8 +5,6 @@ except ImportError: # Django 1.11
     from django.urls import reverse
 
 from django.template.loader import render_to_string
-from jet.dashboard import modules
-from jet.dashboard.models import UserDashboardModule
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
 from jet.utils import get_admin_site_name, context_to_dict
@@ -15,6 +13,11 @@ try:
     from django.template.context_processors import csrf
 except ImportError:
     from django.core.context_processors import csrf
+
+from jet.dashboard import modules
+from jet.dashboard.models import UserDashboardModule
+from jet.ordered_set import OrderedSet
+from jet.utils import get_admin_site_name
 
 
 class Dashboard(object):
