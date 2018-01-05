@@ -2,11 +2,10 @@ import django
 from django.conf.urls import url
 
 try:
-    from django.views.i18n import javascript_catalog
-    jsc_view = javascript_catalog
-except ImportError:
     from django.views.i18n import JavaScriptCatalog
-    jsc_view = JavaScriptCatalog.as_view()
+    javascript_catalog = JavaScriptCatalog.as_view()
+except ImportError:  # Django < 2.0
+    from django.views.i18n import javascript_catalog
 
 from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
 
@@ -36,7 +35,8 @@ urlpatterns = [
     ),
     url(
         r'^jsi18n/$',
-        jsc_view,
+        javascript_catalog,
+        {'packages': 'django.contrib.admin+jet'},
         name='jsi18n'
     ),
 ]
