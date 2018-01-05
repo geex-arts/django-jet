@@ -10,6 +10,9 @@ except ImportError:
 
 from jet.views import add_bookmark_view, remove_bookmark_view, toggle_application_pin_view, model_lookup_view
 
+
+app_name = 'jet'
+
 urlpatterns = [
     url(
         r'^add_bookmark/$',

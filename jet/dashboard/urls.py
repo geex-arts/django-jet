@@ -13,6 +13,8 @@ from jet.dashboard.views import update_dashboard_modules_view, add_user_dashboar
     update_dashboard_module_collapse_view, remove_dashboard_module_view, UpdateDashboardModuleView, \
     load_dashboard_module_view, reset_dashboard_view
 
+app_name = 'dashboard'
+
 urlpatterns = [
     url(
         r'^module/(?P<pk>\d+)/$',
