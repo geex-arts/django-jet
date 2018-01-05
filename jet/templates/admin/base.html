@@ -17,11 +17,14 @@
 
 {% block extrastyle %}{% endblock %}
 {% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+{% jet_get_date_format as date_format %}
+{% jet_get_time_format as time_format %}
+{% jet_get_datetime_format as datetime_format %}
 
 <script type="text/javascript" charset="utf-8">
-    var DATE_FORMAT = "{% jet_get_date_format %}";
-    var TIME_FORMAT = "{% jet_get_time_format %}";
-    var DATETIME_FORMAT = "{% jet_get_datetime_format %}";
+    var DATE_FORMAT = "{{ date_format }}";
+    var TIME_FORMAT = "{{ time_format }}";
+    var DATETIME_FORMAT = "{{ datetime_format }}";
 </script>
 <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
 <script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
@@ -109,7 +112,8 @@
 
     {% block footer %}<div id="footer"></div>{% endblock %}
 
-    {% jet_delete_confirmation_context %}
+    {% jet_delete_confirmation_context as delete_confirmation_context %}
+    {{ delete_confirmation_context }}
 
     {% jet_change_form_sibling_links_enabled as show_siblings %}
     {% if change and show_siblings %}
