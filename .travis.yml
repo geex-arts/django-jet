@@ -72,3 +72,6 @@ matrix:
       env: DJANGO="<1.7"
     - python: 3.6
       env: DJANGO="<1.8"
+
+    - python: pypy
+      env: DJANGO="<2.1"
