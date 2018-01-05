@@ -1,6 +1,13 @@
 import django
 from django.conf.urls import url
-from django.views.i18n import javascript_catalog
+
+try:
+    from django.views.i18n import javascript_catalog
+    jsc_view = javascript_catalog
+except ImportError:
+    from django.views.i18n import JavaScriptCatalog
+    jsc_view = JavaScriptCatalog.as_view()
+
 from jet.dashboard import dashboard
 from jet.dashboard.views import update_dashboard_modules_view, add_user_dashboard_module_view, \
     update_dashboard_module_collapse_view, remove_dashboard_module_view, UpdateDashboardModuleView, \
@@ -44,7 +51,7 @@ urlpatterns = [
     ),
     url(
         r'^jsi18n/$',
-        javascript_catalog,
+        jsc_view,
         {'packages': ('jet',)},
         name='jsi18n'
     ),

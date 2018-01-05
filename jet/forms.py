@@ -27,7 +27,7 @@ class AddBookmarkForm(forms.ModelForm):
 
     def clean(self):
         data = super(AddBookmarkForm, self).clean()
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
         if not self.request.user.has_perm('jet.change_bookmark'):
             raise ValidationError('error')
@@ -49,7 +49,7 @@ class RemoveBookmarkForm(forms.ModelForm):
 
     def clean(self):
         data = super(RemoveBookmarkForm, self).clean()
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
         if self.instance.user != self.request.user.pk:
             raise ValidationError('error')
@@ -71,7 +71,7 @@ class ToggleApplicationPinForm(forms.ModelForm):
 
     def clean(self):
         data = super(ToggleApplicationPinForm, self).clean()
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
         return data
 
@@ -108,7 +108,7 @@ class ModelLookupForm(forms.Form):
     def clean(self):
         data = super(ModelLookupForm, self).clean()
 
-        if not self.request.user.is_authenticated() or not self.request.user.is_staff:
+        if not self.request.user.is_authenticated or not self.request.user.is_staff:
             raise ValidationError('error')
 
         try:

@@ -250,7 +250,7 @@ def get_possible_language_codes():
 
 
 def get_original_menu_items(context):
-    if context.get('user') and context['user'].is_authenticated():
+    if context.get('user') and context['user'].is_authenticated:
         pinned_apps = PinnedApplication.objects.filter(user=context['user'].pk).values_list('app_label', flat=True)
     else:
         pinned_apps = []
