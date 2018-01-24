@@ -1,5 +1,10 @@
 {
   "name": "django-jet",
+  "scripts":{
+      "watch": "gulp watch",
+      "build": "gulp build",
+      "dev": "gulp default"
+  },
   "devDependencies": {
     "autoprefixer": "6.4.0",
     "browserify": "13.0.1",
