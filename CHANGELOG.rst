@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0.7
+-----
+* PR-265: Fixed Django 2 support (thanks to HarryLafranc for PR)
+* PR-219: Added Persian/Farsi translation (thanks to pyzenberg for PR)
+* PR-271: Fix locale names (thanks to leonardoarroyo for PR)
+
+
 1.0.6
 -----
 * PR-191: Added sidebar pinning functionality (thanks to grigory51 for PR)
