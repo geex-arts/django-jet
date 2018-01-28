@@ -55,7 +55,7 @@ Set Up Custom Dashboard
               ))
 
 
-* Add to your settings.py path to created ``dashboard.py`` (example for ``dashboard.py`` in project root):
+* Add to your settings.py path to created ``dashboard.py`` (example for ``dashboard.py`` in project root, ie. together with manage.py):
 
 .. code:: python
 
