@@ -39,6 +39,7 @@ JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = getattr(
 
 class ModuleCredentialStorage(Storage):
     def __init__(self, module):
+        super(ModuleCredentialStorage, self).__init__()
         self.module = module
 
     def locked_get(self):
@@ -73,7 +74,8 @@ class GoogleAnalyticsClient:
         self.FLOW = flow_from_clientsecrets(
             JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE,
             scope='https://www.googleapis.com/auth/analytics.readonly',
-            redirect_uri=redirect_uri
+            redirect_uri=redirect_uri,
+            prompt='consent'
         )
 
         if storage is not None:
