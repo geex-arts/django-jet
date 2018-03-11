@@ -1,7 +1,12 @@
 import django
 from django.conf.urls import url
-from django.views.i18n import javascript_catalog
 
+try:
+    from django.views.i18n import JavaScriptCatalog
+    javascript_catalog = JavaScriptCatalog.as_view()
+except ImportError:  # Django < 2.0
+    from django.views.i18n import javascript_catalog
+    
 from jet.views import add_bookmark_view
 from jet.views import model_lookup_view
 from jet.views import remove_bookmark_view
@@ -10,6 +15,8 @@ from jet.views import toggle_application_pin_view
 js_info_dict = {
     'packages': ('django.conf', 'django.contrib.admin', 'jet',),
 }
+app_name = 'jet'
+
 urlpatterns = [
     url(
         r'^add_bookmark/$',

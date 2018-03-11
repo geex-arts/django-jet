@@ -1,6 +1,11 @@
 import django
 from django.conf.urls import url
-from django.views.i18n import javascript_catalog
+
+try:
+    from django.views.i18n import JavaScriptCatalog
+    javascript_catalog = JavaScriptCatalog.as_view()
+except ImportError:  # Django < 2.0
+    from django.views.i18n import javascript_catalog
 
 from jet.dashboard import dashboard
 from jet.dashboard.views import add_user_dashboard_module_view
@@ -14,6 +19,8 @@ from jet.dashboard.views import UpdateDashboardModuleView
 js_info_dict = {
  'packages': ('jet',),
 }
+
+app_name = 'dashboard'
 
 urlpatterns = [
     url(

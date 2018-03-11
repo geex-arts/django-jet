@@ -15,6 +15,7 @@ env:
   - DJANGO="<1.10"
   - DJANGO="<1.11"
   - DJANGO="<1.12"
+  - DJANGO="<2.1"
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
@@ -35,22 +36,34 @@ matrix:
       env: DJANGO="<1.9"
     - python: 2.6
       env: DJANGO="<1.10"
-    - python: 3.2
-      env: DJANGO="<1.10"
-    - python: 3.3
-      env: DJANGO="<1.10"
     - python: 2.6
-      env: DJANGO="<1.11"
-    - python: 3.2
-      env: DJANGO="<1.11"
-    - python: 3.3
       env: DJANGO="<1.11"
     - python: 2.6
       env: DJANGO="<1.12"
+    - python: 2.6
+      env: DJANGO="<2.1"
+
+    - python: 2.7
+      env: DJANGO="<2.1"
+
+    - python: 3.2
+      env: DJANGO="<1.10"
+    - python: 3.2
+      env: DJANGO="<1.11"
     - python: 3.2
       env: DJANGO="<1.12"
+    - python: 3.2
+      env: DJANGO="<2.1"
+
+    - python: 3.3
+      env: DJANGO="<1.10"
+    - python: 3.3
+      env: DJANGO="<1.11"
     - python: 3.3
       env: DJANGO="<1.12"
+    - python: 3.3
+      env: DJANGO="<2.1"
+
     - python: 3.5
       env: DJANGO="<1.7"
     - python: 3.5
@@ -59,3 +72,6 @@ matrix:
       env: DJANGO="<1.7"
     - python: 3.6
       env: DJANGO="<1.8"
+
+    - python: pypy
+      env: DJANGO="<2.1"

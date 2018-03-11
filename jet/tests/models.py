@@ -13,7 +13,7 @@ class TestModel(models.Model):
 
 @python_2_unicode_compatible
 class RelatedToTestModel(models.Model):
-    field = models.ForeignKey(TestModel)
+    field = models.ForeignKey(TestModel, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.field
