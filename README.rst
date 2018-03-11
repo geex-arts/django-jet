@@ -4,6 +4,9 @@ Django JET
 
 .. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
     :target: https://travis-ci.org/geex-arts/django-jet
+    
+.. image:: https://img.shields.io/discord/346712584415870977.svg   
+    :target:  https://discord.me/django-jet    
 
 **Modern template for Django admin interface with improved functionality**
 
@@ -24,7 +27,7 @@ and applications without the provisions of the AGPLv3.
 * Documentation: http://jet.readthedocs.org/
 * libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
-* Support: support@jet.geex-arts.com
+* Support: https://discord.me/jet-community
 
 Why Django JET?
 ===============
@@ -61,11 +64,34 @@ Installation
 
 * Download and install latest version of Django JET:
 
-.. code:: python
+.. code:: bash
 
-    pip install django-jet
-    # or
-    easy_install django-jet
+    pip install git+https://github.com/jet-community/django-jet.git@master
+    
+Use the ``--upgrade`` option if you already have any version of ``django-jet`` currently installed:
+
+.. code:: bash
+
+    pip install git+https://github.com/jet-community/django-jet.git@master --upgrade
+    
+If you have a ``requirements.txt`` file, then add this line to it:
+
+.. code:: bash
+
+    git+https://github.com/jet-community/django-jet.git@master
+    
+And finally issue the following command:
+
+.. code:: bash
+
+    pip install -r requirements.txt
+    
+Again, if you already have any version of ``django-jet`` currently installed, then use the ``--upgrade`` option:
+
+.. code:: bash
+
+    pip install -r requirements.txt --upgrade
+    
 
 * Add 'jet' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'django.contrib.admin'):
 

@@ -62,5 +62,10 @@ Set Up Custom Dashboard
     JET_INDEX_DASHBOARD = 'dashboard.CustomIndexDashboard'
 
 That's all, now you have dashboard with only one widget - ``LinkList``. Dashboard reset may be needed
-if your had another dashboard already rendered for any user. Visit :doc:`dashboard_modules` to learn
+if your had another dashboard already rendered for any user, by clicking the *reload* (`⟳`) icon.
+
+.. image:: _static/dashboard_reset_button.png
+    :width: 100%
+
+Visit :doc:`dashboard_modules` to learn
 other widgets you can add to your custom dashboard or :doc:`dashboard_custom_module` to create your own.
