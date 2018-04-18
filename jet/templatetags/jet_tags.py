@@ -253,7 +253,7 @@ def jet_static_translation_urls():
 
     return urls
 
-@assignment_tag(takes_context=True)
+@register.simple_tag(takes_context=True)
 def jet_render_sidebar(context):
     from jet.sidebar import Sidebar
     return Sidebar(context.get('request'), context).render()

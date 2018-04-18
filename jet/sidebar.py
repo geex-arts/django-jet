@@ -8,7 +8,7 @@ from django.utils.functional import cached_property
 from django.utils.safestring import mark_safe
 
 
-class Section:
+class Section(object):
     """
     Section base class rendered in Sidebar. Template is cached
     at a class level.
@@ -97,7 +97,7 @@ class Sidebar(Section):
     def __init__(self, request, page_context, **kwargs):
         self.request = request
         self.page_context = page_context
-        super().__init__(**kwargs)
+        super(Sidebar, self).__init__(**kwargs)
 
     @classmethod
     def connect(cl, *args, **kwargs):
@@ -159,7 +159,7 @@ class Sidebar(Section):
         """
         request = request or self.request
         page_context = page_context or self.page_context
-        return super().render(request, page_context)
+        return super(Sidebar, self).render(request, page_context)
 
     def popups(self):
         return itertools.chain.from_iterable(
@@ -192,7 +192,7 @@ class AppPopup(Section):
     app = None
 
     def get_context_data(self, request, page_context):
-        context = super().get_context_data(request, page_context)
+        context = super(AppPopup, self).get_context_data(request, page_context)
         context['app'] = self.app
         return context
 
@@ -206,7 +206,7 @@ class AppsSection(Section):
             app for app in get_menu_items(page_context)
                 if app.get('has_perms')
         ]
-        context = super().get_context_data(request, page_context)
+        context = super(AppsSection, self).get_context_data(request, page_context)
         context['app_list'] = self._apps
         return context
 
