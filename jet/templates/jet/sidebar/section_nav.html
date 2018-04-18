@@ -1,0 +1,30 @@
+{% load i18n static jet_tags %}
+
+<div class="sidebar-section">
+{% if user.is_active and user.is_staff %}
+    <a href="{% url 'admin:index' %}" class="sidebar-link icon">
+        <span class="sidebar-link-label">
+            <span class="sidebar-link-icon icon-data"></span>
+            {% trans 'Home' %}
+        </span>
+    </a>
+{% endif %}
+{% if ctx.site_url %}
+    <a href="{{ site_url }}" class="sidebar-link icon">
+        <span class="sidebar-link-label">
+            <span class="sidebar-link-icon icon-open-external"></span>
+            {% trans 'View site' %}
+        </span>
+    </a>
+{% endif %}
+{% url 'django-admindocs-docroot' as docsroot %}
+{% if docsroot %}
+    <a href="{{ docsroot }}" class="sidebar-link icon">
+        <span class="sidebar-link-label">
+            <span class="sidebar-link-icon icon-book"></span>
+            {% trans 'Documentation' %}
+        </span>
+    </a>
+{% endif %}
+</div>
+

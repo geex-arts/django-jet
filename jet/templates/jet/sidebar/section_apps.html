@@ -1,0 +1,91 @@
+{% load i18n static jet_tags %}
+
+{% if user.is_active and user.is_staff %}
+    {% if SIDE_MENU_COMPACT %}
+        {% for app in app_list %}
+            {% if app.has_perms %}
+                <div class="sidebar-section">
+                    <div class="sidebar-title">
+                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-title-link"{% if app.url_blank %} target="_blank"{% endif %}>
+                            {{ app.label }}
+                        </a>
+                    </div>
+                    {% for model in app.items %}
+                        {% if model.has_perms %}
+                            <div>
+                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                                    <span class="sidebar-right">
+                                        <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                    </span>
+                                    <span class="sidebar-link-label">{{ model.label }}</span>
+                                </a>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
+            {% csrf_token %}
+            <input type="hidden" name="app_label">
+        </form>
+
+        <div class="sidebar-section">
+            <div class="sidebar-title">
+                <span class="sidebar-right">
+                    <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                </span>
+                {% trans 'Applications' %}
+            </div>
+
+            <div class="apps-list-pinned">
+                {% for app in app_list %}
+                    {% if app.has_perms and app.pinned %}
+                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                            <span class="sidebar-left collapsible">
+                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                            </span>
+
+                            <span class="sidebar-right">
+                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                            </span>
+
+                            <span class="sidebar-link-label">
+                                {{ app.label }}
+                            </span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <a href="#" class="sidebar-center-link apps-hide">
+                <span class="apps-hide-label apps-visible">{% trans "Hide applications" %}</span>
+                <span class="apps-hide-label apps-hidden">{% trans "Show hidden" %}</span>
+            </a>
+            <div class="apps-list">
+                {% for app in app_list %}
+                    {% if app.has_perms and not app.pinned %}
+                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                            <span class="sidebar-left collapsible">
+                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                            </span>
+
+                            <span class="sidebar-right">
+                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                            </span>
+
+                            <span class="sidebar-link-label">
+                                {{ app.label }}
+                            </span>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+
