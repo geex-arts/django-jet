@@ -47,9 +47,10 @@ class Section(object):
         context = self.get_context_data(request, page_context)
         if context is None:
             return ''
+        print(page_context, ' ---------------- ', context)
         return mark_safe(
             loader.get_template(self.template_name) \
-                .render(context, request)
+                .render(context)
         )
 
     def popups(self):

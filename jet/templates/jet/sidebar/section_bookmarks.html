@@ -25,7 +25,7 @@
     </div>
 
     <div class="bookmarks-list">
-        {% jet_get_bookmarks user as bookmarks %}
+        {% jet_get_bookmarks ctx.user as bookmarks %}
         {% for bookmark in bookmarks %}
             <a href="{{ bookmark.url }}" class="sidebar-link bookmark-item">
                 <span class="sidebar-right collapsible">

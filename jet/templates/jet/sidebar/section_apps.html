@@ -1,5 +1,7 @@
 {% load i18n static jet_tags %}
 
+{% with user=ctx.user %}
+
 {% if user.is_active and user.is_staff %}
     {% if SIDE_MENU_COMPACT %}
         {% for app in app_list %}
@@ -87,5 +89,6 @@
     {% endif %}
 {% endif %}
 
+{% endwith %}
 
 

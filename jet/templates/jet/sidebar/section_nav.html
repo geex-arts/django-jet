@@ -1,5 +1,7 @@
 {% load i18n static jet_tags %}
 
+{% with user=ctx.user %}
+
 <div class="sidebar-section">
 {% if user.is_active and user.is_staff %}
     <a href="{% url 'admin:index' %}" class="sidebar-link icon">
@@ -27,4 +29,6 @@
     </a>
 {% endif %}
 </div>
+
+{% endwith %}
 
