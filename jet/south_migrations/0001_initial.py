@@ -3,6 +3,7 @@ from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.conf import settings
 
 
 class Migration(SchemaMigration):
@@ -13,7 +14,7 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('user', self.gf('django.db.models.fields.PositiveIntegerField')()),
+            ('user', self.gf('django.db.models.fields.ForeignKey')(on_delete=models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='user')),
             ('date_add', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
         ))
         db.send_create_signal(u'jet', ['Bookmark'])
@@ -22,7 +23,7 @@ class Migration(SchemaMigration):
         db.create_table(u'jet_pinnedapplication', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('app_label', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('user', self.gf('django.db.models.fields.PositiveIntegerField')()),
+            ('user', self.gf('django.db.models.fields.ForeignKey')(on_delete=models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='user')),
             ('date_add', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
         ))
         db.send_create_signal(u'jet', ['PinnedApplication'])
@@ -33,7 +34,7 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('module', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('app_label', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('user', self.gf('django.db.models.fields.PositiveIntegerField')()),
+            ('user', self.gf('django.db.models.fields.ForeignKey')(on_delete=models.deletion.CASCADE, to=settings.AUTH_USER_MODEL, verbose_name='user')),
             ('column', self.gf('django.db.models.fields.PositiveIntegerField')()),
             ('order', self.gf('django.db.models.fields.IntegerField')()),
             ('settings', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
@@ -61,14 +62,14 @@ class Migration(SchemaMigration):
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
-            'user': ('django.db.models.fields.PositiveIntegerField', [], {})
+            'user': ('django.db.models.fields.ForeignKey', [], {'on_delete': 'models.deletion.CASCADE', 'to': 'settings.AUTH_USER_MODEL', 'verbose_name': 'user'})
         },
         u'jet.pinnedapplication': {
             'Meta': {'ordering': "('date_add',)", 'object_name': 'PinnedApplication'},
             'app_label': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'date_add': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'user': ('django.db.models.fields.PositiveIntegerField', [], {})
+            'user': ('django.db.models.fields.ForeignKey', [], {'on_delete': 'models.deletion.CASCADE', 'to': 'settings.AUTH_USER_MODEL', 'verbose_name': 'user'})
         },
         u'jet.userdashboardmodule': {
             'Meta': {'ordering': "('column', 'order')", 'object_name': 'UserDashboardModule'},
@@ -81,7 +82,7 @@ class Migration(SchemaMigration):
             'order': ('django.db.models.fields.IntegerField', [], {}),
             'settings': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'user': ('django.db.models.fields.PositiveIntegerField', [], {})
+            'user': ('django.db.models.fields.ForeignKey', [], {'on_delete': 'models.deletion.CASCADE', 'to': 'settings.AUTH_USER_MODEL', 'verbose_name': 'user'})
         }
     }
 
