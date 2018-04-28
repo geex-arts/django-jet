@@ -14,7 +14,7 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('module', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('app_label', self.gf('django.db.models.fields.CharField')(max_length=255, null=True, blank=True)),
-            ('user', self.gf('django.db.models.fields.PositiveIntegerField')()),
+            ('user', self.gf('django.db.models.fields.ForeignKey')()),
             ('column', self.gf('django.db.models.fields.PositiveIntegerField')()),
             ('order', self.gf('django.db.models.fields.IntegerField')()),
             ('settings', self.gf('django.db.models.fields.TextField')(default='', blank=True)),
@@ -41,7 +41,7 @@ class Migration(SchemaMigration):
             'order': ('django.db.models.fields.IntegerField', [], {}),
             'settings': ('django.db.models.fields.TextField', [], {'default': "''", 'blank': 'True'}),
             'title': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'user': ('django.db.models.fields.PositiveIntegerField', [], {})
+            'user': ('django.db.models.fields.ForeignKey', [], {})
         }
     }
 
