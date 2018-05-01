@@ -1,5 +1,6 @@
 import itertools
 
+import django
 from django.dispatch import Signal
 from django.shortcuts import render
 from django.template import loader, Template, Context
@@ -47,7 +48,10 @@ class Section(object):
         context = self.get_context_data(request, page_context)
         if context is None:
             return ''
-        print(page_context, ' ---------------- ', context)
+        # FIXME: drop support for thoses deprecated versions
+        if django.version < (1,8):
+            context = Context(context)
+
         return mark_safe(
             loader.get_template(self.template_name) \
                 .render(context)
