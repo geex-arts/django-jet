@@ -49,7 +49,7 @@ class Section(object):
         if context is None:
             return ''
         # FIXME: drop support for thoses deprecated versions
-        if django.VERSION < (1,8):
+        if django.VERSION <= (1,8):
             context = Context(context)
 
         return mark_safe(
