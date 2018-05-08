@@ -156,6 +156,7 @@ Select2.prototype = {
             var appLabel = $select.data('app-label');
             var model = $select.data('model');
             var objectId = $select.data('object-id');
+            var filters = $select.data('filters')
             var pageSize = 100;
 
             settings['ajax'] = {
@@ -168,7 +169,8 @@ Select2.prototype = {
                         q: params.term,
                         page: params.page,
                         page_size: pageSize,
-                        object_id: objectId
+                        object_id: objectId,
+                        filters: filters
                     };
                 },
                 processResults: function (data, params) {
