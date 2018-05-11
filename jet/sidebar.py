@@ -216,9 +216,7 @@ class AppsSection(Section):
         return context
 
     def popups(self):
-        if not hasattr(self, '_popups'):
-            self._popups = [ AppPopup(app = app) for app in self._apps ]
-        return self._popups
+        return [ AppPopup(app = app) for app in self._apps ]
 
 class BookmarkSection(Section):
     template_name = 'jet/sidebar/section_bookmarks.html'
