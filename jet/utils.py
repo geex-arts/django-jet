@@ -180,6 +180,9 @@ class SuccessMessageMixin(object):
 def get_model_queryset(admin_site, model, request, preserved_filters=None):
     model_admin = admin_site._registry.get(model)
 
+    if model_admin is None:
+        return
+
     try:
         changelist_url = reverse('%s:%s_%s_changelist' % (
             admin_site.name,
