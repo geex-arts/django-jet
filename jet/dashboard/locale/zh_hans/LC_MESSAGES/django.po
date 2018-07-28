@@ -193,14 +193,14 @@ msgstr "按月"
 msgid ""
 "Please <a href=\"%s\">attach Google account and choose Google Analytics "
 "counter</a> to start using widget"
-msgstr ""
+msgstr "请<a href=\"%s\">请关联谷歌账号并选择谷歌网站流量分析</a>来使用这个部件"
 
 #: dashboard_modules/google_analytics.py:280
 #, python-format
 msgid ""
 "Please <a href=\"%s\">select Google Analytics counter</a> to start using "
 "widget"
-msgstr ""
+msgstr "<a href=\"%s\">请选择谷歌网站流量分析</a>来使用这个部件"
 
 #: dashboard_modules/google_analytics.py:299
 #: dashboard_modules/google_analytics_views.py:42
@@ -213,11 +213,11 @@ msgstr "API请求失败"
 #: dashboard_modules/yandex_metrika.py:238
 #, python-format
 msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
-msgstr ""
+msgstr "请重新尝试<a href=\"%s\">撤销和授权访问</a>"
 
 #: dashboard_modules/google_analytics.py:311
 msgid "Google Analytics visitors totals"
-msgstr ""
+msgstr "谷歌网站流量分析 访问者总数量"
 
 #: dashboard_modules/google_analytics.py:330
 #: dashboard_modules/google_analytics.py:388
@@ -230,11 +230,11 @@ msgstr "服务器响应异常"
 
 #: dashboard_modules/google_analytics.py:340
 msgid "Google Analytics visitors chart"
-msgstr ""
+msgstr "谷歌网站流量分析 访问者图表"
 
 #: dashboard_modules/google_analytics.py:398
 msgid "Google Analytics period visitors"
-msgstr ""
+msgstr "谷歌网站流量分析 时间段访问者"
 
 #: dashboard_modules/google_analytics_views.py:26
 #: dashboard_modules/google_analytics_views.py:46
@@ -258,32 +258,32 @@ msgstr "访问者"
 #: dashboard_modules/yandex_metrika.py:266
 #: templates/jet.dashboard/modules/yandex_metrika_period_visitors.html:16
 msgid "visits"
-msgstr ""
+msgstr "访问者"
 
 #: dashboard_modules/yandex_metrika.py:219
 #, python-format
 msgid ""
 "Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
 "counter</a> to start using widget"
-msgstr ""
+msgstr "<a href=\"%s\">请关联Yandex账号并选择Yandex Metrika</a>来使用这个部件"
 
 #: dashboard_modules/yandex_metrika.py:222
 #, python-format
 msgid ""
 "Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
-msgstr ""
+msgstr "<a href=\"%s\">请选择Yandex Metrika</a>来使用这个部件"
 
 #: dashboard_modules/yandex_metrika.py:250
 msgid "Yandex Metrika visitors totals"
-msgstr ""
+msgstr "Yandex Metrika 访问者总数量"
 
 #: dashboard_modules/yandex_metrika.py:279
 msgid "Yandex Metrika visitors chart"
-msgstr ""
+msgstr "Yandex Metrika 访问者图表"
 
 #: dashboard_modules/yandex_metrika.py:331
 msgid "Yandex Metrika period visitors"
-msgstr ""
+msgstr "Yandex Metrika 时间段访问者"
 
 #: models.py:11 modules.py:164
 msgid "Title"
@@ -323,15 +323,15 @@ msgstr "展开"
 
 #: models.py:22
 msgid "user dashboard module"
-msgstr "用户dashboard模块"
+msgstr "用户仪表盘模块"
 
 #: models.py:23
 msgid "user dashboard modules"
-msgstr "用户dashboard模块"
+msgstr "用户仪表盘模块"
 
 #: modules.py:163
 msgid "URL"
-msgstr "URL"
+msgstr "网址"
 
 #: modules.py:165
 msgid "External link"
@@ -343,11 +343,11 @@ msgstr "布局"
 
 #: modules.py:169
 msgid "Stacked"
-msgstr ""
+msgstr "堆叠"
 
 #: modules.py:169
 msgid "Inline"
-msgstr ""
+msgstr "内联"
 
 #: modules.py:215 modules.py:239
 msgid "Links"
@@ -359,35 +359,35 @@ msgstr "链接"
 
 #: modules.py:372
 msgid "Models"
-msgstr ""
+msgstr "模块"
 
 #: modules.py:416 modules.py:523
 msgid "Items limit"
-msgstr ""
+msgstr "条目限制"
 
 #: modules.py:524
 msgid "Feed URL"
-msgstr ""
+msgstr "源地址"
 
 #: modules.py:555
 msgid "RSS Feed"
-msgstr ""
+msgstr "RSS源"
 
 #: modules.py:601
 msgid "You must install the FeedParser python module"
-msgstr ""
+msgstr "你必须安装FeedParser python 模块"
 
 #: modules.py:606
 msgid "You must provide a valid feed URL"
-msgstr ""
+msgstr "你必须提供有效的源地址"
 
 #: templates/jet.dashboard/dashboard.html:17
 msgid "Delete widget"
-msgstr "删除widget"
+msgstr "删除部件"
 
 #: templates/jet.dashboard/dashboard.html:18
 msgid "Are you sure want to delete this widget?"
-msgstr "你确定要删除这个widget吗？"
+msgstr "你确定要删除这个部件吗？"
 
 #: templates/jet.dashboard/dashboard_tools.html:12
 msgid "widgets"
@@ -481,7 +481,7 @@ msgstr "Widget成功更新"
 
 #: views.py:94 views.py:95
 msgid "Items"
-msgstr ""
+msgstr "条目"
 
 #: views.py:161
 msgid "Widget has been successfully added"

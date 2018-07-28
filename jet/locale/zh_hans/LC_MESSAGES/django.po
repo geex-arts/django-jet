@@ -27,7 +27,7 @@ msgstr "结束日期"
 
 #: jet/models.py:9 jet/templates/admin/base.html:276
 msgid "URL"
-msgstr "URL"
+msgstr "网址"
 
 #: jet/models.py:10
 msgid "title"
