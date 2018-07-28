@@ -410,11 +410,11 @@ msgstr "添加"
 #: templates/jet.dashboard/dashboard_tools.html:26
 #: templates/jet.dashboard/dashboard_tools.html:32
 msgid "Reset widgets"
-msgstr "重置widgets"
+msgstr "重置部件"
 
 #: templates/jet.dashboard/dashboard_tools.html:33
 msgid "Are you sure want to reset widgets?"
-msgstr "你确定要重置widgets吗?"
+msgstr "你确定要重置部件吗?"
 
 #: templates/jet.dashboard/module.html:9
 #: templates/jet.dashboard/modules/app_list.html:24
@@ -432,7 +432,7 @@ msgstr "删除"
 #: templates/jet.dashboard/modules/app_list.html:10
 #, python-format
 msgid "Models in the %(name)s application"
-msgstr "在%(name)s应用下的Models"
+msgstr "在%(name)s应用下的模块"
 
 #: templates/jet.dashboard/modules/feed.html:13
 #: templates/jet.dashboard/modules/google_analytics_period_visitors.html:34
