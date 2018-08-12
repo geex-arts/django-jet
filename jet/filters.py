@@ -8,12 +8,12 @@ except ImportError: # Django 1.11
 
 try:
     from django.contrib.admin.utils import get_model_from_relation
-except ImportError: # Django 1.6
+except ImportError:  # Django 1.6
     from django.contrib.admin.util import get_model_from_relation
 
 try:
     from django.forms.utils import flatatt
-except ImportError: # Django 1.6
+except ImportError:  # Django 1.6
     from django.forms.util import flatatt
 
 
@@ -55,7 +55,6 @@ try:
     from django.contrib.admin.widgets import AdminDateWidget
     from rangefilter.filter import DateRangeFilter as OriginalDateRangeFilter
     from django.utils.translation import ugettext as _
-
 
     class DateRangeFilter(OriginalDateRangeFilter):
         def get_template(self):
