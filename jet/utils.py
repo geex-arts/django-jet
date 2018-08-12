@@ -9,7 +9,7 @@ try:
     from django.apps.registry import apps
 except ImportError:
     try:
-        from django.apps import apps # Fix Django 1.7 import issue
+        from django.apps import apps  # Fix Django 1.7 import issue
     except ImportError:
         pass
 from django.core.serializers.json import DjangoJSONEncoder
@@ -51,7 +51,7 @@ class JsonResponse(HttpResponse):
     def __init__(self, data, encoder=DjangoJSONEncoder, safe=True, **kwargs):
         if safe and not isinstance(data, dict):
             raise TypeError('In order to allow non-dict objects to be '
-                'serialized set the safe parameter to False')
+                            'serialized set the safe parameter to False')
         kwargs.setdefault('content_type', 'application/json')
         data = json.dumps(data, cls=encoder)
         super(JsonResponse, self).__init__(content=data, **kwargs)
@@ -67,7 +67,7 @@ def get_app_list(context, order=True):
         try:
             has_module_perms = model_admin.has_module_permission(request)
         except AttributeError:
-            has_module_perms = request.user.has_module_perms(app_label) # Fix Django < 1.8 issue
+            has_module_perms = request.user.has_module_perms(app_label)  # Fix Django < 1.8 issue
 
         if has_module_perms:
             perms = model_admin.get_model_perms(request)

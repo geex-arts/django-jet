@@ -26,7 +26,7 @@ class UpdateDashboardModulesForm(forms.Form):
 
             for module in modules:
                 db_module = UserDashboardModule.objects.get(
-                    user=self.request.user.pk,
+                    user=self.request.user,
                     app_label=data['app_label'] if data['app_label'] else None,
                     pk=module['id']
                 )
@@ -90,7 +90,7 @@ class AddUserDashboardModuleForm(forms.ModelForm):
     def save(self, commit=True):
         self.instance.title = self.module_cls.title
         self.instance.module = self.module_cls.fullname()
-        self.instance.user = self.request.user.pk
+        self.instance.user = self.request.user
         self.instance.column = 0
         self.instance.order = -1
         self.instance.settings = self.module_cls.dump_settings()
@@ -114,7 +114,7 @@ class UpdateDashboardModuleCollapseForm(forms.ModelForm):
         if not user_is_authenticated(self.request.user) or not self.request.user.is_staff:
             raise ValidationError('error')
 
-        if self.instance.user != self.request.user.pk:
+        if self.instance.user != self.request.user:
             raise ValidationError('error')
 
         return data
@@ -132,7 +132,7 @@ class RemoveDashboardModuleForm(forms.ModelForm):
     def clean(self):
         cleaned_data = super(RemoveDashboardModuleForm, self).clean()
 
-        if not user_is_authenticated(self.request.user) or self.instance.user != self.request.user.pk:
+        if not user_is_authenticated(self.request.user) or self.instance.user != self.request.user:
             raise ValidationError('error')
 
         return cleaned_data
@@ -165,6 +165,6 @@ class ResetDashboardForm(forms.Form):
     def save(self, commit=True):
         if commit:
             UserDashboardModule.objects.filter(
-                user=self.request.user.pk,
+                user=self.request.user,
                 app_label=self.cleaned_data['app_label']
             ).delete()
