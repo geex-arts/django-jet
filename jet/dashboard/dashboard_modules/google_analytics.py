@@ -19,6 +19,7 @@ from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, Acce
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.utils.encoding import force_text
+import threading
 
 try:
     from django.utils.encoding import force_unicode
@@ -39,8 +40,8 @@ JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = getattr(
 
 class ModuleCredentialStorage(Storage):
     def __init__(self, module):
-        super(ModuleCredentialStorage, self).__init__()
         self.module = module
+        self._lock = threading.Lock()
 
     def locked_get(self):
         pass
@@ -74,8 +75,7 @@ class GoogleAnalyticsClient:
         self.FLOW = flow_from_clientsecrets(
             JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE,
             scope='https://www.googleapis.com/auth/analytics.readonly',
-            redirect_uri=redirect_uri,
-            prompt='consent'
+            redirect_uri=redirect_uri
         )
 
         if storage is not None:
