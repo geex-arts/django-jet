@@ -1,0 +1,13 @@
+{% load static %}
+<script src="{% static 'jet.dashboard/dashboard_modules/echart.min.js' %}"></script>
+<div id="{{ module.module_id }}" style="width: 100%;height:600px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    const chart_{{ module.module_id }} = echarts.init(document.getElementById('{{ module.module_id }}'));
+    
+    // 指定图表的配置项和数据
+    const option_{{ module.module_id }} = {{ module.options|safe }};
+
+    // 使用刚指定的配置项和数据显示图表。
+    chart_{{ module.module_id }}.setOption(option_{{ module.module_id }});
+</script>

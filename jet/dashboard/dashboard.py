@@ -1,12 +1,12 @@
 from importlib import import_module
+
 try:
     from django.core.urlresolvers import reverse
-except ImportError: # Django 1.11
+except ImportError:  # Django 1.11
     from django.urls import reverse
 
 from django.template.loader import render_to_string
 from jet.dashboard import modules
-from jet.dashboard.models import UserDashboardModule
 from django.utils.translation import ugettext_lazy as _
 from jet.ordered_set import OrderedSet
 from jet.utils import get_admin_site_name, context_to_dict
@@ -44,6 +44,11 @@ class Dashboard(object):
         js = ()
 
     def __init__(self, context, **kwargs):
+        """
+
+        :param context: 一般这个传入的context为空？
+        :param kwargs:
+        """
         for key in kwargs:
             if hasattr(self.__class__, key):
                 setattr(self, key, kwargs[key])
@@ -108,49 +113,43 @@ class Dashboard(object):
 
         return module
 
-    def create_initial_module_models(self, user):
-        module_models = []
-
-        i = 0
-
-        for module in self.children:
-            column = module.column if module.column is not None else i % self.columns
-            order = module.order if module.order is not None else int(i / self.columns)
-
-            module_models.append(UserDashboardModule.objects.create(
-                title=module.title,
-                app_label=self.app_label,
-                user=user.pk,
-                module=module.fullname(),
-                column=column,
-                order=order,
-                settings=module.dump_settings(),
-                children=module.dump_children()
-            ))
-            i += 1
-
-        return module_models
 
     def load_modules(self):
-        module_models = UserDashboardModule.objects.filter(
-            app_label=self.app_label,
-            user=self.context['request'].user.pk
-        ).all()
+        """really wried!
 
-        if len(module_models) == 0:
-            module_models = self.create_initial_module_models(self.context['request'].user)
+        why cache those settings to database?
+        i think the author is stupid about this.
+        why not evaluate code directly ?
 
-        loaded_modules = []
+        :return:
+        """
 
-        for module_model in module_models:
-            module_cls = module_model.load_module()
-            if module_cls is not None:
-                module = module_cls(model=module_model, context=self.context)
-                loaded_modules.append(module)
+        # module_models = UserDashboardModule.objects.filter(
+        #     app_label=self.app_label,
+        #     user=self.context['request'].user.pk
+        # ).all()
+        #
+        # if len(module_models) == 0:
+        #     module_models = self.create_initial_module_models(self.context['request'].user)
+        #
+        # loaded_modules = []
+        #
+        # for module_model in module_models:
+        #     module_cls = module_model.load_module()
+        #     if module_cls is not None:
+        #         module = module_cls(model=module_model, context=self.context)
+        #         loaded_modules.append(module)
 
-        self.modules = loaded_modules
+        load_modules = []
+        for module_obj in self.children:
+            # 更新上下文：request，包含用户账户信息
+            module_obj.update_context(context=self.context)
+            load_modules.append(module_obj)
+
+        self.modules = load_modules
 
     def render(self):
+
         context = context_to_dict(self.context)
         context.update({
             'columns': range(self.columns),
@@ -158,19 +157,8 @@ class Dashboard(object):
             'app_label': self.app_label,
         })
         context.update(csrf(context['request']))
-
         return render_to_string('jet.dashboard/dashboard.html', context)
 
-    def render_tools(self):
-        context = context_to_dict(self.context)
-        context.update({
-            'children': self.children,
-            'app_label': self.app_label,
-            'available_children': self.available_children
-        })
-        context.update(csrf(context['request']))
-
-        return render_to_string('jet.dashboard/dashboard_tools.html', context)
 
     def media(self):
         unique_css = OrderedSet()
@@ -287,18 +275,12 @@ class DefaultIndexDashboard(Dashboard):
 
 class DefaultAppIndexDashboard(AppIndexDashboard):
     def init_with_context(self, context):
-        self.available_children.append(modules.LinkList)
-
         self.children.append(modules.ModelList(
             title=_('Application models'),
             models=self.models(),
-            column=0,
-            order=0
         ))
         self.children.append(modules.RecentActions(
             include_list=self.get_app_content_types(),
-            column=1,
-            order=0
         ))
 
 
@@ -313,5 +295,6 @@ class DashboardUrls(object):
 
     def register_urls(self, urls):
         self._urls.extend(urls)
+
 
 urls = DashboardUrls()

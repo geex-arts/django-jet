@@ -71,10 +71,9 @@ class DashboardModule(object):
         css = ()
         js = ()
 
-    def __init__(self, title=None, model=None, context=None, **kwargs):
+    def __init__(self, title=None, context=None, **kwargs):
         if title is not None:
             self.title = title
-        self.model = model
         self.context = context or {}
 
         for key in kwargs:
@@ -83,8 +82,6 @@ class DashboardModule(object):
 
         self.children = self.children or []
 
-        if self.model:
-            self.load_from_model()
 
     def fullname(self):
         return self.__module__ + "." + self.__class__.__name__
@@ -124,22 +121,6 @@ class DashboardModule(object):
         else:
             return ''
 
-    def load_from_model(self):
-        self.title = self.model.title
-
-        if self.model.settings:
-            try:
-                self.settings = json.loads(self.model.settings)
-                self.load_settings(self.settings)
-            except ValueError:
-                pass
-
-        if self.store_children() and self.model.children:
-            try:
-                children = json.loads(self.model.children)
-                self.load_children(children)
-            except ValueError:
-                pass
 
     def init_with_context(self, context):
         """
@@ -153,6 +134,14 @@ class DashboardModule(object):
             'module': self
         })
         return context
+
+    def update_context(self,context):
+        """更新上下文，需要带上request等信息
+
+        :param context:
+        :return:
+        """
+        self.context = context
 
     def render(self):
         self.init_with_context(self.context)
