@@ -3,7 +3,6 @@ import json
 from django.template import Context
 from django.utils import translation
 from jet import settings
-from jet.models import PinnedApplication
 
 try:
     from django.apps.registry import apps
@@ -250,13 +249,7 @@ def get_possible_language_codes():
 
 
 def get_original_menu_items(context):
-    if context.get('user') and user_is_authenticated(context['user']):
-        pinned_apps = PinnedApplication.objects.filter(user=context['user'].pk).values_list('app_label', flat=True)
-    else:
-        pinned_apps = []
-
     original_app_list = get_app_list(context)
-
     return map(lambda app: {
         'app_label': app['app_label'],
         'url': app['app_url'],
@@ -271,7 +264,6 @@ def get_original_menu_items(context):
             'label': model.get('name', model['object_name']),
             'has_perms': any(model.get('perms', {}).values()),
         }, app['models'])),
-        'pinned': app['app_label'] in pinned_apps,
         'custom': False
     }, original_app_list)
 
@@ -295,7 +287,6 @@ def get_menu_item_url(url, original_app_list):
 
 
 def get_menu_items(context):
-    pinned_apps = PinnedApplication.objects.filter(user=context['user'].pk).values_list('app_label', flat=True)
     original_app_list = OrderedDict(map(lambda app: (app['app_label'], app), get_original_menu_items(context)))
     custom_app_list = settings.JET_SIDE_MENU_ITEMS
     custom_app_list_deprecated = settings.JET_SIDE_MENU_CUSTOM_APPS
@@ -369,7 +360,7 @@ def get_menu_items(context):
             if 'permissions' in data:
                 item['has_perms'] = item.get('has_perms', True) and context['user'].has_perms(data['permissions'])
 
-            item['pinned'] = item['app_label'] in pinned_apps
+            item['pinned'] = []
 
             return item
 

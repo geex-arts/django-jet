@@ -1,8 +1,0 @@
-include README.rst
-include LICENSE
-recursive-include jet/locale *
-recursive-include jet/static *
-recursive-include jet/templates *
-recursive-include jet/dashboard/locale *
-recursive-include jet/dashboard/static *
-recursive-include jet/dashboard/templates *

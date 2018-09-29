@@ -13,7 +13,6 @@ from django.utils.formats import get_format
 from django.utils.safestring import mark_safe
 from django.utils.encoding import smart_text
 from jet import settings, VERSION
-from jet.models import Bookmark
 from jet.utils import get_model_instance_label, get_model_queryset, get_possible_language_codes, \
     get_admin_site, get_menu_items
 
@@ -47,11 +46,11 @@ def jet_get_menu(context):
     return get_menu_items(context)
 
 
-@assignment_tag
-def jet_get_bookmarks(user):
-    if user is None:
-        return None
-    return Bookmark.objects.filter(user=user.pk)
+# @assignment_tag
+# def jet_get_bookmarks(user):
+#     if user is None:
+#         return None
+#     return Bookmark.objects.filter(user=user.pk)
 
 
 @register.filter

@@ -26,7 +26,6 @@
     var TIME_FORMAT = "{{ time_format }}";
     var DATETIME_FORMAT = "{{ datetime_format }}";
 </script>
-<script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
 <script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
 
 {% jet_static_translation_urls as translation_urls %}
@@ -96,6 +95,7 @@
         {% endfor %}</ul>
         {% endif %}
     {% endblock messages %}
+
 
     <!-- Content -->
     <div id="content" class="{% block coltype %}colM{% endblock %}">
@@ -222,10 +222,7 @@
                             {% endif %}
                         {% endfor %}
                     {% else %}
-                        <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="app_label">
-                        </form>
+
 
                         <div class="sidebar-section">
                             <div class="sidebar-title">
@@ -282,49 +279,6 @@
                         </div>
                     {% endif %}
 
-                    <div class="sidebar-section last">
-                        <div class="dialog-confirm" id="bookmarks-add-dialog" title="{% trans "Add bookmark" %}">
-                            <form action="{% url "jet:add_bookmark" %}" method="POST" id="bookmarks-add-form">
-                                {% csrf_token %}
-                                <p>{% trans "Title" %}:</p>
-                                <input type="text" name="title" class="fill_width">
-                                <p>{% trans "URL" %}:</p>
-                                <input type="text" name="url" class="fill_width">
-                            </form>
-                        </div>
-                        <form action="{% url "jet:remove_bookmark" %}" method="POST" id="bookmarks-remove-form">
-                            {% csrf_token %}
-                            <input type="hidden" name="id">
-                        </form>
-                        <div class="dialog-confirm" id="bookmarks-remove-dialog" title="{% trans "Delete bookmark" %}">
-                            <p>{% trans "Are you sure want to delete this bookmark?" %}</p>
-                        </div>
-
-                        <div class="sidebar-title">
-                            <span class="sidebar-right">
-                                <a href="#" class="sidebar-right-plus bookmarks-add" title="{% trans "Add bookmark" %}"{% if title %} data-title="{{ title }}"{% endif %}><span class="icon-add"></span></a>
-                            </span>
-                            {% trans 'bookmarks' %}
-                        </div>
-
-                        <div class="bookmarks-list">
-                            {% jet_get_bookmarks user as bookmarks %}
-                            {% for bookmark in bookmarks %}
-                                <a href="{{ bookmark.url }}" class="sidebar-link bookmark-item">
-                                    <span class="sidebar-right collapsible">
-                                        <span class="sidebar-right-remove bookmarks-remove" data-bookmark-id="{{ bookmark.pk }}">{% trans "Remove" %}</span>
-                                    </span>
-                                    <span class="sidebar-link-label">{{ bookmark.title }}</span>
-                                </a>
-                            {% endfor %}
-                            <a class="sidebar-link bookmark-item clone">
-                                <span class="sidebar-right collapsible">
-                                    <span class="sidebar-right-remove bookmarks-remove">{% trans "Remove" %}</span>
-                                </span>
-                                <span class="sidebar-link-label"></span>
-                            </a>
-                        </div>
-                    </div>
                 {% endif %}
             </div>
 
