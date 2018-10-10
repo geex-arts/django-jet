@@ -96,7 +96,7 @@ def jet_select2_lookups(field):
             elif hasattr(field, 'field') and isinstance(field.field, ModelChoiceField):
                 if initial_value:
                     try:
-                        initial_object = model.objects.get(pk=initial_value)
+                        initial_object = getattr(field.form.instance, field.name)
                         attrs['data-object-id'] = initial_value
                         choices.append((initial_object.pk, get_model_instance_label(initial_object)))
                     except model.DoesNotExist:
