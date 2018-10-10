@@ -50,7 +50,9 @@ class TagsTestCase(TestCase):
         choices = [choice for choice in field.field.choices]
 
         self.assertEqual(len(choices), 3)
-        self.assertEqual(choices[0][0], value.pk)
+        self.assertEqual(choices[0][0], '')
+        values = {c[0] for c in choices[1:]}
+        self.assertSetEqual(values, {m.pk for m in self.models})
 
     def test_select2_lookups_posted(self):
         class TestForm(forms.Form):
