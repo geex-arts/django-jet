@@ -44,8 +44,8 @@ class TagsTestCase(TestCase):
 
         value = self.related_models[0]
 
-        form = TestModelForm(initial={'form_field': value.pk})
-        field = form['form_field']
+        form = TestModelForm(initial={'field': value.pk})
+        field = form['field']
         field = jet_select2_lookups(field)
         choices = [choice for choice in field.field.choices]
 
