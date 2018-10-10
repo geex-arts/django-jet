@@ -19,7 +19,7 @@ class TagsTestCase(TestCase):
         self.models.append(TestModel.objects.create(field1='second', field2=2))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='first', field2=1))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='second', field2=2))
-        self.related_models.append(RelatedToTestModel.objects.create(field=self.models[0])
+        self.related_models.append(RelatedToTestModel.objects.create(field=self.models[0]))
         
     def test_select2_lookups(self):
         class TestForm(forms.Form):
