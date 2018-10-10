@@ -49,7 +49,7 @@ class TagsTestCase(TestCase):
         field = jet_select2_lookups(field)
         choices = [choice for choice in field.field.choices]
 
-        self.assertEqual(len(choices), 1)
+        self.assertEqual(len(choices), 3)
         self.assertEqual(choices[0][0], value.pk)
 
     def test_select2_lookups_posted(self):
