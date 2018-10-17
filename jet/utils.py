@@ -82,7 +82,7 @@ def get_app_list(context, order=True):
                     'perms': perms,
                     'model_name': model._meta.model_name
                 }
-                if perms.get('change', False):
+                if perms.get('change', False) or perms.get('view', False):
                     try:
                         model_dict['admin_url'] = reverse('admin:%s_%s_changelist' % info, current_app=admin_site.name)
                     except NoReverseMatch:
@@ -220,7 +220,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         cl = ChangeList(
             request, model, list_display, list_display_links, list_filter, model_admin.date_hierarchy, search_fields,
             list_select_related, model_admin.list_per_page, model_admin.list_max_show_all, model_admin.list_editable,
-            model_admin)
+            model_admin, model_admin.sortable_by)
 
         queryset = cl.get_queryset(request)
     except IncorrectLookupParameters:
