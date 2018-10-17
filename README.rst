@@ -7,15 +7,15 @@ Django JET
 
 **Modern template for Django admin interface with improved functionality**
 
-+---------------------------------------------------------------------------------------------------------------------------------+
-| Attention! **NEW JET**                                                                                                          |
-+=================================================================================================================================+
-| **We are proud to announce completely new Jet. Please check out Live Demo.**                                                    |
-|                                                                                                                                 |
-| Developing of new features for Django Jet will be frozen, only critical bugs will be fixed.                                     |
-+---------------------------------------------------------------------------------------------------------------------------------+
-| `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=home&utm_content=link&utm_term=promo>`_  |
-+---------------------------------------------------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------+
+| Attention! **NEW JET**                                                                                                            |
++===================================================================================================================================+
+| **We are proud to announce completely new Jet. Please check out Live Demo.**                                                      |
+|                                                                                                                                   |
+| Developing of new features for Django Jet will be frozen, only critical bugs will be fixed.                                       |
++-----------------------------------------------------------------------------------------------------------------------------------+
+| `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=github&utm_content=link&utm_term=promo>`_  |
++-----------------------------------------------------------------------------------------------------------------------------------+
 
 
 Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
@@ -31,7 +31,7 @@ and applications without the provisions of the AGPLv3.
     :align: center
     
 * Home page: http://jet.geex-arts.com/
-* **New Jet**: `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=home&utm_content=link&utm_term=promo>`_
+* **New Jet**: `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=github&utm_content=link&utm_term=promo>`_
 * Live Demo: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
 * libi.io http://libi.io/library/1683/django-jet
