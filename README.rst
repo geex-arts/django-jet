@@ -7,6 +7,17 @@ Django JET
 
 **Modern template for Django admin interface with improved functionality**
 
++-----------------------------------------------------------------------------------------------------------------------------------+
+| Attention! **NEW JET**                                                                                                            |
++===================================================================================================================================+
+| **We are proud to announce completely new Jet. Please check out Live Demo.**                                                      |
+|                                                                                                                                   |
+| Developing of new features for Django Jet will be frozen, only critical bugs will be fixed.                                       |
++-----------------------------------------------------------------------------------------------------------------------------------+
+| `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=github&utm_content=link&utm_term=promo>`_  |
++-----------------------------------------------------------------------------------------------------------------------------------+
+
+
 Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
 code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you a commercial
 license (visit Home page). The commercial license is designed for using Django JET in commercial products
@@ -20,7 +31,8 @@ and applications without the provisions of the AGPLv3.
     :align: center
     
 * Home page: http://jet.geex-arts.com/
-* **Live Demo**: http://demo.jet.geex-arts.com/admin/
+* **New Jet**: `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=github&utm_content=link&utm_term=promo>`_
+* Live Demo: http://demo.jet.geex-arts.com/admin/
 * Documentation: http://jet.readthedocs.org/
 * libi.io http://libi.io/library/1683/django-jet
 * PyPI: https://pypi.python.org/pypi/django-jet
