@@ -20,7 +20,7 @@
 {% jet_get_date_format as date_format %}
 {% jet_get_time_format as time_format %}
 {% jet_get_datetime_format as datetime_format %}
-
+{% load jet_tags %}
 <script type="text/javascript" charset="utf-8">
     var DATE_FORMAT = "{{ date_format }}";
     var TIME_FORMAT = "{{ time_format }}";
