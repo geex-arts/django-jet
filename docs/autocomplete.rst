@@ -63,7 +63,7 @@ Example from Django JET demo site:
 - Now all your admin select boxes will perform AJAX queries to load available options while you type.
 
 .. note::
-    This work for both ForeignKey and ManyToManyField fields.
+    This works for both ForeignKey and ManyToManyField fields.
 
 Disabling Autocomplete For Form Fields
 --------------------------------------
