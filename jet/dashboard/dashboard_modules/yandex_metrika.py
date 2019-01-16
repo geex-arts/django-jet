@@ -100,7 +100,7 @@ class YandexMetrikaClient:
 class AccessTokenWidget(Widget):
     module = None
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, attrs=None, renderer=None):
         if value and len(value) > 0:
             link = '<a href="%s">%s</a>' % (
                 reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk}),
