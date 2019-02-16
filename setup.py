@@ -15,25 +15,28 @@ def get_install_requires():
     install_requires = ['Django']
 
     try:
-        import importlib
+        import importlib  # NOQA
     except ImportError:
         install_requires.append('importlib')
 
     try:
-        from collections import OrderedDict
+        from collections import OrderedDict  # NOQA
     except ImportError:
         install_requires.append('ordereddict')
 
     return install_requires
 
+
 setup(
-    name='django-jet',
+    name='rs-django-jet',
     version=__import__('jet').VERSION,
-    description='Modern template for Django admin interface with improved functionality',
+    description='Fork of django-jet with Reckonsys customizations',
     long_description=read('README.rst'),
     author='Denis Kildishev',
     author_email='support@jet.geex-arts.com',
-    url='https://github.com/geex-arts/django-jet',
+    maintainer='Govind Sharma',
+    maintainer_email='info@reckonsys.com',
+    url='https://github.com/reckonsys/rs-django-jet',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
@@ -50,6 +53,8 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Environment :: Web Environment',
         'Topic :: Software Development',
         'Topic :: Software Development :: User Interfaces',
