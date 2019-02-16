@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 class Bookmark(models.Model):
     url = models.URLField(verbose_name=_('URL'))
     title = models.CharField(verbose_name=_('title'), max_length=255)
-    user = models.PositiveIntegerField(verbose_name=_('user'))
+    user = models.UUIDField(verbose_name=_('user'))
     date_add = models.DateTimeField(verbose_name=_('date created'), default=timezone.now)
 
     class Meta:
@@ -23,7 +23,7 @@ class Bookmark(models.Model):
 @python_2_unicode_compatible
 class PinnedApplication(models.Model):
     app_label = models.CharField(verbose_name=_('application name'), max_length=255)
-    user = models.PositiveIntegerField(verbose_name=_('user'))
+    user = models.UUIDField(verbose_name=_('user'))
     date_add = models.DateTimeField(verbose_name=_('date created'), default=timezone.now)
 
     class Meta:

@@ -1,4 +1,3 @@
-import uuid
 from importlib import import_module
 import json
 from django.db import models
