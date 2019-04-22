@@ -11,3 +11,6 @@ JET_SIDE_MENU_CUSTOM_APPS = getattr(settings, 'JET_SIDE_MENU_CUSTOM_APPS', None)
 
 # Improved usability
 JET_CHANGE_FORM_SIBLING_LINKS = getattr(settings, 'JET_CHANGE_FORM_SIBLING_LINKS', True)
+
+# Improved customability
+JET_USER_FIELD = getattr(settings, 'JET_USER_FIELD', 'django.db.models.PositiveIntegerField')
