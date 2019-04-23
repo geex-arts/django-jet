@@ -3,14 +3,12 @@ from django.utils import timezone
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from jet.fields import UserField
-
 
 @python_2_unicode_compatible
 class Bookmark(models.Model):
     url = models.URLField(verbose_name=_('URL'))
     title = models.CharField(verbose_name=_('title'), max_length=255)
-    user = UserField(verbose_name=_('user'))
+    user = models.CharField(verbose_name=_('user'), max_length=255)
     date_add = models.DateTimeField(verbose_name=_('date created'), default=timezone.now)
 
     class Meta:
@@ -25,7 +23,7 @@ class Bookmark(models.Model):
 @python_2_unicode_compatible
 class PinnedApplication(models.Model):
     app_label = models.CharField(verbose_name=_('application name'), max_length=255)
-    user = UserField(verbose_name=_('user'))
+    user = models.CharField(verbose_name=_('user'), max_length=255)
     date_add = models.DateTimeField(verbose_name=_('date created'), default=timezone.now)
 
     class Meta:
