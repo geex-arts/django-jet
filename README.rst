@@ -14,7 +14,7 @@ Django JET
 |                                                                                                                                   |
 | Developing of new features for Django Jet will be frozen, only critical bugs will be fixed.                                       |
 +-----------------------------------------------------------------------------------------------------------------------------------+
-| `Live Demo <https://app.jetadmin.io/demo?utm_source=jet&utm_medium=banner&utm_campaign=github&utm_content=link&utm_term=promo>`_  |
+| `Live Demo <https://github.com/jet-admin/jet-bridge>`_  |
 +-----------------------------------------------------------------------------------------------------------------------------------+
 
 
