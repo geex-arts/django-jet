@@ -16,6 +16,8 @@ try:
 except ImportError:
     from django.db.models.loading import get_model
 
+import pickle
+import codecs
 
 class AddBookmarkForm(forms.ModelForm):
     def __init__(self, request, *args, **kwargs):
@@ -126,7 +128,8 @@ class ModelLookupForm(forms.Form):
         return data
 
     def lookup(self):
-        qs = self.model_cls.objects
+        qs = self.model_cls.objects.all()
+        qs.query.__dict__ = pickle.loads(codecs.decode(self.data['filters'].encode(), 'base64'))
 
         if self.cleaned_data['q']:
             if getattr(self.model_cls, 'autocomplete_search_fields', None):

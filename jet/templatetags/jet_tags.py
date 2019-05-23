@@ -22,6 +22,8 @@ try:
 except ImportError:
     from urlparse import parse_qsl
 
+import pickle
+import codecs
 
 register = template.Library()
 assignment_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
@@ -75,7 +77,8 @@ def jet_select2_lookups(field):
                 'class': 'ajax',
                 'data-app-label': app_label,
                 'data-model': model_name,
-                'data-ajax--url': reverse('jet:model_lookup')
+                'data-ajax--url': reverse('jet:model_lookup'),
+                'data-filters': codecs.encode(pickle.dumps(field.field.queryset.query.__dict__), 'base64').decode()
             }
 
             initial_value = field.value()
