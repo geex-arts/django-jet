@@ -19,8 +19,8 @@ Django JET
 
 
 Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
-code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you a commercial
-license (visit Home page). The commercial license is designed for using Django JET in commercial products
+the code in your programs makes them AGPL compatible too. So if you don't want to comply with that we can provide you with a commercial
+license (visit Homepage). The commercial license is designed for using Django JET in commercial products
 and applications without the provisions of the AGPLv3.
 
 .. image:: https://raw.githubusercontent.com/geex-arts/jet/static/logo.png
@@ -71,7 +71,7 @@ Screenshots
 Installation
 ============
 
-* Download and install latest version of Django JET:
+* Download and install the latest version of Django JET:
 
 .. code:: python
 
@@ -113,13 +113,13 @@ Installation
 
     .. code:: python
 
-        from django.conf import global_settings
+        from Django.conf import global_settings
 
         TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
             'django.core.context_processors.request',
         )
 
-* Add URL-pattern to the urlpatterns of your Django project urls.py file (they are needed for related–lookups and autocompletes):
+* Add URL-pattern to the urlpatterns of your Django project URLs.py file (they are needed for related–lookups and autocompletes):
 
 .. code:: python
 
@@ -138,7 +138,7 @@ Installation
     # or 
     python manage.py syncdb
         
-* Collect static if you are in production environment:
+* Collect static if you are in a production environment:
 
 .. code:: python
 
@@ -149,8 +149,8 @@ Installation
 Dashboard installation
 ======================
 
-.. note:: Dashboard is located into a separate application. So after a typical JET installation it won't be active.
-          To enable dashboard application follow these steps:
+.. note:: Dashboard is located into a separate application. So after a typical JET installation, it won't be active.
+          To enable the dashboard application to follow these steps:
 
 * Add 'jet.dashboard' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'jet'):
 
@@ -164,7 +164,7 @@ Dashboard installation
         ...
     )
 
-* Add URL-pattern to the urlpatterns of your Django project urls.py file (they are needed for related–lookups and autocompletes):
+* Add URL-pattern to the urlpatterns of your Django project URLs.py file (they are needed for related–lookups and autocompletes):
 
 .. code:: python
 
@@ -188,9 +188,9 @@ Dashboard installation
 
     python manage.py migrate dashboard
     # or
-    python manage.py syncdb
+ python manage.py syncdb
 
-* Collect static if you are in production environment:
+* Collect static if you are in a production environment:
 
 .. code:: python
 
