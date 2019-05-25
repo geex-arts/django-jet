@@ -36,6 +36,9 @@
 
 {% block extrahead %}{% endblock %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+    
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script src="{% static "jet/js/build/jquery.init.js" as url %}{{ url|jet_append_version }}"></script>    
 </head>
 {% load i18n %}
 
