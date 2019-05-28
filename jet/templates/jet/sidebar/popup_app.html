@@ -1,0 +1,29 @@
+{% load i18n static jet_tags %}
+{% if app.has_perms %}
+    <div class="sidebar-popup-section sidebar-popup-section-{{ app.app_label }}">
+        <div class="sidebar-popup-title">
+            {{ app.label }}
+        </div>
+
+        <input class="sidebar-popup-search" placeholder="{% trans "Search" %}...">
+
+        <ul class="sidebar-popup-list">
+            {% if app.url %}
+                <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
+                    <a href="{{ app.url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
+                </li>
+            {% endif %}
+
+            {% for model in app.items %}
+                {% if model.has_perms %}
+                    <li class="sidebar-popup-list-item{% if model.name %} model-{{ model.name }}{% endif %}{{ model.current|yesno:" current," }}">
+                        <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-popup-list-item-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                            {{ model.label }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+
