@@ -189,9 +189,9 @@ Select2.prototype = {
             };
         }
 
-        $select.on('change', function(e) {
-            django.jQuery($select.get(0)).trigger(e);
-        });
+        //$select.on('change', function(e) {
+            //jet.jQuery($select.get(0)).trigger(e);
+        //});
 
         $select.select2(settings);
     },
