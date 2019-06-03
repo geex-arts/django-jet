@@ -22,7 +22,7 @@ DateTimeWidgets.prototype = {
     updateDatetimeLayout: function() {
         var self = this;
 
-        $('.form-row .datetime').each(function () {
+        $('form p.datetime').each(function () {
             var $dateTime = $(this);
             var $dateField = $dateTime.find('.vDateField');
             var $timeField = $dateTime.find('.vTimeField');
@@ -33,7 +33,7 @@ DateTimeWidgets.prototype = {
             $dateField.nextAll('br').first().remove();
         });
 
-        $('.form-row .vDateField').each(function () {
+        $('form input.vDateField').each(function () {
             var $dateField = $(this);
             var $dateButton = $('<span>').addClass('icon-calendar');
             $('<a>')
@@ -43,7 +43,7 @@ DateTimeWidgets.prototype = {
                 .insertAfter($dateField);
         });
 
-        $('.form-row .vTimeField').each(function () {
+        $('form input.vTimeField').each(function () {
             var $timeField = $(this);
             var $timeButton = $('<span>').addClass('icon-clock');
             $('<a>')
@@ -64,7 +64,7 @@ DateTimeWidgets.prototype = {
 
         var self = this;
 
-        $container.find('.form-row .vDateField').each(function () {
+        $container.find('form input.vDateField').each(function () {
             var $dateField = $(this);
             var $dateLink = $dateField.next('.vDateField-link');
 
@@ -95,7 +95,7 @@ DateTimeWidgets.prototype = {
     initTimeWidgets: function($container) {
         $container = $container || $(document);
 
-        $container.find('.form-row .vTimeField').each(function () {
+        $container.find('form input.vTimeField').each(function () {
             var $timeField = $(this);
             var $timeLink = $timeField.next('.vTimeField-link');
 
