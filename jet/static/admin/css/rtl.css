@@ -1,0 +1,244 @@
+@import url("rtlfonts.css");
+
+html {
+    direction: rtl;
+    font-family: Vazir;
+}
+
+.sidebar {
+    right: 0 !important;
+    left: auto !important;
+    -webkit-transform: translate3d(100%, 0, 0) !important;;
+    transform: translate3d(100%, 0, 0) !important;
+}
+
+body.menu-pinned #container {
+    padding-left: 0;
+    padding-right: 250px;
+    padding-right: 17.85714rem;
+
+}
+body.login #container, body.popup #container {
+    padding: 0;
+}
+
+input[type=checkbox]+label:before {
+    margin-left: 0.35714rem;
+}
+
+#changelist .paginator {
+    text-align: right;
+}
+
+#container {
+    padding: 0;
+    min-height: 100%;
+    transition: padding-right 0.3s !important;
+}
+
+body.menu-pinned .sidebar, .sidebar.sidebar-opened {
+    -webkit-transform: none !important;
+    transform: none !important;
+}
+
+.sidebar-container-toggle {
+    float: right;
+    padding: 10px 20px 10px 0;
+    padding: 0.71429rem 1.42857rem 0.71429rem 0;
+}
+
+.dashboard-tools {
+    position: absolute;
+    left: 215px;
+    left: 15.35714rem;
+    right: auto;
+}
+
+.user-tools ul {
+    position: absolute;
+    left: 20px;
+    left: 1.42857rem;
+    right: auto;
+}
+
+.dashboard-item-header-buttons, .dashboard-item-header-drag {
+    float: left;
+}
+
+.icon-arrow-right:before {
+    content: "\e60a";
+}
+
+.sidebar-right {
+    float: left;
+    margin-right: 10px;
+    margin-right: 0.71429rem;
+    margin-left: 0;
+}
+
+body.change-list .object-tools {
+    float: left !important;
+}
+
+.aligned label {
+    display: block;
+    padding: 8px 0 0 10px;
+    padding: 0.57143rem 0 0 0.71429rem;
+    float: right;
+}
+
+body.menu-pinned .changelist-footer.fixed {
+    right: 270px;
+    right: 19.28571rem;
+    left: 20px;
+    left: 1.42857rem;
+}
+
+body.menu-pinned table.helper {
+    right: 270px;
+    right: 19.28571rem;
+    left: 20px;
+    left: 1.42857rem;
+}
+
+thead th:last-child, tfoot td:last-child {
+    border-radius: 4px 0 0 0;
+    border-radius: 0.28571rem 0 0 0;
+}
+
+thead th:first-child, tfoot td:first-child {
+    border-radius: 0 4px 0 0;
+    border-radius: 0 0.28571rem 0 0;
+}
+
+.paginator .pages-wrapper span:first-child, .paginator .pages-wrapper a:first-child {
+    border-radius: 0 4px 4px 0;
+    border-radius: 0 0.28571rem 0.28571rem 0;
+}
+
+.paginator .pages-wrapper span:last-child, .paginator .pages-wrapper a:last-child {
+    border-radius: 4px 0 0 4px;
+    border-radius: 0.28571rem 0 0 0.28571rem;
+}
+
+div.breadcrumbs {
+    padding: 10px 20px 10px 215px;
+    padding: 0.71429rem 1.42857rem 0.71429rem 15.35714rem;
+}
+
+th, .text {
+    text-align: right;
+}
+
+.breadcrumbs a, .breadcrumbs .breadcrumbs-separator {
+    float: right;
+    line-height: 32px;
+    line-height: 2.28571rem;
+}
+
+.dashboard-item-content ul:not(.inline) li .float-right {
+    float: left;
+}
+
+.add-dashboard-link {
+    border-radius: 4px 0 0 4px !important;
+    border-radius: 0.28571rem 0 0 0.28571rem !important;
+}
+
+.add-dashboard + .select2 .select2-selection {
+    border-radius: 0 4px 4px 0 !important;
+    border-radius: 0 0.28571rem 0.28571rem 0 !important;
+    border-width: 0;
+}
+
+#changelist .paginator {
+    text-align: left;
+}
+
+.submit-row p.deletelink-box {
+    float: left;
+}
+
+.aligned label + p {
+    margin-right: 170px;
+    margin-right: 12.14286rem;
+
+    margin-left: 0;
+    margin-left: 0;
+}
+
+.vDateField-link span, .vTimeField-link span {
+    border-radius: 4px 0 0 4px;
+    border-radius: 0.28571rem 0 0 0.28571rem;
+}
+
+.vDateField-link+.vTimeField, .vDateField, .vTimeField {
+    margin-right: 10px;
+    margin-right: 0.71429rem;
+    margin-left: 0;
+    border-radius: 0 4px 4px 0 !important;
+    border-radius: 0 0.28571rem 0.28571rem 0 !important;
+    border-right-width: 1px !important;
+    border-left-width: 0 !important;
+}
+
+thead th, tfoot td {
+    text-align: right;
+}
+
+
+.icon-arrow-left:before {
+    content: "\e60b";
+}
+
+.segmented-button.right {
+    border-radius: 4px 0 0 4px;
+    border-radius: 0.28571rem 0 0 0.28571rem;
+}
+
+.segmented-button.left {
+    border-radius: 0 4px 4px 0;
+    border-radius: 0 0.28571rem 0.28571rem 0;
+}
+
+.changeform-navigation-button-icon.left {
+    float: right;
+}
+
+.changeform-navigation-button-icon.right {
+    float: left;
+}
+
+.related-popup {
+    padding-right: 250px;
+    padding-right: 17.85714rem;
+    padding-left: 0;
+}
+
+.related-popup-back, .related-popup-back:visited, .related-popup-back:hover {
+    right: 250px;
+    right: 17.85714rem;
+    left: unset;
+}
+
+.sidebar-popup-container {
+    right: 250px;
+    right: 17.85714rem;
+    left: 0;
+}
+
+.sidebar-popup {
+    left: unset;
+    right: 0;
+}
+
+.sidebar-left {
+    position: absolute;
+    right: 4px;
+    right: 0.28571rem;
+    left: unset;
+}
+
+.sidebar-link-label {
+    margin-right: 8px;
+}
