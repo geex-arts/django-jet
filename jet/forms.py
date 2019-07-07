@@ -134,7 +134,7 @@ class ModelLookupForm(forms.Form):
                 filter_data = [Q((field + '__icontains', self.cleaned_data['q'])) for field in search_fields]
                 # if self.cleaned_data['object_id']:
                 #     filter_data.append(Q(pk=self.cleaned_data['object_id']))
-                qs = qs.filter(reduce(operator.or_, filter_data))
+                qs = qs.filter(reduce(operator.or_, filter_data)).distinct()
             else:
                 qs = qs.none()
 

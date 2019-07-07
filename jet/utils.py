@@ -180,6 +180,9 @@ class SuccessMessageMixin(object):
 def get_model_queryset(admin_site, model, request, preserved_filters=None):
     model_admin = admin_site._registry.get(model)
 
+    if model_admin is None:
+        return
+
     try:
         changelist_url = reverse('%s:%s_%s_changelist' % (
             admin_site.name,
@@ -216,12 +219,21 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
 
     ChangeList = model_admin.get_changelist(request)
 
-    try:
-        cl = ChangeList(
-            request, model, list_display, list_display_links, list_filter, model_admin.date_hierarchy, search_fields,
-            list_select_related, model_admin.list_per_page, model_admin.list_max_show_all, model_admin.list_editable,
-            model_admin)
+    change_list_args = [
+        request, model, list_display, list_display_links, list_filter,
+        model_admin.date_hierarchy, search_fields, list_select_related,
+        model_admin.list_per_page, model_admin.list_max_show_all,
+        model_admin.list_editable, model_admin]
 
+    try:
+        sortable_by = model_admin.get_sortable_by(request)
+        change_list_args.append(sortable_by)
+    except AttributeError:
+        # django version < 2.1
+        pass
+
+    try:
+        cl = ChangeList(*change_list_args)
         queryset = cl.get_queryset(request)
     except IncorrectLookupParameters:
         pass

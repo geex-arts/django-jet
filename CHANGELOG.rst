@@ -1,6 +1,17 @@
 Changelog
 =========
 
+1.0.8
+-----
+* PR-345: Django 2.1 compatability fix
+* PR-337: Fix get_model_queryset exception when model_admin is None
+* PR-309: Add French locale
+* PR-311: Add an `s` for grammar
+* PR-312: Add grammar fixes
+* PR-356: Remove duplicate entries in autocomplete
+* PR-327: Fixed typo
+
+
 1.0.7
 -----
 * PR-265: Fixed Django 2 support (thanks to HarryLafranc for PR)
