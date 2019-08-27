@@ -40,9 +40,10 @@ Filters.prototype = {
                 var querysetLookup = $select.data('queryset--lookup');
 
                 if (url) {
-                    document.location = $selectedOption.data('url');
+                    document.location.search = $selectedOption.data('url');
                 } else if (querysetLookup) {
-                    document.location = '?' + querysetLookup + '=' + $selectedOption.val();
+                    console.log(document.location.search);
+                    document.location.search += ((document.location.search ? '?' : '&') + querysetLookup + '=' + $selectedOption.val());
                 }
             });
         });
