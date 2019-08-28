@@ -40,10 +40,20 @@ Filters.prototype = {
                 var querysetLookup = $select.data('queryset--lookup');
 
                 if (url) {
-                    document.location.search = $selectedOption.data('url');
+                    document.location = $selectedOption.data('url');
                 } else if (querysetLookup) {
-                    console.log(document.location.search);
-                    document.location.search += ((document.location.search ? '?' : '&') + querysetLookup + '=' + $selectedOption.val());
+                    var params = {};
+                    if (document.location.search) {
+                        params = JSON.parse('{"' + document.location.search.substring(1).replace(/&/g, '","').replace(/=/g, '":"') + '"}',
+                            function (key, value) {
+                                return key === "" ? value : decodeURIComponent(value)
+                            });
+                    }
+                    params[querysetLookup] = $selectedOption.val();
+                    document.location.search = Object.keys(params).map(function (k) {
+                        return encodeURIComponent(k) + '=' + encodeURIComponent(params[k])
+                    }).join('&');
+
                 }
             });
         });
