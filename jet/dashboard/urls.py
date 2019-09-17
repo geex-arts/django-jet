@@ -8,9 +8,17 @@ except ImportError:  # Django < 2.0
     from django.views.i18n import javascript_catalog
 
 from jet.dashboard import dashboard
-from jet.dashboard.views import update_dashboard_modules_view, add_user_dashboard_module_view, \
-    update_dashboard_module_collapse_view, remove_dashboard_module_view, UpdateDashboardModuleView, \
-    load_dashboard_module_view, reset_dashboard_view
+from jet.dashboard.views import add_user_dashboard_module_view
+from jet.dashboard.views import load_dashboard_module_view
+from jet.dashboard.views import remove_dashboard_module_view
+from jet.dashboard.views import reset_dashboard_view
+from jet.dashboard.views import update_dashboard_module_collapse_view
+from jet.dashboard.views import update_dashboard_modules_view
+from jet.dashboard.views import UpdateDashboardModuleView
+
+js_info_dict = {
+ 'packages': ('jet',),
+}
 
 app_name = 'dashboard'
 
@@ -53,7 +61,7 @@ urlpatterns = [
     url(
         r'^jsi18n/$',
         javascript_catalog,
-        {'packages': 'jet'},
+        js_info_dict,
         name='jsi18n'
     ),
 ]
@@ -62,4 +70,5 @@ urlpatterns += dashboard.urls.get_urls()
 
 if django.VERSION[:2] < (1, 8):
     from django.conf.urls import patterns
+    
     urlpatterns = patterns('', *urlpatterns)
