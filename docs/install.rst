@@ -82,3 +82,5 @@ Installation
         python manage.py collectstatic
 
 * Clear your browser cache
+
+* In order to disable ``django-jet`` temporarily, comment the relevant lines in ``settings.py`` and ``urls.py``, finally run ``collectstatic`` again and also clear your browser cache.
