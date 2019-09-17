@@ -59,8 +59,9 @@ CompactInline.prototype = {
         var $maxFormsInput = $inline.find('[name="' + this.prefix + '-MAX_NUM_FORMS"]');
         var totalForms = parseInt($inline.find('.inline-related').length);
         var maxForms = $maxFormsInput.val() ? parseInt($maxFormsInput.val()) : Infinity;
+        var emptyForms = parseInt($inline.find("#"+this.prefix+"-empty").length);
 
-        $totalFormsInput.val(totalForms);
+        $totalFormsInput.val(totalForms-emptyForms);
         $inline.find('.add-row').toggle(maxForms >= totalForms);
     },
     addNavigationItem: function($inline, $inlineItem) {
