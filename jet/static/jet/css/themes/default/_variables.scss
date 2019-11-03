@@ -1,3 +1,24 @@
 /*
  * These theme uses default variables at ../_variables.scss
  */
+ $top-height: 32px !default;
+ $font: "Quicksand-Medium",sans-serif !default;;
+ $top-text-color: #465661 !default;
+ $top-separator-color: #c0d4e8 !default;
+ $top-link-color: #8296a5 !default;
+ $top-hover-link-color: #639af5 !default;
+ $top-border-color: #c0d4e8 !default;
+ $top-icon-color: #47bac1 !default;
+ 
+ $top-dropdown-background-color: #6f7e95 !default;
+ $top-dropdown-text-color: #ecf2f6 !default;
+ $top-dropdown-contrast-background-color: #59677e !default;
+ $top-dropdown-contrast-text-color: #c0cad8 !default;
+ $top-dropdown-border-color: #76849a !default;
+ $top-dropdown-link-color: #ecf2f6 !default;
+ $top-dropdown-hover-link-color: #ecf2f6 !default;
+ $top-dropdown-icon-color: #ecf2f6 !default;
+ $top-dropdown-selected-color: #e5e2a5 !default;
+
+ $success-color: #209233;
+ $text-color: #45505b;
