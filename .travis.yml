@@ -23,7 +23,7 @@ install:
   - pip install -q "Django${DJANGO}"
   - pip install .
   - pip install coverage==3.7.1
-  - pip install coveralls==0.5
+  - pip install coveralls # ==0.5
 script:
   - coverage run --source=jet --omit=*/migrations/*,*/south_migrations/*,*/tests/* manage.py test jet
 after_success:
