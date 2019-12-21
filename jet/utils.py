@@ -204,7 +204,7 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         queryset = model_admin.get_queryset(request)
     else:
         queryset = model.objects
-
+    print(dir(request))
     list_display = model_admin.get_list_display(request)
     list_display_links = model_admin.get_list_display_links(request, list_display)
     list_filter = model_admin.get_list_filter(request)
@@ -212,7 +212,6 @@ def get_model_queryset(admin_site, model, request, preserved_filters=None):
         if hasattr(model_admin, 'get_search_fields') else model_admin.search_fields
     list_select_related = model_admin.get_list_select_related(request) \
         if hasattr(model_admin, 'get_list_select_related') else model_admin.list_select_related
-
     actions = model_admin.get_actions(request)
     if actions:
         list_display = ['action_checkbox'] + list(list_display)
