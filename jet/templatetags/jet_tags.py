@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 import json
 import os
+import django
 from django import template
 try:
     from django.core.urlresolvers import reverse
@@ -252,3 +253,8 @@ def jet_static_translation_urls():
                 break
 
     return urls
+
+
+@register.filter
+def jet_have_admin_static():
+    return django.VERSION[0] < 3

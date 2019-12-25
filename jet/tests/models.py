@@ -1,8 +1,10 @@
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
+try:
+    from django.utils.encoding import python_2_unicode_compatible
+except ImportError:
+    python_2_unicode_compatible = None
 
 
-@python_2_unicode_compatible
 class TestModel(models.Model):
     field1 = models.CharField(max_length=255)
     field2 = models.IntegerField()
@@ -11,7 +13,6 @@ class TestModel(models.Model):
         return '%s%d' % (self.field1, self.field2)
 
 
-@python_2_unicode_compatible
 class RelatedToTestModel(models.Model):
     field = models.ForeignKey(TestModel, on_delete=models.CASCADE)
 
@@ -19,7 +20,6 @@ class RelatedToTestModel(models.Model):
         return self.field
 
 
-@python_2_unicode_compatible
 class SearchableTestModel(models.Model):
     field1 = models.CharField(max_length=255)
     field2 = models.IntegerField()
@@ -30,3 +30,8 @@ class SearchableTestModel(models.Model):
     @staticmethod
     def autocomplete_search_fields():
         return 'field1'
+
+if python_2_unicode_compatible:
+    TestModel = python_2_unicode_compatible(TestModel)
+    RelatedToTestModel = python_2_unicode_compatible(RelatedToTestModel)
+    SearchableTestModel = python_2_unicode_compatible(SearchableTestModel)
