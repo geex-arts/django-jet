@@ -68,3 +68,7 @@ class UtilsTestCase(TestCase):
         encoder = LazyDateTimeEncoder()
         self.assertEqual(encoder.encode({'key': 1}), '{"key": 1}')
 
+
+    def test_non_json(self):
+        with self.assertRaises(TypeError):
+            JsonResponse([])

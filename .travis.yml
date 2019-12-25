@@ -17,13 +17,14 @@ env:
   - DJANGO="<1.11"
   - DJANGO="<1.12"
   - DJANGO="<2.1"
+  - DJANGO="<3.0.1"
 before_install:
   - export DJANGO_SETTINGS_MODULE=jet.tests.settings
 install:
   - pip install -q "Django${DJANGO}"
   - pip install .
   - pip install coverage==3.7.1
-  - pip install coveralls # ==0.5
+  - pip install coveralls
 script:
   - coverage run --source=jet --omit=*/migrations/*,*/south_migrations/*,*/tests/* manage.py test jet
 after_success:
@@ -43,9 +44,13 @@ matrix:
       env: DJANGO="<1.12"
     - python: 2.6
       env: DJANGO="<2.1"
+    - python: 2.6
+      env: DJANGO="<3.0.1"
 
     - python: 2.7
       env: DJANGO="<2.1"
+    - python: 2.7
+      env: DJANGO="<3.0.1"
 
     - python: 3.2
       env: DJANGO="<1.10"
@@ -76,3 +81,5 @@ matrix:
 
     - python: pypy
       env: DJANGO="<2.1"
+    - python: pypy
+      env: DJANGO="<3.0.1"
