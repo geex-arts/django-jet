@@ -1,0 +1,13 @@
+{% load i18n static jet_tags %}<!DOCTYPE html>
+<html>
+  <head>
+      <title>{% trans 'Popup closing...' %}</title>
+      <script src="{% static "jet/js/build/bundle.min.js" %}"></script>
+  </head>
+  <body>
+    {% jet_popup_response_data as data %}
+    <div id="django-admin-popup-response-constants"
+         data-popup-response="{{ data|escape }}">
+    </div>
+  </body>
+</html>

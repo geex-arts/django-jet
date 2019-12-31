@@ -1,0 +1,331 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-08-30 14:54+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Dominik Bartenstein <db@zemtu.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: German\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+msgid "Quick links"
+msgstr ""
+
+msgid "Return to site"
+msgstr "Zur Website zurückkehren"
+
+msgid "Change password"
+msgstr ""
+
+msgid "Log out"
+msgstr ""
+
+msgid "Applications"
+msgstr ""
+
+msgid "Administration"
+msgstr ""
+
+msgid "Recent Actions"
+msgstr ""
+
+msgid "Latest Django News"
+msgstr "Aktuelle Django Neuigkeiten"
+
+msgid "Support"
+msgstr ""
+
+msgid "Django documentation"
+msgstr "Django Dokumentation"
+
+msgid "Django \"django-users\" mailing list"
+msgstr "Django \"django-users\" Mailingliste"
+
+msgid "Django irc channel"
+msgstr "Django IRC Kanal"
+
+msgid "Application models"
+msgstr "Anwendungsmodelle"
+
+msgid "Revoke access"
+msgstr "Zugriff zurückziehen"
+
+msgid "Grant access"
+msgstr "Zugriff erlauben"
+
+msgid "Access"
+msgstr "Zugriff"
+
+msgid "Counter"
+msgstr "Zähler"
+
+msgid "Statistics period"
+msgstr "Statistikzeitraum"
+
+msgid "Today"
+msgstr ""
+
+msgid "Last week"
+msgstr "Letzte Woche"
+
+msgid "Last month"
+msgstr "Letzer Monat"
+
+msgid "Last quarter"
+msgstr "Letztes Quartal"
+
+msgid "Last year"
+msgstr "Letztes Jahr"
+
+# Hint: message id None in contrib/admin
+msgid "none"
+msgstr ""
+
+msgid "grant access first"
+msgstr "Zuerst muss Zugriff erlaubt werden"
+
+msgid "counters loading failed"
+msgstr "Laden des Zählers fehlgeschlagen"
+
+msgid "Show"
+msgstr ""
+
+msgid "users"
+msgstr ""
+
+msgid "sessions"
+msgstr ""
+
+msgid "views"
+msgstr ""
+
+msgid "Group"
+msgstr ""
+
+msgid "By day"
+msgstr "Nach Tag"
+
+msgid "By week"
+msgstr "Nach Woche"
+
+msgid "By month"
+msgstr "Nach Monat"
+
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Google account and choose Google Analytics "
+"counter</a> to start using widget"
+msgstr ""
+"Bitte <a href=\"%s\">mit Google Konto verbinden und Google Analytics "
+"Zähler auswählen</a>, um das Widget verwenden zu können"
+
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Google Analytics counter</a> to start using "
+"widget"
+msgstr ""
+"Bitte <a href=\"%s\">Google Analytics Zähler auswählen</a>, um das Widget "
+"verwenden zu können"
+
+msgid "API request failed."
+msgstr "API Request fehlgeschlagen."
+
+#, python-format
+msgid " Try to <a href=\"%s\">revoke and grant access</a> again"
+msgstr " Versuche <a href=\"%s\">Zugriff zurückzuziehen und anschließend wieder zu erlauben</a>"
+
+msgid "Google Analytics visitors totals"
+msgstr "Google Analytics Besucher insgesamt"
+
+msgid "Bad server response"
+msgstr ""
+
+msgid "Google Analytics visitors chart"
+msgstr "Google Analytics Besucher Diagramm"
+
+msgid "Google Analytics period visitors"
+msgstr "Google Analytics Besucher im Zeitraum"
+
+msgid "Module not found"
+msgstr "Modul nicht gefunden"
+
+msgid "Bad arguments"
+msgstr "Falsche Argumente"
+
+msgid "visitors"
+msgstr "Besucher"
+
+msgid "visits"
+msgstr "Besuche"
+
+#, python-format
+msgid ""
+"Please <a href=\"%s\">attach Yandex account and choose Yandex Metrika "
+"counter</a> to start using widget"
+msgstr ""
+"Bitte <a href=\"%s\">Yandex Konto verbinden und Yandex Metrika "
+"Zähler auswählen</a>, um Widget zu verwenden"
+
+#, python-format
+msgid ""
+"Please <a href=\"%s\">select Yandex Metrika counter</a> to start using widget"
+msgstr ""
+"Bitte <a href=\"%s\">Yandex Metrika Zähler auwählen</a>, um das Widget verwenden zu können"
+
+msgid "Yandex Metrika visitors totals"
+msgstr "Yandex Metrika Besucher insgesamt"
+
+msgid "Yandex Metrika visitors chart"
+msgstr "Yandex Metrika Besucher Diagramm"
+
+msgid "Yandex Metrika period visitors"
+msgstr "Yandex Metrika Besuche im Zeitraum"
+
+msgid "Title"
+msgstr ""
+
+msgid "module"
+msgstr "Modul"
+
+msgid "application name"
+msgstr ""
+
+msgid "user"
+msgstr ""
+
+msgid "column"
+msgstr "Spalte"
+
+msgid "order"
+msgstr "Sortierung"
+
+msgid "settings"
+msgstr "Einstellungen"
+
+msgid "children"
+msgstr "Kinder"
+
+msgid "collapsed"
+msgstr "eingeklappt"
+
+msgid "user dashboard module"
+msgstr "Benutzer Dashboard Modul"
+
+msgid "user dashboard modules"
+msgstr "Benutzer Dashboard Module"
+
+msgid "URL"
+msgstr ""
+
+msgid "External link"
+msgstr "Externer Link"
+
+msgid "Layout"
+msgstr ""
+
+msgid "Stacked"
+msgstr "Gestapelt"
+
+msgid "Inline"
+msgstr ""
+
+msgid "Links"
+msgstr "Links"
+
+msgid "Link"
+msgstr "Link"
+
+msgid "Models"
+msgstr "Modelle"
+
+msgid "Items limit"
+msgstr "Objektlimit"
+
+msgid "Feed URL"
+msgstr ""
+
+msgid "RSS Feed"
+msgstr ""
+
+msgid "You must install the FeedParser python module"
+msgstr "Bitte FeedParser Python modul installieren"
+
+msgid "You must provide a valid feed URL"
+msgstr "Bitte eine gültige Feed URL angeben"
+
+msgid "Delete widget"
+msgstr "Widget löschen"
+
+msgid "Are you sure want to delete this widget?"
+msgstr "Sind sie sicher, dass sie das Widget löschen wollen?"
+
+msgid "widgets"
+msgstr "Widgets"
+
+msgid "available"
+msgstr "verfügbar"
+
+msgid "initials"
+msgstr ""
+
+msgid "Add"
+msgstr ""
+
+msgid "Reset widgets"
+msgstr "Widgets zurücksetzen"
+
+msgid "Are you sure want to reset widgets?"
+msgstr "Sind sie sicher, dass sie die Widgets zurücksetzen wollen?"
+
+msgid "Change"
+msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+#, python-format
+msgid "Models in the %(name)s application"
+msgstr ""
+
+msgid "Nothing to show"
+msgstr "Nichts anzuzeigen"
+
+msgid "Date"
+msgstr ""
+
+msgid "None available"
+msgstr ""
+
+msgid "Unknown content"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Please correct the errors below."
+msgstr ""
+
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Widget was successfully updated"
+msgstr "Widget wurde erfolgreich aktualisiert"
+
+msgid "Items"
+msgstr "Objekte"
+
+msgid "Widget has been successfully added"
+msgstr "Widget wurde erfolgreich hinzugefügt"

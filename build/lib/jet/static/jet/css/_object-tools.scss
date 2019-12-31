@@ -1,0 +1,69 @@
+@import "globals";
+
+/* OBJECT TOOLS */
+
+.object-tools {
+  display: none;
+  text-align: right;
+  padding: 0;
+  margin: 0 0 20px 0;
+
+  @include for-mobile {
+    text-align: left;
+  }
+
+  &.initialized {
+    display: block;
+  }
+
+  .form-row & {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: none;
+    height: 2em;
+    padding-left: 3.5em;
+  }
+
+  li {
+    display: inline-block;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    list-style-type: none;
+    vertical-align: top;
+
+    @include for-mobile {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
+
+  body.change-list & {
+    float: right;
+    position: relative;
+    z-index: 1;
+
+    @include for-mobile {
+      float: none;
+    }
+
+    li {
+      display: list-item;
+    }
+  }
+
+  a.addlink {
+    &:before {
+      @include font-icon;
+      color: $button-text-color;
+      font-size: 13px;
+      content: $icon-add;
+      vertical-align: middle;
+      margin-top: -3px;
+      margin-right: 3px;
+    }
+
+    &:hover:before {
+      color: $button-hover-text-color;
+    }
+  }
+}

@@ -1,0 +1,297 @@
+@import "globals";
+
+
+/* LINKS */
+
+a, a:visited, a:hover, a:focus {
+  color: $link-color;
+  font-weight: normal;
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  color: $hover-link-color;
+}
+
+a img {
+  border: none;
+}
+
+//a.section:link, a.section:visited {
+//    color: #fff;
+//    text-decoration: none;
+//}
+//
+//a.section:focus, a.section:hover {
+//    text-decoration: underline;
+//}
+
+/* GLOBAL DEFAULTS */
+
+p, ol, ul, dl {
+  margin: .2em 0 .8em 0;
+}
+
+p {
+  padding: 0;
+  line-height: 140%;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+h1 {
+  margin: 0 0 20px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 1em 0 .5em 0;
+}
+
+h2.subhead {
+  font-weight: normal;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 14px;
+  margin: .8em 0 .3em 0;
+  font-weight: bold;
+}
+
+h4 {
+  font-size: 12px;
+  margin: 1em 0 .8em 0;
+  padding-bottom: 3px;
+}
+
+h5 {
+  font-size: 10px;
+  margin: 1.5em 0 .5em 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+ul li {
+  list-style-type: square;
+  padding: 0;
+}
+
+li ul {
+  margin-bottom: 0;
+}
+
+dt, dd {
+  line-height: 20px;
+}
+
+dt {
+  font-weight: bold;
+  margin-top: 4px;
+}
+
+dd {
+  margin-left: 0;
+}
+
+form {
+  margin: 0;
+  padding: 0;
+}
+
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+blockquote {
+  font-size: 11px;
+  color: #777;
+  margin-left: 2px;
+  padding-left: 10px;
+  border-left: 5px solid #ddd;
+}
+
+code, pre {
+  font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;
+  color: #666;
+  font-size: 12px;
+}
+
+pre.literal-block {
+  margin: 10px;
+  background: #eee;
+  padding: 6px 8px;
+}
+
+code strong {
+  color: #930;
+}
+
+hr {
+  clear: both;
+  color: #eee;
+  background-color: #eee;
+  height: 1px;
+  border: none;
+  margin: 0;
+  padding: 0;
+  font-size: 1px;
+  line-height: 1px;
+}
+
+/* TEXT STYLES & MODIFIERS */
+
+.small {
+  font-size: 11px;
+}
+
+.tiny {
+  font-size: 10px;
+}
+
+p.tiny {
+  margin-top: -2px;
+}
+
+.mini {
+  font-size: 10px;
+}
+
+p.mini {
+  margin-top: -3px;
+}
+
+.help, p.help, form p.help {
+  color: $dim-text-color;
+  font-size: 12px;
+}
+
+.help-tooltip {
+  cursor: help;
+}
+
+p img, h1 img, h2 img, h3 img, h4 img, td img {
+  vertical-align: middle;
+}
+
+.quiet, a.quiet:link, a.quiet:visited {
+  font-weight: normal;
+  color: $dim-text-color;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+  float: left;
+}
+
+.clear {
+  clear: both;
+}
+
+.align-left {
+  text-align: left;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.example {
+  margin: 10px 0;
+  padding: 5px 10px;
+  background: #efefef;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+/* ACTION ICONS */
+
+.addlink {
+  vertical-align: middle;
+
+  &:before {
+    @include font-icon;
+    content: $icon-add3;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
+
+.changelink, .inlinechangelink {
+  vertical-align: middle;
+
+  &:before {
+    @include font-icon;
+    content: $icon-edit;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
+
+.deletelink {
+  vertical-align: middle;
+
+  &:before {
+    @include font-icon;
+    content: $icon-cross;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
+
+.inlineviewlink {
+  vertical-align: middle;
+
+  &:before {
+    @include font-icon;
+    content: $icon-open-external;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
+
+/* BOOLEAN ICONS */
+
+img[src$="admin/img/icon-yes.gif"], img[src$="admin/img/icon-yes.svg"],
+img[src$="admin/img/icon-no.gif"], img[src$="admin/img/icon-no.svg"],
+img[src$="admin/img/icon-unknown.gif"], img[src$="admin/img/icon-unknown.svg"] {
+  display: none;
+
+  + span {
+    font-weight: bold;
+    color: $success-text-color;
+  }
+}
+
+img[src$="admin/img/icon-yes.gif"] + span, img[src$="admin/img/icon-yes.svg"] + span {
+  color: $success-text-color;
+}
+
+img[src$="admin/img/icon-no.gif"] + span, img[src$="admin/img/icon-no.svg"] + span {
+  color: $warning-text-color;
+}
+
+/* LOADING INDOCATOR */
+
+.loading-indicator {
+  display: inline-block;
+  font-size: 32px;
+  color: $button-hover-background-color;
+  animation: spin 4s linear infinite;
+
+  &-wrapper {
+    text-align: center;
+    padding: 40px 0;
+  }
+}

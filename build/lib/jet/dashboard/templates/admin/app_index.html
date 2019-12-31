@@ -1,0 +1,37 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static jet_dashboard_tags %}
+
+{% block html %}{% get_dashboard 'app_index' as dashboard %}{{ block.super }}{% endblock %}
+
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "admin/css/dashboard.css" %}" />
+
+    {% for css in dashboard.media.css %}
+        <link href="{% static css %}" rel="stylesheet" />
+    {% endfor %}
+{% endblock %}
+
+{% block extrahead %}
+    {{ block.super }}
+
+    {% for js in dashboard.media.js %}
+        <script src="{% static js %}"></script>
+    {% endfor %}
+{% endblock %}
+
+{% block bodyclass %}{{ block.super }} dashboard jet app-{{ app_label }}{% endblock %}
+
+{% block sidebar %}{% endblock %}
+
+{% block breadcrumbs %}
+    {% if not is_popup %}
+        <div class="breadcrumbs"></div>
+    {% endif %}
+
+    {{ dashboard.render_tools }}
+{% endblock %}
+
+{% block content %}
+    {{ dashboard.render }}
+{% endblock %}
