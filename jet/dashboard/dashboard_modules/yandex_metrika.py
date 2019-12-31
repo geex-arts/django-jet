@@ -103,12 +103,12 @@ class AccessTokenWidget(Widget):
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
             link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk}),
+                reverse('dashboard:yandex-metrika-revoke', kwargs={'pk': self.module.model.pk}),
                 force_text(_('Revoke access'))
             )
         else:
             link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk}),
+                reverse('dashboard:yandex-metrika-grant', kwargs={'pk': self.module.model.pk}),
                 force_text(_('Grant access'))
             )
 
@@ -220,10 +220,10 @@ class YandexMetrikaBase(DashboardModule):
 
     def counter_attached(self):
         if self.access_token is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">attach Yandex account and choose Yandex Metrika counter</a> to start using widget') % reverse('dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">select Yandex Metrika counter</a> to start using widget') % reverse('dashboard:update_module', kwargs={'pk': self.model.pk}))
             return False
         else:
             return True
@@ -239,7 +239,7 @@ class YandexMetrikaBase(DashboardModule):
             if exception is not None:
                 error = _('API request failed.')
                 if isinstance(exception, HTTPError) and exception.code == 403:
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk})
+                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('dashboard:update_module', kwargs={'pk': self.model.pk})
                 self.error = mark_safe(error)
             else:
                 return result

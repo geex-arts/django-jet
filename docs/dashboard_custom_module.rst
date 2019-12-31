@@ -186,4 +186,4 @@ After that you can reverse url to module's view this way:
 
     .. code-block:: html
 
-        {% url "jet-dashboard:update-database" %}
+        {% url "dashboard:update-database" %}

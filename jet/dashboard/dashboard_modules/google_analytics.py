@@ -147,12 +147,12 @@ class CredentialWidget(Widget):
     def render(self, name, value, attrs=None):
         if value and len(value) > 0:
             link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
+                reverse('dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
                 force_text(_('Revoke access'))
             )
         else:
             link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
+                reverse('dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
                 force_text(_('Grant access'))
             )
 
@@ -280,10 +280,10 @@ class GoogleAnalyticsBase(DashboardModule):
 
     def counter_attached(self):
         if self.credential is None:
-            self.error = mark_safe(_('Please <a href="%s">attach Google account and choose Google Analytics counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">attach Google account and choose Google Analytics counter</a> to start using widget') % reverse('update_module', kwargs={'pk': self.model.pk}))
             return False
         elif self.counter is None:
-            self.error = mark_safe(_('Please <a href="%s">select Google Analytics counter</a> to start using widget') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk}))
+            self.error = mark_safe(_('Please <a href="%s">select Google Analytics counter</a> to start using widget') % reverse('update_module', kwargs={'pk': self.model.pk}))
             return False
         else:
             return True
@@ -304,7 +304,7 @@ class GoogleAnalyticsBase(DashboardModule):
             except Exception as e:
                 error = _('API request failed.')
                 if isinstance(e, AccessTokenRefreshError):
-                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('jet-dashboard:update_module', kwargs={'pk': self.model.pk})
+                    error += _(' Try to <a href="%s">revoke and grant access</a> again') % reverse('update_module', kwargs={'pk': self.model.pk})
                 self.error = mark_safe(error)
 
 

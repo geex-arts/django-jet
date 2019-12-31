@@ -18,19 +18,19 @@
     <p>{% trans "Are you sure want to delete this widget?" %}</p>
 </div>
 
-<form action="{% url "jet-dashboard:update_dashboard_modules" %}" method="POST" id="update-dashboard-modules-form">
+<form action="{% url "dashboard:update_dashboard_modules" %}" method="POST" id="update-dashboard-modules-form">
     {% csrf_token %}
     <input type="hidden" name="app_label" value="{% if app_label %}{{ app_label }}{% endif %}">
     <input type="hidden" name="modules">
 </form>
 
-<form action="{% url "jet-dashboard:update_dashboard_module_collapse" %}" method="POST" id="update-dashboard-module-collapse-form">
+<form action="{% url "dashboard:update_dashboard_module_collapse" %}" method="POST" id="update-dashboard-module-collapse-form">
     {% csrf_token %}
     <input type="hidden" name="id">
     <input type="hidden" name="collapsed">
 </form>
 
-<form action="{% url "jet-dashboard:remove_dashboard_module" %}" method="POST" id="remove-dashboard-module-form">
+<form action="{% url "dashboard:remove_dashboard_module" %}" method="POST" id="remove-dashboard-module-form">
     {% csrf_token %}
     <input type="hidden" name="id">
 </form>
