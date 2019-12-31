@@ -1,0 +1,513 @@
+@import "globals";
+
+/* DASHBOARD */
+
+.dashboard {
+  .module {
+    margin-bottom: 10px;
+
+    table {
+      th {
+        width: 100%;
+      }
+
+      td {
+        white-space: nowrap;
+
+        a {
+          display: block;
+          padding-right: .6em;
+        }
+      }
+    }
+  }
+
+  #content {
+    max-width: 600px;
+
+    @include for-mobile {
+      max-width: none;
+    }
+  }
+
+  &.jet #content {
+    max-width: none;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+
+    @include for-mobile {
+      display: none;
+    }
+  }
+
+  &.jet.change-form .breadcrumbs {
+    @include for-mobile {
+      display: block;
+    }
+  }
+}
+
+/* RECENT ACTIONS MODULE */
+
+#recent-actions-module {
+  > h2 {
+    padding: 6px;
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  > h3 {
+    display: none;
+  }
+}
+
+.module ul.actionlist {
+  padding: 0;
+  margin: 0 0 2px 0;
+  border-collapse: collapse;
+  background: $content-background-color;
+  border-radius: 4px;
+  overflow-x: auto;
+  box-shadow: 0 2px 0 0 $content-border2-color;
+}
+
+ul.actionlist li {
+  padding: 8px;
+  list-style-type: none;
+  font-size: 13px;
+  border-bottom: 1px solid $content-border-color;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  br {
+    display: none;
+  }
+}
+
+/* JET DASHBOARD */
+
+.dashboard {
+  &-container {
+    min-height: 100%;
+  }
+
+  @for $i from 1 through 5 {
+    &-container.columns_#{$i} &-column-wrapper {
+      width: (100% / $i);
+
+      @include for-mobile {
+        width: 100%;
+      }
+    }
+  }
+
+  &-tools {
+    position: absolute;
+    top: ($top-height + 10px * 2) / 2 - 30px / 2;
+    right: 20px + 175px + 20px;
+
+    @include for-mobile {
+      display: none;
+      position: static;
+      margin: 10px 20px 0 20px;
+      padding: 10px;
+      background: $content-background-color;
+      border-radius: 5px;
+    }
+
+    @include for-phone {
+      margin: 10px 10px 0 10px;
+    }
+
+    .button {
+      vertical-align: middle;
+    }
+
+    &.visible {
+      @include for-mobile {
+        display: block;
+      }
+    }
+
+    &-toggle {
+      &-icon {
+        vertical-align: middle;
+      }
+
+      &-container {
+        display: none;
+        margin: 20px 20px 0 20px;
+        text-align: right;
+
+        @include for-mobile {
+          display: block;
+        }
+
+        @include for-phone {
+          margin: 10px 10px 0 10px;
+        }
+      }
+    }
+  }
+
+  &-column {
+    margin-left: 10px;
+    border: 2px dashed transparent;
+    min-height: 100px;
+    border-radius: 4px;
+
+    @include for-mobile {
+      margin-left: 0;
+      min-height: 0;
+    }
+
+    &-wrapper {
+      float: left;
+      min-width: 200px;
+    }
+
+    &.first {
+      margin-left: 0;
+    }
+
+    &.active {
+      border-color: $content-border2-color;
+    }
+
+    &.hovered { }
+  }
+
+  &-item {
+    background: $background-color;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    transition: background $transitions-duration;
+
+    @include for-mobile {
+      margin-bottom: 10px;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+
+      @include for-mobile {
+        margin-bottom: 10px;
+      }
+    }
+
+    &.collapsed {
+      background-color: $content-contrast3-background-color;
+    }
+
+    &.ui-sortable-helper {
+      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    }
+
+    &.placeholder {
+      background-color: $content-selected-background-color;
+    }
+
+    &-header {
+      padding: 0 10px 0 6px;
+
+      &-title {
+        display: block;
+        font-size: 11px;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      &-drag {
+        float: right;
+        line-height: 30px !important;
+        margin-left: 10px;
+
+        html.touchevents & {
+          display: none;
+        }
+      }
+
+      &-collapse-button {
+        font-size: 13px;
+        vertical-align: middle;
+        font-weight: bold !important;
+      }
+
+      &-buttons {
+        float: right;
+        margin-left: 10px;
+        font-size: 13px;
+        line-height: 30px;
+        vertical-align: middle;
+        visibility: hidden;
+
+        a {
+          vertical-align: middle;
+        }
+
+        html.touchevents & {
+          visibility: visible;
+        }
+      }
+
+      &:hover &-buttons {
+        visibility: visible;
+      }
+    }
+
+    &-content {
+      background: $content-background-color;
+      border-radius: 4px;
+      box-shadow: 0 2px 0 0 $content-border2-color;
+      overflow: hidden;
+
+      &.contrast {
+        background: $content-contrast2-background-color;
+        color: $content-contrast2-text-color;
+
+        .loading-indicator {
+          color: $content-contrast2-text-color;
+        }
+      }
+
+      ul:not(.inline) {
+        @extend .clear-list;
+
+        li {
+          display: block;
+          border-bottom: 1px solid $content-border-color;
+          font-size: 13px;
+          padding: 8px;
+
+          &.contrast {
+            background: $content-contrast2-background-color;
+            font-size: 12px;
+
+            &, & a, & a:visited, & a:hover {
+              color: $content-contrast2-text-color;
+              text-decoration: none;
+              text-transform: uppercase;
+            }
+          }
+
+          &:last-child {
+            border-bottom: 0;
+          }
+
+          .float-right {
+            float: right;
+            position: relative;
+          }
+
+          .dim {
+            text-transform: lowercase;
+            font-size: 11px;
+            color: $dim-text-color;
+          }
+
+          .warning {
+            color: $error-text-color;
+          }
+        }
+      }
+
+      ul.inline {
+        @extend .clear-list;
+        display: inline-block;
+
+        li {
+          display: inline-block;
+          margin-left: 10px;
+
+          &:first-child {
+            margin-left: 0;
+          }
+
+          .nowrap {
+            white-space: nowrap;
+          }
+        }
+
+        &.bordered li {
+          border-left: 1px solid $content-border2-color;
+          margin-left: 0;
+          padding: 0 10px;
+
+          &:first-child {
+            border-left: 0;
+          }
+        }
+      }
+
+      .padding {
+        padding: 10px;
+      }
+
+      .center {
+        text-align: center;
+      }
+
+      .big {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      .highlight {
+        color: $link-color;
+      }
+
+      .dim {
+        color: $dim-text-color;
+      }
+
+      .nowrap {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      canvas {
+        .chart {
+          &-fillColor {
+            color: $chart-fillColor;
+          }
+
+          &-strokeColor {
+            color: $chart-strokeColor;
+          }
+
+          &-pointColor {
+            color: $chart-pointColor;
+          }
+
+          &-pointHighlightFill {
+            color: $chart-pointHighlightFill;
+          }
+
+          &-scaleGridLineColor {
+            color: $chart-scaleGridLineColor;
+          }
+
+          &-scaleLineColor {
+            color: $chart-scaleLineColor;
+          }
+
+          &-scaleFontColor {
+            color: $chart-scaleFontColor;
+          }
+        }
+      }
+
+      table {
+        width: 100%;
+        box-shadow: none;
+      }
+    }
+
+    &-collapse .icon-arrow-up {
+      display: inline;
+    }
+
+    &-collapse .icon-arrow-down {
+      display: none;
+    }
+
+    &.collapsed &-content {
+      display: none;
+    }
+
+    &.collapsed &-collapse .icon-arrow-up {
+      display: none;
+    }
+
+    &.collapsed &-collapse .icon-arrow-down {
+      display: inline;
+    }
+  }
+}
+
+.add-dashboard {
+  + .select2 {
+    background-color: transparent;
+
+    @include for-mobile {
+      min-width: 160px;
+      max-width: 160px;
+    }
+
+    @include for-phone {
+      width: 100% !important;
+      max-width: none;
+      margin-bottom: 5px;
+    }
+
+    .select2-selection {
+      border-radius: 4px 0 0 4px !important;
+      border-width: 0;
+
+      @include for-mobile {
+        border-radius: 4px !important;
+        border-width: 1px;
+      }
+    }
+  }
+
+  &-link {
+    border-radius: 0 4px 4px 0 !important;
+    padding: 0 10px !important;
+
+    @include for-mobile {
+      margin-left: 6px;
+      border-radius: 4px !important;
+      margin-right: 5px;
+    }
+
+    @include for-phone {
+      margin-left: 0;
+    }
+
+    &-icon {
+      vertical-align: middle;
+    }
+
+    &-label {
+      display: none;
+      vertical-align: middle;
+      margin-left: 4px;
+    }
+  }
+}
+
+.reset-dashboard-link {
+  @include for-mobile {
+    float: right;
+  }
+
+  @include for-phone {
+    float: none;
+  }
+
+  &-icon {
+    vertical-align: middle;
+  }
+
+  &-label {
+    display: none;
+    vertical-align: middle;
+    margin-left: 6px;
+
+    @include for-mobile {
+      display: inline;
+    }
+  }
+}

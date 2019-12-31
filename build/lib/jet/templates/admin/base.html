@@ -1,0 +1,399 @@
+{% load i18n static jet_tags %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% jet_get_current_theme as THEME %}
+{% jet_get_current_version as JET_VERSION %}
+{% block html %}<html lang="{{ LANGUAGE_CODE|default:"en-us" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>{% block title %}{% endblock %}</title>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+<link rel="stylesheet" type="text/css" href="{% block stylesheet %}{% static "admin/css/base.css" %}{% endblock %}" />
+
+<link rel="stylesheet" type="text/css" href="{% static "jet/css/vendor.css" as url %}{{ url|jet_append_version }}" />
+<link rel="stylesheet" type="text/css" href="{% static "jet/css/icons/style.css" as url %}{{ url|jet_append_version }}" />
+<link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/base.css" as url %}{{ url|jet_append_version }}" class="base-stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/select2.theme.css" as url %}{{ url|jet_append_version }}" class="select2-stylesheet" />
+<link rel="stylesheet" type="text/css" href="{% static "jet/css/themes/"|add:THEME|add:"/jquery-ui.theme.css" as url %}{{ url|jet_append_version }}" class="jquery-ui-stylesheet" />
+
+{% block extrastyle %}{% endblock %}
+{% if LANGUAGE_BIDI %}<link rel="stylesheet" type="text/css" href="{% block stylesheet_rtl %}{% static "admin/css/rtl.css" %}{% endblock %}" />{% endif %}
+{% jet_get_date_format as date_format %}
+{% jet_get_time_format as time_format %}
+{% jet_get_datetime_format as datetime_format %}
+
+<script type="text/javascript" charset="utf-8">
+    var DATE_FORMAT = "{{ date_format }}";
+    var TIME_FORMAT = "{{ time_format }}";
+    var DATETIME_FORMAT = "{{ datetime_format }}";
+</script>
+<script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
+<script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
+
+{% jet_static_translation_urls as translation_urls %}
+{% for url in translation_urls %}
+    <script src="{% static url as url %}{{ url|jet_append_version }}"></script>
+{% endfor %}
+
+{% block extrahead %}{% endblock %}
+{% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
+</head>
+{% load i18n %}
+
+<body class="{% if request.COOKIES.sidebar_pinned != 'false' %}menu-pinned {% endif %}{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}"
+  data-admin-utc-offset="{% now "Z" %}">
+
+<!-- Container -->
+<div id="container">
+
+    {% if not is_popup %}
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <span id="branding-menu" class="sidebar-header-menu-icon icon-menu sidebar-toggle"></span>
+            <span id="branding-pin" class="sidebar-link-icon icon-pin sidebar-pin"></span>
+            {% block branding %}{% endblock %}
+        </div>
+        {% block usertools %}
+        {% if user.is_active and user.is_staff or has_permission %}
+        <div id="user-tools">
+            {% block welcome-msg %}
+                {% trans 'Welcome,' %}
+                <strong>{% firstof user.get_short_name user.get_username %}</strong>.
+            {% endblock %}
+            {% block userlinks %}
+                {% if site_url %}
+                    <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+                {% endif %}
+                {% if user.is_active and user.is_staff %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+                    {% endif %}
+                {% endif %}
+                {% if user.has_usable_password %}
+                <a href="{% url 'admin:password_change' %}">{% trans 'Change password' %}</a> /
+                {% endif %}
+                <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% endblock %}
+    </div>
+    <!-- END Header -->
+
+    {% block breadcrumbs %}
+    <div class="breadcrumbs">
+    <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+    {% if title %} &rsaquo; {{ title }}{% endif %}
+    </div>
+    {% endblock %}
+    {% endif %}
+
+    {% block messages %}
+        {% if messages %}
+        <ul class="messagelist">{% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message|capfirst }}</li>
+        {% endfor %}</ul>
+        {% endif %}
+    {% endblock messages %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer"></div>{% endblock %}
+
+    {% jet_delete_confirmation_context as delete_confirmation_context %}
+    {{ delete_confirmation_context }}
+
+    {% jet_change_form_sibling_links_enabled as show_siblings %}
+    {% if change and show_siblings %}
+        <div class="changeform-navigation">
+            {% spaceless %}
+                {% jet_previous_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon left icon-arrow-left"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </span>
+                </a>
+
+                {% jet_next_object as sibling %}
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                    <span class="changeform-navigation-button-icon right icon-arrow-right"></span>
+                    <span class="changeform-navigation-button-label">
+                        {% if sibling %}
+                            {{ sibling.label }}
+                        {% else %}
+                            ---
+                        {% endif %}
+                    </span>
+                </a>
+            {% endspaceless %}
+        </div>
+    {% endif %}
+
+    {% jet_get_side_menu_compact as SIDE_MENU_COMPACT %}
+    {% if not is_popup %}
+        <div class="related-popup-container scrollable">
+            <a href="#" class="related-popup-back">
+                <span class="related-popup-back-icon icon-arrow-left"></span>
+                <span class="related-popup-back-label">{% trans "back" %}</span>
+            </a>
+            <span class="icon-refresh loading-indicator"></span>
+        </div>
+
+        <div class="sidebar-header-wrapper sidebar-dependent">
+            <div class="sidebar-header sidebar-dependent">
+                <a href="#" class="sidebar-header-menu sidebar-toggle">
+                    <span class="sidebar-header-menu-icon icon-menu"></span>
+                    <span class="sidebar-header-menu-icon icon-cross"></span>
+                </a>
+            </div>
+        </div>
+        <div class="sidebar sidebar-dependent">
+            <div class="sidebar-wrapper scrollable">
+                <div class="sidebar-section">
+                    {% if user.is_active and user.is_staff %}
+                        <a href="{% url 'admin:index' %}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-data"></span>
+                                {% trans 'Home' %}
+                            </span>
+                        </a>
+                    {% endif %}
+                    {% if site_url %}
+                        <a href="{{ site_url }}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-open-external"></span>
+                                {% trans 'View site' %}
+                            </span>
+                        </a>
+                    {% endif %}
+                    {% url 'django-admindocs-docroot' as docsroot %}
+                    {% if docsroot %}
+                        <a href="{{ docsroot }}" class="sidebar-link icon">
+                            <span class="sidebar-link-label">
+                                <span class="sidebar-link-icon icon-book"></span>
+                                {% trans 'Documentation' %}
+                            </span>
+                        </a>
+                    {% endif %}
+                    {% block nav-global %}{% endblock %}
+                </div>
+
+                {% if user.is_active and user.is_staff %}
+                    {% jet_get_menu as app_list %}
+                    {% if SIDE_MENU_COMPACT %}
+                        {% for app in app_list %}
+                            {% if app.has_perms %}
+                                <div class="sidebar-section">
+                                    <div class="sidebar-title">
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-title-link"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            {{ app.label }}
+                                        </a>
+                                    </div>
+                                    {% for model in app.items %}
+                                        {% if model.has_perms %}
+                                            <div>
+                                                <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                                                    <span class="sidebar-right">
+                                                        <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                                    </span>
+                                                    <span class="sidebar-link-label">{{ model.label }}</span>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <form action="{% url "jet:toggle_application_pin" %}" method="POST" id="toggle-application-pin-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="app_label">
+                        </form>
+
+                        <div class="sidebar-section">
+                            <div class="sidebar-title">
+                                <span class="sidebar-right">
+                                    <a href="#" class="sidebar-right-edit edit-apps-list"><span class="icon-settings"></span></a>
+                                </span>
+                                {% trans 'Applications' %}
+                            </div>
+
+                            <div class="apps-list-pinned">
+                                {% for app in app_list %}
+                                    {% if app.has_perms and app.pinned %}
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                {{ app.label }}
+                                            </span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                            <a href="#" class="sidebar-center-link apps-hide">
+                                <span class="apps-hide-label apps-visible">{% trans "Hide applications" %}</span>
+                                <span class="apps-hide-label apps-hidden">{% trans "Show hidden" %}</span>
+                            </a>
+                            <div class="apps-list">
+                                {% for app in app_list %}
+                                    {% if app.has_perms and not app.pinned %}
+                                        <a{% if app.url %} href="{{ app.url }}"{% endif %} class="sidebar-link popup-section-link app-item" data-app-label="{{ app.app_label }}" data-popup-section-class="sidebar-popup-section-{{ app.app_label }}" data-order="{{ forloop.counter }}"{% if app.url_blank %} target="_blank"{% endif %}>
+                                            <span class="sidebar-left collapsible">
+                                                <span class="sidebar-left-pin icon-star pin-toggle"></span>
+                                                <span class="sidebar-left-unpin icon-cross pin-toggle"></span>
+                                            </span>
+
+                                            <span class="sidebar-right">
+                                                <span class="sidebar-right-arrow icon-arrow-right"></span>
+                                            </span>
+
+                                            <span class="sidebar-link-label">
+                                                {{ app.label }}
+                                            </span>
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+
+                    <div class="sidebar-section last">
+                        <div class="dialog-confirm" id="bookmarks-add-dialog" title="{% trans "Add bookmark" %}">
+                            <form action="{% url "jet:add_bookmark" %}" method="POST" id="bookmarks-add-form">
+                                {% csrf_token %}
+                                <p>{% trans "Title" %}:</p>
+                                <input type="text" name="title" class="fill_width">
+                                <p>{% trans "URL" %}:</p>
+                                <input type="text" name="url" class="fill_width">
+                            </form>
+                        </div>
+                        <form action="{% url "jet:remove_bookmark" %}" method="POST" id="bookmarks-remove-form">
+                            {% csrf_token %}
+                            <input type="hidden" name="id">
+                        </form>
+                        <div class="dialog-confirm" id="bookmarks-remove-dialog" title="{% trans "Delete bookmark" %}">
+                            <p>{% trans "Are you sure want to delete this bookmark?" %}</p>
+                        </div>
+
+                        <div class="sidebar-title">
+                            <span class="sidebar-right">
+                                <a href="#" class="sidebar-right-plus bookmarks-add" title="{% trans "Add bookmark" %}"{% if title %} data-title="{{ title }}"{% endif %}><span class="icon-add"></span></a>
+                            </span>
+                            {% trans 'bookmarks' %}
+                        </div>
+
+                        <div class="bookmarks-list">
+                            {% jet_get_bookmarks user as bookmarks %}
+                            {% for bookmark in bookmarks %}
+                                <a href="{{ bookmark.url }}" class="sidebar-link bookmark-item">
+                                    <span class="sidebar-right collapsible">
+                                        <span class="sidebar-right-remove bookmarks-remove" data-bookmark-id="{{ bookmark.pk }}">{% trans "Remove" %}</span>
+                                    </span>
+                                    <span class="sidebar-link-label">{{ bookmark.title }}</span>
+                                </a>
+                            {% endfor %}
+                            <a class="sidebar-link bookmark-item clone">
+                                <span class="sidebar-right collapsible">
+                                    <span class="sidebar-right-remove bookmarks-remove">{% trans "Remove" %}</span>
+                                </span>
+                                <span class="sidebar-link-label"></span>
+                            </a>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            {% if app_list and not SIDE_MENU_COMPACT %}
+                <div class="sidebar-popup-container">
+                    <div class="sidebar-popup scrollable">
+                        <a href="#" class="sidebar-close sidebar-back">
+                            <span class="sidebar-close-icon icon-arrow-left"></span>
+                        </a>
+                        {% for app in app_list %}
+                            {% if app.has_perms %}
+                                <div class="sidebar-popup-section sidebar-popup-section-{{ app.app_label }}">
+                                    <div class="sidebar-popup-title">
+                                        {{ app.label }}
+                                    </div>
+
+                                    <input class="sidebar-popup-search" placeholder="{% trans "Search" %}...">
+
+                                    <ul class="sidebar-popup-list">
+                                        {% if app.url %}
+                                            <li class="sidebar-popup-list-item app-{{ app.app_label }}{{ app.current|yesno:" current," }}">
+                                                <a href="{{ app.url }}" class="sidebar-popup-list-item-link">{% trans 'Application page' %}</a>
+                                            </li>
+                                        {% endif %}
+
+                                        {% for model in app.items %}
+                                            {% if model.has_perms %}
+                                                <li class="sidebar-popup-list-item{% if model.name %} model-{{ model.name }}{% endif %}{{ model.current|yesno:" current," }}">
+                                                    <a{% if model.url %} href="{{ model.url }}"{% endif %} class="sidebar-popup-list-item-link"{% if model.url_blank %} target="_blank"{% endif %}>
+                                                        {{ model.label }}
+                                                    </a>
+                                                </li>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endif %}
+
+    {% jet_get_themes as THEMES %}
+    {% if THEMES %}
+        <li class="user-tools-contrast-block theme-chooser">
+            <div class="user-tools-contrast-block-title">{% trans "current theme" %}</div>
+            <div class="user-tools-theme-link-container">
+                {% spaceless %}
+                    {% for conf_theme in THEMES %}
+                        {% if conf_theme.theme %}
+                            <a href="#"
+                               class="user-tools-theme-link choose-theme{% if conf_theme.theme == THEME %} selected{% endif %}"
+                               data-theme="{{ conf_theme.theme }}"
+                               data-base-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/base.css" %}?v={{ JET_VERSION }}"
+                               data-select2-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/select2.theme.css" %}?v={{ JET_VERSION }}"
+                               data-jquery-ui-stylesheet="{% static "jet/css/themes/"|add:conf_theme.theme|add:"/jquery-ui.theme.css" %}?v={{ JET_VERSION }}"
+                               {% if conf_theme.title %} title="{{ conf_theme.title }}"{% endif %}
+                               style="background-color: {{ conf_theme.color|default:"white" }};"
+                                    ></a>
+                        {% endif %}
+                    {% endfor %}
+                {% endspaceless %}
+            </div>
+        </li>
+    {% endif %}
+</div>
+<!-- END Container -->
+
+</body>
+</html>{% endblock %}

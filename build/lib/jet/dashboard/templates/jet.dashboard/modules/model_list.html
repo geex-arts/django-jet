@@ -1,0 +1,27 @@
+{% load i18n %}
+
+<ul>
+    {% for model in module.children %}
+        <li>
+            <span class="float-right">
+                {% if model.add_url %}
+                    <a href="{{ model.add_url }}" class="addlink" title="{% trans 'Add' %}"></a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+
+                {% if model.admin_url %}
+                    <a href="{{ model.admin_url }}" class="changelink" title="{% trans 'Change' %}"></a>
+                {% else %}
+                    &nbsp;
+                {% endif %}
+            </span>
+
+            {% if model.admin_url %}
+                <a href="{{ model.admin_url }}">{{ model.name }}</a>
+            {% else %}
+                {{ model.name }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

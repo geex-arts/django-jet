@@ -22,7 +22,7 @@ def yandex_metrika_revoke_view(request, pk):
     try:
         module = UserDashboardModule.objects.get(pk=pk)
         module.pop_settings(('access_token', 'expires_in', 'token_type', 'counter'))
-        return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
+        return redirect(reverse('dashboard:update_module', kwargs={'pk': module.pk}))
     except UserDashboardModule.DoesNotExist:
         return HttpResponse(_('Module not found'))
 
@@ -42,7 +42,7 @@ def yandex_metrika_callback_view(request):
         else:
             module.update_settings(result)
 
-        return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
+        return redirect(reverse('dashboard:update_module', kwargs={'pk': module.pk}))
     except KeyError:
         return HttpResponse(_('Bad arguments'))
     except UserDashboardModule.DoesNotExist:
