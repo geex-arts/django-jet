@@ -1,6 +1,6 @@
-==========
-Django JET
-==========
+===============================
+Django JET (Django3 compatible)
+===============================
 
 .. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
     :target: https://travis-ci.org/geex-arts/django-jet
@@ -16,7 +16,6 @@ Django JET
 +-----------------------------------------------------------------------------------------------------------------------------------+
 | `Live Demo <https://github.com/jet-admin/jet-bridge>`_                                                                            |
 +-----------------------------------------------------------------------------------------------------------------------------------+
-
 
 Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
 code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you a commercial
@@ -71,13 +70,13 @@ Screenshots
 Installation
 ============
 
-* Download and install latest version of Django JET:
+* Download and install the Django3 compatible version of Django JET:
 
 .. code:: python
 
-    pip install django-jet
+    pip install https://github.com/Barukimang/django-jet/archive/dev.zip
     # or
-    easy_install django-jet
+    easy_install https://github.com/Barukimang/django-jet/archive/dev.zip
 
 * Add 'jet' application to the INSTALLED_APPS setting of your Django project settings.py file (note it should be before 'django.contrib.admin'):
 
@@ -123,12 +122,12 @@ Installation
 
 .. code:: python
 
-    urlpatterns = patterns(
+    urlpatterns [
         '',
-        url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-        url(r'^admin/', include(admin.site.urls)),
+        path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+        path('admin/', include(admin.site.urls)),
         ...
-    )
+    ]
 
 * Create database tables:
 
@@ -168,13 +167,21 @@ Dashboard installation
 
 .. code:: python
 
-    urlpatterns = patterns(
+    urlpatterns [
         '',
-        url(r'^jet/', include('jet.urls', 'jet')),  # Django JET URLS
-        url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
-        url(r'^admin/', include(admin.site.urls)),
+        path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+        path('jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),  # Django JET dashboard URLS
+        path('admin/', include(admin.site.urls)),
         ...
-    )
+    ]
+
+.. warning::
+    From Django 3.0 the default value of the ``X_FRAME_OPTIONS`` setting was changed from ``SAMEORIGIN`` to ``DENY``. This can cause errors for popups such as for the ``Field Lookup Popup``. To solve this you should add the following to your django settings:
+    
+   .. code:: python
+        
+        X_FRAME_OPTIONS = 'SAMEORIGIN'
+        
 
 * **For Google Analytics widgets only** install python package:
 
@@ -195,6 +202,3 @@ Dashboard installation
 .. code:: python
 
         python manage.py collectstatic
-
-
-
