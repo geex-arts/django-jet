@@ -176,9 +176,9 @@ Dashboard installation
     ]
 
 .. warning::
-    From Django 3.0 the default value of the ``X_FRAME_OPTIONS`` setting was changed from ``SAMEORIGIN`` to ``DENY``. This can cause errors for popups such as for the ``Field Lookup Popup``. To solve this you should add the following to your django settings:
+    From Django 3.0 the default value of the ``X_FRAME_OPTIONS`` setting was changed from ``SAMEORIGIN`` to ``DENY``. This       can cause errors for popups such as for the ``Field Lookup Popup``. To solve this you should add the following to your       Django project settings.py file:
     
-   .. code:: python
+.. code:: python
         
         X_FRAME_OPTIONS = 'SAMEORIGIN'
         
