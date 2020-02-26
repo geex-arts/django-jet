@@ -32,8 +32,8 @@ setup(
     description='Modern template for Django admin interface with improved functionality',
     long_description=read('README.rst'),
     author='Denis Kildishev',
-    author_email='support@jet.geex-arts.com',
-    url='https://github.com/geex-arts/django-jet',
+    author_email='barukimang@gmail.com',
+    url='https://github.com/Barukimang/django-jet',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
