@@ -27,7 +27,7 @@ def get_install_requires():
     return install_requires
 
 setup(
-    name='django-jet',
+    name='django-3-jet',
     version=__import__('jet').VERSION,
     description='Modern template for Django admin interface with improved functionality',
     long_description=read('README.rst'),
