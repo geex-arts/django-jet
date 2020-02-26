@@ -1,21 +1,11 @@
 ===============================
-Django JET (Django3 compatible)
+Django JET (Django-3 compatible)
 ===============================
 
 .. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
     :target: https://travis-ci.org/geex-arts/django-jet
 
-**Modern template for Django admin interface with improved functionality**
-
-+-----------------------------------------------------------------------------------------------------------------------------------+
-| Attention! **NEW JET**                                                                                                            |
-+===================================================================================================================================+
-| **We are proud to announce completely new Jet. Please check out Live Demo.**                                                      |
-|                                                                                                                                   |
-| Developing of new features for Django Jet will be frozen, only critical bugs will be fixed.                                       |
-+-----------------------------------------------------------------------------------------------------------------------------------+
-| `Live Demo <https://github.com/jet-admin/jet-bridge>`_                                                                            |
-+-----------------------------------------------------------------------------------------------------------------------------------+
+**Modern template for Django-3 admin interface with improved functionality**
 
 Django JET has two kinds of licenses: open-source (AGPLv3) and commercial. Please note that using AGPLv3
 code in your programs make them AGPL compatible too. So if you don't want to comply with that we can provide you a commercial
