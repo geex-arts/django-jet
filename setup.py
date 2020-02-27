@@ -33,7 +33,7 @@ setup(
     long_description=read('README.rst'),
     author='Denis Kildishev',
     author_email='barukimang@gmail.com',
-    url='https://github.com/Barukimang/django-jet/archive/1.0.8-django3.tar.gz',
+    url='https://github.com/Barukimang/django-jet/',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
