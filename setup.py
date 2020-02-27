@@ -29,7 +29,7 @@ def get_install_requires():
 setup(
     name='django-3-jet',
     version=__import__('jet').VERSION,
-    description='Modern template for Django admin interface with improved functionality',
+    description='Modern template for Django-3 admin interface with improved functionality',
     long_description=read('README.rst'),
     author='Denis Kildishev',
     author_email='barukimang@gmail.com',
