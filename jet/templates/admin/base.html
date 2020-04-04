@@ -120,7 +120,7 @@
         <div class="changeform-navigation">
             {% spaceless %}
                 {% jet_previous_object as sibling %}
-                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button left{% if not sibling %} disabled{% endif %}" title="{% if sibling %}{{ sibling.label }}{% else %}---{% endif %}">
                     <span class="changeform-navigation-button-icon left icon-arrow-left"></span>
                     <span class="changeform-navigation-button-label">
                         {% if sibling %}
@@ -132,7 +132,7 @@
                 </a>
 
                 {% jet_next_object as sibling %}
-                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{{ sibling.label }}">
+                <a{% if sibling.url %} href="{{ sibling.url }}"{% endif %} class="changeform-navigation-button segmented-button right{% if not sibling %} disabled{% endif %}" title="{% if sibling %}{{ sibling.label }}{% else %}---{% endif %}">
                     <span class="changeform-navigation-button-icon right icon-arrow-right"></span>
                     <span class="changeform-navigation-button-label">
                         {% if sibling %}
