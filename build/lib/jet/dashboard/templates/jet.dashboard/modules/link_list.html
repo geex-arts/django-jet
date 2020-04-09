@@ -1,0 +1,29 @@
+{% load i18n %}
+
+{% if module.children %}
+    {% if module.layout == "stacked" %}
+        <ul>
+            {% for link in module.children %}
+                <li>
+                    <a href="{{ link.url }}">{% if link.external %}<span class="icon-open-external"></span> {% endif %}{{ link.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% elif module.layout == "inline" %}
+        <div class="padding center">
+            <ul class="inline">
+                {% for link in module.children %}
+                    <li>
+                        <a href="{{ link.url }}" class="nowrap">{% if link.external %}<span class="icon-open-external"></span> {% endif %}{{ link.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+{% else %}
+    <ul>
+        <li>
+            {% trans "Nothing to show" %}
+        </li>
+    </ul>
+{% endif %}

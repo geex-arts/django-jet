@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-20 10:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: jet/filters.py:67
+msgid "From date"
+msgstr "起始日期"
+
+#: jet/filters.py:73
+msgid "To date"
+msgstr "结束日期"
+
+#: jet/models.py:9 jet/templates/admin/base.html:276
+msgid "URL"
+msgstr "URL"
+
+#: jet/models.py:10
+msgid "title"
+msgstr "标题"
+
+#: jet/models.py:11 jet/models.py:26
+msgid "user"
+msgstr "用户"
+
+#: jet/models.py:12 jet/models.py:27
+msgid "date created"
+msgstr "创建日期"
+
+#: jet/models.py:15
+msgid "bookmark"
+msgstr "书签"
+
+#: jet/models.py:16 jet/templates/admin/base.html:292
+msgid "bookmarks"
+msgstr "书签"
+
+#: jet/models.py:25
+msgid "application name"
+msgstr "应用名称"
+
+#: jet/models.py:30
+msgid "pinned application"
+msgstr "固定应用"
+
+#: jet/models.py:31
+msgid "pinned applications"
+msgstr "固定应用"
+
+#: jet/templates/admin/base.html:53
+msgid "Welcome,"
+msgstr "欢迎,"
+
+#: jet/templates/admin/base.html:58 jet/templates/admin/base.html:159
+msgid "View site"
+msgstr "查看站点"
+
+#: jet/templates/admin/base.html:63 jet/templates/admin/base.html:168
+msgid "Documentation"
+msgstr "文档"
+
+#: jet/templates/admin/base.html:67
+msgid "Change password"
+msgstr "修改密码"
+
+#: jet/templates/admin/base.html:69
+msgid "Log out"
+msgstr "退出"
+
+#: jet/templates/admin/base.html:78 jet/templates/admin/base.html:151
+msgid "Home"
+msgstr "首页"
+
+#: jet/templates/admin/base.html:131
+msgid "back"
+msgstr "返回"
+
+#: jet/templates/admin/base.html:215
+msgid "Applications"
+msgstr "应用"
+
+#: jet/templates/admin/base.html:241
+msgid "Hide applications"
+msgstr "隐藏应用"
+
+#: jet/templates/admin/base.html:242
+msgid "Show hidden"
+msgstr "显示隐藏项"
+
+#: jet/templates/admin/base.html:271 jet/templates/admin/base.html:290
+msgid "Add bookmark"
+msgstr "添加书签"
+
+#: jet/templates/admin/base.html:274
+msgid "Title"
+msgstr "标题"
+
+#: jet/templates/admin/base.html:284
+msgid "Delete bookmark"
+msgstr "删除书签"
+
+#: jet/templates/admin/base.html:285
+msgid "Are you sure want to delete this bookmark?"
+msgstr "你确定要删除这个书签吗？"
+
+#: jet/templates/admin/base.html:300 jet/templates/admin/base.html:307
+#: jet/templates/admin/edit_inline/compact.html:3
+msgid "Remove"
+msgstr "删除"
+
+#: jet/templates/admin/base.html:337
+msgid "Application page"
+msgstr "应用页"
+
+#: jet/templates/admin/base.html:361
+msgid "current theme"
+msgstr "当前主题"
+
+#: jet/templates/admin/edit_inline/compact.html:12
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr "添加另一个%(verbose_name)s"
+
+#: jet/templates/admin/edit_inline/compact.html:37
+msgid "Change"
+msgstr "修改"
+
+#: jet/templates/admin/edit_inline/compact.html:43
+msgid "View on site"
+msgstr "在站点中查看"
+
+#: jet/templates/admin/popup_response.html:4
+msgid "Popup closing..."
+msgstr "弹窗关闭中..."
+
+#: jet/templates/jet/related_field_ajax_list_filter.html:2
+#: jet/templates/rangefilter/date_filter.html:2
+#: jet/templates/rangefilter/date_filter.html:16
+#, python-format
+msgid " By %(filter_title)s "
+msgstr "By %(filter_title)s"
+
+#: jet/templates/rangefilter/date_filter.html:33
+msgid "Search"
+msgstr "查找"
+
+#: jet/templates/rangefilter/date_filter.html:34
+msgid "Reset"
+msgstr "重置"

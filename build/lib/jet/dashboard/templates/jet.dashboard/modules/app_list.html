@@ -1,0 +1,38 @@
+{% load i18n %}
+
+<ul>
+    {% for app in module.children %}
+        <li class="contrast">
+            {% if app.name != app.app_label|capfirst|escape %}
+                <a href="{{ app.app_url }}" title="{% blocktrans with name=app.name %}Models in the {{ name }} application{% endblocktrans %}">{{ app.name }}</a>
+            {% else %}
+                {% trans app.app_label as app_label %}
+                <a href="{{ app.app_url }}" title="{% blocktrans with name=app_label %}Models in the {{ name }} application{% endblocktrans %}">{{ app_label }}</a>
+            {% endif %}
+        </li>
+
+        {% for model in app.models %}
+            <li>
+                <span class="float-right">
+                    {% if model.add_url %}
+                        <a href="{{ model.add_url }}" class="addlink" title="{% trans 'Add' %}"></a>
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+
+                    {% if model.admin_url %}
+                        <a href="{{ model.admin_url }}" class="changelink" title="{% trans 'Change' %}"></a>
+                    {% else %}
+                        &nbsp;
+                    {% endif %}
+                </span>
+
+                {% if model.admin_url %}
+                    <a href="{{ model.admin_url }}">{{ model.name }}</a>
+                {% else %}
+                    {{ model.name }}
+                {% endif %}
+            </li>
+        {% endfor %}
+    {% endfor %}
+</ul>
