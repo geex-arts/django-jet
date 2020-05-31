@@ -3,7 +3,7 @@ import json
 from six import python_2_unicode_compatible
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from jet.utils import LazyDateTimeEncoder
 
 
