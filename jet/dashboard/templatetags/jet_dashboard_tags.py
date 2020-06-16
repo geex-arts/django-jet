@@ -1,9 +1,13 @@
 from __future__ import unicode_literals
+import django
 from django import template
 from jet.dashboard.utils import get_current_dashboard
 
 register = template.Library()
-assignment_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
+if django.VERSION >= (1, 9):  # https://docs.djangoproject.com/en/dev/releases/1.9/#assignment-tag
+    assignment_tag = register.simple_tag
+else:
+    assignment_tag = register.assignment_tag()
 
 
 @assignment_tag(takes_context=True)

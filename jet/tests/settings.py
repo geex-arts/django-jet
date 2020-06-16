@@ -7,7 +7,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '!DJANGO_JET_TESTS!'
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 DEBUG_PROPAGATE_EXCEPTIONS = True
 
 ROOT_URLCONF = 'jet.tests.urls'
@@ -33,6 +32,7 @@ MIDDLEWARE = MIDDLEWARE_CLASSES = (
 )
 
 if django.VERSION[:2] < (1, 9):
+    TEMPLATE_DEBUG = DEBUG
     TEMPLATE_CONTEXT_PROCESSORS = tuple(global_settings.TEMPLATE_CONTEXT_PROCESSORS) + (
         'django.core.context_processors.request',
     )
@@ -48,7 +48,8 @@ else:
                     'django.template.context_processors.request',
                     'django.contrib.auth.context_processors.auth',
                     'django.contrib.messages.context_processors.messages',
-                )
+                ),
+                'debug': DEBUG
             },
         },
     ]

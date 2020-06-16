@@ -5,16 +5,14 @@ from django.contrib import admin
 admin.autodiscover()
 
 
-try:
-    from django.urls import path
-
+if django.VERSION > (1,9):  # https://docs.djangoproject.com/en/dev/releases/1.9/#passing-a-3-tuple-or-an-app-name-to-include
     urlpatterns = [
         url(r'^jet/', include('jet.urls', 'jet')),
         url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),
         url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-        path('admin/', admin.site.urls),
+        url(r'^admin/', admin.site.urls),
     ]
-except ImportError:  # Django < 2.0
+else:
     urlpatterns = [
         url(r'^jet/', include('jet.urls', 'jet')),
         url(r'^jet/dashboard/', include('jet.dashboard.urls', 'jet-dashboard')),

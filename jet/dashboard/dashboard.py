@@ -1,8 +1,9 @@
 from importlib import import_module
-try:
-    from django.core.urlresolvers import reverse
-except ImportError: # Django 1.11
+import django
+if django.VERSION >= (1, 10):  # https://docs.djangoproject.com/en/dev/releases/1.10/#id3
     from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
 
 from django.template.loader import render_to_string
 from jet.dashboard import modules

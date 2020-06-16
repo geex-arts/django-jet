@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 import json
 import os
+import sys
+import django
 from django import template
-try:
-    from django.core.urlresolvers import reverse
-except ImportError: # Django 1.11
+if django.VERSION >= (1, 10):  # https://docs.djangoproject.com/en/dev/releases/1.10/#id3
     from django.urls import reverse
+else:
+    from django.core.urlresolvers import reverse
 
 from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleChoiceField, SelectMultiple
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
@@ -17,14 +19,17 @@ from jet.models import Bookmark
 from jet.utils import get_model_instance_label, get_model_queryset, get_possible_language_codes, \
     get_admin_site, get_menu_items
 
-try:
+if sys.version_info > (3,):
     from urllib.parse import parse_qsl
-except ImportError:
+else:
     from urlparse import parse_qsl
 
 
 register = template.Library()
-assignment_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
+if django.VERSION >= (1, 9):  # https://docs.djangoproject.com/en/dev/releases/1.9/#assignment-tag
+    assignment_tag = register.simple_tag
+else:
+    assignment_tag = register.assignment_tag()
 
 
 @assignment_tag

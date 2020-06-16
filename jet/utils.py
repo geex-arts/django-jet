@@ -1,5 +1,6 @@
 import datetime
 import json
+import django
 from django.template import Context
 from django.utils import translation
 from jet import settings
@@ -14,10 +15,10 @@ except ImportError:
         pass
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
-try:
-    from django.core.urlresolvers import reverse, resolve, NoReverseMatch
-except ImportError: # Django 1.11
+if django.VERSION >= (1, 10):  # https://docs.djangoproject.com/en/dev/releases/1.10/#id3
     from django.urls import reverse, resolve, NoReverseMatch
+else:
+    from django.core.urlresolvers import reverse, resolve, NoReverseMatch
 
 from django.contrib.admin import AdminSite
 from django.utils.encoding import smart_text

@@ -1,7 +1,12 @@
-import collections
+import sys
+
+if sys.version_info > (3, 3):
+    from collections.abc import MutableSet
+else:
+    from collections import MutableSet
 
 
-class OrderedSet(collections.MutableSet):
+class OrderedSet(MutableSet):
     def __init__(self, iterable=None):
         self.end = end = []
         end += [None, end, end]         # sentinel node for doubly linked list
