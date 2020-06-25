@@ -12,7 +12,7 @@ def read(fname):
 
 
 def get_install_requires():
-    install_requires = ['Django']
+    install_requires = ['Django', 'six']
 
     try:
         import importlib
