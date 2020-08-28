@@ -131,30 +131,11 @@ class Dashboard(object):
 
         return module_models
 
-    def load_modules(self):
-        module_models = UserDashboardModule.objects.filter(
-            app_label=self.app_label,
-            user=self.context['request'].user.pk
-        ).all()
-
-        if len(module_models) == 0:
-            module_models = self.create_initial_module_models(self.context['request'].user)
-
-        loaded_modules = []
-
-        for module_model in module_models:
-            module_cls = module_model.load_module()
-            if module_cls is not None:
-                module = module_cls(model=module_model, context=self.context)
-                loaded_modules.append(module)
-
-        self.modules = loaded_modules
-
     def render(self):
         context = context_to_dict(self.context)
         context.update({
             'columns': range(self.columns),
-            'modules': self.modules,
+            'modules': self.children,
             'app_label': self.app_label,
         })
         context.update(csrf(context['request']))
