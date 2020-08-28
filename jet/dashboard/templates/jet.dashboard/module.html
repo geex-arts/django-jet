@@ -29,7 +29,7 @@
     </div>
     {% endif %}
 
-    <div class="dashboard-item-content{% if module.css_class %} {{ module.css_class }}{% endif %}{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
+    <div class="dashboard-item-content{% if module.css_classes %} {{ module.css_classes }}{% endif %}{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
         {{ module.pre_contenta|default_if_none:"" }}
         {% if module.ajax_load %}
             <div class="loading-indicator-wrapper">
