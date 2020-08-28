@@ -54,7 +54,6 @@ class Dashboard(object):
     def set_context(self, context):
         self.context = context
         self.init_with_context(context)
-        self.load_modules()
 
     def init_with_context(self, context):
         """
