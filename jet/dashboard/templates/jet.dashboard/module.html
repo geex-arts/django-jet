@@ -1,6 +1,6 @@
 {% load i18n %}
 
-<div class="dashboard-item{% if module.collapsible %} collapsible{% endif %}{% if module.model.collapsed %} collapsed{% endif %}{% if module.deletable %} deletable{% endif %}{% if module.ajax_load %} ajax{% endif %}{% if module.draggable %} draggable{% endif %}"{% if module.ajax_load %} data-ajax-url="{% url "jet-dashboard:load_dashboard_module" pk=module.model.id %}"{% endif %} data-module-id="{{ module.model.id }}">
+<div class="dashboard-item{% if module.css_classes %} {{ module.css_classes }}{% endif %}{% if module.collapsible %} collapsible{% endif %}{% if module.model.collapsed %} collapsed{% endif %}{% if module.deletable %} deletable{% endif %}{% if module.ajax_load %} ajax{% endif %}{% if module.draggable %} draggable{% endif %}"{% if module.ajax_load %} data-ajax-url="{% url "jet-dashboard:load_dashboard_module" pk=module.model.id %}"{% endif %} data-module-id="{{ module.model.id }}">
     {% if not module.hide_header %}
     <div class="dashboard-item-header">
         {% if module.draggable %}
@@ -29,7 +29,7 @@
     </div>
     {% endif %}
 
-    <div class="dashboard-item-content{% if module.css_classes %} {{ module.css_classes }}{% endif %}{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
+    <div class="dashboard-item-content{% if module.contrast %} contrast{% endif %}"{% if module.style %} style="{{ module.style }}"{% endif %}>
         {{ module.pre_contenta|default_if_none:"" }}
         {% if module.ajax_load %}
             <div class="loading-indicator-wrapper">
