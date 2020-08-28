@@ -5,6 +5,7 @@
         {% if module.draggable %}
             <span class="dashboard-item-header-drag icon-grid"></span>
         {% endif %}
+        {% if module.show_header %}
         <span class="dashboard-item-header-buttons">
             <a href="{% url "jet-dashboard:update_module" pk=module.model.id %}" title="{% trans "Change" %}"><span class="icon-edit"></span></a>
 
@@ -12,6 +13,7 @@
                 <a href="#" title="{% trans "Delete" %}" class="dashboard-item-remove"><span class="icon-cross"></span></a>
             {% endif %}
         </span>
+        {% endif %}
         <span class="dashboard-item-header-title">
             {% if module.collapsible %}
                 <a href="#" class="dashboard-item-collapse"><span class="dashboard-item-header-collapse-button icon-arrow-down"></span></a>
