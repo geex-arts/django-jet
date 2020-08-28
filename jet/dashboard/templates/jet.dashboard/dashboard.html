@@ -1,17 +1,17 @@
 {% load i18n %}
 
-<div class="dashboard-container columns_{{ columns|length }} cf">
-    {% for i in columns %}
-        <div class="dashboard-column-wrapper">
-            <div class="dashboard-column{% if forloop.first %} first{% endif %}">
-                {% for module in modules %}
-                    {% if module.model.column == i %}
-                        {% include "jet.dashboard/module.html" with module=module %}
-                    {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    {% endfor %}
+<div class="dashboard-container cf">
+  {% for row in modules %}
+  <div class="row">
+    {% for module in row %}
+      <div class="col">
+        {% if module.model.column == i %}
+            {% include "jet.dashboard/module.html" with module=module %}
+        {% endif %}
+      </div>
+      {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 
 <div class="dialog-confirm" id="module-remove-dialog" title="{% trans "Delete widget" %}">
