@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-12 10:32+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: static/jet/js/src/features/sidebar/bookmarks.js:80
+msgid "Add"
+msgstr "Добави"
+
+#: static/jet/js/src/features/sidebar/bookmarks.js:85 static/jet/js/src/features/sidebar/bookmarks.js:118
+msgid "Cancel"
+msgstr "Откажи"
+
+#: static/jet/js/src/features/sidebar/bookmarks.js:113
+msgid "Delete"
+msgstr "Изтрий"
+
+#: static/jet/js/src/features/changeform.js:11
+msgid "Warning: you have unsaved changes"
+msgstr "Внимание: имате незапазени промени"
+
+#: static/jet/js/src/features/selects.js:109
+msgid "select all"
+msgstr "Маркирай всички"
+
+#: static/jet/js/src/features/selects.js:112
+msgid "deselect all"
+msgstr "Демаркирай всички"
+
+#: static/jet/js/src/layout-updaters/changeform-tabs.js:15 static/jet/js/src/layout-updaters/changeform-tabs.js:30
+msgid "General"
+msgstr "Общи"
