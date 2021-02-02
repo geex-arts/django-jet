@@ -137,7 +137,7 @@ class Dashboard(object):
             user=self.context['request'].user.pk
         ).all()
 
-        if len(module_models) == 0:
+        if not module_models.exists():
             module_models = self.create_initial_module_models(self.context['request'].user)
 
         loaded_modules = []
