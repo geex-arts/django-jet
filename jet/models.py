@@ -1,9 +1,14 @@
 from django.db import models
 from django.utils import timezone
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+import sys
 
+if sys.version_info.major == 2:
+    from django.utils.encoding import python_2_unicode_compatible
+else:
+    python_2_unicode_compatible = lambda cls: cls
 
+    
 @python_2_unicode_compatible
 class Bookmark(models.Model):
     url = models.URLField(verbose_name=_('URL'))
