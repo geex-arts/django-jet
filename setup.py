@@ -24,6 +24,11 @@ def get_install_requires():
     except ImportError:
         install_requires.append('ordereddict')
 
+    try:
+        import six
+    except ImportError:
+        install_requires.append('six')
+
     return install_requires
 
 setup(
