@@ -9,6 +9,45 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url('Roboto/Roboto-Light.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url('Roboto/Roboto-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url('Roboto/Roboto-Bold.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Roboto-Thin';
+  src: url('Roboto/Roboto-Thin.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Quicksand-Medium';
+  src: url('Quicksand/Quicksand-Medium.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Pro Display Regular';
+  font-style: normal;
+  font-weight: normal;
+  src: local('SF Pro Display Regular'), url('SF/SFPRODISPLAYREGULAR.woff') format('woff');
+}
+
 [class^="icon-"], [class*=" icon-"] {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'jet-icons' !important;
