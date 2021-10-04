@@ -1,4 +1,4 @@
-{% load i18n admin_urls admin_static %}
+{% load i18n admin_urls %}
 
 <div class="inline-group compact" id="{{ inline_admin_formset.formset.prefix }}-group" data-inline-prefix="{{ inline_admin_formset.formset.prefix }}" data-inline-verbose-name="{{ inline_admin_formset.opts.verbose_name|capfirst }}" data-inline-delete-text="{% trans "Remove" %}">
     <h2>{{ inline_admin_formset.opts.verbose_name_plural|capfirst }}</h2>
