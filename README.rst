@@ -1,5 +1,5 @@
 ==========
-Django JET
+django JET
 ==========
 
 .. image:: https://travis-ci.org/geex-arts/django-jet.svg?branch=master
