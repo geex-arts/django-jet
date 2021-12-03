@@ -5,6 +5,10 @@ var ChangeList = function($changelist) {
 };
 
 ChangeList.prototype = {
+    tableOverflow: function($originalHeader) {
+        var table = $originalHeader.parents('table')
+        return table.width() > table.parent().width()
+    },
     updateFixedHeaderVisibility: function($fixedTable, $originalHeader) {
         var show = $(window).scrollTop() > $originalHeader.offset().top;
         $fixedTable.closest('table').toggle(show);
@@ -19,21 +23,89 @@ ChangeList.prototype = {
     },
     initFixedHeader: function($changelist) {
         var $originalHeader = $changelist.find('#result_list thead');
-
         if ($originalHeader.length == 0) {
             return;
         }
 
+        var tableOverflow = this.tableOverflow($originalHeader)
+        if (tableOverflow) {
+            this.initScrollableFixedHeader()
+        } else {
+            this.initNonScrollableFixedHeader($originalHeader)
+        }
+    },
+    setFixedHeaderInitListener: function($changelist) {
+        $(window).on('resize', this.initFixedHeader.bind(this, $changelist))
+    },
+    initNonScrollableFixedHeader: function($originalHeader) {
         var $fixedHeader = $originalHeader.clone();
         var $fixedTable = $('<table>').addClass('helper').append($fixedHeader);
 
         $fixedTable.find('.action-checkbox-column').empty();
         $fixedTable.appendTo(document.body);
 
-        $(window).on('scroll', $.proxy(this.updateFixedHeaderVisibility, this, $fixedTable, $originalHeader));
-        $(window).on('resize', $.proxy(this.updateFixedHeaderWidth, this, $fixedHeader, $originalHeader));
+        $(window).on('scroll', this.updateFixedHeaderVisibility.bind(this, $fixedTable, $originalHeader));
+        $(window).on('resize', this.updateFixedHeaderWidth.bind(this, $fixedHeader, $originalHeader));
 
         this.updateFixedHeaderWidth($fixedHeader, $originalHeader);
+    },
+    initScrollableFixedHeader: function() {
+        var thead = $("#result_list thead")
+        var tableOffset = getTableOffsetTop()
+        var lastScrollPosition = window.scrollY
+
+        $('table.helper').hide()
+
+        $(window).on('scroll', function() {
+            if (window.scrollY >= (tableOffset)) {
+                applySticky()
+            } else {
+                removeSticky()
+            }
+        })
+        $(window).on('resize', function() {
+            tableOffset = getTableOffsetTop()
+        })
+
+        function getTableOffsetTop() {
+            return $("#result_list").offset().top
+        }
+
+        function applySticky() {
+            thead.addClass("sticky")
+            if (scrolledDown()) {
+                applyStickyOnScrollDown()
+                lastScrollPosition = window.scrollY
+            }
+            if (scrolledUp()) {
+                applyStickyOnScrollUp()
+                lastScrollPosition = window.scrollY
+            }
+        }
+
+        function applyStickyOnScrollDown() {
+            thead.addClass("transition")
+            thead.css({"top": window.scrollY - tableOffset})
+        }
+
+        function applyStickyOnScrollUp() {
+            thead.removeClass("transition")
+            thead.css("top", 0)
+            setTimeout(function() { applyStickyOnScrollDown() }, 10)
+        }
+
+        function removeSticky() {
+            thead.removeClass("sticky")
+            thead.css({"top": 0})
+        }
+
+        function scrolledDown() {
+            return window.scrollY > lastScrollPosition
+        }
+
+        function scrolledUp() {
+            return window.scrollY < lastScrollPosition
+        }
     },
     updateFixedFooter: function($results, $footer) {
         if ($(window).scrollTop() + $(window).height() < $results.offset().top + $results.outerHeight(false) + $footer.innerHeight()) {
@@ -60,8 +132,8 @@ ChangeList.prototype = {
             return;
         }
 
-        $(window).on('scroll', $.proxy(this.updateFixedFooter, this, $results, $footer));
-        $(window).on('resize', $.proxy(this.updateFixedFooter, this, $results, $footer));
+        $(window).on('scroll', this.updateFixedFooter.bind(this, $results, $footer));
+        $(window).on('resize', this.updateFixedFooter.bind(this, $results, $footer));
 
         this.updateFixedFooter($results, $footer);
     },
@@ -94,6 +166,7 @@ ChangeList.prototype = {
 
         try {
             this.initFixedHeader($changelist);
+            this.setFixedHeaderInitListener($changelist);
             this.initFixedFooter($changelist);
             this.initHeaderSortableSelection($changelist);
             this.initRowSelection($changelist);

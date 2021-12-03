@@ -14,6 +14,31 @@
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
 
+    #result_list {
+      thead {
+        &.sticky {
+          position: sticky;
+          z-index: 1;
+          top: 0;
+        &.transition {
+          transition-duration: .3s;
+        }
+          & > tr {
+            & > th {
+              &:first-child, &:last-child {
+                border-radius: 0
+              }
+            }
+          }
+          .action-checkbox-column {
+            .text {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
     @include for-mobile {
       position: relative;
       left: -20px;
