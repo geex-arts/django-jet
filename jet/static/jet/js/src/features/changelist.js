@@ -29,6 +29,7 @@ ChangeList.prototype = {
 
         var tableOverflow = this.tableOverflow($originalHeader)
         if (tableOverflow) {
+            if ($('table.helper').length) $('table.helper').remove()
             this.initScrollableFixedHeader()
         } else {
             this.initNonScrollableFixedHeader($originalHeader)
@@ -54,8 +55,6 @@ ChangeList.prototype = {
         var tableOffset = getTableOffsetTop()
         var lastScrollPosition = window.scrollY
 
-        $('table.helper').hide()
-
         $(window).on('scroll', function() {
             if (window.scrollY >= (tableOffset)) {
                 applySticky()
@@ -65,6 +64,7 @@ ChangeList.prototype = {
         })
         $(window).on('resize', function() {
             tableOffset = getTableOffsetTop()
+            applyStickyOnScrollUp()
         })
 
         function getTableOffsetTop() {
