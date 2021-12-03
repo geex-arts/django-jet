@@ -1,7 +1,7 @@
 {
   "name": "django-jet",
   "devDependencies": {
-    "autoprefixer": "6.4.0",
+    "autoprefixer": "^9.4.7",
     "browserify": "13.0.1",
     "browsernizr": "2.1.0",
     "es6-promise": "3.2.1",
@@ -19,7 +19,7 @@
     "jquery.cookie": "1.4.1",
     "jquery.mousewheel": "3.1.9",
     "merge-stream": "1.0.0",
-    "perfect-scrollbar": "git://github.com/noraesae/perfect-scrollbar#0.6.5",
+    "perfect-scrollbar": "git://github.com/mdbootstrap/perfect-scrollbar#0.6.5",
     "postcss-pxtorem": "3.3.1",
     "select2": "4.0.0",
     "timepicker": "git://github.com/geex-arts/timepicker",
