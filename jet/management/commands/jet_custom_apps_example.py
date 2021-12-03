@@ -9,12 +9,12 @@ from jet.utils import get_app_list
 class Command(NoArgsCommand):
     help = 'Generates example of JET custom apps setting'
     item_order = 0
-    
+
     def handle(self, *args, **options):
         if args:
             raise CommandError("Command doesn't accept any arguments")
         return self.handle_noargs(**options)
-    
+
     def handle_noargs(self, **options):
         class User:
             is_active = True

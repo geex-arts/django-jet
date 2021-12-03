@@ -67,4 +67,3 @@ class UtilsTestCase(TestCase):
     def test_lazy_date_time_encoder_dict(self):
         encoder = LazyDateTimeEncoder()
         self.assertEqual(encoder.encode({'key': 1}), '{"key": 1}')
-

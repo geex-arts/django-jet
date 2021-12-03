@@ -606,4 +606,3 @@ class Feed(DashboardModule):
                 'title': _('You must provide a valid feed URL'),
                 'warning': True,
             })
-

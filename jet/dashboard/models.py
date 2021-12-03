@@ -55,5 +55,3 @@ class UserDashboardModule(models.Model):
 
         self.settings = json.dumps(settings, cls=LazyDateTimeEncoder)
         self.save()
-
-
