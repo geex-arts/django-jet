@@ -13,7 +13,10 @@
   }
 
   &.initialized {
-    display: block;
+    display: flex;
+    .clear-filters-btn {
+      display: none;
+    }
   }
 
   .form-row & {

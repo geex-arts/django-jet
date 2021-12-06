@@ -222,7 +222,9 @@ Select2.prototype = {
             self.initSelect($select, DropdownAdapter);
         });
 
-        $('select').trigger('select:init');
+        // FIXME: temporary fix for djangocms-link internal link widget - works but no autoselect initialized
+        // FIXME: temporary fix for djangocms-picture link settings internal link widget - works but no autoselect initialized
+        $('select:not(#id_internal_link_1):not(#id_link_page_1)').trigger('select:init');
 
         $('.inline-group').on('inline-group-row:added', function(e, $inlineItem) {
             $inlineItem.find('select').trigger('select:init');

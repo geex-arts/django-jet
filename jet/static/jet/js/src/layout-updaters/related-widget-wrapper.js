@@ -9,7 +9,9 @@ RelatedWidgetWrapperUpdater.prototype = {
         $('<span>')
             .addClass('related-widget-wrapper-icon')
             .insertAfter($img);
-        $img.remove();
+        if (!$img.hasClass('filerClearer')) {
+            $img.remove();
+        }
     },
     updateLinkIcons: function() {
         this.replaceLinkIcon(

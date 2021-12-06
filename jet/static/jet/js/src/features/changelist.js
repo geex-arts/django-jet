@@ -161,6 +161,11 @@ ChangeList.prototype = {
             $(this).closest('tr').find('.action-checkbox .action-select').click();
         });
     },
+    showClearFiltersButton: function() {
+        if ($('.changelist-filter-select').length) {
+            $('.clear-filters-btn').show()
+        }
+    },
     run: function() {
         var $changelist = this.$changelist;
 
@@ -170,6 +175,7 @@ ChangeList.prototype = {
             this.initFixedFooter($changelist);
             this.initHeaderSortableSelection($changelist);
             this.initRowSelection($changelist);
+            this.showClearFiltersButton();
         } catch (e) {
             console.error(e, e.stack);
         }

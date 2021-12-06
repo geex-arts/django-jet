@@ -1,0 +1,24 @@
+body.cms-admin-modal{
+    form {
+        p {
+            &.help {
+                color:#a7b4c5 !important;
+            }
+        }
+
+        .related-widget-wrapper {
+            a {
+                &[data-href-template*="filer"] {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    // djangocms-link internal_link widget fix
+    // djangocms-picture ling settings internal_link widget fix
+    #id_internal_link_2 + .select2,
+    #id_link_page_2 + .select2 {
+        display: none;
+    }
+}

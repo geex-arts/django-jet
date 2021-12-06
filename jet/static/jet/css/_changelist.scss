@@ -263,86 +263,87 @@
 }
 
 /* PAGINATOR */
+body:not(.js-filer-dropzone) {
+  .paginator {
+    display: none;
+    line-height: normal;
+    padding: 0 !important;
+    margin: 0;
+    font-size: 12px;
 
-.paginator {
-  display: none;
-  line-height: normal;
-  padding: 0 !important;
-  margin: 0;
-  font-size: 12px;
-
-  &.initialized {
-    display: inherit;
-  }
-
-  .pages-wrapper {
-    margin-left: 10px;
-    display: inline-block;
-    margin-bottom: 5px;
-
-    @include for-mobile {
-      margin-left: 0;
+    &.initialized {
+      display: inherit;
     }
 
-    span, a {
-      font-size: 14px;
-      padding: 6px 10px;
+    .pages-wrapper {
+      margin-left: 10px;
       display: inline-block;
+      margin-bottom: 5px;
 
-      &:first-child {
-        border-radius: 4px 0 0 4px;
+      @include for-mobile {
+        margin-left: 0;
       }
 
-      &:last-child {
-        border-radius: 0 4px 4px 0;
+      span, a {
+        font-size: 14px;
+        padding: 6px 10px;
+        display: inline-block;
+
+        &:first-child {
+          border-radius: 4px 0 0 4px;
+        }
+
+        &:last-child {
+          border-radius: 0 4px 4px 0;
+        }
+
+        &:first-child:last-child {
+          border-radius: 4px;
+        }
       }
 
-      &:first-child:last-child {
-        border-radius: 4px;
+      span {
+        background-color: $button-active-background-color;
+        color: $button-active-text-color;
+
+        &.disabled {
+          background-color: $button-background-color;
+          color: $button-text-color;
+        }
+      }
+
+      a {
+        &:link, &:visited {
+          background-color: $button-background-color;
+          color: $button-text-color;
+          text-decoration: none;
+        }
+
+        &:focus, &:hover {
+          background-color: $button-hover-background-color;
+          color: $button-hover-text-color;
+        }
       }
     }
 
-    span {
-      background-color: $button-active-background-color;
-      color: $button-active-text-color;
-
-      &.disabled {
-        background-color: $button-background-color;
-        color: $button-text-color;
-      }
-    }
-
-    a {
+    a.showall {
       &:link, &:visited {
-        background-color: $button-background-color;
-        color: $button-text-color;
-        text-decoration: none;
-      }
-
-      &:focus, &:hover {
-        background-color: $button-hover-background-color;
-        color: $button-hover-text-color;
+        font-size: 12px;
       }
     }
-  }
 
-  a.showall {
-    &:link, &:visited {
-      font-size: 12px;
+    .label {
+      padding: 8px 0;
     }
-  }
 
-  .label {
-    padding: 8px 0;
-  }
-
-  input[type="submit"] {
-    &, &:hover, &:focus {
-      font-size: 13px;
-      padding: 6px 10px;
-      height: auto;
-      line-height: normal;
-      margin: 0 0 0 10px;
+    input[type="submit"] {
+      &, &:hover, &:focus {
+        font-size: 13px;
+        padding: 6px 10px;
+        height: auto;
+        line-height: normal;
+        margin: 0 0 0 10px;
+      }
     }
   }
 }

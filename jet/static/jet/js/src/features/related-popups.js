@@ -57,6 +57,27 @@ RelatedPopups.prototype = {
             self.updateLinks($(this));
         });
 
+        $row.find('.filerFile').each(function() {
+            var $select = $(this);
+
+            $select.find('.js-related-lookup, .related-lookup').each(function() {
+                var $link = $(this);
+
+                $link.on('click', function(e) {
+                    e.preventDefault();
+
+                    var href = $link.attr('href');
+
+                    if (href != undefined) {
+                        if (href.indexOf('_popup') == -1) {
+                            href += (href.indexOf('?') == -1) ? '?_popup=1' : '&_popup=1';
+                        }
+                        self.showFilerPopup($link);
+                    }
+                });
+            });
+        })
+
         $row.find('input').each(function() {
             var $input = $(this);
 
@@ -121,6 +142,29 @@ RelatedPopups.prototype = {
             $container.append($popup);
         });
         $body.addClass('non-scrollable');
+    },
+    showFilerPopup: function(triggeringLink) {
+        return __showRelatedObjectLookupPopup(triggeringLink)
+
+        function __showRelatedObjectLookupPopup(triggeringLink) {
+            return __showAdminPopup(triggeringLink, /^lookup_/, true);
+        }
+
+        function __showAdminPopup(triggeringLink, name_regexp, add_popup) {
+            window.link = triggeringLink
+            var name = triggeringLink.attr("id").replace(name_regexp, '');
+            var href = triggeringLink.attr("href");
+            if (add_popup) {
+                if (href.indexOf('?') === -1) {
+                    href += '?_popup=1';
+                } else {
+                    href += '&_popup=1';
+                }
+            }
+            var win = window.open(href, name, 'height=500,width=1000,resizable=yes,scrollbars=yes');
+            win.focus();
+            return false;
+        }
     },
     closePopup: function(response) {
         var previousWindow = this.windowStorage.previous();

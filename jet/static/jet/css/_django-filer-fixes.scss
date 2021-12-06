@@ -1,0 +1,68 @@
+//##############################################################################
+// BASE
+
+
+.filebrowser {
+    #container {
+        #content {
+            box-shadow: none;
+        }
+        .breadcrumbs + #content,
+        .breadcrumbs + .messagelist + #content {
+            margin-left: 0 !important;
+        }
+    }
+}
+
+
+
+//##############################################################################
+// DRAG AND DROP
+
+form .form-row {
+    .filer-dropzone {
+        .filerFile.folder {
+            .related-lookup {
+                margin-top: 0;
+                &:not(:first-of-type) {
+                    &[title="Lookup"] {
+                        display: none;
+                        & + strong {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        .filerFile {
+            span {
+                display: inline-block;
+                font-weight: normal;
+                margin-top: 6px;
+                margin-bottom: 6px;
+                text-align: left;
+                &:empty + .related-lookup {
+                    // FIXME: ALL LOOKS GOOD, BUT THIS FLOAT CANNOT BE OVERRIDEN THIS WAY
+                    float: right;
+                    margin-top: 0;
+                    margin-left: 0 !important;
+                }
+            }
+        }
+    }
+}
+
+//##############################################################################
+// FILTER FILES
+
+
+.filter-files-container {
+    z-index: 0;
+}
+
+//##############################################################################
+// OLD STUFF
+
+a.insertlinkButton {
+    display: block;
+}

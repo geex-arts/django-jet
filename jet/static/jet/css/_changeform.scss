@@ -25,6 +25,14 @@
       max-width: 100%;
     }
   }
+
+  // ckeditor rich text widget
+  .cke {
+    margin-top: 15px;
+    .cke_contents {
+      min-height: 500px;
+    }
+  }
 }
 
 .hidden {
@@ -37,6 +45,7 @@ label {
   .required &, &.required {
     &:after {
       content: "*";
+      color: #ba2121;
     }
   }
 

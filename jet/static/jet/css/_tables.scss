@@ -58,6 +58,12 @@ table {
       }
     }
   }
+
+  &.js-filer-dropzone {
+    thead th {
+      color: #6f7e95;
+    }
+  }
 }
 
 td, th {

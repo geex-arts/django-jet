@@ -1,9 +1,21 @@
 @import "../globals";
 
-.select2-container--jet {
+//FIXME: django admin autocomoplete fix
+// TODO: Better fix needed, in jet's selects.js or
+// admin's autocomplete.js
+.related-widget-wrapper {
+  .select2-container--admin-autocomplete {
+    min-width: 250px;
+    & + .select2-container--admin-autocomplete {
+      display: none;
+    }
+  }
+}
+.select2-container--jet,
+.select2-container--admin-autocomplete {
   @import "single";
   @import "multiple";
-  min-width: 160px;
+  min-width: 200px;
 
   .select2-selection {
     background-color: $input-background-color;

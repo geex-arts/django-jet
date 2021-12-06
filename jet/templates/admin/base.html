@@ -26,6 +26,9 @@
 {% jet_get_time_format as time_format %}
 {% jet_get_datetime_format as datetime_format %}
 
+{# This is important as if we put this outside extrahead, filer folder picking doesn't work #}
+{# We get '$ is not defined' from inside of dismissRelatedFolderLookupPopup function #}
+{% block extrahead %}
 <script type="text/javascript" charset="utf-8">
     var DATE_FORMAT = "{{ date_format }}";
     var TIME_FORMAT = "{{ time_format }}";
@@ -33,13 +36,14 @@
 </script>
 <script type="text/javascript" src="{% url 'jet:jsi18n' %}"></script>
 <script src="{% static "jet/js/build/bundle.min.js" as url %}{{ url|jet_append_version }}"></script>
+{% endblock extrahead %}
 
 {% jet_static_translation_urls as translation_urls %}
 {% for url in translation_urls %}
     <script src="{% static url as url %}{{ url|jet_append_version }}"></script>
 {% endfor %}
 
-{% block extrahead %}{% endblock %}
+{% comment %} {% block extrahead %}{% endblock %} {% endcomment %}
 {% block blockbots %}<meta name="robots" content="NONE,NOARCHIVE" />{% endblock %}
 </head>
 {% load i18n %}
