@@ -15,16 +15,17 @@ def get_install_requires():
     install_requires = ['Django', 'six']
 
     try:
-        import importlib
+        import importlib  # NOQA
     except ImportError:
         install_requires.append('importlib')
 
     try:
-        from collections import OrderedDict
+        from collections import OrderedDict  # NOQA
     except ImportError:
         install_requires.append('ordereddict')
 
     return install_requires
+
 
 setup(
     name='django-3-jet',
@@ -50,6 +51,8 @@ setup(
         'Programming Language :: Python :: 3.2',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
         'Environment :: Web Environment',
         'Topic :: Software Development',
         'Topic :: Software Development :: User Interfaces',
