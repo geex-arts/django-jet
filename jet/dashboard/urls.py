@@ -1,5 +1,8 @@
 import django
-from django.conf.urls import url
+try:
+    from django.conf.urls import url
+except ImportError: # Django 3+ (tested with Django 4.0)
+    from django.urls import re_path as url
 
 try:
     from django.views.i18n import JavaScriptCatalog
