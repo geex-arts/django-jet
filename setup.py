@@ -28,12 +28,12 @@ def get_install_requires():
 
 setup(
     name='django-4-jet',
-    version=__import__('jet').VERSION,
+    version='1.0.8',
     description='Modern template for Django-4 admin interface with improved functionality',
     long_description=read('README.rst'),
     author='Denis Kildishev',
     author_email='barukimang@gmail.com',
-    url='https://github.com/Barukimang/django-jet/',
+    url='https://github.com/Barukimang/django-jet/archive/refs/tags/1.0.8-django4.tar.gz',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
