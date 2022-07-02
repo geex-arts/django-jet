@@ -28,7 +28,7 @@ def get_install_requires():
 
 setup(
     name='django-4-jet',
-    version='1.0.8',
+    version='1.0.9',
     description='Modern template for Django-4 admin interface with improved functionality',
     long_description=read('README.rst'),
     author='Denis Kildishev',
