@@ -21,7 +21,7 @@
     "merge-stream": "1.0.0",
     "perfect-scrollbar": "git://github.com/noraesae/perfect-scrollbar#0.6.5",
     "postcss-pxtorem": "3.3.1",
-    "select2": "4.0.0",
+    "select2": "4.0.6",
     "timepicker": "git://github.com/geex-arts/timepicker",
     "vinyl-buffer": "1.0.0",
     "vinyl-source-stream": "1.1.0"
