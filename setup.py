@@ -12,7 +12,7 @@ def read(fname):
 
 
 def get_install_requires():
-    install_requires = ['Django']
+    install_requires = ['Django', 'six']
 
     try:
         import importlib
@@ -27,13 +27,13 @@ def get_install_requires():
     return install_requires
 
 setup(
-    name='django-jet',
-    version=__import__('jet').VERSION,
-    description='Modern template for Django admin interface with improved functionality',
+    name='django-4-jet',
+    version='1.0.9',
+    description='Modern template for Django-4 admin interface with improved functionality',
     long_description=read('README.rst'),
     author='Denis Kildishev',
-    author_email='support@jet.geex-arts.com',
-    url='https://github.com/geex-arts/django-jet',
+    author_email='barukimang@gmail.com',
+    url='https://github.com/Barukimang/django-jet/archive/refs/tags/1.0.8-django4.tar.gz',
     packages=find_packages(),
     license='AGPLv3',
     classifiers=[
