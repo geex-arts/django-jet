@@ -1,0 +1,20 @@
+{% load jet_tags %}
+<div class="sidebar sidebar-dependent">
+    <div class="sidebar-wrapper scrollable">
+        <div>
+            {% for section in self.render_sections %}
+            {{ section }}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sidebar-popup-container">
+        <div class="sidebar-popup scrollable">
+            <a href="#" class="sidebar-close sidebar-back">
+                <span class="sidebar-close-icon icon-arrow-left"></span>
+            </a>
+            {% for section in self.render_popups %}
+            {{ section }}
+            {% endfor %}
+        </div>
+    </div>
+</div>

@@ -717,8 +717,8 @@ body.popup .submit-row {
   &-item {
     &, &:visited, &:hover {
       display: block;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+      white-space: normal;
+      font-size: 13px;
       overflow: hidden;
       padding: 8px 10px 8px 20px;
       color: $dim-text-color;

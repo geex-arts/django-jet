@@ -1,6 +1,7 @@
 # encoding: utf-8
 import datetime
 import json
+import django
 from django import forms
 try:
     from django.core.urlresolvers import reverse
@@ -19,6 +20,7 @@ from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, Acce
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from django.utils.encoding import force_text
+import threading
 
 try:
     from django.utils.encoding import force_unicode
@@ -39,8 +41,8 @@ JET_MODULE_GOOGLE_ANALYTICS_CLIENT_SECRETS_FILE = getattr(
 
 class ModuleCredentialStorage(Storage):
     def __init__(self, module):
-        super(ModuleCredentialStorage, self).__init__()
         self.module = module
+        self._lock = threading.Lock()
 
     def locked_get(self):
         pass
@@ -143,26 +145,46 @@ class GoogleAnalyticsClient:
 
 class CredentialWidget(Widget):
     module = None
+    if django.VERSION < (2, 1):
+        def render(self, name, value, attrs=None):
+            if value and len(value) > 0:
+                link = '<a href="%s">%s</a>' % (
+                    reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
+                    force_text(_('Revoke access'))
+                )
+            else:
+                link = '<a href="%s">%s</a>' % (
+                    reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
+                    force_text(_('Grant access'))
+                )
 
-    def render(self, name, value, attrs=None):
-        if value and len(value) > 0:
-            link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
-                force_text(_('Revoke access'))
-            )
-        else:
-            link = '<a href="%s">%s</a>' % (
-                reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
-                force_text(_('Grant access'))
-            )
+            attrs = self.build_attrs({
+                'type': 'hidden',
+                'name': 'credential',
+            })
+            attrs['value'] = force_unicode(value) if value else ''
 
-        attrs = self.build_attrs({
-            'type': 'hidden',
-            'name': 'credential',
-        })
-        attrs['value'] = force_unicode(value) if value else ''
+            return format_html('%s<input{} />' % link, flatatt(attrs))
+    else:
+        def render(self, name, value, attrs=None, renderer=None):
+            if value and len(value) > 0:
+                link = '<a href="%s">%s</a>' % (
+                    reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
+                    force_text(_('Revoke access'))
+                )
+            else:
+                link = '<a href="%s">%s</a>' % (
+                    reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
+                    force_text(_('Grant access'))
+                )
 
-        return format_html('%s<input{} />' % link, flatatt(attrs))
+            attrs = self.build_attrs({
+                'type': 'hidden',
+                'name': 'credential',
+            })
+            attrs['value'] = force_unicode(value) if value else ''
+
+            return format_html('%s<input{} />' % link, flatatt(attrs))
 
 
 class GoogleAnalyticsSettingsForm(forms.Form):
