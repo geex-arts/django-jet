@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 try:
-    from django.core.urlresolvers import reverse
+    from django.urls import reverse
 except ImportError: # Django 1.11
     from django.urls import reverse
 
@@ -13,7 +13,7 @@ from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModu
 from jet.dashboard.models import UserDashboardModule
 from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin, user_is_authenticated
 from django.views.generic import UpdateView
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):

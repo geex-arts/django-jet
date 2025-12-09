@@ -3,7 +3,7 @@ import datetime
 import json
 from django import forms
 try:
-    from django.core.urlresolvers import reverse
+    from django.urls import reverse
 except ImportError: # Django 1.11
     from django.urls import reverse
 
@@ -16,14 +16,14 @@ from googleapiclient.discovery import build
 import httplib2
 from jet.dashboard.modules import DashboardModule
 from oauth2client.client import flow_from_clientsecrets, OAuth2Credentials, AccessTokenRefreshError, Storage
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 
 try:
     from django.utils.encoding import force_unicode
 except ImportError:
-    from django.utils.encoding import force_text as force_unicode
+    from django.utils.encoding import force_str as force_unicode
 
 try:
     from django.forms.utils import flatatt
@@ -148,12 +148,12 @@ class CredentialWidget(Widget):
         if value and len(value) > 0:
             link = '<a href="%s">%s</a>' % (
                 reverse('jet-dashboard:google-analytics-revoke', kwargs={'pk': self.module.model.pk}),
-                force_text(_('Revoke access'))
+                force_str(_('Revoke access'))
             )
         else:
             link = '<a href="%s">%s</a>' % (
                 reverse('jet-dashboard:google-analytics-grant', kwargs={'pk': self.module.model.pk}),
-                force_text(_('Grant access'))
+                force_str(_('Grant access'))
             )
 
         attrs = self.build_attrs({
@@ -183,10 +183,10 @@ class GoogleAnalyticsSettingsForm(forms.Form):
     def set_counter_choices(self, module):
         counters = module.counters()
         if counters is not None:
-            self.fields['counter'].choices = (('', '-- %s --' % force_text(_('none'))),)
+            self.fields['counter'].choices = (('', '-- %s --' % force_str(_('none'))),)
             self.fields['counter'].choices.extend(map(lambda x: (x['id'], x['websiteUrl']), counters))
         else:
-            label = force_text(_('grant access first')) if module.credential is None else force_text(_('counters loading failed'))
+            label = force_str(_('grant access first')) if module.credential is None else force_str(_('counters loading failed'))
             self.fields['counter'].choices = (('', '-- %s -- ' % label),)
 
 

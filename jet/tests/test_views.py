@@ -1,7 +1,7 @@
 import json
 from django.contrib.auth.models import User
 try:
-    from django.core.urlresolvers import reverse
+    from django.urls import reverse
 except ImportError: # Django 1.11
     from django.urls import reverse
 

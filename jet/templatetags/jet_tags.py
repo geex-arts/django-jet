@@ -3,7 +3,7 @@ import json
 import os
 from django import template
 try:
-    from django.core.urlresolvers import reverse
+    from django.urls import reverse
 except ImportError: # Django 1.11
     from django.urls import reverse
 
@@ -11,7 +11,7 @@ from django.forms import CheckboxInput, ModelChoiceField, Select, ModelMultipleC
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.formats import get_format
 from django.utils.safestring import mark_safe
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from jet import settings, VERSION
 from jet.models import Bookmark
 from jet.utils import get_model_instance_label, get_model_queryset, get_possible_language_codes, \
@@ -217,7 +217,7 @@ def jet_popup_response_data(context):
     return json.dumps({
         'action': context.get('action'),
         'value': context.get('value') or context.get('pk_value'),
-        'obj': smart_text(context.get('obj')),
+        'obj': smart_str(context.get('obj')),
         'new_value': context.get('new_value')
     })
 

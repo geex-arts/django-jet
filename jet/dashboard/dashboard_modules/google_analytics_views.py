@@ -1,9 +1,9 @@
 try:
-    from django.core.urlresolvers import reverse
+    from django.urls import reverse
 except ImportError: # Django 1.11
     from django.urls import reverse
 
-from django.conf.urls import url
+from django.urls import path, re_path
 from django.contrib import messages
 from django.shortcuts import redirect
 from httplib2 import ServerNotFoundError
@@ -12,7 +12,7 @@ from jet.dashboard.models import UserDashboardModule
 from jet.dashboard import dashboard
 from django.http import HttpResponse
 from oauth2client.client import FlowExchangeError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 def google_analytics_grant_view(request, pk):
@@ -52,7 +52,7 @@ def google_analytics_callback_view(request):
     return redirect(reverse('jet-dashboard:update_module', kwargs={'pk': module.pk}))
 
 dashboard.urls.register_urls([
-    url(r'^google-analytics/grant/(?P<pk>\d+)/$', google_analytics_grant_view, name='google-analytics-grant'),
-    url(r'^google-analytics/revoke/(?P<pk>\d+)/$', google_analytics_revoke_view, name='google-analytics-revoke'),
-    url(r'^google-analytics/callback/', google_analytics_callback_view, name='google-analytics-callback'),
+    path('google-analytics/grant/<int:pk>/', google_analytics_grant_view, name='google-analytics-grant'),
+    path('google-analytics/revoke/<int:pk>/', google_analytics_revoke_view, name='google-analytics-revoke'),
+    re_path(r'^google-analytics/callback/', google_analytics_callback_view, name='google-analytics-callback'),
 ])

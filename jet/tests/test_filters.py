@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.test import TestCase, RequestFactory
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from jet.filters import RelatedFieldAjaxListFilter
 from jet.tests.models import RelatedToTestModel, TestModel
 
@@ -50,5 +50,5 @@ class FiltersTestCase(TestCase):
 
         self.assertIsInstance(choices, list)
         self.assertEqual(len(choices), 1)
-        self.assertEqual(choices[0], (initial.pk, smart_text(initial)))
+        self.assertEqual(choices[0], (initial.pk, smart_str(initial)))
 

@@ -1,5 +1,5 @@
 import django
-from django.conf.urls import url
+from django.urls import path
 
 try:
     from django.views.i18n import JavaScriptCatalog
@@ -15,43 +15,43 @@ from jet.dashboard.views import update_dashboard_modules_view, add_user_dashboar
 app_name = 'dashboard'
 
 urlpatterns = [
-    url(
-        r'^module/(?P<pk>\d+)/$',
+    path(
+        'module/<int:pk>/',
         UpdateDashboardModuleView.as_view(),
         name='update_module'
     ),
-    url(
-        r'^update_dashboard_modules/$',
+    path(
+        'update_dashboard_modules/',
         update_dashboard_modules_view,
         name='update_dashboard_modules'
     ),
-    url(
-        r'^add_user_dashboard_module/$',
+    path(
+        'add_user_dashboard_module/',
         add_user_dashboard_module_view,
         name='add_user_dashboard_module'
     ),
-    url(
-        r'^update_dashboard_module_collapse/$',
+    path(
+        'update_dashboard_module_collapse/',
         update_dashboard_module_collapse_view,
         name='update_dashboard_module_collapse'
     ),
-    url(
-        r'^remove_dashboard_module/$',
+    path(
+        'remove_dashboard_module/',
         remove_dashboard_module_view,
         name='remove_dashboard_module'
     ),
-    url(
-        r'^load_dashboard_module/(?P<pk>\d+)/$',
+    path(
+        'load_dashboard_module/<int:pk>/',
         load_dashboard_module_view,
         name='load_dashboard_module'
     ),
-    url(
-        r'^reset_dashboard/$',
+    path(
+        'reset_dashboard/',
         reset_dashboard_view,
         name='reset_dashboard'
     ),
-    url(
-        r'^jsi18n/$',
+    path(
+        'jsi18n/',
         javascript_catalog,
         {'packages': 'jet'},
         name='jsi18n'

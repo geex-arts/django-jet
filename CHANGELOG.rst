@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.9
+-----
+* Fork project
+* Migrate code to Django 5.0 using django-upgrade (https://github.com/adamchainz/django-upgrade).
+
+
 1.0.8
 -----
 * PR-345: Django 2.1 compatability fix

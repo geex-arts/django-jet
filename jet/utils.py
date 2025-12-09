@@ -15,19 +15,19 @@ except ImportError:
 from django.core.serializers.json import DjangoJSONEncoder
 from django.http import HttpResponse
 try:
-    from django.core.urlresolvers import reverse, resolve, NoReverseMatch
+    from django.urls import NoReverseMatch, resolve, reverse
 except ImportError: # Django 1.11
     from django.urls import reverse, resolve, NoReverseMatch
 
 from django.contrib.admin import AdminSite
-from django.utils.encoding import smart_text
+from django.utils.encoding import smart_str
 from django.utils.text import capfirst
 from django.contrib import messages
-from django.utils.encoding import force_text
+from django.utils.encoding import force_str
 from django.utils.functional import Promise
 from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.utils.text import slugify
 
 try:
@@ -150,14 +150,14 @@ class LazyDateTimeEncoder(json.JSONEncoder):
         if isinstance(obj, datetime.datetime) or isinstance(obj, datetime.date):
             return obj.isoformat()
         elif isinstance(obj, Promise):
-            return force_text(obj)
+            return force_str(obj)
         return self.encode(obj)
 
 
 def get_model_instance_label(instance):
     if getattr(instance, "related_label", None):
         return instance.related_label()
-    return smart_text(instance)
+    return smart_str(instance)
 
 
 class SuccessMessageMixin(object):
