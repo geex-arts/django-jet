@@ -1,7 +1,20 @@
-import collections
+try:
+    from collections import MutableSet
+except ImportError: # Python 3.3+
+    '''
+    MutableSet is now in collections.abc. Starting with Python 3.3, 
+    importing ABCs from collections was deprecated, and importing 
+    should be done from collections.abc. Being able to import from 
+    collections was marked for removal in 3.8, but has been delayed 
+    to 3.9.
 
+    Taken from:
+    https://github.com/OCA/oca-addons-repo-template/issues/80#issuecomment-948531410
+    '''
+    from collections.abc import MutableSet
 
-class OrderedSet(collections.MutableSet):
+#class OrderedSet(collections.MutableSet):
+class OrderedSet(MutableSet):
     def __init__(self, iterable=None):
         self.end = end = []
         end += [None, end, end]         # sentinel node for doubly linked list

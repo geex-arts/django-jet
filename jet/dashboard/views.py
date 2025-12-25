@@ -13,8 +13,10 @@ from jet.dashboard.forms import UpdateDashboardModulesForm, AddUserDashboardModu
 from jet.dashboard.models import UserDashboardModule
 from jet.utils import JsonResponse, get_app_list, SuccessMessageMixin, user_is_authenticated
 from django.views.generic import UpdateView
-from django.utils.translation import ugettext_lazy as _
-
+try:
+    from django.utils.translation import ugettext_lazy as _
+except ImportError: # Django 4 (tested with Django 4.0)
+    from django.utils.translation import gettext_lazy as _
 
 class UpdateDashboardModuleView(SuccessMessageMixin, UpdateView):
     model = UserDashboardModule
