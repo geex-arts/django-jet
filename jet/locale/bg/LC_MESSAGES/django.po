@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-12-12 10:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: filters.py:70
+msgid "From date"
+msgstr "От дата"
+
+#: filters.py:76
+msgid "To date"
+msgstr "До дата"
+
+#: models.py:12 templates/admin/base.html:291
+msgid "URL"
+msgstr "линк"
+
+#: models.py:13
+msgid "title"
+msgstr "име"
+
+#: models.py:14 models.py:29
+msgid "user"
+msgstr "потребител"
+
+#: models.py:15 models.py:30
+msgid "date created"
+msgstr "създаден"
+
+#: models.py:18
+msgid "bookmark"
+msgstr "отметка"
+
+#: models.py:19 templates/admin/base.html:307
+msgid "bookmarks"
+msgstr "откетки"
+
+#: models.py:28
+msgid "application name"
+msgstr "име на приложението"
+
+#: models.py:33
+msgid "pinned application"
+msgstr "закачени приложения"
+
+#: models.py:34
+msgid "pinned applications"
+msgstr "закачени приложения"
+
+#: templates/admin/base.html:60
+msgid "Welcome,"
+msgstr "Добре дошъл,"
+
+#: templates/admin/base.html:65 templates/admin/base.html:182
+msgid "View site"
+msgstr "Виж сайта"
+
+#: templates/admin/base.html:70 templates/admin/base.html:191
+msgid "Documentation"
+msgstr "Документация"
+
+#: templates/admin/base.html:74
+msgid "Change password"
+msgstr "Смени паролата"
+
+#: templates/admin/base.html:76
+msgid "Log out"
+msgstr "Излез"
+
+#: templates/admin/base.html:86 templates/admin/base.html:174
+msgid "Home"
+msgstr "Начало"
+
+#: templates/admin/base.html:154
+msgid "back"
+msgstr "назад"
+
+#: templates/admin/base.html:235
+msgid "Applications"
+msgstr "Приложения"
+
+#: templates/admin/base.html:259
+msgid "Hide applications"
+msgstr "Скрий проложенията"
+
+#: templates/admin/base.html:260
+msgid "Show hidden"
+msgstr "Покажи скрити"
+
+#: templates/admin/base.html:286 templates/admin/base.html:305
+msgid "Add bookmark"
+msgstr "Добави отметка"
+
+#: templates/admin/base.html:289
+msgid "Title"
+msgstr "Заглавие"
+
+#: templates/admin/base.html:299
+msgid "Delete bookmark"
+msgstr "Изтрий отметката"
+
+#: templates/admin/base.html:300
+msgid "Are you sure want to delete this bookmark?"
+msgstr "Сигурни ли сте, че искате да изтриете отметката?"
+
+#: templates/admin/base.html:315 templates/admin/base.html:322
+#: templates/admin/edit_inline/compact.html:3
+msgid "Remove"
+msgstr "Премахни"
+
+#: templates/admin/base.html:344 templates/rangefilter/date_filter.html:33
+msgid "Search"
+msgstr "Търси"
+
+#: templates/admin/base.html:349
+msgid "Application page"
+msgstr "Приложение"
+
+#: templates/admin/base.html:375
+msgid "current theme"
+msgstr "сегашна тема"
+
+#: templates/admin/edit_inline/compact.html:12
+#, python-format
+msgid "Add another %(verbose_name)s"
+msgstr ""
+
+#: templates/admin/edit_inline/compact.html:37
+msgid "Change"
+msgstr "Смени"
+
+#: templates/admin/edit_inline/compact.html:43
+msgid "View on site"
+msgstr "Виж на сайта"
+
+#: templates/admin/popup_response.html:4
+msgid "Popup closing..."
+msgstr "Затваряне на съобщението"
+
+#: templates/jet/related_field_ajax_list_filter.html:2
+#: templates/rangefilter/date_filter.html:2
+#: templates/rangefilter/date_filter.html:16
+#, python-format
+msgid " By %(filter_title)s "
+msgstr ""
+
+#: templates/rangefilter/date_filter.html:34
+msgid "Reset"
+msgstr "Изчисти"
