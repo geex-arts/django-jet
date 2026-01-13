@@ -60,7 +60,10 @@ DATABASES = {
 }
 
 TIME_ZONE = 'UTC'
-LANGUAGE_CODE = 'en-US'
+if django.VERSION[0] == 3:
+    LANGUAGE_CODE = 'en-us'
+else:
+    LANGUAGE_CODE = 'en-US'
 USE_I18N = True
 USE_L10N = True
 
@@ -71,3 +74,4 @@ STATIC_URL = '/static/'
 
 JET_INDEX_DASHBOARD = 'jet.tests.dashboard.TestIndexDashboard'
 JET_APP_INDEX_DASHBOARD = 'jet.tests.dashboard.TestAppIndexDashboard'
+

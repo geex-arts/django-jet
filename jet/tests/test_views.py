@@ -9,6 +9,7 @@ from django.test import TestCase, Client
 from jet.dashboard.modules import LinkList
 from jet.models import Bookmark
 from jet.dashboard.models import UserDashboardModule
+from jet.forms import ModelLookupForm
 
 
 class ViewsTestCase(TestCase):
@@ -227,3 +228,10 @@ class ViewsTestCase(TestCase):
         response = json.loads(response.content.decode())
         self.assertFalse(response['error'])
         self.assertFalse(UserDashboardModule.objects.filter(pk=module.pk).exists())
+
+
+    def test_model_lookup_form(self):
+        response = self.admin.get(reverse('jet:model_lookup'))
+        data = json.loads(response.content.decode())
+        self.assertTrue(data['error'])
+        

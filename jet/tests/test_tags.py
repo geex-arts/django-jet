@@ -1,3 +1,4 @@
+import django
 from django import forms
 try:
     from django.core.urlresolvers import reverse
@@ -5,7 +6,7 @@ except ImportError: # Django 1.11
     from django.urls import reverse
 
 from django.test import TestCase
-from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object, jet_previous_object
+from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object, jet_previous_object, jet_have_admin_static
 from jet.tests.models import TestModel, SearchableTestModel
 from django.test.client import RequestFactory
 
@@ -100,3 +101,6 @@ class TagsTestCase(TestCase):
         expected_object = None
 
         self.assertEqual(previous_object, expected_object)
+
+    def test_jet_have_admin_static(self):
+        self.assertEqual(jet_have_admin_static(), django.VERSION[0] < 3)

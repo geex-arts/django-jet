@@ -1,12 +1,14 @@
 from importlib import import_module
 import json
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 from jet.utils import LazyDateTimeEncoder
+try:
+    from django.utils.encoding import python_2_unicode_compatible
+except ImportError:
+    python_2_unicode_compatible = None
 
 
-@python_2_unicode_compatible
 class UserDashboardModule(models.Model):
     title = models.CharField(verbose_name=_('Title'), max_length=255)
     module = models.CharField(verbose_name=_('module'), max_length=255)
@@ -56,4 +58,5 @@ class UserDashboardModule(models.Model):
         self.settings = json.dumps(settings, cls=LazyDateTimeEncoder)
         self.save()
 
-
+if python_2_unicode_compatible:
+    UserDashboardModule = python_2_unicode_compatible(UserDashboardModule)
