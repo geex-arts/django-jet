@@ -12,7 +12,7 @@ from jet.dashboard.models import UserDashboardModule
 from jet.dashboard import dashboard
 from django.http import HttpResponse
 from oauth2client.client import FlowExchangeError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 
 def google_analytics_grant_view(request, pk):

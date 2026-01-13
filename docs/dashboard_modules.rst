@@ -85,7 +85,7 @@ Usage Example
 -------------
    .. code-block:: python
 
-     from django.utils.translation import ugettext_lazy as _
+     from django.utils.translation import gettext_lazy as _
      from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
      from jet.dashboard.dashboard_modules import google_analytics
 
@@ -137,7 +137,7 @@ Usage Example
 -------------
    .. code-block:: python
 
-     from django.utils.translation import ugettext_lazy as _
+     from django.utils.translation import gettext_lazy as _
      from jet.dashboard.dashboard import Dashboard, AppIndexDashboard
      from jet.dashboard.dashboard_modules import yandex_metrika
 
