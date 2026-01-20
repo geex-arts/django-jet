@@ -185,7 +185,7 @@ Changelog
 -----
 * [Fix] Issue-14: Fixed ajax fields choices being rendered in page (thanks to dnmellen for the report)
 * [Fix] Issue-15: Fixed textarea text wrapping in Firefox
-* [Feature] PR-16: Allow usage of select2_lookups filter in ModelForms outside of Admin (thansk to dnmellen for pull request)
+* [Feature] PR-16: Allow usage of select2_lookups filter in ModelForms outside of Admin (thanks to dnmellen for pull request)
 * [Fix] Fixed select2_lookups for posted data
 * [Feature] Issue-14: Added ajax related field filters
 * [Fix] Made booleanfield icons cross browser compatible
