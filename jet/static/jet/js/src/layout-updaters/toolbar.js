@@ -99,9 +99,16 @@ ToolbarUpdater.prototype = {
                     e.stopPropagation();
                 });
 
-                $(document.body).on('click', function() {
-                    $content.removeClass('visible');
-                });
+                /* date rangefilter is closing itself, when clicking on the calendar-widget "next-month"
+                 * it is also closing itself when clicking somewhere at the page, althought there is a 
+                 * reset button in the popup which closes the popup.
+                 *
+                 * removing the on click to keep the visible class works fine - at least for the date 
+                 * rangefilter component 
+                 *
+                 * $(document.body).on('click', function() {
+                 *   $content.removeClass('visible');
+                 * });
             }
         });
 
