@@ -221,32 +221,40 @@ Dashboard.prototype = {
         $dashboard.find('.dashboard-item.ajax').each(function () {
             var $item = $(this);
             var $content = $item.find('.dashboard-item-content');
+            var autoreload_time = $item.data('ajax-autoreload-time');
             var url = $item.data('ajax-url');
 
-            $.ajax({
-                url: url,
-                dataType: 'json',
-                success: function (result) {
-                    if (result.error) {
+            function _loadmodule() {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.error) {
+                            $content.empty();
+                            return;
+                        }
+
+                        var oldHeight = $content.height();
+                        $content.html(result.html);
+                        var newHeight = $content.height();
+
+                        $content.height(oldHeight);
+                        $content.animate({
+                            height: newHeight
+                        }, 250, 'swing', function () {
+                            $content.height('auto');
+                        });
+
+                        if (autoreload_time!=0) {
+                            setTimeout(_loadmodule, autoreload_time)
+                        }
+                    },
+                    error: function () {
                         $content.empty();
-                        return;
                     }
-
-                    var oldHeight = $content.height();
-                    $content.html(result.html);
-                    var newHeight = $content.height();
-
-                    $content.height(oldHeight);
-                    $content.animate({
-                        height: newHeight
-                    }, 250, 'swing', function() {
-                        $content.height('auto');
-                    });
-                },
-                error: function () {
-                    $content.empty();
-                }
-            });
+                });
+            }
+            _loadmodule();
         });
     },
     updateModuleChildrenFormsetLabels: function($inline) {
