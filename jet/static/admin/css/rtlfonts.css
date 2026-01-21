@@ -1,0 +1,82 @@
+﻿/**
+*	Vazir font
+**/
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: bold;
+    src: url('../fonts/Vazir-Bold.eot');
+    src: url('../fonts/Vazir-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../fonts/Vazir-Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/Vazir-Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 500;
+    src: url('../fonts/Vazir-Medium.eot');
+    src: url('../fonts/Vazir-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../fonts/Vazir-Medium.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/Vazir-Medium.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir-Medium.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 300;
+    src: url('../fonts/Vazir-Light.eot');
+    src: url('../fonts/Vazir-Light.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../fonts/Vazir-Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/Vazir-Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir-Light.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: 200;
+    src: url('../fonts/Vazir-Thin.eot');
+    src: url('../fonts/Vazir-Thin.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../fonts/Vazir-Thin.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/Vazir-Thin.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir-Thin.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Vazir;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../fonts/Vazir.eot');
+    src: url('../fonts/Vazir.eot?#iefix') format('embedded-opentype'), /* IE6-8 */ url('../fonts/Vazir.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('../fonts/Vazir.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('../fonts/Vazir.ttf') format('truetype');
+}
+
+body {
+    font-family: Vazir;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="url"], input[type="number"], textarea, select, .vTextField {
+    font-family: Vazir;
+}
+
+.attachment-file {
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px;
+    float: left;
+    display: inline;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.ticket-view-description {
+    background-color: rgb(243, 243, 243);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px !important;
+}
+
+.markdownx-preview {
+    background-color: rgb(243, 243, 243);
+    overflow: hidden;
+    border-radius: 5px;
+    padding: 10px !important;
+    flex-grow: 1;
+    margin-left: 10px;
+}
+
+.markdownx {
+    flex-direction: row;
+    display: flex;
+    align-content: space-between;
+}
