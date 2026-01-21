@@ -29,6 +29,7 @@ from django.contrib.admin.options import IncorrectLookupParameters
 from django.contrib import admin
 from django.utils.translation import ugettext_lazy as _
 from django.utils.text import slugify
+from django import VERSION
 
 try:
     from collections import OrderedDict
@@ -461,8 +462,10 @@ def context_to_dict(context):
     return context
 
 
-def user_is_authenticated(user):
-    if not hasattr(user.is_authenticated, '__call__'):
+if VERSION[0] >= 1 and VERSION[1] >= 10:
+    def user_is_authenticated(user):
         return user.is_authenticated
-    else:
+else:
+    def user_is_authenticated(user):
         return user.is_authenticated()
+

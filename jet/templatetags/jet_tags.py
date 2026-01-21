@@ -24,7 +24,7 @@ except ImportError:
 
 
 register = template.Library()
-assignment_tag = register.assignment_tag if hasattr(register, 'assignment_tag') else register.simple_tag
+assignment_tag = register.simple_tag if hasattr(register, 'simple_tag') else register.assignment_tag
 
 
 @assignment_tag
