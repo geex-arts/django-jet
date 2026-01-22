@@ -6,19 +6,21 @@ except ImportError: # Django 1.11
 
 from django.test import TestCase
 from jet.templatetags.jet_tags import jet_select2_lookups, jet_next_object, jet_previous_object
-from jet.tests.models import TestModel, SearchableTestModel
+from jet.tests.models import TestModel, SearchableTestModel, RelatedToTestModel
 from django.test.client import RequestFactory
 
 class TagsTestCase(TestCase):
     def setUp(self):
         self.models = []
         self.searchable_models = []
+        self.related_models = []
 
         self.models.append(TestModel.objects.create(field1='first', field2=1))
         self.models.append(TestModel.objects.create(field1='second', field2=2))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='first', field2=1))
         self.searchable_models.append(SearchableTestModel.objects.create(field1='second', field2=2))
-
+        self.related_models.append(RelatedToTestModel.objects.create(field=self.models[0]))
+        
     def test_select2_lookups(self):
         class TestForm(forms.Form):
             form_field = forms.ModelChoiceField(SearchableTestModel.objects)
@@ -32,6 +34,25 @@ class TagsTestCase(TestCase):
 
         self.assertEqual(len(choices), 1)
         self.assertEqual(choices[0][0], value.pk)
+
+    def test_select2_lookups_for_model_form(self):
+        class TestModelForm(forms.ModelForm):
+            class Meta:
+                model = RelatedToTestModel
+                fields = ('field',)
+            field = forms.ModelChoiceField(TestModel.objects)
+
+        value = self.related_models[0]
+
+        form = TestModelForm(initial={'field': value.pk})
+        field = form['field']
+        field = jet_select2_lookups(field)
+        choices = [choice for choice in field.field.choices]
+
+        self.assertEqual(len(choices), 3)
+        self.assertEqual(choices[0][0], '')
+        values = set(c[0] for c in choices[1:])
+        self.assertSetEqual(values, set(m.pk for m in self.models))
 
     def test_select2_lookups_posted(self):
         class TestForm(forms.Form):
